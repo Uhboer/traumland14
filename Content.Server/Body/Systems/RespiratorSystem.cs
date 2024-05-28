@@ -36,7 +36,6 @@ public sealed class RespiratorSystem : EntitySystem
     [Dependency] private readonly BodySystem _bodySystem = default!;
     [Dependency] private readonly DamageableSystem _damageableSys = default!;
     [Dependency] private readonly LungSystem _lungSystem = default!;
-    [Dependency] private readonly PopupSystem _popupSystem = default!;
     [Dependency] private readonly MobStateSystem _mobState = default!;
     [Dependency] private readonly IPrototypeManager _protoMan = default!;
     [Dependency] private readonly SolutionContainerSystem _solutionContainerSystem = default!;
@@ -146,11 +145,10 @@ public sealed class RespiratorSystem : EntitySystem
             // Try deal suffocation damage
             if (respirator.Saturation < respirator.SuffocationThreshold || !CanBreathe(uid))
             {
-                // TODO: Check if entity holding the air. If holding - we can't speak or emote
-                if (_gameTiming.CurTime >= respirator.LastGaspPopupTime + respirator.GaspPopupCooldown)
+                if (_gameTiming.CurTime >= respirator.LastGaspEmoteTime + respirator.GaspEmoteCooldown)
                 {
-                    respirator.LastGaspPopupTime = _gameTiming.CurTime;
-                    _popupSystem.PopupEntity(Loc.GetString("lung-behavior-gasp", ("name", Name(uid))), uid);
+                    respirator.LastGaspEmoteTime = _gameTiming.CurTime;
+                    _chat.TryEmoteWithChat(uid, respirator.GaspEmote, ignoreActionBlocker: true);
                 }
 
                 TakeSuffocationDamage((uid, respirator));
