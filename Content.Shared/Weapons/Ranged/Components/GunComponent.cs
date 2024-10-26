@@ -276,6 +276,17 @@ public sealed partial class GunComponent : Component
     /// </summary>
     [DataField]
     public float FireOnDropChance = 0.1f;
+
+    /// <summary>
+    ///     Whether or not this gun is truly Recoilless, such as Lasers, and therefore shouldn't move the user.
+    /// </summary>
+    [DataField]
+    public bool DoRecoil = true;
+
+    // WD EDIT START
+    [DataField]
+    public Angle? ThrowAngle;
+    // WD EDIT END
 }
 
 [Flags]

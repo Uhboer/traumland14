@@ -1,4 +1,7 @@
 using System.Numerics;
+using Content.Shared._White.Penetrated;
+using Content.Shared._White.Projectile;
+using Content.Shared.CombatMode.Pacification;
 using Content.Shared.Body.Systems;
 using Content.Shared.Damage;
 using Content.Shared.DoAfter;
@@ -10,12 +13,12 @@ using Content.Shared.Mobs.Components;
 using Content.Shared.Popups;
 using Content.Shared._Shitmed.Targeting;
 using Content.Shared.Throwing;
+using Content.Shared.UserInterface;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Map;
 using Robust.Shared.Network;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Components;
-using Robust.Shared.Physics.Dynamics;
 using Robust.Shared.Physics.Events;
 using Robust.Shared.Physics.Systems;
 using Robust.Shared.Serialization;
@@ -30,10 +33,9 @@ public abstract partial class SharedProjectileSystem : EntitySystem
 
     [Dependency] private readonly INetManager _netManager = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
-    [Dependency] private readonly SharedHandsSystem _hands = default!;
     [Dependency] private readonly SharedPhysicsSystem _physics = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
+    [Dependency] private readonly SharedDoAfterSystem _doAfter = default!; // WD EDIT
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly SharedBodySystem _body = default!;
@@ -170,19 +172,40 @@ public abstract partial class SharedProjectileSystem : EntitySystem
         }
     }
 
-    private void Embed(EntityUid uid, EntityUid target, EntityUid? user, EmbeddableProjectileComponent component, TargetBodyPart? targetPart = null)
+    public void Embed(EntityUid uid, EntityUid target, EntityUid? user, EmbeddableProjectileComponent component, bool raiseEvent = true) // WD EDIT
     {
-        TryComp<PhysicsComponent>(uid, out var physics);
-        _physics.SetLinearVelocity(uid, Vector2.Zero, body: physics);
-        _physics.SetBodyType(uid, BodyType.Static, body: physics);
+        // WD EDIT START
+        if (!TryComp<PhysicsComponent>(uid, out var physics)
+            || physics.LinearVelocity.Length() < component.MinimumSpeed
+            || _netManager.IsClient)
+            return;
+
+        var attemptEmbedEvent = new AttemptEmbedEvent(user, target);
+        RaiseLocalEvent(uid, ref attemptEmbedEvent);
+
         var xform = Transform(uid);
-        _transform.SetParent(uid, xform, target);
+
+        if (!TryComp<PenetratedProjectileComponent>(uid, out var penetratedProjectile)
+            || !penetratedProjectile.PenetratedUid.HasValue
+            || (penetratedProjectile.PenetratedUid != target
+                && !HasComp<PenetratedComponent>(target)))
+        {
+            _physics.SetLinearVelocity(uid, Vector2.Zero, body: physics);
+            _physics.SetBodyType(uid, BodyType.Static, body: physics);
+            _transform.SetParent(uid, xform, target);
+        }
+        // WD EDIT END
 
         if (component.Offset != Vector2.Zero)
         {
             _transform.SetLocalPosition(uid, xform.LocalPosition + xform.LocalRotation.RotateVec(component.Offset),
                 xform);
         }
+
+        // WD EDIT START
+        if (!raiseEvent)
+            return;
+        // WD EDIT END
 
         _audio.PlayPredicted(component.Sound, uid, null);
 
@@ -239,6 +262,42 @@ public abstract partial class SharedProjectileSystem : EntitySystem
     {
         public override DoAfterEvent Clone() => this;
     }
+
+    /// <summary>
+    /// Prevent players with the Pacified status effect from throwing embeddable projectiles.
+    /// </summary>
+    private void OnAttemptPacifiedThrow(Entity<EmbeddableProjectileComponent> ent, ref AttemptPacifiedThrowEvent args)
+    {
+        args.Cancel("pacified-cannot-throw-embed");
+    }
+
+    // WD EDIT START
+    private void OnEmbedActivate(EntityUid uid, EmbeddableProjectileComponent component, ActivateInWorldEvent args)
+    {
+        if (args.Handled
+            || !AttemptEmbedRemove(uid, args.User, component))
+            return;
+
+        args.Handled = true;
+    }
+
+    private bool AttemptEmbedRemove(EntityUid uid, EntityUid user, EmbeddableProjectileComponent? component = null)
+    {
+        if (!Resolve(uid, ref component, false)
+            || component.RemovalTime == null
+            || !TryComp<PhysicsComponent>(uid, out var physics)
+            || physics.BodyType != BodyType.Static)
+            return false;
+
+        _doAfter.TryStartDoAfter(new DoAfterArgs(EntityManager, user, component.RemovalTime.Value,
+            new RemoveEmbeddedProjectileEvent(), eventTarget: uid, target: uid)
+        {
+            DistanceThreshold = SharedInteractionSystem.InteractionRange,
+        });
+
+        return true;
+    }
+    // WD EDIT END
 }
 
 [Serializable, NetSerializable]
@@ -271,3 +330,14 @@ public record struct ProjectileHitEvent(DamageSpecifier Damage, EntityUid Target
 /// </summary>
 [ByRefEvent]
 public record struct AfterProjectileHitEvent(DamageSpecifier Damage, EntityUid Target);
+
+// WD EDIT START
+[Serializable, NetSerializable]
+public sealed partial class RemoveEmbeddedProjectileEvent : DoAfterEvent
+{
+    public override DoAfterEvent Clone()
+    {
+        return this;
+    }
+}
+// WD EDIT END

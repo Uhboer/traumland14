@@ -29,3 +29,16 @@ public readonly record struct RemoveEmbedEvent(EntityUid? Remover)
 {
     public readonly EntityUid? Remover = Remover;
 }
+
+// WD EDIT START
+[ByRefEvent]
+public readonly record struct AttemptEmbedEvent(EntityUid? Shooter, EntityUid Embedded)
+{
+    public readonly EntityUid? Shooter = Shooter;
+
+    /// <summary>
+    /// Entity that is embedded in.
+    /// </summary>
+    public readonly EntityUid Embedded = Embedded;
+}
+// WD EDIT END

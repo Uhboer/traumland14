@@ -1,5 +1,6 @@
 using Content.Shared._Shitmed.Targeting;
 using System.Numerics;
+using Content.Shared.Damage;
 using Robust.Shared.Audio;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 using Robust.Shared.GameStates;
@@ -48,6 +49,11 @@ public sealed partial class EmbeddableProjectileComponent : Component
     /// </summary>
     [ViewVariables(VVAccess.ReadWrite), DataField, AutoNetworkedField]
     public SoundSpecifier? Sound;
+
+    // WD EDIT START
+    [DataField]
+    public DamageSpecifier Damage = new();
+    // WD EDIT END
 
     /// <summary>
     ///   The entity this embeddable is attached to.
