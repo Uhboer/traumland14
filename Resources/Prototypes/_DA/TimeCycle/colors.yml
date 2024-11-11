@@ -1,6 +1,6 @@
 - type: timeCyclePalette
   id: DefaultTimeCycle
-  colors:
+  timeColors:
     0: "#000000"
     2: "#000000"
     6: "#11122c"
