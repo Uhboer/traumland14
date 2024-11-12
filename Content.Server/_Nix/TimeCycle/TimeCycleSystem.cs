@@ -1,9 +1,9 @@
 using Robust.Shared.Timing;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Map.Components;
-using Content.Shared.DA.TimeCycle;
+using Content.Shared._Nix.TimeCycle;
 
-namespace Content.Server.DA.TimeCycle;
+namespace Content.Server._Nix.TimeCycle;
 
 public sealed partial class TimeCycleSystem : EntitySystem
 {

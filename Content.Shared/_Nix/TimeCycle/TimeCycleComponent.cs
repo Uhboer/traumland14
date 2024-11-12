@@ -1,4 +1,4 @@
-namespace Content.Shared.DA.TimeCycle;
+namespace Content.Shared._Nix.TimeCycle;
 
 [RegisterComponent]
 public sealed partial class TimeCycleComponent : Component

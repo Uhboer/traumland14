@@ -16,7 +16,7 @@ using Robust.Client.UserInterface.CustomControls;
 using Robust.Shared.Graphics;
 using static Robust.Client.UserInterface.StylesheetHelpers;
 
-namespace Content.Client._DA.Stylesheets
+namespace Content.Client._Nix.Stylesheets
 {
     public static class ResCacheExtension
     {

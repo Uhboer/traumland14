@@ -1,6 +1,6 @@
 using Robust.Shared.Prototypes;
 
-namespace Content.Shared.DA.TimeCycle;
+namespace Content.Shared._Nix.TimeCycle;
 
 /// <summary>
 ///
