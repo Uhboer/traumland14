@@ -1,7 +1,7 @@
 using Robust.Client.ResourceManagement;
 using Robust.Client.UserInterface;
 using Robust.Shared.IoC;
-using Content.Client._Nix.Stylesheets;
+using Content.Client._RW.Stylesheets;
 
 namespace Content.Client.Stylesheets
 {
