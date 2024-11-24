@@ -129,8 +129,8 @@ public partial class NavMapControl : MapGridControl
         {
             PanelOverride = new StyleBoxFlat()
             {
-                BackgroundColor = StyleNano.ButtonColorContext.WithAlpha(1f),
-                BorderColor = StyleNano.PanelDark
+                BackgroundColor = StyleLora.ButtonColorContext.WithAlpha(1f),
+                BorderColor = StyleLora.PanelDark
             },
             VerticalExpand = false,
             HorizontalExpand = true,

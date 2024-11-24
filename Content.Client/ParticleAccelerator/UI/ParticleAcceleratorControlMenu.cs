@@ -62,7 +62,7 @@ namespace Content.Client.ParticleAccelerator.UI
 
             var resourceCache = IoCManager.Resolve<IResourceCache>();
             var font = resourceCache.GetFont("/Fonts/Boxfont-round/Boxfont Round.ttf", 13);
-            var panelTex = resourceCache.GetTexture("/Textures/Interface/Nano/button.svg.96dpi.png");
+            var panelTex = resourceCache.GetTexture("/Textures/Interface/Lora/button.svg.96dpi.png");
 
             MouseFilter = MouseFilterMode.Stop;
 
@@ -86,13 +86,13 @@ namespace Content.Client.ParticleAccelerator.UI
             var back = new StyleBoxTexture
             {
                 Texture = panelTex,
-                Modulate = Color.FromHex("#25252A"),
+                Modulate = Color.FromHex("#141414"),
             };
             back.SetPatchMargin(StyleBox.Margin.All, 10);
 
             var back2 = new StyleBoxTexture(back)
             {
-                Modulate = Color.FromHex("#202023")
+                Modulate = Color.FromHex("#121212")
             };
 
             AddChild(new PanelContainer
@@ -152,14 +152,14 @@ namespace Content.Client.ParticleAccelerator.UI
                             {
                                 Text = Loc.GetString("particle-accelerator-control-menu-device-version-label"),
                                 FontOverride = font,
-                                FontColorOverride = StyleNano.NanoGold,
+                                FontColorOverride = StyleLora.LoraPurple,
                             },
                             closeButton
                         }
                     },
                     new PanelContainer
                     {
-                        PanelOverride = new StyleBoxFlat {BackgroundColor = StyleNano.NanoGold},
+                        PanelOverride = new StyleBoxFlat {BackgroundColor = StyleLora.LoraPurple},
                         MinSize = new Vector2(0, 2),
                     },
                     new Control

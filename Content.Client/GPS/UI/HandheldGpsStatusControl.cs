@@ -18,7 +18,7 @@ public sealed class HandheldGpsStatusControl : Control
     {
         _parent = parent;
         _entMan = IoCManager.Resolve<IEntityManager>();
-        _label = new RichTextLabel { StyleClasses = { StyleNano.StyleClassItemStatus } };
+        _label = new RichTextLabel { StyleClasses = { StyleLora.StyleClassItemStatus } };
         AddChild(_label);
         UpdateGpsDetails();
     }

@@ -46,7 +46,7 @@ public class ChatInputBox : PanelContainer
             StyleClasses = {"chatFilterOptionButton"}
         };
         Container.AddChild(FilterButton);
-        AddStyleClass(StyleNano.StyleClassChatSubPanel);
+        AddStyleClass(StyleLora.StyleClassChatSubPanel);
         ChannelSelector.OnChannelSelect += UpdateActiveChannel;
     }
 

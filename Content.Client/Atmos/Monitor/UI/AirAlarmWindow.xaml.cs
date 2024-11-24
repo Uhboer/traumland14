@@ -189,14 +189,14 @@ public sealed partial class AirAlarmWindow : FancyWindow
     {
         if(curAlarm == AtmosAlarmType.Danger)
         {
-            return StyleNano.DangerousRedFore;
+            return StyleLora.DangerousRedFore;
         }
         else if(curAlarm == AtmosAlarmType.Warning)
         {
-            return StyleNano.ConcerningOrangeFore;
+            return StyleLora.ConcerningOrangeFore;
         }
 
-        return StyleNano.GoodGreenFore;
+        return StyleLora.GoodGreenFore;
     }
 
 

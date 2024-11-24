@@ -37,11 +37,11 @@ namespace Content.Client.UserInterface.Systems.Atmos.GasTank
 
             MouseFilter = MouseFilterMode.Stop;
 
-            var panelTex = _resourceCache.GetTexture("/Textures/Interface/Nano/button.svg.96dpi.png");
+            var panelTex = _resourceCache.GetTexture("/Textures/Interface/Lora/button.svg.96dpi.png");
             var back = new StyleBoxTexture
             {
                 Texture = panelTex,
-                Modulate = Color.FromHex("#25252A"),
+                Modulate = Color.FromHex("#141414"),
             };
 
             back.SetPatchMargin(StyleBox.Margin.All, 10);
@@ -96,7 +96,7 @@ namespace Content.Client.UserInterface.Systems.Atmos.GasTank
                     {
                         Text = Loc.GetString("gas-tank-window-label"),
                         FontOverride = font,
-                        FontColorOverride = StyleNano.NanoGold,
+                        FontColorOverride = StyleLora.LoraPurple,
                         VerticalAlignment = VAlignment.Center,
                         HorizontalExpand = true,
                         HorizontalAlignment = HAlignment.Left,

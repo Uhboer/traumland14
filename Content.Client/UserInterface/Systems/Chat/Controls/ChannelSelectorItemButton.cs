@@ -13,7 +13,7 @@ public sealed class ChannelSelectorItemButton : Button
     public ChannelSelectorItemButton(ChatSelectChannel selector)
     {
         Channel = selector;
-        AddStyleClass(StyleNano.StyleClassChatChannelSelectorButton);
+        AddStyleClass(StyleLora.StyleClassChatChannelSelectorButton);
 
         Text = ChannelSelectorButton.ChannelSelectorName(selector);
 

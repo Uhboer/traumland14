@@ -59,9 +59,9 @@ public sealed partial class FancyTree : Control
     // If people ever want to customize this, this should be a style parameter/
     public const int Indentation = 16;
 
-    public const string DefaultIconExpanded = "/Textures/Interface/Nano/inverted_triangle.svg.png";
-    public const string DefaultIconCollapsed = "/Textures/Interface/Nano/triangle_right.png";
-    public const string DefaultIconNoChildren = "/Textures/Interface/Nano/triangle_right_hollow.svg.png";
+    public const string DefaultIconExpanded = "/Textures/Interface/Lora/inverted_triangle.svg.png";
+    public const string DefaultIconCollapsed = "/Textures/Interface/Lora/triangle_right.png";
+    public const string DefaultIconNoChildren = "/Textures/Interface/Lora/triangle_right_hollow.svg.png";
 
     public Texture? IconExpanded;
     public Texture? IconCollapsed;

@@ -150,7 +150,7 @@ public sealed partial class StoreMenu : DefaultWindow
         var newListing = new StoreListingControl(listing, GetListingPriceString(listing), hasBalance, texture);
 
         if (listing.DiscountValue > 0)
-            newListing.StoreItemBuyButton.AddStyleClass(StyleNano.ButtonColorDangerDefault.ToString());
+            newListing.StoreItemBuyButton.AddStyleClass(StyleLora.ButtonColorDangerDefault.ToString());
 
         newListing.StoreItemBuyButton.OnButtonDown += args
             => OnListingButtonPressed?.Invoke(args, listing);

@@ -155,7 +155,7 @@ public sealed partial class DecalPlacerWindow : DefaultWindow
                 {
                     PanelOverride = new StyleBoxFlat
                     {
-                        BackgroundColor = StyleNano.ButtonColorDefault
+                        BackgroundColor = StyleLora.ButtonColorDefault
                     },
                     Children =
                     {

@@ -56,15 +56,15 @@ namespace Content.Client.Power.APC.UI
                 {
                     case ApcExternalPowerState.None:
                         ExternalPowerStateLabel.Text = Loc.GetString("apc-menu-power-state-none");
-                        ExternalPowerStateLabel.SetOnlyStyleClass(StyleNano.StyleClassPowerStateNone);
+                        ExternalPowerStateLabel.SetOnlyStyleClass(StyleLora.StyleClassPowerStateNone);
                         break;
                     case ApcExternalPowerState.Low:
                         ExternalPowerStateLabel.Text = Loc.GetString("apc-menu-power-state-low");
-                        ExternalPowerStateLabel.SetOnlyStyleClass(StyleNano.StyleClassPowerStateLow);
+                        ExternalPowerStateLabel.SetOnlyStyleClass(StyleLora.StyleClassPowerStateLow);
                         break;
                     case ApcExternalPowerState.Good:
                         ExternalPowerStateLabel.Text = Loc.GetString("apc-menu-power-state-good");
-                        ExternalPowerStateLabel.SetOnlyStyleClass(StyleNano.StyleClassPowerStateGood);
+                        ExternalPowerStateLabel.SetOnlyStyleClass(StyleLora.StyleClassPowerStateGood);
                         break;
                     default:
                         throw new ArgumentOutOfRangeException();

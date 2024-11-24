@@ -148,8 +148,8 @@ namespace Content.Client.Options.UI.Tabs
                 KeybindsContainer.AddChild(new Label
                 {
                     Text = Loc.GetString(headerContents),
-                    FontColorOverride = StyleNano.NanoGold,
-                    StyleClasses = { StyleNano.StyleClassLabelKeyText }
+                    FontColorOverride = StyleLora.LoraPurple,
+                    StyleClasses = { StyleLora.StyleClassLabelKeyText }
                 });
             }
 

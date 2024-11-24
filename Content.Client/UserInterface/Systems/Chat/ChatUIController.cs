@@ -276,7 +276,7 @@ public sealed class ChatUIController : UIController
                  && style is StyleBoxFlat propStyleBoxFlat)
             color = propStyleBoxFlat.BackgroundColor;
         else
-            color = StyleNano.ChatBackgroundColor;
+            color = StyleLora.ChatBackgroundColor;
 
         panel.PanelOverride = new StyleBoxFlat
         {

@@ -13,7 +13,7 @@
 
         <PanelContainer Name="Separator" MinSize="2 2">
             <PanelContainer.PanelOverride>
-                <graphics:StyleBoxFlat BackgroundColor="{x:Static style:StyleNano.NanoGold}" />
+                <graphics:StyleBoxFlat BackgroundColor="{x:Static style:StyleLora.LoraPurple}" />
             </PanelContainer.PanelOverride>
         </PanelContainer>
 

@@ -15,7 +15,7 @@ namespace Content.Client.Tools.Components
         public MultipleToolStatusControl(MultipleToolComponent parent)
         {
             _parent = parent;
-            _label = new RichTextLabel { StyleClasses = { StyleNano.StyleClassItemStatus } };
+            _label = new RichTextLabel { StyleClasses = { StyleLora.StyleClassItemStatus } };
             _label.SetMarkup(_parent.StatusShowBehavior ? _parent.CurrentQualityName : string.Empty);
             AddChild(_label);
         }

@@ -15,7 +15,7 @@ public sealed partial class BorgModuleControl : PanelContainer
 
         ModuleView.SetEntity(entity);
         ModuleName.Text = entityManager.GetComponent<MetaDataComponent>(entity).EntityName;
-        RemoveButton.TexturePath = "/Textures/Interface/Nano/cross.svg.png";
+        RemoveButton.TexturePath = "/Textures/Interface/Lora/cross.svg.png";
         RemoveButton.OnPressed += _ =>
         {
             RemoveButtonPressed?.Invoke();

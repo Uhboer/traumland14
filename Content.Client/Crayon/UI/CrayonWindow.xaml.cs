@@ -69,7 +69,7 @@ namespace Content.Client.Crayon.UI
                     {
                         PanelOverride = new StyleBoxFlat()
                         {
-                            BackgroundColor = StyleNano.ButtonColorDefault,
+                            BackgroundColor = StyleLora.ButtonColorDefault,
                         },
                         Children =
                         {

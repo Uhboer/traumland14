@@ -65,10 +65,10 @@ namespace Content.Client.Stylesheets
                 },
                 12
             );
-            var textureCloseButton = resCache.GetTexture("/Textures/Interface/Nano/cross.svg.png");
+            var textureCloseButton = resCache.GetTexture("/Textures/Interface/Lora/cross.svg.png");
 
             // Button styles.
-            var buttonTex = resCache.GetTexture("/Textures/Interface/Nano/button.svg.96dpi.png");
+            var buttonTex = resCache.GetTexture("/Textures/Interface/Lora/button.svg.96dpi.png");
             BaseButton = new StyleBoxTexture
             {
                 Texture = buttonTex,
@@ -120,7 +120,7 @@ namespace Content.Client.Stylesheets
 
             AngleBorderRect = new StyleBoxTexture
             {
-                Texture = resCache.GetTexture("/Textures/Interface/Nano/geometric_panel_border.svg.96dpi.png"),
+                Texture = resCache.GetTexture("/Textures/Interface/Lora/geometric_panel_border.svg.96dpi.png"),
             };
             AngleBorderRect.SetPatchMargin(StyleBox.Margin.All, 10);
 

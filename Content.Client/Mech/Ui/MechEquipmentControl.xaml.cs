@@ -15,7 +15,7 @@ public sealed partial class MechEquipmentControl : Control
         RobustXamlLoader.Load(this);
         EquipmentName.SetMessage(itemName);
         EquipmentView.SetEntity(entity);
-        RemoveButton.TexturePath = "/Textures/Interface/Nano/cross.svg.png";
+        RemoveButton.TexturePath = "/Textures/Interface/Lora/cross.svg.png";
 
         if (fragment != null)
         {

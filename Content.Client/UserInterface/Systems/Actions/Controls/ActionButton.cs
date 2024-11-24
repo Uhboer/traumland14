@@ -75,7 +75,7 @@ public sealed class ActionButton : Control, IEntityControl
         };
         HighlightRect = new PanelContainer
         {
-            StyleClasses = {StyleNano.StyleClassHandSlotHighlight},
+            StyleClasses = {StyleLora.StyleClassHandSlotHighlight},
             MinSize = new Vector2(32, 32),
             Visible = false
         };

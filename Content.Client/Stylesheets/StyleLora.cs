@@ -15,29 +15,9 @@ using Robust.Client.UserInterface.Controls;
 using Robust.Client.UserInterface.CustomControls;
 using static Robust.Client.UserInterface.StylesheetHelpers;
 
-namespace Content.Client._RW.Stylesheets
+namespace Content.Client.Stylesheets
 {
-    public static class ResCacheExtension
-    {
-        public static Font NotoStack(this IResourceCache resCache, string variation = "Regular", int size = 10, bool display = false)
-        {
-            var ds = display ? "Display" : "";
-            var sv = variation.StartsWith("Bold", StringComparison.Ordinal) ? "Bold" : "Regular";
-            return resCache.GetFont
-            (
-                // Ew, but ok
-                new[]
-                {
-                    $"/Fonts/Lora/Lora-{variation}.ttf",
-                    $"/Fonts/NotoSans/NotoSansSymbols-{sv}.ttf",
-                    "/Fonts/NotoSans/NotoSansSymbols2-Regular.ttf"
-                },
-                size
-            );
-        }
-    }
-
-    public abstract class StyleBase
+    public abstract class LorasStyleBase
     {
         public const string ClassHighDivider = "HighDivider";
         public const string ClassLowDivider = "LowDivider";
@@ -70,9 +50,9 @@ namespace Content.Client._RW.Stylesheets
         protected StyleBoxTexture BaseAngleRect { get; }
         protected StyleBoxTexture AngleBorderRect { get; }
 
-        protected StyleBase(IResourceCache resCache)
+        protected LorasStyleBase(IResourceCache resCache)
         {
-            var notoSans12 = resCache.GetFont
+            var lora12 = resCache.GetFont
             (
                 new []
                 {
@@ -82,7 +62,7 @@ namespace Content.Client._RW.Stylesheets
                 },
                 12
             );
-            var notoSans12Italic = resCache.GetFont
+            var lora12Italic = resCache.GetFont
             (
                 new []
                 {
@@ -92,10 +72,10 @@ namespace Content.Client._RW.Stylesheets
                 },
                 12
             );
-            var textureCloseButton = resCache.GetTexture("/Textures/Interface/Nano/cross.svg.png");
+            var textureCloseButton = resCache.GetTexture("/Textures/Interface/Lora/cross.svg.png");
 
             // Button styles.
-            var buttonTex = resCache.GetTexture("/Textures/Interface/Nano/button.svg.96dpi.png");
+            var buttonTex = resCache.GetTexture("/Textures/Interface/Lora/button.svg.96dpi.png");
             BaseButton = new StyleBoxTexture
             {
                 Texture = buttonTex,
@@ -147,7 +127,7 @@ namespace Content.Client._RW.Stylesheets
 
             AngleBorderRect = new StyleBoxTexture
             {
-                Texture = resCache.GetTexture("/Textures/Interface/Nano/geometric_panel_border.svg.96dpi.png"),
+                Texture = resCache.GetTexture("/Textures/Interface/Lora/geometric_panel_border.svg.96dpi.png"),
             };
             AngleBorderRect.SetPatchMargin(StyleBox.Margin.All, 10);
 
@@ -188,7 +168,7 @@ namespace Content.Client._RW.Stylesheets
                     new SelectorElement(null, null, null, null),
                     new[]
                     {
-                        new StyleProperty("font", notoSans12),
+                        new StyleProperty("font", lora12),
                     }),
 
                 // Default font.
@@ -196,7 +176,7 @@ namespace Content.Client._RW.Stylesheets
                     new SelectorElement(null, new[] {StyleClassItalic}, null, null),
                     new[]
                     {
-                        new StyleProperty("font", notoSans12Italic),
+                        new StyleProperty("font", lora12Italic),
                     }),
 
                 // Window close button base texture.
@@ -206,7 +186,7 @@ namespace Content.Client._RW.Stylesheets
                     new[]
                     {
                         new StyleProperty(TextureButton.StylePropertyTexture, textureCloseButton),
-                        new StyleProperty(Control.StylePropertyModulateSelf, StyleLora.NanoGold),
+                        new StyleProperty(Control.StylePropertyModulateSelf, StyleLora.LoraPurple),
                     }),
                 // Window close button hover.
                 new StyleRule(
@@ -214,7 +194,7 @@ namespace Content.Client._RW.Stylesheets
                         new[] {TextureButton.StylePseudoClassHover}),
                     new[]
                     {
-                        new StyleProperty(Control.StylePropertyModulateSelf, Color.FromHex("#7F3636")),
+                        new StyleProperty(Control.StylePropertyModulateSelf, Color.FromHex("#960000")),
                     }),
                 // Window close button pressed.
                 new StyleRule(
@@ -222,7 +202,7 @@ namespace Content.Client._RW.Stylesheets
                         new[] {TextureButton.StylePseudoClassPressed}),
                     new[]
                     {
-                        new StyleProperty(Control.StylePropertyModulateSelf, Color.FromHex("#753131")),
+                        new StyleProperty(Control.StylePropertyModulateSelf, Color.FromHex("#141414")),
                     }),
 
                 // Scroll bars
@@ -276,7 +256,8 @@ namespace Content.Client._RW.Stylesheets
     }
 
     // STLYE SHEETS WERE A MISTAKE. KILL ALL OF THIS WITH FIRE
-    public sealed class StyleLora : StyleBase
+    // UPD: Hehe, you right. But it used 2 yrs and never refactored. Most contributers make hardcoded UI, mosly, in StyleNano desighn vision.
+    public sealed class StyleLora : LorasStyleBase
     {
         public const string StyleClassBorderedWindowPanel = "BorderedWindowPanel";
         public const string StyleClassInventorySlotBackground = "InventorySlotBackground";
@@ -321,33 +302,33 @@ namespace Content.Client._RW.Stylesheets
         public const string StyleClassPopupMessageLarge = "PopupMessageLarge";
         public const string StyleClassPopupMessageLargeCaution = "PopupMessageLargeCaution";
 
-        public static readonly Color PanelDark = Color.FromHex("#1E1E22");
+        public static readonly Color PanelDark = Color.FromHex("#0a0a0a");
 
-        public static readonly Color NanoGold = Color.FromHex("#A88B5E");
-        public static readonly Color GoodGreenFore = Color.FromHex("#31843E");
-        public static readonly Color ConcerningOrangeFore = Color.FromHex("#A5762F");
-        public static readonly Color DangerousRedFore = Color.FromHex("#BB3232");
+        public static readonly Color LoraPurple = Color.FromHex("#9051a8");
+        public static readonly Color GoodGreenFore = Color.FromHex("#006400");
+        public static readonly Color ConcerningOrangeFore = Color.FromHex("#99461d");
+        public static readonly Color DangerousRedFore = Color.FromHex("#640000");
         public static readonly Color DisabledFore = Color.FromHex("#5A5A5A");
 
-        public static readonly Color ButtonColorDefault = Color.FromHex("#464950");
-        public static readonly Color ButtonColorDefaultRed = Color.FromHex("#D43B3B");
-        public static readonly Color ButtonColorHovered = Color.FromHex("#575b61");
-        public static readonly Color ButtonColorHoveredRed = Color.FromHex("#DF6B6B");
-        public static readonly Color ButtonColorPressed = Color.FromHex("#3e6c45");
-        public static readonly Color ButtonColorDisabled = Color.FromHex("#292929");
+        public static readonly Color ButtonColorDefault = Color.FromHex("#232323");
+        public static readonly Color ButtonColorDefaultRed = Color.FromHex("#640000");
+        public static readonly Color ButtonColorHovered = Color.FromHex("#2d2d2d");
+        public static readonly Color ButtonColorHoveredRed = Color.FromHex("#960000");
+        public static readonly Color ButtonColorPressed = Color.FromHex("#0f0f0f"); // #3e6c45
+        public static readonly Color ButtonColorDisabled = Color.FromHex("#0f0f0f");
 
-        public static readonly Color ButtonColorCautionDefault = Color.FromHex("#8F6A33");
-        public static readonly Color ButtonColorCautionHovered = Color.FromHex("#C0934E");
-        public static readonly Color ButtonColorCautionPressed = Color.FromHex("#E49F35");
-        public static readonly Color ButtonColorCautionDisabled = Color.FromHex("#28251F");
+        public static readonly Color ButtonColorCautionDefault = Color.FromHex("#99461d");
+        public static readonly Color ButtonColorCautionHovered = Color.FromHex("#cc5b27");
+        public static readonly Color ButtonColorCautionPressed = Color.FromHex("#662e13");
+        public static readonly Color ButtonColorCautionDisabled = Color.FromHex("#33170a");
 
         public static readonly Color ButtonColorDangerDefault = Color.FromHex("#7B2D2D");
         public static readonly Color ButtonColorDangerHovered = Color.FromHex("#BD524B");
         public static readonly Color ButtonColorDangerPressed = Color.FromHex("#C12525");
         public static readonly Color ButtonColorDangerDisabled = Color.FromHex("#2F2020");
 
-        public static readonly Color ButtonColorGoodDefault = Color.FromHex("#3E6C45");
-        public static readonly Color ButtonColorGoodHovered = Color.FromHex("#31843E");
+        public static readonly Color ButtonColorGoodDefault = Color.FromHex("#006400");
+        public static readonly Color ButtonColorGoodHovered = Color.FromHex("#009600");
 
         //NavMap
         public static readonly Color PointRed = Color.FromHex("#B02E26");
@@ -367,9 +348,16 @@ namespace Content.Client._RW.Stylesheets
         public static readonly Color ExamineButtonColorContextDisabled = Color.FromHex("#5A5A5A");
 
         // Fancy Tree elements
-        public static readonly Color FancyTreeEvenRowColor = Color.FromHex("#25252A");
+        public static readonly Color FancyTreeEvenRowColor = Color.FromHex("#141414");
         public static readonly Color FancyTreeOddRowColor = FancyTreeEvenRowColor * new Color(0.8f, 0.8f, 0.8f);
         public static readonly Color FancyTreeSelectedRowColor = new Color(55, 55, 68);
+
+        // Menu Button Colors
+        public static readonly Color ColorNormal = Color.FromHex("#5a5a5a");
+        public static readonly Color ColorRedNormal = Color.FromHex("#640000");
+        public static readonly Color ColorHovered = Color.FromHex("#646464");
+        public static readonly Color ColorRedHovered = Color.FromHex("#960000");
+        public static readonly Color ColorPressed = Color.FromHex("#464646");
 
         //Used by the APC and SMES menus
         public const string StyleClassPowerStateNone = "PowerStateNone";
@@ -388,30 +376,38 @@ namespace Content.Client._RW.Stylesheets
         public const string StyleClassButtonColorRed = "ButtonColorRed";
         public const string StyleClassButtonColorGreen = "ButtonColorGreen";
 
-        public static readonly Color ChatBackgroundColor = Color.FromHex("#25252ADD");
+        public static readonly Color ChatBackgroundColor = Color.FromHex("#141414DD");
 
         public override Stylesheet Stylesheet { get; }
 
+        public Font SmallFont { get; }
+        public Font MediumFont { get; }
+        public Font LargeFont { get; }
+
         public StyleLora(IResourceCache resCache) : base(resCache)
         {
-            var notoSans8 = resCache.NotoStack(size: 8);
-            var notoSans10 = resCache.NotoStack(size: 10);
-            var notoSansItalic10 = resCache.NotoStack(variation: "Italic", size: 10);
-            var notoSans12 = resCache.NotoStack(size: 12);
-            var notoSansItalic12 = resCache.NotoStack(variation: "Italic", size: 12);
-            var notoSansBold12 = resCache.NotoStack(variation: "Bold", size: 12);
-            var notoSansBoldItalic12 = resCache.NotoStack(variation: "BoldItalic", size: 12);
-            var notoSansBoldItalic14 = resCache.NotoStack(variation: "BoldItalic", size: 14);
-            var notoSansBoldItalic16 = resCache.NotoStack(variation: "BoldItalic", size: 16);
-            var notoSansDisplayBold14 = resCache.NotoStack(variation: "Bold", display: true, size: 14);
-            var notoSansDisplayBold16 = resCache.NotoStack(variation: "Bold", display: true, size: 16);
-            var notoSans15 = resCache.NotoStack(variation: "Regular", size: 15);
-            var notoSans16 = resCache.NotoStack(variation: "Regular", size: 16);
-            var notoSansBold16 = resCache.NotoStack(variation: "Bold", size: 16);
-            var notoSansBold18 = resCache.NotoStack(variation: "Bold", size: 18);
-            var notoSansBold20 = resCache.NotoStack(variation: "Bold", size: 20);
+            SmallFont = resCache.LoraStack(size: 10, variation: "Italic");
+            MediumFont = resCache.LoraStack(size: 12, variation: "Italic");
+            LargeFont = resCache.LoraStack(size: 14, variation: "BoldItalic");
+
+            var lora8 = resCache.LoraStack(size: 8);
+            var lora10 = resCache.LoraStack(size: 10);
+            var loraItalic10 = resCache.LoraStack(variation: "Italic", size: 10);
+            var lora12 = resCache.LoraStack(size: 12);
+            var loraItalic12 = resCache.LoraStack(variation: "Italic", size: 12);
+            var loraBold12 = resCache.LoraStack(variation: "Bold", size: 12);
+            var loraBoldItalic12 = resCache.LoraStack(variation: "BoldItalic", size: 12);
+            var loraBoldItalic14 = resCache.LoraStack(variation: "BoldItalic", size: 14);
+            var loraBoldItalic16 = resCache.LoraStack(variation: "BoldItalic", size: 16);
+            var loraDisplayBold14 = resCache.LoraStack(variation: "Bold", display: true, size: 14);
+            var loraDisplayBold16 = resCache.LoraStack(variation: "Bold", display: true, size: 16);
+            var lora15 = resCache.LoraStack(variation: "Regular", size: 15);
+            var lora16 = resCache.LoraStack(variation: "Regular", size: 16);
+            var loraBold16 = resCache.LoraStack(variation: "Bold", size: 16);
+            var loraBold18 = resCache.LoraStack(variation: "Bold", size: 18);
+            var loraBold20 = resCache.LoraStack(variation: "Bold", size: 20);
             var notoSansMono = resCache.GetFont("/EngineFonts/NotoSans/NotoSansMono-Regular.ttf", size: 12);
-            var windowHeaderTex = resCache.GetTexture("/Textures/Interface/Nano/window_header.png");
+            var windowHeaderTex = resCache.GetTexture("/Textures/Interface/Lora/window_header.png");
             var windowHeader = new StyleBoxTexture
             {
                 Texture = windowHeaderTex,
@@ -419,7 +415,7 @@ namespace Content.Client._RW.Stylesheets
                 ExpandMarginBottom = 3,
                 ContentMarginBottomOverride = 0
             };
-            var windowHeaderAlertTex = resCache.GetTexture("/Textures/Interface/Nano/window_header_alert.png");
+            var windowHeaderAlertTex = resCache.GetTexture("/Textures/Interface/Lora/window_header_alert.png");
             var windowHeaderAlert = new StyleBoxTexture
             {
                 Texture = windowHeaderAlertTex,
@@ -427,7 +423,7 @@ namespace Content.Client._RW.Stylesheets
                 ExpandMarginBottom = 3,
                 ContentMarginBottomOverride = 0
             };
-            var windowBackgroundTex = resCache.GetTexture("/Textures/Interface/Nano/window_background.png");
+            var windowBackgroundTex = resCache.GetTexture("/Textures/Interface/Lora/window_background.png");
             var windowBackground = new StyleBoxTexture
             {
                 Texture = windowBackgroundTex,
@@ -435,7 +431,7 @@ namespace Content.Client._RW.Stylesheets
             windowBackground.SetPatchMargin(StyleBox.Margin.Horizontal | StyleBox.Margin.Bottom, 2);
             windowBackground.SetExpandMargin(StyleBox.Margin.Horizontal | StyleBox.Margin.Bottom, 2);
 
-            var borderedWindowBackgroundTex = resCache.GetTexture("/Textures/Interface/Nano/window_background_bordered.png");
+            var borderedWindowBackgroundTex = resCache.GetTexture("/Textures/Interface/Lora/window_background_bordered.png");
             var borderedWindowBackground = new StyleBoxTexture
             {
                 Texture = borderedWindowBackgroundTex,
@@ -463,7 +459,7 @@ namespace Content.Client._RW.Stylesheets
             };
             handSlotHighlight.SetPatchMargin(StyleBox.Margin.All, 2);
 
-            var borderedTransparentWindowBackgroundTex = resCache.GetTexture("/Textures/Interface/Nano/transparent_window_background_bordered.png");
+            var borderedTransparentWindowBackgroundTex = resCache.GetTexture("/Textures/Interface/Lora/transparent_window_background_bordered.png");
             var borderedTransparentWindowBackground = new StyleBoxTexture
             {
                 Texture = borderedTransparentWindowBackgroundTex,
@@ -485,7 +481,7 @@ namespace Content.Client._RW.Stylesheets
 
             var buttonContext = new StyleBoxTexture { Texture = Texture.White };
 
-            var buttonRectTex = resCache.GetTexture("/Textures/Interface/Nano/light_panel_background_bordered.png");
+            var buttonRectTex = resCache.GetTexture("/Textures/Interface/Lora/light_panel_background_bordered.png");
             var buttonRect = new StyleBoxTexture(BaseButton)
             {
                 Texture = buttonRectTex
@@ -510,8 +506,8 @@ namespace Content.Client._RW.Stylesheets
                 Modulate = ButtonColorDisabled
             };
 
-            var buttonRectActionMenuItemTex = resCache.GetTexture("/Textures/Interface/Nano/black_panel_light_thin_border.png");
-            var buttonRectActionMenuRevokedItemTex = resCache.GetTexture("/Textures/Interface/Nano/black_panel_red_thin_border.png");
+            var buttonRectActionMenuItemTex = resCache.GetTexture("/Textures/Interface/Lora/black_panel_light_thin_border.png");
+            var buttonRectActionMenuRevokedItemTex = resCache.GetTexture("/Textures/Interface/Lora/black_panel_red_thin_border.png");
             var buttonRectActionMenuItem = new StyleBoxTexture(BaseButton)
             {
                 Texture = buttonRectActionMenuItemTex
@@ -533,7 +529,7 @@ namespace Content.Client._RW.Stylesheets
                 Modulate = ButtonColorPressed
             };
 
-            var buttonTex = resCache.GetTexture("/Textures/Interface/Nano/button.svg.96dpi.png");
+            var buttonTex = resCache.GetTexture("/Textures/Interface/Lora/button.svg.96dpi.png");
             var topButtonBase = new StyleBoxTexture
             {
                 Texture = buttonTex,
@@ -560,7 +556,7 @@ namespace Content.Client._RW.Stylesheets
             };
             topButtonSquare.SetPatchMargin(StyleBox.Margin.Horizontal, 0);
 
-            var chatChannelButtonTex = resCache.GetTexture("/Textures/Interface/Nano/rounded_button.svg.96dpi.png");
+            var chatChannelButtonTex = resCache.GetTexture("/Textures/Interface/Lora/rounded_button.svg.96dpi.png");
             var chatChannelButton = new StyleBoxTexture
             {
                 Texture = chatChannelButtonTex,
@@ -568,7 +564,7 @@ namespace Content.Client._RW.Stylesheets
             chatChannelButton.SetPatchMargin(StyleBox.Margin.All, 5);
             chatChannelButton.SetPadding(StyleBox.Margin.All, 2);
 
-            var chatFilterButtonTex = resCache.GetTexture("/Textures/Interface/Nano/rounded_button_bordered.svg.96dpi.png");
+            var chatFilterButtonTex = resCache.GetTexture("/Textures/Interface/Lora/rounded_button_bordered.svg.96dpi.png");
             var chatFilterButton = new StyleBoxTexture
             {
                 Texture = chatFilterButtonTex,
@@ -576,15 +572,15 @@ namespace Content.Client._RW.Stylesheets
             chatFilterButton.SetPatchMargin(StyleBox.Margin.All, 5);
             chatFilterButton.SetPadding(StyleBox.Margin.All, 2);
 
-            var smallButtonTex = resCache.GetTexture("/Textures/Interface/Nano/button_small.svg.96dpi.png");
+            var smallButtonTex = resCache.GetTexture("/Textures/Interface/Lora/button_small.svg.96dpi.png");
             var smallButtonBase = new StyleBoxTexture
             {
                 Texture = smallButtonTex,
             };
 
-            var textureInvertedTriangle = resCache.GetTexture("/Textures/Interface/Nano/inverted_triangle.svg.png");
+            var textureInvertedTriangle = resCache.GetTexture("/Textures/Interface/Lora/inverted_triangle.svg.png");
 
-            var lineEditTex = resCache.GetTexture("/Textures/Interface/Nano/lineedit.png");
+            var lineEditTex = resCache.GetTexture("/Textures/Interface/Lora/lineedit.png");
             var lineEdit = new StyleBoxTexture
             {
                 Texture = lineEditTex,
@@ -603,7 +599,7 @@ namespace Content.Client._RW.Stylesheets
             };
             chatSubBg.SetContentMarginOverride(StyleBox.Margin.All, 2);
 
-            var actionSearchBoxTex = resCache.GetTexture("/Textures/Interface/Nano/black_panel_dark_thin_border.png");
+            var actionSearchBoxTex = resCache.GetTexture("/Textures/Interface/Lora/black_panel_dark_thin_border.png");
             var actionSearchBox = new StyleBoxTexture
             {
                 Texture = actionSearchBoxTex,
@@ -611,7 +607,7 @@ namespace Content.Client._RW.Stylesheets
             actionSearchBox.SetPatchMargin(StyleBox.Margin.All, 3);
             actionSearchBox.SetContentMarginOverride(StyleBox.Margin.Horizontal, 5);
 
-            var tabContainerPanelTex = resCache.GetTexture("/Textures/Interface/Nano/tabcontainer_panel.png");
+            var tabContainerPanelTex = resCache.GetTexture("/Textures/Interface/Lora/tabcontainer_panel.png");
             var tabContainerPanel = new StyleBoxTexture
             {
                 Texture = tabContainerPanelTex,
@@ -636,11 +632,11 @@ namespace Content.Client._RW.Stylesheets
             progressBarForeground.SetContentMarginOverride(StyleBox.Margin.Vertical, 14.5f);
 
             // CheckBox
-            var checkBoxTextureChecked = resCache.GetTexture("/Textures/Interface/Nano/checkbox_checked.svg.96dpi.png");
-            var checkBoxTextureUnchecked = resCache.GetTexture("/Textures/Interface/Nano/checkbox_unchecked.svg.96dpi.png");
+            var checkBoxTextureChecked = resCache.GetTexture("/Textures/Interface/Lora/checkbox_checked.svg.96dpi.png");
+            var checkBoxTextureUnchecked = resCache.GetTexture("/Textures/Interface/Lora/checkbox_unchecked.svg.96dpi.png");
 
             // Tooltip box
-            var tooltipTexture = resCache.GetTexture("/Textures/Interface/Nano/tooltip.png");
+            var tooltipTexture = resCache.GetTexture("/Textures/Interface/Lora/tooltip.png");
             var tooltipBox = new StyleBoxTexture
             {
                 Texture = tooltipTexture,
@@ -649,7 +645,7 @@ namespace Content.Client._RW.Stylesheets
             tooltipBox.SetContentMarginOverride(StyleBox.Margin.Horizontal, 7);
 
             // Whisper box
-            var whisperTexture = resCache.GetTexture("/Textures/Interface/Nano/whisper.png");
+            var whisperTexture = resCache.GetTexture("/Textures/Interface/Lora/whisper.png");
             var whisperBox = new StyleBoxTexture
             {
                 Texture = whisperTexture,
@@ -658,26 +654,26 @@ namespace Content.Client._RW.Stylesheets
             whisperBox.SetContentMarginOverride(StyleBox.Margin.Horizontal, 7);
 
             // Placeholder
-            var placeholderTexture = resCache.GetTexture("/Textures/Interface/Nano/placeholder.png");
+            var placeholderTexture = resCache.GetTexture("/Textures/Interface/Lora/placeholder.png");
             var placeholder = new StyleBoxTexture { Texture = placeholderTexture };
             placeholder.SetPatchMargin(StyleBox.Margin.All, 19);
             placeholder.SetExpandMargin(StyleBox.Margin.All, -5);
             placeholder.Mode = StyleBoxTexture.StretchMode.Tile;
 
-            var itemListBackgroundSelected = new StyleBoxFlat { BackgroundColor = new Color(75, 75, 75) };
+            var itemListBackgroundSelected = new StyleBoxFlat { BackgroundColor = new Color(25, 25, 25) };
             itemListBackgroundSelected.SetContentMarginOverride(StyleBox.Margin.Vertical, 2);
             itemListBackgroundSelected.SetContentMarginOverride(StyleBox.Margin.Horizontal, 4);
             var itemListItemBackgroundDisabled = new StyleBoxFlat { BackgroundColor = new Color(10, 10, 10) };
             itemListItemBackgroundDisabled.SetContentMarginOverride(StyleBox.Margin.Vertical, 2);
             itemListItemBackgroundDisabled.SetContentMarginOverride(StyleBox.Margin.Horizontal, 4);
-            var itemListItemBackground = new StyleBoxFlat { BackgroundColor = new Color(55, 55, 55) };
+            var itemListItemBackground = new StyleBoxFlat { BackgroundColor = new Color(15, 15, 15) };
             itemListItemBackground.SetContentMarginOverride(StyleBox.Margin.Vertical, 2);
             itemListItemBackground.SetContentMarginOverride(StyleBox.Margin.Horizontal, 4);
             var itemListItemBackgroundTransparent = new StyleBoxFlat { BackgroundColor = Color.Transparent };
             itemListItemBackgroundTransparent.SetContentMarginOverride(StyleBox.Margin.Vertical, 2);
             itemListItemBackgroundTransparent.SetContentMarginOverride(StyleBox.Margin.Horizontal, 4);
 
-            var squareTex = resCache.GetTexture("/Textures/Interface/Nano/square.png");
+            var squareTex = resCache.GetTexture("/Textures/Interface/Lora/square.png");
             var listContainerButton = new StyleBoxTexture
             {
                 Texture = squareTex,
@@ -685,7 +681,7 @@ namespace Content.Client._RW.Stylesheets
             };
 
             // NanoHeading
-            var nanoHeadingTex = resCache.GetTexture("/Textures/Interface/Nano/nanoheading.svg.96dpi.png");
+            var nanoHeadingTex = resCache.GetTexture("/Textures/Interface/Lora/nanoheading.svg.96dpi.png");
             var nanoHeadingBox = new StyleBoxTexture
             {
                 Texture = nanoHeadingTex,
@@ -699,7 +695,7 @@ namespace Content.Client._RW.Stylesheets
             nanoHeadingBox.SetPatchMargin(StyleBox.Margin.Left | StyleBox.Margin.Bottom, 2);
 
             // Stripe background
-            var stripeBackTex = resCache.GetTexture("/Textures/Interface/Nano/stripeback.svg.96dpi.png");
+            var stripeBackTex = resCache.GetTexture("/Textures/Interface/Lora/stripeback.svg.96dpi.png");
             var stripeBack = new StyleBoxTexture
             {
                 Texture = stripeBackTex,
@@ -707,14 +703,14 @@ namespace Content.Client._RW.Stylesheets
             };
 
             // Slider
-            var sliderOutlineTex = resCache.GetTexture("/Textures/Interface/Nano/slider_outline.svg.96dpi.png");
-            var sliderFillTex = resCache.GetTexture("/Textures/Interface/Nano/slider_fill.svg.96dpi.png");
-            var sliderGrabTex = resCache.GetTexture("/Textures/Interface/Nano/slider_grabber.svg.96dpi.png");
+            var sliderOutlineTex = resCache.GetTexture("/Textures/Interface/Lora/slider_outline.svg.96dpi.png");
+            var sliderFillTex = resCache.GetTexture("/Textures/Interface/Lora/slider_fill.svg.96dpi.png");
+            var sliderGrabTex = resCache.GetTexture("/Textures/Interface/Lora/slider_grabber.svg.96dpi.png");
 
             var sliderFillBox = new StyleBoxTexture
             {
                 Texture = sliderFillTex,
-                Modulate = Color.FromHex("#3E6C45")
+                Modulate = Color.FromHex("#141414")
             };
 
             var sliderBackBox = new StyleBoxTexture
@@ -778,8 +774,8 @@ namespace Content.Client._RW.Stylesheets
                     new SelectorElement(typeof(Label), new[] {DefaultWindow.StyleClassWindowTitle}, null, null),
                     new[]
                     {
-                        new StyleProperty(Label.StylePropertyFontColor, NanoGold),
-                        new StyleProperty(Label.StylePropertyFont, notoSansDisplayBold14),
+                        new StyleProperty(Label.StylePropertyFontColor, LoraPurple),
+                        new StyleProperty(Label.StylePropertyFont, loraDisplayBold14),
                     }),
                 // Alert (white) window title.
                 new StyleRule(
@@ -787,7 +783,7 @@ namespace Content.Client._RW.Stylesheets
                     new[]
                     {
                         new StyleProperty(Label.StylePropertyFontColor, Color.White),
-                        new StyleProperty(Label.StylePropertyFont, notoSansDisplayBold14),
+                        new StyleProperty(Label.StylePropertyFont, loraDisplayBold14),
                     }),
                 // Window background.
                 new StyleRule(
@@ -971,16 +967,16 @@ namespace Content.Client._RW.Stylesheets
 
                 // Context Menu Labels
                 Element<RichTextLabel>().Class(InteractionVerb.DefaultTextStyleClass)
-                    .Prop(Label.StylePropertyFont, notoSansBoldItalic12),
+                    .Prop(Label.StylePropertyFont, loraBoldItalic12),
 
                 Element<RichTextLabel>().Class(ActivationVerb.DefaultTextStyleClass)
-                    .Prop(Label.StylePropertyFont, notoSansBold12),
+                    .Prop(Label.StylePropertyFont, loraBold12),
 
                 Element<RichTextLabel>().Class(AlternativeVerb.DefaultTextStyleClass)
-                    .Prop(Label.StylePropertyFont, notoSansItalic12),
+                    .Prop(Label.StylePropertyFont, loraItalic12),
 
                 Element<RichTextLabel>().Class(Verb.DefaultTextStyleClass)
-                    .Prop(Label.StylePropertyFont, notoSans12),
+                    .Prop(Label.StylePropertyFont, lora12),
 
                 Element<TextureRect>().Class(ContextMenuElement.StyleClassContextMenuExpansionTexture)
                     .Prop(TextureRect.StylePropertyTexture, contextMenuExpansionTexture),
@@ -1083,7 +1079,7 @@ namespace Content.Client._RW.Stylesheets
                     new SelectorElement(typeof(Label), null, null, null)),
                     new[]
                     {
-                        new StyleProperty("font", notoSansBold16),
+                        new StyleProperty("font", loraBold16),
                     }),
 
                 // Main menu: also make those buttons slightly more separated.
@@ -1198,7 +1194,7 @@ namespace Content.Client._RW.Stylesheets
                     new SelectorElement(typeof(RichTextLabel), new[] {"bubbleContent"}, null, null)),
                     new[]
                 {
-                    new StyleProperty("font", notoSansItalic12),
+                    new StyleProperty("font", loraItalic12),
                 }),
 
                 new StyleRule(new SelectorChild(
@@ -1206,62 +1202,62 @@ namespace Content.Client._RW.Stylesheets
                     new SelectorElement(typeof(RichTextLabel), null, null, null)),
                     new[]
                 {
-                    new StyleProperty("font", notoSansItalic12),
+                    new StyleProperty("font", loraItalic12),
                 }),
 
                 new StyleRule(new SelectorElement(typeof(RichTextLabel), new[] {StyleClassLabelKeyText}, null, null), new[]
                 {
-                    new StyleProperty(Label.StylePropertyFont, notoSansBold12),
-                    new StyleProperty( Control.StylePropertyModulateSelf, NanoGold)
+                    new StyleProperty(Label.StylePropertyFont, loraBold12),
+                    new StyleProperty( Control.StylePropertyModulateSelf, LoraPurple)
                 }),
 
                 // alert tooltip
                 new StyleRule(new SelectorElement(typeof(RichTextLabel), new[] {StyleClassTooltipAlertTitle}, null, null), new[]
                 {
-                    new StyleProperty("font", notoSansBold18)
+                    new StyleProperty("font", loraBold18)
                 }),
                 new StyleRule(new SelectorElement(typeof(RichTextLabel), new[] {StyleClassTooltipAlertDescription}, null, null), new[]
                 {
-                    new StyleProperty("font", notoSans16)
+                    new StyleProperty("font", lora16)
                 }),
                 new StyleRule(new SelectorElement(typeof(RichTextLabel), new[] {StyleClassTooltipAlertCooldown}, null, null), new[]
                 {
-                    new StyleProperty("font", notoSans16)
+                    new StyleProperty("font", lora16)
                 }),
 
                 // action tooltip
                 new StyleRule(new SelectorElement(typeof(RichTextLabel), new[] {StyleClassTooltipActionTitle}, null, null), new[]
                 {
-                    new StyleProperty("font", notoSansBold16)
+                    new StyleProperty("font", loraBold16)
                 }),
                 new StyleRule(new SelectorElement(typeof(RichTextLabel), new[] {StyleClassTooltipActionDescription}, null, null), new[]
                 {
-                    new StyleProperty("font", notoSans15)
+                    new StyleProperty("font", lora15)
                 }),
                 new StyleRule(new SelectorElement(typeof(RichTextLabel), new[] {StyleClassTooltipActionCooldown}, null, null), new[]
                 {
-                    new StyleProperty("font", notoSans15)
+                    new StyleProperty("font", lora15)
                 }),
                 new StyleRule(new SelectorElement(typeof(RichTextLabel), new[] {StyleClassTooltipActionRequirements}, null, null), new[]
                 {
-                    new StyleProperty("font", notoSans15)
+                    new StyleProperty("font", lora15)
                 }),
                 new StyleRule(new SelectorElement(typeof(RichTextLabel), new[] {StyleClassTooltipActionCharges}, null, null), new[]
                 {
-                    new StyleProperty("font", notoSans15)
+                    new StyleProperty("font", lora15)
                 }),
 
                 // small number for the entity counter in the entity menu
                 new StyleRule(new SelectorElement(typeof(Label), new[] {ContextMenuElement.StyleClassEntityMenuIconLabel}, null, null), new[]
                 {
-                    new StyleProperty("font", notoSans10),
+                    new StyleProperty("font", lora10),
                     new StyleProperty(Label.StylePropertyAlignMode, Label.AlignMode.Right),
                 }),
 
                 // hotbar slot
                 new StyleRule(new SelectorElement(typeof(RichTextLabel), new[] {StyleClassHotbarSlotNumber}, null, null), new[]
                 {
-                    new StyleProperty("font", notoSansDisplayBold16)
+                    new StyleProperty("font", loraDisplayBold16)
                 }),
 
                 // Entity tooltip
@@ -1330,43 +1326,43 @@ namespace Content.Client._RW.Stylesheets
                 new StyleRule(
                     new SelectorElement(typeof(Label), new[] {Placeholder.StyleClassPlaceholderText}, null, null), new[]
                     {
-                        new StyleProperty(Label.StylePropertyFont, notoSans16),
+                        new StyleProperty(Label.StylePropertyFont, lora16),
                         new StyleProperty(Label.StylePropertyFontColor, new Color(103, 103, 103, 128)),
                     }),
 
                 // Big Label
                 new StyleRule(new SelectorElement(typeof(Label), new[] {StyleClassLabelHeading}, null, null), new[]
                 {
-                    new StyleProperty(Label.StylePropertyFont, notoSansBold16),
-                    new StyleProperty(Label.StylePropertyFontColor, NanoGold),
+                    new StyleProperty(Label.StylePropertyFont, loraBold16),
+                    new StyleProperty(Label.StylePropertyFontColor, LoraPurple),
                 }),
 
                 // Bigger Label
                 new StyleRule(new SelectorElement(typeof(Label), new[] {StyleClassLabelHeadingBigger}, null, null),
                     new[]
                     {
-                        new StyleProperty(Label.StylePropertyFont, notoSansBold20),
-                        new StyleProperty(Label.StylePropertyFontColor, NanoGold),
+                        new StyleProperty(Label.StylePropertyFont, loraBold20),
+                        new StyleProperty(Label.StylePropertyFontColor, LoraPurple),
                     }),
 
                 // Small Label
                 new StyleRule(new SelectorElement(typeof(Label), new[] {StyleClassLabelSubText}, null, null), new[]
                 {
-                    new StyleProperty(Label.StylePropertyFont, notoSans10),
+                    new StyleProperty(Label.StylePropertyFont, lora10),
                     new StyleProperty(Label.StylePropertyFontColor, Color.DarkGray),
                 }),
 
                 // Label Key
                 new StyleRule(new SelectorElement(typeof(Label), new[] {StyleClassLabelKeyText}, null, null), new[]
                 {
-                    new StyleProperty(Label.StylePropertyFont, notoSansBold12),
-                    new StyleProperty(Label.StylePropertyFontColor, NanoGold)
+                    new StyleProperty(Label.StylePropertyFont, loraBold12),
+                    new StyleProperty(Label.StylePropertyFontColor, LoraPurple)
                 }),
 
                 new StyleRule(new SelectorElement(typeof(Label), new[] {StyleClassLabelSecondaryColor}, null, null),
                     new[]
                     {
-                        new StyleProperty(Label.StylePropertyFont, notoSans12),
+                        new StyleProperty(Label.StylePropertyFont, lora12),
                         new StyleProperty(Label.StylePropertyFontColor, Color.DarkGray),
                     }),
 
@@ -1376,7 +1372,7 @@ namespace Content.Client._RW.Stylesheets
                     new SelectorElement(typeof(Label), null, null, null)),
                     new[]
                     {
-                        new StyleProperty("font", notoSans16)
+                        new StyleProperty("font", lora16)
                     }),
 
                 //APC and SMES power state label colors
@@ -1466,7 +1462,7 @@ namespace Content.Client._RW.Stylesheets
                     new SelectorElement(typeof(Label), new[] {MenuButton.StyleClassLabelTopButton}, null, null),
                     new[]
                     {
-                        new StyleProperty(Label.StylePropertyFont, notoSansDisplayBold14),
+                        new StyleProperty(Label.StylePropertyFont, loraDisplayBold14),
                     }),
 
                 // NanoHeading
@@ -1491,12 +1487,12 @@ namespace Content.Client._RW.Stylesheets
                 // StyleClassItemStatus
                 new StyleRule(SelectorElement.Class(StyleClassItemStatus), new[]
                 {
-                    new StyleProperty("font", notoSans10),
+                    new StyleProperty("font", lora10),
                 }),
 
                 Element()
                     .Class(StyleClassItemStatusNotHeld)
-                    .Prop("font", notoSansItalic10)
+                    .Prop("font", loraItalic10)
                     .Prop("font-color", ItemStatusNotHeldColor),
 
                 Element<RichTextLabel>()
@@ -1601,21 +1597,21 @@ namespace Content.Client._RW.Stylesheets
 
                 new StyleRule(new SelectorElement(typeof(PanelContainer), new []{ ClassHighDivider}, null, null), new []
                 {
-                    new StyleProperty(PanelContainer.StylePropertyPanel, new StyleBoxFlat { BackgroundColor = NanoGold, ContentMarginBottomOverride = 2, ContentMarginLeftOverride = 2}),
+                    new StyleProperty(PanelContainer.StylePropertyPanel, new StyleBoxFlat { BackgroundColor = LoraPurple, ContentMarginBottomOverride = 2, ContentMarginLeftOverride = 2}),
                 }),
 
                 // Labels ---
                 Element<Label>().Class(StyleClassLabelBig)
-                    .Prop(Label.StylePropertyFont, notoSans16),
+                    .Prop(Label.StylePropertyFont, lora16),
 
                 Element<Label>().Class(StyleClassLabelSmall)
-                 .Prop(Label.StylePropertyFont, notoSans10),
+                 .Prop(Label.StylePropertyFont, lora10),
                 // ---
 
                 // Different Background shapes ---
                 Element<PanelContainer>().Class(ClassAngleRect)
                     .Prop(PanelContainer.StylePropertyPanel, BaseAngleRect)
-                    .Prop(Control.StylePropertyModulateSelf, Color.FromHex("#252525")),
+                    .Prop(Control.StylePropertyModulateSelf, Color.FromHex("#141414")),
 
                 Element<PanelContainer>().Class("BackgroundOpenRight")
                     .Prop(PanelContainer.StylePropertyPanel, BaseButtonOpenRight)
@@ -1638,18 +1634,18 @@ namespace Content.Client._RW.Stylesheets
                 // Window Headers
                 Element<Label>().Class("FancyWindowTitle")
                     .Prop("font", boxFont13)
-                    .Prop("font-color", NanoGold),
+                    .Prop("font-color", LoraPurple),
 
                 Element<PanelContainer>().Class("WindowHeadingBackground")
                     .Prop("panel", new StyleBoxTexture(BaseButtonOpenLeft) { Padding = default })
-                    .Prop(Control.StylePropertyModulateSelf, Color.FromHex("#1F1F1F")),
+                    .Prop(Control.StylePropertyModulateSelf, Color.FromHex("#0f0f0f")),
 
                 Element<PanelContainer>().Class("WindowHeadingBackgroundLight")
                     .Prop("panel", new StyleBoxTexture(BaseButtonOpenLeft) { Padding = default }),
 
                 // Window Header Help Button
                 Element<TextureButton>().Class(FancyWindow.StyleClassWindowHelpButton)
-                    .Prop(TextureButton.StylePropertyTexture, resCache.GetTexture("/Textures/Interface/Nano/help.png"))
+                    .Prop(TextureButton.StylePropertyTexture, resCache.GetTexture("/Textures/Interface/Lora/help.png"))
                     .Prop(Control.StylePropertyModulateSelf, Color.FromHex("#4B596A")),
 
                 Element<TextureButton>().Class(FancyWindow.StyleClassWindowHelpButton).Pseudo(ContainerButton.StylePseudoClassHover)
@@ -1661,7 +1657,7 @@ namespace Content.Client._RW.Stylesheets
                 //The lengths you have to go through to change a background color smh
                 Element<PanelContainer>().Class("PanelBackgroundBaseDark")
                     .Prop("panel", new StyleBoxTexture(BaseButtonOpenBoth) { Padding = default })
-                    .Prop(Control.StylePropertyModulateSelf, Color.FromHex("#1F1F23")),
+                    .Prop(Control.StylePropertyModulateSelf, Color.FromHex("#0f0f0f")),
 
                 Element<PanelContainer>().Class("PanelBackgroundLight")
                     .Prop("panel", new StyleBoxTexture(BaseButtonOpenBoth) { Padding = default })
@@ -1669,23 +1665,23 @@ namespace Content.Client._RW.Stylesheets
 
                 // Window Footer
                 Element<TextureRect>().Class("NTLogoDark")
-                    .Prop(TextureRect.StylePropertyTexture, resCache.GetTexture("/Textures/Interface/Nano/ntlogo.svg.png"))
+                    .Prop(TextureRect.StylePropertyTexture, resCache.GetTexture("/Textures/Interface/Lora/ntlogo.svg.png"))
                     .Prop(Control.StylePropertyModulateSelf, Color.FromHex("#757575")),
 
                 Element<Label>().Class("WindowFooterText")
-                    .Prop(Label.StylePropertyFont, notoSans8)
+                    .Prop(Label.StylePropertyFont, lora8)
                     .Prop(Label.StylePropertyFontColor, Color.FromHex("#757575")),
 
                 // X Texture button ---
                 Element<TextureButton>().Class("CrossButtonRed")
-                    .Prop(TextureButton.StylePropertyTexture, resCache.GetTexture("/Textures/Interface/Nano/cross.svg.png"))
+                    .Prop(TextureButton.StylePropertyTexture, resCache.GetTexture("/Textures/Interface/Lora/cross.svg.png"))
                     .Prop(Control.StylePropertyModulateSelf, DangerousRedFore),
 
                 Element<TextureButton>().Class("CrossButtonRed").Pseudo(TextureButton.StylePseudoClassHover)
-                    .Prop(Control.StylePropertyModulateSelf, Color.FromHex("#7F3636")),
+                    .Prop(Control.StylePropertyModulateSelf, Color.FromHex("#1e1e1e")),
 
                 Element<TextureButton>().Class("CrossButtonRed").Pseudo(TextureButton.StylePseudoClassHover)
-                    .Prop(Control.StylePropertyModulateSelf, Color.FromHex("#753131")),
+                    .Prop(Control.StylePropertyModulateSelf, Color.FromHex("#171717")),
                 // ---
 
                 // Profile Editor
@@ -1700,11 +1696,11 @@ namespace Content.Client._RW.Stylesheets
                 Element<PanelContainer>().Class("PaperDefaultBorder")
                     .Prop(PanelContainer.StylePropertyPanel, paperBackground),
                 Element<RichTextLabel>().Class("PaperWrittenText")
-                    .Prop(Label.StylePropertyFont, notoSans12)
+                    .Prop(Label.StylePropertyFont, lora12)
                     .Prop(Control.StylePropertyModulateSelf, Color.FromHex("#111111")),
 
                 Element<RichTextLabel>().Class("LabelSubText")
-                    .Prop(Label.StylePropertyFont, notoSans10)
+                    .Prop(Label.StylePropertyFont, lora10)
                     .Prop(Label.StylePropertyFontColor, Color.DarkGray),
 
                 Element<LineEdit>().Class("PaperLineEdit")
@@ -1738,11 +1734,11 @@ namespace Content.Client._RW.Stylesheets
 
                 Child().Parent(Element<Button>().Class("ButtonSmall"))
                     .Child(Element<Label>())
-                    .Prop(Label.StylePropertyFont, notoSans8),
+                    .Prop(Label.StylePropertyFont, lora8),
                 // ---
 
                 Element<Label>().Class("StatusFieldTitle")
-                    .Prop("font-color", NanoGold),
+                    .Prop("font-color", LoraPurple),
 
                 Element<Label>().Class("Good")
                     .Prop("font-color", GoodGreenFore),
@@ -1778,7 +1774,7 @@ namespace Content.Client._RW.Stylesheets
                 //PDA - Backgrounds
                 Element<PanelContainer>().Class("PdaContentBackground")
                     .Prop(PanelContainer.StylePropertyPanel, BaseButtonOpenBoth)
-                    .Prop(Control.StylePropertyModulateSelf, Color.FromHex("#25252a")),
+                    .Prop(Control.StylePropertyModulateSelf, Color.FromHex("#141414")),
 
                 Element<PanelContainer>().Class("PdaBackground")
                     .Prop(PanelContainer.StylePropertyPanel, BaseButtonOpenBoth)
@@ -1792,7 +1788,7 @@ namespace Content.Client._RW.Stylesheets
                     .Prop(PanelContainer.StylePropertyPanel, AngleBorderRect),
 
                 Element<PanelContainer>().Class("BackgroundDark")
-                    .Prop(PanelContainer.StylePropertyPanel, new StyleBoxFlat(Color.FromHex("#252525"))),
+                    .Prop(PanelContainer.StylePropertyPanel, new StyleBoxFlat(Color.FromHex("#141414"))),
 
                 //PDA - Buttons
                 Element<PdaSettingsButton>().Pseudo(ContainerButton.StylePseudoClassNormal)
@@ -1822,11 +1818,11 @@ namespace Content.Client._RW.Stylesheets
 
                 //PDA - Text
                 Element<Label>().Class("PdaContentFooterText")
-                    .Prop(Label.StylePropertyFont, notoSans10)
+                    .Prop(Label.StylePropertyFont, lora10)
                     .Prop(Label.StylePropertyFontColor, Color.FromHex("#757575")),
 
                 Element<Label>().Class("PdaWindowFooterText")
-                    .Prop(Label.StylePropertyFont, notoSans10)
+                    .Prop(Label.StylePropertyFont, lora10)
                     .Prop(Label.StylePropertyFontColor, Color.FromHex("#333d3b")),
 
                 // Fancy Tree

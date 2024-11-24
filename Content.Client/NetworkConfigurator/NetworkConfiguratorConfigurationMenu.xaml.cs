@@ -14,7 +14,7 @@ public sealed partial class NetworkConfiguratorConfigurationMenu : FancyWindow
         RobustXamlLoader.Load(this);
 
         Clear.StyleClasses.Add(StyleBase.ButtonOpenLeft);
-        Clear.StyleClasses.Add(StyleNano.StyleClassButtonColorRed);
+        Clear.StyleClasses.Add(StyleLora.StyleClassButtonColorRed);
     }
 
     public void UpdateState(DeviceListUserInterfaceState state)

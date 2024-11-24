@@ -144,7 +144,7 @@ public sealed partial class AtmosAlarmEntryContainer : BoxContainer
                     {
                         Text = Loc.GetString("atmos-alerts-window-other-gases-value-nil"),
                         FontOverride = normalFont,
-                        FontColorOverride = StyleNano.DisabledFore,
+                        FontColorOverride = StyleLora.DisabledFore,
                         HorizontalAlignment = HAlignment.Center,
                         VerticalAlignment = VAlignment.Center,
                         HorizontalExpand = true,
@@ -187,14 +187,14 @@ public sealed partial class AtmosAlarmEntryContainer : BoxContainer
 
     public void SetAsFocus()
     {
-        FocusButton.AddStyleClass(StyleNano.StyleClassButtonColorGreen);
-        ArrowTexture.TexturePath = "/Textures/Interface/Nano/inverted_triangle.svg.png";
+        FocusButton.AddStyleClass(StyleLora.StyleClassButtonColorGreen);
+        ArrowTexture.TexturePath = "/Textures/Interface/Lora/inverted_triangle.svg.png";
     }
 
     public void RemoveAsFocus()
     {
-        FocusButton.RemoveStyleClass(StyleNano.StyleClassButtonColorGreen);
-        ArrowTexture.TexturePath = "/Textures/Interface/Nano/triangle_right.png";
+        FocusButton.RemoveStyleClass(StyleLora.StyleClassButtonColorGreen);
+        ArrowTexture.TexturePath = "/Textures/Interface/Lora/triangle_right.png";
         FocusContainer.Visible = false;
     }
 
@@ -203,13 +203,13 @@ public sealed partial class AtmosAlarmEntryContainer : BoxContainer
         switch (alarmType)
         {
             case AtmosAlarmType.Normal:
-                return StyleNano.GoodGreenFore;
+                return StyleLora.GoodGreenFore;
             case AtmosAlarmType.Warning:
-                return StyleNano.ConcerningOrangeFore;
+                return StyleLora.ConcerningOrangeFore;
             case AtmosAlarmType.Danger:
-                return StyleNano.DangerousRedFore;
+                return StyleLora.DangerousRedFore;
         }
 
-        return StyleNano.DisabledFore;
+        return StyleLora.DisabledFore;
     }
 }

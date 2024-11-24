@@ -14,6 +14,16 @@
             "stopAtEntry": false
         },
         {
+            "name": "Client+Build",
+            "type": "coreclr",
+            "request": "launch",
+            "program": "${workspaceFolder}/bin/Content.Client/Content.Client.dll",
+            "args": [],
+            "console": "internalConsole",
+            "stopAtEntry": false,
+            "preLaunchTask": "build"
+        },
+        {
             "name": "Client (Compatibility renderer)",
             "type": "coreclr",
             "request": "launch",

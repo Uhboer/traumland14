@@ -16,7 +16,7 @@
             HorizontalExpand="True"
             Margin="15">
             <PanelContainer.PanelOverride>
-                <graphics:StyleBoxFlat BackgroundColor="{xNamespace:Static style:StyleNano.PanelDark}" />
+                <graphics:StyleBoxFlat BackgroundColor="{xNamespace:Static style:StyleLora.PanelDark}" />
             </PanelContainer.PanelOverride>
             <ScrollContainer VerticalExpand="True" HorizontalExpand="True">
                 <Control>

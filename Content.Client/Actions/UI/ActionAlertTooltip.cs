@@ -25,7 +25,7 @@ namespace Content.Client.Actions.UI
         {
             _gameTiming = IoCManager.Resolve<IGameTiming>();
 
-            SetOnlyStyleClass(StyleNano.StyleClassTooltipPanel);
+            SetOnlyStyleClass(StyleLora.StyleClassTooltipPanel);
 
             BoxContainer vbox;
             AddChild(vbox = new BoxContainer
@@ -36,7 +36,7 @@ namespace Content.Client.Actions.UI
             var nameLabel = new RichTextLabel
             {
                 MaxWidth = TooltipTextMaxWidth,
-                StyleClasses = {StyleNano.StyleClassTooltipActionTitle}
+                StyleClasses = {StyleLora.StyleClassTooltipActionTitle}
             };
             nameLabel.SetMessage(name);
             vbox.AddChild(nameLabel);
@@ -46,7 +46,7 @@ namespace Content.Client.Actions.UI
                 var description = new RichTextLabel
                 {
                     MaxWidth = TooltipTextMaxWidth,
-                    StyleClasses = {StyleNano.StyleClassTooltipActionDescription}
+                    StyleClasses = {StyleLora.StyleClassTooltipActionDescription}
                 };
                 description.SetMessage(desc);
                 vbox.AddChild(description);
@@ -57,7 +57,7 @@ namespace Content.Client.Actions.UI
                 var chargesLabel = new RichTextLabel
                 {
                     MaxWidth = TooltipTextMaxWidth,
-                    StyleClasses = { StyleNano.StyleClassTooltipActionCharges }
+                    StyleClasses = { StyleLora.StyleClassTooltipActionCharges }
                 };
                 chargesLabel.SetMessage(charges);
                 vbox.AddChild(chargesLabel);
@@ -66,7 +66,7 @@ namespace Content.Client.Actions.UI
             vbox.AddChild(_cooldownLabel = new RichTextLabel
             {
                 MaxWidth = TooltipTextMaxWidth,
-                StyleClasses = {StyleNano.StyleClassTooltipActionCooldown},
+                StyleClasses = {StyleLora.StyleClassTooltipActionCooldown},
                 Visible = false
             });
 
@@ -75,7 +75,7 @@ namespace Content.Client.Actions.UI
                 var requiresLabel = new RichTextLabel
                 {
                     MaxWidth = TooltipTextMaxWidth,
-                    StyleClasses = {StyleNano.StyleClassTooltipActionRequirements}
+                    StyleClasses = {StyleLora.StyleClassTooltipActionRequirements}
                 };
                 requiresLabel.SetMessage(FormattedMessage.FromMarkup("[color=#635c5c]" +
                                                                      requires +

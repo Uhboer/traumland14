@@ -65,7 +65,7 @@ public sealed partial class AtmosAlertsComputerWindow : FancyWindow
         {
             NavMap.MapUid = xform.GridUid;
 
-            // Assign station name      
+            // Assign station name
             if (_entManager.TryGetComponent<MetaDataComponent>(xform.GridUid, out var stationMetaData))
                 stationName = stationMetaData.EntityName;
 
@@ -260,7 +260,7 @@ public sealed partial class AtmosAlertsComputerWindow : FancyWindow
                 VerticalAlignment = VAlignment.Center,
             };
 
-            label.SetMarkup(Loc.GetString("atmos-alerts-window-no-active-alerts", ("color", StyleNano.GoodGreenFore.ToHexNoAlpha())));
+            label.SetMarkup(Loc.GetString("atmos-alerts-window-no-active-alerts", ("color", StyleLora.GoodGreenFore.ToHexNoAlpha())));
 
             AlertsTable.AddChild(label);
         }
@@ -536,7 +536,7 @@ public sealed partial class AtmosAlertsComputerWindow : FancyWindow
         switch (alarmState)
         {
             case AtmosAlarmType.Invalid:
-                output = (new SpriteSpecifier.Texture(new ResPath("/Textures/Interface/NavMap/beveled_circle.png")), StyleNano.DisabledFore); break;
+                output = (new SpriteSpecifier.Texture(new ResPath("/Textures/Interface/NavMap/beveled_circle.png")), StyleLora.DisabledFore); break;
             case AtmosAlarmType.Normal:
                 output = (new SpriteSpecifier.Texture(new ResPath("/Textures/Interface/NavMap/beveled_circle.png")), Color.LimeGreen); break;
             case AtmosAlarmType.Warning:

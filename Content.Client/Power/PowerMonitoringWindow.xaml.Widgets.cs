@@ -32,7 +32,7 @@ public sealed partial class PowerMonitoringWindow
         if (windowEntry == null)
             return;
 
-        // Update sources and loads 
+        // Update sources and loads
         UpdateEntrySourcesOrLoads(masterContainer, windowEntry.SourcesContainer, focusSources, _sourceIcon);
         UpdateEntrySourcesOrLoads(masterContainer, windowEntry.LoadsContainer, focusLoads, _loadIconPath);
 
@@ -85,10 +85,10 @@ public sealed partial class PowerMonitoringWindow
 
         // Update button style
         if (netEntity == _focusEntity)
-            button.AddStyleClass(StyleNano.StyleClassButtonColorGreen);
+            button.AddStyleClass(StyleLora.StyleClassButtonColorGreen);
 
         else
-            button.RemoveStyleClass(StyleNano.StyleClassButtonColorGreen);
+            button.RemoveStyleClass(StyleLora.StyleClassButtonColorGreen);
 
         // Update sprite
         if (entry.MetaData.Value.SpritePath != string.Empty && entry.MetaData.Value.SpriteState != string.Empty)
@@ -164,7 +164,7 @@ public sealed partial class PowerMonitoringWindow
         // Toggle off button?
         if (entry.NetEntity == _focusEntity)
         {
-            entry.Button.RemoveStyleClass(StyleNano.StyleClassButtonColorGreen);
+            entry.Button.RemoveStyleClass(StyleLora.StyleClassButtonColorGreen);
             _focusEntity = null;
 
             // Request an update from the power monitoring system
@@ -174,7 +174,7 @@ public sealed partial class PowerMonitoringWindow
         }
 
         // Otherwise, toggle on
-        entry.Button.AddStyleClass(StyleNano.StyleClassButtonColorGreen);
+        entry.Button.AddStyleClass(StyleLora.StyleClassButtonColorGreen);
 
         ActivateAutoScrollToFocus();
 
@@ -185,7 +185,7 @@ public sealed partial class PowerMonitoringWindow
             {
                 if (sibling.NetEntity == _focusEntity)
                 {
-                    sibling.Button.RemoveStyleClass(StyleNano.StyleClassButtonColorGreen);
+                    sibling.Button.RemoveStyleClass(StyleLora.StyleClassButtonColorGreen);
                     break;
                 }
             }
@@ -378,7 +378,7 @@ public sealed class PowerMonitoringWindowEntry : PowerMonitoringWindowBaseEntry
 
         AddChild(MainContainer);
 
-        // Grid container to hold the list of sources when selected 
+        // Grid container to hold the list of sources when selected
         SourcesContainer = new BoxContainer()
         {
             Orientation = LayoutOrientation.Vertical,
