@@ -304,6 +304,11 @@ public sealed class StationSystem : EntitySystem
             {
                 //planetary maps give an error when trying to change from position or rotation.
                 //This is still the case, but it will be irrelevant after the https://github.com/space-wizards/space-station-14/pull/26510
+
+                //Solution for finster. I don't want make space map, i just wanna place my world on the biome planet! FUCK THIS!!!
+                if (TryComp<StationIgnoreTransformComponent>(grid, out var _))
+                    continue;
+
                 if (rotation != null && offset != null)
                 {
                     var pos = _transform.GetWorldPosition(grid);
