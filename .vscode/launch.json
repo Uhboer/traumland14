@@ -64,12 +64,19 @@
     ],
     "compounds": [
         {
-            "name": "Server/Client",
+            "name": "Build+Run Server/Client",
             "configurations": [
                 "Server",
                 "Client"
             ],
             "preLaunchTask": "build"
+        },
+        {
+            "name": "Run Server/Client",
+            "configurations": [
+                "Server",
+                "Client"
+            ]
         }
     ]
 }
