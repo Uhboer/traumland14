@@ -57,18 +57,6 @@ public sealed partial class PlayerListControl : BoxContainer
         OnSelectionChanged?.Invoke(null);
     }
 
-    private void PlayerListItemKeyBindDown(GUIBoundKeyEventArgs? args, ListData? data)
-    {
-        if (args == null || data is not PlayerListData { Info: var selectedPlayer })
-            return;
-
-        if (args.Function != EngineKeyFunctions.UIRightClick || selectedPlayer.NetEntity == null)
-            return;
-
-        _uiManager.GetUIController<VerbMenuUIController>().OpenVerbMenu(selectedPlayer.NetEntity.Value, true);
-        args.Handle();
-    }
-
     private void PlayerListItemPressed(BaseButton.ButtonEventArgs? args, ListData? data)
     {
         if (args == null || data is not PlayerListData { Info: var selectedPlayer })
@@ -86,6 +74,18 @@ public sealed partial class PlayerListControl : BoxContainer
         // update label text. Only required if there is some override (e.g. unread bwoink count).
         if (OverrideText != null && args.Button.Children.FirstOrDefault()?.Children?.FirstOrDefault() is Label label)
             label.Text = GetText(selectedPlayer);
+    }
+
+    private void PlayerListItemKeyBindDown(GUIBoundKeyEventArgs? args, ListData? data)
+    {
+        if (args == null || data is not PlayerListData { Info: var selectedPlayer })
+            return;
+
+        if (args.Function != EngineKeyFunctions.UIRightClick || selectedPlayer.NetEntity == null)
+            return;
+
+        _uiManager.GetUIController<VerbMenuUIController>().OpenVerbMenu(selectedPlayer.NetEntity.Value, true);
+        args.Handle();
     }
 
     public void StopFiltering()
