@@ -1,4 +1,4 @@
-<p align="center"><img src="https://github.com/user-attachments/assets/643774d9-815a-4e76-bddc-46341e129452" width="512px" /></p>
+<p align="center"><img src="./Raw/splashlogo/splashlogo.png" width="512px" /></p>
 
 ---
 
