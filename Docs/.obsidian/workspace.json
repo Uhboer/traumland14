@@ -72,7 +72,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "tag:#difficult_easy",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -93,7 +93,8 @@
               "title": "Bookmarks"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -183,7 +184,7 @@
       "obsidian-kanban:Create new board": false
     }
   },
-  "active": "3c3dd0483b952fec",
+  "active": "2823b2d1bd1fa438",
   "lastOpenFiles": [
     "README.md",
     "TODO_LIST.md",
