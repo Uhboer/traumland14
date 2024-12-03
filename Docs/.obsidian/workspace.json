@@ -25,19 +25,14 @@
             "id": "3c3dd0483b952fec",
             "type": "leaf",
             "state": {
-              "type": "kanban",
+              "type": "markdown",
               "state": {
-                "file": "TODO_LIST.md",
-                "kanbanViewState": {
-                  "kanban-plugin": "board",
-                  "list-collapse": [
-                    false,
-                    false
-                  ]
-                }
+                "file": "Lore/Асилиум.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-trello",
-              "title": "TODO_LIST"
+              "icon": "lucide-file",
+              "title": "Асилиум"
             }
           }
         ],
@@ -186,8 +181,8 @@
   },
   "active": "2823b2d1bd1fa438",
   "lastOpenFiles": [
-    "README.md",
     "TODO_LIST.md",
+    "README.md",
     "Lore/Шахты.md",
     "Game/Боссы.md",
     "Lore/Асилиум.md",
