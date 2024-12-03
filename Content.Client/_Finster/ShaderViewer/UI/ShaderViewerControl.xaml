@@ -1,0 +1,16 @@
+﻿<Control xmlns="https://spacestation14.io"
+         xmlns:pllax="clr-namespace:Content.Client.Parallax"
+         xmlns:clog="clr-namespace:Content.Client.Changelog">
+    <pllax:ParallaxControl />
+    <BoxContainer Name="VBox"
+                  Orientation="Vertical"
+                  HorizontalAlignment="Center"
+                  VerticalAlignment="Center"
+                  HorizontalExpand="True"
+                  VerticalExpand="True"
+                  StyleIdentifier="mainMenuVBox"
+                  SeparationOverride="3">
+        <TextureRect Name="Logo"
+                     Stretch="KeepCentered"/>
+    </BoxContainer>
+</Control>
