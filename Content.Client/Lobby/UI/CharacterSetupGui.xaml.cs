@@ -7,6 +7,7 @@ using Robust.Client.Graphics;
 using Robust.Client.ResourceManagement;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;
+using Robust.Client.UserInterface.CustomControls;
 using Robust.Client.UserInterface.XAML;
 using Robust.Shared.Prototypes;
 
@@ -16,7 +17,7 @@ namespace Content.Client.Lobby.UI
     /// Holds the entire character setup GUI, from character picks to individual character editing.
     /// </summary>
     [GenerateTypedNameReferences]
-    public sealed partial class CharacterSetupGui : Control
+    public sealed partial class CharacterSetupGui : DefaultWindow
     {
         private readonly IClientPreferencesManager _preferencesManager;
         private readonly IEntityManager _entManager;
@@ -49,6 +50,8 @@ namespace Content.Client.Lobby.UI
 
             BackgroundPanel.PanelOverride = back;
 
+            Title = Loc.GetString("character-setup-gui-character-setup-label");
+
             _createNewCharacterButton = new Button
             {
                 Text = Loc.GetString("character-setup-gui-create-new-character-button"),
@@ -62,9 +65,6 @@ namespace Content.Client.Lobby.UI
             };
 
             CharEditor.AddChild(profileEditor);
-            RulesButton.OnPressed += _ => new RulesAndInfoWindow().Open();
-
-            StatsButton.OnPressed += _ => new PlaytimeStatsWindow().OpenCentered();
         }
 
         /// <summary>

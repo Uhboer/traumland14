@@ -1,4 +1,5 @@
-﻿using Robust.Client.UserInterface.Controls;
+﻿using Content.Client._White.UI.Buttons;
+using Robust.Client.UserInterface.Controls;
 using Robust.Shared.IoC;
 using Robust.Shared.Localization;
 
@@ -8,7 +9,7 @@ namespace Content.Client.Voting.UI
     ///     LITERALLY just a button that opens the vote call menu.
     ///     Automatically disables itself if the client cannot call votes.
     /// </summary>
-    public sealed class VoteCallMenuButton : Button
+    public sealed class VoteCallMenuButton : WhiteLobbyTextButton
     {
         [Dependency] private readonly IVoteManager _voteManager = default!;
 
@@ -16,7 +17,7 @@ namespace Content.Client.Voting.UI
         {
             IoCManager.InjectDependencies(this);
 
-            Text = Loc.GetString("ui-vote-menu-button");
+            ButtonText = Loc.GetString("ui-vote-menu-button");
             OnPressed += OnOnPressed;
         }
 

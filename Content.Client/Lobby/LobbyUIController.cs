@@ -47,7 +47,7 @@ public sealed class LobbyUIController : UIController, IOnStateEntered<LobbyState
     private HumanoidProfileEditor? _profileEditor;
 
     /// This is the character preview panel in the chat. This should only update if their character updates
-    private LobbyCharacterPreviewPanel? PreviewPanel => GetLobbyPreview();
+    // private LobbyCharacterPreviewPanel? PreviewPanel => GetLobbyPreview();
 
     /// This is the modified profile currently being edited
     private HumanoidCharacterProfile? EditedProfile => _profileEditor?.Profile;
@@ -71,14 +71,14 @@ public sealed class LobbyUIController : UIController, IOnStateEntered<LobbyState
 
     public void OnStateEntered(LobbyState state)
     {
-        PreviewPanel?.SetLoaded(_preferencesManager.ServerDataLoaded);
+        //PreviewPanel?.SetLoaded(_preferencesManager.ServerDataLoaded);
         ReloadCharacterSetup();
     }
 
     public void OnStateExited(LobbyState state)
     {
-        PreviewPanel?.SetLoaded(false);
-        _characterSetup?.Dispose();
+        //PreviewPanel?.SetLoaded(false);
+        _characterSetup?.Close();
         _profileEditor?.Dispose();
         _characterSetup = null;
         _profileEditor = null;
@@ -87,7 +87,7 @@ public sealed class LobbyUIController : UIController, IOnStateEntered<LobbyState
 
     private void PreferencesDataLoaded()
     {
-        PreviewPanel?.SetLoaded(true);
+        //PreviewPanel?.SetLoaded(true);
 
         if (_stateManager.CurrentState is not LobbyState)
             return;
@@ -95,10 +95,12 @@ public sealed class LobbyUIController : UIController, IOnStateEntered<LobbyState
         ReloadCharacterSetup();
     }
 
+    /*
     private LobbyCharacterPreviewPanel? GetLobbyPreview()
     {
         return _stateManager.CurrentState is LobbyState lobby ? lobby.Lobby?.CharacterPreview : null;
     }
+    */
 
     private void OnRequirementsUpdated()
     {
@@ -131,11 +133,23 @@ public sealed class LobbyUIController : UIController, IOnStateEntered<LobbyState
             _profileEditor.UpdateLoadouts(null, true);
     }
 
+    /// <summary>
+    ///  Show character setup window
+    /// </summary>
+    public void ToggleCharacterSetup()
+    {
+        if (_characterSetup!.IsOpen)
+        {
+            _characterSetup.Close();
+            return;
+        }
+        ReloadCharacterSetup();
+    }
 
     /// Reloads every single character setup control
     public void ReloadCharacterSetup()
     {
-        RefreshLobbyPreview();
+        //RefreshLobbyPreview();
         var (characterGui, profileEditor) = EnsureGui();
         characterGui.ReloadCharacterPickers();
         profileEditor.SetProfile(
@@ -144,6 +158,7 @@ public sealed class LobbyUIController : UIController, IOnStateEntered<LobbyState
     }
 
     /// Refreshes the character preview in the lobby chat
+    /*
     private void RefreshLobbyPreview()
     {
         if (PreviewPanel == null)
@@ -163,6 +178,7 @@ public sealed class LobbyUIController : UIController, IOnStateEntered<LobbyState
         PreviewPanel.SetSprite(dummy);
         PreviewPanel.SetSummaryText(humanoid.Summary);
     }
+    */
 
     private void RefreshProfileEditor()
     {
@@ -189,7 +205,7 @@ public sealed class LobbyUIController : UIController, IOnStateEntered<LobbyState
     {
         if (_characterSetup != null && _profileEditor != null)
         {
-            _characterSetup.Visible = true;
+            _characterSetup.OpenCentered();
             _profileEditor.Visible = true;
             return (_characterSetup, _profileEditor);
         }
@@ -206,7 +222,7 @@ public sealed class LobbyUIController : UIController, IOnStateEntered<LobbyState
 
         _characterSetup = new CharacterSetupGui(EntityManager, _prototypeManager, _resourceCache, _preferencesManager, _profileEditor);
 
-        _characterSetup.CloseButton.OnPressed += _ =>
+        _characterSetup.OnClose += () =>
         {
             // Reset sliders etc.
             _profileEditor.SetProfile(null, null);
@@ -237,8 +253,8 @@ public sealed class LobbyUIController : UIController, IOnStateEntered<LobbyState
                 _characterSetup?.ReloadCharacterPickers();
         };
 
-        if (_stateManager.CurrentState is LobbyState lobby)
-            lobby.Lobby?.CharacterSetupState.AddChild(_characterSetup);
+        //if (_stateManager.CurrentState is LobbyState lobby)
+        //    lobby.Lobby?.CharacterSetupState.AddChild(_characterSetup);
 
         return (_characterSetup, _profileEditor);
     }

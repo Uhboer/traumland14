@@ -47,13 +47,14 @@ namespace Content.Client.Lobby
 
             _voteManager.SetPopupContainer(Lobby.VoteContainer);
             LayoutContainer.SetAnchorPreset(Lobby, LayoutContainer.LayoutPreset.Wide);
-            Lobby.ServerName.Text = _baseClient.GameInfo?.ServerName; // The eye of refactor gazes upon you...
+            //Lobby.ServerName.Text = _baseClient.GameInfo?.ServerName; // The eye of refactor gazes upon you...
 
             UpdateLobbyUi();
 
-            Lobby.CharacterPreview.CharacterSetupButton.OnPressed += OnSetupPressed;
+            //Lobby.CharacterPreview.CharacterSetupButton.OnPressed += OnSetupPressed;
             Lobby.ReadyButton.OnPressed += OnReadyPressed;
             Lobby.ReadyButton.OnToggled += OnReadyToggled;
+            Lobby.CharacterSetupButton.OnPressed += OnSetupPressed;
 
             _gameTicker.InfoBlobUpdated += UpdateLobbyUi;
             _gameTicker.LobbyStatusUpdated += LobbyStatusUpdated;
@@ -71,7 +72,7 @@ namespace Content.Client.Lobby
 
             _voteManager.ClearPopupContainer();
 
-            Lobby!.CharacterPreview.CharacterSetupButton.OnPressed -= OnSetupPressed;
+            //Lobby!.CharacterPreview.CharacterSetupButton.OnPressed -= OnSetupPressed;
             Lobby!.ReadyButton.OnPressed -= OnReadyPressed;
             Lobby!.ReadyButton.OnToggled -= OnReadyToggled;
 
@@ -86,8 +87,8 @@ namespace Content.Client.Lobby
 
         private void OnSetupPressed(BaseButton.ButtonEventArgs args)
         {
-            SetReady(false);
-            Lobby?.SwitchState(LobbyGui.LobbyGuiState.CharacterSetup);
+            //SetReady(false);
+            Lobby?.ToggleCharacterSetup();
         }
 
         private void OnReadyPressed(BaseButton.ButtonEventArgs args)
@@ -153,7 +154,7 @@ namespace Content.Client.Lobby
         {
             if (_gameTicker.IsGameStarted)
             {
-                Lobby!.ReadyButton.Text = Loc.GetString("lobby-state-ready-button-join-state");
+                Lobby!.ReadyButton.ButtonText = Loc.GetString("lobby-state-ready-button-join-state");
                 Lobby!.ReadyButton.ToggleMode = false;
                 Lobby!.ReadyButton.Pressed = false;
                 Lobby!.ObserveButton.Disabled = false;
@@ -161,7 +162,9 @@ namespace Content.Client.Lobby
             else
             {
                 Lobby!.StartTime.Text = string.Empty;
-                Lobby!.ReadyButton.Text = Loc.GetString(Lobby!.ReadyButton.Pressed ? "lobby-state-player-status-ready": "lobby-state-player-status-not-ready");
+                Lobby!.ReadyButton.ButtonText = Loc.GetString(Lobby!.ReadyButton.Pressed
+                        ? "lobby-state-player-status-ready"
+                        : "lobby-state-player-status-not-ready");
                 Lobby!.ReadyButton.ToggleMode = true;
                 Lobby!.ReadyButton.Disabled = false;
                 Lobby!.ReadyButton.Pressed = _gameTicker.AreWeReady;
