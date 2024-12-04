@@ -22,21 +22,16 @@
                                 </BoxContainer>
                                 <Button Name="RandomizeEverything" HorizontalAlignment="Center" HorizontalExpand="False"
                                     MaxWidth="256" Text="{Loc 'humanoid-profile-editor-randomize-everything-button'}" />
-                                <RichTextLabel Name="WarningLabel" HorizontalExpand="False" VerticalExpand="True"
-                                    MaxWidth="425" HorizontalAlignment="Left" />
+                                <!-- Import/Export -->
+                                <BoxContainer Orientation="Horizontal" SeparationOverride="5">
+                                    <Button Name="ImportButton" Text="{Loc 'humanoid-profile-editor-import-button'}"/>
+                                    <Button Name="ExportButton" Text="{Loc 'humanoid-profile-editor-export-button'}"/>
+                                    <Button Name="SaveButton" Text="{Loc 'humanoid-profile-editor-save-button'}" />
+                                    <Button Name="ResetButton" Disabled="True" Text="{Loc 'humanoid-profile-editor-reset-button'}"/>
+                                    <Button Name="StatsButton" Text="{Loc 'character-setup-gui-character-setup-stats-button'}"/>
+                                </BoxContainer>
                             </BoxContainer>
                         </prefUi:HighlightedContainer>
-                    </BoxContainer>
-                </prefUi:HighlightedContainer>
-            </BoxContainer>
-            <!-- Import/Export -->
-            <BoxContainer Orientation="Vertical">
-                <prefUi:HighlightedContainer>
-                    <BoxContainer Orientation="Horizontal" SeparationOverride="5">
-                        <Button Name="ImportButton" Text="{Loc 'humanoid-profile-editor-import-button'}"/>
-                        <Button Name="ExportButton" Text="{Loc 'humanoid-profile-editor-export-button'}"/>
-                        <Button Name="SaveButton" Text="{Loc 'humanoid-profile-editor-save-button'}" />
-                        <Button Name="ResetButton" Disabled="True" Text="{Loc 'humanoid-profile-editor-reset-button'}"/>
                     </BoxContainer>
                 </prefUi:HighlightedContainer>
             </BoxContainer>
