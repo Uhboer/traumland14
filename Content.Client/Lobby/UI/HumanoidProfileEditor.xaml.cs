@@ -35,6 +35,7 @@ using Robust.Shared.Physics;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 using Direction = Robust.Shared.Maths.Direction;
+using Content.Client.Info.PlaytimeStats;
 
 namespace Content.Client.Lobby.UI
 {
@@ -125,7 +126,6 @@ namespace Content.Client.Lobby.UI
             NameEdit.OnTextChanged += args => { SetName(args.Text); };
             NameRandomize.OnPressed += _ => RandomizeName();
             RandomizeEverything.OnPressed += _ => { RandomizeProfile(); };
-            WarningLabel.SetMarkup($"[color=red]{Loc.GetString("humanoid-profile-editor-naming-rules-warning")}[/color]");
 
             #endregion Name
 
@@ -482,6 +482,8 @@ namespace Content.Client.Lobby.UI
 
             ReloadPreview();
             IsDirty = false;
+
+            StatsButton.OnPressed += _ => new PlaytimeStatsWindow().OpenCentered();
         }
 
         /// Refreshes the flavor text editor status

@@ -23,7 +23,7 @@ namespace Content.Client.Lobby.UI
             RobustXamlLoader.Load(this);
             IoCManager.InjectDependencies(this);
             SetAnchorPreset(MainContainer, LayoutPreset.Wide);
-            SetAnchorPreset(Background, LayoutPreset.Wide);
+            //SetAnchorPreset(Background, LayoutPreset.Wide);
 
             _shader = _prototypeManager.Index<ShaderPrototype>("CRT").InstanceUnique();
             Background.ShaderOverride = _shader;
@@ -32,12 +32,18 @@ namespace Content.Client.Lobby.UI
 
             LeaveButton.OnPressed += _ => _consoleHost.ExecuteCommand("disconnect");
             OptionsButton.OnPressed += _ => UserInterfaceManager.GetUIController<OptionsUIController>().ToggleWindow();
+            ChangelogButton.OnPressed += _ => UserInterfaceManager.GetUIController<ChangelogUIController>().ToggleWindow();
+        }
+
+        public void ShowCharacterSetup()
+        {
+            UserInterfaceManager.GetUIController<LobbyUIController>().ShowCharacterSetup();
         }
 
         public void SwitchState(LobbyGuiState state)
         {
             DefaultState.Visible = false;
-            CharacterSetupState.Visible = false;
+            //CharacterSetupState.Visible = false;
 
             switch (state)
             {
@@ -46,13 +52,17 @@ namespace Content.Client.Lobby.UI
                     RightSide.Visible = true;
                     break;
                 case LobbyGuiState.CharacterSetup:
-                    CharacterSetupState.Visible = true;
+                    //CharacterSetupState.Visible = true;
 
+                    /* BUGGED
                     var actualWidth = (float) UserInterfaceManager.RootControl.PixelWidth;
                     var setupWidth = (float) LeftSide.PixelWidth;
 
                     if (1 - (setupWidth / actualWidth) > 0.30)
                         RightSide.Visible = false;
+                    */
+
+                    //RightSide.Visible = false;
 
                     UserInterfaceManager.GetUIController<LobbyUIController>().ReloadCharacterSetup();
 

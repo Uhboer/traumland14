@@ -47,13 +47,14 @@ namespace Content.Client.Lobby
 
             _voteManager.SetPopupContainer(Lobby.VoteContainer);
             LayoutContainer.SetAnchorPreset(Lobby, LayoutContainer.LayoutPreset.Wide);
-            Lobby.ServerName.Text = _baseClient.GameInfo?.ServerName; // The eye of refactor gazes upon you...
+            //Lobby.ServerName.Text = _baseClient.GameInfo?.ServerName; // The eye of refactor gazes upon you...
 
             UpdateLobbyUi();
 
-            Lobby.CharacterPreview.CharacterSetupButton.OnPressed += OnSetupPressed;
+            //Lobby.CharacterPreview.CharacterSetupButton.OnPressed += OnSetupPressed;
             Lobby.ReadyButton.OnPressed += OnReadyPressed;
             Lobby.ReadyButton.OnToggled += OnReadyToggled;
+            Lobby.CharacterSetupButton.OnPressed += OnSetupPressed;
 
             _gameTicker.InfoBlobUpdated += UpdateLobbyUi;
             _gameTicker.LobbyStatusUpdated += LobbyStatusUpdated;
@@ -71,7 +72,7 @@ namespace Content.Client.Lobby
 
             _voteManager.ClearPopupContainer();
 
-            Lobby!.CharacterPreview.CharacterSetupButton.OnPressed -= OnSetupPressed;
+            //Lobby!.CharacterPreview.CharacterSetupButton.OnPressed -= OnSetupPressed;
             Lobby!.ReadyButton.OnPressed -= OnReadyPressed;
             Lobby!.ReadyButton.OnToggled -= OnReadyToggled;
 
@@ -86,8 +87,8 @@ namespace Content.Client.Lobby
 
         private void OnSetupPressed(BaseButton.ButtonEventArgs args)
         {
-            SetReady(false);
-            Lobby?.SwitchState(LobbyGui.LobbyGuiState.CharacterSetup);
+            //SetReady(false);
+            Lobby?.ShowCharacterSetup();
         }
 
         private void OnReadyPressed(BaseButton.ButtonEventArgs args)
