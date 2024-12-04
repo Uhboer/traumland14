@@ -9,7 +9,8 @@
     xmlns:lobbyUi="clr-namespace:Content.Client.Lobby.UI"
     xmlns:info="clr-namespace:Content.Client.Info"
     xmlns:gfx="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
-    xmlns:widgets="clr-namespace:Content.Client.UserInterface.Systems.Chat.Widgets">
+    xmlns:widgets="clr-namespace:Content.Client.UserInterface.Systems.Chat.Widgets"
+    xmlns:buttons="clr-namespace:Content.Client._White.UI.Buttons">
     <!-- Background -->
     <BoxContainer Name="MainContainer" VerticalExpand="True" HorizontalExpand="True" Orientation="Horizontal"
                   Margin="10 10 10 10" SeparationOverride="2">
@@ -22,49 +23,44 @@
                         VerticalAlignment="Center"
                         Stretch="KeepAspect" />
                     <BoxContainer Name="TopLeft" Orientation="Vertical" >
+                        <!-- Voting Popups -->
+                        <BoxContainer Orientation="Vertical" SeparationOverride="4" Name="VoteContainer"
+                                      Access="Public" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0 8" />
                         <!-- Left Main Menu -->
                         <PanelContainer HorizontalAlignment="Left" Name="Center" VerticalAlignment="Center">
                             <BoxContainer Orientation="Vertical" HorizontalAlignment="Center"
                                         VerticalAlignment="Center" Margin="40 0 0 150">
-                                <Button Name="ReadyButton"
+                                <buttons:WhiteLobbyTextButton Name="ReadyButton"
                                     Access="Public"
                                     ToggleMode="True"
-                                    Text="{Loc 'lobby-state-player-status-not-ready'}"
+                                    ButtonText="{Loc 'lobby-state-player-status-not-ready'}"
                                     Margin="0 30 0 10" />
-                                <cc:UICommandButton Command="observe" Name="ObserveButton"
+                                <buttons:WhiteUICommandButton Command="observe" Name="ObserveButton"
                                     Access="Public"
-                                    Text="{Loc 'ui-lobby-observe-button'}"
+                                    ButtonText="{Loc 'ui-lobby-observe-button'}"
                                     WindowType="{x:Type lobbyUi:ObserveWarningWindow}"
                                     Margin="0 10 0 10" />
-                                <Button Name="CharacterSetupButton"
+                                <buttons:WhiteLobbyTextButton Name="CharacterSetupButton"
                                     Access="Public"
-                                    Text="{Loc 'lobby-character-preview-panel-character-setup-button'}"
+                                    ButtonText="{Loc 'lobby-character-preview-panel-character-setup-button'}"
                                     Margin="0 10 0 10" />
-                                <Button Name="OptionsButton"
+                                <buttons:WhiteLobbyTextButton Name="OptionsButton"
                                     Access="Public"
-                                    Text="{Loc 'ui-lobby-options-button'}"
+                                    ButtonText="{Loc 'ui-lobby-options-button'}"
                                     Margin="0 10 0 10" />
-                                 <!--<Button
-                                    Name="CallVoteButton"
+                                <vote:VoteCallMenuButton Name="CallVoteButton"
+                                    Margin="0 10 0 10"/>
+                                <buttons:WhiteLobbyTextButton Name="AHelpButton"
                                     Access="Public"
-                                    Text="{Loc 'ui-lobby-ahelp-button'}"
+                                    ButtonText="{Loc 'ui-lobby-ahelp-button'}"
                                     Margin="0 10 0 10" />
-                                -->
-                                <vote:VoteCallMenuButton Name="CallVoteButton" StyleClasses="ButtonBig" />
-                                <Button
-                                    Name="AHelpButton"
+                                <buttons:WhiteLobbyTextButton Name="ChangelogButton"
                                     Access="Public"
-                                    Text="{Loc 'ui-lobby-ahelp-button'}"
+                                    ButtonText="{Loc 'ui-lobby-changelog-button'}"
                                     Margin="0 10 0 10" />
-                                <Button
-                                    Name="ChangelogButton"
+                                <buttons:WhiteLobbyTextButton Name="LeaveButton"
                                     Access="Public"
-                                    Text="{Loc 'ui-lobby-changelog'}"
-                                    Margin="0 10 0 10" />
-                                <Button
-                                    Name="LeaveButton"
-                                    Access="Public"
-                                    Text="{Loc 'ui-lobby-leave-button'}"
+                                    ButtonText="{Loc 'ui-lobby-leave-button'}"
                                     Margin="0 10 0 0" />
                             </BoxContainer>
                         </PanelContainer>
@@ -93,9 +89,6 @@
                             </BoxContainer>
                         </PanelContainer>
                         -->
-                        <!-- Voting Popups -->
-                        <BoxContainer Orientation="Vertical" SeparationOverride="4" Name="VoteContainer"
-                                      Access="Public" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0 8" />
                     </BoxContainer>
                     <!-- Vertical Padding-->
                     <Control VerticalExpand="True" />
@@ -114,11 +107,10 @@
             <!-- Right Panel -->
             <PanelContainer Name="RightSide" HorizontalAlignment="Right" VerticalExpand="True"
                             MinWidth="490"
-                            StyleClasses="AngleRect"
                             VerticalAlignment="Stretch">
-                <!--<PanelContainer.PanelOverride>
-                    <gfx:StyleBoxFlat BackgroundColor="#191919" />
-                </PanelContainer.PanelOverride>-->
+                <PanelContainer.PanelOverride>
+                    <gfx:StyleBoxFlat BackgroundColor="#000000" /> <!-- #191919 -->
+                </PanelContainer.PanelOverride>
                 <BoxContainer Orientation="Vertical" HorizontalExpand="True">
                     <!-- Top row
                     <BoxContainer Orientation="Horizontal" MinSize="0 40" Name="HeaderContainer" Access="Public"

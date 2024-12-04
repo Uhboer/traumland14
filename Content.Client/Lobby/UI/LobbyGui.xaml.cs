@@ -35,9 +35,9 @@ namespace Content.Client.Lobby.UI
             ChangelogButton.OnPressed += _ => UserInterfaceManager.GetUIController<ChangelogUIController>().ToggleWindow();
         }
 
-        public void ShowCharacterSetup()
+        public void ToggleCharacterSetup()
         {
-            UserInterfaceManager.GetUIController<LobbyUIController>().ShowCharacterSetup();
+            UserInterfaceManager.GetUIController<LobbyUIController>().ToggleCharacterSetup();
         }
 
         public void SwitchState(LobbyGuiState state)

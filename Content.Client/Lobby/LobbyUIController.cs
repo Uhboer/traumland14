@@ -136,8 +136,13 @@ public sealed class LobbyUIController : UIController, IOnStateEntered<LobbyState
     /// <summary>
     ///  Show character setup window
     /// </summary>
-    public void ShowCharacterSetup()
+    public void ToggleCharacterSetup()
     {
+        if (_characterSetup!.IsOpen)
+        {
+            _characterSetup.Close();
+            return;
+        }
         ReloadCharacterSetup();
     }
 
@@ -200,7 +205,7 @@ public sealed class LobbyUIController : UIController, IOnStateEntered<LobbyState
     {
         if (_characterSetup != null && _profileEditor != null)
         {
-            _characterSetup.Open();
+            _characterSetup.OpenCentered();
             _profileEditor.Visible = true;
             return (_characterSetup, _profileEditor);
         }
