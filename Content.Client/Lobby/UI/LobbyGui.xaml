@@ -22,7 +22,7 @@
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
                         Stretch="KeepAspect" />
-                    <BoxContainer Name="TopLeft" Orientation="Vertical" >
+
                         <!-- Voting Popups -->
                         <BoxContainer Orientation="Vertical" SeparationOverride="4" Name="VoteContainer"
                                       Access="Public" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0 8" />
@@ -89,7 +89,7 @@
                             </BoxContainer>
                         </PanelContainer>
                         -->
-                    </BoxContainer>
+
                     <!-- Vertical Padding-->
                     <Control VerticalExpand="True" />
                     <!-- Left Bot Panel -->
