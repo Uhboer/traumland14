@@ -65,7 +65,8 @@ namespace Content.IntegrationTests.Tests
             "Submarine", //DeltaV
             "Gax",
             "Rad",
-            "Europa"
+            "Europa",
+            "FinsterDevMap" //Finster
         };
 
         /// <summary>
