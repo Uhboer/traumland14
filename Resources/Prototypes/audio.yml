@@ -20,6 +20,8 @@
   fadeIn: true
   interruptable: true
   rules: InSpace
+  minCooldownTime: 0
+  maxCooldownTime: 0
   priority: 1
 
 ## Fallback if nothing else found

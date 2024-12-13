@@ -30,6 +30,8 @@ public sealed partial class SeparatedChatGameScreen : InGameScreen
 
         ScreenContainer.OnSplitResizeFinished += () =>
             OnChatResized?.Invoke(new Vector2(ScreenContainer.SplitFraction, 0));
+
+        OnThemeUpdated();
     }
 
     public override ChatBox ChatBox => GetWidget<ChatBox>()!;
@@ -38,5 +40,12 @@ public sealed partial class SeparatedChatGameScreen : InGameScreen
     {
         ScreenContainer.DesiredSplitCenter = size.X;
         ScreenContainer.ResizeMode = SplitContainer.SplitResizeMode.RespectChildrenMinSize;
+    }
+
+    protected override void OnThemeUpdated()
+    {
+        LogoBackground.Texture = Theme.ResolveTexture("logo");
+        LeftPanel.Texture = Theme.ResolveTexture("left_panel_background");
+        RightPanel.Texture = Theme.ResolveTexture("right_panel_background");
     }
 }

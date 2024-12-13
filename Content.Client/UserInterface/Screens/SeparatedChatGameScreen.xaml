@@ -18,18 +18,28 @@
     HorizontalAlignment="Center">
     <controls:RecordedSplitContainer Name="ScreenContainer" HorizontalExpand="True" VerticalExpand="True" SplitWidth="0" StretchDirection="TopLeft">
         <BoxContainer Orientation="Horizontal" VerticalExpand="True">
-            <PanelContainer VerticalExpand="True" HorizontalExpand="False" MinWidth="192" MaxWidth="192">
-                <PanelContainer.PanelOverride>
+            <controls:CustomPanelContainer Name="LeftPanel" Access="Public" VerticalExpand="True" HorizontalExpand="False" MinWidth="192" MaxWidth="192">
+                <controls:CustomPanelContainer.PanelOverride>
                     <graphics:StyleBoxFlat BackgroundColor="#191919" BorderColor="#3A3A3A" BorderThickness="1" />
-                </PanelContainer.PanelOverride>
+                </controls:CustomPanelContainer.PanelOverride>
                 <BoxContainer Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 0 0 0">
+                    <TextureRect
+                            Name="LogoBackground"
+                            Access="Public"
+                            TexturePath="/Textures/Interface/LoraAshen/logo.png"
+                            Stretch="KeepAspectCentered"
+                            SetSize="192 64"
+                            Margin="0 0 0 0"
+                            VerticalAlignment="Top"
+                            HorizontalAlignment="Center"
+                    />
                     <hotbar:HotbarGui Name="Hotbar" Access="Protected"/>
                     <inventory:InventoryGui Name="Inventory" Access="Protected"/>
                 </BoxContainer>
                 <BoxContainer Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 0 0 0">
                     <nactions:NativeActionsGui Name="NativeActions" Access="Public"/>
                 </BoxContainer>
-            </PanelContainer>
+            </controls:CustomPanelContainer>
             <LayoutContainer Name="ViewportContainer" Access="Public" HorizontalExpand="True" VerticalExpand="True">
                 <controls:MainViewport Name="MainViewport"/>
                 <widgets:GhostGui Name="Ghost" Access="Protected" />
@@ -45,20 +55,20 @@
             </PanelContainer.PanelOverride>
 
             <BoxContainer Orientation="Horizontal" HorizontalExpand="True">
-                <PanelContainer VerticalExpand="True" HorizontalExpand="False" MinWidth="64" MaxWidth="64">
-                    <PanelContainer.PanelOverride>
+                <controls:CustomPanelContainer Name="RightPanel" Access="Public" VerticalExpand="True" HorizontalExpand="False" MinWidth="64" MaxWidth="64">
+                    <controls:CustomPanelContainer.PanelOverride>
                         <graphics:StyleBoxFlat BackgroundColor="#191919" />
-                    </PanelContainer.PanelOverride>
+                    </controls:CustomPanelContainer.PanelOverride>
                     <BoxContainer Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Center">
                         <targeting:TargetingControl Name="Targeting" Access="Protected" />
                     </BoxContainer>
                     <BoxContainer Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
                         <alerts:AlertsUI Name="Alerts" Access="Protected" />
                     </BoxContainer>
-                </PanelContainer>
-                <BoxContainer Orientation="Vertical" HorizontalExpand="True" SeparationOverride="10" Margin="10">
-                    <menuBar:GameTopMenuBar Name="TopBar" HorizontalExpand="True" Access="Protected" />
+                </controls:CustomPanelContainer>
+                <BoxContainer Orientation="Vertical" HorizontalExpand="True" SeparationOverride="0" Margin="0">
                     <chat:ChatBox VerticalExpand="True" HorizontalExpand="True" Name="Chat" Access="Protected" MinSize="0 0"/>
+                    <menuBar:GameTopMenuBar Name="TopBar" HorizontalExpand="True" Access="Protected" />
                 </BoxContainer>
             </BoxContainer>
         </PanelContainer>
