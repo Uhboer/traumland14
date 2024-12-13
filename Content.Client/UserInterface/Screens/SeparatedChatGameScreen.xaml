@@ -11,19 +11,23 @@
     xmlns:graphics="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
     xmlns:inventory="clr-namespace:Content.Client.UserInterface.Systems.Inventory.Widgets"
     xmlns:targeting="clr-namespace:Content.Client.UserInterface.Systems.Targeting.Widgets"
+    xmlns:nactions="clr-namespace:Content.Client.UserInterface.Systems.NativeActions.Widgets"
     Name="SeparatedChatHud"
     VerticalExpand="False"
     VerticalAlignment="Bottom"
     HorizontalAlignment="Center">
     <controls:RecordedSplitContainer Name="ScreenContainer" HorizontalExpand="True" VerticalExpand="True" SplitWidth="0" StretchDirection="TopLeft">
         <BoxContainer Orientation="Horizontal" VerticalExpand="True">
-            <PanelContainer VerticalExpand="True" HorizontalExpand="False" MinWidth="220" MaxWidth="220">
+            <PanelContainer VerticalExpand="True" HorizontalExpand="False" MinWidth="192" MaxWidth="192">
                 <PanelContainer.PanelOverride>
                     <graphics:StyleBoxFlat BackgroundColor="#191919" BorderColor="#3A3A3A" BorderThickness="1" />
                 </PanelContainer.PanelOverride>
-                <BoxContainer Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 5 0 0">
+                <BoxContainer Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 0 0 0">
                     <hotbar:HotbarGui Name="Hotbar" Access="Protected"/>
                     <inventory:InventoryGui Name="Inventory" Access="Protected"/>
+                </BoxContainer>
+                <BoxContainer Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 0 0 0">
+                    <nactions:NativeActionsGui Name="NativeActions" Access="Public"/>
                 </BoxContainer>
             </PanelContainer>
             <LayoutContainer Name="ViewportContainer" Access="Public" HorizontalExpand="True" VerticalExpand="True">
@@ -41,12 +45,14 @@
             </PanelContainer.PanelOverride>
 
             <BoxContainer Orientation="Horizontal" HorizontalExpand="True">
-                <PanelContainer VerticalExpand="True" HorizontalExpand="False" MinWidth="96" MaxWidth="96">
+                <PanelContainer VerticalExpand="True" HorizontalExpand="False" MinWidth="64" MaxWidth="64">
                     <PanelContainer.PanelOverride>
                         <graphics:StyleBoxFlat BackgroundColor="#191919" />
                     </PanelContainer.PanelOverride>
-                    <BoxContainer Orientation="Vertical" HorizontalAlignment="Center">
+                    <BoxContainer Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Center">
                         <targeting:TargetingControl Name="Targeting" Access="Protected" />
+                    </BoxContainer>
+                    <BoxContainer Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
                         <alerts:AlertsUI Name="Alerts" Access="Protected" />
                     </BoxContainer>
                 </PanelContainer>

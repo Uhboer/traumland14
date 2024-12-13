@@ -1,5 +1,7 @@
+using Content.Shared.Alert;
 using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
+using Robust.Shared.Prototypes;
 
 namespace Content.Shared.Standing;
 
@@ -14,6 +16,11 @@ public sealed partial class StandingStateComponent : Component
 
     [DataField, AutoNetworkedField]
     public bool Standing { get; set; } = true;
+
+    [DataField]
+    public ProtoId<AlertCategoryPrototype> LayingCategory = "NALaying";
+    [DataField]
+    public ProtoId<AlertPrototype> LayingAlert = "Laying";
 
     /// <summary>
     ///     List of fixtures that had their collision mask changed when the entity was downed.

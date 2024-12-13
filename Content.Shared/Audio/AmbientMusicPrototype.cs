@@ -25,6 +25,12 @@ public sealed partial class AmbientMusicPrototype : IPrototype
     [ViewVariables(VVAccess.ReadWrite), DataField("interruptable")]
     public bool Interruptable = false;
 
+    [ViewVariables(VVAccess.ReadWrite), DataField("minCooldownTime")]
+    public int MinCooldownTime = 30;
+
+    [ViewVariables(VVAccess.ReadWrite), DataField("maxCooldownTime")]
+    public int MaxCooldownTime = 60;
+
     /// <summary>
     /// Do we fade-in. Useful for songs.
     /// </summary>

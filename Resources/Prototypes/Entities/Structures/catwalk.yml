@@ -23,6 +23,8 @@
       collection: FootstepCatwalk
       params:
         volume: 8
+    barestepSounds:
+      collection: BarestepMetal
   - type: Tag
     tags:
       - Catwalk
@@ -54,4 +56,4 @@
   - type: RCDDeconstructable
     cost: 2
     delay: 2
-    fx: EffectRCDDeconstruct2  
+    fx: EffectRCDDeconstruct2

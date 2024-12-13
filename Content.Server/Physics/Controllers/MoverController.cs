@@ -11,6 +11,8 @@ using Robust.Shared.Player;
 using DroneConsoleComponent = Content.Server.Shuttles.DroneConsoleComponent;
 using DependencyAttribute = Robust.Shared.IoC.DependencyAttribute;
 using Robust.Shared.Map.Components;
+using Content.Shared.Alert;
+using JetBrains.Annotations;
 
 namespace Content.Server.Physics.Controllers
 {
@@ -568,4 +570,19 @@ namespace Content.Server.Physics.Controllers
         }
 
     }
+
+    [UsedImplicitly, DataDefinition]
+    public sealed partial class ToggleSprintingAlert : IAlertClick
+    {
+        public void AlertClicked(EntityUid uid)
+        {
+            var entityManager = IoCManager.Resolve<IEntityManager>();
+
+            if (!entityManager.TryGetComponent(uid, out InputMoverComponent? comp))
+                return;
+
+            entityManager.System<MoverController>().SetSprinting(uid, comp, 0, !comp.Sprinting);
+        }
+    }
 }
+

@@ -36,3 +36,12 @@
 
 - type: alertCategory
   id: Mood
+
+- type: alertCategory
+  id: NACombatMode
+
+- type: alertCategory
+  id: NAWalking
+
+- type: alertCategory
+  id: NALaying

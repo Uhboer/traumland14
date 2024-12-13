@@ -7,7 +7,9 @@
     VerticalExpand="True"
     VerticalAlignment="Bottom"
     Orientation="Horizontal"
-    HorizontalAlignment="Center">
+    HorizontalAlignment="Center"
+    Margin="0"
+    SeparationOverride="0">
     <Control HorizontalAlignment="Center">
         <inventory:ItemSlotButtonContainer
             Name="InventoryHotbar"
@@ -18,6 +20,9 @@
             ExpandBackwards="True"
             VerticalExpand="True"
             HorizontalAlignment="Center"
+            VSeparationOverride="0"
+            HSeparationOverride="0"
+            Margin="0"
         />
     </Control>
 </widgets:InventoryGui>

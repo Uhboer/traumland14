@@ -61,6 +61,7 @@ public sealed class InventoryUIController : UIController, IOnStateEntered<Gamepl
         if (UIManager.GetActiveUIWidgetOrNull<InventoryGui>() is { } inventoryGui)
         {
             //RegisterInventoryButton(inventoryGui.InventoryButton);
+            inventoryGui.Margin = new Thickness(0, 0, 0, 0);
             _inventoryHotbar!.Visible = true;
             UpdateInventoryHotbar(_playerInventory);
         }
@@ -97,7 +98,7 @@ public sealed class InventoryUIController : UIController, IOnStateEntered<Gamepl
             //_inventoryHotbar.Visible = false;
         }
 
-        CommandBinds.Unregister<ClientInventorySystem>();
+        //CommandBinds.Unregister<ClientInventorySystem>();
     }
 
     private SlotButton CreateSlotButton(SlotData data)

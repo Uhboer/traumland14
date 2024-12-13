@@ -140,7 +140,7 @@ namespace Content.Shared.Chemistry.Reagent
         public float PricePerUnit;
 
         [DataField]
-        public SoundSpecifier FootstepSound = new SoundCollectionSpecifier("FootstepWater", AudioParams.Default.WithVolume(6));
+        public SoundSpecifier FootstepSound = new SoundCollectionSpecifier("FootstepBlood", AudioParams.Default.WithVolume(6));
 
         public FixedPoint2 ReactionTile(TileRef tile, FixedPoint2 reactVolume)
         {

@@ -1,8 +1,10 @@
+using Content.Shared.Alert;
 using Content.Shared.MouseRotator;
 using Content.Shared.Movement.Components;
 using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Serialization;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 
 namespace Content.Shared.CombatMode
@@ -39,6 +41,12 @@ namespace Content.Shared.CombatMode
         [DataField, AutoNetworkedField]
         public EntityUid? CombatToggleActionEntity;
 
+        [DataField]
+        public ProtoId<AlertPrototype> CombatModeAlert = "CombatMode";
+
+        [DataField]
+        public ProtoId<AlertCategoryPrototype> CombatModeCategory = "NativeActions";
+
         [ViewVariables(VVAccess.ReadWrite), DataField("isInCombatMode"), AutoNetworkedField]
         public bool IsInCombatMode;
 
@@ -49,4 +57,7 @@ namespace Content.Shared.CombatMode
         [DataField, AutoNetworkedField]
         public bool ToggleMouseRotator = true;
     }
+
+    [Serializable, NetSerializable]
+    public sealed class ToggleCombatModeEvent : CancellableEntityEventArgs;
 }

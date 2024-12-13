@@ -702,6 +702,12 @@ namespace Content.Shared.CCVar
         public static readonly CVarDef<string> UIHoverSound =
             CVarDef.Create("interface.hover_sound", "/Audio/UserInterface/hover.ogg", CVar.REPLICATED);
 
+        public static readonly CVarDef<string> UICombatModeOnSound =
+            CVarDef.Create("interface.combat_on_sound", "/Audio/_Finster/UserInterface/ui_togglecombat.ogg", CVar.REPLICATED);
+
+        public static readonly CVarDef<string> UICombatModeOffSound =
+            CVarDef.Create("interface.combat_off_sound", "/Audio/_Finster/UserInterface/ui_toggleoffcombat.ogg", CVar.REPLICATED);
+
         /*
          * Outline
          */
@@ -1896,16 +1902,19 @@ namespace Content.Shared.CCVar
             CVarDef.Create("viewport.scale_render", true, CVar.CLIENTONLY | CVar.ARCHIVE);
 
         public static readonly CVarDef<int> ViewportMinimumWidth =
-            CVarDef.Create("viewport.minimum_width", 15, CVar.REPLICATED);
+            CVarDef.Create("viewport.minimum_width", 16, CVar.REPLICATED);
 
         public static readonly CVarDef<int> ViewportMaximumWidth =
-            CVarDef.Create("viewport.maximum_width", 15, CVar.REPLICATED);
+            CVarDef.Create("viewport.maximum_width", 16, CVar.REPLICATED);
 
         public static readonly CVarDef<int> ViewportWidth =
-            CVarDef.Create("viewport.width", 21, CVar.CLIENTONLY | CVar.ARCHIVE);
+            CVarDef.Create("viewport.width", 16, CVar.CLIENTONLY | CVar.ARCHIVE);
 
         public static readonly CVarDef<bool> ViewportVerticalFit =
             CVarDef.Create("viewport.vertical_fit", true, CVar.CLIENTONLY | CVar.ARCHIVE);
+
+        public static readonly CVarDef<string> ViewportFilter =
+            CVarDef.Create("viewport.filter", "LoraNoise", CVar.CLIENTONLY | CVar.ARCHIVE);
 
         /*
          * FOV
@@ -2211,7 +2220,7 @@ namespace Content.Shared.CCVar
         /// Toggles whether the walking key is a toggle or a held key.
         /// </summary>
         public static readonly CVarDef<bool> ToggleWalk =
-            CVarDef.Create("control.toggle_walk", false, CVar.CLIENTONLY | CVar.ARCHIVE);
+            CVarDef.Create("control.toggle_walk", true, CVar.CLIENTONLY | CVar.ARCHIVE);
 
         /// <summary>
         /// Whether the player mob is walking by default instead of running.

@@ -5,6 +5,8 @@
   isSubfloor: true
   footstepSounds:
     collection: FootstepAsteroid
+  barestepSounds:
+    collection: BarestepGrass
   heatCapacity: 10000
   weather: true
   indestructible: true
@@ -25,6 +27,8 @@
   isSubfloor: true
   footstepSounds:
     collection: FootstepAsteroid
+  barestepSounds:
+    collection: BarestepGrass
   heatCapacity: 10000
   weather: true
   indestructible: true
@@ -44,6 +48,8 @@
   isSubfloor: true
   footstepSounds:
     collection: FootstepAsteroid
+  barestepSounds:
+    collection: BarestepGrass
   heatCapacity: 10000
   weather: true
   indestructible: true
@@ -73,6 +79,8 @@
   isSubfloor: true
   footstepSounds:
     collection: FootstepGrass
+  barestepSounds:
+    collection: BarestepGrass
   itemDrop: FloorTileItemGrass
   heatCapacity: 10000
   weather: true
@@ -86,6 +94,8 @@
   isSubfloor: true
   footstepSounds:
     collection: FootstepAsteroid
+  barestepSounds:
+    collection: BarestepGrass
   heatCapacity: 10000
   weather: true
   indestructible: true

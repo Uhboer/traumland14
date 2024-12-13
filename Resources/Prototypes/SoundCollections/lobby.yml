@@ -1,6 +1,4 @@
 - type: soundCollection
   id: LobbyMusic
   files:
-    #- /Audio/Lobby/The_silence_shed_a_tear.ogg
-    - /Audio/Lobby/Rock_n_Roll_Gypsy.ogg
-    - /Audio/Lobby/Reflection.ogg
+    - /Audio/Lobby/loop_noden.ogg

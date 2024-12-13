@@ -41,6 +41,14 @@ public sealed class StandingStateSystem : EntitySystem
         }
     }
 
+    public bool IsDown(EntityUid uid, StandingStateComponent? standingState = null)
+    {
+        if (!Resolve(uid, ref standingState, false))
+            return false;
+
+        return standingState.CurrentState is StandingState.Lying or StandingState.GettingUp;
+    }
+
     public override void Initialize()
     {
         base.Initialize();

@@ -177,7 +177,7 @@
     - type: Clickable
     - type: FootstepModifier
       footstepSoundCollection:
-        collection: FootstepWater
+        collection: FootstepBlood
         params:
           volume: 3
     - type: Transform

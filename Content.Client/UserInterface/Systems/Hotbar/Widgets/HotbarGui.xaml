@@ -13,7 +13,7 @@
         <BoxContainer Name="_StorageContainer"
                       Access="Public"
                       HorizontalAlignment="Center"
-                      Margin="10">
+                      Margin="0">
             <storage:StorageContainer
                 Name="StoragePanel"
                 Visible="False"/>
@@ -28,7 +28,9 @@
             <inventory:ItemSlotButtonContainer
                 Name="MainHotbar"
                 SlotGroup="MainHotbar"
-                Margin="0 5"
+                VSeparationOverride="0"
+                HSeparationOverride="0"
+                Margin="0"
                 VerticalExpand="False"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Bottom"
@@ -38,6 +40,9 @@
             <inventory:ItemSlotButtonContainer
                 Name="SecondHotbar"
                 SlotGroup="SecondHotbar"
+                VSeparationOverride="0"
+                HSeparationOverride="0"
+                Margin="0"
                 VerticalAlignment="Bottom"
                 HorizontalAlignment="Right"
                 VerticalExpand="False"
