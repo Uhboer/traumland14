@@ -33,6 +33,7 @@
                             VerticalAlignment="Top"
                             HorizontalAlignment="Center"
                     />
+                    <targeting:TargetingControl Name="Targeting" Access="Protected" />
                     <hotbar:HotbarGui Name="Hotbar" Access="Protected"/>
                     <inventory:InventoryGui Name="Inventory" Access="Protected"/>
                 </BoxContainer>
@@ -59,9 +60,6 @@
                     <controls:CustomPanelContainer.PanelOverride>
                         <graphics:StyleBoxFlat BackgroundColor="#191919" />
                     </controls:CustomPanelContainer.PanelOverride>
-                    <BoxContainer Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Center">
-                        <targeting:TargetingControl Name="Targeting" Access="Protected" />
-                    </BoxContainer>
                     <BoxContainer Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
                         <alerts:AlertsUI Name="Alerts" Access="Protected" />
                     </BoxContainer>
