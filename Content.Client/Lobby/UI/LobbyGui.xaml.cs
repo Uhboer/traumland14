@@ -17,17 +17,19 @@ namespace Content.Client.Lobby.UI
         [Dependency] private readonly IClientConsoleHost _consoleHost = default!;
         [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
 
-        private readonly ShaderInstance _shader;
+        //private readonly ShaderInstance _shader;
 
         public LobbyGui()
         {
             RobustXamlLoader.Load(this);
             IoCManager.InjectDependencies(this);
             SetAnchorPreset(MainContainer, LayoutPreset.Wide);
-            //SetAnchorPreset(Background, LayoutPreset.Wide);
+            SetAnchorPreset(Background, LayoutPreset.Wide);
 
-            _shader = _prototypeManager.Index<ShaderPrototype>("LobbyCRT").InstanceUnique();
-            Background.ShaderOverride = _shader;
+            // FIXME: For some reasong, it cannot be work with animated background.
+            // if we wanna use animated backs with shaders - make multiple textures and switch it
+            //_shader = _prototypeManager.Index<ShaderPrototype>("LobbyCRT").InstanceUnique();
+            //Background.ShaderOverride = _shader;
 
             LobbySong.SetMarkup(Loc.GetString("lobby-state-song-no-song-text"));
 

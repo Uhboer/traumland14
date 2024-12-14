@@ -10,6 +10,7 @@
     xmlns:info="clr-namespace:Content.Client.Info"
     xmlns:gfx="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
     xmlns:widgets="clr-namespace:Content.Client.UserInterface.Systems.Chat.Widgets"
+    xmlns:animatedBackground="clr-namespace:Content.Client._White.UI.AnimatedBackground"
     xmlns:buttons="clr-namespace:Content.Client._White.UI.Buttons">
     <!-- Background -->
     <BoxContainer Name="MainContainer" VerticalExpand="True" HorizontalExpand="True" Orientation="Horizontal"
@@ -18,7 +19,7 @@
             <!-- LHS Controls -->
             <BoxContainer Name="LeftSide" Orientation="Vertical" SeparationOverride="4" HorizontalExpand="True">
                 <Control Name="DefaultState" VerticalExpand="True">
-                    <TextureRect Access="Public" VerticalExpand="True" HorizontalExpand="True" Name="Background"
+                    <animatedBackground:AnimatedBackgroundControl Access="Public" VerticalExpand="True" HorizontalExpand="True" Name="Background"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
                         Stretch="KeepAspectCentered" />
