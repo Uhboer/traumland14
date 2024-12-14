@@ -26,7 +26,7 @@ namespace Content.Client.Lobby.UI
             SetAnchorPreset(MainContainer, LayoutPreset.Wide);
             //SetAnchorPreset(Background, LayoutPreset.Wide);
 
-            _shader = _prototypeManager.Index<ShaderPrototype>("CRT").InstanceUnique();
+            _shader = _prototypeManager.Index<ShaderPrototype>("LobbyCRT").InstanceUnique();
             Background.ShaderOverride = _shader;
 
             LobbySong.SetMarkup(Loc.GetString("lobby-state-song-no-song-text"));

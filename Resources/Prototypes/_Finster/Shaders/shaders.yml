@@ -9,6 +9,11 @@
   path: "/Textures/_Finster/Shaders/bettercrt.swsl"
 
 - type: shader
+  id: LobbyCRT
+  kind: source
+  path: "/Textures/_Finster/Shaders/lobbycrt.swsl"
+
+- type: shader
   id: LoraCRT
   kind: source
   path: "/Textures/_Finster/Shaders/gamecrt.swsl"
