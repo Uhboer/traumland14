@@ -11,6 +11,6 @@
           mapNameTemplate: "FinsterDev"
         - type: StationJobs
           overflowJobs:
-          - Captain
+          - Scourger
           availableJobs:
             Captain: [ -1, -1 ]

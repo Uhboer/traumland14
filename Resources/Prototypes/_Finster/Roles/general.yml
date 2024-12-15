@@ -1,0 +1,30 @@
+- type: playTimeTracker
+  id: RoleScourger
+
+- type: statusIcon
+  parent: JobIcon
+  id: RoleIconScourger
+  icon:
+    sprite: /Textures/Interface/Misc/job_icons.rsi
+    state: Passenger
+
+- type: job
+  id: Scourger # Бич
+  name: role-name-scourger
+  description: role-description-scourger
+  playTimeTracker: RoleScourger
+  startingGear: ScourgerGear
+  #icon: "RoleIconScourger"
+  supervisors: role-supervisors-everyone
+
+- type: startingGear
+  id: ScourgerGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitColorGrey
+    back: ClothingBackpackFilled
+    shoes: ClothingShoesColorBlack
+    #id: PassengerPDA
+    ears: ClothingHeadsetGrey
+  innerClothingSkirt: ClothingUniformJumpskirtColorGrey
+  satchel: ClothingBackpackSatchelFilled
+  duffelbag: ClothingBackpackDuffelFilled

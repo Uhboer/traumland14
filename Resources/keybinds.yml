@@ -42,7 +42,7 @@ binds:
   type: State
   key: S
 - function: Walk
-  type: State
+  type: Toggle
   key: R
 # Shuttle
 - function: ShuttleStrafeUp
