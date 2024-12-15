@@ -43,21 +43,23 @@ namespace Content.Client.Options.UI.Tabs
             foreach (var layout in Enum.GetValues(typeof(ScreenType)))
             {
                 var name = layout.ToString()!;
+                /*
                 HudLayoutOption.AddItem(name, id);
                 if (name == hudLayout)
                 {
                     HudLayoutOption.SelectId(id);
                 }
                 HudLayoutOption.SetItemMetadata(id, name);
-
+                */
                 id++;
             }
-
+            /*
             HudLayoutOption.OnItemSelected += args =>
             {
                 HudLayoutOption.SelectId(args.Id);
                 UpdateApplyButton();
             };
+            */
 
             // Channel can be null in replays so.
             // ReSharper disable once ConditionalAccessQualifierIsNonNullableAccordingToAPIContract
@@ -158,10 +160,12 @@ namespace Content.Client.Options.UI.Tabs
             _cfg.SetCVar(CCVars.StaticStorageUI, StaticStorageUI.Pressed);
             _cfg.SetCVar(CCVars.NoVisionFilters, DisableFiltersCheckBox.Pressed);
 
+            /*
             if (HudLayoutOption.SelectedMetadata is string opt)
             {
                 _cfg.SetCVar(CCVars.UILayout, opt);
             }
+            */
 
             _cfg.SaveToFile();
             UpdateApplyButton();
@@ -170,7 +174,7 @@ namespace Content.Client.Options.UI.Tabs
         private void UpdateApplyButton()
         {
             var isHudThemeSame = HudThemeOption.SelectedId == _hudThemeIdToIndex.GetValueOrDefault(_cfg.GetCVar(CVars.InterfaceTheme), 0);
-            var isLayoutSame = HudLayoutOption.SelectedMetadata is string opt && opt == _cfg.GetCVar(CCVars.UILayout);
+            //var isLayoutSame = HudLayoutOption.SelectedMetadata is string opt && opt == _cfg.GetCVar(CCVars.UILayout);
             var isDiscordSame = DiscordRich.Pressed == _cfg.GetCVar(CVars.DiscordEnabled);
             var isShowHeldItemSame = ShowHeldItemCheckBox.Pressed == _cfg.GetCVar(CCVars.HudHeldItemShow);
             var isCombatModeIndicatorsSame = ShowCombatModeIndicatorsCheckBox.Pressed == _cfg.GetCVar(CCVars.CombatModeIndicatorsPointShow);
@@ -190,7 +194,7 @@ namespace Content.Client.Options.UI.Tabs
             var isNoVisionFiltersSame = DisableFiltersCheckBox.Pressed == _cfg.GetCVar(CCVars.NoVisionFilters);
 
             ApplyButton.Disabled = isHudThemeSame &&
-                                   isLayoutSame &&
+                                   //isLayoutSame &&
                                    isDiscordSame &&
                                    isShowHeldItemSame &&
                                    isCombatModeIndicatorsSame &&

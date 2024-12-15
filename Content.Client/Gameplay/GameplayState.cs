@@ -96,6 +96,10 @@ namespace Content.Client.Gameplay
                 screenType = ScreenType.Separated;
             }
 
+            // We should'nt use overlay chat. So - disable it.
+            _uiManager.LoadScreen<SeparatedChatGameScreen>();
+
+            /*
             switch (screenType)
             {
                 case ScreenType.Separated:
@@ -105,6 +109,7 @@ namespace Content.Client.Gameplay
                     _uiManager.LoadScreen<OverlayChatGameScreen>();
                     break;
             }
+            */
 
             _loadController.LoadScreen();
         }
