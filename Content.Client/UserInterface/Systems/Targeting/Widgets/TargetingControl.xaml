@@ -9,15 +9,15 @@
         <TextureRect
             Name="TargetDoll"
             Stretch="KeepAspectCentered"
-            SetSize="96 192">
+            SetSize="192 192">
             <PanelContainer
-                SetSize="96 192"
+                SetSize="192 192"
                 Name="Panel"
                 Margin="0 0 0 0"
                 VerticalAlignment="Bottom"
                 HorizontalAlignment="Left">
+<!--
 
-                <!-- Right Arm -->
                 <TextureRect
                             Name="RightArmBackground"
                             Access="Public"
@@ -44,7 +44,7 @@
                     </TextureButton>
                 </TextureRect>
 
-                <!-- Right Hand -->
+
                 <TextureRect
                             Name="RightHandBackground"
                             Access="Public"
@@ -71,7 +71,7 @@
                     </TextureButton>
                 </TextureRect>
 
-                <!-- Head -->
+
                 <TextureRect
                             Name="HeadBackground"
                             Access="Public"
@@ -98,7 +98,7 @@
                     </TextureButton>
                 </TextureRect>
 
-                <!-- Torso -->
+
                 <TextureRect
                             Name="ChestBackground"
                             Access="Public"
@@ -125,7 +125,7 @@
                     </TextureButton>
                 </TextureRect>
 
-                <!-- Groin -->
+
                 <TextureRect
                             Name="GroinBackground"
                             Access="Public"
@@ -152,7 +152,7 @@
                     </TextureButton>
                 </TextureRect>
 
-                <!-- Left Leg -->
+
                 <TextureRect
                             Name="LeftLegBackground"
                             Access="Public"
@@ -205,7 +205,7 @@
                     </TextureButton>
                 </TextureRect>
 
-                <!-- Right Leg -->
+
                 <TextureRect
                             Name="RightLegBackground"
                             Access="Public"
@@ -258,7 +258,7 @@
                     </TextureButton>
                 </TextureRect>
 
-                <!-- Left Arm -->
+
                 <TextureRect
                             Name="LeftArmBackground"
                             Access="Public"
@@ -310,7 +310,7 @@
                                 HorizontalAlignment="Center"/>
                     </TextureButton>
                 </TextureRect>
-
+-->
             </PanelContainer>
         </TextureRect>
     </Control>

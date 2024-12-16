@@ -1621,6 +1621,7 @@ namespace Content.Client.Stylesheets
                         new StyleProperty(TextureButton.StylePropertyTexture, resCache.GetTexture("/Textures/Interface/Bwoink/un_pinned.png"))
                     }),
                 // Shitmed Edit Start
+                /*
                 Element<TextureButton>().Class("TargetDollButtonHead")
                     .Pseudo(TextureButton.StylePseudoClassHover)
                     .Prop(TextureButton.StylePropertyTexture, resCache.GetTexture("/Textures/Interface/Targeting/Doll/head_hover.png")),
@@ -1673,7 +1674,7 @@ namespace Content.Client.Stylesheets
                 //    .Pseudo(TextureButton.StylePseudoClassHover)
                 //    .Prop(TextureButton.StylePropertyTexture, resCache.GetTexture("/Textures/Interface/Targeting/Doll/mouth_hover.png")),
                 // Shitmed Edit End
-
+                */
             }).ToList());
         }
     }
