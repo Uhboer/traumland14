@@ -191,7 +191,7 @@ namespace Content.Client.UserInterface.Controls
                 Visible = false
             });
 
-            HighlightTexturePath = "slot_highlight";
+            HighlightTexturePath = "slot_highlight_back";
             BlockedTexturePath = "blocked";
         }
 
