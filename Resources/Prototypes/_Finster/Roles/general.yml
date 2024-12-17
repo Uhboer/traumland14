@@ -20,11 +20,6 @@
 - type: startingGear
   id: ScourgerGear
   equipment:
-    jumpsuit: ClothingUniformJumpsuitColorGrey
-    back: ClothingBackpackFilled
-    shoes: ClothingShoesColorBlack
-    #id: PassengerPDA
-    ears: ClothingHeadsetGrey
-  innerClothingSkirt: ClothingUniformJumpskirtColorGrey
-  satchel: ClothingBackpackSatchelFilled
-  duffelbag: ClothingBackpackDuffelFilled
+    jumpsuit: FinsterClothingUniformJumpsuitGambeson
+    back: ClothingBackpackSatchelLeather
+    shoes: FinsterClothingShoesLeatherShoes

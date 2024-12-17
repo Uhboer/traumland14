@@ -13,4 +13,4 @@
           overflowJobs:
           - Scourger
           availableJobs:
-            Captain: [ -1, -1 ]
+            Scourger: [ -1, -1 ]

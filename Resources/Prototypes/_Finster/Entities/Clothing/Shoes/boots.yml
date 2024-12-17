@@ -1,0 +1,112 @@
+- type: entity
+  parent: ClothingShoesBase
+  id: FinsterClothingShoesBlackBoots
+  name: darken boots
+  description: IN DEV
+  components:
+  - type: Sprite
+    sprite: _Finster/Clothing/Shoes/Boots/black_boots.rsi
+  - type: Clothing
+    sprite: _Finster/Clothing/Shoes/Boots/black_boots.rsi
+
+- type: entity
+  parent: ClothingShoesBase
+  id: FinsterClothingShoesJesterShoes
+  name: jester shoes
+  description: IN DEV
+  components:
+  - type: Sprite
+    sprite: _Finster/Clothing/Shoes/Boots/jester_shoes.rsi
+  - type: Clothing
+    sprite: _Finster/Clothing/Shoes/Boots/jester_shoes.rsi
+  - type: FootstepModifier
+    footstepSoundCollection:
+        collection: FootstepJester
+
+- type: entity
+  parent: ClothingShoesBase
+  id: FinsterClothingShoesLeatherShoes
+  name: leather boots
+  description: IN DEV
+  components:
+  - type: Sprite
+    sprite: _Finster/Clothing/Shoes/Boots/leather_shoes.rsi
+  - type: Clothing
+    sprite: _Finster/Clothing/Shoes/Boots/leather_shoes.rsi
+
+- type: entity
+  parent: ClothingShoesBase
+  id: FinsterClothingShoesNobleBoots
+  name: noble boots
+  description: IN DEV
+  components:
+  - type: Sprite
+    sprite: _Finster/Clothing/Shoes/Boots/noble_boots.rsi
+  - type: Clothing
+    sprite: _Finster/Clothing/Shoes/Boots/noble_boots.rsi
+
+- type: entity
+  parent: ClothingShoesBase
+  id: FinsterClothingShoesArmorBoots
+  name: steel boots
+  description: IN DEV
+  components:
+  - type: Sprite
+    sprite: _Finster/Clothing/Shoes/Boots/armor_boots.rsi
+  - type: Clothing
+    sprite: _Finster/Clothing/Shoes/Boots/armor_boots.rsi
+
+- type: entity
+  parent: ClothingShoesBase
+  id: FinsterClothingShoesBuckleShoes
+  name: buckle shoes
+  description: IN DEV
+  components:
+  - type: Sprite
+    sprite: _Finster/Clothing/Shoes/Boots/buckle_shoes.rsi
+  - type: Clothing
+    sprite: _Finster/Clothing/Shoes/Boots/buckle_shoes.rsi
+
+- type: entity
+  parent: ClothingShoesBase
+  id: FinsterClothingShoesVBoots
+  name: boots from unknown ore
+  description: IN DEV
+  components:
+  - type: Sprite
+    sprite: _Finster/Clothing/Shoes/Boots/v_boots.rsi
+  - type: Clothing
+    sprite: _Finster/Clothing/Shoes/Boots/v_boots.rsi
+
+- type: entity
+  parent: ClothingShoesBase
+  id: FinsterClothingShoesShalalShoes
+  name: shalal shoes
+  description: IN DEV
+  components:
+  - type: Sprite
+    sprite: _Finster/Clothing/Shoes/Boots/shalal_shoes.rsi
+  - type: Clothing
+    sprite: _Finster/Clothing/Shoes/Boots/shalal_shoes.rsi
+
+- type: entity
+  parent: ClothingShoesBase
+  id: FinsterClothingShoesSandalsShoes
+  name: sandals
+  description: IN DEV
+  components:
+  - type: Sprite
+    sprite: _Finster/Clothing/Shoes/Boots/sandals_shoes.rsi
+  - type: Clothing
+    sprite: _Finster/Clothing/Shoes/Boots/sandals_shoes.rsi
+
+- type: entity
+  parent: ClothingShoesBase
+  id: FinsterClothingShoesSimpleShoes
+  name: simple shoes
+  description: IN DEV
+  components:
+  - type: Sprite
+    sprite: _Finster/Clothing/Shoes/Boots/simple_shoes.rsi
+  - type: Clothing
+    sprite: _Finster/Clothing/Shoes/Boots/simple_shoes.rsi
