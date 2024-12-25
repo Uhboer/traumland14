@@ -169,6 +169,7 @@ namespace Content.Client.Entry
             //_userInterfaceManager.SetActiveTheme(_configManager.GetCVar(CVars.InterfaceTheme));
             _userInterfaceManager.SetActiveTheme("SS14LoraAshenTheme");
             //_configManager.SetCVar(CCVars.ToggleWalk, true);
+            _configManager.SetCVar(CCVars.ChatEnableFancyBubbles, false);
 
             _documentParsingManager.Initialize();
             _joinQueue.Initialize();

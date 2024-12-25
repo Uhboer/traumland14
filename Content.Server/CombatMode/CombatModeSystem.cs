@@ -1,13 +1,20 @@
+using Content.Server._White.Notice;
 using Content.Server.NPC.HTN;
 using Content.Shared.Alert;
 using Content.Shared.CombatMode;
+using Content.Shared.Popups;
 using JetBrains.Annotations;
+using Robust.Shared.Configuration;
+using Robust.Shared.Console;
 
 namespace Content.Server.CombatMode;
 
 public sealed class CombatModeSystem : SharedCombatModeSystem
 {
+    [Dependency] private readonly IConsoleHost _consoleHost = default!;
+    [Dependency] private readonly INetConfigurationManager _netConfigManager = default!;
     [Dependency] private readonly AlertsSystem _alerts = default!;
+    [Dependency] private readonly NoticeSystem _notice = default!;
 
     public override void Initialize()
     {
@@ -46,6 +53,11 @@ public sealed class CombatModeSystem : SharedCombatModeSystem
     {
         PerformAction(uid, comp, uid);
         RefreshAlert(uid, comp);
+
+        // Send notice
+        _notice.SendNoticeMessage(uid,
+            comp.IsInCombatMode ? Loc.GetString("notice-combatmode-on") : Loc.GetString("notice-combatmode-off"),
+            PopupType.SmallCaution);
     }
 
     public void RefreshAlert(EntityUid uid, CombatModeComponent comp)

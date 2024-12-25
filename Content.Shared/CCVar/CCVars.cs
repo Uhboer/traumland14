@@ -2039,7 +2039,7 @@ namespace Content.Shared.CCVar
             CVarDef.Create("chat.show_typing_indicator", true, CVar.CLIENTONLY);
 
         public static readonly CVarDef<bool> ChatEnableFancyBubbles =
-            CVarDef.Create("chat.enable_fancy_bubbles", true, CVar.CLIENTONLY | CVar.ARCHIVE, "Toggles displaying fancy speech bubbles, which display the speaking character's name.");
+            CVarDef.Create("chat.enable_fancy_bubbles", false, CVar.CLIENTONLY | CVar.ARCHIVE, "Toggles displaying fancy speech bubbles, which display the speaking character's name.");
 
         public static readonly CVarDef<bool> ChatFancyNameBackground =
             CVarDef.Create("chat.fancy_name_background", false, CVar.CLIENTONLY | CVar.ARCHIVE, "Toggles displaying a background under the speaking character's name.");
@@ -2839,5 +2839,12 @@ namespace Content.Shared.CCVar
             CVarDef.Create("launch.shader_viewer", false, CVar.CLIENTONLY);
 
         #endregion
+
+        # region White Dream (OLD)
+
+        public static readonly CVarDef<bool> LogChatActions =
+            CVarDef.Create("white.log_to_chat", true, CVar.CLIENT | CVar.ARCHIVE | CVar.REPLICATED);
+
+        # endregion
     }
 }

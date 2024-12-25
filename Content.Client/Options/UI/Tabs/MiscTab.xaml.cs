@@ -73,8 +73,8 @@ namespace Content.Client.Options.UI.Tabs
             ShowCombatModeIndicatorsCheckBox.OnToggled += OnCheckBoxToggled;
             ShowOfferModeIndicatorsCheckBox.OnToggled += OnCheckBoxToggled;
             OpaqueStorageWindowCheckBox.OnToggled += OnCheckBoxToggled;
-            FancySpeechBubblesCheckBox.OnToggled += OnCheckBoxToggled;
-            FancyNameBackgroundsCheckBox.OnToggled += OnCheckBoxToggled;
+            //FancySpeechBubblesCheckBox.OnToggled += OnCheckBoxToggled;
+            //FancyNameBackgroundsCheckBox.OnToggled += OnCheckBoxToggled;
             EnableColorNameCheckBox.OnToggled += OnCheckBoxToggled;
             ColorblindFriendlyCheckBox.OnToggled += OnCheckBoxToggled;
             ReducedMotionCheckBox.OnToggled += OnCheckBoxToggled;
@@ -92,8 +92,8 @@ namespace Content.Client.Options.UI.Tabs
             ShowCombatModeIndicatorsCheckBox.Pressed = _cfg.GetCVar(CCVars.CombatModeIndicatorsPointShow);
             ShowOfferModeIndicatorsCheckBox.Pressed = _cfg.GetCVar(CCVars.OfferModeIndicatorsPointShow);
             OpaqueStorageWindowCheckBox.Pressed = _cfg.GetCVar(CCVars.OpaqueStorageWindow);
-            FancySpeechBubblesCheckBox.Pressed = _cfg.GetCVar(CCVars.ChatEnableFancyBubbles);
-            FancyNameBackgroundsCheckBox.Pressed = _cfg.GetCVar(CCVars.ChatFancyNameBackground);
+            //FancySpeechBubblesCheckBox.Pressed = _cfg.GetCVar(CCVars.ChatEnableFancyBubbles);
+            //FancyNameBackgroundsCheckBox.Pressed = _cfg.GetCVar(CCVars.ChatFancyNameBackground);
             EnableColorNameCheckBox.Pressed = _cfg.GetCVar(CCVars.ChatEnableColorName);
             ColorblindFriendlyCheckBox.Pressed = _cfg.GetCVar(CCVars.AccessibilityColorblindFriendly);
             ReducedMotionCheckBox.Pressed = _cfg.GetCVar(CCVars.ReducedMotion);
@@ -149,8 +149,8 @@ namespace Content.Client.Options.UI.Tabs
             _cfg.SetCVar(CCVars.OpaqueStorageWindow, OpaqueStorageWindowCheckBox.Pressed);
             _cfg.SetCVar(CCVars.ShowOocPatronColor, ShowOocPatronColor.Pressed);
             _cfg.SetCVar(CCVars.LoocAboveHeadShow, ShowLoocAboveHeadCheckBox.Pressed);
-            _cfg.SetCVar(CCVars.ChatEnableFancyBubbles, FancySpeechBubblesCheckBox.Pressed);
-            _cfg.SetCVar(CCVars.ChatFancyNameBackground, FancyNameBackgroundsCheckBox.Pressed);
+            //_cfg.SetCVar(CCVars.ChatEnableFancyBubbles, FancySpeechBubblesCheckBox.Pressed);
+            //_cfg.SetCVar(CCVars.ChatFancyNameBackground, FancyNameBackgroundsCheckBox.Pressed);
             _cfg.SetCVar(CCVars.ChatEnableColorName, EnableColorNameCheckBox.Pressed);
             _cfg.SetCVar(CCVars.AccessibilityColorblindFriendly, ColorblindFriendlyCheckBox.Pressed);
             _cfg.SetCVar(CCVars.ReducedMotion, ReducedMotionCheckBox.Pressed);
@@ -182,8 +182,8 @@ namespace Content.Client.Options.UI.Tabs
             var isOpaqueStorageWindow = OpaqueStorageWindowCheckBox.Pressed == _cfg.GetCVar(CCVars.OpaqueStorageWindow);
             var isOocPatronColorShowSame = ShowOocPatronColor.Pressed == _cfg.GetCVar(CCVars.ShowOocPatronColor);
             var isLoocShowSame = ShowLoocAboveHeadCheckBox.Pressed == _cfg.GetCVar(CCVars.LoocAboveHeadShow);
-            var isFancyChatSame = FancySpeechBubblesCheckBox.Pressed == _cfg.GetCVar(CCVars.ChatEnableFancyBubbles);
-            var isFancyBackgroundSame = FancyNameBackgroundsCheckBox.Pressed == _cfg.GetCVar(CCVars.ChatFancyNameBackground);
+            //var isFancyChatSame = FancySpeechBubblesCheckBox.Pressed == _cfg.GetCVar(CCVars.ChatEnableFancyBubbles);
+            //var isFancyBackgroundSame = FancyNameBackgroundsCheckBox.Pressed == _cfg.GetCVar(CCVars.ChatFancyNameBackground);
             var isEnableColorNameSame = EnableColorNameCheckBox.Pressed == _cfg.GetCVar(CCVars.ChatEnableColorName);
             var isColorblindFriendly = ColorblindFriendlyCheckBox.Pressed == _cfg.GetCVar(CCVars.AccessibilityColorblindFriendly);
             var isReducedMotionSame = ReducedMotionCheckBox.Pressed == _cfg.GetCVar(CCVars.ReducedMotion);
@@ -202,8 +202,8 @@ namespace Content.Client.Options.UI.Tabs
                                    isOpaqueStorageWindow &&
                                    isOocPatronColorShowSame &&
                                    isLoocShowSame &&
-                                   isFancyChatSame &&
-                                   isFancyBackgroundSame &&
+                                   //isFancyChatSame &&
+                                   //isFancyBackgroundSame &&
                                    isEnableColorNameSame &&
                                    isColorblindFriendly &&
                                    isReducedMotionSame &&

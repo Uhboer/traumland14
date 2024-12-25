@@ -1,4 +1,7 @@
 using System.Linq;
+using Content.Client.Chat.Managers;
+using Content.Shared.CCVar;
+using Content.Shared.Chat;
 using Content.Shared.Examine;
 using Content.Shared.GameTicking;
 using Content.Shared.Popups;
@@ -26,6 +29,7 @@ namespace Content.Client.Popups
         [Dependency] private readonly IGameTiming _timing = default!;
         [Dependency] private readonly IUserInterfaceManager _uiManager = default!;
         [Dependency] private readonly IReplayRecordingManager _replayRecording = default!;
+        [Dependency] private readonly IChatManager _chatManager = default!;
         [Dependency] private readonly ExamineSystemShared _examine = default!;
         [Dependency] private readonly SharedTransformSystem _transform = default!;
 
@@ -38,6 +42,8 @@ namespace Content.Client.Popups
         public const float MinimumPopupLifetime = 0.7f;
         public const float MaximumPopupLifetime = 5f;
         public const float PopupLifetimePerCharacter = 0.04f;
+
+        private bool isLogging;
 
         public override void Initialize()
         {
@@ -56,6 +62,9 @@ namespace Content.Client.Popups
                     _examine,
                     _transform,
                     this));
+
+            isLogging = _configManager.GetCVar(CCVars.LogChatActions);
+            _configManager.OnValueChanged(CCVars.LogChatActions, (log) => { isLogging = log; });
         }
 
         public override void Shutdown()
@@ -85,6 +94,22 @@ namespace Content.Client.Popups
             };
 
             _aliveWorldLabels.Add(label);
+
+            var fontSizeDict = new Dictionary<PopupType, string>
+            {
+                { PopupType.Medium, "12" },
+                { PopupType.MediumCaution, "12" },
+                { PopupType.Large, "15" },
+                { PopupType.LargeCaution, "15" }
+            };
+
+            var fontsize = fontSizeDict.ContainsKey(type) ? fontSizeDict[type] : "10";
+            var fontcolor = (type == PopupType.LargeCaution || type == PopupType.MediumCaution || type == PopupType.SmallCaution) ? "c62828" : "aeabc4";
+
+            if (isLogging)
+            {
+                _chatManager.SendMessage($"notice [font size={fontsize}][color=#{fontcolor}]{message}[/color][/font]", ChatSelectChannel.Console);
+            }
         }
 
         #region Abstract Method Implementations
