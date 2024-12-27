@@ -1,5 +1,5 @@
 using Content.Shared.Actions;
-using Content.Shared.CombatMode;
+using Content.Shared._White.Intent;
 using Content.Shared.Communications;
 using Content.Shared.CriminalRecords.Components;
 using Content.Shared.Examine;
@@ -21,7 +21,7 @@ public abstract class SharedNinjaGlovesSystem : EntitySystem
 {
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] protected readonly SharedAppearanceSystem Appearance = default!;
-    [Dependency] private readonly SharedCombatModeSystem _combatMode = default!;
+    [Dependency] private readonly SharedIntentSystem _intent = default!; // WD EDIT
     [Dependency] protected readonly SharedInteractionSystem Interaction = default!;
     [Dependency] protected readonly SharedPopupSystem Popup = default!;
     [Dependency] private readonly ActionContainerSystem _actionContainer = default!;
@@ -109,7 +109,7 @@ public abstract class SharedNinjaGlovesSystem : EntitySystem
     {
         target = args.Target;
         return _timing.IsFirstTimePredicted
-            && !_combatMode.IsInCombatMode(uid)
+            && !_intent.CanAttack(uid) // WD EDIT
             && TryComp<HandsComponent>(uid, out var hands)
             && hands.ActiveHandEntity == null
             && Interaction.InRangeUnobstructed(uid, target);

@@ -1,7 +1,8 @@
 using System.Linq;
 using Content.Client.Gameplay;
 using Content.Shared.CCVar;
-using Content.Shared.CombatMode;
+using Content.Shared._White.Intent;
+using Content.Shared._White.Intent.Event;
 using Content.Shared.Effects;
 using Content.Shared.Hands.Components;
 using Content.Shared.Mobs.Components;
@@ -30,6 +31,7 @@ public sealed partial class MeleeWeaponSystem : SharedMeleeWeaponSystem
     [Dependency] private readonly AnimationPlayerSystem _animation = default!;
     [Dependency] private readonly InputSystem _inputSystem = default!;
     [Dependency] private readonly SharedColorFlashEffectSystem _color = default!;
+    [Dependency] private readonly SharedIntentSystem _intent = default!; // WD EDIT
 
     private EntityQuery<TransformComponent> _xformQuery;
 
@@ -66,7 +68,7 @@ public sealed partial class MeleeWeaponSystem : SharedMeleeWeaponSystem
         if (!TryGetWeapon(entity, out var weaponUid, out var weapon))
             return;
 
-        if (!CombatMode.IsInCombatMode(entity) || !Blocker.CanAttack(entity))
+        if (!_intent.CanAttack(entity) || !Blocker.CanAttack(entity))
         {
             weapon.Attacking = false;
             return;
@@ -122,22 +124,9 @@ public sealed partial class MeleeWeaponSystem : SharedMeleeWeaponSystem
 
         // Heavy attack.
         if (!weapon.DisableHeavy &&
-            (!weapon.SwapKeys ? altDown : useDown))
+            (!weapon.SwapKeys ? altDown : useDown) &&
+            _intent.GetIntent(entity) == Intent.Harm)
         {
-            // If it's an unarmed attack then do a disarm
-            if (weapon.AltDisarm && weaponUid == entity)
-            {
-                EntityUid? target = null;
-
-                if (_stateManager.CurrentState is GameplayStateBase screen)
-                {
-                    target = screen.GetClickedEntity(mousePos);
-                }
-
-                EntityManager.RaisePredictiveEvent(new DisarmAttackEvent(GetNetEntity(target), GetNetCoordinates(coordinates)));
-                return;
-            }
-
             ClientHeavyAttack(entity, coordinates, weaponUid, weapon);
             return;
         }
@@ -165,6 +154,20 @@ public sealed partial class MeleeWeaponSystem : SharedMeleeWeaponSystem
             if (Interaction.CombatModeCanHandInteract(entity, target))
                 return;
 
+            // WD EDIT START
+            if (weapon.AltDisarm && weaponUid == entity && _intent.GetIntent(entity) == Intent.Disarm)
+            {
+                RaisePredictiveEvent(new DisarmAttackEvent(GetNetEntity(target), GetNetCoordinates(coordinates)));
+                return;
+            }
+
+            if (weaponUid == entity && _intent.GetIntent(entity) == Intent.Grab)
+            {
+                RaisePredictiveEvent(new GrabAttackEvent(GetNetEntity(target), GetNetCoordinates(coordinates)));
+                return;
+            }
+            // WD EDIT END
+
             RaisePredictiveEvent(new LightAttackEvent(GetNetEntity(target), GetNetEntity(weaponUid), GetNetCoordinates(coordinates)));
         }
     }
@@ -189,11 +192,8 @@ public sealed partial class MeleeWeaponSystem : SharedMeleeWeaponSystem
         if (!base.DoDisarm(user, ev, meleeUid, component, session))
             return false;
 
-        if (!TryComp<CombatModeComponent>(user, out var combatMode) ||
-            combatMode.CanDisarm != true)
-        {
+        if (!TryComp<IntentComponent>(user, out var intent) || !intent.CanDisarm) // WD EDIT
             return false;
-        }
 
         var target = GetEntity(ev.Target);
 

@@ -101,6 +101,7 @@
     prototype: Arachne
     requiredLegs: 8
   - type: Speech
+    fontId: Allods
     speechSounds: Alto
   - type: Inventory
     templateId: anytaur

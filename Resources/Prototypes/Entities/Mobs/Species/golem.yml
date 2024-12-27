@@ -164,6 +164,7 @@
 #   - type: Appearance
 #   - type: RotationVisuals
 #   - type: CombatMode
+#   - type: Intent
 #     canDisarm: true
 #   - type: Climbing
 #   - type: Cuffable

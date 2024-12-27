@@ -24,6 +24,7 @@
         state: alive
     - type: Carriable # This one is for you, deltanedas o7
     - type: CombatMode
+    - type: Intent
     - type: Physics
     - type: Fixtures
       fixtures:

@@ -36,6 +36,7 @@
       availableModes:
         - SemiAuto
     - type: CombatMode
+    - type: Intent
     - type: BasicEntityAmmoProvider
       proto: CartridgePistol
       capacity: 10

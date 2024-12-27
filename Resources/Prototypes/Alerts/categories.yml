@@ -45,3 +45,15 @@
 
 - type: alertCategory
   id: NALaying
+
+- type: alertCategory
+  id: IntentHelp
+
+- type: alertCategory
+  id: IntentDisarm
+
+- type: alertCategory
+  id: IntentGrab
+
+- type: alertCategory
+  id: IntentHarm

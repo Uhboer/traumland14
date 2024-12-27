@@ -131,6 +131,8 @@
   canShovel: true # Delta V
   footstepSounds:
     collection: FootstepSnow
+  barestepSounds:
+    collection: BarestepGrass
   heatCapacity: 10000
   weather: true
   indestructible: true
@@ -163,6 +165,8 @@
   isSubfloor: true
   footstepSounds:
     collection: FootstepSnow
+  barestepSounds:
+    collection: BarestepGrass
   heatCapacity: 10000
   weather: true
   indestructible: true

@@ -131,6 +131,7 @@
       Unsexed: Mouse
     wilhelmProbability: 0.01
   - type: CombatMode
+  - type: Intent
   - type: MeleeWeapon
     soundHit:
         path: /Audio/Effects/bite.ogg

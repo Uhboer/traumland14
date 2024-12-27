@@ -3,7 +3,6 @@ using Content.Server.CombatMode.Disarm;
 using Content.Server.Movement.Systems;
 using Content.Shared.Actions.Events;
 using Content.Shared.Administration.Components;
-using Content.Shared.CombatMode;
 using Content.Shared.Contests;
 using Content.Shared.Damage.Events;
 using Content.Shared.Damage.Systems;
@@ -17,6 +16,9 @@ using Content.Shared.Speech.Components;
 using Content.Shared.StatusEffect;
 using Content.Shared.Weapons.Melee;
 using Content.Shared.Weapons.Melee.Events;
+using Content.Shared._White.Intent;
+using Content.Shared._White.Intent.Event;
+using Content.Shared.Movement.Pulling.Systems;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Map;
@@ -39,6 +41,7 @@ public sealed class MeleeWeaponSystem : SharedMeleeWeaponSystem
     [Dependency] private readonly MobStateSystem _mobState = default!;
     [Dependency] private readonly SharedColorFlashEffectSystem _color = default!;
     [Dependency] private readonly ContestsSystem _contests = default!;
+    [Dependency] private readonly PullingSystem _pulling = default!; // WD EDIT
 
     public override void Initialize()
     {
@@ -103,11 +106,8 @@ public sealed class MeleeWeaponSystem : SharedMeleeWeaponSystem
         if (!base.DoDisarm(user, ev, meleeUid, component, session))
             return false;
 
-        if (!TryComp<CombatModeComponent>(user, out var combatMode) ||
-            combatMode.CanDisarm != true)
-        {
+        if (!TryComp<IntentComponent>(user, out var intent) || !intent.CanDisarm) // WD EDIT
             return false;
-        }
 
         var target = GetEntity(ev.Target!.Value);
 
@@ -148,7 +148,7 @@ public sealed class MeleeWeaponSystem : SharedMeleeWeaponSystem
         if (attemptEvent.Cancelled)
             return false;
 
-        var chance = CalculateDisarmChance(user, target, inTargetHand, combatMode);
+        var chance = CalculateDisarmChance(user, target, inTargetHand, intent);
         if (!_random.Prob(chance))
         {
             // Don't play a sound as the swing is already predicted.
@@ -172,7 +172,7 @@ public sealed class MeleeWeaponSystem : SharedMeleeWeaponSystem
         PopupSystem.PopupEntity(msgOther, user, filterOther, true);
         PopupSystem.PopupEntity(msgUser, target, user);
 
-        _audio.PlayPvs(combatMode.DisarmSuccessSound, user, AudioParams.Default.WithVariation(0.025f).WithVolume(5f));
+        _audio.PlayPvs(intent.DisarmSuccessSound, user, AudioParams.Default.WithVariation(0.025f).WithVolume(5f));
         AdminLogger.Add(LogType.DisarmedAction, $"{ToPrettyString(user):user} used disarm on {ToPrettyString(target):target}");
 
         var staminaDamage = (TryComp<ShovingComponent>(user, out var shoving) ? shoving.StaminaDamage : ShovingComponent.DefaultStaminaDamage)
@@ -184,8 +184,33 @@ public sealed class MeleeWeaponSystem : SharedMeleeWeaponSystem
         if (!eventArgs.Handled)
             return false;
 
-        _audio.PlayPvs(combatMode.DisarmSuccessSound, user, AudioParams.Default.WithVariation(0.025f).WithVolume(5f));
+        _audio.PlayPvs(intent.DisarmSuccessSound, user, AudioParams.Default.WithVariation(0.025f).WithVolume(5f));
         AdminLogger.Add(LogType.DisarmedAction, $"{ToPrettyString(user):user} used disarm on {ToPrettyString(target):target}");
+
+        return true;
+    }
+
+    protected override bool DoGrab(EntityUid user, GrabAttackEvent ev, EntityUid meleeUid, MeleeWeaponComponent component, ICommonSession? session)
+    {
+        if (!base.DoGrab(user, ev, meleeUid, component, session))
+            return false;
+
+        if (!TryComp<IntentComponent>(user, out var intent) || !intent.CanGrab) // WD EDIT
+            return false;
+
+        var target = GetEntity(ev.Target!.Value);
+
+        if (_mobState.IsIncapacitated(target))
+            return false;
+
+        if (!HasComp<HandsComponent>(target))
+            return false;
+
+        if (!InRange(user, target, component.Range, session))
+            return false;
+
+        _pulling.TryStartPull(user, target);
+        _pulling.TryGrab(target, user);
 
         return true;
     }
@@ -210,7 +235,7 @@ public sealed class MeleeWeaponSystem : SharedMeleeWeaponSystem
         _color.RaiseEffect(Color.Red, targets, filter);
     }
 
-    private float CalculateDisarmChance(EntityUid disarmer, EntityUid disarmed, EntityUid? inTargetHand, CombatModeComponent disarmerComp)
+    private float CalculateDisarmChance(EntityUid disarmer, EntityUid disarmed, EntityUid? inTargetHand, IntentComponent disarmerComp)
     {
         if (HasComp<DisarmProneComponent>(disarmer))
             return 1.0f;

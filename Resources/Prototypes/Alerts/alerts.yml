@@ -4,6 +4,10 @@
   # If item is not in list it will go at the bottom (ties broken by alert type enum value)
   id: BaseAlertOrder
   order:
+    - category: IntentHelp
+    - category: IntentDisarm
+    - category: IntentHarm
+    - category: IntentGrab
     - category: NACombatMode
     - category: NALaying
     - category: NAWalking
@@ -394,17 +398,37 @@
 
 - type: alert
   id: Pulled
-  icons: [ /Textures/Interface/Alerts/Pull/pulled.png ]
+  icons:
+  - sprite: /Textures/Interface/Alerts/pull.rsi
+    state: pulled
+  - sprite: /Textures/Interface/Alerts/pull.rsi
+    state: grabbed-soft
+  - sprite: /Textures/Interface/Alerts/pull.rsi
+    state: grabbed-hard
+  - sprite: /Textures/Interface/Alerts/pull.rsi
+    state: grabbed-choke
   onClick: !type:StopBeingPulled  { }
   name: alerts-pulled-name
   description: alerts-pulled-desc
+  minSeverity: 0
+  maxSeverity: 3
 
 - type: alert
   id: Pulling
-  icons: [ /Textures/Interface/Alerts/Pull/pulling.png ]
+  icons:
+  - sprite: /Textures/Interface/Alerts/pull.rsi
+    state: pulling
+  - sprite: /Textures/Interface/Alerts/pull.rsi
+    state: grab-soft
+  - sprite: /Textures/Interface/Alerts/pull.rsi
+    state: grab-hard
+  - sprite: /Textures/Interface/Alerts/pull.rsi
+    state: grab-choke
   onClick: !type:StopPulling  { }
   name: alerts-pulling-name
   description: alerts-pulling-desc
+  minSeverity: 0
+  maxSeverity: 3
 
 - type: alert
   id: Bleed
@@ -483,6 +507,62 @@
     state: laying1
   name: alerts-laying-name
   description: alerts-laying-desc
+  minSeverity: 0
+  maxSeverity: 1
+
+- type: alert
+  id: IntentHelp
+  category: IntentHelp
+  onClick: !type:ToggleIntentHelpAlert { }
+  icons:
+  - sprite: /Textures/Interface/Alerts/Intents/intent_help.rsi
+    state: intent0
+  - sprite: /Textures/Interface/Alerts/Intents/intent_help.rsi
+    state: intent1
+  name: alerts-intent-help-name
+  description: alerts-intent-help-desc
+  minSeverity: 0
+  maxSeverity: 1
+
+- type: alert
+  id: IntentDisarm
+  category: IntentDisarm
+  onClick: !type:ToggleIntentDisarmAlert { }
+  icons:
+  - sprite: /Textures/Interface/Alerts/Intents/intent_disarm.rsi
+    state: intent0
+  - sprite: /Textures/Interface/Alerts/Intents/intent_disarm.rsi
+    state: intent1
+  name: alerts-intent-disarm-name
+  description: alerts-intent-disarm-desc
+  minSeverity: 0
+  maxSeverity: 1
+
+- type: alert
+  id: IntentGrab
+  category: IntentGrab
+  onClick: !type:ToggleIntentGrabAlert { }
+  icons:
+  - sprite: /Textures/Interface/Alerts/Intents/intent_grab.rsi
+    state: intent0
+  - sprite: /Textures/Interface/Alerts/Intents/intent_grab.rsi
+    state: intent1
+  name: alerts-intent-grab-name
+  description: alerts-intent-grab-desc
+  minSeverity: 0
+  maxSeverity: 1
+
+- type: alert
+  id: IntentHarm
+  category: IntentHarm
+  onClick: !type:ToggleIntentHarmAlert { }
+  icons:
+  - sprite: /Textures/Interface/Alerts/Intents/intent_harm.rsi
+    state: intent0
+  - sprite: /Textures/Interface/Alerts/Intents/intent_harm.rsi
+    state: intent1
+  name: alerts-intent-harm-name
+  description: alerts-intent-harm-desc
   minSeverity: 0
   maxSeverity: 1
 

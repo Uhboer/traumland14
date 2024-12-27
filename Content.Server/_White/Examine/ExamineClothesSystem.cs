@@ -36,7 +36,8 @@ namespace Content.Server._White.Examine
 
             if (should)
             {
-                _consoleHost.RemoteExecuteCommand(actorComponent.PlayerSession, $"notice [font size=10][color=#aeabc4]{message}[/color][/font]");
+                var formatedMessage = Loc.GetString("notice-command", ("fontsize", "10"), ("fontcolor", "aeabc4"), ("message", message));
+                _consoleHost.RemoteExecuteCommand(actorComponent.PlayerSession, $"notice {formatedMessage}");
             }
         }
 

@@ -87,6 +87,7 @@
       types:
         Piercing: 5
   - type: Speech
+    fontId: Allods
     speechSounds: Harpy
     speechVerb: Harpy
   - type: Vocal

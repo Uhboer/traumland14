@@ -1,5 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 using Content.Shared.Hands;
+using Content.Shared.Hands.Components;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Interaction;
 using Content.Shared.Inventory.Events;
@@ -230,11 +231,10 @@ public abstract class SharedVirtualItemSystem : EntitySystem
     /// </summary>
     public void DeleteVirtualItem(Entity<VirtualItemComponent> item, EntityUid user)
     {
-        var userEv = new VirtualItemDeletedEvent(item.Comp.BlockingEntity, user);
+        var userEv = new VirtualItemDeletedEvent(item.Comp.BlockingEntity, user, item.Owner);
         RaiseLocalEvent(user, userEv);
 
-        var targEv = new VirtualItemDeletedEvent(item.Comp.BlockingEntity, user);
-        RaiseLocalEvent(item.Comp.BlockingEntity, targEv);
+        var targEv = new VirtualItemDeletedEvent(item.Comp.BlockingEntity, user, item.Owner);
 
         if (TerminatingOrDeleted(item))
             return;

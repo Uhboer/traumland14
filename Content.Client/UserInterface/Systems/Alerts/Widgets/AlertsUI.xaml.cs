@@ -100,6 +100,17 @@ public sealed partial class AlertsUI : UIWidget
                     alertCategory.ID == "NAWalking" ||
                     alertCategory.ID == "NALaying")
                 alertControlsContainer = _nativeActionsGui.ActionsContainer;
+
+            if (alertCategory.ID == "IntentHelp" ||
+                    alertCategory.ID == "IntentDisarm" ||
+                    alertCategory.ID == "IntentGrab" ||
+                    alertCategory.ID == "IntentHarm")
+            {
+                // TODO: Oh fuck. I think i should find better way to make intents UI
+                alertControlsContainer = _nativeActionsGui.IntentsContainer;
+                if (alertControlsContainer.ChildCount >= 2)
+                    alertControlsContainer = _nativeActionsGui.IntentsContainer2;
+            }
         }
 
         return alertControlsContainer;
@@ -179,12 +190,46 @@ public sealed partial class AlertsUI : UIWidget
         if (alertState.ShowCooldown)
             cooldown = alertState.Cooldown;
 
-        var alertControl = new AlertControl(alert, alertState.Severity)
+        // TODO: Also need refactor alerts for making any custom buttons, like intents
+        if (alert.ID == "IntentHelp" ||
+                alert.ID == "IntentDisarm" ||
+                alert.ID == "IntentGrab" ||
+                alert.ID == "IntentHarm")
         {
-            Cooldown = cooldown
-        };
-        alertControl.OnPressed += AlertControlPressed;
-        return alertControl;
+            var alertControl = new AlertControl(alert, alertState.Severity, 2, 16)
+            {
+                Cooldown = cooldown
+            };
+
+            // Set names for keyboard binds
+            switch (alert.ID)
+            {
+                case "IntentHelp":
+                    alertControl.Name = "0";
+                    break;
+                case "IntentDisarm":
+                    alertControl.Name = "1";
+                    break;
+                case "IntentGrab":
+                    alertControl.Name = "2";
+                    break;
+                case "IntentHarm":
+                    alertControl.Name = "3";
+                    break;
+            }
+
+            alertControl.OnPressed += AlertControlPressed;
+            return alertControl;
+        }
+        else
+        {
+            var alertControl = new AlertControl(alert, alertState.Severity)
+            {
+                Cooldown = cooldown
+            };
+            alertControl.OnPressed += AlertControlPressed;
+            return alertControl;
+        }
     }
 
     private void AlertControlPressed(BaseButton.ButtonEventArgs args)

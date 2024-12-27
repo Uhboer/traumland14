@@ -4,8 +4,18 @@
     Name="NativeActionsInterface"
     MinSize="64 64"
     VerticalAlignment="Bottom"
-    Orientation="Horizontal"
+    Orientation="Vertical"
     HorizontalAlignment="Center">
+    <!-- Intents -->
+        <GridContainer Columns="2" Rows="2" Margin="0 0 0 0" VSeparationOverride="0" HSeparationOverride="0" HorizontalAlignment="Center" VerticalAlignment="Center" >
+            <PanelContainer Margin="0 0 0 0" >
+                <BoxContainer Name="IntentsContainer" Margin="0 0 0 0" Access="Public" Orientation="Horizontal" />
+            </PanelContainer>
+            <PanelContainer Margin="0 0 0 0" >
+                <BoxContainer Name="IntentsContainer2" Margin="0 0 0 0" Access="Public" Orientation="Horizontal" />
+            </PanelContainer >
+        </GridContainer>
+    <!-- Native Actions -->
     <GridContainer Columns="1" HorizontalAlignment="Center" VerticalAlignment="Center" >
         <PanelContainer >
             <BoxContainer Name="ActionsContainer" Access="Public" Orientation="Horizontal" />

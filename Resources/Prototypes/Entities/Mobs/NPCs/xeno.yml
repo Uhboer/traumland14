@@ -7,6 +7,7 @@
   components:
   - type: Insulated
   - type: CombatMode
+  - type: Intent
   - type: InputMover
   - type: MobMover
   - type: HTN

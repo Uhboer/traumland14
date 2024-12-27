@@ -45,7 +45,7 @@ namespace Content.Client.UserInterface.Systems.Alerts.Controls
         /// </summary>
         /// <param name="alert">alert to display</param>
         /// <param name="severity">severity of alert, null if alert doesn't have severity levels</param>
-        public AlertControl(AlertPrototype alert, short? severity)
+        public AlertControl(AlertPrototype alert, short? severity, float iconScale = 2, float size = 32)
         {
             _gameTiming = IoCManager.Resolve<IGameTiming>();
             _entityManager = IoCManager.Resolve<IEntityManager>();
@@ -63,14 +63,14 @@ namespace Content.Client.UserInterface.Systems.Alerts.Controls
 
             _icon = new SpriteView
             {
-                Scale = new Vector2(2, 2)
+                Scale = new Vector2(iconScale, iconScale)
             };
             _icon.SetEntity(_spriteViewEntity);
 
             Children.Add(_icon);
             _cooldownGraphic = new CooldownGraphic
             {
-                MaxSize = new Vector2(64, 64)
+                MaxSize = new Vector2(size * iconScale, size * iconScale)
             };
             Children.Add(_cooldownGraphic);
         }

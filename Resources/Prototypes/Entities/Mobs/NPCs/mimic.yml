@@ -9,6 +9,7 @@
     - FootstepSound
   - type: Clickable
   - type: CombatMode
+  - type: Intent
   - type: InteractionOutline
   - type: InputMover
   - type: Input

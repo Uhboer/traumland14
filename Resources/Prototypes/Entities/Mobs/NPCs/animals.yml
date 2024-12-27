@@ -78,6 +78,7 @@
   description: Nice to have, but you can't build a civilization on a foundation of honey alone.
   components:
   - type: CombatMode
+  - type: Intent
   - type: MovementSpeedModifier
     baseWalkSpeed : 7
     baseSprintSpeed : 7
@@ -150,6 +151,7 @@
   description: How nice a bee. Oh no, it looks angry and wants my pizza.
   components:
   - type: CombatMode
+  - type: Intent
   - type: MeleeWeapon
     angle: 0
     animation: WeaponArcBite
@@ -441,6 +443,7 @@
     proto: CartridgeCaselessRifle
     capacity: 500
   - type: CombatMode
+  - type: Intent
   - type: HTN
     rootTask:
       task: GlockroachCompound
@@ -483,7 +486,7 @@
     insertingState: inserting_mothroach
   - type: MothAccent
   - type: Sprite
-    sprite: Mobs/Animals/mothroach.rsi
+    sprite: Mobs/Animals/mothroach/mothroach.rsi
     layers:
     - map: ["enum.DamageStateVisualLayers.Base", "movement"]
       state: mothroach
@@ -498,7 +501,7 @@
     size: Normal
   - type: Clothing
     quickEquip: false
-    sprite: Mobs/Animals/mothroach.rsi
+    sprite: Mobs/Animals/mothroach/mothroach.rsi
     equippedPrefix: 0
     slots:
     - HEAD
@@ -535,6 +538,7 @@
       types:
         Asphyxiation: -0.5
   - type: CombatMode
+  - type: Intent
   - type: Butcherable
     spawned:
     - id: FoodMeatRat
@@ -584,11 +588,44 @@
   - type: FireVisuals
     sprite: Mobs/Effects/onfire.rsi
     normalState: Mouse_burning
+  - type: Strippable
   - type: SurgeryTarget
   - type: UserInterface
     interfaces:
+      enum.StrippingUiKey.Key:
+        type: StrippableBoundUserInterface
       enum.SurgeryUIKey.Key:
         type: SurgeryBui
+  - type: InventorySlots
+  - type: Inventory
+    speciesId: hamster
+    templateId: hamster
+    displacements:
+      head:
+        sizeMaps:
+          32:
+            sprite: Mobs/Animals/mothroach/displacement.rsi
+            state: head
+      mask:
+        sizeMaps:
+          32:
+            sprite: Mobs/Animals/mothroach/displacement.rsi
+            state: mask
+      suitstorage:
+        sizeMaps:
+          32:
+            sprite: Mobs/Animals/mothroach/displacement.rsi
+            state: suitstorage
+      eyes:
+        sizeMaps:
+          32:
+            sprite: Mobs/Animals/mothroach/displacement.rsi
+            state: eyes
+      neck:
+        sizeMaps:
+          32:
+            sprite: Mobs/Animals/mothroach/displacement.rsi
+            state: neck
 
 - type: entity
   parent: MobMothroach
@@ -1261,6 +1298,7 @@
   abstract: true
   components:
   - type: CombatMode
+  - type: Intent
   - type: SurgeryTarget
   - type: Targeting
   - type: Inventory
@@ -1778,6 +1816,7 @@
   # TODO: Remove CombatMode when Prototype Composition is added
   - type: CombatMode
     combatToggleAction: ActionCombatModeToggleOff
+  - type: Intent
   - type: Bloodstream
     bloodMaxVolume: 50
   - type: CanEscapeInventory
@@ -2351,6 +2390,7 @@
     - id: FoodMeatSpider
       amount: 2
   - type: CombatMode
+  - type: Intent
   - type: Body
     prototype: AnimalHemocyanin
   - type: MobThresholds
@@ -3434,6 +3474,7 @@
       types:
         Blunt: 0.1
   - type: CombatMode
+  - type: Intent
   - type: MeleeWeapon
     soundHit:
         path: /Audio/Effects/bite.ogg

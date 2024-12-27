@@ -4,7 +4,7 @@ using Content.Shared.ActionBlocker;
 using Content.Shared.Administration.Logs;
 using Content.Shared.CCVar;
 using Content.Shared.Chat;
-using Content.Shared.CombatMode;
+using Content.Shared._White.Intent;
 using Content.Shared.Database;
 using Content.Shared.Ghost;
 using Content.Shared.Hands;
@@ -72,6 +72,7 @@ namespace Content.Shared.Interaction
         [Dependency] private readonly SharedPlayerRateLimitManager _rateLimit = default!;
         [Dependency] private readonly IConfigurationManager _cfg = default!;
         [Dependency] private readonly ISharedChatManager _chat = default!;
+        [Dependency] private readonly SharedIntentSystem _intent = default!; // WD EDIT
 
         private EntityQuery<IgnoreUIRangeComponent> _ignoreUiRangeQuery;
         private EntityQuery<FixturesComponent> _fixtureQuery;
@@ -79,7 +80,6 @@ namespace Content.Shared.Interaction
         private EntityQuery<PhysicsComponent> _physicsQuery;
         private EntityQuery<HandsComponent> _handsQuery;
         private EntityQuery<InteractionRelayComponent> _relayQuery;
-        private EntityQuery<CombatModeComponent> _combatQuery;
         private EntityQuery<WallMountComponent> _wallMountQuery;
         private EntityQuery<UseDelayComponent> _delayQuery;
         private EntityQuery<ActivatableUIComponent> _uiQuery;
@@ -102,7 +102,6 @@ namespace Content.Shared.Interaction
             _physicsQuery = GetEntityQuery<PhysicsComponent>();
             _handsQuery = GetEntityQuery<HandsComponent>();
             _relayQuery = GetEntityQuery<InteractionRelayComponent>();
-            _combatQuery = GetEntityQuery<CombatModeComponent>();
             _wallMountQuery = GetEntityQuery<WallMountComponent>();
             _delayQuery = GetEntityQuery<UseDelayComponent>();
             _uiQuery = GetEntityQuery<ActivatableUIComponent>();
@@ -400,7 +399,7 @@ namespace Content.Shared.Interaction
             if (target != null && Deleted(target.Value))
                 return;
 
-            if (!altInteract && _combatQuery.TryComp(user, out var combatMode) && combatMode.IsInCombatMode)
+            if (!altInteract && _intent.GetIntent(user) == Intent.Harm) // WD EDIT
             {
                 if (!CombatModeCanHandInteract(user, target))
                     return;

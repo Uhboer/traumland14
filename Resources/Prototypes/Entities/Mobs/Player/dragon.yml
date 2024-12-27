@@ -33,6 +33,7 @@
   - type: Speech
     speechVerb: LargeMob
   - type: CombatMode
+  - type: Intent
   - type: MobMover
   - type: InputMover
   - type: MovementSpeedModifier

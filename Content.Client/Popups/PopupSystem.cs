@@ -108,7 +108,8 @@ namespace Content.Client.Popups
 
             if (isLogging)
             {
-                _chatManager.SendMessage($"notice [font size={fontsize}][color=#{fontcolor}]{message}[/color][/font]", ChatSelectChannel.Console);
+                var formatedMessage = Loc.GetString("notice-command", ("fontsize", fontsize), ("fontcolor", fontcolor), ("message", message));
+                _chatManager.SendMessage($"notice {formatedMessage}", ChatSelectChannel.Console);
             }
         }
 

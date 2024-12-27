@@ -693,6 +693,7 @@
   - type: Examiner
   - type: DoAfter
   - type: CombatMode
+  - type: Intent
   - type: MeleeWeapon
     soundHit:
       path: /Audio/Animals/cat_hiss.ogg

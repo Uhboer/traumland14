@@ -1,4 +1,5 @@
 using Content.Shared.Alert;
+using Content.Shared.Movement.Pulling.Systems;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 
@@ -38,6 +39,24 @@ public sealed partial class PullableComponent : Component
     [Access(typeof(Systems.PullingSystem), Other = AccessPermissions.ReadExecute)]
     [AutoNetworkedField, DataField]
     public bool PrevFixedRotation;
+
+    [DataField]
+    public Dictionary<GrabStage, short> PulledAlertAlertSeverity = new()
+    {
+        { GrabStage.No, 0 },
+        { GrabStage.Soft, 1 },
+        { GrabStage.Hard, 2 },
+        { GrabStage.Suffocate, 3 },
+    };
+
+    [AutoNetworkedField, DataField]
+    public GrabStage GrabStage = GrabStage.No;
+
+    [AutoNetworkedField, DataField]
+    public float GrabEscapeChance = 1f;
+
+    [AutoNetworkedField]
+    public TimeSpan NextEscapeAttempt = TimeSpan.Zero;
 
     /// <summary>
     ///     Whether the entity is currently being actively pushed by the puller.

@@ -114,6 +114,9 @@ public sealed class ActionUIController : UIController, IOnStateChanged<GameplayS
         UIManager.PopupRoot.AddChild(_dragShadow);
 
         var builder = CommandBinds.Builder;
+
+        // We should not use numeric keybinds. Because from 1 to 4 is used by Intents
+        /*
         var hotbarKeys = ContentKeyFunctions.GetHotbarBoundKeys();
         for (var i = 0; i < hotbarKeys.Length; i++)
         {
@@ -127,7 +130,7 @@ public sealed class ActionUIController : UIController, IOnStateChanged<GameplayS
                 TriggerAction(boundId);
                 return true;
             }, false, true));
-        }
+        }*/
 
         builder
             .Bind(ContentKeyFunctions.OpenActionsMenu,

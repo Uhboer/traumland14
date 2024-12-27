@@ -106,6 +106,12 @@ namespace Content.Shared.Input
                 Hotbar1, Hotbar2, Hotbar3, Hotbar4, Hotbar5, Hotbar6, Hotbar7, Hotbar8, Hotbar9, Hotbar0
             };
 
+        public static BoundKeyFunction[] GetIntentsBoundKeys() =>
+            new[]
+            {
+                Hotbar1, Hotbar2, Hotbar3, Hotbar4
+            };
+
         public static readonly BoundKeyFunction Vote0 = "Vote0";
         public static readonly BoundKeyFunction Vote1 = "Vote1";
         public static readonly BoundKeyFunction Vote2 = "Vote2";

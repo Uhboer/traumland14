@@ -47,6 +47,7 @@
       60: 0.9
       80: 0.7
   - type: Speech
+    fontId: Allods
     speechVerb: Skeleton
   - type: ZombieImmune
   - type: Vocal
@@ -104,11 +105,26 @@
   - type: FireVisuals
     alternateState: Standing
   - type: FootPrints
+  - type: FlashImmunity
+  - type: Inventory
+    femaleDisplacements:
+      jumpsuit:
+        sizeMaps:
+          32:
+            sprite: Mobs/Species/Human/displacement.rsi
+            state: jumpsuit-female
 
 - type: entity
   parent: BaseSpeciesDummy
   id: MobSkeletonPersonDummy
   categories: [ HideSpawnMenu ]
   components:
-    - type: HumanoidAppearance
-      species: Skeleton
+  - type: HumanoidAppearance
+    species: Skeleton
+  - type: Inventory
+    femaleDisplacements:
+      jumpsuit:
+        sizeMaps:
+          32:
+            sprite: Mobs/Species/Human/displacement.rsi
+            state: jumpsuit-female

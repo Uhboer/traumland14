@@ -1,4 +1,5 @@
 using System.Diagnostics.CodeAnalysis;
+using Content.Shared._White.Intent;
 using Content.Shared.Actions;
 using Content.Shared.Alert;
 using Content.Shared.FixedPoint;
@@ -15,9 +16,9 @@ public sealed class PacificationSystem : EntitySystem
 {
     [Dependency] private readonly AlertsSystem _alertsSystem = default!;
     [Dependency] private readonly SharedActionsSystem _actionsSystem = default!;
-    [Dependency] private readonly SharedCombatModeSystem _combatSystem = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private readonly SharedIntentSystem _intent = default!; // WD EDIT
 
     public override void Initialize()
     {
@@ -96,30 +97,26 @@ public sealed class PacificationSystem : EntitySystem
 
     private void OnStartup(EntityUid uid, PacifiedComponent component, ComponentStartup args)
     {
-        if (!TryComp<CombatModeComponent>(uid, out var combatMode))
+        if (!TryComp<IntentComponent>(uid, out var intent))
             return;
 
-        if (component.DisallowDisarm && combatMode.CanDisarm != null)
-            _combatSystem.SetCanDisarm(uid, false, combatMode);
+        if (component.DisallowDisarm && intent.CanDisarm) // WD EDIT
+            _intent.SetCanDisarm(uid, false, intent);
 
         if (component.DisallowAllCombat)
-        {
-            _combatSystem.SetInCombatMode(uid, false, combatMode);
-            _actionsSystem.SetEnabled(combatMode.CombatToggleActionEntity, false);
-        }
+            _intent.SetIntent(uid, Intent.Harm, intent); // WD EDIT
 
         _alertsSystem.ShowAlert(uid, component.PacifiedAlert);
     }
 
     private void OnShutdown(EntityUid uid, PacifiedComponent component, ComponentShutdown args)
     {
-        if (!TryComp<CombatModeComponent>(uid, out var combatMode))
+        if (!TryComp<IntentComponent>(uid, out var intent))
             return;
 
-        if (combatMode.CanDisarm != null)
-            _combatSystem.SetCanDisarm(uid, true, combatMode);
+        if (!intent.CanDisarm) // WD EDIT
+            _intent.SetCanDisarm(uid, true, intent);
 
-        _actionsSystem.SetEnabled(combatMode.CombatToggleActionEntity, true);
         _alertsSystem.ClearAlert(uid, component.PacifiedAlert);
     }
 

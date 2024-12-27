@@ -50,6 +50,7 @@
   - type: ReplacementAccent
     accent: dwarf
   - type: Speech
+    fontId: Allods
     speechSounds: Bass
   - type: HumanoidAppearance
     species: Human
@@ -65,6 +66,13 @@
     - SolCommon
   - type: LightweightDrunk
     boozeStrengthMultiplier: 0.5
+  - type: Inventory
+    femaleDisplacements:
+      jumpsuit:
+        sizeMaps:
+          32:
+            sprite: Mobs/Species/Human/displacement.rsi
+            state: jumpsuit-female
   - type: Stamina
     critThreshold: 115
   - type: FootPrints
@@ -75,3 +83,11 @@
   parent: BaseSpeciesDummy
   id: MobDwarfDummy
   categories: [ HideSpawnMenu ]
+  components:
+  - type: Inventory
+    femaleDisplacements:
+      jumpsuit:
+        sizeMaps:
+          32:
+            sprite: Mobs/Species/Human/displacement.rsi
+            state: jumpsuit-female

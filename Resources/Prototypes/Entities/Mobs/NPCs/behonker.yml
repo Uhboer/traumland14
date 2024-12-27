@@ -41,6 +41,7 @@
     - type: Speech
       speechVerb: Cluwne
     - type: CombatMode
+    - type: Intent
     - type: MobMover
     - type: InputMover
     - type: MovementSpeedModifier

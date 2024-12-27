@@ -3,10 +3,11 @@ using System.Linq;
 using System.Numerics;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Administration.Logs;
-using Content.Shared.CombatMode;
 using Content.Shared.Contests;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Components;
+using Content.Shared._White.Intent;
+using Content.Shared._White.Intent.Event;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Database;
 using Content.Shared.FixedPoint;
@@ -36,7 +37,7 @@ public abstract partial class SharedMeleeWeaponSystem : EntitySystem
 {
     [Dependency] protected readonly ISharedAdminLogManager AdminLogger = default!;
     [Dependency] protected readonly ActionBlockerSystem Blocker = default!;
-    [Dependency] protected readonly SharedCombatModeSystem CombatMode = default!;
+    [Dependency] private readonly SharedIntentSystem _intent = default!; // WD EDIT
     [Dependency] protected readonly DamageableSystem Damageable = default!;
     [Dependency] protected readonly SharedInteractionSystem Interaction = default!;
     [Dependency] protected readonly IMapManager MapManager = default!;
@@ -71,6 +72,7 @@ public abstract partial class SharedMeleeWeaponSystem : EntitySystem
         SubscribeAllEvent<HeavyAttackEvent>(OnHeavyAttack);
         SubscribeAllEvent<LightAttackEvent>(OnLightAttack);
         SubscribeAllEvent<DisarmAttackEvent>(OnDisarmAttack);
+        SubscribeAllEvent<GrabAttackEvent>(OnGrabAttack);
         SubscribeAllEvent<StopAttackEvent>(OnStopAttack);
 
 #if DEBUG
@@ -176,6 +178,17 @@ public abstract partial class SharedMeleeWeaponSystem : EntitySystem
 
         if (TryGetWeapon(user, out var weaponUid, out var weapon))
             AttemptAttack(user, weaponUid, weapon, msg, args.SenderSession);
+    }
+
+    private void OnGrabAttack(GrabAttackEvent msg, EntitySessionEventArgs args) // WD EDIT
+    {
+        if (args.SenderSession.AttachedEntity == null)
+            return;
+
+        if (!TryGetWeapon(args.SenderSession.AttachedEntity.Value, out var weaponUid, out var weapon))
+            return;
+
+        AttemptAttack(args.SenderSession.AttachedEntity.Value, weaponUid, weapon, msg, args.SenderSession);
     }
 
     /// <summary>
@@ -304,7 +317,7 @@ public abstract partial class SharedMeleeWeaponSystem : EntitySystem
         if (weapon.NextAttack > curTime)
             return false;
 
-        if (!CombatMode.IsInCombatMode(user))
+        if (!_intent.CanAttack(user)) // WD EDIT
             return false;
 
         var fireRateSwingModifier = 1f;
@@ -335,6 +348,12 @@ public abstract partial class SharedMeleeWeaponSystem : EntitySystem
                 }
 
                 if (!Blocker.CanAttack(user, target, (weaponUid, weapon), true))
+                    return false;
+                break;
+            case GrabAttackEvent grab:
+                var grabTarget = GetEntity(grab.Target);
+
+                if (!Blocker.CanAttack(user, grabTarget, (weaponUid, weapon), true))
                     return false;
                 break;
             case HeavyAttackEvent:
@@ -398,6 +417,12 @@ public abstract partial class SharedMeleeWeaponSystem : EntitySystem
 
                     animation = weapon.Animation;
                     break;
+                case GrabAttackEvent grab:
+                    if (!DoGrab(user, grab, weaponUid, weapon, session))
+                        return false;
+
+                    animation = weapon.Animation;
+                    break;
                 case HeavyAttackEvent heavy:
                     if (!DoHeavyAttack(user, heavy, weaponUid, weapon, session))
                         return false;
@@ -415,6 +440,18 @@ public abstract partial class SharedMeleeWeaponSystem : EntitySystem
         RaiseLocalEvent(user, ref attackEv);
 
         weapon.Attacking = true;
+        return true;
+    }
+
+    protected virtual bool DoGrab(EntityUid user, GrabAttackEvent ev, EntityUid meleeUid, MeleeWeaponComponent component, ICommonSession? session)
+    {
+        var target = GetEntity(ev.Target);
+
+        if (Deleted(target) || user == target)
+            return false;
+
+        // Play a sound to give instant feedback; same with playing the animations
+        _meleeSound.PlaySwingSound(user, meleeUid, component);
         return true;
     }
 

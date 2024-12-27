@@ -35,7 +35,8 @@ namespace Content.Server._White.Notice
                     fontsize = fontSizeDict.ContainsKey((PopupType) type) ? fontSizeDict[(PopupType) type] : "10";
                 var fontcolor = (type == PopupType.LargeCaution || type == PopupType.MediumCaution || type == PopupType.SmallCaution) ? "c62828" : "aeabc4";
 
-                _consoleHost.RemoteExecuteCommand(actor.PlayerSession, $"notice [font size={fontsize}][color=#{fontcolor}]{message}[/color][/font]");
+                var formatedMessage = Loc.GetString("notice-command", ("fontsize", fontsize), ("fontcolor", fontcolor), ("message", message));
+                _consoleHost.RemoteExecuteCommand(actor.PlayerSession, $"notice {formatedMessage}");
             }
         }
 

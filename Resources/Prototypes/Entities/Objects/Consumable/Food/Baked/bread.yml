@@ -831,6 +831,7 @@
   - type: Examiner
   - type: DoAfter
   - type: CombatMode
+  - type: Intent
   - type: MeleeWeapon
     soundHit:
       path: /Audio/Animals/dog_bark1.ogg

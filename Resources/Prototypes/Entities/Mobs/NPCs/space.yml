@@ -42,6 +42,7 @@
     bloodMaxVolume: 300
     bloodReagent: Cryoxadone
   - type: CombatMode
+  - type: Intent
   - type: Temperature
     heatDamageThreshold: 500
     coldDamageThreshold: 0

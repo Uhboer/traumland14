@@ -759,8 +759,8 @@ namespace Content.Client.Stylesheets
             var sliderFillBlue = new StyleBoxTexture(sliderFillBox) { Modulate = Color.Blue };
             var sliderFillWhite = new StyleBoxTexture(sliderFillBox) { Modulate = Color.White };
 
-            var blackmoorFont13 = resCache.GetFont("/Fonts/BlackmoorLet/BlackmoorLet.ttf", 18);
-            var blackmoorFont14 = resCache.GetFont("/Fonts/BlackmoorLet/BlackmoorLet.ttf", 18);
+            var blackmoorFont13 = resCache.GetFont("/Fonts/alundratext.ttf", 18); // resCache.GetFont("/Fonts/BlackmoorLet/BlackmoorLet.ttf", 18);
+            var blackmoorFont14 = resCache.GetFont("/Fonts/alundratext.ttf", 18); // resCache.GetFont("/Fonts/BlackmoorLet/BlackmoorLet.ttf", 18);
 
             var insetBack = new StyleBoxTexture
             {

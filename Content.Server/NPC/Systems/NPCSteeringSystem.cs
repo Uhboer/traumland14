@@ -8,7 +8,7 @@ using Content.Server.NPC.Events;
 using Content.Server.NPC.Pathfinding;
 using Content.Shared.CCVar;
 using Content.Shared.Climbing.Systems;
-using Content.Shared.CombatMode;
+using Content.Shared._White.Intent;
 using Content.Shared.Interaction;
 using Content.Shared.Movement.Components;
 using Content.Shared.Movement.Systems;
@@ -57,7 +57,7 @@ public sealed partial class NPCSteeringSystem : SharedNPCSteeringSystem
     [Dependency] private readonly SharedMoverController _mover = default!;
     [Dependency] private readonly SharedPhysicsSystem _physics = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly SharedCombatModeSystem _combat = default!;
+    [Dependency] private readonly SharedIntentSystem _intent = default!;
     [Dependency] private readonly SharedMapSystem _map = default!;
 
     private EntityQuery<FixturesComponent> _fixturesQuery;

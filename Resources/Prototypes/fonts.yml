@@ -109,3 +109,19 @@
 - type: font
   id: GoMonoBoldItalic
   path: /Fonts/GoMono/GoMonoNerdFontMono-BoldItalic.ttf
+
+- type: font
+  id: Sand
+  path: /Fonts/sand_ru.ttf
+
+- type: font
+  id: BetterVCR
+  path: /Fonts/bettervcr.ttf
+
+- type: font
+  id: AlundraText
+  path: /Fonts/alundratext.ttf
+
+- type: font
+  id: Allods
+  path: /Fonts/allods.ttf

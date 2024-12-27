@@ -121,6 +121,7 @@
   abstract: true
   components:
   - type: CombatMode
+  - type: Intent
   - type: MeleeWeapon
     hidden: true
     soundHit:

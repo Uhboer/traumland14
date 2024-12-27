@@ -5,6 +5,7 @@
   id: MobOni
   components:
   - type: CombatMode
+  - type: Intent
   - type: MindContainer
     showExamineInfo: true
   - type: Input

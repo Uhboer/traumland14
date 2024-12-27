@@ -75,6 +75,7 @@
     - Alive
     - Dead
   - type: CombatMode
+  - type: Intent
     canDisarm: false
   - type: Internals
   - type: Examiner

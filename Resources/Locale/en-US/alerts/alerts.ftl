@@ -122,3 +122,17 @@ alerts-offer-desc = Someone offers you an item.
 
 alerts-deflecting-name = Deflecting
 alerts-deflecting-desc = You have a chance to deflect incoming projectiles. Standing still or moving slowly will increase this chance.
+
+# Intents
+
+alerts-intent-help-name = Intent Help
+alerts-intent-help-desc = Toggle [color=green]HELP[/color] mode.
+
+alerts-intent-disarm-name = Intent Disarm
+alerts-intent-disarm-desc = Toggle [color=blue]DISARM[/color] mode.
+
+alerts-intent-grab-name = Intent Grab
+alerts-intent-grab-desc = Toggle [color=yellow]GRAB[/color] mode.
+
+alerts-intent-harm-name = Intent Harm
+alerts-intent-harm-desc = Toggle [color=red]HARM[/color] mode.

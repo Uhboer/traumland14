@@ -33,6 +33,7 @@
           -1
   - type: Insulated
   - type: CombatMode
+  - type: Intent
   - type: MeleeWeapon
     angle: 0
     animation: WeaponArcBite

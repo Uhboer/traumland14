@@ -4,7 +4,7 @@ using Content.Shared.ActionBlocker;
 using Content.Shared.Actions;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Audio;
-using Content.Shared.CombatMode;
+using Content.Shared._White.Intent;
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Damage;
 using Content.Shared.Examine;
@@ -54,7 +54,7 @@ public abstract partial class SharedGunSystem : EntitySystem
     [Dependency] protected readonly SharedActionsSystem Actions = default!;
     [Dependency] protected readonly SharedAppearanceSystem Appearance = default!;
     [Dependency] protected readonly SharedAudioSystem Audio = default!;
-    [Dependency] private   readonly SharedCombatModeSystem _combatMode = default!;
+    [Dependency] private readonly SharedIntentSystem _intent = default!; // WD EDIT
     [Dependency] protected readonly SharedContainerSystem Containers = default!;
     [Dependency] private   readonly SharedGravitySystem _gravity = default!;
     [Dependency] protected readonly SharedPointLightSystem Lights = default!;
@@ -133,7 +133,7 @@ public abstract partial class SharedGunSystem : EntitySystem
         var user = args.SenderSession.AttachedEntity;
 
         if (user == null ||
-            !_combatMode.IsInCombatMode(user) ||
+            !_intent.CanAttack(user) || // WD EDIT
             !TryGetGun(user.Value, out var ent, out var gun) ||
             HasComp<ItemComponent>(user)) // Delta-V: Felinids in duffelbags can't shoot.
         {

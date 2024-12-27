@@ -12,6 +12,8 @@ using Content.Shared.Damage;
 using Content.Shared.Database;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Mood;
+using Content.Shared.Movement.Pulling.Components;
+using Content.Shared.Movement.Pulling.Systems;
 using JetBrains.Annotations;
 using Robust.Shared.Timing;
 
@@ -52,6 +54,13 @@ public sealed class RespiratorSystem : EntitySystem
         ent.Comp.NextUpdate += args.PausedTime;
     }
 
+    public bool CanBreathe(EntityUid uid)
+    {
+        if (TryComp<PullableComponent>(uid, out var pullable) && pullable.GrabStage == GrabStage.Suffocate)
+            return false;
+        return true;
+    }
+
     public override void Update(float frameTime)
     {
         base.Update(frameTime);
@@ -87,7 +96,7 @@ public sealed class RespiratorSystem : EntitySystem
                 }
             }
 
-            if (respirator.Saturation < respirator.SuffocationThreshold)
+            if (respirator.Saturation < respirator.SuffocationThreshold || !CanBreathe(uid))
             {
                 if (_gameTiming.CurTime >= respirator.LastGaspPopupTime + respirator.GaspPopupCooldown)
                 {
