@@ -42,14 +42,15 @@ public class ActionButtonContainer : GridContainer
         {
             var button = new ActionButton(_entity);
 
-            if (!keys.TryGetValue(index, out var boundKey))
+            // All actions binds should be removed
+            /*if (!keys.TryGetValue(index, out var boundKey))
                 return button;
 
             button.KeyBind = boundKey;
             if (_input.TryGetKeyBinding(boundKey, out var binding))
             {
                 button.Label.Text = binding.GetKeyString();
-            }
+            }*/
 
             return button;
         }

@@ -19,9 +19,7 @@
             <!-- LHS Controls -->
             <BoxContainer Name="LeftSide" Orientation="Vertical" SeparationOverride="4" HorizontalExpand="True">
                 <Control Name="DefaultState" VerticalExpand="True">
-                    <animatedBackground:AnimatedBackgroundControl Access="Public" VerticalExpand="True" HorizontalExpand="True" Name="Background"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
+                    <animatedBackground:AnimatedBackgroundControl Access="Public" Name="Background" VerticalExpand="True" HorizontalExpand="True"
                         Stretch="KeepAspectCentered" />
 
                         <!-- Voting Popups -->

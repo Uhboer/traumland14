@@ -1,7 +1,8 @@
 ﻿<Control xmlns="https://spacestation14.io"
-         xmlns:pllax="clr-namespace:Content.Client.Parallax"
+         xmlns:animatedBackground="clr-namespace:Content.Client._White.UI.AnimatedBackground"
          xmlns:clog="clr-namespace:Content.Client.Changelog">
-    <pllax:ParallaxControl />
+    <animatedBackground:AnimatedBackgroundControl Access="Public" Name="Background" VerticalExpand="True" HorizontalExpand="True"
+        Stretch="KeepAspectCentered" />
     <BoxContainer Name="VBox"
                   Orientation="Vertical"
                   HorizontalAlignment="Center"

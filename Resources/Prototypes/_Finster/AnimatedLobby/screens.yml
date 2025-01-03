@@ -1,6 +1,10 @@
+#- type: animatedLobbyScreen
+#  id: Rogue
+#  path: /Textures/_Finster/LobbyScreens/rogue.rsi
+
 - type: animatedLobbyScreen
-  id: Rogue
-  path: /Textures/_Finster/LobbyScreens/rogue.rsi
+  id: Forest
+  path: /Textures/_Finster/LobbyScreens/forest.rsi
 
 #- type: animatedLobbyScreen
 #  id: CentcommLobbyScreen

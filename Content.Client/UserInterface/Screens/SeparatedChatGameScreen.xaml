@@ -2,7 +2,6 @@
     xmlns="https://spacestation14.io"
     xmlns:screens="clr-namespace:Content.Client.UserInterface.Screens"
     xmlns:menuBar="clr-namespace:Content.Client.UserInterface.Systems.MenuBar.Widgets"
-    xmlns:actions="clr-namespace:Content.Client.UserInterface.Systems.Actions.Widgets"
     xmlns:chat="clr-namespace:Content.Client.UserInterface.Systems.Chat.Widgets"
     xmlns:alerts="clr-namespace:Content.Client.UserInterface.Systems.Alerts.Widgets"
     xmlns:hotbar="clr-namespace:Content.Client.UserInterface.Systems.Hotbar.Widgets"
@@ -12,6 +11,7 @@
     xmlns:inventory="clr-namespace:Content.Client.UserInterface.Systems.Inventory.Widgets"
     xmlns:targeting="clr-namespace:Content.Client.UserInterface.Systems.Targeting.Widgets"
     xmlns:nactions="clr-namespace:Content.Client.UserInterface.Systems.NativeActions.Widgets"
+    xmlns:us="clr-namespace:Content.Client._Sunrise.UserActions"
     Name="SeparatedChatHud"
     VerticalExpand="False"
     VerticalAlignment="Bottom"
@@ -45,12 +45,11 @@
                 <controls:MainViewport Name="MainViewport"/>
                 <widgets:GhostGui Name="Ghost" Access="Protected" />
                 <BoxContainer Name="TopLeftContainer" Access="Public" Orientation="Vertical">
-                    <actions:ActionsBar Name="Actions" Access="Protected" />
                     <BoxContainer Name="VoteMenu" Access="Public" Orientation="Vertical"/>
                 </BoxContainer>
             </LayoutContainer>
         </BoxContainer>
-        <PanelContainer HorizontalExpand="True" MinWidth="300">
+        <PanelContainer HorizontalExpand="True" MinWidth="400">
             <PanelContainer.PanelOverride>
                 <graphics:StyleBoxFlat BackgroundColor="#191919" BorderColor="#3A3A3A" BorderThickness="1"/>
             </PanelContainer.PanelOverride>
@@ -65,6 +64,7 @@
                     </BoxContainer>
                 </controls:CustomPanelContainer>
                 <BoxContainer Orientation="Vertical" HorizontalExpand="True" SeparationOverride="0" Margin="0">
+                    <us:UserActionsPanel Name="UserActionsPanel" Access="Public"></us:UserActionsPanel>
                     <chat:ChatBox VerticalExpand="True" HorizontalExpand="True" Name="Chat" Access="Protected" MinSize="0 0"/>
                     <menuBar:GameTopMenuBar Name="TopBar" HorizontalExpand="True" Access="Protected" />
                 </BoxContainer>
