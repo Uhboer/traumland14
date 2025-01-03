@@ -29,6 +29,7 @@ namespace Content.Client.GameTicking.Managers
         [ViewVariables] public string? LobbyBackground { get; private set; }
         [ViewVariables] public bool DisallowedLateJoin { get; private set; }
         [ViewVariables] public string? ServerInfoBlob { get; private set; }
+        [ViewVariables] public string? InGameInfoBlob { get; private set; }
         [ViewVariables] public TimeSpan StartTime { get; private set; }
         [ViewVariables] public new bool Paused { get; private set; }
 
@@ -36,6 +37,7 @@ namespace Content.Client.GameTicking.Managers
         [ViewVariables] public IReadOnlyDictionary<NetEntity, string> StationNames => _stationNames;
 
         public event Action? InfoBlobUpdated;
+        public event Action? InGameInfoBlobUpdated;
         public event Action? LobbyStatusUpdated;
         public event Action? LobbyLateJoinStatusUpdated;
         public event Action<IReadOnlyDictionary<NetEntity, Dictionary<string, uint?>>>? LobbyJobsAvailableUpdated;
@@ -47,6 +49,7 @@ namespace Content.Client.GameTicking.Managers
             SubscribeNetworkEvent<TickerConnectionStatusEvent>(ConnectionStatus);
             SubscribeNetworkEvent<TickerLobbyStatusEvent>(LobbyStatus);
             SubscribeNetworkEvent<TickerLobbyInfoEvent>(LobbyInfo);
+            SubscribeNetworkEvent<TickerInGameInfoEvent>(InGameInfo);
             SubscribeNetworkEvent<TickerLobbyCountdownEvent>(LobbyCountdown);
             SubscribeNetworkEvent<RoundEndMessageEvent>(RoundEnd);
             SubscribeNetworkEvent<RequestWindowAttentionEvent>(OnAttentionRequest);
@@ -129,6 +132,13 @@ namespace Content.Client.GameTicking.Managers
             ServerInfoBlob = message.TextBlob;
 
             InfoBlobUpdated?.Invoke();
+        }
+
+        private void InGameInfo(TickerInGameInfoEvent message)
+        {
+            InGameInfoBlob = message.InGameTextBlob;
+
+            InGameInfoBlobUpdated?.Invoke();
         }
 
         private void JoinGame(TickerJoinGameEvent message)

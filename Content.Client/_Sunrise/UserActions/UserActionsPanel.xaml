@@ -8,6 +8,7 @@
         <BoxContainer Orientation="Vertical" Name="BoxContainer" Margin="4" VerticalExpand="True">
 
             <TabContainer Name="TabContainer" HorizontalExpand="True" VerticalExpand="True">
+                <tabs:StatusTabControl Name="StatusTabControl"/>
                 <tabs:EmotesTabControl Name="EmotesTabControl"/>
                 <tabs:VerbsTabControl Name="VerbsTabControl"/>
                 <tabs:ActionsTabControl Name="ActionsTabControl"/>
