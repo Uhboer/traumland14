@@ -1,8 +1,13 @@
 using Content.Server.GameTicking;
 using Content.Shared.Administration;
 using Content.Shared.Mind;
+using Robust.Shared.Audio;
+using Robust.Shared.Audio.Systems;
 using Robust.Shared.Console;
 using Robust.Shared.Enums;
+using Robust.Shared.Player;
+using Robust.Shared.Prototypes;
+using Robust.Shared.Random;
 
 namespace Content.Server.Chat.Commands
 {
@@ -35,6 +40,28 @@ namespace Content.Server.Chat.Commands
                 return;
             }
 
+            var protoMan = IoCManager.Resolve<IPrototypeManager>();
+            var random = IoCManager.Resolve<IRobustRandom>();
+            var audioSystem = EntitySystem.Get<SharedAudioSystem>();
+
+            if (protoMan.TryIndex<SoundCollectionPrototype>("SuicideTrying", out var proto))
+            {
+                var sound = new SoundPathSpecifier(proto.PickFiles[random.Next(proto.PickFiles.Count)]);
+                var filter = Filter.Empty();
+                filter.AddPlayer(player);
+                audioSystem.PlayEntity(sound, filter, (EntityUid) player.AttachedEntity, false, AudioParams.Default.WithVolume(-0.5f));
+                return;
+            }
+
+            /*
+        var coordinates = new EntityCoordinates(ourXform.MapUid.Value, args.WorldPoint);
+        var volume = MathF.Min(10f, 1f * MathF.Pow(jungleDiff, 0.5f) - 5f);
+        var audioParams = AudioParams.Default.WithVariation(SharedContentAudioSystem.DefaultVariation).WithVolume(volume);
+
+        _audio.PlayPvs(_shuttleImpactSound, coordinates, audioParams);
+            */
+
+            /*
             var gameTicker = EntitySystem.Get<GameTicker>();
             var suicideSystem = EntitySystem.Get<SuicideSystem>();
             if (suicideSystem.Suicide(victim))
@@ -49,6 +76,7 @@ namespace Content.Server.Chat.Commands
                 return;
 
             shell.WriteLine("You can't ghost right now.");
+            */
         }
     }
 }

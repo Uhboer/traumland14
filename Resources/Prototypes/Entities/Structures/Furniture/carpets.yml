@@ -20,6 +20,13 @@
   - type: Fixtures
   - type: Damageable
     damageContainer: Inorganic
+  - type: FootstepModifier
+    footstepSoundCollection:
+      collection: FootstepCarpet
+      params:
+        volume: 8
+    barestepSounds:
+      collection: BarestepCarpet
   - type: Destructible
     thresholds:
       - trigger:
