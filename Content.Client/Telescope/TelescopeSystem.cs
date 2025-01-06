@@ -12,6 +12,7 @@ using Robust.Shared.Configuration;
 using Robust.Shared.Input;
 using Robust.Shared.Input.Binding;
 using Robust.Shared.Timing;
+using Content.KayMisaZlevels.Client;
 
 namespace Content.Client.Telescope;
 
@@ -25,7 +26,7 @@ public sealed class TelescopeSystem : SharedTelescopeSystem
     [Dependency] private readonly IUserInterfaceManager _uiManager = default!;
     [Dependency] private readonly IConfigurationManager _cfg = default!;
 
-    private ScalingViewport? _viewport;
+    private ZScalingViewport? _viewport;
     private bool _holdLookUp;
     private bool _toggled;
 
@@ -84,7 +85,7 @@ public sealed class TelescopeSystem : SharedTelescopeSystem
 
         var mousePos = _input.MouseScreenPosition;
 
-        if (_uiManager.MouseGetControl(mousePos) as ScalingViewport is { } viewport)
+        if (_uiManager.MouseGetControl(mousePos) as ZScalingViewport is { } viewport)
             _viewport = viewport;
 
         if (_viewport == null)

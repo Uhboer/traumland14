@@ -3,6 +3,7 @@ using System.Numerics;
 using Content.Client.Clickable;
 using Content.Client.UserInterface;
 using Content.Client.Viewport;
+using Content.KayMisaZlevels.Client;
 using Content.Shared.Input;
 using Robust.Client.ComponentTrees;
 using Robust.Client.GameObjects;
@@ -210,7 +211,7 @@ namespace Content.Client.Gameplay
             {
                 var mousePosWorld = vp.PixelToMap(kArgs.PointerLocation.Position);
 
-                if (vp is ScalingViewport svp)
+                if (vp is ZScalingViewport svp)
                 {
                     entityToClick = GetClickedEntity(mousePosWorld, svp.Eye);
                 }
