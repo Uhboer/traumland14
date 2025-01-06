@@ -1,6 +1,6 @@
 ﻿<widgets:AlertsUI xmlns="https://spacestation14.io"
                   xmlns:widgets="clr-namespace:Content.Client.UserInterface.Systems.Alerts.Widgets"
-                  xmlns:partStatus="clr-namespace:Content.Client.UserInterface.Systems.PartStatus.Widgets"
+                  xmlns:partStatus="clr-namespace:Content.Client._Shitmed.UserInterface.Systems.PartStatus.Widgets"
                   MinSize="64 64"
                   HorizontalAlignment="Center"
                   VerticalAlignment="Center">
@@ -9,4 +9,5 @@
             <BoxContainer Name="AlertContainer" Access="Public" Orientation="Vertical" />
         </PanelContainer>
     </GridContainer>
+    <!-- Shitmed Change End -->
 </widgets:AlertsUI>

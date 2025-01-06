@@ -136,3 +136,9 @@ alerts-intent-grab-desc = Toggle [color=yellow]GRAB[/color] mode.
 
 alerts-intent-harm-name = Intent Harm
 alerts-intent-harm-desc = Toggle [color=red]HARM[/color] mode.
+
+# Mana
+
+alerts-mana-name = Mana Level
+alerts-mana-desc = How much mana is available to spend on your powers.
+mana-alert = [font size=12][color=purple]Mana: {$mana}/{$manaMax}[/color][/font]

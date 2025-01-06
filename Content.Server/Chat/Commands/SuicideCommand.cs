@@ -1,5 +1,8 @@
 using Content.Server.GameTicking;
+using Content.Server.Popups;
+using Content.Server.Popups;
 using Content.Shared.Administration;
+using Content.Shared.Chat;
 using Content.Shared.Mind;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
@@ -14,6 +17,8 @@ namespace Content.Server.Chat.Commands
     [AnyCommand]
     internal sealed class SuicideCommand : IConsoleCommand
     {
+        [Dependency] private readonly IEntityManager _entityManager = default!;
+
         public string Command => "suicide";
 
         public string Description => Loc.GetString("suicide-command-description");
@@ -24,19 +29,20 @@ namespace Content.Server.Chat.Commands
         {
             if (shell.Player is not { } player)
             {
-                shell.WriteLine(Loc.GetString("shell-cannot-run-command-from-server"));
+                shell.WriteError(Loc.GetString("shell-cannot-run-command-from-server"));
                 return;
             }
 
             if (player.Status != SessionStatus.InGame || player.AttachedEntity == null)
                 return;
 
-            var minds = IoCManager.Resolve<IEntityManager>().System<SharedMindSystem>();
+            var minds = _entityManager.System<SharedMindSystem>();
+
             // This check also proves mind not-null for at the end when the mob is ghosted.
-            if (!minds.TryGetMind(player, out var mindId, out var mind) ||
-                mind.OwnedEntity is not { Valid: true } victim)
+            if (!minds.TryGetMind(player, out var mindId, out var mindComp) ||
+                mindComp.OwnedEntity is not { Valid: true } victim)
             {
-                shell.WriteLine("You don't have a mind!");
+                shell.WriteLine(Loc.GetString("suicide-command-no-mind"));
                 return;
             }
 
@@ -66,16 +72,17 @@ namespace Content.Server.Chat.Commands
             var suicideSystem = EntitySystem.Get<SuicideSystem>();
             if (suicideSystem.Suicide(victim))
             {
-                // Prevent the player from returning to the body.
-                // Note that mind cannot be null because otherwise victim would be null.
-                gameTicker.OnGhostAttempt(mindId, false, mind: mind);
+                var deniedMessage = Loc.GetString("suicide-command-denied");
+                shell.WriteLine(deniedMessage);
+                _entityManager.System<PopupSystem>()
+                    .PopupEntity(deniedMessage, victim, victim);
                 return;
             }
 
-            if (gameTicker.OnGhostAttempt(mindId, true, mind: mind))
+            if (suicideSystem.Suicide(victim))
                 return;
 
-            shell.WriteLine("You can't ghost right now.");
+            shell.WriteLine(Loc.GetString("ghost-command-denied"));
             */
         }
     }

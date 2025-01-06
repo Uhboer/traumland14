@@ -9,7 +9,7 @@
     xmlns:hotbar="clr-namespace:Content.Client.UserInterface.Systems.Hotbar.Widgets"
     xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
     xmlns:inventory="clr-namespace:Content.Client.UserInterface.Systems.Inventory.Widgets"
-    xmlns:targeting="clr-namespace:Content.Client.UserInterface.Systems.Targeting.Widgets"
+    xmlns:targeting="clr-namespace:Content.Client._Shitmed.UserInterface.Systems.Targeting.Widgets"
     xmlns:graphics="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
     xmlns:nactions="clr-namespace:Content.Client.UserInterface.Systems.NativeActions.Widgets"
     Name="DefaultHud"
