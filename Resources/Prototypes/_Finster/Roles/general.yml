@@ -14,7 +14,7 @@
   description: role-description-scourger
   playTimeTracker: RoleScourger
   startingGear: ScourgerGear
-  #icon: "RoleIconScourger"
+  icon: "RoleIconScourger"
   supervisors: role-supervisors-everyone
 
 - type: startingGear
@@ -24,4 +24,10 @@
     back: ClothingBackpackSatchelLeather
     shoes: FinsterClothingShoesLeatherShoes
 
-
+- type: department
+  id: Nameless
+  description: department-Civilian-description
+  color: "#D2D2D2"
+  weight: -10
+  roles:
+  - Scourger

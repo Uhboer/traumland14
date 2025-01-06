@@ -1,16 +1,25 @@
+- type: entity
+  id: FinsterPlanetKingdom
+  parent:
+    - BaseStation
+    - BaseStationJobsSpawning
+  categories: [ HideSpawnMenu ]
+  components:
+    - type: Transform
+
 - type: gameMap
   id: FinsterDevMap
-  mapName: Dev Map
+  mapName: The Great DeBug Valley
   mapPath: /Maps/_Finster/Test/dev.yml
   minPlayers: 0
   stations:
     FinsterDev:
-      stationProto: StandardNanotrasenStation
+      stationProto: FinsterPlanetKingdom
       components:
         - type: StationNameSetup
           mapNameTemplate: "FinsterDev"
         - type: StationJobs
           overflowJobs:
-          - Scourger
+            - Scourger
           availableJobs:
             Scourger: [ -1, -1 ]
