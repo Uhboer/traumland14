@@ -2,6 +2,7 @@ using Content.Client.ContextMenu.UI;
 using Content.Client.Gameplay;
 using Content.Client.Interactable.Components;
 using Content.Client.Viewport;
+using Content.KayMisaZlevels.Client;
 using Content.Shared.CCVar;
 using Content.Shared.Interaction;
 using Robust.Client.Graphics;
@@ -111,7 +112,7 @@ public sealed class InteractionOutlineSystem : EntitySystem
         {
             var mousePosWorld = vp.PixelToMap(_inputManager.MouseScreenPosition.Position);
 
-            if (vp is ScalingViewport svp)
+            if (vp is ZScalingViewport svp)
             {
                 renderScale = svp.CurrentRenderScale;
                 entityToClick = screen.GetClickedEntity(mousePosWorld, svp.Eye);

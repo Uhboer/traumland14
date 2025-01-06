@@ -1,5 +1,6 @@
 ﻿<Project>
   <Import Project="RobustToolbox/Directory.Packages.props" />
+  <Import Project="KZLevels/RobustToolbox.props" />
   <ItemGroup>
     <!--
     Remove EF Core packages from Robust. They're only used by Robust.Benchmarks anyways.

@@ -1,5 +1,6 @@
 ﻿using System.Numerics;
 using Content.Client.Viewport;
+using Content.KayMisaZlevels.Client;
 using Content.Shared.CCVar;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;
@@ -16,16 +17,16 @@ namespace Content.Client.UserInterface.Controls
         [Dependency] private readonly IConfigurationManager _cfg = default!;
         [Dependency] private readonly ViewportManager _vpManager = default!;
 
-        public ScalingViewport Viewport { get; }
+        public ZScalingViewport Viewport { get; }
 
         public MainViewport()
         {
             IoCManager.InjectDependencies(this);
 
-            Viewport = new ScalingViewport
+            Viewport = new ZScalingViewport
             {
                 AlwaysRender = true,
-                RenderScaleMode = ScalingViewportRenderScaleMode.CeilInt,
+                RenderScaleMode = KayMisaZlevels.Client.ScalingViewportRenderScaleMode.CeilInt,
                 MouseFilter = MouseFilterMode.Stop
             };
 
@@ -60,16 +61,16 @@ namespace Content.Client.UserInterface.Controls
                 {
                     // Did not find a snap, enable stretching.
                     Viewport.FixedStretchSize = null;
-                    Viewport.StretchMode = ScalingViewportStretchMode.Bilinear;
-                    Viewport.IgnoreDimension = verticalFit ? ScalingViewportIgnoreDimension.Horizontal : ScalingViewportIgnoreDimension.None;
+                    Viewport.StretchMode = KayMisaZlevels.Client.ScalingViewportStretchMode.Bilinear;
+                    Viewport.IgnoreDimension = verticalFit ? KayMisaZlevels.Client.ScalingViewportIgnoreDimension.Horizontal : KayMisaZlevels.Client.ScalingViewportIgnoreDimension.None;
 
                     if (renderScaleUp)
                     {
-                        Viewport.RenderScaleMode = ScalingViewportRenderScaleMode.CeilInt;
+                        Viewport.RenderScaleMode = KayMisaZlevels.Client.ScalingViewportRenderScaleMode.CeilInt;
                     }
                     else
                     {
-                        Viewport.RenderScaleMode = ScalingViewportRenderScaleMode.Fixed;
+                        Viewport.RenderScaleMode = KayMisaZlevels.Client.ScalingViewportRenderScaleMode.Fixed;
                         Viewport.FixedRenderScale = 1;
                     }
 
@@ -81,18 +82,18 @@ namespace Content.Client.UserInterface.Controls
             }
 
             Viewport.FixedStretchSize = Viewport.ViewportSize * fixedFactor;
-            Viewport.StretchMode = ScalingViewportStretchMode.Nearest;
+            Viewport.StretchMode = KayMisaZlevels.Client.ScalingViewportStretchMode.Nearest;
 
             if (renderScaleUp)
             {
-                Viewport.RenderScaleMode = ScalingViewportRenderScaleMode.Fixed;
+                Viewport.RenderScaleMode = KayMisaZlevels.Client.ScalingViewportRenderScaleMode.Fixed;
                 Viewport.FixedRenderScale = fixedFactor;
             }
             else
             {
                 // Snapping but forced to render scale at scale 1 so...
                 // At least we can NN.
-                Viewport.RenderScaleMode = ScalingViewportRenderScaleMode.Fixed;
+                Viewport.RenderScaleMode = KayMisaZlevels.Client.ScalingViewportRenderScaleMode.Fixed;
                 Viewport.FixedRenderScale = 1;
             }
         }

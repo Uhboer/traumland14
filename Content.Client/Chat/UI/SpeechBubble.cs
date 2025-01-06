@@ -1,6 +1,7 @@
 using System.Numerics;
 using Content.Client.Chat.Managers;
 using Content.Client.Viewport;
+using Content.KayMisaZlevels.Client;
 using Content.Shared.CCVar;
 using Content.Shared.Chat;
 using Robust.Client.Graphics;
@@ -145,7 +146,7 @@ namespace Content.Client.Chat.UI
             var worldPos = xform.WorldPosition + offset;
 
             var lowerCenter = _eyeManager.WorldToScreen(worldPos) / UIScale;
-            if (_eyeManager.MainViewport is not ScalingViewport svp)
+            if (_eyeManager.MainViewport is not ZScalingViewport svp)
                 return;
 
             var screenPos = lowerCenter - new Vector2(ContentSize.X / 2, ContentSize.Y + _verticalOffsetAchieved);
