@@ -14,5 +14,6 @@
             Name="ActionsContainer"
             Access="Public"
             Columns="4"/>
+        <controls:ActionPageButtons Name="PageButtons" Access="Public" />
     </BoxContainer>
 </widgets:ActionsBar>

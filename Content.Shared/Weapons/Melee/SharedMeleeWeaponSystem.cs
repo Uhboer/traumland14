@@ -3,11 +3,11 @@ using System.Linq;
 using System.Numerics;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Administration.Logs;
+using Content.Shared._White.Intent;
+using Content.Shared._White.Intent.Event;
 using Content.Shared.Contests;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Components;
-using Content.Shared._White.Intent;
-using Content.Shared._White.Intent.Event;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Database;
 using Content.Shared.FixedPoint;
@@ -38,7 +38,7 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
 {
     [Dependency] protected readonly ISharedAdminLogManager   AdminLogger     = default!;
     [Dependency] protected readonly ActionBlockerSystem      Blocker         = default!;
-    [Dependency] protected readonly SharedCombatModeSystem   CombatMode      = default!;
+    [Dependency] private readonly   SharedIntentSystem      _intent          = default!; // WD EDIT
     [Dependency] protected readonly DamageableSystem         Damageable      = default!;
     [Dependency] protected readonly SharedInteractionSystem  Interaction     = default!;
     [Dependency] protected readonly IMapManager              MapManager      = default!;
@@ -51,7 +51,6 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
     [Dependency] private   readonly IPrototypeManager       _protoManager    = default!;
     [Dependency] private   readonly StaminaSystem           _stamina         = default!;
     [Dependency] private   readonly ContestsSystem          _contests        = default!;
-    [Dependency] private   readonly SharedIntentSystem      _intent          = default!; // WD EDIT
 
     private const int AttackMask = (int) (CollisionGroup.MobMask | CollisionGroup.Opaque);
 
@@ -399,9 +398,6 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
                 if (!Blocker.CanAttack(user, grabTarget, (weaponUid, weapon), true))
                     return false;
                 break;
-            case HeavyAttackEvent:
-                fireRateSwingModifier = weapon.HeavyRateModifier;
-                break;
             default:
                 if (!Blocker.CanAttack(user, weapon: (weaponUid, weapon)))
                     return false;
@@ -458,7 +454,7 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
 
                     animation = weapon.Animation;
                     break;
-                case GrabAttackEvent grab:
+                 case GrabAttackEvent grab:
                     if (!DoGrab(user, grab, weaponUid, weapon, session))
                         return false;
 
@@ -481,18 +477,6 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
         RaiseLocalEvent(user, ref attackEv);
 
         weapon.Attacking = true;
-        return true;
-    }
-
-    protected virtual bool DoGrab(EntityUid user, GrabAttackEvent ev, EntityUid meleeUid, MeleeWeaponComponent component, ICommonSession? session)
-    {
-        var target = GetEntity(ev.Target);
-
-        if (Deleted(target) || user == target)
-            return false;
-
-        // Play a sound to give instant feedback; same with playing the animations
-        _meleeSound.PlaySwingSound(user, meleeUid, component);
         return true;
     }
 
@@ -847,6 +831,18 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
         {
             return false;
         }
+
+        // Play a sound to give instant feedback; same with playing the animations
+        _meleeSound.PlaySwingSound(user, meleeUid, component);
+        return true;
+    }
+
+    protected virtual bool DoGrab(EntityUid user, GrabAttackEvent ev, EntityUid meleeUid, MeleeWeaponComponent component, ICommonSession? session)
+    {
+        var target = GetEntity(ev.Target);
+
+        if (Deleted(target) || user == target)
+            return false;
 
         // Play a sound to give instant feedback; same with playing the animations
         _meleeSound.PlaySwingSound(user, meleeUid, component);

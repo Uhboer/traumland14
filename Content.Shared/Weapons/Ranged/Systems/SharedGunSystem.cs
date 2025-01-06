@@ -129,7 +129,7 @@ public abstract partial class SharedGunSystem : EntitySystem
 
         if (user == null ||
             !_intent.CanAttack(user) || // WD EDIT
-            !TryGetGun(user.Value, out var ent, out var gun)
+            !TryGetGun(user.Value, out var ent, out var gun))
         {
             return;
         }

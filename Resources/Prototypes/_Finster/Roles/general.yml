@@ -1,7 +1,7 @@
 - type: playTimeTracker
   id: RoleScourger
 
-- type: statusIcon
+- type: jobIcon
   parent: JobIcon
   id: RoleIconScourger
   icon:

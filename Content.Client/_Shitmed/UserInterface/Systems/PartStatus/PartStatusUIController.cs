@@ -7,7 +7,7 @@ using Robust.Client.UserInterface.Controllers;
 using Robust.Client.Player;
 using Robust.Shared.Utility;
 using Robust.Client.Graphics;
-using Content.Client.UserInterface.Systems.Targeting.Widgets;
+using Content.Client._Shitmed.UserInterface.Systems.Targeting.Widgets;
 
 
 namespace Content.Client._Shitmed.UserInterface.Systems.PartStatus;
