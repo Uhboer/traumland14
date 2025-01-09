@@ -27,6 +27,7 @@
       color: "#008800"
       sprite: Mobs/Species/eyes.rsi
       state: eyes
+    - map: [ "enum.HumanoidVisualLayers.Face" ]
     - map: [ "enum.HumanoidVisualLayers.RArm" ]
       color: "#e8b59b"
       sprite: Mobs/Species/Human/parts.rsi
@@ -66,7 +67,6 @@
     - map: [ "belt" ]
     - map: [ "neck" ]
     - map: [ "back" ]
-    - map: [ "enum.HumanoidVisualLayers.Face" ]
     - map: [ "enum.HumanoidVisualLayers.FacialHair" ]
     - map: [ "enum.HumanoidVisualLayers.Hair" ]
       state: bald
@@ -174,6 +174,7 @@
       color: "#008800"
       sprite: Mobs/Species/eyes.rsi
       state: eyes
+    - map: [ "enum.HumanoidVisualLayers.Face" ]
     - map: [ "enum.HumanoidVisualLayers.RArm" ]
       color: "#e8b59b"
       sprite: Mobs/Species/Human/parts.rsi
@@ -213,7 +214,6 @@
     - map: [ "belt" ]
     - map: [ "neck" ]
     - map: [ "back" ]
-    - map: [ "enum.HumanoidVisualLayers.Face" ]
     - map: [ "enum.HumanoidVisualLayers.FacialHair" ]
     - map: [ "enum.HumanoidVisualLayers.Hair" ]
       state: bald
