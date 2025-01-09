@@ -17,7 +17,7 @@ using static Robust.Client.UserInterface.StylesheetHelpers;
 
 namespace Content.Client.Stylesheets
 {
-    public abstract class LorasStyleBase
+    public abstract class DotsStyleBase
     {
         public const string ClassHighDivider = "HighDivider";
         public const string ClassLowDivider = "LowDivider";
@@ -64,13 +64,13 @@ namespace Content.Client.Stylesheets
         protected StyleBoxTexture BaseAngleRect { get; }
         protected StyleBoxTexture AngleBorderRect { get; }
 
-        protected LorasStyleBase(IResourceCache resCache)
+        protected DotsStyleBase(IResourceCache resCache)
         {
             var lora12 = resCache.GetFont
             (
                 new []
                 {
-                    "/Fonts/IBMPlexSans/IBMPlexSans-Regular.ttf",
+                    "/Fonts/Lora/Lora-Regular.ttf",
                     "/Fonts/NotoSans/NotoSansSymbols-Regular.ttf",
                     "/Fonts/NotoSans/NotoSansSymbols2-Regular.ttf"
                 },
@@ -80,7 +80,7 @@ namespace Content.Client.Stylesheets
             (
                 new []
                 {
-                    "/Fonts/IBMPlexSans/IBMPlexSans-Italic.ttf",
+                    "/Fonts/Lora/Lora-Italic.ttf",
                     "/Fonts/NotoSans/NotoSansSymbols-Regular.ttf",
                     "/Fonts/NotoSans/NotoSansSymbols2-Regular.ttf"
                 },
@@ -271,7 +271,7 @@ namespace Content.Client.Stylesheets
 
     // STLYE SHEETS WERE A MISTAKE. KILL ALL OF THIS WITH FIRE
     // UPD: Hehe, you right. But it used 2 yrs and never refactored. Most contributers make hardcoded UI, mosly, in StyleNano desighn vision.
-    public sealed class StyleLora : LorasStyleBase
+    public sealed class StyleDot : DotsStyleBase
     {
         public const string StyleClassBorderedWindowPanel = "BorderedWindowPanel";
         public const string StyleClassInventorySlotBackground = "InventorySlotBackground";
@@ -318,7 +318,7 @@ namespace Content.Client.Stylesheets
 
         public static readonly Color PanelDark = Color.FromHex("#0a0a0a");
 
-        public static readonly Color LoraPurple = Color.FromHex("#A2A8B1");
+        public static readonly Color LoraPurple = Color.FromHex("#9051a8");
         public static readonly Color GoodGreenFore = Color.FromHex("#006400");
         public static readonly Color ConcerningOrangeFore = Color.FromHex("#99461d");
         public static readonly Color DangerousRedFore = Color.FromHex("#640000");
@@ -402,7 +402,7 @@ namespace Content.Client.Stylesheets
         public Font MediumFont { get; }
         public Font LargeFont { get; }
 
-        public StyleLora(IResourceCache resCache) : base(resCache)
+        public StyleDot(IResourceCache resCache) : base(resCache)
         {
             SmallFont = resCache.LoraStack(size: 10, variation: "Italic");
             MediumFont = resCache.LoraStack(size: 12, variation: "Italic");
@@ -424,7 +424,7 @@ namespace Content.Client.Stylesheets
             var loraBold16 = resCache.LoraStack(variation: "Bold", size: 16);
             var loraBold18 = resCache.LoraStack(variation: "Bold", size: 18);
             var loraBold20 = resCache.LoraStack(variation: "Bold", size: 20);
-            var goMono =  resCache.GetFont("/EngineFonts/NotoSans/NotoSansMono-Regular.ttf", size: 12); // resCache.GetFont("/Fonts/GoMono/GoMonoNerdFontMono-Regular.ttf", size: 12);
+            var goMono = resCache.GetFont("/Fonts/GoMono/GoMonoNerdFontMono-Regular.ttf", size: 12);
             var arx18 = resCache.GetFont("/Fonts/Arx/Arx.ttf", size: 18);
             var windowHeaderTex = resCache.GetTexture("/Textures/Interface/Lora/window_header.png");
             var windowHeader = new StyleBoxTexture
@@ -759,8 +759,8 @@ namespace Content.Client.Stylesheets
             var sliderFillBlue = new StyleBoxTexture(sliderFillBox) { Modulate = Color.Blue };
             var sliderFillWhite = new StyleBoxTexture(sliderFillBox) { Modulate = Color.White };
 
-            var blackmoorFont13 = resCache.GetFont("/Fonts/home-video-font/HomeVideoBold-R90Dv.ttf", 18); // resCache.GetFont("/Fonts/BlackmoorLet/BlackmoorLet.ttf", 18);
-            var blackmoorFont14 = resCache.GetFont("/Fonts/home-video-font/HomeVideoBold-R90Dv.ttf", 18); // resCache.GetFont("/Fonts/BlackmoorLet/BlackmoorLet.ttf", 18);
+            var blackmoorFont13 = resCache.GetFont("/Fonts/alundratext.ttf", 18); // resCache.GetFont("/Fonts/BlackmoorLet/BlackmoorLet.ttf", 18);
+            var blackmoorFont14 = resCache.GetFont("/Fonts/alundratext.ttf", 18); // resCache.GetFont("/Fonts/BlackmoorLet/BlackmoorLet.ttf", 18);
 
             var insetBack = new StyleBoxTexture
             {
