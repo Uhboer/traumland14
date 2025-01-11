@@ -4,8 +4,6 @@
 
 Finster - форк Einstein Engines, представляющего из себя хард-форк [Space Station 14](https://github.com/space-wizards/space-station-14), построенный на идеалах и дизайнерском вдохновении семейства серверов BayStation 12 от Space Station 13 с упором на модульный код, который каждый может использовать для создания RP-сервера своей мечты.
 
-Основной упор сделан на перенос некоторого grimdark контента из SS13, под сильным вдохновеним Blackstone, RogueTown, LifeWeb и прочими форками. Большая часть ассетов взята оттуда.
-
 ## Ссылки
 
 [Steam](https://store.steampowered.com/app/1255460/Space_Station_14/) | [Steam (SSMV Launcher)](https://store.steampowered.com/app/2585480/Space_Station_Multiverse/) | [Клиент без Steam (SSMV Launcher)](https://spacestationmultiverse.com/downloads/)  | [Flathub](https://flathub.org/apps/com.spacestation14.Launcher) |  [Основной репозиторий](https://github.com/Simple-Station/Einstein-Engines)
