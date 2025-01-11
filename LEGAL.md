@@ -11,13 +11,15 @@ The Authors retain all copyright to their respective work submitted here.
 > [!NOTE]
 > If you want MIT-licensed code, please visit the Space Wizards' repository [here](https://github.com/space-wizards/space-station-14/) instead.
 > If they do not have something you want as MIT but we do as AGPLv3, you may ask the authors of the code to relicense it for you.
-> 
+>
 > If you can not figure out the license of something, or who the author(s) of a feature are, please ask in our [Discord](https://discord.gg/X4QEXxUrsJ).
 
 Content contributed to this repository after commit [87c70a8](https://github.com/Simple-Station/Einstein-Engines/commit/87c70a89a67d0521a56388e6b1c3f2cb947943e4) is licensed under the GNU Affero General Public License version 3.0 unless otherwise stated.
 See [LICENSE-AGPLv3](./LICENSE-AGPLv3.txt).
 Content contributed to this repository before the aforementioned commit is MIT-licensed unless otherwise stated.
 See [LICENSE-MIT](./LICENSE-MIT.txt).
+Content [KZLevels](./KZLevels) contributed by [https://github.com/moonheart08](Moony) is licensed under the MPL unless otherwize stated.
+See [LICENCE-MPL](./LICENSE-MPLv2.0.txt).
 
 [87c70a8](https://github.com/Simple-Station/Einstein-Engines/commit/87c70a89a67d0521a56388e6b1c3f2cb947943e4) was pushed on February 17th 2024 at 21:48 UTC.
 
