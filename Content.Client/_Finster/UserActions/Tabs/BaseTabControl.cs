@@ -1,6 +1,6 @@
 ﻿using Robust.Client.UserInterface;
 
-namespace Content.Client._Sunrise.UserActions.Tabs;
+namespace Content.Client._Finster.UserActions.Tabs;
 
 [Virtual]
 public class BaseTabControl : Control

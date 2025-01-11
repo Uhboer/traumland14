@@ -1,6 +1,6 @@
 ﻿using Robust.Shared.Player;
 
-namespace Content.Client._Sunrise.UserActions;
+namespace Content.Client._Finster.UserActions;
 
 public sealed class UserActionUISystem : EntitySystem
 {

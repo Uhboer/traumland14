@@ -1,7 +1,7 @@
-﻿using Content.Client._Sunrise.UserActions.Tabs;
+﻿using Content.Client._Finster.UserActions.Tabs;
 using Robust.Client.UserInterface.Controllers;
 
-namespace Content.Client._Sunrise.UserActions;
+namespace Content.Client._Finster.UserActions;
 
 public sealed class UserActionUIController : UIController, IOnSystemChanged<UserActionUISystem>
 {

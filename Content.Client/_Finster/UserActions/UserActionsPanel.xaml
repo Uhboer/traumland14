@@ -1,7 +1,7 @@
 <controls:UserActionsPanel
     xmlns="https://spacestation14.io"
-    xmlns:controls="clr-namespace:Content.Client._Sunrise.UserActions"
-    xmlns:tabs="clr-namespace:Content.Client._Sunrise.UserActions.Tabs">
+    xmlns:controls="clr-namespace:Content.Client._Finster.UserActions"
+    xmlns:tabs="clr-namespace:Content.Client._Finster.UserActions.Tabs">
 
     <PanelContainer StyleClasses="BackgroundDark" Name="MainPanel" MinWidth="300" MinHeight="200" HorizontalExpand="True">
 

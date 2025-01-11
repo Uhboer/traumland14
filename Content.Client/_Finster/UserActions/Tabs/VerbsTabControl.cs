@@ -11,7 +11,7 @@ using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 
-namespace Content.Client._Sunrise.UserActions.Tabs;
+namespace Content.Client._Finster.UserActions.Tabs;
 
 [GenerateTypedNameReferences]
 public sealed partial class VerbsTabControl : BaseTabControl

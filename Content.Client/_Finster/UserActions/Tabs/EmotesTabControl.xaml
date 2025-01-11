@@ -1,6 +1,6 @@
-<controls:VerbsTabControl
+<controls:EmotesTabControl
     xmlns="https://spacestation14.io"
-    xmlns:controls="clr-namespace:Content.Client._Sunrise.UserActions.Tabs">
+    xmlns:controls="clr-namespace:Content.Client._Finster.UserActions.Tabs">
 
     <PanelContainer StyleClasses="BackgroundDark">
         <ScrollContainer VerticalExpand="True"
@@ -9,7 +9,7 @@
                          MinHeight="100"
                          MaxHeight="200"
                          HScrollEnabled="False">
-            <BoxContainer Name="VerbsList"
+            <BoxContainer Name="EmotesList"
                           Orientation="Vertical"
                           HorizontalExpand="True"
                           Margin="2">
@@ -17,4 +17,4 @@
         </ScrollContainer>
     </PanelContainer>
 
-</controls:VerbsTabControl>
+</controls:EmotesTabControl>
