@@ -45,7 +45,7 @@ namespace Content.Client.UserInterface.Systems.Alerts.Controls
         /// </summary>
         /// <param name="alert">alert to display</param>
         /// <param name="severity">severity of alert, null if alert doesn't have severity levels</param>
-        public AlertControl(AlertPrototype alert, short? severity, float iconScale = 2, float size = 32)
+        public AlertControl(AlertPrototype alert, short? severity, float iconScale = 2, float size = 16)
         {
             _gameTiming = IoCManager.Resolve<IGameTiming>();
             _entityManager = IoCManager.Resolve<IEntityManager>();

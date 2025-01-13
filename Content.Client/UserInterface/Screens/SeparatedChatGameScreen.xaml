@@ -23,17 +23,25 @@
                     <graphics:StyleBoxFlat BackgroundColor="#191919" />
                 </controls:CustomPanelContainer.PanelOverride>
                 <BoxContainer Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 0 0 0">
-                    <TextureRect
-                            Name="LogoBackground"
-                            Access="Public"
-                            TexturePath="/Textures/Interface/LoraAshen/logo.png"
-                            Stretch="KeepAspectCentered"
-                            SetSize="192 64"
-                            Margin="0 0 0 0"
-                            VerticalAlignment="Top"
-                            HorizontalAlignment="Center"
-                    />
-                    <targeting:TargetingControl Name="Targeting" Access="Protected" Margin="0 0 0 32" />
+                    <controls:CustomPanelContainer Name="MainInfoPanel" Access="Public" VerticalExpand="True" HorizontalExpand="False" MinWidth="192" MaxWidth="192" MinHeight="64" MaxHeight="64">
+                        <GridContainer Columns="1" HorizontalAlignment="Left" VerticalAlignment="Center" >
+                            <PanelContainer >
+                                <BoxContainer Name="MainAlertsContainer" Access="Public" Orientation="Horizontal" />
+                            </PanelContainer>
+                        </GridContainer>
+                    </controls:CustomPanelContainer>
+                    <!--
+                    <GridContainer Columns="2" Rows="2" Margin="0 0 0 0" VSeparationOverride="0" HSeparationOverride="0" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                    -->
+                    <controls:CustomPanelContainer Name="CharacterInfoPanel" Access="Public" VerticalExpand="True" HorizontalExpand="False" MinWidth="192" MaxWidth="192">
+                        <controls:CustomPanelContainer.PanelOverride>
+                            <graphics:StyleBoxFlat BackgroundColor="#060606" />
+                        </controls:CustomPanelContainer.PanelOverride>
+                        <targeting:TargetingControl Name="Targeting" Access="Protected" Margin="0 0 0 0" />
+                        <PanelContainer>
+
+                        </PanelContainer>
+                    </controls:CustomPanelContainer>
                     <hotbar:HotbarGui Name="Hotbar" Access="Protected"/>
                     <inventory:InventoryGui Name="Inventory" Access="Protected"/>
                 </BoxContainer>

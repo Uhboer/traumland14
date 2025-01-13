@@ -44,7 +44,7 @@ public sealed partial class SeparatedChatGameScreen : InGameScreen
 
     protected override void OnThemeUpdated()
     {
-        LogoBackground.Texture = Theme.ResolveTexture("logo");
+        MainInfoPanel.Texture = Theme.ResolveTexture("main_info_background");
         LeftPanel.Texture = Theme.ResolveTexture("left_panel_background");
         RightPanel.Texture = Theme.ResolveTexture("right_panel_background");
     }

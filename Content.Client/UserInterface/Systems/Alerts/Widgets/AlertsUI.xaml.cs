@@ -20,13 +20,25 @@ public sealed partial class AlertsUI : UIWidget
     // also known as Control.Children?
     private readonly Dictionary<AlertKey, AlertControl> _alertControls = new();
 
+    private NativeActionsUIController _NAController;
+
     // Well, spagetti code.
-    private NativeActionsGui? _nativeActionsGui;
+    private NativeActionsGui? _nativeActionsGui
+    {
+        get => _NAController.NativeActions;
+    }
+
+    private BoxContainer? _mainAlertsContainer
+    {
+        get => _NAController.MainAlertsContainer;
+    }
 
     public AlertsUI()
     {
         RobustXamlLoader.Load(this);
         IoCManager.InjectDependencies(this);
+
+        _NAController = UserInterfaceManager.GetUIController<NativeActionsUIController>();
     }
 
     public void SyncControls(AlertsSystem alertsSystem,
@@ -34,10 +46,6 @@ public sealed partial class AlertsUI : UIWidget
         IReadOnlyDictionary<AlertKey,
         AlertState> alertStates)
     {
-        // Ensure NativeActionsGui
-        // TODO: Maybe it should be initialize on state entering, instead of define on every Sync
-        _nativeActionsGui = UserInterfaceManager.GetActiveUIWidgetOrNull<NativeActionsGui>();
-
         // remove any controls with keys no longer present
         if (SyncRemoveControls(alertStates))
             return;
@@ -96,20 +104,20 @@ public sealed partial class AlertsUI : UIWidget
             if (_nativeActionsGui == null)
                 return alertControlsContainer;
 
-            if (alertCategory.ID == "NACombatMode" ||
-                    alertCategory.ID == "NAWalking" ||
-                    alertCategory.ID == "NALaying")
-                alertControlsContainer = _nativeActionsGui.ActionsContainer;
-
-            if (alertCategory.ID == "IntentHelp" ||
-                    alertCategory.ID == "IntentDisarm" ||
-                    alertCategory.ID == "IntentGrab" ||
-                    alertCategory.ID == "IntentHarm")
+            switch (alertCategory.Group)
             {
-                // TODO: Oh fuck. I think i should find better way to make intents UI
-                alertControlsContainer = _nativeActionsGui.IntentsContainer;
-                if (alertControlsContainer.ChildCount >= 2)
-                    alertControlsContainer = _nativeActionsGui.IntentsContainer2;
+                case "NativeActions":
+                    alertControlsContainer = _nativeActionsGui.ActionsContainer;
+                    break;
+                case "Intents":
+                    alertControlsContainer = _nativeActionsGui.IntentsContainer;
+                    if (alertControlsContainer.ChildCount >= 2)
+                        alertControlsContainer = _nativeActionsGui.IntentsContainer2;
+                    break;
+                case "MainInfo":
+                    if (_mainAlertsContainer != null)
+                        alertControlsContainer = _mainAlertsContainer;
+                    break;
             }
         }
 
@@ -191,10 +199,7 @@ public sealed partial class AlertsUI : UIWidget
             cooldown = alertState.Cooldown;
 
         // TODO: Also need refactor alerts for making any custom buttons, like intents
-        if (alert.ID == "IntentHelp" ||
-                alert.ID == "IntentDisarm" ||
-                alert.ID == "IntentGrab" ||
-                alert.ID == "IntentHarm")
+        if (_prototypeManager.TryIndex<AlertCategoryPrototype>(alert.Category, out var alertCategory) && alertCategory.Group == "Intents")
         {
             var alertControl = new AlertControl(alert, alertState.Severity, 2, 16)
             {
