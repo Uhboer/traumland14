@@ -7,7 +7,6 @@
                          HorizontalExpand="True"
                          Margin="2"
                          MinHeight="100"
-                         MaxHeight="200"
                          HScrollEnabled="False">
             <BoxContainer Name="VerbsList"
                           Orientation="Vertical"
