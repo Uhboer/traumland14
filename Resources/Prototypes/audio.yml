@@ -3,7 +3,7 @@
   sound:
     params:
       volume: -12
-    collection: AmbienceCaveCity
+    collection: AmbienceTown
   rules: OnMapGrid
   fadeIn: false
   interruptable: true
@@ -65,7 +65,7 @@
 - type: soundCollection
   id: AmbienceGeneral
   files:
-    - /Audio/_Finster/Ambience/townstreets.ogg
+    - /Audio/_Finster/Ambience/general.ogg
 
 - type: soundCollection
   id: AmbienceSpace
