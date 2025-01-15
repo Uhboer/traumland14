@@ -74,12 +74,7 @@
             </PanelContainer.PanelOverride>
 
             <BoxContainer Orientation="Horizontal" HorizontalExpand="True">
-                <controls:CustomPanelContainer Name="RightPanel" Access="Public" VerticalExpand="True" HorizontalExpand="False" MinWidth="11" MaxWidth="11">
-                    <controls:CustomPanelContainer.PanelOverride>
-                        <graphics:StyleBoxFlat BackgroundColor="#191919" />
-                    </controls:CustomPanelContainer.PanelOverride>
-                </controls:CustomPanelContainer>
-                <BoxContainer Orientation="Vertical" HorizontalExpand="True" SeparationOverride="0" Margin="0">
+                <BoxContainer Orientation="Vertical" HorizontalExpand="True" SeparationOverride="10" Margin="10">
                     <SplitContainer State="Auto" VerticalExpand="True" Orientation="Vertical">
                         <us:UserActionsPanel Name="UserActionsPanel" Access="Public"></us:UserActionsPanel>
                         <chat:ChatBox VerticalExpand="True" HorizontalExpand="True" Name="Chat" Access="Protected" MinSize="0 0"/>

@@ -296,6 +296,10 @@ namespace Content.Client.Stylesheets
         public const string StyleClassChatChannelSelectorButton = "chatSelectorOptionButton";
         public const string StyleClassChatFilterOptionButton = "chatFilterOptionButton";
         public const string StyleClassStorageButton = "storageButton";
+        public const string StyleClassFuckyWuckyBackground = "FuckyWuckyBackground";
+        public const string StyleClassGayShitBackground = "GayShitBackground";
+        public const string StyleClassLobbyGayBackground = "LobbyGayBackground";
+
 
         public const string StyleClassSliderRed = "Red";
         public const string StyleClassSliderGreen = "Green";
@@ -456,6 +460,41 @@ namespace Content.Client.Stylesheets
                 Texture = borderedWindowBackgroundTex,
             };
             borderedWindowBackground.SetPatchMargin(StyleBox.Margin.All, 2);
+
+            // WD-EDIT START
+            var fuckyWuckyBackgroundTex = resCache.GetTexture("/Textures/Interface/Lora/fucky_wucky.png");
+            var fuckyWuckyBackground = new StyleBoxTexture
+            {
+                Texture = fuckyWuckyBackgroundTex,
+                Mode = StyleBoxTexture.StretchMode.Tile
+            };
+
+            fuckyWuckyBackground.SetPatchMargin(StyleBox.Margin.All, 24);
+            fuckyWuckyBackground.SetExpandMargin(StyleBox.Margin.All, -4);
+            fuckyWuckyBackground.SetContentMarginOverride(StyleBox.Margin.All, 8);
+
+            var lobbyGayBackgroundTex = resCache.GetTexture("/Textures/Interface/Lora/lobby_gay.png");
+            var lobbyGayBackground = new StyleBoxTexture
+            {
+                Texture = lobbyGayBackgroundTex,
+                Mode = StyleBoxTexture.StretchMode.Tile
+            };
+
+            lobbyGayBackground.SetPatchMargin(StyleBox.Margin.All, 24);
+            lobbyGayBackground.SetExpandMargin(StyleBox.Margin.All, -4);
+            lobbyGayBackground.SetContentMarginOverride(StyleBox.Margin.All, 8);
+
+            var gayShitBackgroundTex = resCache.GetTexture("/Textures/Interface/Lora/gay_shit.png");
+            var gayShitBackground = new StyleBoxTexture
+            {
+                Texture = gayShitBackgroundTex,
+                Mode = StyleBoxTexture.StretchMode.Tile
+            };
+
+            gayShitBackground.SetPatchMargin(StyleBox.Margin.All, 2);
+            gayShitBackground.SetExpandMargin(StyleBox.Margin.All, -2);
+
+            // WD-EDIT END
 
             var contextMenuBackground = new StyleBoxTexture
             {
@@ -825,6 +864,29 @@ namespace Content.Client.Stylesheets
                     {
                         new StyleProperty(PanelContainer.StylePropertyPanel, borderedTransparentWindowBackground),
                     }),
+                // WD-EDIT START
+                // Chat background.
+                new StyleRule(
+                    new SelectorElement(null, new[] {StyleClassFuckyWuckyBackground}, null, null),
+                    new[]
+                    {
+                        new StyleProperty(PanelContainer.StylePropertyPanel, fuckyWuckyBackground),
+                    }),
+                // Lobby background.
+                new StyleRule(
+                    new SelectorElement(null, new[] {StyleClassLobbyGayBackground}, null, null),
+                    new[]
+                    {
+                        new StyleProperty(PanelContainer.StylePropertyPanel, lobbyGayBackground),
+                    }),
+                // Panel background.
+                new StyleRule(
+                    new SelectorElement(null, new[] {StyleClassGayShitBackground}, null, null),
+                    new[]
+                    {
+                        new StyleProperty(PanelContainer.StylePropertyPanel, gayShitBackground),
+                    }),
+                // WD-EDIT END
                 // inventory slot background
                 new StyleRule(
                     new SelectorElement(null, new[] {StyleClassInventorySlotBackground}, null, null),

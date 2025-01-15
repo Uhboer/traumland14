@@ -46,6 +46,5 @@ public sealed partial class SeparatedChatGameScreen : InGameScreen
     {
         MainInfoBackground.Texture = Theme.ResolveTexture("main_info_background");
         LeftPanel.Texture = Theme.ResolveTexture("left_panel_background");
-        RightPanel.Texture = Theme.ResolveTexture("right_panel_background");
     }
 }
