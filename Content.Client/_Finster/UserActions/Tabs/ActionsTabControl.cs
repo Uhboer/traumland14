@@ -21,9 +21,6 @@ public sealed partial class ActionsTabControl : BaseTabControl
     [Dependency] private readonly ISharedPlayerManager _playerManager = default!;
     [Dependency] private readonly IGameTiming _gameTiming = default!;
 
-    private TimeSpan _lastEmoteTime;
-    private static readonly TimeSpan EmoteCooldown = TimeSpan.FromSeconds(3);
-
     public ActionsTabControl()
     {
         RobustXamlLoader.Load(this);
@@ -38,15 +35,6 @@ public sealed partial class ActionsTabControl : BaseTabControl
 
     private void UpdateButtonsLayout()
     {
-    }
-
-    private BoxContainer CreateNewRow()
-    {
-        return new BoxContainer
-        {
-            Orientation = BoxContainer.LayoutOrientation.Horizontal,
-            HorizontalExpand = true,
-        };
     }
 
     protected override void Resized()

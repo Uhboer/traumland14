@@ -648,12 +648,16 @@ namespace Content.Client.Stylesheets
 
             var chatBg = new StyleBoxFlat
             {
-                BackgroundColor = ChatBackgroundColor
+                BackgroundColor = ChatBackgroundColor,
+                BorderColor = ButtonColorHovered,
+                BorderThickness = new Thickness(2, 2, 2, 2),
             };
 
             var chatSubBg = new StyleBoxFlat
             {
                 BackgroundColor = ChatBackgroundColor,
+                BorderColor = ButtonColorHovered,
+                BorderThickness = new Thickness(2, 2, 2, 2),
             };
             chatSubBg.SetContentMarginOverride(StyleBox.Margin.All, 2);
 
