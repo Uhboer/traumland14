@@ -65,7 +65,7 @@ namespace Content.IntegrationTests.Tests
             "Gax",
             "Rad",
             "Europa",
-            "Meta"
+            "Meta",
             "FinsterDevMap" //Finster
         };
 

@@ -10,6 +10,12 @@ public sealed partial class CCVars
     public static readonly CVarDef<string> UIHoverSound =
         CVarDef.Create("interface.hover_sound", "/Audio/UserInterface/hover.ogg", CVar.REPLICATED);
 
+    public static readonly CVarDef<string> UICombatModeOnSound =
+            CVarDef.Create("interface.combat_on_sound", "/Audio/_Finster/UserInterface/ui_togglecombat.ogg", CVar.REPLICATED);
+
+    public static readonly CVarDef<string> UICombatModeOffSound =
+        CVarDef.Create("interface.combat_off_sound", "/Audio/_Finster/UserInterface/ui_toggleoffcombat.ogg", CVar.REPLICATED);
+
     public static readonly CVarDef<string> UILayout =
         CVarDef.Create("ui.layout", "Separated", CVar.CLIENTONLY | CVar.ARCHIVE);
 

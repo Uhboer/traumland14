@@ -33,7 +33,6 @@ namespace Content.Client.Lobby.UI
             //Background.ShaderOverride = _shader;
 
             LobbySong.SetMarkup(Loc.GetString("lobby-state-song-no-song-text"));
-            LobbyBackground.SetMarkup(Loc.GetString("lobby-state-background-no-background-text"));
 
             LeaveButton.OnPressed += _ => _consoleHost.ExecuteCommand("disconnect");
             OptionsButton.OnPressed += _ => UserInterfaceManager.GetUIController<OptionsUIController>().ToggleWindow();

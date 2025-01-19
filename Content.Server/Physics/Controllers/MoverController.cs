@@ -581,7 +581,7 @@ namespace Content.Server.Physics.Controllers
             if (!entityManager.TryGetComponent(uid, out InputMoverComponent? comp))
                 return;
 
-            entityManager.System<MoverController>().SetSprinting(uid, comp, 0, !comp.Sprinting);
+            entityManager.System<MoverController>().SetSprinting((uid, comp), 0, !comp.Sprinting);
         }
     }
 }
