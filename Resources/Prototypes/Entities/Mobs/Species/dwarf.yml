@@ -51,7 +51,7 @@
     accent: dwarf
   - type: Speech
     fontId: Allods
-    speechSounds: Bass
+    speechSounds: DeathnetMan # Bass
   - type: HumanoidAppearance
     species: Human
     hideLayersOnEquip:

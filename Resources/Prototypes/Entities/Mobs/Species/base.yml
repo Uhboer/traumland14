@@ -184,11 +184,11 @@
   - type: MindContainer
     showExamineInfo: true
   - type: CanEnterCryostorage
-  - type: InteractionPopup
-    successChance: 1
-    interactSuccessString: hugging-success-generic
-    interactSuccessSound: /Audio/Effects/thudswoosh.ogg
-    messagePerceivedByOthers: hugging-success-generic-others
+  #- type: InteractionPopup
+  #  successChance: 1
+  #  interactSuccessString: hugging-success-generic
+  #  interactSuccessSound: /Audio/Effects/thudswoosh.ogg
+  #  messagePerceivedByOthers: hugging-success-generic-others
   - type: CanHostGuardian
   - type: NpcFactionMember
     factions:
@@ -214,13 +214,13 @@
   - type: Puller
   - type: Speech
     fontId: Allods
-    speechSounds: Alto
+    speechSounds: DeathnetMan # Alto
   - type: DamageForceSay
   - type: Vocal
     sounds:
-      Male: MaleHuman
-      Female: FemaleHuman
-      Unsexed: MaleHuman
+      Male: DeathnetMaleHuman
+      Female: DeathnetFemaleHuman
+      Unsexed: DeathnetMaleHuman
   - type: Emoting
   - type: BodyEmotes
     soundsId: GeneralBodyEmotes
