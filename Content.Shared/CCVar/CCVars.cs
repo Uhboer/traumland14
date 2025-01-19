@@ -1,19 +1,18 @@
-using Content.Shared.Maps;
-using Content.Shared.Supermatter.Components;
 using Robust.Shared;
 using Robust.Shared.Configuration;
-using Robust.Shared.Physics.Components;
 
-namespace Content.Shared.CCVar
+namespace Content.Shared.CCVar;
+
+/// <summary>
+/// Contains all the CVars used by content.
+/// </summary>
+/// <remarks>
+/// NOTICE FOR FORKS: Put your own CVars in a separate file with a different [CVarDefs] attribute. RT will automatically pick up on it.
+/// </remarks>
+[CVarDefs]
+public sealed partial class CCVars : CVars
 {
-    // ReSharper disable once InconsistentNaming
-    [CVarDefs]
-    public sealed class CCVars : CVars
-    {
-        /*
-         * Server
-         */
-
+    // Only debug stuff lives here.
         /// <summary>
         ///     Change this to have the changelog and rules "last seen" date stored separately.
         /// </summary>
@@ -2542,11 +2541,11 @@ namespace Content.Shared.CCVar
          * DEBUG
          */
 
-        /// <summary>
-        /// A simple toggle to test <c>OptionsVisualizerComponent</c>.
-        /// </summary>
-        public static readonly CVarDef<bool> DebugOptionVisualizerTest =
-            CVarDef.Create("debug.option_visualizer_test", false, CVar.CLIENTONLY);
+    /// <summary>
+    /// A simple toggle to test <c>OptionsVisualizerComponent</c>.
+    /// </summary>
+    public static readonly CVarDef<bool> DebugOptionVisualizerTest =
+        CVarDef.Create("debug.option_visualizer_test", false, CVar.CLIENTONLY);
 
         /// DELTA-V CCVARS
         /*
@@ -2905,22 +2904,5 @@ namespace Content.Shared.CCVar
             CVarDef.Create("mobstate.damage_while_crit_move", false, CVar.REPLICATED);
 
         #endregion
-
-        #region Development
-
-        /// <summary>
-        /// Run ShaderViewer only.
-        /// </summary>
-        public static readonly CVarDef<bool> LaunchShaderViewer =
-            CVarDef.Create("launch.shader_viewer", false, CVar.CLIENTONLY);
-
-        #endregion
-
-        # region White Dream (OLD)
-
-        public static readonly CVarDef<bool> LogChatActions =
-            CVarDef.Create("white.log_to_chat", true, CVar.CLIENT | CVar.ARCHIVE | CVar.REPLICATED);
-
-        # endregion
     }
 }

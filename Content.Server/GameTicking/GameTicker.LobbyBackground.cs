@@ -1,5 +1,6 @@
 using Content.Shared._White;
 using Content.Server.GameTicking.Prototypes;
+using Content.Shared.GameTicking.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace Content.Server.GameTicking;
 public sealed partial class GameTicker
 {
     [ViewVariables]
-    public string? LobbyBackground { get; private set; }
+    public LobbyBackgroundPrototype? LobbyBackground { get; private set; }
 
     [ViewVariables]
     private List<string>? _lobbyBackgrounds;
