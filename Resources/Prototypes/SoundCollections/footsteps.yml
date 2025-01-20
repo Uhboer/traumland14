@@ -201,6 +201,15 @@
   - /Audio/_Finster/Effects/Footsteps/FTSHAL_5.ogg
 
 - type: soundCollection
+  id: FootstepMud
+  files:
+  - /Audio/_Finster/Effects/Footsteps/mud_01.ogg
+  - /Audio/_Finster/Effects/Footsteps/mud_02.ogg
+  - /Audio/_Finster/Effects/Footsteps/mud_03.ogg
+  - /Audio/_Finster/Effects/Footsteps/mud_04.ogg
+  - /Audio/_Finster/Effects/Footsteps/mud_05.ogg
+
+- type: soundCollection
   id: FootstepSticky
   files:
   - /Audio/_Finster/Effects/Footsteps/footstep_shoe_flesh_step.ogg
