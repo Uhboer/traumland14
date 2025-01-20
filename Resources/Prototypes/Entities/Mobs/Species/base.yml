@@ -99,6 +99,12 @@
         - MobLayer
   - type: FloorOcclusion
   - type: Mood
+  - type: Heartbeat
+    heartbeatSound:
+      path: /Audio/_Finster/Effects/Heart/heart.ogg
+      params:
+        volume: 1
+        loop: True
   - type: RangedDamageSound
     soundGroups:
       Brute:
