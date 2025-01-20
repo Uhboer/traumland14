@@ -30,7 +30,14 @@ public sealed class NativeActionsUIController : UIController, IOnStateEntered<Ga
 
     // And another hardcoded elements
     public BoxContainer? MainAlertsContainer;
-    public BoxContainer? LeftAlertsContainer;
+
+    public BoxContainer? LeftTopAlertContainer;
+    public BoxContainer? LeftMiddleAlertContainer;
+    public BoxContainer? LeftBottomAlertContainer;
+
+    public BoxContainer? RightTopAlertContainer;
+    public BoxContainer? RightMiddleAlertContainer;
+    public BoxContainer? RightBottomAlertContainer;
 
     public override void Initialize()
     {
@@ -147,7 +154,12 @@ public sealed class NativeActionsUIController : UIController, IOnStateEntered<Ga
         {
             case SeparatedChatGameScreen separatedScreen:
                 MainAlertsContainer = separatedScreen.MainAlertsContainer;
-                LeftAlertsContainer = separatedScreen.LeftAlertsContainer;
+                LeftTopAlertContainer = separatedScreen.LeftTopAlertContainer;
+                LeftMiddleAlertContainer = separatedScreen.LeftMiddleAlertContainer;
+                LeftBottomAlertContainer = separatedScreen.LeftBottomAlertContainer;
+                RightTopAlertContainer = separatedScreen.RightTopAlertContainer;
+                RightMiddleAlertContainer = separatedScreen.RightMiddleAlertContainer;
+                RightBottomAlertContainer = separatedScreen.RightBottomAlertContainer;
                 break;
         }
     }

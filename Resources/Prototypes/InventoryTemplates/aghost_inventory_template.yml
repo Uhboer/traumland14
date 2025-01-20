@@ -48,16 +48,16 @@
       strippingWindowPos: 2,4
       displayName: Pocket 3
       stripHidden: true
-    - name: pocket4
-      slotTexture: pocket
-      fullTextureName: template_small
-      slotFlags: POCKET
-      slotGroup: MainHotbar
-      stripTime: 3
-      uiWindowPos: 6,3
-      strippingWindowPos: 3,4
-      displayName: Pocket 4
-      stripHidden: true
+    #- name: pocket4
+    #  slotTexture: pocket
+    #  fullTextureName: template_small
+    #  slotFlags: POCKET
+    #  slotGroup: MainHotbar
+    #  stripTime: 3
+    #  uiWindowPos: 6,3
+    #  strippingWindowPos: 3,4
+    #  displayName: Pocket 4
+    #  stripHidden: true
 
     # For drip reasons.
     - name: head

@@ -88,8 +88,7 @@ public sealed partial class AlertsUI : UIWidget
                 return true;
 
             // If we wanna move some Alerts into another UI.
-            var alertControlsContainer = EnsureControlsContainer(alertKeyToRemove);
-            alertControlsContainer.Children.Remove(control);
+            control.Parent?.RemoveChild(control);
         }
 
         return false;
@@ -97,10 +96,7 @@ public sealed partial class AlertsUI : UIWidget
 
     private Control EnsureControlsContainer(AlertKey alertKey)
     {
-        if (_NAController.LeftAlertsContainer == null)
-            return (Control) AlertContainer;
-
-        var alertControlsContainer = (Control) _NAController.LeftAlertsContainer; // (Control) AlertContainer;
+        var alertControlsContainer = (Control) AlertContainer;
 
         // If we wanna move some Alerts into another UI.
         // TODO: Move some definition into prototypes
@@ -113,18 +109,47 @@ public sealed partial class AlertsUI : UIWidget
             {
                 case "NativeActions":
                     alertControlsContainer = _nativeActionsGui.ActionsContainer;
+                    return alertControlsContainer;
                     break;
                 case "Intents":
                     alertControlsContainer = _nativeActionsGui.IntentsContainer;
                     if (alertControlsContainer.ChildCount >= 2)
+                    {
                         alertControlsContainer = _nativeActionsGui.IntentsContainer2;
+                    }
+                    return alertControlsContainer;
                     break;
                 case "MainInfo":
                     if (_mainAlertsContainer != null)
+                    {
                         alertControlsContainer = (Control) _mainAlertsContainer;
+                        return alertControlsContainer;
+                    }
                     break;
             }
         }
+
+        // Try use another UI container. We append elements by manual.
+        // Dirty, i know, but i dont' have any idea how to rework AlertsUI
+        // TODO: Fuck, it should be rework.
+        if (_NAController.LeftTopAlertContainer != null && // Left side
+                    _NAController.LeftTopAlertContainer.ChildCount < 1)
+            alertControlsContainer = _NAController.LeftTopAlertContainer;
+        else if (_NAController.LeftMiddleAlertContainer != null &&
+                    _NAController.LeftMiddleAlertContainer.ChildCount < 2)
+            alertControlsContainer = _NAController.LeftMiddleAlertContainer;
+        else if (_NAController.LeftBottomAlertContainer != null &&
+                    _NAController.LeftBottomAlertContainer.ChildCount < 1)
+            alertControlsContainer = _NAController.LeftBottomAlertContainer;
+        else if (_NAController.RightTopAlertContainer != null && // Right side
+                    _NAController.RightTopAlertContainer.ChildCount < 1)
+            alertControlsContainer = _NAController.RightTopAlertContainer;
+        else if (_NAController.RightMiddleAlertContainer != null &&
+                    _NAController.RightMiddleAlertContainer.ChildCount < 2)
+            alertControlsContainer = _NAController.RightMiddleAlertContainer;
+        else if (_NAController.RightBottomAlertContainer != null &&
+                    _NAController.RightBottomAlertContainer.ChildCount < 2)
+            alertControlsContainer = _NAController.RightBottomAlertContainer;
 
         return alertControlsContainer;
     }

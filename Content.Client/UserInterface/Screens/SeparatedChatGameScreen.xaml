@@ -40,16 +40,47 @@
                     -->
                     <controls:CustomPanelContainer Name="CharacterInfoPanel" Access="Public" VerticalExpand="True" HorizontalExpand="False" MinWidth="192" MaxWidth="192">
                         <controls:CustomPanelContainer.PanelOverride>
-                            <graphics:StyleBoxFlat BackgroundColor="#060606" />
+                            <graphics:StyleBoxFlat BackgroundColor="#050505" />
                         </controls:CustomPanelContainer.PanelOverride>
+                        <TextureRect
+                            Name="TargetingBackground"
+                            Access="Public"
+                            Stretch="KeepAspectCentered"
+                            SetSize="64 128"
+                            Margin="0 0 0 0"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                        />
                         <targeting:TargetingControl Name="Targeting" Access="Protected" Margin="0 0 0 0" />
                         <PanelContainer>
-                            <BoxContainer Name="LeftAlertsContainer" Access="Public" HorizontalAlignment="Left" Orientation="Horizontal" Margin="2 2 2 2" >
-
-                            </BoxContainer>
-                            <BoxContainer Name="RightAlertsContainer" Access="Public" HorizontalAlignment="Right" Orientation="Horizontal" Margin="2 2 2 2" >
-
-                            </BoxContainer>
+                            <!-- Left -->
+                            <PanelContainer HorizontalExpand="True" MinWidth="64" MaxWidth="64" HorizontalAlignment="Left" VerticalAlignment="Center">
+                                <BoxContainer Orientation="Vertical">
+                                    <PanelContainer HorizontalExpand="True" MinHeight="32" MaxHeight="32" HorizontalAlignment="Center" VerticalAlignment="Top">
+                                        <BoxContainer Name="LeftTopAlertContainer" Access="Public" Orientation="Horizontal" HorizontalAlignment="Center"/>
+                                    </PanelContainer>
+                                    <PanelContainer HorizontalExpand="True" MinHeight="32" MaxHeight="32" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                        <BoxContainer Name="LeftMiddleAlertContainer" Access="Public" Orientation="Horizontal" HorizontalAlignment="Center"/>
+                                    </PanelContainer>
+                                    <PanelContainer HorizontalExpand="True" MinHeight="32" MaxHeight="32" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+                                        <BoxContainer Name="LeftBottomAlertContainer" Access="Public" Orientation="Horizontal" HorizontalAlignment="Center"/>
+                                    </PanelContainer>
+                                </BoxContainer>
+                            </PanelContainer>
+                            <!-- Right -->
+                            <PanelContainer HorizontalExpand="True" MinWidth="64" MaxWidth="64" HorizontalAlignment="Right" VerticalAlignment="Center">
+                                <BoxContainer Orientation="Vertical">
+                                    <PanelContainer HorizontalExpand="True" MinHeight="32" MaxHeight="32" HorizontalAlignment="Center" VerticalAlignment="Top">
+                                        <BoxContainer Name="RightTopAlertContainer" Access="Public" Orientation="Horizontal" HorizontalAlignment="Center"/>
+                                    </PanelContainer>
+                                    <PanelContainer HorizontalExpand="True" MinHeight="32" MaxHeight="32" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                        <BoxContainer Name="RightMiddleAlertContainer" Access="Public" Orientation="Horizontal" HorizontalAlignment="Center"/>
+                                    </PanelContainer>
+                                    <PanelContainer HorizontalExpand="True" MinHeight="32" MaxHeight="32" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+                                        <BoxContainer Name="RightBottomAlertContainer" Access="Public" Orientation="Horizontal" HorizontalAlignment="Center"/>
+                                    </PanelContainer>
+                                </BoxContainer>
+                            </PanelContainer>
                         </PanelContainer>
                     </controls:CustomPanelContainer>
                     <hotbar:HotbarGui Name="Hotbar" Access="Protected"/>
