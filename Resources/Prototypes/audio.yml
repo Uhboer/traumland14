@@ -71,11 +71,13 @@
   id: AmbienceSpace
   files:
     - /Audio/_Finster/Ambience/magiciantower.ogg
+    - /Audio/_Finster/Ambience/stalker_red_forest.ogg
 
 - type: soundCollection
   id: AmbienceCombatMode
   files:
     - /Audio/_Finster/Ambience/dreamweb-like-killing-hitler.ogg
+    - /Audio/_Finster/Ambience/combat_vamp2.ogg
 
 # Rules
 - type: rules

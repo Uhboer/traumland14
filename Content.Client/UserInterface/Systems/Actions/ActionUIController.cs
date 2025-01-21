@@ -60,7 +60,7 @@ public sealed class ActionUIController : UIController, IOnStateChanged<GameplayS
     private ActionsWindow? _window;
 
     private ActionsBar? ActionsBar => UIManager.GetActiveUIWidgetOrNull<ActionsBar>();
-    private MenuButton? ActionButton => UIManager.GetActiveUIWidgetOrNull<MenuBar.Widgets.GameTopMenuBar>()?.ActionButton;
+    //private MenuButton? ActionButton => UIManager.GetActiveUIWidgetOrNull<MenuBar.Widgets.GameTopMenuBar>()?.ActionButton;
     private ActionPage CurrentPage => _pages[_currentPageIndex];
 
     public bool IsDragging => _menuDragHelper.IsDragging;
@@ -333,32 +333,32 @@ public sealed class ActionUIController : UIController, IOnStateChanged<GameplayS
 
     public void UnloadButton()
     {
-        if (ActionButton == null)
-            return;
+        //if (ActionButton == null)
+        //    return;
 
-        ActionButton.OnPressed -= ActionButtonPressed;
+        //ActionButton.OnPressed -= ActionButtonPressed;
     }
 
     public void LoadButton()
     {
-        if (ActionButton == null)
-            return;
+        //if (ActionButton == null)
+        //    return;
 
-        ActionButton.OnPressed += ActionButtonPressed;
+        //ActionButton.OnPressed += ActionButtonPressed;
     }
 
     private void OnWindowOpened()
     {
-        if (ActionButton != null)
-            ActionButton.SetClickPressed(true);
+        //if (ActionButton != null)
+        //    ActionButton.SetClickPressed(true);
 
         SearchAndDisplay();
     }
 
     private void OnWindowClosed()
     {
-        if (ActionButton != null)
-            ActionButton.SetClickPressed(false);
+        //if (ActionButton != null)
+        //    ActionButton.SetClickPressed(false);
     }
 
     public void OnStateExited(GameplayState state)

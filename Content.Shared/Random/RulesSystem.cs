@@ -29,10 +29,10 @@ public sealed class RulesSystem : EntitySystem
                 case CombatMode combatRule:
                     if (TryComp<CombatModeComponent>(uid, out var combatMode))
                     {
-                        if (combatRule.State)
-                            return combatMode.IsInCombatMode == true;
+                        if (combatMode.IsInCombatMode == combatRule.State)
+                            continue;
                         else
-                            return combatMode.IsInCombatMode == false;
+                            return false;
                     }
                     else
                     {

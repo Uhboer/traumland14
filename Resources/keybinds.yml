@@ -186,10 +186,10 @@ binds:
   mod1: Alt
 - function: OpenCharacterMenu
   type: State
-  mod1: Shift
-  key: C
+  key: K
 - function: OpenEmotesMenu
   type: State
+  mod1: Shift
   key: Y
 - function: OpenLanguageMenu
   type: State
@@ -523,6 +523,7 @@ binds:
   key: Z
 - function: OpenAbilitiesMenu
   type: State
+  mod1: Shift
   key: K
 - function: Hotbar0
   type: State
