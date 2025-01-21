@@ -37,6 +37,8 @@ public static class ServerPackaging
         "Content.Server",
         "Content.Shared",
         "Content.Shared.Database",
+        "Content.KayMisaZlevels.Server",
+        "Content.KayMisaZlevels.Shared",
     };
 
     private static readonly List<string> ServerExtraAssemblies = new()
