@@ -1,10 +1,26 @@
+- type: animatedLobbyScreen
+  id: Uncuny
+  path: /Textures/_Finster/LobbyScreens/uncuny.rsi
+
+- type: animatedLobbyScreen
+  id: Toshiro
+  path: /Textures/_Finster/LobbyScreens/toshiro.rsi
+
+- type: animatedLobbyScreen
+  id: Syberbuling
+  path: /Textures/_Finster/LobbyScreens/syberbuling.rsi
+
+- type: animatedLobbyScreen
+  id: Goida
+  path: /Textures/_Finster/LobbyScreens/goida.rsi
+
 #- type: animatedLobbyScreen
 #  id: Rogue
 #  path: /Textures/_Finster/LobbyScreens/rogue.rsi
 
-- type: animatedLobbyScreen
-  id: Forest
-  path: /Textures/_Finster/LobbyScreens/forest.rsi
+#- type: animatedLobbyScreen
+#  id: Forest
+#  path: /Textures/_Finster/LobbyScreens/forest.rsi
 
 #- type: animatedLobbyScreen
 #  id: CentcommLobbyScreen
