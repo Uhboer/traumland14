@@ -1,0 +1,5 @@
+- type: jukebox
+  id: Thunderdome
+  name: MashedByMachines - Sector 11
+  path:
+    path: /Audio/Jukebox/sector11.ogg
