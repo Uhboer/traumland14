@@ -184,8 +184,10 @@ namespace Content.Server.GameTicking
 
         public void PlayerJoinGame(ICommonSession session, bool silent = false)
         {
-            if (!silent)
-                _chatManager.DispatchServerMessage(session, Loc.GetString("game-ticker-player-join-game-message"));
+            // FINSTER EDIT - No need welcome messages.
+            //if (!silent)
+            //    _chatManager.DispatchServerMessage(session, Loc.GetString("game-ticker-player-join-game-message"));
+            // FINSTER EDIT END
 
             _playerGameStatuses[session.UserId] = PlayerGameStatus.JoinedGame;
             _db.AddRoundPlayers(RoundId, session.UserId);

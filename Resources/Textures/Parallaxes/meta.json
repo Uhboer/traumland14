@@ -9,6 +9,9 @@
   "states": [
     {
       "name": "layer1"
+    },
+    {
+      "name": "layer1_old"
     }
   ]
 }
