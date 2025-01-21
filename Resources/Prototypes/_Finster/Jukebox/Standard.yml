@@ -1,5 +1,11 @@
 - type: jukebox
-  id: Thunderdome
-  name: MashedByMachines - Sector 11
+  id: BlackDog
+  name: SAMURAI - Black Dog
   path:
-    path: /Audio/Jukebox/sector11.ogg
+    path: /Audio/_Finster/Jukebox/black_dog.ogg
+
+- type: jukebox
+  id: LoveTheme
+  name: 五條人 - 阿珍愛上了阿強
+  path:
+    path: /Audio/_Finster/Jukebox/scissor-seven-love-theme.ogg
