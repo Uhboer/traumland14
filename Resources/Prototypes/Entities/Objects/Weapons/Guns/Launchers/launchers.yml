@@ -34,6 +34,7 @@
   - type: DamageOtherOnHit
     staminaCost: 14
   - type: Execution
+  - type: Telescope
 
 - type: entity
   name: china lake

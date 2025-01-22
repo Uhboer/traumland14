@@ -58,6 +58,7 @@
         Blunt: 2.5
   - type: DamageOtherOnHit
     staminaCost: 7.5
+  - type: Telescope
 
 - type: entity
   name: Kardashev-Mosin

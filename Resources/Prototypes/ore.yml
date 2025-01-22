@@ -101,6 +101,10 @@
 - type: weightedRandomOre
   id: RandomOreDistributionStandard
   weights:
+    N14OreCopper: 3
+    N14OreGold : 2
+    N14OreSilver: 2
+    N14OreIron: 3
     OreSteel: 10
     OreCoal: 10
     OreSpaceQuartz: 8
