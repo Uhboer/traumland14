@@ -490,6 +490,7 @@
     - Meat
   - type: CombatMode
     combatToggleAction: ActionCombatModeToggleOff
+  - type: Intent
   - type: Bloodstream
     bloodMaxVolume: 30
     bloodReagent: Cryoxadone

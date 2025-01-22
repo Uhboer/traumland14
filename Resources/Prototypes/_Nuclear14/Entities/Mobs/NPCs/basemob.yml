@@ -113,6 +113,7 @@
     bloodMaxVolume: 50
     bloodReagent: WastelandBlood
   - type: CombatMode
+  - type: Intent
   - type: MeleeWeapon
     hidden: true
     attackRate: 0.5

@@ -74,6 +74,7 @@
         path: /Audio/Effects/double_beep.ogg
     - type: CombatMode
       toggleMouseRotator: false
+    - type: Intent
     - type: Damageable
       damageContainer: Inorganic
     - type: Destructible
@@ -108,7 +109,7 @@
       useKey: false
     # TODO: Power ammo provider?
     - type: BallisticAmmoProvider
-      proto: N14CartridgePistol10 
+      proto: N14CartridgePistol10
       capacity: 500
     - type: HTN
       rootTask:
@@ -264,6 +265,7 @@
         path: /Audio/Effects/double_beep.ogg
     - type: CombatMode
       toggleMouseRotator: false
+    - type: Intent
     - type: Gun
       fireRate: 15
       selectedMode: FullAuto

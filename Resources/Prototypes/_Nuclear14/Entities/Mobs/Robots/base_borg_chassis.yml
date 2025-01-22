@@ -17,6 +17,7 @@
     soundHit:
       collection: MetalThud
   - type: CombatMode
+  - type: Intent
   - type: NoSlip
   - type: Fixtures
     fixtures:

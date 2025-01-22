@@ -53,6 +53,7 @@
   # - type: Bloodstream
     # bloodMaxVolume: 50
   - type: CombatMode
+  - type: Intent
   # - type: GhostTakeoverAvailable
   # - type: GhostRole
     # prob: 0.33
@@ -142,7 +143,7 @@
         Base: deathclaw
       Dead:
         Base: dead
-    
+
 - type: entity
   parent: N14MobRobotHostileMelee
   id: N14MobRobotProtectronHostile
@@ -181,7 +182,7 @@
   - type: HTN
     rootTask:
       task: SimpleDumbHostileCompound
-      
+
 - type: entity
   parent: N14MobRobotProtectronHostile
   id: N14MobRobotProtectronBuilderHostile
@@ -201,7 +202,7 @@
       shader: unshaded
       map: ["light"]
       visible: false
-      
+
 - type: entity
   parent: N14MobRobotProtectronHostile
   id: N14MobRobotProtectronFireHostile
@@ -221,7 +222,7 @@
       shader: unshaded
       map: ["light"]
       visible: false
-      
+
 - type: entity
   parent: N14MobRobotProtectronHostile
   id: N14MobRobotProtectronPoliceHostile
@@ -264,7 +265,7 @@
   - type: HTN
     rootTask:
       task: SimpleRangedHostileCompound
-      
+
 - type: entity
   parent: N14MobRobotHostileMelee
   id: N14MobRobotMrHandyClaw
@@ -315,7 +316,7 @@
     # volume: -3
     # sound: /Audio/DeltaV/Glimmer_Creatures/mite.ogg
   # - type: AmbientOnPowered
-  
+
 - type: entity
   parent: N14MobRobotMrHandyClaw
   id: N14MobRobotMrHandySaw
@@ -345,7 +346,7 @@
       shader: unshaded
       map: ["light"]
       visible: false
-  
+
 - type: entity
   parent: N14MobRobotHostile
   id: N14MobRobotMrHandyGun
@@ -401,7 +402,7 @@
   - type: HTN
     rootTask:
       task: SimpleRangedHostileCompound
-      
+
 - type: entity
   parent: N14MobRobotHostile
   id: N14MobRobotMrHandyGutsy
@@ -454,7 +455,7 @@
   - type: HTN
     rootTask:
       task: SimpleRangedHostileCompound
-      
+
 - type: entity
   parent: N14MobRobotHostile
   id: N14MobRobotRobobrain
@@ -507,7 +508,7 @@
   - type: HTN
     rootTask:
       task: SimpleRangedHostileCompound
-      
+
 - type: entity
   parent: N14MobRobotHostile
   id: N14MobRobotEyebot

@@ -1816,6 +1816,7 @@
   - type: CombatMode
     combatToggleAction: ActionCombatModeToggleOff
   - type: Intent
+  - type: Intent
   - type: Bloodstream
     bloodMaxVolume: 50
   - type: CanEscapeInventory

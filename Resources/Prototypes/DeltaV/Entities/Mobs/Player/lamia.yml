@@ -10,6 +10,7 @@
   description: A miserable pile of scales.
   components:
   - type: CombatMode
+  - type: Intent
   #- type: InteractionPopup
   #  successChance: 1
   #  interactSuccessString: hugging-success-generic

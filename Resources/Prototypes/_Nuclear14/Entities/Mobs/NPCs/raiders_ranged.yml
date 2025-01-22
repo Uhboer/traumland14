@@ -50,6 +50,7 @@
       availableModes:
         - SemiAuto
     - type: CombatMode
+    - type: Intent
     - type: BasicEntityAmmoProvider
       proto: N14CartridgePistol10
       capacity: 10

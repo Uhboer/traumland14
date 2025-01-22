@@ -158,6 +158,7 @@
     alternateState: Standing
     fireStackAlternateState: 3
   - type: CombatMode
+  - type: Intent
   - type: Climbing
   - type: Cuffable
   - type: AnimationPlayer
