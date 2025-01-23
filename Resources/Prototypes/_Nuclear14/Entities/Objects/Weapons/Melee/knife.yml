@@ -18,6 +18,8 @@
         Slash: 12
     soundHit:
       path: /Audio/Weapons/bladeslice.ogg
+    soundSwing:
+      collection: N14KnifeSwing
   - type: Sprite
   - type: Item
     size: Small

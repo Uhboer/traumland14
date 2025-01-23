@@ -25,6 +25,8 @@
     angle: 40
     soundHit:
       path: /Audio/Weapons/bladeslice.ogg
+    soundSwing:
+      collection: N14KnifeSwing
   - type: DamageOtherOnHit
     staminaCost: 5
   - type: EmbeddableProjectile
@@ -101,7 +103,7 @@
   # Shitmed Change
   - type: Scalpel
     speed: 0.3
-  - type: BoneSaw 
+  - type: BoneSaw
     speed: 0.5
 
 - type: entity

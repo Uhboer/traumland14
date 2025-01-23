@@ -108,13 +108,13 @@
     damage:
       types:
         Slash: 18
-        Pierce: 9
+        Piercing: 9
   - type: Sharp
   - type: MeleeWeapon
     autoAttack: true
     angle: 0
     wideAnimationRotation: -135
-    attackRate: 4
+    attackRate: 0.1
     damage:
       types:
         Slash: 6

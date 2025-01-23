@@ -2,7 +2,7 @@
   id: N14GaussLight
   damage:
     types:
-      Pierce: 12
+      Piercing: 12
       Heat: 10
   muzzleFlash:
     sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi

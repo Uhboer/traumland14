@@ -284,7 +284,7 @@
     animation: WeaponArcPunch
     damage:
       types:
-        Pierce: 5
+        Piercing: 5
   - type: Sprite
     sprite: _Nuclear14/Mobs/Robots/mrhandyclaw.rsi
     layers:

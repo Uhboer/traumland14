@@ -111,7 +111,7 @@
     damage:
       types:
         Blunt: 25
-        Pierce: 5
+        Piercing: 5
         Slash: 10
         Structural: 10
   - type: Clothing
