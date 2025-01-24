@@ -41,7 +41,7 @@
 #    naturalImmunities:
 #    - OwOnavirus
   - type: Speech
-    speechSounds: Alto
+    speechSounds: DeathnetMan # Alto
   - type: DamageOnHighSpeedImpact # Landing on all fours!
     damage:
       types:

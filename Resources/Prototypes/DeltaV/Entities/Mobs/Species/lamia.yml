@@ -206,7 +206,7 @@
     numberOfSegments: 18
     texturePath: /Textures/Nyanotrasen/Mobs/Species/lamia.rsi/segment.png
   - type: Speech
-    speechSounds: Alto
+    speechSounds: DeathnetMan # Alto
   - type: Vocal
   - type: Emoting
   - type: Grammar

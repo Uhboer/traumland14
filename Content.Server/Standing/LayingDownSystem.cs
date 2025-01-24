@@ -61,18 +61,11 @@ public sealed class LayingDownSystem : SharedLayingDownSystem
         if (!TryComp(uid, out StandingStateComponent? standing)
             || !TryComp(uid, out LayingDownComponent? layingDown))
             return;
-        /*
+
         if (_standing.IsDown(uid, standing))
-        {
-            if (TryStandUp(uid, layingDown, standing))
-                RefreshAlert(uid, standing);
-        }
+            TryStandUp(uid, layingDown, standing);
         else
-        {
-            if (TryLieDown(uid, layingDown, standing))
-                RefreshAlert(uid, standing);
-        }
-        */
+            TryLieDown(uid, layingDown, standing);
     }
 
     private void OnCheckAutoGetUp(CheckAutoGetUpEvent ev, EntitySessionEventArgs args)

@@ -105,7 +105,7 @@
     requiredLegs: 8
   - type: Speech
     fontId: Allods
-    speechSounds: Alto
+    speechSounds: DeathnetMan # Alto
   - type: Inventory
     templateId: anytaur
   - type: Tag
