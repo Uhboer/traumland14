@@ -1,5 +1,7 @@
 using System.Numerics;
 using Content.Server.NPC.Components;
+using Content.Server.NPC.HTN;
+using Content.Shared.CombatMode;
 using Content.Shared._White.Intent;
 using Content.Shared.NPC;
 using Robust.Shared.Map;
@@ -10,6 +12,7 @@ namespace Content.Server.NPC.Systems;
 
 public sealed partial class NPCCombatSystem
 {
+    [Dependency] private readonly IRobustRandom _rng = default!;
     private const float TargetMeleeLostRange = 14f;
 
     private void InitializeMelee()
@@ -109,5 +112,8 @@ public sealed partial class NPCCombatSystem
         {
             _melee.AttemptLightAttack(uid, weaponUid, weapon, component.Target);
         }
+
+        if (Comp<HTNComponent>(uid).Blackboard.TryGetValue<float>("AttackDelayDeviation", out var dev, EntityManager))
+            weapon.NextAttack += TimeSpan.FromSeconds(_rng.NextFloat(-dev, dev));
     }
 }
