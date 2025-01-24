@@ -8,6 +8,10 @@
   "copyright": "Original taken from https://github.com/space-wizards/space-station-14, grab icons edited by _kote",
   "states": [
     {
+      "name": "normal",
+      "directions": 1
+    },
+    {
       "name": "pulled",
       "directions": 1
     },

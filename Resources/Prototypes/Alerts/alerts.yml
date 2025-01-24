@@ -8,6 +8,8 @@
     - category: IntentDisarm
     - category: IntentHarm
     - category: IntentGrab
+    - category: NADrop
+    - category: NAThrow
     - category: NACombatMode
     - category: NALaying
     - category: NAWalking
@@ -507,6 +509,34 @@
     state: laying1
   name: alerts-laying-name
   description: alerts-laying-desc
+  minSeverity: 0
+  maxSeverity: 1
+
+- type: alert
+  id: Drop
+  category: NADrop
+  onClick: !type:ToggleLayingModeAlert { }
+  icons:
+  - sprite: /Textures/Interface/Alerts/drop.rsi
+    state: drop0
+  - sprite: /Textures/Interface/Alerts/drop.rsi
+    state: drop1
+  name: alerts-drop-name
+  description: alerts-drop-desc
+  minSeverity: 0
+  maxSeverity: 1
+
+- type: alert
+  id: Throw
+  category: NAThrow
+  onClick: !type:ToggleLayingModeAlert { }
+  icons:
+  - sprite: /Textures/Interface/Alerts/throw.rsi
+    state: throw0
+  - sprite: /Textures/Interface/Alerts/throw.rsi
+    state: throw1
+  name: alerts-throw-name
+  description: alerts-throw-desc
   minSeverity: 0
   maxSeverity: 1
 

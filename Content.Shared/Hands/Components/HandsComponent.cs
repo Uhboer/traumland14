@@ -1,7 +1,9 @@
+using Content.Shared.Alert;
 using Content.Shared.DisplacementMap;
 using Content.Shared.Hands.EntitySystems;
 using Robust.Shared.Containers;
 using Robust.Shared.GameStates;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 
 namespace Content.Shared.Hands.Components;
@@ -52,6 +54,18 @@ public sealed partial class HandsComponent : Component
     [DataField("throwRange")]
     [ViewVariables(VVAccess.ReadWrite)]
     public float ThrowRange { get; set; } = 8f;
+
+    // FINSTER EDIT - Add throw/drop allerts
+    [DataField]
+    public ProtoId<AlertCategoryPrototype> DropCategory = "NADrop";
+    [DataField]
+    public ProtoId<AlertPrototype> DropAlert = "Drop";
+
+    [DataField]
+    public ProtoId<AlertCategoryPrototype> ThrowCategory = "NAThrow";
+    [DataField]
+    public ProtoId<AlertPrototype> ThrowAlert = "Throw";
+    // FINSTER EDIT END
 
     /// <summary>
     ///     Whether or not to add in-hand sprites for held items. Some entities (e.g., drones) don't want these.

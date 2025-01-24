@@ -107,7 +107,7 @@ public abstract class SharedLayingDownSystem : EntitySystem
             TryLieDown(uid, layingDown, standing);
     }
 
-    private void OnStandingUpDoAfter(EntityUid uid, StandingStateComponent component, StandingUpDoAfterEvent args)
+    protected virtual void OnStandingUpDoAfter(EntityUid uid, StandingStateComponent component, StandingUpDoAfterEvent args)
     {
         if (args.Handled || args.Cancelled
             || HasComp<KnockedDownComponent>(uid)

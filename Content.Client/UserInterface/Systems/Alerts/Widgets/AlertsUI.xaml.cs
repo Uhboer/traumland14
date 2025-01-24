@@ -107,10 +107,15 @@ public sealed partial class AlertsUI : UIWidget
 
             switch (alertCategory.Group)
             {
-                case "NativeActions":
-                    alertControlsContainer = _nativeActionsGui.ActionsContainer;
+                case "CombatActions":
+                    alertControlsContainer = _nativeActionsGui.CombatActionsContainer;
                     return alertControlsContainer;
-                    break;
+                case "StandingActions":
+                    alertControlsContainer = _nativeActionsGui.StandingContainer;
+                    return alertControlsContainer;
+                case "DropThrowActions":
+                    alertControlsContainer = _nativeActionsGui.DropThrowContainer;
+                    return alertControlsContainer;
                 case "Intents":
                     alertControlsContainer = _nativeActionsGui.IntentsContainer;
                     if (alertControlsContainer.ChildCount >= 2)
@@ -118,7 +123,6 @@ public sealed partial class AlertsUI : UIWidget
                         alertControlsContainer = _nativeActionsGui.IntentsContainer2;
                     }
                     return alertControlsContainer;
-                    break;
                 case "MainInfo":
                     if (_mainAlertsContainer != null)
                     {
@@ -239,7 +243,7 @@ public sealed partial class AlertsUI : UIWidget
             switch (category.Group)
             {
                 case "Intents":
-                    alertControl = new AlertControl(alert, alertState.Severity, 2, 16, 1f)
+                    alertControl = new AlertControl(alert, alertState.Severity, 2, 16, 16, 1f)
                     {
                         Cooldown = cooldown
                     };
@@ -263,15 +267,29 @@ public sealed partial class AlertsUI : UIWidget
 
                     alertControl.OnPressed += AlertControlPressed;
                     return alertControl;
-                case "NativeActions":
-                    alertControl = new AlertControl(alert, alertState.Severity, 2, 32, 1f)
+                case "CombatActions":
+                    alertControl = new AlertControl(alert, alertState.Severity, 2, 32, 32, 1f)
+                    {
+                        Cooldown = cooldown
+                    };
+                    alertControl.OnPressed += AlertControlPressed;
+                    return alertControl;
+                case "StandingActions":
+                    alertControl = new AlertControl(alert, alertState.Severity, 2, 32, 16, 1f)
+                    {
+                        Cooldown = cooldown
+                    };
+                    alertControl.OnPressed += AlertControlPressed;
+                    return alertControl;
+                case "DropThrowActions":
+                    alertControl = new AlertControl(alert, alertState.Severity, 2, 32, 16, 1f)
                     {
                         Cooldown = cooldown
                     };
                     alertControl.OnPressed += AlertControlPressed;
                     return alertControl;
                 case "MainInfo":
-                    alertControl = new AlertControl(alert, alertState.Severity, 2, 32, 1f)
+                    alertControl = new AlertControl(alert, alertState.Severity, 2, 32, 32, 1f)
                     {
                         Cooldown = cooldown
                     };

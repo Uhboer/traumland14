@@ -18,8 +18,8 @@ public abstract class SharedIntentSystem : EntitySystem
         SubscribeLocalEvent<IntentComponent, ComponentShutdown>(OnShutdown);
         SubscribeLocalEvent<IntentComponent, ToggleIntentEvent>(OnToggleIntent);
 
-        SubscribeLocalEvent<StandingStateComponent, DownedEvent>(OnDown);
-        SubscribeLocalEvent<StandingStateComponent, StoodEvent>(OnStood);
+        //SubscribeLocalEvent<StandingStateComponent, DownedEvent>(OnDown);
+        //SubscribeLocalEvent<StandingStateComponent, StoodEvent>(OnStood);
     }
 
     public virtual void OnStartup(EntityUid uid, IntentComponent component, ComponentStartup args)

@@ -43,15 +43,23 @@
 
 - type: alertCategory
   id: NACombatMode
-  group: NativeActions
+  group: CombatActions
 
 - type: alertCategory
   id: NAWalking
-  group: NativeActions
+  group: StandingActions
 
 - type: alertCategory
   id: NALaying
-  group: NativeActions
+  group: StandingActions
+
+- type: alertCategory
+  id: NADrop
+  group: DropThrowActions
+
+- type: alertCategory
+  id: NAThrow
+  group: DropThrowActions
 
 - type: alertCategory
   id: IntentHelp

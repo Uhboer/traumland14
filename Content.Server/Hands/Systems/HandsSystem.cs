@@ -27,6 +27,7 @@ using Robust.Shared.Player;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
+using Content.Shared.Alert;
 
 namespace Content.Server.Hands.Systems
 {
@@ -41,6 +42,7 @@ namespace Content.Server.Hands.Systems
         [Dependency] private readonly PullingSystem _pullingSystem = default!;
         [Dependency] private readonly ThrowingSystem _throwingSystem = default!;
         [Dependency] private readonly SharedBodySystem _bodySystem = default!; // Shitmed Change
+        [Dependency] private readonly AlertsSystem _alerts = default!;
         public override void Initialize()
         {
             base.Initialize();
@@ -59,6 +61,9 @@ namespace Content.Server.Hands.Systems
             SubscribeLocalEvent<HandsComponent, BodyPartEnabledEvent>(HandleBodyPartEnabled); // Shitmed Change
             SubscribeLocalEvent<HandsComponent, BodyPartDisabledEvent>(HandleBodyPartDisabled); // Shitmed Change
 
+            SubscribeLocalEvent<HandsComponent, ComponentStartup>(OnInit); // FINSTER EDIT
+            SubscribeLocalEvent<HandsComponent, ComponentShutdown>(OnShutdown); // FINSTER EDIT
+
             CommandBinds.Builder
                 .Bind(ContentKeyFunctions.ThrowItemInHand, new PointerInputCmdHandler(HandleThrowItem))
                 .Register<HandsSystem>();
@@ -70,6 +75,25 @@ namespace Content.Server.Hands.Systems
 
             CommandBinds.Unregister<HandsSystem>();
         }
+
+        // FINSTER EDIT - Add drop alert button
+        private void OnInit(EntityUid uid, HandsComponent component, ComponentStartup args)
+        {
+            RefreshAlert(uid, component);
+        }
+
+        public void OnShutdown(EntityUid uid, HandsComponent component, ComponentShutdown args)
+        {
+            _alerts.ClearAlertCategory(uid, component.DropCategory);
+            _alerts.ClearAlertCategory(uid, component.ThrowCategory);
+        }
+
+        public void RefreshAlert(EntityUid uid, HandsComponent comp)
+        {
+            _alerts.ShowAlert(uid, comp.DropAlert, (short) 0);
+            _alerts.ShowAlert(uid, comp.ThrowAlert, (short) 0);
+        }
+        // FINSTER EDIT END
 
         private void GetComponentState(EntityUid uid, HandsComponent hands, ref ComponentGetState args)
         {

@@ -23,10 +23,22 @@ public sealed class LayingDownSystem : SharedLayingDownSystem
 
         SubscribeLocalEvent<StandingStateComponent, ComponentStartup>(OnInit);
         SubscribeLocalEvent<StandingStateComponent, ComponentShutdown>(OnShutdown);
+        SubscribeLocalEvent<StandingStateComponent, DownedEvent>(OnDowned);
+        SubscribeLocalEvent<StandingStateComponent, StoodEvent>(OnStood);
         SubscribeNetworkEvent<CheckAutoGetUpEvent>(OnCheckAutoGetUp);
     }
 
     private void OnInit(EntityUid uid, StandingStateComponent component, ComponentStartup args)
+    {
+        RefreshAlert(uid, component);
+    }
+
+    private void OnDowned(EntityUid uid, StandingStateComponent component, ref DownedEvent args)
+    {
+        RefreshAlert(uid, component);
+    }
+
+    private void OnStood(EntityUid uid, StandingStateComponent component, ref StoodEvent args)
     {
         RefreshAlert(uid, component);
     }
@@ -49,7 +61,7 @@ public sealed class LayingDownSystem : SharedLayingDownSystem
         if (!TryComp(uid, out StandingStateComponent? standing)
             || !TryComp(uid, out LayingDownComponent? layingDown))
             return;
-
+        /*
         if (_standing.IsDown(uid, standing))
         {
             if (TryStandUp(uid, layingDown, standing))
@@ -60,6 +72,7 @@ public sealed class LayingDownSystem : SharedLayingDownSystem
             if (TryLieDown(uid, layingDown, standing))
                 RefreshAlert(uid, standing);
         }
+        */
     }
 
     private void OnCheckAutoGetUp(CheckAutoGetUpEvent ev, EntitySessionEventArgs args)
