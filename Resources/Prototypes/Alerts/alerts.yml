@@ -514,7 +514,7 @@
 - type: alert
   id: Drop
   category: NADrop
-  onClick: !type:ToggleLayingModeAlert { }
+  onClick: !type:TryDropAlert { }
   icons:
   - sprite: /Textures/Interface/Alerts/drop.rsi
     state: drop0

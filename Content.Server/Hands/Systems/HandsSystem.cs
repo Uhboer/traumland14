@@ -28,6 +28,8 @@ using Robust.Shared.Random;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
 using Content.Shared.Alert;
+using JetBrains.Annotations;
+using Content.Server.Hands.Systems;
 
 namespace Content.Server.Hands.Systems
 {
@@ -93,6 +95,7 @@ namespace Content.Server.Hands.Systems
             _alerts.ShowAlert(uid, comp.DropAlert, (short) 0);
             _alerts.ShowAlert(uid, comp.ThrowAlert, (short) 0);
         }
+
         // FINSTER EDIT END
 
         private void GetComponentState(EntityUid uid, HandsComponent hands, ref ComponentGetState args)
@@ -310,5 +313,15 @@ namespace Content.Server.Hands.Systems
         }
 
         #endregion
+    }
+}
+
+[UsedImplicitly, DataDefinition]
+public sealed partial class TryDropAlert : IAlertClick
+{
+    public void AlertClicked(EntityUid uid)
+    {
+        var entityManager = IoCManager.Resolve<IEntityManager>();
+        entityManager.System<HandsSystem>().TryDrop(uid);
     }
 }

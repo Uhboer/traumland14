@@ -5,7 +5,7 @@
   abstract: true
   components:
   - type: Speech
-    speechSounds: Baritone
+    speechSounds: DeathnetMan # Baritone
     speechVerb: Oni
   - type: HumanoidAppearance
     species: Oni
