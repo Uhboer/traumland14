@@ -298,6 +298,7 @@
     - RadiationProtection
     - Drowsiness
   - type: Blindable
+  - type: Hearing
   # Other
   - type: Temperature
     heatDamageThreshold: 325

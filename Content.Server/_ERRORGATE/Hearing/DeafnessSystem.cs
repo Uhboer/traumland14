@@ -1,5 +1,7 @@
 ﻿using System.Threading;
 using Content.Server.Body.Systems;
+using Content.Shared._ERRORGATE.Hearing;
+using Content.Shared.Bed.Sleep;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Systems;
 
@@ -35,7 +37,7 @@ public sealed class DeafnessSystem : EntitySystem
             return;
         }
 
-        var eventParams = new HearingChangedEvent(uid, false, true, 0f, "You can almost hear something...");
+        var eventParams = new HearingChangedEvent(uid, false, true, 0f, Loc.GetString("hearing-deaf-chat-message"));
         RaiseLocalEvent(uid, eventParams);
     }
 
@@ -43,7 +45,7 @@ public sealed class DeafnessSystem : EntitySystem
     {
         if (args.FellAsleep)
         {
-            var eventParams = new HearingChangedEvent(uid, false, true, 0f, "You can almost hear something...");
+            var eventParams = new HearingChangedEvent(uid, false, true, 0f, Loc.GetString("hearing-deaf-chat-message"));
             RaiseLocalEvent(uid, eventParams);
             return;
         }

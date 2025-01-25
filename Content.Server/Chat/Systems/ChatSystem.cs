@@ -41,6 +41,9 @@ using Robust.Shared.Utility;
 using Content.Server.Shuttles.Components;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Dynamics.Joints;
+using Content.Shared.Mobs.Components;
+using Content.Shared.Mobs;
+using Content.Shared._ERRORGATE.Hearing;
 
 namespace Content.Server.Chat.Systems;
 
