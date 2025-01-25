@@ -528,7 +528,7 @@
 - type: alert
   id: Throw
   category: NAThrow
-  onClick: !type:ToggleLayingModeAlert { }
+  onClick: !type:ToggleThrowMode { }
   icons:
   - sprite: /Textures/Interface/Alerts/throw.rsi
     state: throw0

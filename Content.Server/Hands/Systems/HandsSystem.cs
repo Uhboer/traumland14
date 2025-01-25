@@ -68,6 +68,7 @@ namespace Content.Server.Hands.Systems
 
             CommandBinds.Builder
                 .Bind(ContentKeyFunctions.ThrowItemInHand, new PointerInputCmdHandler(HandleThrowItem))
+                .Bind(ContentKeyFunctions.ThrowMode, new PointerInputCmdHandler(HandleToggleThrowMode))
                 .Register<HandsSystem>();
         }
 
@@ -93,9 +94,26 @@ namespace Content.Server.Hands.Systems
         public void RefreshAlert(EntityUid uid, HandsComponent comp)
         {
             _alerts.ShowAlert(uid, comp.DropAlert, (short) 0);
-            _alerts.ShowAlert(uid, comp.ThrowAlert, (short) 0);
+            _alerts.ShowAlert(uid, comp.ThrowAlert, comp.InThrowMode ? (short) 1 : (short) 0);
         }
 
+        public void SetThrowMode(EntityUid uid, bool state, HandsComponent? comp = null)
+        {
+            if (!Resolve(uid, ref comp))
+                return;
+
+            comp.InThrowMode = state;
+            RefreshAlert(uid, comp);
+        }
+
+        public void ToggleThrowMode(EntityUid uid, HandsComponent? comp = null)
+        {
+            if (!Resolve(uid, ref comp))
+                return;
+
+            SetThrowMode(uid, !comp.InThrowMode, comp);
+            RefreshAlert(uid, comp);
+        }
         // FINSTER EDIT END
 
         private void GetComponentState(EntityUid uid, HandsComponent hands, ref ComponentGetState args)
@@ -230,6 +248,9 @@ namespace Content.Server.Hands.Systems
             if (playerSession?.AttachedEntity is not { Valid: true } player || !Exists(player))
                 return false;
 
+            if (!TryComp(player, out HandsComponent? hands) || !hands.InThrowMode)
+                return false;
+
             if (TryGetActiveItem(player, out var item) && TryComp<VirtualItemComponent>(item, out var virtComp))
             {
                 var userEv = new VirtualItemDropAttemptEvent(virtComp.BlockingEntity, player, item.Value, true);
@@ -239,10 +260,27 @@ namespace Content.Server.Hands.Systems
                 RaiseLocalEvent(virtComp.BlockingEntity, targEv);
 
                 if (userEv.Cancelled || targEv.Cancelled)
+                {
+                    SetThrowMode(player, false);
                     return false;
+                }
             }
 
-            return ThrowHeldItem(player, coordinates);
+            var result = ThrowHeldItem(player, coordinates);
+            SetThrowMode(player, false);
+            return result;
+        }
+
+        private bool HandleToggleThrowMode(ICommonSession? playerSession, EntityCoordinates coordinates, EntityUid entity)
+        {
+            if (playerSession?.AttachedEntity is not { Valid: true } player || !Exists(player))
+                return false;
+
+            if (!TryComp(player, out HandsComponent? hands))
+                return false;
+
+            ToggleThrowMode(player, hands);
+            return true;
         }
 
         /// <summary>
@@ -323,5 +361,15 @@ public sealed partial class TryDropAlert : IAlertClick
     {
         var entityManager = IoCManager.Resolve<IEntityManager>();
         entityManager.System<HandsSystem>().TryDrop(uid);
+    }
+}
+
+[UsedImplicitly, DataDefinition]
+public sealed partial class ToggleThrowMode : IAlertClick
+{
+    public void AlertClicked(EntityUid uid)
+    {
+        var entityManager = IoCManager.Resolve<IEntityManager>();
+        entityManager.System<HandsSystem>().ToggleThrowMode(uid);
     }
 }

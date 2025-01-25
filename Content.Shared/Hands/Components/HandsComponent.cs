@@ -55,6 +55,9 @@ public sealed partial class HandsComponent : Component
     [ViewVariables(VVAccess.ReadWrite)]
     public float ThrowRange { get; set; } = 8f;
 
+    [DataField]
+    public bool InThrowMode { get; set; } = false;
+
     // FINSTER EDIT - Add throw/drop allerts
     [DataField]
     public ProtoId<AlertCategoryPrototype> DropCategory = "NADrop";

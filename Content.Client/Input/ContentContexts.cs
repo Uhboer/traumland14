@@ -64,6 +64,7 @@ namespace Content.Client.Input
             human.AddFunction(ContentKeyFunctions.OpenLanguageMenu);
             human.AddFunction(ContentKeyFunctions.ActivateItemInWorld);
             human.AddFunction(ContentKeyFunctions.ThrowItemInHand);
+            human.AddFunction(ContentKeyFunctions.ThrowMode);
             human.AddFunction(ContentKeyFunctions.AltActivateItemInWorld);
             human.AddFunction(ContentKeyFunctions.TryPullObject);
             human.AddFunction(ContentKeyFunctions.MovePulledObject);
@@ -120,6 +121,7 @@ namespace Content.Client.Input
             aghost.AddFunction(ContentKeyFunctions.AltUseItemInHand);
             aghost.AddFunction(ContentKeyFunctions.ActivateItemInWorld);
             aghost.AddFunction(ContentKeyFunctions.ThrowItemInHand);
+            aghost.AddFunction(ContentKeyFunctions.ThrowMode);
             aghost.AddFunction(ContentKeyFunctions.AltActivateItemInWorld);
             aghost.AddFunction(ContentKeyFunctions.TryPullObject);
             aghost.AddFunction(ContentKeyFunctions.MovePulledObject);

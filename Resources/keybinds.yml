@@ -43,7 +43,7 @@ binds:
   key: S
 - function: Walk
   type: Toggle
-  key: R
+  key: V
 # Shuttle
 - function: ShuttleStrafeUp
   type: State
@@ -221,8 +221,11 @@ binds:
   mod1: Alt
 - function: ThrowItemInHand
   type: State
-  key: Q
-  mod1: Control
+  key: MouseLeft
+  #mod1: Control
+- function: ThrowMode
+  type: State
+  key: R
 - function: TryPullObject
   type: State
   canFocus: true
@@ -258,9 +261,10 @@ binds:
 - function: OpenBackpack
   type: State
   key: V
+  mod1: Shift
 - function: OpenBelt
   type: State
-  key: V
+  key: B
   mod1: Shift
 - function: OfferItem
   type: State
