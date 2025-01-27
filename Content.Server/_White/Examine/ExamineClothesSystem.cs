@@ -77,6 +77,7 @@ namespace Content.Server._White.Examine
                 { "neck", "neck-" },
                 { "ears", "ears-" },
                 { "jumpsuit", "jumpsuit-" },
+                { "pants", "pants-" },
                 { "outerClothing", "outer-" },
                 { "back", "back-" },
                 { "gloves", "gloves-" },
