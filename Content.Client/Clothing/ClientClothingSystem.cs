@@ -191,6 +191,20 @@ public sealed class ClientClothingSystem : ClothingSystem
         if (!inventorySlots.VisualLayerKeys.TryGetValue(args.Slot, out var revealedLayers))
             return;
 
+        if (TryComp<HideLayerClothingComponent>(args.Equipment, out var hideLayer) &&
+            hideLayer.ClothingSlots != null)
+        {
+            foreach (var clothingSlot in hideLayer.ClothingSlots)
+            {
+                if (!inventorySlots.VisualLayerKeys.TryGetValue(clothingSlot, out var revealedLayersToShow))
+                    continue;
+
+                foreach (var layerToShow in revealedLayersToShow)
+                    component.LayerSetVisible(layerToShow, true);
+            }
+            inventorySlots.HiddenSlots.ExceptWith(hideLayer.ClothingSlots);
+        }
+
         // Remove old layers. We could also just set them to invisible, but as items may add arbitrary layers, this
         // may eventually bloat the player with lots of invisible layers.
         foreach (var layer in revealedLayers)
@@ -257,6 +271,20 @@ public sealed class ClientClothingSystem : ClothingSystem
             return;
         }
 
+        if (TryComp<HideLayerClothingComponent>(equipment, out var hideLayer) &&
+            hideLayer.ClothingSlots != null)
+        {
+            foreach (var clothingSlot in hideLayer.ClothingSlots)
+            {
+                if (!inventorySlots.VisualLayerKeys.TryGetValue(clothingSlot, out var revealedLayersToHide))
+                    continue;
+
+                foreach (var layerToHide in revealedLayersToHide)
+                    sprite.LayerSetVisible(layerToHide, false);
+            }
+            inventorySlots.HiddenSlots.UnionWith(hideLayer.ClothingSlots);
+        }
+
         var displacementData = inventory.Displacements.GetValueOrDefault(slot);
 
         if (clothingComponent.RenderLayer != null)
@@ -316,6 +344,15 @@ public sealed class ClientClothingSystem : ClothingSystem
             {
                 layer.SetRsi(clothingSprite.BaseRSI);
             }
+
+            // Another "temporary" fix for clothing stencil masks.
+            // Sprite layer redactor when
+            // Sprite "redactor" just a week away.
+            if (slot == Jumpsuit)
+                layerData.Shader ??= "StencilDraw";
+
+            if (inventorySlots.HiddenSlots.Contains(slot))
+                layerData.Visible = false;
 
             sprite.LayerSetData(index, layerData);
             layer.Offset += slotDef.Offset;
