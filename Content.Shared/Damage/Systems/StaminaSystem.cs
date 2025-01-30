@@ -235,7 +235,7 @@ public sealed partial class StaminaSystem : EntitySystem
             return;
         }
 
-        var severity = ContentHelpers.RoundToLevels(MathF.Max(0f, component.CritThreshold - component.StaminaDamage), component.CritThreshold, 7);
+        var severity = ContentHelpers.RoundToLevels(MathF.Max(0f, component.CritThreshold - component.StaminaDamage), component.CritThreshold, 11);
         _alerts.ShowAlert(uid, component.StaminaAlert, (short) severity);
     }
 

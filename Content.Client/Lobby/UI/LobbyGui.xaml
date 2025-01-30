@@ -103,7 +103,7 @@
                             MinWidth="490"
                             VerticalAlignment="Stretch">
                 <PanelContainer.PanelOverride>
-                    <gfx:StyleBoxFlat BackgroundColor="#000000" /> <!-- #191919 -->
+                    <gfx:StyleBoxFlat BackgroundColor="#000000" /> <!-- #100F14 -->
                 </PanelContainer.PanelOverride>
                 <BoxContainer Orientation="Vertical" HorizontalExpand="True">
                     <!-- Top row

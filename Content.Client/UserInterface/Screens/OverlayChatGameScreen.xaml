@@ -19,7 +19,7 @@
     <BoxContainer Name="MainContainer" Orientation="Horizontal">
         <PanelContainer VerticalExpand="True" HorizontalExpand="False" MinWidth="192" MaxWidth="192">
                     <PanelContainer.PanelOverride>
-                        <graphics:StyleBoxFlat BackgroundColor="#191919" BorderColor="#3A3A3A" BorderThickness="1" />
+                        <graphics:StyleBoxFlat BackgroundColor="#100F14" BorderColor="#3A3A3A" BorderThickness="1" />
                     </PanelContainer.PanelOverride>
                     <BoxContainer Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 0 0 0">
                         <hotbar:HotbarGui Name="Hotbar" Access="Protected"/>
@@ -45,7 +45,7 @@
         </LayoutContainer>
         <PanelContainer VerticalExpand="True" HorizontalExpand="False" MinWidth="64" MaxWidth="64">
                         <PanelContainer.PanelOverride>
-                            <graphics:StyleBoxFlat BackgroundColor="#191919" BorderColor="#3A3A3A" BorderThickness="1" />
+                            <graphics:StyleBoxFlat BackgroundColor="#100F14" BorderColor="#3A3A3A" BorderThickness="1" />
                         </PanelContainer.PanelOverride>
                         <BoxContainer Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Center">
                             <targeting:TargetingControl Name="Targeting" Access="Protected" />

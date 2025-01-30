@@ -15,7 +15,7 @@
                      Stretch="KeepAspect" />
         <PanelContainer HorizontalExpand="True" MinWidth="300" MaxWidth="900">
             <PanelContainer.PanelOverride>
-                <gfx:StyleBoxFlat BackgroundColor="#191919" />
+                <gfx:StyleBoxFlat BackgroundColor="#100F14" /> <!-- #191919 -->
             </PanelContainer.PanelOverride>
             <BoxContainer Orientation="Vertical" HorizontalExpand="True">
                 <ItemList Name="ShadersItemList" Access="Public" SelectMode="Single" VerticalExpand="True" MaxHeight="350"/>

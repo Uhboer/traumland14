@@ -29,15 +29,7 @@ public sealed class NativeActionsUIController : UIController, IOnStateEntered<Ga
     public NativeActionsGui? NativeActions;
 
     // And another hardcoded elements
-    public BoxContainer? MainAlertsContainer;
-
-    public BoxContainer? LeftTopAlertContainer;
-    public BoxContainer? LeftMiddleAlertContainer;
-    public BoxContainer? LeftBottomAlertContainer;
-
-    public BoxContainer? RightTopAlertContainer;
-    public BoxContainer? RightMiddleAlertContainer;
-    public BoxContainer? RightBottomAlertContainer;
+    public BoxContainer? MainInfoAlertsContainer;
 
     public override void Initialize()
     {
@@ -153,13 +145,7 @@ public sealed class NativeActionsUIController : UIController, IOnStateEntered<Ga
         switch (UIManager.ActiveScreen)
         {
             case SeparatedChatGameScreen separatedScreen:
-                MainAlertsContainer = separatedScreen.MainAlertsContainer;
-                LeftTopAlertContainer = separatedScreen.LeftTopAlertContainer;
-                LeftMiddleAlertContainer = separatedScreen.LeftMiddleAlertContainer;
-                LeftBottomAlertContainer = separatedScreen.LeftBottomAlertContainer;
-                RightTopAlertContainer = separatedScreen.RightTopAlertContainer;
-                RightMiddleAlertContainer = separatedScreen.RightMiddleAlertContainer;
-                RightBottomAlertContainer = separatedScreen.RightBottomAlertContainer;
+                MainInfoAlertsContainer = separatedScreen.MainInfoAlertsContainer;
                 break;
         }
     }
@@ -171,17 +157,6 @@ public sealed class NativeActionsUIController : UIController, IOnStateEntered<Ga
 
         _combatSystem.LocalToggleCombatMode();
     }
-/*
-    public void ToggleLayingMode()
-    {
-
-    }
-
-    public void ToggleWalkMode()
-    {
-
-    }
-*/
 
     public void OnPlayerDetached(EntityUid uid)
     {

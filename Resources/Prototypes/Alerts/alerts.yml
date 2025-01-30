@@ -11,11 +11,11 @@
     - category: NADrop
     - category: NAThrow
     - category: NACombatMode
+    - category: Health
+    - category: Stamina
+    - category: Mood
     - category: NALaying
     - category: NAWalking
-    - category: Health
-    - category: Mood
-    - category: Stamina
     - alertType: SuitPower
     - alertType: ModsuitPower # Goobstation - Modsuits
     - category: Internals
@@ -117,7 +117,9 @@
 
 - type: alert
   id: Fire
-  icons: [ /Textures/Interface/Alerts/Fire/fire.png ]
+  icons:
+  - sprite: /Textures/Interface/Alerts/fire.rsi
+    state: fire0
   onClick: !type:ResistFire  { }
   name: alerts-on-fire-name
   description: alerts-on-fire-desc
@@ -136,6 +138,14 @@
   maxSeverity: 3
   name: alerts-too-cold-name
   description: alerts-too-cold-desc
+
+- type: alert
+  id: NormalTemperature
+  icons:
+  - sprite: /Textures/Interface/Alerts/temperature.rsi
+    state: normal
+  name: alerts-normal-temperature-name
+  description: alerts-normal-temperature-desc
 
 - type: alert
   id: Hot
@@ -364,10 +374,18 @@
     state: stamina5
   - sprite: /Textures/Interface/Alerts/stamina.rsi
     state: stamina6
+  - sprite: /Textures/Interface/Alerts/stamina.rsi
+    state: stamina7
+  - sprite: /Textures/Interface/Alerts/stamina.rsi
+    state: stamina8
+  - sprite: /Textures/Interface/Alerts/stamina.rsi
+    state: stamina9
+  - sprite: /Textures/Interface/Alerts/stamina.rsi
+    state: stamina10
   name: alerts-stamina-name
   description: alerts-stamina-desc
   minSeverity: 0
-  maxSeverity: 6
+  maxSeverity: 10
 
 - type: alert
   id: Starving

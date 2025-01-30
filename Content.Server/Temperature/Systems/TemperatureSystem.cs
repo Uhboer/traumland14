@@ -210,7 +210,10 @@ public sealed class TemperatureSystem : EntitySystem
         {
             // If there's no risk to being cold there's no reason to show a Cold alert
             if (!temperature.ColdDamage.AnyPositive())
+            {
+                _alerts.ShowAlert(uid, temperature.NormalTemperatureAlert);
                 return;
+            }
 
             type = temperature.ColdAlert;
             threshold = temperature.ColdDamageThreshold;
@@ -218,7 +221,10 @@ public sealed class TemperatureSystem : EntitySystem
         else
         {
             if (!temperature.HeatDamage.AnyPositive())
+            {
+                _alerts.ShowAlert(uid, temperature.NormalTemperatureAlert);
                 return;
+            }
 
             type = temperature.HotAlert;
             threshold = temperature.HeatDamageThreshold;
@@ -242,7 +248,7 @@ public sealed class TemperatureSystem : EntitySystem
                 break;
 
             case > 0.66f:
-                _alerts.ClearAlertCategory(uid, TemperatureAlertCategory);
+                _alerts.ShowAlert(uid, temperature.NormalTemperatureAlert);
                 break;
         }
     }

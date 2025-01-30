@@ -8,13 +8,7 @@
   },
   "states": [
     {
-      "name": "internal0",
-      "delays": [
-        [
-          0.5,
-          0.5
-        ]
-      ]
+      "name": "internal0"
     },
     {
       "name": "internal1"

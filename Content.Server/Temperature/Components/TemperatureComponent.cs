@@ -76,4 +76,7 @@ public sealed partial class TemperatureComponent : Component
 
     [DataField]
     public ProtoId<AlertPrototype> ColdAlert = "Cold";
+
+    [DataField]
+    public ProtoId<AlertPrototype> NormalTemperatureAlert = "NormalTemperature";
 }

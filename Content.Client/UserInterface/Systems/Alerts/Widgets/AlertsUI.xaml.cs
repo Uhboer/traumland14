@@ -30,11 +30,6 @@ public sealed partial class AlertsUI : UIWidget
         get => _NAController.NativeActions;
     }
 
-    private BoxContainer? _mainAlertsContainer
-    {
-        get => _NAController.MainAlertsContainer;
-    }
-
     public AlertsUI()
     {
         RobustXamlLoader.Load(this);
@@ -111,7 +106,7 @@ public sealed partial class AlertsUI : UIWidget
                     alertControlsContainer = _nativeActionsGui.CombatActionsContainer;
                     return alertControlsContainer;
                 case "StandingActions":
-                    alertControlsContainer = _nativeActionsGui.StandingContainer;
+                    //alertControlsContainer = _nativeActionsGui.StandingContainer;
                     return alertControlsContainer;
                 case "DropThrowActions":
                     alertControlsContainer = _nativeActionsGui.DropThrowContainer;
@@ -123,37 +118,8 @@ public sealed partial class AlertsUI : UIWidget
                         alertControlsContainer = _nativeActionsGui.IntentsContainer2;
                     }
                     return alertControlsContainer;
-                case "MainInfo":
-                    if (_mainAlertsContainer != null)
-                    {
-                        alertControlsContainer = (Control) _mainAlertsContainer;
-                        return alertControlsContainer;
-                    }
-                    break;
             }
         }
-
-        // Try use another UI container. We append elements by manual.
-        // Dirty, i know, but i dont' have any idea how to rework AlertsUI
-        // TODO: Fuck, it should be rework.
-        if (_NAController.LeftTopAlertContainer != null && // Left side
-                    _NAController.LeftTopAlertContainer.ChildCount < 1)
-            alertControlsContainer = _NAController.LeftTopAlertContainer;
-        else if (_NAController.LeftMiddleAlertContainer != null &&
-                    _NAController.LeftMiddleAlertContainer.ChildCount < 2)
-            alertControlsContainer = _NAController.LeftMiddleAlertContainer;
-        else if (_NAController.LeftBottomAlertContainer != null &&
-                    _NAController.LeftBottomAlertContainer.ChildCount < 1)
-            alertControlsContainer = _NAController.LeftBottomAlertContainer;
-        else if (_NAController.RightTopAlertContainer != null && // Right side
-                    _NAController.RightTopAlertContainer.ChildCount < 1)
-            alertControlsContainer = _NAController.RightTopAlertContainer;
-        else if (_NAController.RightMiddleAlertContainer != null &&
-                    _NAController.RightMiddleAlertContainer.ChildCount < 2)
-            alertControlsContainer = _NAController.RightMiddleAlertContainer;
-        else if (_NAController.RightBottomAlertContainer != null &&
-                    _NAController.RightBottomAlertContainer.ChildCount < 2)
-            alertControlsContainer = _NAController.RightBottomAlertContainer;
 
         return alertControlsContainer;
     }
@@ -275,7 +241,7 @@ public sealed partial class AlertsUI : UIWidget
                     alertControl.OnPressed += AlertControlPressed;
                     return alertControl;
                 case "StandingActions":
-                    alertControl = new AlertControl(alert, alertState.Severity, 2, 32, 16, 1f)
+                    alertControl = new AlertControl(alert, alertState.Severity, 2, 32, 32, 1f)
                     {
                         Cooldown = cooldown
                     };
@@ -283,13 +249,6 @@ public sealed partial class AlertsUI : UIWidget
                     return alertControl;
                 case "DropThrowActions":
                     alertControl = new AlertControl(alert, alertState.Severity, 2, 32, 16, 1f)
-                    {
-                        Cooldown = cooldown
-                    };
-                    alertControl.OnPressed += AlertControlPressed;
-                    return alertControl;
-                case "MainInfo":
-                    alertControl = new AlertControl(alert, alertState.Severity, 2, 32, 32, 1f)
                     {
                         Cooldown = cooldown
                     };

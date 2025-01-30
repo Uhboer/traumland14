@@ -41,7 +41,7 @@ public sealed class GasTankWindow
         var back = new StyleBoxTexture
         {
             Texture = panelTex,
-            Modulate = Color.FromHex("#141414"),
+            Modulate = Color.FromHex("#100F14"),
         };
 
         back.SetPatchMargin(StyleBox.Margin.All, 10);
