@@ -63,8 +63,10 @@ public sealed class DamageOverlay : Overlay
         if (!_entityManager.TryGetComponent(_playerManager.LocalEntity, out EyeComponent? eyeComp))
             return;
 
-        if (args.Viewport.Eye != eyeComp.Eye)
-            return;
+        // FINSTER EDIT - Doesn't work with KZLevels
+        //if (args.Viewport.Eye != eyeComp.Eye)
+        //    return;
+        // FINSTER EDIT END
 
         /*
          * Here's the rundown:

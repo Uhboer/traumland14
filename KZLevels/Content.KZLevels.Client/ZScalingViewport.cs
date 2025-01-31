@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Numerics;
 using Robust.Client.Graphics;
 using Robust.Client.Input;
+using Robust.Client.Player;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.CustomControls;
 using Robust.Shared.GameObjects;
@@ -34,6 +35,7 @@ public sealed class ZScalingViewport : Control, IViewportControl
 {
     [Dependency] private readonly IClyde _clyde = default!;
     [Dependency] private readonly IEntityManager _entityManager = default!;
+    [Dependency] private readonly IPlayerManager _playerManager = default!;
     [Dependency] private readonly IInputManager _inputManager = default!;
     [Dependency] private readonly IMapManager _mapManager = default!;
     //[Dependency] private readonly IPrototypeManager _prototypeManager = default!;
@@ -230,6 +232,9 @@ public sealed class ZScalingViewport : Control, IViewportControl
             }
         }
 
+        // Fix wrong Eye for overlays
+        FallbackDefaultEye();
+
         handle.UseShader(Shader);
 
         if (_queuedScreenshots.Count != 0)
@@ -270,6 +275,13 @@ public sealed class ZScalingViewport : Control, IViewportControl
             return false;
 
         return previousFovState;
+    }
+
+    private void FallbackDefaultEye()
+    {
+        var player = _playerManager.LocalEntity;
+        if (_entityManager.TryGetComponent<EyeComponent>(player, out var eyeComp))
+            Eye = eyeComp.Eye;
     }
 
     public void Screenshot(CopyPixelsDelegate<Rgba32> callback)

@@ -35,9 +35,14 @@ public sealed class DamageOverlayUiController : UIController
     {
         ClearOverlay();
         if (EntityManager.TryGetComponent<MobStateComponent>(args.Entity, out var mobState))
+        {
+            UpdateOverlays(args.Entity, mobState);
             AddMobOverlay(args.Entity, mobState);
+        }
         else if (EntityManager.TryGetComponent<GhostComponent>(args.Entity, out var ghost) && ghost.EnableGhostOverlay)
+        {
             AddGhostOverlay();
+        }
     }
 
     private void OnPlayerDetached(LocalPlayerDetachedEvent args)
