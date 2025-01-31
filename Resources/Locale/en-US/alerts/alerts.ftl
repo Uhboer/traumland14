@@ -20,7 +20,7 @@ alerts-high-pressure-name = [color=red]High Pressure[/color]
 alerts-high-pressure-desc = The air around you is [color=red]hazardously thick[/color]. A [color=green]pressurized suit[/color] would be enough protect you.
 
 alerts-on-fire-name = [color=red]On Fire[/color]
-alerts-on-fire-desc = You're [color=red]on fire[/color]. Click the alert to stop, drop and roll to put the fire out or move to a vacuum area.
+alerts-on-fire-desc = Click the alert to stop, drop and roll to put the fire out or move to a vacuum area.
 
 alerts-too-cold-name = [color=cyan]Too Cold[/color]
 alerts-too-cold-desc = You're [color=cyan]freezing cold![/color] Get somewhere warmer and take off any insulating clothing like a space suit.

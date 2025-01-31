@@ -94,5 +94,10 @@ namespace Content.Server.Atmos.Components
         public float FireStackIncreaseMultiplier = 1f;
         [DataField]
         public ProtoId<AlertPrototype> FireAlert = "Fire";
+
+        // FINSTER EDIT
+        [DataField]
+        public ProtoId<AlertCategoryPrototype> FireCategory = "Fire";
+        // FINSTER EDIT END
     }
 }

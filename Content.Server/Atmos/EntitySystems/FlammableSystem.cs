@@ -74,6 +74,11 @@ namespace Content.Server.Atmos.EntitySystems
             SubscribeLocalEvent<FlammableComponent, TileFireEvent>(OnTileFire);
             SubscribeLocalEvent<FlammableComponent, RejuvenateEvent>(OnRejuvenate);
 
+            // FINSTER EDIT
+            SubscribeLocalEvent<FlammableComponent, ComponentStartup>(OnStartup);
+            SubscribeLocalEvent<FlammableComponent, ComponentShutdown>(OnShutdown);
+            // FINSTER EDIT END
+
             SubscribeLocalEvent<IgniteOnCollideComponent, StartCollideEvent>(IgniteOnCollide);
             SubscribeLocalEvent<IgniteOnCollideComponent, LandEvent>(OnIgniteLand);
 
@@ -83,6 +88,18 @@ namespace Content.Server.Atmos.EntitySystems
 
             SubscribeLocalEvent<IgniteOnHeatDamageComponent, DamageChangedEvent>(OnDamageChanged);
         }
+
+        // FINSTER EDIT
+        private void OnStartup(Entity<FlammableComponent> ent, ref ComponentStartup args)
+        {
+            _alertsSystem.ShowAlert(ent, ent.Comp.FireAlert, 0);
+        }
+
+        private void OnShutdown(Entity<FlammableComponent> ent, ref ComponentShutdown args)
+        {
+            _alertsSystem.ClearAlertCategory(ent, ent.Comp.FireCategory);
+        }
+        // FINSTER EDIT END
 
         private void OnMeleeHit(EntityUid uid, IgniteOnMeleeHitComponent component, MeleeHitEvent args)
         {
@@ -427,12 +444,12 @@ namespace Content.Server.Atmos.EntitySystems
 
                 if (!flammable.OnFire)
                 {
-                    _alertsSystem.ClearAlert(uid, flammable.FireAlert);
+                    _alertsSystem.ShowAlert(uid, flammable.FireAlert, 0); // FINSTER EDIT
                     RaiseLocalEvent(uid, new MoodRemoveEffectEvent("OnFire"));
                     continue;
                 }
 
-                _alertsSystem.ShowAlert(uid, flammable.FireAlert);
+                _alertsSystem.ShowAlert(uid, flammable.FireAlert, 1); // FINSTER EDIT
                 RaiseLocalEvent(uid, new MoodEffectEvent("OnFire"));
 
                 if (flammable.FireStacks > 0)

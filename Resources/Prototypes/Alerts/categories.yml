@@ -35,6 +35,9 @@
 
 - type: alertCategory
   id: Battery
+
+- type: alertCategory
+  id: Fire
   #group: MainInfo
 
 - type: alertCategory
