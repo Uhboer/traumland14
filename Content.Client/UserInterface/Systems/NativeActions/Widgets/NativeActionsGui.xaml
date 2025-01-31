@@ -8,7 +8,7 @@
     HorizontalAlignment="Center">
     <PanelContainer Name="GenericActionsPanel" MinHeight="64" MaxHeight="64" MinWidth="192" MaxWidth="192">
         <!-- Drop/Throw -->
-        <BoxContainer Name="DropThrowContainer" Access="Public" Orientation="Vertical" HorizontalAlignment="Right" VerticalAlignment="Bottom" />
+        <!--<BoxContainer Name="DropThrowContainer" Access="Public" Orientation="Vertical" HorizontalAlignment="Right" VerticalAlignment="Bottom" />-->
     </PanelContainer>
     <!-- Native Actions -->
     <PanelContainer Name="CombatActionsPanel" MinHeight="64" MaxHeight="64" MinWidth="192" MaxWidth="192">
@@ -22,7 +22,7 @@
                 <BoxContainer Name="IntentsContainer2" Margin="0 0 0 0" Access="Public" Orientation="Horizontal" />
             </PanelContainer >
         </GridContainer>
-        <!-- Laying/Walking -->
-        <BoxContainer Name="StandingContainer" Access="Public" Orientation="Vertical" HorizontalAlignment="Right" VerticalAlignment="Bottom" />
+        <!-- Drop/Throw -->
+        <BoxContainer Name="DropThrowContainer" Access="Public" Orientation="Vertical" HorizontalAlignment="Right" VerticalAlignment="Bottom" />
     </PanelContainer>
 </widgets:NativeActionsGui>
