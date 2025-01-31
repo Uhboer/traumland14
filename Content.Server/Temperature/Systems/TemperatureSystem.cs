@@ -211,7 +211,7 @@ public sealed class TemperatureSystem : EntitySystem
             // If there's no risk to being cold there's no reason to show a Cold alert
             if (!temperature.ColdDamage.AnyPositive())
             {
-                _alerts.ShowAlert(uid, temperature.NormalTemperatureAlert);
+                ShowNormalTemperatureAlert(uid, temperature);
                 return;
             }
 
@@ -222,7 +222,7 @@ public sealed class TemperatureSystem : EntitySystem
         {
             if (!temperature.HeatDamage.AnyPositive())
             {
-                _alerts.ShowAlert(uid, temperature.NormalTemperatureAlert);
+                ShowNormalTemperatureAlert(uid, temperature);
                 return;
             }
 
@@ -248,9 +248,15 @@ public sealed class TemperatureSystem : EntitySystem
                 break;
 
             case > 0.66f:
-                _alerts.ShowAlert(uid, temperature.NormalTemperatureAlert);
+                ShowNormalTemperatureAlert(uid, temperature);
                 break;
         }
+    }
+
+    private void ShowNormalTemperatureAlert(EntityUid uid, TemperatureComponent temperature)
+    {
+        //_alerts.ClearAlertCategory(uid, TemperatureAlertCategory);
+        _alerts.ShowAlert(uid, temperature.NormalTemperatureAlert);
     }
 
     private void EnqueueDamage(Entity<TemperatureComponent> temperature, ref OnTemperatureChangeEvent args)

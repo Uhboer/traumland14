@@ -554,7 +554,7 @@ public sealed partial class ChatSystem : SharedChatSystem
                 }
             }
 
-            if (TryComp<DeafComponent>(session.AttachedEntity, out var deafComp))
+            if (TryComp<DeafComponent>(session.AttachedEntity, out var deafComp) && deafComp.BlockSounds)
             {
                 var canthearmessage = deafComp.DeafChatMessage;
                 var wrappedcanthearmessage = $"{canthearmessage}";

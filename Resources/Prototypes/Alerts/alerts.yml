@@ -141,6 +141,7 @@
 
 - type: alert
   id: NormalTemperature
+  category: Temperature
   icons:
   - sprite: /Textures/Interface/Alerts/temperature.rsi
     state: normal

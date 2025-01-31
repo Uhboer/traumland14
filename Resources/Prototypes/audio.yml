@@ -77,7 +77,7 @@
   id: AmbienceCombatMode
   files:
     - /Audio/_Finster/Ambience/dreamweb-like-killing-hitler.ogg
-    - /Audio/_Finster/Ambience/combat_vamp2.ogg
+    #- /Audio/_Finster/Ambience/combat_vamp2.ogg
 
 # Rules
 - type: rules
