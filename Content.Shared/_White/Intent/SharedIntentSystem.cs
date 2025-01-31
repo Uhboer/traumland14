@@ -85,7 +85,7 @@ public abstract class SharedIntentSystem : EntitySystem
         else
             _physics.TrySetBodyType(uid, Robust.Shared.Physics.BodyType.KinematicController);
     }
-/*
+    /*
     private void UpdateActions(EntityUid uid, IntentComponent? component = null)
     {
         if (!Resolve(uid, ref component))
@@ -96,7 +96,7 @@ public abstract class SharedIntentSystem : EntitySystem
         _action.SetToggled(component.GrabActionEntity, component.Intent == Intent.Grab);
         _action.SetToggled(component.HarmActionEntity, component.Intent == Intent.Harm);
     }
-*/
+    */
     public bool CanAttack(EntityUid? uid)
     {
         if (uid == null)
@@ -139,8 +139,16 @@ public abstract class SharedIntentSystem : EntitySystem
 
     public Intent? GetIntent(EntityUid? uid, IntentComponent? component = null)
     {
-        if (uid == null || !Resolve(uid.Value, ref component))
+        if (uid == null)
             return null;
+
+        if (component == null)
+        {
+            if (!TryComp<IntentComponent>(uid, out var compo))
+                return null;
+
+            component = compo;
+        }
 
         return component.Intent;
     }
