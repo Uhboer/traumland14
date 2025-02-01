@@ -74,12 +74,6 @@ public sealed partial class StrapComponent : Component
     public SoundSpecifier UnbuckleSound = new SoundPathSpecifier("/Audio/Effects/unbuckle.ogg");
 
     /// <summary>
-    /// ID of the alert to show when buckled
-    /// </summary>
-    [DataField]
-    public ProtoId<AlertPrototype> BuckledAlertType = "Buckled";
-
-    /// <summary>
     /// Whether InteractHand will buckle the user to the strap.
     /// </summary>
     [DataField]

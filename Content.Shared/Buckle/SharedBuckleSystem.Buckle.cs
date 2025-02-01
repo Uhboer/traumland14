@@ -29,7 +29,7 @@ namespace Content.Shared.Buckle;
 
 public abstract partial class SharedBuckleSystem
 {
-    public static ProtoId<AlertCategoryPrototype> BuckledAlertCategory = "Buckled";
+    //public static ProtoId<AlertCategoryPrototype> BuckledAlertCategory = "Buckled";
 
     [Dependency] private readonly EntityWhitelistSystem _whitelistSystem = default!;
 
@@ -182,11 +182,11 @@ public abstract partial class SharedBuckleSystem
         {
             strapEnt.Comp.BuckledEntities.Add(buckle);
             Dirty(strapEnt);
-            _alerts.ShowAlert(buckle, strapEnt.Comp.BuckledAlertType);
+            //_alerts.ShowAlert(buckle, strapEnt.Comp.BuckledAlertType);
         }
         else
         {
-            _alerts.ClearAlertCategory(buckle, BuckledAlertCategory);
+            //_alerts.ClearAlertCategory(buckle, BuckledAlertCategory);
         }
 
         buckle.Comp.BuckledTo = strap;

@@ -79,3 +79,11 @@
 - type: alertCategory
   id: IntentHarm
   group: Intents
+
+- type: alertCategory
+  id: Resist
+  group: RightBottomContent16
+
+- type: alertCategory
+  id: Pulling
+  group: RightBottomContent32

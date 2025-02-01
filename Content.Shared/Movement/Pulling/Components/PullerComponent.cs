@@ -111,6 +111,4 @@ public sealed partial class PullerComponent : Component
     /// </summary>
     [DataField]
     public float MaxPushRange = 2f;
-    [DataField]
-    public ProtoId<AlertPrototype> PullingAlert = "Pulling";
 }

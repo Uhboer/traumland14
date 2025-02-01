@@ -41,9 +41,6 @@ public sealed partial class CuffableComponent : Component
     /// </summary>
     [DataField("canStillInteract"), ViewVariables(VVAccess.ReadWrite)]
     public bool CanStillInteract = true;
-
-    [DataField]
-    public ProtoId<AlertPrototype> CuffedAlert = "Handcuffed";
 }
 
 [Serializable, NetSerializable]

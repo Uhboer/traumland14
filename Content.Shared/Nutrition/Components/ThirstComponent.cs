@@ -62,9 +62,11 @@ public sealed partial class ThirstComponent : Component
 
     public static readonly Dictionary<ThirstThreshold, ProtoId<AlertPrototype>> ThirstThresholdAlertTypes = new()
     {
+        {ThirstThreshold.OverHydrated, "OverHydrated"},
+        {ThirstThreshold.Okay, "ThirstOkay"},
         {ThirstThreshold.Thirsty, "Thirsty"},
         {ThirstThreshold.Parched, "Parched"},
-        {ThirstThreshold.Dead, "Parched"},
+        {ThirstThreshold.Dead, "ThirstDead"},
     };
 }
 

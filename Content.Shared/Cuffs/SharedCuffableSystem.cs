@@ -184,13 +184,13 @@ namespace Content.Shared.Cuffs
 
             if (component.CanStillInteract)
             {
-                _alerts.ClearAlert(uid, component.CuffedAlert);
+                //_alerts.ClearAlert(uid, component.CuffedAlert); // FINSTER EDIT
                 RaiseLocalEvent(uid, new MoodRemoveEffectEvent("Handcuffed"));
             }
 
             else
             {
-                _alerts.ShowAlert(uid, component.CuffedAlert);
+                //_alerts.ShowAlert(uid, component.CuffedAlert); // FINSTER EDIT
                 RaiseLocalEvent(uid, new MoodEffectEvent("Handcuffed"));
             }
 

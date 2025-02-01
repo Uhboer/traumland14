@@ -30,6 +30,7 @@ public sealed class NativeActionsUIController : UIController, IOnStateEntered<Ga
 
     // And another hardcoded elements
     public BoxContainer? MainInfoAlertsContainer;
+    public BoxContainer? RightBottomContainer;
 
     public override void Initialize()
     {
@@ -146,6 +147,7 @@ public sealed class NativeActionsUIController : UIController, IOnStateEntered<Ga
         {
             case SeparatedChatGameScreen separatedScreen:
                 MainInfoAlertsContainer = separatedScreen.MainInfoAlertsContainer;
+                RightBottomContainer = separatedScreen.RightBottomContainer;
                 break;
         }
     }

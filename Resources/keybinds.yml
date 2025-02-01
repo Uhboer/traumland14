@@ -162,7 +162,7 @@ binds:
   key: P
 - function: SwapHands
   type: State
-  key: Space
+  key: X
 - function: MoveStoredItem
   type: State
   key: MouseLeft
@@ -601,8 +601,7 @@ binds:
   mod1: Shift
 - function: LookUp
   type: State
-  key: MouseRight
-  mod1: Shift
+  key: Space
 - function: MappingUnselect
   type: State
   key: MouseRight

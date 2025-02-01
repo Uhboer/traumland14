@@ -40,6 +40,8 @@ public sealed partial class PullableComponent : Component
     [AutoNetworkedField, DataField]
     public bool PrevFixedRotation;
 
+    // FINSTER EDIT - No need pulled anymore
+    /*
     [DataField]
     public Dictionary<GrabStage, short> PulledAlertAlertSeverity = new()
     {
@@ -48,6 +50,8 @@ public sealed partial class PullableComponent : Component
         { GrabStage.Hard, 2 },
         { GrabStage.Suffocate, 3 },
     };
+    */
+    // FINSTER EDIT END
 
     [AutoNetworkedField, DataField]
     public GrabStage GrabStage = GrabStage.No;
@@ -64,6 +68,8 @@ public sealed partial class PullableComponent : Component
     /// </summary>
     [DataField, AutoNetworkedField]
     public bool BeingActivelyPushed = false;
-    [DataField]
-    public ProtoId<AlertPrototype> PulledAlert = "Pulled";
+    // FINSTER EDIT - No nedd pulled anymore
+    //[DataField]
+    //public ProtoId<AlertPrototype> PulledAlert = "Pulled";
+    // FINSTER EDIT END
 }

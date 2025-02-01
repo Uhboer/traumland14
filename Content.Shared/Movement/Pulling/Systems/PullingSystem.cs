@@ -46,6 +46,7 @@ using Robust.Shared.Timing;
 using Robust.Shared.Random;
 using Content.Shared.Throwing;
 using System.Numerics;
+using Robust.Shared.Prototypes;
 
 namespace Content.Shared.Movement.Pulling.Systems;
 
@@ -79,6 +80,12 @@ public sealed class PullingSystem : EntitySystem
     [Dependency] private readonly GrabThrownSystem _grabThrown = default!;
     [Dependency] private readonly ThrowingSystem _throwing = default!;
 
+    public ProtoId<AlertPrototype> PullingAlert = "Pulling";
+    public ProtoId<AlertCategoryPrototype> PullingCategory = "Pulling";
+
+    public ProtoId<AlertPrototype> ResistAlert = "Resist";
+    public ProtoId<AlertCategoryPrototype> ResistCategory = "Resist";
+
     public override void Initialize()
     {
         base.Initialize();
@@ -103,6 +110,8 @@ public sealed class PullingSystem : EntitySystem
         SubscribeLocalEvent<PullerComponent, DropHandItemsEvent>(OnDropHandItems);
         SubscribeLocalEvent<PullerComponent, VirtualItemThrownEvent>(OnVirtualItemThrown);
         SubscribeLocalEvent<PullerComponent, VirtualItemDropAttemptEvent>(OnVirtualItemDropAttempt);
+        SubscribeLocalEvent<PullerComponent, ComponentStartup>(OnPullerStart);
+        SubscribeLocalEvent<PullerComponent, ComponentShutdown>(OnPullerShutdown);
 
         SubscribeLocalEvent<PullableComponent, StrappedEvent>(OnBuckled);
         SubscribeLocalEvent<PullableComponent, BuckledEvent>(OnGotBuckled);
@@ -112,6 +121,21 @@ public sealed class PullingSystem : EntitySystem
             .Bind(ContentKeyFunctions.ReleasePulledObject, InputCmdHandler.FromDelegate(OnReleasePulledObject, handle: false))
             .Register<PullingSystem>();
     }
+
+    // FINSTER EDIT
+    private void OnPullerStart(Entity<PullerComponent> ent, ref ComponentStartup args)
+    {
+        _alertsSystem.ShowAlert(ent, PullingAlert, 4);
+        _alertsSystem.ShowAlert(ent, ResistAlert);
+    }
+
+    private void OnPullerShutdown(Entity<PullerComponent> ent, ref ComponentShutdown args)
+    {
+        _alertsSystem.ClearAlertCategory(ent, PullingCategory);
+        _alertsSystem.ClearAlertCategory(ent, ResistCategory);
+    }
+    // FINSTER EDIT END
+
     private void OnBuckled(Entity<PullableComponent> ent, ref StrappedEvent args)
     {
         // Prevent people from pulling the entity they are buckled to
@@ -534,7 +558,7 @@ public sealed class PullingSystem : EntitySystem
         if (TryComp<PullerComponent>(oldPuller, out var pullerComp))
         {
             var pullerUid = oldPuller.Value;
-            _alertsSystem.ClearAlert(pullerUid, pullerComp.PullingAlert);
+            _alertsSystem.ShowAlert(pullerUid, PullingAlert, 4);
             pullerComp.Pulling = null;
 
             pullerComp.GrabStage = GrabStage.No;
@@ -556,8 +580,9 @@ public sealed class PullingSystem : EntitySystem
             RaiseLocalEvent(pullableUid, message);
         }
 
-
-        _alertsSystem.ClearAlert(pullableUid, pullableComp.PulledAlert);
+        // FINSTER EDIT - No need pulled anymore
+        //_alertsSystem.ClearAlert(pullableUid, pullableComp.PulledAlert);
+        // FINSTER EDIT END
     }
 
     public bool IsPulled(EntityUid uid, PullableComponent? component = null)
@@ -807,8 +832,8 @@ public sealed class PullingSystem : EntitySystem
 
         // Messaging
         var message = new PullStartedMessage(pullerUid, pullableUid);
-        _alertsSystem.ShowAlert(pullerUid, pullerComp.PullingAlert, 0);
-        _alertsSystem.ShowAlert(pullableUid, pullableComp.PulledAlert, 0);
+        _alertsSystem.ShowAlert(pullerUid, PullingAlert, 0);
+        //_alertsSystem.ShowAlert(pullableUid, pullableComp.PulledAlert, 0); // FINSTER EDIT
 
         RaiseLocalEvent(pullerUid, message);
         RaiseLocalEvent(pullableUid, message);
@@ -950,8 +975,8 @@ public sealed class PullingSystem : EntitySystem
 
         pullable.Comp.GrabEscapeChance = puller.Comp.EscapeChances[stage];
 
-        _alertsSystem.ShowAlert(puller, puller.Comp.PullingAlert, puller.Comp.PullingAlertSeverity[stage]);
-        _alertsSystem.ShowAlert(pullable, pullable.Comp.PulledAlert, pullable.Comp.PulledAlertAlertSeverity[stage]);
+        _alertsSystem.ShowAlert(puller, PullingAlert, puller.Comp.PullingAlertSeverity[stage]);
+        //_alertsSystem.ShowAlert(pullable, pullable.Comp.PulledAlert, pullable.Comp.PulledAlertAlertSeverity[stage]); // FINSTER EDIT
 
         _blocker.UpdateCanMove(pullable);
         _modifierSystem.RefreshMovementSpeedModifiers(puller);

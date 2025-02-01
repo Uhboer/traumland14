@@ -70,6 +70,8 @@
                     <alerts:AlertsUI Name="Alerts" Access="Protected" />
                 </BoxContainer>
 
+                <BoxContainer Name="RightBottomContainer" Access="Public" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 0 0 0" />
+
             </controls:CustomPanelContainer>
         </BoxContainer>
         <PanelContainer HorizontalExpand="True" MinWidth="400">

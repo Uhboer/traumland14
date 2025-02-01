@@ -1,4 +1,3 @@
-#afgan
 store-category-Tweapons = Пушки
 store-category-Tammo = Патроны
 store-category-Tdrugs = Наркота

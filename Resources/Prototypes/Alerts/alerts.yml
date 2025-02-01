@@ -4,6 +4,7 @@
   # If item is not in list it will go at the bottom (ties broken by alert type enum value)
   id: BaseAlertOrder
   order:
+    # Left Bottom content:
     - category: IntentHelp
     - category: IntentDisarm
     - category: IntentHarm
@@ -11,32 +12,35 @@
     - category: NADrop
     - category: NAThrow
     - category: NACombatMode
+    # Right Top content:
+    - category: Mood
+    - category: Temperature
+    - category: Fire
+    - category: Breathing # Vox gang not calling this oxygen
+    - category: Pressure
+    - category: Hunger
+    - category: Thirst
     - category: Health
     - category: Stamina
-    - category: Mood
     - category: NALaying
     - category: NAWalking
+    # Generic alerts content:
     - alertType: SuitPower
     - alertType: ModsuitPower # Goobstation - Modsuits
     - category: Internals
-    - category: Fire
-    - alertType: Handcuffed
     - alertType: Ensnared
-    - category: Buckled
-    - alertType: Pulling
+    #- category: Buckled
     - category: Piloting
     - alertType: Corporeal
     - alertType: Stun
-    - category: Breathing # Vox gang not calling this oxygen
-    - category: Pressure
     - alertType: Bleed
-    - category: Temperature
-    - category: Hunger
-    - category: Thirst
     - alertType: Magboots
     - alertType: Pacified
     - alertType: Offer
     - alertType: Deflecting
+    # Bottom content
+    - category: Resist
+    - category: Pulling
 
 - type: entity
   id: AlertSpriteView
@@ -181,12 +185,12 @@
   name: alerts-stunned-name
   description: alerts-stunned-desc
 
-- type: alert
-  id: Handcuffed
-  onClick: !type:RemoveCuffs  { }
-  icons: [ /Textures/Interface/Alerts/Handcuffed/Handcuffed.png ]
-  name: alerts-handcuffed-name
-  description: alerts-handcuffed-desc
+#- type: alert
+#  id: Handcuffed
+#  onClick: !type:RemoveCuffs  { }
+#  icons: [ /Textures/Interface/Alerts/Handcuffed/Handcuffed.png ]
+#  name: alerts-handcuffed-name
+#  description: alerts-handcuffed-desc
 
 - type: alert
   id: Ensnared
@@ -197,13 +201,13 @@
   name: alerts-ensnared-name
   description: alerts-ensnared-desc
 
-- type: alert
-  id: Buckled
-  category: Buckled
-  onClick: !type:Unbuckle  { }
-  icons: [ /Textures/Interface/Alerts/Buckle/buckled.png ]
-  name: alerts-buckled-name
-  description: alerts-buckled-desc
+#- type: alert
+#  id: Buckled
+#  category: Buckled
+#  onClick: !type:Unbuckle  { }
+#  icons: [ /Textures/Interface/Alerts/Buckle/buckled.png ]
+#  name: alerts-buckled-name
+#  description: alerts-buckled-desc
 
 - type: alert
   id: Offer
@@ -363,6 +367,24 @@
   description: alerts-hunger-desc
 
 - type: alert
+  id: HungerOkay
+  category: Hunger
+  icons:
+  - sprite: /Textures/Interface/Alerts/hunger.rsi
+    state: okay
+  name: alerts-hunger-okay-name
+  description: alerts-hunger-okay-desc
+
+- type: alert
+  id: Overfed
+  category: Hunger
+  icons:
+  - sprite: /Textures/Interface/Alerts/hunger.rsi
+    state: overfed
+  name: alerts-overfed-name
+  description: alerts-overfed-desc
+
+- type: alert
   id: Stamina
   category: Stamina
   icons:
@@ -394,6 +416,15 @@
   maxSeverity: 10
 
 - type: alert
+  id: HungerDead
+  category: Hunger
+  icons:
+  - sprite: /Textures/Interface/Alerts/hunger.rsi
+    state: dead
+  name: alerts-hunger-dead-name
+  description: alerts-hunger-dead-desc
+
+- type: alert
   id: Starving
   category: Hunger
   icons:
@@ -401,6 +432,24 @@
     state: starving
   name: alerts-starving-name
   description: alerts-starving-desc
+
+- type: alert
+  id: OverHydrated
+  category: Thirst
+  icons:
+  - sprite: /Textures/Interface/Alerts/thirst.rsi
+    state: overhydrated
+  name: alerts-overhydrated-name
+  description: alerts-overhydrated-desc
+
+- type: alert
+  id: ThirstOkay
+  category: Thirst
+  icons:
+  - sprite: /Textures/Interface/Alerts/thirst.rsi
+    state: okay
+  name: alerts-thirst-okay-name
+  description: alerts-thirst-okay-desc
 
 - type: alert
   id: Thirsty
@@ -419,6 +468,15 @@
     state: parched
   name: alerts-parched-name
   description: alerts-parched-desc
+
+- type: alert
+  id: ThirstDead
+  category: Thirst
+  icons:
+  - sprite: /Textures/Interface/Alerts/thirst.rsi
+    state: dead
+  name: alerts-thirst-dead-name
+  description: alerts-thirst-dead-desc
 
 - type: alert
   id: Muted
@@ -440,25 +498,28 @@
   onClick: !type:RetakeVow  { }
   description: alerts-vow-broken-desc
 
-- type: alert
-  id: Pulled
-  icons:
-  - sprite: /Textures/Interface/Alerts/pull.rsi
-    state: pulled
-  - sprite: /Textures/Interface/Alerts/pull.rsi
-    state: grabbed-soft
-  - sprite: /Textures/Interface/Alerts/pull.rsi
-    state: grabbed-hard
-  - sprite: /Textures/Interface/Alerts/pull.rsi
-    state: grabbed-choke
-  onClick: !type:StopBeingPulled  { }
-  name: alerts-pulled-name
-  description: alerts-pulled-desc
-  minSeverity: 0
-  maxSeverity: 3
+# FINSTER EDIT - No need Pulled anymore
+#- type: alert
+#  id: Pulled
+#  icons:
+#  - sprite: /Textures/Interface/Alerts/pull.rsi
+#    state: pulled
+#  - sprite: /Textures/Interface/Alerts/pull.rsi
+#    state: grabbed-soft
+#  - sprite: /Textures/Interface/Alerts/pull.rsi
+#    state: grabbed-hard
+#  - sprite: /Textures/Interface/Alerts/pull.rsi
+#    state: grabbed-choke
+#  onClick: !type:StopBeingPulled  { }
+#  name: alerts-pulled-name
+#  description: alerts-pulled-desc
+#  minSeverity: 0
+#  maxSeverity: 3
+# FINSTER EDIT END
 
 - type: alert
   id: Pulling
+  category: Pulling
   icons:
   - sprite: /Textures/Interface/Alerts/pull.rsi
     state: pulling
@@ -468,11 +529,25 @@
     state: grab-hard
   - sprite: /Textures/Interface/Alerts/pull.rsi
     state: grab-choke
+  - sprite: /Textures/Interface/Alerts/pull.rsi
+    state: normal
   onClick: !type:StopPulling  { }
   name: alerts-pulling-name
   description: alerts-pulling-desc
   minSeverity: 0
-  maxSeverity: 3
+  maxSeverity: 4
+
+# FINSTER EDIT - Resist Alert
+- type: alert
+  id: Resist
+  category: Resist
+  onClick: !type:TryResist { }
+  icons:
+  - sprite: /Textures/Interface/Alerts/resist.rsi
+    state: resist0
+  name: alerts-resist-name
+  description: alerts-resist-desc
+# FINSTER EDIT END
 
 - type: alert
   id: Bleed

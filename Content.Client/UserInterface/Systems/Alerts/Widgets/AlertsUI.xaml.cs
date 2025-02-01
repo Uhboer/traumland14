@@ -111,6 +111,16 @@ public sealed partial class AlertsUI : UIWidget
                 case "DropThrowActions":
                     alertControlsContainer = _nativeActionsGui.DropThrowContainer;
                     return alertControlsContainer;
+                case "RightBottomContent32":
+                    if (_NAController.RightBottomContainer == null)
+                        return alertControlsContainer;
+                    alertControlsContainer = _NAController.RightBottomContainer;
+                    return alertControlsContainer;
+                case "RightBottomContent16":
+                    if (_NAController.RightBottomContainer == null)
+                        return alertControlsContainer;
+                    alertControlsContainer = _NAController.RightBottomContainer;
+                    return alertControlsContainer;
                 case "Intents":
                     alertControlsContainer = _nativeActionsGui.IntentsContainer;
                     if (alertControlsContainer.ChildCount >= 2)
@@ -209,10 +219,7 @@ public sealed partial class AlertsUI : UIWidget
             switch (category.Group)
             {
                 case "Intents":
-                    alertControl = new AlertControl(alert, alertState.Severity, 2, 16, 16, 1f)
-                    {
-                        Cooldown = cooldown
-                    };
+                    alertControl = CreateAlertControl(alert, alertState, cooldown, sizeX: 16f, sizeY: 16f);
 
                     // Set names for keyboard binds
                     switch (alert.ID)
@@ -231,34 +238,25 @@ public sealed partial class AlertsUI : UIWidget
                             break;
                     }
 
-                    alertControl.OnPressed += AlertControlPressed;
                     return alertControl;
-                case "CombatActions":
-                    alertControl = new AlertControl(alert, alertState.Severity, 2, 32, 32, 1f)
-                    {
-                        Cooldown = cooldown
-                    };
-                    alertControl.OnPressed += AlertControlPressed;
-                    return alertControl;
-                case "StandingActions":
-                    alertControl = new AlertControl(alert, alertState.Severity, 2, 32, 32, 1f)
-                    {
-                        Cooldown = cooldown
-                    };
-                    alertControl.OnPressed += AlertControlPressed;
+                case "RightBottomContent16":
+                    alertControl = CreateAlertControl(alert, alertState, cooldown, sizeY: 16f);
                     return alertControl;
                 case "DropThrowActions":
-                    alertControl = new AlertControl(alert, alertState.Severity, 2, 32, 16, 1f)
-                    {
-                        Cooldown = cooldown
-                    };
-                    alertControl.OnPressed += AlertControlPressed;
+                    alertControl = CreateAlertControl(alert, alertState, cooldown, sizeY: 16f);
                     return alertControl;
             }
         }
 
         // If butto is not specified by the group - it's normal alert.
-        alertControl = new AlertControl(alert, alertState.Severity)
+        alertControl = CreateAlertControl(alert, alertState, cooldown);
+        return alertControl;
+    }
+
+    private AlertControl CreateAlertControl(AlertPrototype alert, AlertState alertState,
+            (TimeSpan, TimeSpan)? cooldown, float iconScale = 2, float sizeX = 32f, float sizeY = 32f, float spriteScale = 1f)
+    {
+        var alertControl = new AlertControl(alert, alertState.Severity, iconScale, sizeX, sizeY, spriteScale)
         {
             Cooldown = cooldown
         };
