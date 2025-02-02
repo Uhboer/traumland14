@@ -16,7 +16,7 @@ namespace Content.Shared.Gravity
         [Dependency] private readonly AlertsSystem _alerts = default!;
 
         [ValidatePrototypeId<AlertPrototype>]
-        public const string WeightlessAlert = "Weightless";
+        //public const string WeightlessAlert = "Weightless";
 
         private EntityQuery<GravityComponent> _gravityQuery;
 
@@ -114,7 +114,8 @@ namespace Content.Shared.Gravity
             {
                 if (xform.GridUid != ev.ChangedGridIndex)
                     continue;
-
+                // FINSTER EDIT
+                /*
                 if (!ev.HasGravity)
                 {
                     _alerts.ShowAlert(uid, WeightlessAlert);
@@ -123,11 +124,15 @@ namespace Content.Shared.Gravity
                 {
                     _alerts.ClearAlert(uid, WeightlessAlert);
                 }
+                */
+                // FINSTER EDIT END
             }
         }
 
         private void OnAlertsSync(AlertSyncEvent ev)
         {
+            // FINSTER EDIT
+            /*
             if (IsWeightless(ev.Euid))
             {
                 _alerts.ShowAlert(ev.Euid, WeightlessAlert);
@@ -136,10 +141,14 @@ namespace Content.Shared.Gravity
             {
                 _alerts.ClearAlert(ev.Euid, WeightlessAlert);
             }
+            */
+            // FINSTER EDIT END
         }
 
         private void OnAlertsParentChange(EntityUid uid, AlertsComponent component, ref EntParentChangedMessage args)
         {
+            // FINSTER EDIT
+            /*
             if (IsWeightless(uid))
             {
                 _alerts.ShowAlert(uid, WeightlessAlert);
@@ -148,6 +157,8 @@ namespace Content.Shared.Gravity
             {
                 _alerts.ClearAlert(uid, WeightlessAlert);
             }
+            */
+            // FINSTER EDIT END
         }
 
         private void OnGridInit(GridInitializeEvent ev)

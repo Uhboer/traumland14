@@ -242,6 +242,9 @@ public sealed partial class AlertsUI : UIWidget
                 case "RightBottomContent16":
                     alertControl = CreateAlertControl(alert, alertState, cooldown, sizeY: 16f);
                     return alertControl;
+                case "Content16":
+                    alertControl = CreateAlertControl(alert, alertState, cooldown, sizeY: 16f);
+                    return alertControl;
                 case "DropThrowActions":
                     alertControl = CreateAlertControl(alert, alertState, cooldown, sizeY: 16f);
                     return alertControl;

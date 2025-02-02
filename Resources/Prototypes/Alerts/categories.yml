@@ -1,11 +1,13 @@
 - type: alertCategory
   id: Pressure
+  group: Content16
 
 - type: alertCategory
   id: Temperature
 
 - type: alertCategory
   id: Breathing
+  group: Content16
 
 - type: alertCategory
   id: Buckled
@@ -32,6 +34,7 @@
 
 - type: alertCategory
   id: Toxins
+  group: Content16
 
 - type: alertCategory
   id: Battery

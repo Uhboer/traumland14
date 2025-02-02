@@ -54,6 +54,11 @@ namespace Content.Server.Atmos.Components
         [DataField]
         public ProtoId<AlertPrototype> LowPressureAlert = "LowPressure";
 
+        // FINSTER EDIT
+        [DataField]
+        public ProtoId<AlertPrototype> GoodPressureAlert = "GoodPressure";
+        // FINSTER EDIT END
+
         [DataField]
         public ProtoId<AlertCategoryPrototype> PressureAlertCategory = "Pressure";
     }

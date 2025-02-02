@@ -42,7 +42,7 @@ namespace Content.IntegrationTests.Tests.Gravity
 
             var entityManager = server.ResolveDependency<IEntityManager>();
             var alertsSystem = server.ResolveDependency<IEntitySystemManager>().GetEntitySystem<AlertsSystem>();
-            var weightlessAlert = SharedGravitySystem.WeightlessAlert;
+            // var weightlessAlert = SharedGravitySystem.WeightlessAlert; // FINSTER EDIT
 
             EntityUid human = default;
 
@@ -61,7 +61,7 @@ namespace Content.IntegrationTests.Tests.Gravity
             await server.WaitAssertion(() =>
             {
                 // No gravity without a gravity generator
-                Assert.That(alertsSystem.IsShowingAlert(human, weightlessAlert));
+                // Assert.That(alertsSystem.IsShowingAlert(human, weightlessAlert)); // FINSTER EDIT
 
                 generatorUid = entityManager.SpawnEntity("WeightlessGravityGeneratorDummy", entityManager.GetComponent<TransformComponent>(human).Coordinates);
             });
@@ -71,7 +71,7 @@ namespace Content.IntegrationTests.Tests.Gravity
 
             await server.WaitAssertion(() =>
             {
-                Assert.That(alertsSystem.IsShowingAlert(human, weightlessAlert), Is.False);
+                // Assert.That(alertsSystem.IsShowingAlert(human, weightlessAlert), Is.False); // FINSTER EDIT
 
                 // This should kill gravity
                 entityManager.DeleteEntity(generatorUid);
@@ -81,7 +81,7 @@ namespace Content.IntegrationTests.Tests.Gravity
 
             await server.WaitAssertion(() =>
             {
-                Assert.That(alertsSystem.IsShowingAlert(human, weightlessAlert));
+                // Assert.That(alertsSystem.IsShowingAlert(human, weightlessAlert)); // FINSTER EDIT
             });
 
             await pair.RunTicksSync(10);

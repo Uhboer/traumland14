@@ -35,6 +35,13 @@ public sealed partial class LungComponent : Component
     [DataField]
     public ProtoId<AlertPrototype> Alert = "LowOxygen";
 
+    // FINSTER EDIT
+    [DataField]
+    public ProtoId<AlertPrototype> AlertOkay = "AirOk";
+    [DataField]
+    public ProtoId<AlertCategoryPrototype> AlertCategory = "Breathing";
+    // FINSTER EDIT END
+
     [DataField]
     public float MaxVolume = 100f;
 

@@ -129,6 +129,9 @@ alerts-offer-desc = Someone offers you an item.
 alerts-deflecting-name = Deflecting
 alerts-deflecting-desc = You have a chance to deflect incoming projectiles. Standing still or moving slowly will increase this chance.
 
+alerts-resist-name = [color=red]Resist[/color]
+alerts-resist-desc = Try unbuckle, uncuff hands or escape from grab.
+
 # Intents
 
 alerts-intent-help-name = Intent Help

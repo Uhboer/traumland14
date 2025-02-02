@@ -165,9 +165,13 @@ public sealed partial class EnsnareableSystem
     /// <param name="target">The entity that has been affected by a snare</param>
     public void UpdateAlert(EntityUid target, EnsnareableComponent component)
     {
+        // FINSTER EDIT
+        /*
         if (!component.IsEnsnared)
             _alerts.ClearAlert(target, component.EnsnaredAlert);
         else
             _alerts.ShowAlert(target, component.EnsnaredAlert);
+        */
+        // FINSTER EDIT END
     }
 }

@@ -38,7 +38,20 @@ namespace Content.Server.Atmos.EntitySystems
             SubscribeLocalEvent<PressureImmunityComponent, ComponentInit>(OnPressureImmuneInit);
             SubscribeLocalEvent<PressureImmunityComponent, ComponentRemove>(OnPressureImmuneRemove);
 
+            SubscribeLocalEvent<BarotraumaComponent, ComponentStartup>(OnStartup);
+            SubscribeLocalEvent<BarotraumaComponent, ComponentShutdown>(OnShutdown);
+
             // _sawmill = _logManager.GetSawmill("barotrauma");
+        }
+
+        private void OnStartup(Entity<BarotraumaComponent> ent, ref ComponentStartup args)
+        {
+            _alertsSystem.ShowAlert(ent, ent.Comp.GoodPressureAlert);
+        }
+
+        private void OnShutdown(Entity<BarotraumaComponent> ent, ref ComponentShutdown args)
+        {
+            _alertsSystem.ClearAlertCategory(ent, ent.Comp.PressureAlertCategory);
         }
 
         private void OnPressureImmuneInit(EntityUid uid, PressureImmunityComponent pressureImmunity, ComponentInit args)
@@ -303,7 +316,7 @@ namespace Content.Server.Atmos.EntitySystems
                             _alertsSystem.ShowAlert(uid, barotrauma.HighPressureAlert, 1);
                             break;
                         default:
-                            _alertsSystem.ClearAlertCategory(uid, barotrauma.PressureAlertCategory);
+                            _alertsSystem.ShowAlert(uid, barotrauma.GoodPressureAlert); // FINSTER EDIT
                             break;
                     }
                 }

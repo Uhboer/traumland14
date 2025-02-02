@@ -43,8 +43,10 @@ public sealed partial class EnsnareableComponent : Component
     [DataField("state")]
     public string? State;
 
-    [DataField]
-    public ProtoId<AlertPrototype> EnsnaredAlert = "Ensnared";
+    // FINSTER EDIT
+    //[DataField]
+    //public ProtoId<AlertPrototype> EnsnaredAlert = "Ensnared";
+    // FINSTER EDIT END
 }
 
 [Serializable, NetSerializable]

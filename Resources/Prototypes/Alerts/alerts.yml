@@ -14,12 +14,12 @@
     - category: NACombatMode
     # Right Top content:
     - category: Mood
+    - category: Hunger
+    - category: Thirst
     - category: Temperature
     - category: Fire
     - category: Breathing # Vox gang not calling this oxygen
     - category: Pressure
-    - category: Hunger
-    - category: Thirst
     - category: Health
     - category: Stamina
     - category: NALaying
@@ -28,11 +28,10 @@
     - alertType: SuitPower
     - alertType: ModsuitPower # Goobstation - Modsuits
     - category: Internals
-    - alertType: Ensnared
-    #- category: Buckled
     - category: Piloting
     - alertType: Corporeal
     - alertType: Stun
+    - category: Toxins
     - alertType: Bleed
     - alertType: Magboots
     - alertType: Pacified
@@ -49,6 +48,15 @@
   - type: Sprite
     layers:
     - map: [ "enum.AlertVisualLayers.Base" ]
+
+- type: alert
+  id: AirOk
+  category: Breathing
+  icons:
+  - sprite: /Textures/Interface/Alerts/breathing.rsi
+    state: air
+  name: alerts-airok-name
+  description: alerts-airok-desc
 
 - type: alert
   id: LowOxygen
@@ -87,6 +95,15 @@
   description: alerts-high-oxygen-desc
 
 - type: alert
+  id: ToxinsOk
+  category: Toxins
+  icons:
+  - sprite: /Textures/Interface/Alerts/breathing.rsi
+    state: tox
+  name: alerts-toxok-name
+  description: alerts-toxok-desc
+
+- type: alert
   id: Toxins
   category: Toxins
   icons:
@@ -94,6 +111,15 @@
     state: too_much_tox
   name: alerts-high-toxin-name
   description: alerts-high-toxin-desc
+
+- type: alert
+  id: GoodPressure
+  category: Pressure
+  icons:
+  - sprite: /Textures/Interface/Alerts/pressure.rsi
+    state: good
+  name: alerts-good-pressure-name
+  description: alerts-good-pressure-desc
 
 - type: alert
   id: LowPressure
@@ -171,11 +197,11 @@
   name: alerts-too-hot-name
   description: alerts-too-hot-desc
 
-- type: alert
-  id: Weightless
-  icons: [ /Textures/Interface/Alerts/Weightless/weightless.png ]
-  name: alerts-weightless-name
-  description: alerts-weightless-desc
+#- type: alert
+#  id: Weightless
+#  icons: [ /Textures/Interface/Alerts/Weightless/weightless.png ]
+#  name: alerts-weightless-name
+#  description: alerts-weightless-desc
 
 - type: alert
   id: Stun
@@ -192,14 +218,14 @@
 #  name: alerts-handcuffed-name
 #  description: alerts-handcuffed-desc
 
-- type: alert
-  id: Ensnared
-  onClick: !type:RemoveEnsnare  { }
-  icons:
-  - sprite: /Textures/Interface/Alerts/ensnared.rsi
-    state: ensnared
-  name: alerts-ensnared-name
-  description: alerts-ensnared-desc
+#- type: alert
+#  id: Ensnared
+#  onClick: !type:RemoveEnsnare  { }
+#  icons:
+#  - sprite: /Textures/Interface/Alerts/ensnared.rsi
+#    state: ensnared
+#  name: alerts-ensnared-name
+#  description: alerts-ensnared-desc
 
 #- type: alert
 #  id: Buckled

@@ -53,6 +53,19 @@ public sealed class RespiratorSystem : EntitySystem
         SubscribeLocalEvent<RespiratorComponent, MapInitEvent>(OnMapInit);
         SubscribeLocalEvent<RespiratorComponent, EntityUnpausedEvent>(OnUnpaused);
         SubscribeLocalEvent<RespiratorComponent, ApplyMetabolicMultiplierEvent>(OnApplyMetabolicMultiplier);
+
+        SubscribeLocalEvent<LungComponent, ComponentStartup>(OnStartup);
+        SubscribeLocalEvent<LungComponent, ComponentShutdown>(OnShutdown);
+    }
+
+    private void OnStartup(Entity<LungComponent> ent, ref ComponentStartup args)
+    {
+        _alertsSystem.ShowAlert(ent, ent.Comp.AlertOkay);
+    }
+
+    private void OnShutdown(Entity<LungComponent> ent, ref ComponentShutdown args)
+    {
+        _alertsSystem.ClearAlertCategory(ent, ent.Comp.AlertCategory);
     }
 
     private void OnMapInit(Entity<RespiratorComponent> ent, ref MapInitEvent args)
@@ -323,7 +336,8 @@ public sealed class RespiratorSystem : EntitySystem
         var organs = _bodySystem.GetBodyOrganComponents<LungComponent>(ent);
         foreach (var (comp, _) in organs)
         {
-            _alertsSystem.ClearAlert(ent, comp.Alert);
+            //_alertsSystem.ClearAlert(ent, comp.Alert);
+            _alertsSystem.ShowAlert(ent, comp.AlertOkay);
         }
 
         _damageableSys.TryChangeDamage(ent, ent.Comp.DamageRecovery);
