@@ -322,7 +322,7 @@ namespace Content.Client.Stylesheets
 
         public static readonly Color PanelDark = Color.FromHex("#100F14");
 
-        public static readonly Color LoraPurple = Color.FromHex("#998776");
+        public static readonly Color LoraPurple = Color.FromHex("#998776"); //  Color.FromHex("#9051a8");
         public static readonly Color GoodGreenFore = Color.FromHex("#006400");
         public static readonly Color ConcerningOrangeFore = Color.FromHex("#99461d");
         public static readonly Color DangerousRedFore = Color.FromHex("#640000");
