@@ -31,6 +31,9 @@
         - ItemMask
         restitution: 0.3
         friction: 0.2
+  - type: EmitsSoundOnFootstepMoving
+    soundCollection:
+      collection: FootstepCoatplatesMoving
 
 #Alternate / slim basic armor vest
 - type: entity
