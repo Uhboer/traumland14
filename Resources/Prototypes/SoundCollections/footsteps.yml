@@ -269,9 +269,19 @@
 - type: soundCollection
   id: FootstepTacticalWebbing
   files:
-  - /Audio/Effects/Footsteps/gear1.ogg
-  - /Audio/Effects/Footsteps/gear2.ogg
-  - /Audio/Effects/Footsteps/gear3.ogg
-  - /Audio/Effects/Footsteps/gear4.ogg
-  - /Audio/Effects/Footsteps/gear5.ogg
-  - /Audio/Effects/Footsteps/gear6.ogg
+  - /Audio/_Finster/Effects/Footsteps/armor_is12/gear1.ogg
+  - /Audio/_Finster/Effects/Footsteps/armor_is12/gear2.ogg
+  - /Audio/_Finster/Effects/Footsteps/armor_is12/gear3.ogg
+  - /Audio/_Finster/Effects/Footsteps/armor_is12/gear4.ogg
+  #- /Audio/Effects/Footsteps/gear5.ogg
+  #- /Audio/Effects/Footsteps/gear6.ogg
+
+- type: soundCollection
+  id: FootstepCoatplatesMoving
+  files:
+  - /Audio/_Finster/Effects/Footsteps/armor_arx/coatplates_1.ogg
+  - /Audio/_Finster/Effects/Footsteps/armor_arx/coatplates_2.ogg
+  - /Audio/_Finster/Effects/Footsteps/armor_arx/coatplates_3.ogg
+  #- /Audio/Effects/Footsteps/gear5.ogg
+  #- /Audio/Effects/Footsteps/gear6.ogg
+

@@ -11,9 +11,9 @@
     slots: [belt]
     quickEquip: false
     equipSound:
-      path: /Audio/SimpleStation14/Items/Handling/toolbelt_pickup.ogg
+      path: /Audio/SimpleStation14/Items/Equip/toolbelt_equip.ogg
       params:
-        volume: -10
+        volume: -2
   - type: PhysicalComposition
     materialComposition:
       Cloth: 50
@@ -23,17 +23,22 @@
     sound:
       path: /Audio/SimpleStation14/Items/Handling/toolbelt_pickup.ogg
       params:
-        volume: -10
+        volume: -2
   - type: EmitSoundOnDrop
     sound:
-      path: /Audio/SimpleStation14/Items/Handling/toolbelt_pickup.ogg
+      path: /Audio/SimpleStation14/Items/Handling/toolbelt_drop.ogg
       params:
-        volume: -10
+        volume: -2
   - type: EmitSoundOnLand
     sound:
-      path: /Audio/SimpleStation14/Items/Handling/toolbelt_pickup.ogg
+      path: /Audio/SimpleStation14/Items/Handling/toolbelt_drop.ogg
       params:
-        volume: -10
+        volume: -2
+  - type: EmitsSoundOnFootstepMoving
+    soundCollection:
+      collection: FootstepTacticalWebbing
+      params:
+        volume: -2
 
 - type: entity
   abstract: true
