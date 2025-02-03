@@ -1,48 +1,61 @@
-<p align="center"><img src="./Raw/splashlogo/splashlogo.png" width="512px" /></p>
+# NetPunk 2063
 
----
+<p align="center"><img src="./Raw/Screenshots/1.png"  /></p>
 
-Finster - форк Einstein Engines, представляющего из себя хард-форк [Space Station 14](https://github.com/space-wizards/space-station-14), построенный на идеалах и дизайнерском вдохновении семейства серверов BayStation 12 от Space Station 13 с упором на модульный код, который каждый может использовать для создания RP-сервера своей мечты.
+[![en][icon-en]][en] [![ru][icon-ru]][ru]
 
-## Ссылки
+[en]: ./README.md
+[icon-en]: https://img.shields.io/badge/lang-en-red?style=flat-square
+[ru]: ./README.ru.md
+[icon-ru]: https://img.shields.io/badge/lang-ru-orange?style=flat-square
 
-[Steam](https://store.steampowered.com/app/1255460/Space_Station_14/) | [Steam (SSMV Launcher)](https://store.steampowered.com/app/2585480/Space_Station_Multiverse/) | [Клиент без Steam (SSMV Launcher)](https://spacestationmultiverse.com/downloads/)  | [Flathub](https://flathub.org/apps/com.spacestation14.Launcher) |  [Основной репозиторий](https://github.com/Simple-Station/Einstein-Engines)
+**NetPunk 2063** - a compilation of next names: NetHack (RogueLike project aimed at exploring source code), Neo Punk (one of the genres of rock), Ashes 2063 (modifications for GZDoom).
 
-## Контрибуция
+The main goal is to create a new game based on existing content for Space Station 14, with a focus on unique lore and RolePlay expirience.
 
-Вы можете следовать правилам офицальных репозиториев или EE.
+The project is non-commercial and is being developed on its own enthusiasm. However, we have our own [Discord](https://discord.gg/Fmzp3kQ3AB) server for communication.
 
-Для работы с дизайн документами рекомендуется использовать [Obsidian](https://obsidian.md/) в качестве редактора `.md` файлов, а также для работы с некоторыми плагинами.
+## Links
 
-## Сборка
+[Steam](https://store.steampowered.com/app/1255460/Space_Station_14/) | [Steam (SSMV Launcher)](https://store.steampowered.com/app/2585480/Space_Station_Multiverse/) | [Non-Steam (SSMV Launcher)](https://spacestationmultiverse.com/downloads/)  | [Flathub](https://flathub.org/apps/com.spacestation14.Launcher) |  [Base(Upstream) repository](https://github.com/Simple-Station/Einstein-Engines) | [Discord server](https://discord.gg/Fmzp3kQ3AB)
 
-Следуйте [гайду от Space Wizards](https://docs.spacestation14.com/en/general-development/setup/setting-up-a-development-environment.html) по настройке рабочей среды, но учитывайте, что репозиторий отличается и некоторые вещи могут также отличаться.
-EE предлагает несколько скриптов, показанных ниже, чтобы облегчить работу.
+## Contribution
 
-### Необходимые зависимости
+To add large changes to the game it is recommended to create a Pull Request.
+For small changes, make regular commit in **slave** branch.
+
+It should be taken into account that the repository is a **"dirty mess”** of any open-source SS14 resources on the platform.
+Any new added content will not be protected by the contributor or the project author.
+
+## Building
+
+Follow [Space Wizards guide](https://docs.spacestation14.com/en/general-development/setup/setting-up-a-development-environment.html) on setting up a working environment, but keep in mind that the repository is different and some things may also be different.
+EE make some scripts shown below to make work easier.
+
+### Dependencies
 
 > - Git
 > - .NET SDK 9.0.101
 
 ### Windows
 
-> 1. Склонируйте данный репозиторий
-> 2. Запустите `git submodule update --init --recursive` в командной строке, чтобы скачать движок игры
-> 3. Запускайте `Tools/bat/buildAllDebug.bat` после любых изменений в коде проекта
-> 4. Запустите `Tools/bat/runQuickAll.bat`, чтобы запустить клиент и сервер
-> 5. Подключитесь к локальному серверу и играйте
+> 1. Clone this repository
+> 2. Run `git submodule update --init --recursive` at the command line to download the game engine
+> 3. Run `Tools/bat/buildAllDebug.bat` after any changes to the project code
+> 4. Run `Tools/bat/runQuickAll.bat` to start the client and server
+> 5. Connect to the local server and play
 
 ### Linux
 
-> 1. Склонируйте данный репозиторий.
-> 2. Запустите `git submodule update --init --recursive` в командной строке, чтобы скачать движок игры
-> 3. Запускайте `Tools/sh/buildAllDebug.sh` после любых изменений в коде проекта
-> 4. Запустите `Tools/sh/runQuickAll.sh`, чтобы запустить клиент и сервер
-> 5. Подключитесь к локальному серверу и играйте
+> 1. Clone this repository.
+> 2. Run `git submodule update --init --recursive` at the command line to download the game engine
+> 3. Run `Tools/sh/buildAllDebug.sh` after any changes to the project code
+> 4. Run `Tools/sh/runQuickAll.sh` to start the client and server
+> 5. Connect to the local server and play
 
 ### MacOS
 
-> Аналогично как и на Linux. В ином случае используйте `dotnet build` для сборки проекта.
+> Same as on Linux. Otherwise try use `dotnet build` to build the project.
 
 ## License
 
