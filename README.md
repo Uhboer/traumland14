@@ -1,4 +1,4 @@
-# NetPunk 2063
+# NetPunk
 
 <p align="center"><img src="./Raw/Screenshots/1.png"  /></p>
 
@@ -8,8 +8,6 @@
 [icon-en]: https://img.shields.io/badge/lang-en-red?style=flat-square
 [ru]: ./README.ru.md
 [icon-ru]: https://img.shields.io/badge/lang-ru-orange?style=flat-square
-
-**NetPunk 2063** - a compilation of next names: NetHack (RogueLike project aimed at exploring source code), Neo Punk (one of the genres of rock), Ashes 2063 (modifications for GZDoom).
 
 The main goal is to create a new game based on existing content for Space Station 14, with a focus on unique lore and RolePlay expirience.
 
