@@ -5,7 +5,9 @@ using Robust.Shared.Map;
 namespace Content.Shared._Finster.Clothing;
 
 /// <summary>
-///   Indicates that the clothing entity emits sound when it moves.
+///   Indicates that the clothing entity emits sound when it moves (synced with footsteps).
+///   FINSTER NOTE: It is clone of EmitsSoundOnMove, because don't wanna fix any
+///   conflicts with EE upstream. So i made another component for my needs.
 /// </summary>
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class EmitsSoundOnFootstepMovingComponent : Component

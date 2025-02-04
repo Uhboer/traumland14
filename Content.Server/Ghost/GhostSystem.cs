@@ -1,6 +1,7 @@
 using System.Linq;
 using System.Numerics;
 using Content.KayMisaZlevels.Server.Systems;
+using Content.KayMisaZlevels.Shared.Miscellaneous;
 using Content.Server.GameTicking;
 using Content.Server.Ghost.Components;
 using Content.Server.Mind;
@@ -84,7 +85,7 @@ namespace Content.Server.Ghost
             SubscribeLocalEvent<GhostComponent, GoDownOnZLevel>(OnGoDownOnZLevel);
         }
 
-        private void MoveOnZLevel(EntityUid ent, bool isUp = true)
+        private void MoveOnZLevel(EntityUid ent, ZDirection dir)
         {
             if (!_zStack.TryGetZStack(ent, out var zStack))
                 return; // Not in a Z level containing space.
@@ -95,7 +96,7 @@ namespace Content.Server.Ghost
             var maps = zStack.Value.Comp.Maps;
             var mapIdx = maps.IndexOf(xformComp.MapUid.Value);
 
-            if (isUp)
+            if (dir == ZDirection.Up)
             {
                 if (mapIdx >= maps.Count - 1)
                     return; // Bottommost map can't be fallen through.
@@ -113,12 +114,12 @@ namespace Content.Server.Ghost
 
         private void OnGoUpOnZLevel(Entity<GhostComponent> ent, ref GoUpOnZLevel args)
         {
-            MoveOnZLevel(ent, true);
+            MoveOnZLevel(ent, ZDirection.Up);
         }
 
         private void OnGoDownOnZLevel(Entity<GhostComponent> ent, ref GoDownOnZLevel args)
         {
-            MoveOnZLevel(ent, false);
+            MoveOnZLevel(ent, ZDirection.Down);
         }
 
         private void OnGhostHearingAction(EntityUid uid, GhostComponent component, ToggleGhostHearingActionEvent args)
