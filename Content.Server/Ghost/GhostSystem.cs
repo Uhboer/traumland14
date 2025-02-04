@@ -1,5 +1,6 @@
 using System.Linq;
 using System.Numerics;
+using Content.KayMisaZlevels.Server.Systems;
 using Content.Server.GameTicking;
 using Content.Server.Ghost.Components;
 using Content.Server.Mind;
@@ -44,6 +45,7 @@ namespace Content.Server.Ghost
         [Dependency] private readonly TransformSystem _transformSystem = default!;
         [Dependency] private readonly VisibilitySystem _visibilitySystem = default!;
         [Dependency] private readonly MetaDataSystem _metaData = default!;
+        [Dependency] private readonly ZStackSystem _zStack = default!;
 
         private EntityQuery<GhostComponent> _ghostQuery;
         private EntityQuery<PhysicsComponent> _physicsQuery;
@@ -77,6 +79,46 @@ namespace Content.Server.Ghost
 
             SubscribeLocalEvent<RoundEndTextAppendEvent>(_ => MakeVisible(true));
             SubscribeLocalEvent<ToggleGhostVisibilityToAllEvent>(OnToggleGhostVisibilityToAll);
+
+            SubscribeLocalEvent<GhostComponent, GoUpOnZLevel>(OnGoUpOnZLevel);
+            SubscribeLocalEvent<GhostComponent, GoDownOnZLevel>(OnGoDownOnZLevel);
+        }
+
+        private void MoveOnZLevel(EntityUid ent, bool isUp = true)
+        {
+            if (!_zStack.TryGetZStack(ent, out var zStack))
+                return; // Not in a Z level containing space.
+            if (!TryComp<TransformComponent>(ent, out var xformComp) || xformComp.MapUid is null)
+                return;
+
+            var coords = _transformSystem.GetWorldPosition(ent);
+            var maps = zStack.Value.Comp.Maps;
+            var mapIdx = maps.IndexOf(xformComp.MapUid.Value);
+
+            if (isUp)
+            {
+                if (mapIdx >= maps.Count - 1)
+                    return; // Bottommost map can't be fallen through.
+
+                _transformSystem.SetCoordinates(ent, new EntityCoordinates(maps[mapIdx + 1], coords));
+            }
+            else
+            {
+                if (mapIdx <= 0)
+                    return; // Bottommost map can't be fallen through.
+
+                _transformSystem.SetCoordinates(ent, new EntityCoordinates(maps[mapIdx - 1], coords));
+            }
+        }
+
+        private void OnGoUpOnZLevel(Entity<GhostComponent> ent, ref GoUpOnZLevel args)
+        {
+            MoveOnZLevel(ent, true);
+        }
+
+        private void OnGoDownOnZLevel(Entity<GhostComponent> ent, ref GoDownOnZLevel args)
+        {
+            MoveOnZLevel(ent, false);
         }
 
         private void OnGhostHearingAction(EntityUid uid, GhostComponent component, ToggleGhostHearingActionEvent args)
@@ -198,6 +240,10 @@ namespace Content.Server.Ghost
             _actions.AddAction(uid, ref component.ToggleLightingActionEntity, component.ToggleLightingAction);
             _actions.AddAction(uid, ref component.ToggleFoVActionEntity, component.ToggleFoVAction);
             _actions.AddAction(uid, ref component.ToggleGhostsActionEntity, component.ToggleGhostsAction);
+            // FINSTER EDIT
+            _actions.AddAction(uid, ref component.GoUpOnZLevelActionEntity, component.GoUpOnZLevelAction);
+            _actions.AddAction(uid, ref component.GoDownOnZLevelActionEntity, component.GoDownOnZLevelAction);
+            // FINSTER EDIT END
         }
 
         private void OnGhostExamine(EntityUid uid, GhostComponent component, ExaminedEvent args)

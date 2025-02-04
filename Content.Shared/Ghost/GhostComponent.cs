@@ -39,6 +39,22 @@ public sealed partial class GhostComponent : Component
     [DataField, AutoNetworkedField]
     public EntityUid? BooActionEntity;
 
+    // FINSTER EDIT
+
+    [DataField]
+    public EntProtoId GoUpOnZLevelAction = "ActionMoveZUp";
+
+    [DataField, AutoNetworkedField]
+    public EntityUid? GoUpOnZLevelActionEntity;
+
+    [DataField]
+    public EntProtoId GoDownOnZLevelAction = "ActionMoveZDown";
+
+    [DataField, AutoNetworkedField]
+    public EntityUid? GoDownOnZLevelActionEntity;
+
+    // FINSTER EDIT END
+
     // End actions
 
     [ViewVariables(VVAccess.ReadWrite), DataField]
@@ -107,3 +123,11 @@ public sealed partial class ToggleGhostHearingActionEvent : InstantActionEvent {
 public sealed partial class ToggleGhostVisibilityToAllEvent : InstantActionEvent { }
 
 public sealed partial class BooActionEvent : InstantActionEvent { }
+
+// FINSTER EDIT
+
+public sealed partial class GoUpOnZLevel : InstantActionEvent { }
+
+public sealed partial class GoDownOnZLevel : InstantActionEvent { }
+
+// FINSTER EDIT END

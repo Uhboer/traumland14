@@ -95,6 +95,28 @@
     checkCanInteract: false
     event: !type:ToggleLightingActionEvent
 
+# FINSTER EDIT - Add moving on Z levels - up/down
+- type: entity
+  id: ActionMoveZUp
+  name: Go Up On Z Level
+  description: Move between Z levels.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: InstantAction
+    checkCanInteract: false
+    event: !type:GoUpOnZLevel
+
+- type: entity
+  id: ActionMoveZDown
+  name: Go Down On Z Level
+  description: Move between Z levels.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: InstantAction
+    checkCanInteract: false
+    event: !type:GoDownOnZLevel
+# FINSTER EDIT END
+
 - type: entity
   id: ActionToggleFov
   name: Toggle FoV
