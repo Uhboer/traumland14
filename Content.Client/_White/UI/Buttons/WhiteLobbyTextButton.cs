@@ -116,6 +116,7 @@ public class WhiteLobbyTextButton : TextureButton
             _font,
             Vector2.Zero,
             _buttonText!,
+            UIScale,
             color
         );
     }

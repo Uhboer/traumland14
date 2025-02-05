@@ -11,8 +11,10 @@
     anchored: true
   - type: Sprite
     drawdepth: FloorObjects
-    sprite: _Nuclear14/Structures/Walls/nc14/matrix.rsi
-    state: matrix
+    layers:
+    - sprite: _Nuclear14/Structures/Walls/nc14/matrix.rsi
+      state: matrix
+      shader: unshaded
   - type: Cryostorage
   - type: DragInsertContainer
     containerId: storage

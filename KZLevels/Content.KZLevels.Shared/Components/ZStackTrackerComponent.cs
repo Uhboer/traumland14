@@ -20,7 +20,7 @@ namespace Content.KayMisaZlevels.Shared.Components;
 /// <remarks>
 ///     The system tries to ensure the tracker is always "in view" for any entity within a tracked map.
 /// </remarks>
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState, UnsavedComponent]
 public sealed partial class ZStackTrackerComponent : Component
 {
     [DataField, AutoNetworkedField]

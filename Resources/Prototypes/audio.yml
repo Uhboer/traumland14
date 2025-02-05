@@ -60,7 +60,7 @@
 - type: soundCollection
   id: AmbienceTown
   files:
-    - /Audio/_Finster/Ambience/townstreets.ogg
+    - /Audio/_Finster/Ambience/DreamWeb-The-Deliverer.ogg
 
 - type: soundCollection
   id: AmbienceGeneral
@@ -76,7 +76,7 @@
 - type: soundCollection
   id: AmbienceCombatMode
   files:
-    - /Audio/_Finster/Ambience/dreamweb-like-killing-hitler.ogg
+    - /Audio/_Finster/Ambience/DreamWeb-Like-Killing-Hitler.ogg
     #- /Audio/_Finster/Ambience/combat_vamp2.ogg
 
 # Rules

@@ -8,7 +8,7 @@
     <WarningsAsErrors>nullable</WarningsAsErrors>
     <Nullable>enable</Nullable>
     <!-- It spams too many warnings in compile time. So, for now, it should be disabled, before all that code will be refactored -->
-    <NoWarn>RA0003,RA0026,RA0028,RA0030,RA0032,CS0067,CS0105,CS0414,CS0612,CS0617,CS0618,CS0672,CS1998,CS0108,CS0162,CS0168,CS0642,CS0649,CS8509,CS8073,CS8321,CS4014,CS8974,CS8524</NoWarn>
+    <NoWarn>MSB4011,RA0003,RA0026,RA0028,RA0030,RA0032,CS0067,CS0105,CS0414,CS0612,CS0617,CS0618,CS0672,CS1998,CS0108,CS0162,CS0168,CS0642,CS0649,CS8509,CS8073,CS8321,CS4014,CS8974,CS8524</NoWarn>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="JetBrains.Annotations" PrivateAssets="All" />

@@ -47,6 +47,7 @@ using Robust.Shared.Random;
 using Content.Shared.Throwing;
 using System.Numerics;
 using Robust.Shared.Prototypes;
+using Content.Shared.MouseRotator;
 
 namespace Content.Shared.Movement.Pulling.Systems;
 
@@ -79,6 +80,7 @@ public sealed class PullingSystem : EntitySystem
     [Dependency] private readonly SharedIntentSystem _intent = default!;
     [Dependency] private readonly GrabThrownSystem _grabThrown = default!;
     [Dependency] private readonly ThrowingSystem _throwing = default!;
+    [Dependency] private readonly RotateToFaceSystem _rotateTo = default!; // NETPUNK EDIT
 
     public ProtoId<AlertPrototype> PullingAlert = "Pulling";
     public ProtoId<AlertCategoryPrototype> PullingCategory = "Pulling";
@@ -112,6 +114,8 @@ public sealed class PullingSystem : EntitySystem
         SubscribeLocalEvent<PullerComponent, VirtualItemDropAttemptEvent>(OnVirtualItemDropAttempt);
         SubscribeLocalEvent<PullerComponent, ComponentStartup>(OnPullerStart);
         SubscribeLocalEvent<PullerComponent, ComponentShutdown>(OnPullerShutdown);
+
+        SubscribeLocalEvent<PullerComponent, PullStoppedMessage>(OnPullerPullStopped);
 
         SubscribeLocalEvent<PullableComponent, StrappedEvent>(OnBuckled);
         SubscribeLocalEvent<PullableComponent, BuckledEvent>(OnGotBuckled);
@@ -217,8 +221,22 @@ public sealed class PullingSystem : EntitySystem
                 continue;
             }
 
+            // NETPUNK EDIT - Rotate character's face to pulled object
             if (pullerComp.PushingTowards is null)
+            {
+                if (HasComp<MouseRotatorComponent>(puller))
+                    continue;
+                if (!_timing.ApplyingState)
+                    EnsureComp<NoRotateOnMoveComponent>(puller);
+
+                var pulledCoords = _xformSys.GetMapCoordinates(pulled).Position;
+                var pullerCoords = _xformSys.GetMapCoordinates(puller).Position;
+
+                var angle = (pulledCoords - pullerCoords).ToWorldAngle().GetCardinalDir().ToAngle();
+                _rotateTo.TryFaceAngle(puller, angle);
                 continue;
+            }
+            // NETPUNK EDIT END
 
             // If pushing but the target position is invalid, or the push action has expired or finished, stop pushing
             if (pullerComp.NextPushStop < _timing.CurTime
@@ -652,6 +670,15 @@ public sealed class PullingSystem : EntitySystem
         }
 
         TryStopPull(pullerComp.Pulling.Value, pullableComp, user: player, true);
+    }
+
+    private void OnPullerPullStopped(Entity<PullerComponent> ent, ref PullStoppedMessage args)
+    {
+        if (args.PulledUid == ent.Owner)
+            return;
+
+        if (!_timing.ApplyingState && !HasComp<MouseRotatorComponent>(ent))
+            RemCompDeferred<NoRotateOnMoveComponent>(ent);
     }
 
     public bool CanPull(EntityUid puller, EntityUid pullableUid, PullerComponent? pullerComp = null)

@@ -16,7 +16,7 @@ namespace Content.KayMisaZlevels.Shared.Components;
 /// <summary>
 /// This is used for tracking members of a stack of maps.
 /// </summary>
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState, UnsavedComponent]
 public sealed partial class ZStackMemberComponent : Component
 {
     [DataField, AutoNetworkedField]
