@@ -1,17 +1,5 @@
 - type: entity
   parent: ClothingUniformBase
-  id: ClothingUniformJumpsuitHamas
-  name: Униформа Хамаса
-  description: Униформа когда то популярной Палестинской группировки.
-  suffix: afgan14
-  components:
-  - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuit/hamas.rsi
-  - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuit/hamas.rsi
-
-- type: entity
-  parent: ClothingUniformBase
   id: ClothingUniformJumpsuitRab
   name: Ободранная рубашка
   description: одежда рабов или же людей низшего сословия.
