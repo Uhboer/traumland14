@@ -131,6 +131,12 @@ public sealed partial class NearbyComponentsRule : RulesRule
     [DataField("anchored")]
     public bool Anchored;
 
+    /// <summary>
+    /// What is result we want check
+    /// </summary>
+    [DataField("state")]
+    public bool State = true;
+
     [DataField("count")] public int Count;
 
     [DataField("components", required: true)]
@@ -141,9 +147,24 @@ public sealed partial class NearbyComponentsRule : RulesRule
 }
 
 /// <summary>
+/// Check if player near by midi players or another music sources.
+/// </summary>
+public sealed partial class NearbyMusicSourceRule : RulesRule
+{
+    [DataField("range")]
+    public float Range = 10f;
+
+    /// <summary>
+    /// What is result we want check
+    /// </summary>
+    [DataField("state")]
+    public bool State = false;
+}
+
+/// <summary>
 /// Check if player use combat mode.
 /// </summary>
-public sealed partial class CombatMode : RulesRule
+public sealed partial class CombatModeRule : RulesRule
 {
     [DataField("state")]
     public bool State = false;

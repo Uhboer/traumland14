@@ -1,15 +1,19 @@
 using System.Numerics;
+using Content.Client.Instruments;
 using Content.Shared.Access.Components;
 using Content.Shared.Access.Systems;
+using Content.Shared.Audio.Jukebox;
 using Content.Shared.CombatMode;
+using Content.Shared.Instruments;
+using Content.Shared.Random;
 using Content.Shared.Whitelist;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Physics.Components;
 
-namespace Content.Shared.Random;
+namespace Content.Client.RandomRules;
 
-public sealed class RulesSystem : EntitySystem
+public class RulesSystem : EntitySystem
 {
     [Dependency] private readonly IMapManager _mapManager = default!;
     [Dependency] private readonly ITileDefinitionManager _tileDef = default!;
@@ -26,7 +30,7 @@ public sealed class RulesSystem : EntitySystem
             {
                 case AlwaysTrueRule:
                     break;
-                case CombatMode combatRule:
+                case CombatModeRule combatRule:
                     if (TryComp<CombatModeComponent>(uid, out var combatMode))
                     {
                         if (combatMode.IsInCombatMode == combatRule.State)
@@ -155,6 +159,41 @@ public sealed class RulesSystem : EntitySystem
                     }
 
                     if (!found)
+                        return !nearbyComps.State;
+                    else
+                        return nearbyComps.State;
+
+                    break;
+                }
+                case NearbyMusicSourceRule nMSRule:
+                {
+                    var xformQuery = GetEntityQuery<TransformComponent>();
+
+                    if (!xformQuery.TryGetComponent(uid, out var xform) ||
+                        xform.MapUid == null)
+                    {
+                        return false;
+                    }
+
+                    var found = false;
+                    var worldPos = _transform.GetWorldPosition(xform);
+
+                    // Check for music sources
+                    {
+                        foreach (var ent in _lookup.GetEntitiesInRange(xform.MapID, worldPos, nMSRule.Range))
+                        {
+                            if (TryComp<InstrumentComponent>(ent, out var iComp) && iComp.Playing ||
+                                TryComp<JukeboxComponent>(ent, out var jukeboxComp) && jukeboxComp.AudioStream != null)
+                            {
+                                found = true;
+                                break;
+                            }
+                        }
+                    }
+
+                    if (found == nMSRule.State)
+                        break;
+                    else
                         return false;
 
                     break;

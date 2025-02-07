@@ -2,7 +2,7 @@
   id: TestHaus
   sound:
     params:
-      volume: -12
+      volume: -10
     collection: AmbienceTown
   rules: OnMapGrid
   fadeIn: false
@@ -29,7 +29,7 @@
   id: CombatMode
   sound:
     params:
-      volume: -10
+      volume: -6
     collection: AmbienceCombatMode
   #fadeIn: true
   interruptable: true
@@ -43,7 +43,7 @@
   id: General
   sound:
     params:
-      volume: -12
+      volume: -10
     collection: AmbienceGeneral
   rules: AlwaysTrue
   fadeIn: true
@@ -65,7 +65,8 @@
 - type: soundCollection
   id: AmbienceGeneral
   files:
-    - /Audio/_Finster/Ambience/general.ogg
+    #- /Audio/_Finster/Ambience/general.ogg
+    - /Audio/_Finster/Ambience/empty.ogg
 
 - type: soundCollection
   id: AmbienceSpace
@@ -83,14 +84,14 @@
 - type: rules
   id: AlwaysTrue
   rules:
-    - !type:CombatMode
-      state: false
     - !type:AlwaysTrueRule
 
 - type: rules
   id: InSpace
   rules:
-    - !type:CombatMode
+    - !type:NearbyMusicSourceRule
+      state: false
+    - !type:CombatModeRule
       state: false
     - !type:InSpaceRule
     - !type:GridInRangeRule
@@ -100,8 +101,19 @@
 - type: rules
   id: InCombatMode
   rules:
-    - !type:CombatMode
+    - !type:NearbyMusicSourceRule
+      state: false
+    - !type:CombatModeRule
       state: true
+
+- type: rules
+  id: OnMapGrid
+  rules:
+    - !type:NearbyMusicSourceRule
+      state: false
+    - !type:CombatModeRule
+      state: false
+    - !type:OnMapGridRule
 
 # TODO
 - type: rules
@@ -170,10 +182,3 @@
         tags:
           - SpookyFog
       range: 4
-
-- type: rules
-  id: OnMapGrid
-  rules:
-    - !type:CombatMode
-      state: false
-    - !type:OnMapGridRule
