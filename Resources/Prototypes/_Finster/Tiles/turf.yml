@@ -4,7 +4,7 @@
   sprite: /Textures/_Finster/Tiles/herringbone.png
   isSubfloor: true
   footstepSounds:
-    collection: FootstepFloor
+    collection: N14FootstepConcrete
   barestepSounds:
     collection: BarestepHard
   heatCapacity: 10000
@@ -95,7 +95,7 @@
   sprite: /Textures/_Finster/Tiles/stoneredlarge.png
   isSubfloor: true
   footstepSounds:
-    collection: FootstepFloor
+    collection: N14FootstepConcrete
   barestepSounds:
     collection: BarestepHard
   heatCapacity: 10000
@@ -108,7 +108,7 @@
   sprite: /Textures/_Finster/Tiles/stoneredtiny.png
   isSubfloor: true
   footstepSounds:
-    collection: FootstepFloor
+    collection: N14FootstepConcrete
   barestepSounds:
     collection: BarestepHard
   heatCapacity: 10000
@@ -238,7 +238,7 @@
   sprite: /Textures/_Finster/Tiles/churchrought.png
   isSubfloor: true
   footstepSounds:
-    collection: FootstepFloor
+    collection: N14FootstepConcrete
   barestepSounds:
     collection: BarestepHard
   heatCapacity: 10000
@@ -251,7 +251,7 @@
   sprite: /Textures/_Finster/Tiles/cobblerock.png
   isSubfloor: true
   footstepSounds:
-    collection: FootstepFloor
+    collection: N14FootstepConcrete
   barestepSounds:
     collection: BarestepHard
   heatCapacity: 10000
@@ -264,7 +264,7 @@
   sprite: /Textures/_Finster/Tiles/cobblestone1.png
   isSubfloor: true
   footstepSounds:
-    collection: FootstepFloor
+    collection: N14FootstepConcrete
   barestepSounds:
     collection: BarestepHard
   heatCapacity: 10000
@@ -277,7 +277,7 @@
   sprite: /Textures/_Finster/Tiles/cobblestone2.png
   isSubfloor: true
   footstepSounds:
-    collection: FootstepFloor
+    collection: N14FootstepConcrete
   barestepSounds:
     collection: BarestepHard
   heatCapacity: 10000
@@ -290,7 +290,7 @@
   sprite: /Textures/_Finster/Tiles/cobblestone3.png
   isSubfloor: true
   footstepSounds:
-    collection: FootstepFloor
+    collection: N14FootstepConcrete
   barestepSounds:
     collection: BarestepHard
   heatCapacity: 10000
@@ -316,7 +316,7 @@
   sprite: /Textures/_Finster/Tiles/hexstone.png
   isSubfloor: true
   footstepSounds:
-    collection: FootstepFloor
+    collection: N14FootstepConcrete
   barestepSounds:
     collection: BarestepHard
   heatCapacity: 10000
@@ -594,7 +594,7 @@
   - 1.0
   isSubfloor: true
   footstepSounds:
-    collection: FootstepFloor
+    collection: N14FootstepConcrete
   barestepSounds:
     collection: BarestepHard
   heatCapacity: 10000
@@ -799,7 +799,7 @@
   - 1.0
   isSubfloor: true
   footstepSounds:
-    collection: FootstepFloor
+    collection: N14FootstepConcrete
   barestepSounds:
     collection: BarestepHard
   heatCapacity: 10000
@@ -818,7 +818,7 @@
   - 1.0
   isSubfloor: true
   footstepSounds:
-    collection: FootstepFloor
+    collection: N14FootstepConcrete
   barestepSounds:
     collection: BarestepHard
   heatCapacity: 10000
@@ -875,7 +875,7 @@
   - 1.0
   isSubfloor: true
   footstepSounds:
-    collection: FootstepFloor
+    collection: N14FootstepConcrete
   barestepSounds:
     collection: BarestepHard
   heatCapacity: 10000
@@ -989,7 +989,7 @@
   - 1.0
   isSubfloor: true
   footstepSounds:
-    collection: FootstepFloor
+    collection: N14FootstepConcrete
   barestepSounds:
     collection: BarestepHard
   heatCapacity: 10000

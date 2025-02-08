@@ -932,7 +932,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-    collection: FootstepTile
+    collection: N14FootstepConcrete
   itemDrop: FloorTileItemConcrete
   heatCapacity: 10000
   weather: true
@@ -951,7 +951,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-    collection: FootstepTile
+    collection: N14FootstepConcrete
   itemDrop: FloorTileItemConcrete
   heatCapacity: 10000
   weather: true
@@ -970,7 +970,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-    collection: FootstepTile
+    collection: N14FootstepConcrete
   itemDrop: FloorTileItemConcrete
   heatCapacity: 10000
   weather: true
@@ -989,7 +989,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-    collection: FootstepTile
+    collection: N14FootstepConcrete
   itemDrop: FloorTileItemGrayConcrete
   heatCapacity: 10000
   weather: true
@@ -1008,7 +1008,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-    collection: FootstepTile
+    collection: N14FootstepConcrete
   itemDrop: FloorTileItemGrayConcrete
   heatCapacity: 10000
   weather: true
@@ -1027,7 +1027,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-    collection: FootstepTile
+    collection: N14FootstepConcrete
   itemDrop: FloorTileItemGrayConcrete
   heatCapacity: 10000
   weather: true
@@ -1046,7 +1046,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-    collection: FootstepTile
+    collection: N14FootstepConcrete
   itemDrop: FloorTileItemOldConcrete
   heatCapacity: 10000
   weather: true
@@ -1065,7 +1065,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-    collection: FootstepTile
+    collection: N14FootstepConcrete
   itemDrop: FloorTileItemOldConcrete
   heatCapacity: 10000
   weather: true
@@ -1084,7 +1084,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-    collection: FootstepTile
+    collection: N14FootstepConcrete
   itemDrop: FloorTileItemOldConcrete
   heatCapacity: 10000
   weather: true
