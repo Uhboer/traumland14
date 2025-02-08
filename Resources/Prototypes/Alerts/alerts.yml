@@ -30,7 +30,7 @@
     - category: Internals
     - category: Piloting
     - alertType: Corporeal
-    - alertType: Stun
+    - category: Stun
     - category: Toxins
     - alertType: Bleed
     - alertType: Magboots
@@ -205,9 +205,10 @@
 
 - type: alert
   id: Stun
+  category: Stun
   icons:
-  - sprite: /Textures/Objects/Weapons/Melee/stunbaton.rsi #Should probably draw a proper icon
-    state: stunbaton_off
+  - sprite: /Textures/Interface/Alerts/stun.rsi
+    state: stun
   name: alerts-stunned-name
   description: alerts-stunned-desc
 

@@ -90,3 +90,7 @@
 - type: alertCategory
   id: Pulling
   group: RightBottomContent32
+
+- type: alertCategory
+  id: Stun
+  group: Content16
