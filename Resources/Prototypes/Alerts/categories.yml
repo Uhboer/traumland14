@@ -94,3 +94,7 @@
 - type: alertCategory
   id: Stun
   group: Content16
+
+- type: alertCategory
+  id: Bleed
+  group: Content16
