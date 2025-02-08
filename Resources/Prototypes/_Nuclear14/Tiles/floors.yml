@@ -1021,7 +1021,7 @@
   baseTurf: FloorWasteland
   isSubfloor: false
   footstepSounds:
-    collection: FootstepFloor
+    collection: FootstepTile
   friction: 0.30
   thermalConductivity: 0.04
   heatCapacity: 10000
@@ -1036,7 +1036,7 @@
   baseTurf: FloorWasteland
   isSubfloor: false
   footstepSounds:
-    collection: FootstepFloor
+    collection: FootstepTile
   friction: 0.30
   thermalConductivity: 0.04
   heatCapacity: 10000
@@ -1051,7 +1051,7 @@
   baseTurf: FloorWasteland
   isSubfloor: false
   footstepSounds:
-    collection: FootstepFloor
+    collection: FootstepTile
   friction: 0.30
   thermalConductivity: 0.04
   heatCapacity: 10000
@@ -1066,7 +1066,7 @@
   baseTurf: FloorWasteland
   isSubfloor: false
   footstepSounds:
-    collection: FootstepFloor
+    collection: FootstepTile
   friction: 0.30
   thermalConductivity: 0.04
   heatCapacity: 10000
@@ -1081,7 +1081,7 @@
   baseTurf: FloorWasteland
   isSubfloor: false
   footstepSounds:
-    collection: FootstepFloor
+    collection: FootstepTile
   friction: 0.30
   thermalConductivity: 0.04
   heatCapacity: 10000
@@ -1096,7 +1096,7 @@
   baseTurf: FloorWasteland
   isSubfloor: false
   footstepSounds:
-    collection: FootstepFloor
+    collection: FootstepTile
   friction: 0.30
   thermalConductivity: 0.04
   heatCapacity: 10000
@@ -1109,7 +1109,7 @@
   baseTurf: FloorWasteland
   isSubfloor: false
   footstepSounds:
-    collection: FootstepFloor
+    collection: FootstepTile
   friction: 0.30
   thermalConductivity: 0.04
   heatCapacity: 10000
@@ -1124,7 +1124,7 @@
   baseTurf: FloorWasteland
   isSubfloor: false
   footstepSounds:
-    collection: FootstepFloor
+    collection: FootstepTile
   friction: 0.30
   thermalConductivity: 0.04
   heatCapacity: 10000
@@ -1139,7 +1139,7 @@
   baseTurf: FloorWasteland
   isSubfloor: false
   footstepSounds:
-    collection: FootstepFloor
+    collection: FootstepTile
   friction: 0.30
   thermalConductivity: 0.04
   heatCapacity: 10000
@@ -1154,7 +1154,7 @@
   baseTurf: FloorWasteland
   isSubfloor: false
   footstepSounds:
-    collection: FootstepFloor
+    collection: FootstepTile
   friction: 0.30
   thermalConductivity: 0.04
   heatCapacity: 10000
@@ -1169,7 +1169,7 @@
   baseTurf: FloorWasteland
   isSubfloor: false
   footstepSounds:
-    collection: FootstepFloor
+    collection: FootstepTile
   friction: 0.30
   thermalConductivity: 0.04
   heatCapacity: 10000
@@ -1184,7 +1184,7 @@
   baseTurf: FloorWasteland
   isSubfloor: false
   footstepSounds:
-    collection: FootstepFloor
+    collection: FootstepTile
   friction: 0.30
   thermalConductivity: 0.04
   heatCapacity: 10000
@@ -1199,7 +1199,7 @@
   baseTurf: FloorWasteland
   isSubfloor: false
   footstepSounds:
-    collection: FootstepFloor
+    collection: FootstepTile
   friction: 0.30
   thermalConductivity: 0.04
   heatCapacity: 10000
@@ -1214,7 +1214,7 @@
   baseTurf: FloorWasteland
   isSubfloor: false
   footstepSounds:
-    collection: FootstepFloor
+    collection: FootstepTile
   friction: 0.30
   thermalConductivity: 0.04
   heatCapacity: 10000
@@ -1229,7 +1229,7 @@
   baseTurf: FloorWasteland
   isSubfloor: false
   footstepSounds:
-    collection: FootstepFloor
+    collection: FootstepTile
   friction: 0.30
   thermalConductivity: 0.04
   heatCapacity: 10000
@@ -1244,7 +1244,7 @@
   baseTurf: FloorWasteland
   isSubfloor: false
   footstepSounds:
-    collection: FootstepFloor
+    collection: FootstepTile
   friction: 0.30
   thermalConductivity: 0.04
   heatCapacity: 10000
@@ -1259,7 +1259,7 @@
   baseTurf: FloorWasteland
   isSubfloor: false
   footstepSounds:
-    collection: FootstepFloor
+    collection: FootstepTile
   friction: 0.30
   thermalConductivity: 0.04
   heatCapacity: 10000
@@ -1274,7 +1274,7 @@
   baseTurf: FloorWasteland
   isSubfloor: false
   footstepSounds:
-    collection: FootstepFloor
+    collection: FootstepTile
   friction: 0.30
   thermalConductivity: 0.04
   heatCapacity: 10000
@@ -1289,7 +1289,7 @@
   baseTurf: FloorWasteland
   isSubfloor: false
   footstepSounds:
-    collection: FootstepFloor
+    collection: FootstepTile
   friction: 0.30
   thermalConductivity: 0.04
   heatCapacity: 10000
@@ -1304,7 +1304,7 @@
   baseTurf: FloorWasteland
   isSubfloor: false
   footstepSounds:
-    collection: FootstepFloor
+    collection: FootstepTile
   friction: 0.30
   thermalConductivity: 0.04
   heatCapacity: 10000

@@ -25,10 +25,27 @@
 - type: soundCollection
   id: FootstepFloor
   files:
-  - /Audio/_Finster/Effects/Footsteps/footstep_shoe_stone_step.ogg
-  - /Audio/_Finster/Effects/Footsteps/footstep_shoe_stone_step2.ogg
-  - /Audio/_Finster/Effects/Footsteps/footstep_shoe_stone_step3.ogg
-  - /Audio/_Finster/Effects/Footsteps/footstep_shoe_stone_step4.ogg
+  - /Audio/_Finster/Effects/Footsteps/doom_3_concrete/step01.ogg
+  - /Audio/_Finster/Effects/Footsteps/doom_3_concrete/step02.ogg
+  - /Audio/_Finster/Effects/Footsteps/doom_3_concrete/step03.ogg
+  - /Audio/_Finster/Effects/Footsteps/doom_3_concrete/step05.ogg
+  - /Audio/_Finster/Effects/Footsteps/doom_3_concrete/step07.ogg
+  - /Audio/_Finster/Effects/Footsteps/doom_3_concrete/step09.ogg
+  - /Audio/_Finster/Effects/Footsteps/doom_3_concrete/step10.ogg
+  - /Audio/_Finster/Effects/Footsteps/doom_3_concrete/step11.ogg
+  - /Audio/_Finster/Effects/Footsteps/doom_3_concrete/step13.ogg
+
+#- type: soundCollection
+#  id: FootstepFloor
+#  files:
+#  - /Audio/_Finster/Effects/Footsteps/deathnet_concrete/concrete1.ogg
+#  - /Audio/_Finster/Effects/Footsteps/deathnet_concrete/concrete2.ogg
+#  - /Audio/_Finster/Effects/Footsteps/deathnet_concrete/concrete3.ogg
+#  - /Audio/_Finster/Effects/Footsteps/deathnet_concrete/concrete4.ogg
+#  - /Audio/_Finster/Effects/Footsteps/deathnet_concrete/concrete5.ogg
+#  - /Audio/_Finster/Effects/Footsteps/deathnet_concrete/concrete6.ogg
+#  - /Audio/_Finster/Effects/Footsteps/deathnet_concrete/concrete7.ogg
+#  - /Audio/_Finster/Effects/Footsteps/deathnet_concrete/concrete8.ogg
 
 - type: soundCollection
   id: FootstepHull
