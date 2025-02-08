@@ -75,8 +75,8 @@ namespace Content.Server.Atmos.EntitySystems
             SubscribeLocalEvent<FlammableComponent, RejuvenateEvent>(OnRejuvenate);
 
             // FINSTER EDIT
-            SubscribeLocalEvent<FlammableComponent, ComponentStartup>(OnStartup);
-            SubscribeLocalEvent<FlammableComponent, ComponentShutdown>(OnShutdown);
+            //SubscribeLocalEvent<FlammableComponent, ComponentStartup>(OnStartup);
+            //SubscribeLocalEvent<FlammableComponent, ComponentShutdown>(OnShutdown);
             // FINSTER EDIT END
 
             SubscribeLocalEvent<IgniteOnCollideComponent, StartCollideEvent>(IgniteOnCollide);
@@ -90,6 +90,7 @@ namespace Content.Server.Atmos.EntitySystems
         }
 
         // FINSTER EDIT
+        /*
         private void OnStartup(Entity<FlammableComponent> ent, ref ComponentStartup args)
         {
             _alertsSystem.ShowAlert(ent, ent.Comp.FireAlert, 0);
@@ -99,6 +100,7 @@ namespace Content.Server.Atmos.EntitySystems
         {
             _alertsSystem.ClearAlertCategory(ent, ent.Comp.FireCategory);
         }
+        */
         // FINSTER EDIT END
 
         private void OnMeleeHit(EntityUid uid, IgniteOnMeleeHitComponent component, MeleeHitEvent args)
@@ -444,12 +446,12 @@ namespace Content.Server.Atmos.EntitySystems
 
                 if (!flammable.OnFire)
                 {
-                    _alertsSystem.ShowAlert(uid, flammable.FireAlert, 0); // FINSTER EDIT
+                    //_alertsSystem.ShowAlert(uid, flammable.FireAlert, 0); // FINSTER EDIT
                     RaiseLocalEvent(uid, new MoodRemoveEffectEvent("OnFire"));
                     continue;
                 }
 
-                _alertsSystem.ShowAlert(uid, flammable.FireAlert, 1); // FINSTER EDIT
+                //_alertsSystem.ShowAlert(uid, flammable.FireAlert, 1); // FINSTER EDIT
                 RaiseLocalEvent(uid, new MoodEffectEvent("OnFire"));
 
                 if (flammable.FireStacks > 0)

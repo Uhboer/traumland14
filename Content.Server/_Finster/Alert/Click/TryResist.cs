@@ -1,3 +1,4 @@
+using Content.Server.Atmos.EntitySystems;
 using Content.Server.Cuffs;
 using Content.Server.Ensnaring;
 using Content.Shared.ActionBlocker;
@@ -23,15 +24,20 @@ public sealed partial class TryResist : IAlertClick
         var buckleSystem = entityManager.System<SharedBuckleSystem>();
         var pullingSystem = entityManager.System<PullingSystem>();
         var ensnareableSystem = entityManager.System<EnsnareableSystem>();
+        var cuffableSys = entityManager.System<CuffableSystem>();
+        var flammableSystem = entityManager.System<FlammableSystem>();
 
         // Unbuckle
         var unbuckled = buckleSystem.TryUnbuckle(player, player);
         // Unbuckle - End
 
         // Cuffed
-        var cuffableSys = entityManager.System<CuffableSystem>();
         cuffableSys.TryUncuff(player, player);
         // Cuffed - End
+
+        // Fire
+        flammableSystem.Resist(player);
+        // Fire - End
 
         // Esnared
         void Esnared()

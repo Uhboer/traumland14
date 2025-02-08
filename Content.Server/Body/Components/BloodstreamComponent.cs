@@ -185,5 +185,8 @@ namespace Content.Server.Body.Components
 
         [DataField]
         public ProtoId<AlertPrototype> BleedingAlert = "Bleed";
+
+        [DataField]
+        public ProtoId<AlertCategoryPrototype> BleedingCategory = "Bleed";
     }
 }

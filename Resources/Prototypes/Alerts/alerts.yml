@@ -13,13 +13,13 @@
     - category: NAThrow
     - category: NACombatMode
     # Right Top content:
-    - category: Mood
     - category: Hunger
     - category: Thirst
     - category: Temperature
-    - category: Fire
     - category: Breathing # Vox gang not calling this oxygen
     - category: Pressure
+    - category: Bleed
+    - category: Mood
     - category: Health
     - category: Stamina
     - category: NALaying
@@ -32,7 +32,6 @@
     - alertType: Corporeal
     - category: Stun
     - category: Toxins
-    - category: Bleed
     - alertType: Magboots
     - alertType: Pacified
     - alertType: Offer
@@ -145,19 +144,21 @@
   name: alerts-high-pressure-name
   description: alerts-high-pressure-desc
 
-- type: alert
-  id: Fire
-  category: Fire
-  icons:
-  - sprite: /Textures/Interface/Alerts/fire.rsi
-    state: fire0
-  - sprite: /Textures/Interface/Alerts/fire.rsi
-    state: fire1
-  onClick: !type:ResistFire  { }
-  name: alerts-on-fire-name
-  description: alerts-on-fire-desc
-  minSeverity: 0
-  maxSeverity: 1
+# FINSTER EDIT
+#- type: alert
+#  id: Fire
+#  category: Fire
+#  icons:
+#  - sprite: /Textures/Interface/Alerts/fire.rsi
+#    state: fire0
+#  - sprite: /Textures/Interface/Alerts/fire.rsi
+#    state: fire1
+#  onClick: !type:ResistFire  { }
+#  name: alerts-on-fire-name
+#  description: alerts-on-fire-desc
+#  minSeverity: 0
+#  maxSeverity: 1
+# FINSTER EDIT END
 
 
 - type: alert
