@@ -32,7 +32,7 @@
     - alertType: Corporeal
     - category: Stun
     - category: Toxins
-    - alertType: Bleed
+    - category: Bleed
     - alertType: Magboots
     - alertType: Pacified
     - alertType: Offer
@@ -203,6 +203,7 @@
 #  name: alerts-weightless-name
 #  description: alerts-weightless-desc
 
+#nigga uhboer made it
 - type: alert
   id: Stun
   category: Stun
@@ -576,8 +577,10 @@
   description: alerts-resist-desc
 # FINSTER EDIT END
 
+#nigga uhboer and nigga lampinoid made it
 - type: alert
   id: Bleed
+  category: Bleed
   icons:
   - sprite: /Textures/Interface/Alerts/bleed.rsi
     state: bleed0
