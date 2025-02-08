@@ -42,7 +42,8 @@ namespace Content.Client.Gameplay
             LoadMainScreen();
 
             // Add the hand-item overlay.
-            _overlayManager.AddOverlay(new ShowHandItemOverlay());
+            // _overlayManager.AddOverlay(new ShowHandItemOverlay()); // FINSTER EDIT
+            // Finster Notes: Drawing hand items on overlays works incorecly. Because it adds LefPanel.X size to X offset
 
             // FPS counter.
             // yeah this can just stay here, whatever
@@ -55,7 +56,7 @@ namespace Content.Client.Gameplay
 
         protected override void Shutdown()
         {
-            _overlayManager.RemoveOverlay<ShowHandItemOverlay>();
+            //_overlayManager.RemoveOverlay<ShowHandItemOverlay>(); // FINSTER EDIT
 
             base.Shutdown();
             // Clear viewport to some fallback, whatever.
