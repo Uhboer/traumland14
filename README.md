@@ -11,8 +11,6 @@
 
 The main goal is to create a new game based on existing content for Space Station 14, with a focus on unique lore and RolePlay expirience.
 
-The project is non-commercial and is being developed on its own enthusiasm. However, we have our own [Discord](https://discord.gg/Fmzp3kQ3AB) server for communication.
-
 ## Links
 
 [Steam](https://store.steampowered.com/app/1255460/Space_Station_14/) | [Steam (SSMV Launcher)](https://store.steampowered.com/app/2585480/Space_Station_Multiverse/) | [Non-Steam (SSMV Launcher)](https://spacestationmultiverse.com/downloads/)  | [Flathub](https://flathub.org/apps/com.spacestation14.Launcher) |  [Base(Upstream) repository](https://github.com/Simple-Station/Einstein-Engines) | [Discord server](https://discord.gg/Fmzp3kQ3AB)
@@ -21,9 +19,6 @@ The project is non-commercial and is being developed on its own enthusiasm. Howe
 
 To add large changes to the game it is recommended to create a Pull Request.
 For small changes, make regular commit in **slave** branch.
-
-It should be taken into account that the repository is a **"dirty mess”** of any open-source SS14 resources on the platform.
-Any new added content will not be protected by the contributor or the project author.
 
 ## Building
 

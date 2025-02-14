@@ -11,8 +11,6 @@
 
 Основная задача создания новой полноценной игры на основе существующего контента для Space Station 14, с упором в уникальный лор и ролевую составляющую.
 
-Проект некомерческий и развивается на собственном энтузиазме. Однако для связи существует собственный [Discord](https://discord.gg/Fmzp3kQ3AB) сервер.
-
 ## Ссылки
 
 [Steam](https://store.steampowered.com/app/1255460/Space_Station_14/) | [Steam (SSMV Launcher)](https://store.steampowered.com/app/2585480/Space_Station_Multiverse/) | [Клиент без Steam (SSMV Launcher)](https://spacestationmultiverse.com/downloads/)  | [Flathub](https://flathub.org/apps/com.spacestation14.Launcher) |  [Основной(Upstream) репозиторий](https://github.com/Simple-Station/Einstein-Engines) | [Discord сервер проекта](https://discord.gg/Fmzp3kQ3AB)
@@ -21,9 +19,6 @@
 
 Для добавления больших изменений в игру рекомендуется создание отдельного Pull Request'а.
 Для мелких правок достаточно обычного commit'а в **slave**.
-
-Нужно учитывать, что репозиторий представляет из себя **"солянку"**, собранную из разных открытых ресурсов на платформе.
-Любой добавленный не будет защищаться на контрибьютером, ни автором проекта.
 
 ## Сборка
 
