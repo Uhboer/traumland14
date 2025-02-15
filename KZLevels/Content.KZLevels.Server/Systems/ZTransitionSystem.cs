@@ -23,7 +23,6 @@ namespace Content.KayMisaZlevels.Server.Systems;
 // If so - move them up or down depending on the data in ZTransitionMarker comp
 // We avoid making the server suffer with yet another MoveEvent subscription
 
-/*
 /// <summary>
 ///     This is responsible for managing transition markers, which take you either up or down if you step in them
 /// </summary>
@@ -31,26 +30,28 @@ public sealed class ZTransitionSystem : EntitySystem
 {
     [Dependency] private readonly SharedTransformSystem _transform = default!;
 
-    private List<Entity<ZTransitionMarkerComponent>> _markers = [];
+    //private List<Entity<ZTransitionMarkerComponent>> _markers = [];
 
     public override void Initialize()
     {
         base.Initialize();
 
+        SubscribeLocalEvent<ZTransitionMarkerComponent, ComponentInit>(OnMarkerInit);
         SubscribeLocalEvent<ZTransitionMarkerComponent, ComponentStartup>(OnMarkerStartup);
-        SubscribeLocalEvent<KMZPhysicsComponent, MoveEvent>(OnMove);
     }
 
-    private void OnMove(Entity<KMZPhysicsComponent> ent, ref MoveEvent args)
+    private void OnMarkerInit(Entity<ZTransitionMarkerComponent> ent, ref ComponentInit args)
     {
-
+        if (ent.Comp.DirStr == "down")
+            ent.Comp.Dir = Shared.Miscellaneous.ZDirection.Down;
+        else if (ent.Comp.DirStr == "up")
+            ent.Comp.Dir = Shared.Miscellaneous.ZDirection.Up;
     }
 
     private void OnMarkerStartup(Entity<ZTransitionMarkerComponent> ent, ref ComponentStartup args)
     {
         ent.Comp.Position = _transform.GetMapCoordinates(ent.Owner, Comp<TransformComponent>(ent.Owner));
-        _markers.Add(ent);
+        //_markers.Add(ent);
     }
-}*/
-
+}
 
