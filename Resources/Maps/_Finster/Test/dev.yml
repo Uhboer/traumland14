@@ -192,10 +192,10 @@ entities:
     - type: Broadphase
     - type: OccluderTree
     - type: TimeCycleTracker
-      trackerId: "finster_dev_time"
       minuteDuration: 1
+      trackerId: finster_dev_time
     - type: TimeCycleMember
-      trackerId: "finster_dev_time"
+      trackerId: finster_dev_time
     - type: MapLight
     - type: Biome
       forcedMarkerLayers: []
@@ -402,17 +402,17 @@ entities:
         nodes: []
     - type: LoadedMap
     - type: ZDefinedStack
-      downLevels:
-      - /Maps/ZLevels/dev-1.yml
-      - /Maps/ZLevels/dev-2.yml
       upLevels:
-      - /Maps/ZLevels/dev-3.yml
-      - /Maps/ZLevels/dev-4.yml
+      - /dev-3.yml
+      - /dev-4.yml
+      downLevels:
+      - /dev-1.yml
+      - /dev-2.yml
     - type: GravityShake
       shakeTimes: 10
     - type: RadiationGridResistance
     - type: ViewSubscriber
-  - uid: 59
+  - uid: 2
     components:
     - type: MetaData
     - type: Transform
@@ -421,297 +421,308 @@ entities:
       parent: 1
     - type: ZLoader
     - type: ViewSubscriber
+  - uid: 78
+    components:
+    - type: MetaData
+    - type: Transform
+      gridTraversal: False
+      pos: -22.817823,-2.169732
+      parent: 1
+    - type: ZLoader
+    - type: ViewSubscriber
 - proto: FinsterWallStone
   entities:
-  - uid: 2
+  - uid: 3
     components:
     - type: Transform
       pos: -36.5,-6.5
       parent: 1
-  - uid: 3
+  - uid: 4
     components:
     - type: Transform
       pos: -36.5,-7.5
       parent: 1
-  - uid: 4
+  - uid: 5
     components:
     - type: Transform
       pos: -36.5,-9.5
       parent: 1
-  - uid: 5
+  - uid: 6
     components:
     - type: Transform
       pos: -35.5,-6.5
       parent: 1
-  - uid: 6
+  - uid: 7
     components:
     - type: Transform
       pos: -35.5,-7.5
       parent: 1
-  - uid: 7
+  - uid: 8
     components:
     - type: Transform
       pos: -35.5,-8.5
       parent: 1
-  - uid: 8
+  - uid: 9
     components:
     - type: Transform
       pos: -35.5,-9.5
       parent: 1
-  - uid: 9
+  - uid: 10
     components:
     - type: Transform
       pos: -34.5,-6.5
       parent: 1
-  - uid: 10
+  - uid: 11
     components:
     - type: Transform
       pos: -34.5,-7.5
       parent: 1
-  - uid: 11
+  - uid: 12
     components:
     - type: Transform
       pos: -34.5,-8.5
       parent: 1
-  - uid: 12
+  - uid: 13
     components:
     - type: Transform
       pos: -34.5,-9.5
       parent: 1
-  - uid: 13
+  - uid: 14
     components:
     - type: Transform
       pos: -33.5,-6.5
       parent: 1
-  - uid: 14
+  - uid: 15
     components:
     - type: Transform
       pos: -33.5,-7.5
       parent: 1
-  - uid: 15
+  - uid: 16
     components:
     - type: Transform
       pos: -33.5,-8.5
       parent: 1
-  - uid: 16
+  - uid: 17
     components:
     - type: Transform
       pos: -33.5,-9.5
       parent: 1
-  - uid: 17
+  - uid: 18
     components:
     - type: Transform
       pos: -36.5,-8.5
       parent: 1
-  - uid: 18
+  - uid: 19
     components:
     - type: Transform
       pos: -31.5,-6.5
       parent: 1
-  - uid: 19
+  - uid: 20
     components:
     - type: Transform
       pos: -31.5,-7.5
       parent: 1
-  - uid: 20
+  - uid: 21
     components:
     - type: Transform
       pos: -31.5,-8.5
       parent: 1
-  - uid: 21
+  - uid: 22
     components:
     - type: Transform
       pos: -31.5,-9.5
       parent: 1
-  - uid: 22
+  - uid: 23
     components:
     - type: Transform
       pos: -30.5,-6.5
       parent: 1
-  - uid: 23
+  - uid: 24
     components:
     - type: Transform
       pos: -29.5,-6.5
       parent: 1
-  - uid: 24
+  - uid: 25
     components:
     - type: Transform
       pos: -28.5,-6.5
       parent: 1
-  - uid: 25
+  - uid: 26
     components:
     - type: Transform
       pos: -28.5,-7.5
       parent: 1
-  - uid: 26
+  - uid: 27
     components:
     - type: Transform
       pos: -28.5,-8.5
       parent: 1
-  - uid: 27
+  - uid: 28
     components:
     - type: Transform
       pos: -28.5,-9.5
       parent: 1
-  - uid: 28
+  - uid: 29
     components:
     - type: Transform
       pos: -29.5,-9.5
       parent: 1
-  - uid: 29
+  - uid: 30
     components:
     - type: Transform
       pos: -30.5,-7.5
       parent: 1
 - proto: FinsterWallStoneBrick
   entities:
-  - uid: 30
+  - uid: 31
     components:
     - type: Transform
       pos: -36.5,0.5
       parent: 1
-  - uid: 31
+  - uid: 32
     components:
     - type: Transform
       pos: -36.5,-0.5
       parent: 1
-  - uid: 32
+  - uid: 33
     components:
     - type: Transform
       pos: -36.5,-1.5
       parent: 1
-  - uid: 33
+  - uid: 34
     components:
     - type: Transform
       pos: -36.5,-2.5
       parent: 1
-  - uid: 34
+  - uid: 35
     components:
     - type: Transform
       pos: -35.5,0.5
       parent: 1
-  - uid: 35
+  - uid: 36
     components:
     - type: Transform
       pos: -35.5,-1.5
       parent: 1
-  - uid: 36
+  - uid: 37
     components:
     - type: Transform
       pos: -35.5,-2.5
       parent: 1
-  - uid: 37
+  - uid: 38
     components:
     - type: Transform
       pos: -34.5,0.5
       parent: 1
-  - uid: 38
+  - uid: 39
     components:
     - type: Transform
       pos: -34.5,-0.5
       parent: 1
-  - uid: 39
+  - uid: 40
     components:
     - type: Transform
       pos: -34.5,-1.5
       parent: 1
-  - uid: 40
+  - uid: 41
     components:
     - type: Transform
       pos: -34.5,-2.5
       parent: 1
-  - uid: 41
+  - uid: 42
     components:
     - type: Transform
       pos: -33.5,0.5
       parent: 1
-  - uid: 42
+  - uid: 43
     components:
     - type: Transform
       pos: -35.5,-0.5
       parent: 1
-  - uid: 43
+  - uid: 44
     components:
     - type: Transform
       pos: -33.5,-0.5
       parent: 1
-  - uid: 44
+  - uid: 45
     components:
     - type: Transform
       pos: -33.5,-1.5
       parent: 1
-  - uid: 45
+  - uid: 46
     components:
     - type: Transform
       pos: -33.5,-2.5
       parent: 1
-  - uid: 46
+  - uid: 47
     components:
     - type: Transform
       pos: -31.5,0.5
       parent: 1
-  - uid: 47
+  - uid: 48
     components:
     - type: Transform
       pos: -30.5,0.5
       parent: 1
-  - uid: 48
+  - uid: 49
     components:
     - type: Transform
       pos: -29.5,0.5
       parent: 1
-  - uid: 49
+  - uid: 50
     components:
     - type: Transform
       pos: -28.5,0.5
       parent: 1
-  - uid: 50
+  - uid: 51
     components:
     - type: Transform
       pos: -28.5,-0.5
       parent: 1
-  - uid: 51
+  - uid: 52
     components:
     - type: Transform
       pos: -28.5,-1.5
       parent: 1
-  - uid: 52
+  - uid: 53
     components:
     - type: Transform
       pos: -28.5,-2.5
       parent: 1
-  - uid: 53
+  - uid: 54
     components:
     - type: Transform
       pos: -31.5,-0.5
       parent: 1
-  - uid: 54
+  - uid: 55
     components:
     - type: Transform
       pos: -31.5,-2.5
       parent: 1
-  - uid: 55
+  - uid: 56
     components:
     - type: Transform
       pos: -31.5,-1.5
       parent: 1
-  - uid: 56
+  - uid: 57
     components:
     - type: Transform
       pos: -30.5,-0.5
       parent: 1
-  - uid: 57
+  - uid: 58
     components:
     - type: Transform
       pos: -29.5,-2.5
       parent: 1
 - proto: LadderBottomMetalDamaged
   entities:
-  - uid: 77
+  - uid: 59
     components:
     - type: Transform
       pos: -20.5,-10.5
       parent: 1
+    - type: ZTransitionMarker
+      direction: Up
     - type: Warper
       location: house_ladder_up
     - type: WarpPoint
@@ -723,6 +734,8 @@ entities:
     - type: Transform
       pos: -27.5,-0.5
       parent: 1
+    - type: ZTransitionMarker
+      direction: Down
     - type: Warper
       location: d_podval_down
     - type: Fixtures
@@ -731,93 +744,161 @@ entities:
       location: d_podval_up
 - proto: N14DoorMakeshift
   entities:
-  - uid: 73
+  - uid: 61
     components:
     - type: Transform
       pos: -20.5,-8.5
       parent: 1
-  - uid: 74
+  - uid: 62
     components:
     - type: Transform
       pos: -22.5,-10.5
       parent: 1
-  - uid: 75
+  - uid: 63
     components:
     - type: Transform
       pos: -18.5,-10.5
       parent: 1
-  - uid: 76
+  - uid: 64
     components:
     - type: Transform
       pos: -20.5,-12.5
       parent: 1
 - proto: N14WallWoodDark
   entities:
-  - uid: 61
+  - uid: 65
     components:
     - type: Transform
       pos: -22.5,-12.5
       parent: 1
-  - uid: 62
+  - uid: 66
     components:
     - type: Transform
       pos: -21.5,-12.5
       parent: 1
-  - uid: 63
+  - uid: 67
     components:
     - type: Transform
       pos: -22.5,-11.5
       parent: 1
-  - uid: 64
+  - uid: 68
     components:
     - type: Transform
       pos: -19.5,-12.5
       parent: 1
-  - uid: 65
+  - uid: 69
     components:
     - type: Transform
       pos: -18.5,-12.5
       parent: 1
-  - uid: 66
+  - uid: 70
     components:
     - type: Transform
       pos: -18.5,-11.5
       parent: 1
-  - uid: 67
+  - uid: 71
     components:
     - type: Transform
       pos: -18.5,-9.5
       parent: 1
-  - uid: 68
+  - uid: 72
     components:
     - type: Transform
       pos: -18.5,-8.5
       parent: 1
-  - uid: 69
+  - uid: 73
     components:
     - type: Transform
       pos: -19.5,-8.5
       parent: 1
-  - uid: 70
+  - uid: 74
     components:
     - type: Transform
       pos: -21.5,-8.5
       parent: 1
-  - uid: 71
+  - uid: 75
     components:
     - type: Transform
       pos: -22.5,-8.5
       parent: 1
-  - uid: 72
+  - uid: 76
     components:
     - type: Transform
       pos: -22.5,-9.5
       parent: 1
 - proto: SpawnPointScourger
   entities:
-  - uid: 58
+  - uid: 77
     components:
     - type: Transform
       pos: -21.5,-4.5
       parent: 1
+- proto: StairsAutoLinkDarkUp
+  entities:
+  - uid: 81
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -3.5,-0.5
+      parent: 1
+    - type: ZTransitionMarker
+      direction: Down
+  - uid: 82
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -3.5,-1.5
+      parent: 1
+    - type: ZTransitionMarker
+      direction: Down
+  - uid: 83
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -3.5,0.5
+      parent: 1
+    - type: ZTransitionMarker
+      direction: Down
+  - uid: 84
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 2.5,0.5
+      parent: 1
+    - type: ZTransitionMarker
+      direction: Down
+  - uid: 85
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 2.5,-0.5
+      parent: 1
+    - type: ZTransitionMarker
+      direction: Down
+  - uid: 86
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 2.5,-1.5
+      parent: 1
+    - type: ZTransitionMarker
+      direction: Down
+- proto: StairsAutoLinkStageWoodUp
+  entities:
+  - uid: 79
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: -29.5,3.5
+      parent: 1
+    - type: ZTransitionMarker
+      direction: Down
+  - uid: 80
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: -30.5,3.5
+      parent: 1
+    - type: ZTransitionMarker
+      direction: Down
 ...

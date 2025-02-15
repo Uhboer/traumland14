@@ -82,6 +82,7 @@
     laws: Asimov
   - type: IonStormTarget
   - type: Strippable
+  - type: StationAiVision
   - type: InventorySlots
   - type: Inventory
     templateId: borg
@@ -224,6 +225,7 @@
     - FootstepSound
     - CanPilot
     - SiliconEmotes
+    - SiliconMob
   - type: Emoting
   - type: GuideHelp
     guides:
