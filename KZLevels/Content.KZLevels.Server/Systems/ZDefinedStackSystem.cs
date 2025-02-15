@@ -32,10 +32,10 @@ public sealed partial class ZDefinedStackSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<ZDefinedStackComponent, ComponentInit>(OnMapInit);
+        SubscribeLocalEvent<ZDefinedStackComponent, MapInitEvent>(OnMapInit);
     }
 
-    private void OnMapInit(Entity<ZDefinedStackComponent> initialMapUid, ref ComponentInit args)
+    private void OnMapInit(Entity<ZDefinedStackComponent> initialMapUid, ref MapInitEvent args)
     {
         // We should use our initial map as stack for Z levels
         var stackLoc = (EntityUid?) initialMapUid;
