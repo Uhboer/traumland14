@@ -14,8 +14,8 @@ keep layer count around 2-4, which also helps with client performance.
 - [ ]
 
 ## Todo
-- [ ] Ladders
-- [ ] Transition markers
+- [x] Ladders (By Game)
+- [X] Transition markers (this is shit)
 - [ ] Mapping tooling
 - - [ ] Including mapping checks
-- [ ] Tests
+- [ ] Tests (Fuck it)
