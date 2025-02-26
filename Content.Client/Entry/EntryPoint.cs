@@ -39,6 +39,7 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Replays;
 using Robust.Shared.Timing;
 using Content.Shared.CCVar;
+using Content.Client._ViewportGui.ViewportUserInterface;
 
 namespace Content.Client.Entry
 {
@@ -77,6 +78,7 @@ namespace Content.Client.Entry
         [Dependency] private readonly DiscordAuthManager _discordAuth = default!;
         [Dependency] private readonly ContentReplayPlaybackManager _replayMan = default!;
         [Dependency] private readonly DebugMonitorManager _debugMonitorManager = default!;
+        [Dependency] private readonly IViewportUserInterfaceManager _viewportUserInterfaceManager = default!;
 
         public override void Init()
         {
@@ -167,16 +169,19 @@ namespace Content.Client.Entry
             _voteManager.Initialize();
 
             // Change any hardcoded staff
-            _userInterfaceManager.SetDefaultTheme("SS14LoraAshenTheme");
+            //_userInterfaceManager.SetDefaultTheme("SS14LoraAshenTheme");
             // TODO: Any players can join on the server from another forks. Need make replacement feature on RWs hud icons
             //_userInterfaceManager.SetActiveTheme(_configManager.GetCVar(CVars.InterfaceTheme));
-            _userInterfaceManager.SetActiveTheme("SS14LoraAshenTheme");
+           // _userInterfaceManager.SetActiveTheme("SS14LoraAshenTheme");
             //_configManager.SetCVar(CCVars.ToggleWalk, true);
             _configManager.SetCVar(CCVars.ChatEnableFancyBubbles, false);
 
             _documentParsingManager.Initialize();
             _joinQueue.Initialize();
             _discordAuth.Initialize();
+            // VPGui edit
+            _viewportUserInterfaceManager.Initialize();
+            // VPGui edit end
 
             _baseClient.RunLevelChanged += (_, args) =>
             {

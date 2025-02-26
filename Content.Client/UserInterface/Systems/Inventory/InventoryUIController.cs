@@ -1,5 +1,7 @@
 using System.Linq;
 using System.Numerics;
+using Content.Client._ViewportGui.ViewportUserInterface;
+using Content.Client._ViewportGui.ViewportUserInterface.UI;
 using Content.Client.Gameplay;
 using Content.Client.Hands.Systems;
 using Content.Client.Inventory;
@@ -30,6 +32,7 @@ public sealed class InventoryUIController : UIController, IOnStateEntered<Gamepl
     IOnSystemChanged<ClientInventorySystem>, IOnSystemChanged<HandsSystem>
 {
     [Dependency] private readonly IEntityManager _entities = default!;
+    [Dependency] private readonly IViewportUserInterfaceManager _vpUIManager = default!; // VPGui edit
 
     [UISystemDependency] private readonly ClientInventorySystem _inventorySystem = default!;
     [UISystemDependency] private readonly HandsSystem _handsSystem = default!;
@@ -44,6 +47,19 @@ public sealed class InventoryUIController : UIController, IOnStateEntered<Gamepl
     private SlotButton? _inventoryButton;
 
     private SlotControl? _lastHovered;
+
+    // VPGui edit - because by phantom reasons, when we try to link addional event from another controller,
+    // it call function double, triple and etc.
+    // So, only way to keep original code and fix that shit - use events from controller directly.
+
+    public Action<SlotData>? EntitySlotUpdate = null;
+    public Action<SlotData>? OnSlotAdded = null;
+    public Action<SlotData>? OnSlotRemoved = null;
+    public Action<EntityUid, InventorySlotsComponent>? OnLinkInventorySlots = null;
+    public Action? OnUnlinkInventory = null;
+    public Action<SlotSpriteUpdate>? OnSpriteUpdate = null;
+
+    // VPGui edit end
 
     public override void Initialize()
     {
@@ -382,6 +398,8 @@ public sealed class InventoryUIController : UIController, IOnStateEntered<Gamepl
 
     private void AddSlot(SlotData data)
     {
+        OnSlotAdded?.Invoke(data); // VPGui edit
+
         if (!_slotGroups.TryGetValue(data.SlotGroup, out var slotGroup))
             return;
 
@@ -391,6 +409,8 @@ public sealed class InventoryUIController : UIController, IOnStateEntered<Gamepl
 
     private void RemoveSlot(SlotData data)
     {
+        OnSlotRemoved?.Invoke(data); // VPGui edit
+
         if (!_slotGroups.TryGetValue(data.SlotGroup, out var slotGroup))
             return;
 
@@ -404,6 +424,8 @@ public sealed class InventoryUIController : UIController, IOnStateEntered<Gamepl
 
     private void LoadSlots(EntityUid clientUid, InventorySlotsComponent clientInv)
     {
+        OnLinkInventorySlots?.Invoke(clientUid, clientInv); // VPGui edit
+
         UnloadSlots();
         _playerUid = clientUid;
         _playerInventory = clientInv;
@@ -420,6 +442,8 @@ public sealed class InventoryUIController : UIController, IOnStateEntered<Gamepl
 
     private void UnloadSlots()
     {
+        OnUnlinkInventory?.Invoke(); // VPGui edit
+
         if (_inventoryButton != null)
             _inventoryButton.Visible = false;
 
@@ -435,6 +459,8 @@ public sealed class InventoryUIController : UIController, IOnStateEntered<Gamepl
 
     private void SpriteUpdated(SlotSpriteUpdate update)
     {
+        OnSpriteUpdate?.Invoke(update); // VPGui edit
+
         var (entity, group, name, showStorage) = update;
 
         if (_strippingWindow?.InventoryButtons.GetButton(update.Name) is { } inventoryButton)
