@@ -2,6 +2,7 @@ using System.Numerics;
 using Content.Client._ViewportGui.ViewportUserInterface;
 using Content.Client._ViewportGui.ViewportUserInterface.UI;
 using Content.Client.UserInterface.Systems.Inventory.Controls;
+using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Client.UserInterface;
 
@@ -17,6 +18,7 @@ namespace Content.Client.UserInterface.Systems.Inventory.Controls;
 public class HUDSlotControl : HUDButton, IEntityControl
 {
     [Dependency] private readonly IUserInterfaceManager _uiManager = default!;
+    [Dependency] private readonly IEntityManager _entManager = default!;
 
     private Texture? _buttonTexture;
 
@@ -143,6 +145,10 @@ public class HUDSlotControl : HUDButton, IEntityControl
         handle.DrawTextureRect(_buttonTexture, new UIBox2(GlobalPosition, GlobalPosition + Size));
 
         if (Entity is not null)
+        {
+            var spriteSystem = _entManager.System<SpriteSystem>();
+            spriteSystem.ForceUpdate((EntityUid) Entity);
+
             handle.DrawEntity(
                 (EntityUid) Entity,
                 GlobalPosition + (Size / 2),
@@ -150,6 +156,7 @@ public class HUDSlotControl : HUDButton, IEntityControl
                 Angle.Zero,
                 Angle.Zero,
                 Direction.South);
+        }
 
         base.Draw(args);
     }

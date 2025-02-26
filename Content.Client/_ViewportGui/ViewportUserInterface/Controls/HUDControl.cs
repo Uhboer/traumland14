@@ -112,6 +112,11 @@ public class HUDControl : IDisposable
 
     public HUDMouseFilterMode MouseFilter { get; set; } = HUDMouseFilterMode.Ignore;
 
+    /// <summary>
+    /// Used by manager. Should we interrupt world interaction by clicking on element.
+    /// </summary>
+    public bool IgnoreBounds { get; set; } = false;
+
     public HUDControl()
     {
         Children = new HUDOrderedChildCollection(this);

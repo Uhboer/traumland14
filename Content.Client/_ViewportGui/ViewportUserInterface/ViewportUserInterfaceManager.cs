@@ -107,6 +107,7 @@ public sealed class ViewportUserInterfaceManager : IViewportUserInterfaceManager
     private float _interfaceGain;
     private const float ClickGain = 0.25f;
 
+    private ZScalingViewport? _oldViewport;
     private ZScalingViewport? _viewport;
 
     public ViewportDrawingInfo? DrawingInfo { get; set; }
@@ -116,6 +117,7 @@ public sealed class ViewportUserInterfaceManager : IViewportUserInterfaceManager
         get => _viewport;
         set
         {
+            _oldViewport = _viewport;
             _viewport = value;
             ResolveKeyBinds();
         }
@@ -272,6 +274,12 @@ public sealed class ViewportUserInterfaceManager : IViewportUserInterfaceManager
 
     private void ResolveKeyBinds()
     {
+        if (_oldViewport is not null)
+        {
+            _oldViewport.OnKeyBindDown -= OnKeyBindDown;
+            _oldViewport.OnKeyBindUp -= OnKeyBindUp;
+        }
+
         if (_viewport is null)
             return;
 
@@ -342,7 +350,8 @@ public sealed class ViewportUserInterfaceManager : IViewportUserInterfaceManager
                     uicontrol.KeyBindUp(keyBindInfo.KeyEventArgs);
 
                 // Update bounds arguments
-                boundsArgs.InBounds = true;
+                if (!uicontrol.IgnoreBounds)
+                    boundsArgs.InBounds = true;
                 boundsArgs.IsFocused = true;
 
                 // If the control stops further interaction, return true
@@ -350,7 +359,8 @@ public sealed class ViewportUserInterfaceManager : IViewportUserInterfaceManager
                     return true;
             }
 
-            boundsArgs.InBounds = true;
+            if (!uicontrol.IgnoreBounds)
+                boundsArgs.InBounds = true;
         }
 
         // Reverse recursive traversal: iterate through children in reverse order

@@ -11,6 +11,7 @@ public class HUDBoxContainer : HUDControl
 
     public HUDBoxContainer()
     {
+        IgnoreBounds = true;
     }
 
     protected override void ChildAdded(HUDControl newChild)
