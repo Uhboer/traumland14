@@ -52,14 +52,3 @@
     sprite: _Finster/Clothing/Uniforms/Jumpsuit/puritan.rsi
   - type: Clothing
     sprite: _Finster/Clothing/Uniforms/Jumpsuit/puritan.rsi
-
-- type: entity
-  parent: ClothingUniformBase
-  id: FinsterClothingUniformJumpsuitPriestunder
-  name: priest under # Коричневатая мантия
-  description: IN DEV
-  components:
-  - type: Sprite
-    sprite: _Finster/Clothing/Uniforms/Jumpsuit/priestunder.rsi
-  - type: Clothing
-    sprite: _Finster/Clothing/Uniforms/Jumpsuit/priestunder.rsi

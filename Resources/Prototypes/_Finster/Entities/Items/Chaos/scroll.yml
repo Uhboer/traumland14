@@ -1,0 +1,131 @@
+- type: entity
+  id: NetPunkScrollChaos
+  name: scroll of chaos
+  parent: BaseSpellbook
+  components:
+  - type: Item
+    size: Normal
+  - type: Sprite
+    sprite: _Finster/Objects/Chaos/scroll.rsi
+    layers:
+    - state: spell_default
+  - type: Spellbook
+    spellActions:
+      NetPunkActionExplosionRune: -1
+      NetPunkActionIgniteRune: -1
+      NetPunkActionStunRune: -1
+
+
+# actions
+
+
+- type: entity
+  id: NetPunkActionExplosionRune
+  name: Trap
+  description: Summons chaotic trap.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: InstantAction
+    useDelay: 60
+    itemIconStyle: BigAction
+    icon:
+      sprite: _Finster/Objects/Chaos/scroll.rsi
+      state: spell_default
+    event: !type:InstantSpawnSpellEvent
+      prototype: NetPunkTrapRune
+
+- type: entity
+  id: NetPunkActionIgniteRune
+  name: Ignite Rune
+  description: Summons a rune that ignites if used.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: InstantAction
+    useDelay: 60
+    itemIconStyle: BigAction
+    icon:
+      sprite: _Finster/Objects/Chaos/scroll.rsi
+      state: spell_default
+    event: !type:InstantSpawnSpellEvent
+      prototype: NetPunkIgniteTrap
+
+- type: entity
+  id: NetPunkActionStunRune
+  name: Stun Rune
+  description: Summons a rune that stuns if used.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: InstantAction
+    useDelay: 80
+    itemIconStyle: BigAction
+    icon:
+      sprite: _Finster/Objects/Chaos/scroll.rsi
+      state: spell_default
+    event: !type:InstantSpawnSpellEvent
+      prototype: NetPunkStunRune
+
+
+# runes
+
+
+- type: entity
+  parent: CollideRune
+  id: NetPunkTrapRune
+  name: "chaotic trap"
+  components:
+    - type: TriggerOnCollide
+      fixtureID: rune
+    - type: ExplodeOnTrigger
+    - type: Explosive
+      explosionType: Default
+      maxIntensity: 10
+      intensitySlope: 3
+      totalIntensity: 10
+    - type: Sprite
+      sprite: _Finster/Objects/Chaos/trap.rsi
+      layers:
+        - state: trap
+          color: '#FF770055'
+
+- type: entity
+  parent: CollideRune
+  id: NetPunkStunRune
+  name: "stun trap"
+  components:
+    - type: TriggerOnCollide
+      fixtureID: rune
+    - type: DeleteOnTrigger
+    - type: StunOnCollide
+      stunAmount: 50
+      knockdownAmount: 50
+    - type: Sprite
+      sprite: _Finster/Objects/Chaos/rune.rsi
+      layers:
+        - state: chaos2
+          color: '#FFFF0055'
+
+- type: entity
+  parent: CollideRune
+  id: NetPunkIgniteTrap
+  name: "ignite trap"
+  components:
+    - type: TriggerOnCollide
+      fixtureID: ignition
+    - type: Fixtures
+      fixtures:
+        ignition:
+          shape:
+            !type:PhysShapeAabb
+            bounds: "-0.4,-0.4,0.4,0.4"
+          hard: false
+          mask:
+          - ItemMask
+          layer:
+          - SlipLayer
+    - type: DeleteOnTrigger
+    - type: IgniteOnCollide
+      fireStacks: 3
+    - type: Sprite
+      sprite: _Finster/Objects/Chaos/rune.rsi
+      layers:
+        - state: chaos3

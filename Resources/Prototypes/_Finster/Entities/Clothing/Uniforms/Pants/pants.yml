@@ -47,7 +47,7 @@
 - type: entity
   parent: BaseClothingLegs
   id: FinsterClothingUniformPantsDesert
-  name: desert pants
+  name: brutal pants
   description: IN DEV
   components:
   - type: Sprite
@@ -98,3 +98,36 @@
     sprite: _Finster/Clothing/Uniforms/Pants/leathertrou.rsi
   - type: Clothing
     sprite: _Finster/Clothing/Uniforms/Pants/leathertrou.rsi
+
+- type: entity
+  parent: BaseClothingLegs
+  id: FinsterClothingUniformPantsJeans
+  name: jeans
+  description: IN DEV
+  components:
+  - type: Sprite
+    sprite: _Finster/Clothing/Uniforms/Pants/jeans.rsi
+  - type: Clothing
+    sprite: _Finster/Clothing/Uniforms/Pants/jeans.rsi
+
+- type: entity
+  parent: BaseClothingLegs
+  id: FinsterClothingUniformPantsOlive
+  name: olive pants
+  description: IN DEV
+  components:
+  - type: Sprite
+    sprite: _Finster/Clothing/Uniforms/Pants/gpants.rsi
+  - type: Clothing
+    sprite: _Finster/Clothing/Uniforms/Pants/gpants.rsi
+
+- type: entity
+  parent: BaseClothingLegs
+  id: FinsterClothingUniformPantsBJeans
+  name: black jeans
+  description: IN DEV
+  components:
+  - type: Sprite
+    sprite: _Finster/Clothing/Uniforms/Pants/bjeans.rsi
+  - type: Clothing
+    sprite: _Finster/Clothing/Uniforms/Pants/bjeans.rsi

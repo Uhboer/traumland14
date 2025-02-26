@@ -1,0 +1,84 @@
+- type: entity
+  name: Biboks
+  parent: BaseItem
+  id: NetPunkWeaponBiboks
+  description: very brutally and chaotic weapon.
+  components:
+  - type: Sprite
+    sprite: _Finster/Weapons/Guns/boboks.rsi
+    layers:
+      - state: base
+        map: ["enum.GunVisualLayers.Base"]
+  - type: Item
+    size: Small
+    sprite: _Finster/Weapons/Guns/boboks.rsi
+  - type: ItemSlots
+    slots:
+      gun_chamber:
+        name: Chamber
+        startingItem: NetPunkShellBiboks
+        priority: 1
+        whitelist:
+          tags:
+             - ShellBiboks
+  - type: ContainerContainer
+    containers:
+      gun_chamber: !type:ContainerSlot
+  - type: ChamberMagazineAmmoProvider
+    autoCycle: false
+    boltClosed: true
+    canRack: false
+    soundBoltClosed: /Audio/_Finster/Weapons/Biboks/close.ogg
+    soundBoltOpened: /Audio/_Finster/Weapons/Biboks/open.ogg
+    soundRack: /Audio/_Finster/Weapons/Biboks/cock.ogg
+  - type: Clothing
+    sprite: _Finster/Weapons/Guns/boboks.rsi
+    quickEquip: false
+    slots:
+    - Belt
+    - suitStorage
+  - type: Appearance
+  - type: Gun
+    fireOnDropChance: 0.5
+    fireRate: 8
+    selectedMode: SemiAuto
+    availableModes:
+      - SemiAuto
+    soundGunshot:
+      path: /Audio/_Finster/Weapons/Biboks/shot.ogg
+  - type: MeleeWeapon
+    attackRate: 1.2
+    damage:
+      types:
+        Blunt: 7.5
+  - type: DamageOtherOnHit
+    staminaCost: 6
+
+- type: entity
+  id: NetPunkShellBiboks
+  name: double shell 20g
+  parent: BaseShellShotgun
+  description: double shell for the Bibox.
+  components:
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Ammunition/Casings/biboks_shell.rsi
+    layers:
+      - state: base
+        map: [ "enum.AmmoVisualLayers.Base" ]
+  - type: CartridgeAmmo
+    soundEject:
+      path: /Audio/_Finster/Weapons/Biboks/cock.ogg
+    proto: PelletBiboksSpread
+  - type: Tag
+    tags:
+    - ShellBiboks
+
+- type: entity
+  id: PelletBiboksSpread
+  categories: [ HideSpawnMenu ]
+  parent: PelletShotgun
+  components:
+  - type: ProjectileSpread
+    proto: PelletShotgun
+    count: 12
+    spread: 25

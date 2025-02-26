@@ -1,0 +1,35 @@
+- type: entity
+  parent: ClothingOuterStorageBase
+  id: FinsterClothingOuterCoatPriest
+  name: brown mantle # Коричневатая мантия
+  description: IN DEV
+  components:
+  - type: Sprite
+    sprite: _Finster/Clothing/OuterClothing/Coats/priestunder.rsi
+  - type: Clothing
+    sprite: _Finster/Clothing/OuterClothing/Coats/priestunder.rsi
+
+- type: entity
+  parent: ClothingOuterBaseToggleable
+  id: NetPunkClothingOuterCoatChaotic
+  name: chaotic mantle
+  description: chaotically made mantle.
+  components:
+  - type: Sprite
+    sprite: _Finster/Clothing/OuterClothing/Coats/chaotic.rsi
+  - type: Clothing
+    sprite: _Finster/Clothing/OuterClothing/Coats/chaotic.rsi
+  - type: ToggleableClothing
+    clothingPrototype: NetPunkClothingHeadHoodChaotic
+
+- type: entity
+  parent: ClothingHeadHatHoodWinterBase
+  id: NetPunkClothingHeadHoodChaotic
+  categories: [ HideSpawnMenu ]
+  name: chaotic hood
+  description: chaotical.
+  components:
+  - type: Sprite
+    sprite: _Finster/Clothing/Head/Hoods/chaotic.rsi
+  - type: Clothing
+    sprite: _Finster/Clothing/Head/Hoods/chaotic.rsi
