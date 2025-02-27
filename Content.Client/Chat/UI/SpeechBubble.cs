@@ -156,7 +156,7 @@ namespace Content.Client.Chat.UI
             var worldPos = _transformSystem.GetWorldPosition(xform) + offset;
 
             var lowerCenter = _eyeManager.WorldToScreen(worldPos) / UIScale;
-            if (_eyeManager.MainViewport is not ZScalingViewport svp)
+            if (_eyeManager.MainViewport is not ScalingViewport svp)
                 return;
 
             var screenPos = lowerCenter - new Vector2(ContentSize.X / 2, ContentSize.Y + _verticalOffsetAchieved);

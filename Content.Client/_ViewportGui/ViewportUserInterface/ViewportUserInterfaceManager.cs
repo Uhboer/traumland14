@@ -2,6 +2,7 @@ using System.Linq;
 using System.Numerics;
 using Content.Client._ViewportGui.ViewportUserInterface.UI;
 using Content.Client.Resources;
+using Content.Client.Viewport;
 using Content.KayMisaZlevels.Client;
 using Content.Shared.CCVar;
 using Content.Shared.Input;
@@ -30,7 +31,7 @@ public interface IViewportUserInterfaceManager
     /// Viewport control. Should be set up by Overlay/Initialize logic.
     /// Should be used for KeyBind function for mouse buttons.
     /// </summary>
-    ZScalingViewport? Viewport { get; set; }
+    ScalingViewport? Viewport { get; set; }
 
     /// <summary>
     /// Contains all HUD elements near viewport. And should do only that.
@@ -107,12 +108,12 @@ public sealed class ViewportUserInterfaceManager : IViewportUserInterfaceManager
     private float _interfaceGain;
     private const float ClickGain = 0.25f;
 
-    private ZScalingViewport? _oldViewport;
-    private ZScalingViewport? _viewport;
+    private ScalingViewport? _oldViewport;
+    private ScalingViewport? _viewport;
 
     public ViewportDrawingInfo? DrawingInfo { get; set; }
 
-    public ZScalingViewport? Viewport
+    public ScalingViewport? Viewport
     {
         get => _viewport;
         set
@@ -159,13 +160,12 @@ public sealed class ViewportUserInterfaceManager : IViewportUserInterfaceManager
             return null;
 
         var drawBox = _viewport.GetDrawBox();
-        var drawBoxGlobal = drawBox.Translated(_viewport.GlobalPixelPosition);
-        var drawBoxGlobalWidth = (drawBoxGlobal.Right - drawBoxGlobal.Left) + 0.0f;
-        var drawBoxScale = drawBoxGlobalWidth / (DrawingInfo.Value.ViewportSize.X * EyeManager.PixelsPerMeter);
+        var drawBoxHeight = (drawBox.Bottom - drawBox.Top) + 0.0f;
+        var drawBoxScale = drawBoxHeight / (DrawingInfo.Value.ViewportSize.Y * EyeManager.PixelsPerMeter);
 
         var boundPositionTopLeft = new Vector2(
-            drawBoxGlobal.Left + ((DrawingInfo.Value.ViewportPosition.X * EyeManager.PixelsPerMeter) * drawBoxScale),
-            drawBoxGlobal.Top + ((DrawingInfo.Value.ViewportPosition.Y * EyeManager.PixelsPerMeter) * drawBoxScale));
+            drawBox.Left + ((DrawingInfo.Value.ViewportPosition.X * EyeManager.PixelsPerMeter) * drawBoxScale),
+            drawBox.Top + ((DrawingInfo.Value.ViewportPosition.Y * EyeManager.PixelsPerMeter) * drawBoxScale));
         var boundPositionBottomRight = new Vector2(
             boundPositionTopLeft.X + (DrawingInfo.Value.ContentSize.X * drawBoxScale),
             boundPositionTopLeft.Y + (DrawingInfo.Value.ContentSize.Y * drawBoxScale));

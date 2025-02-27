@@ -1,6 +1,7 @@
 using System.Numerics;
 using Content.Client.Examine;
 using Content.Client.Gameplay;
+using Content.Client.Viewport;
 using Content.KayMisaZlevels.Client;
 using Content.Shared.CCVar;
 using Content.Shared.Maps;
@@ -63,8 +64,8 @@ public sealed class LookupOverlay : Overlay
 
     protected override void Draw(in OverlayDrawArgs args)
     {
-        var viewport = (args.ViewportControl as ZScalingViewport);
-        var uiScale = (args.ViewportControl as ZScalingViewport)?.UIScale ?? 1f;
+        var viewport = (args.ViewportControl as ScalingViewport);
+        var uiScale = (args.ViewportControl as ScalingViewport)?.UIScale ?? 1f;
 
         var mouseScreenPos = _inputManager.MouseScreenPosition;
         var mousePos = _eyeManager.ScreenToMap(mouseScreenPos);

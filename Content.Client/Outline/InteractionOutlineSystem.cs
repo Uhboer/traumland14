@@ -112,7 +112,7 @@ public sealed class InteractionOutlineSystem : EntitySystem
         {
             var mousePosWorld = vp.PixelToMap(_inputManager.MouseScreenPosition.Position);
 
-            if (vp is ZScalingViewport svp)
+            if (vp is ScalingViewport svp)
             {
                 renderScale = svp.CurrentRenderScale;
                 entityToClick = screen.GetClickedEntity(mousePosWorld, svp.Eye);

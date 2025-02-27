@@ -26,7 +26,7 @@ public sealed class TelescopeSystem : SharedTelescopeSystem
     [Dependency] private readonly IUserInterfaceManager _uiManager = default!;
     [Dependency] private readonly IConfigurationManager _cfg = default!;
 
-    private ZScalingViewport? _viewport;
+    private ScalingViewport? _viewport;
     private bool _holdLookUp;
     private bool _toggled;
 
@@ -85,7 +85,7 @@ public sealed class TelescopeSystem : SharedTelescopeSystem
 
         var mousePos = _input.MouseScreenPosition;
 
-        if (_uiManager.MouseGetControl(mousePos) as ZScalingViewport is { } viewport)
+        if (_uiManager.MouseGetControl(mousePos) as ScalingViewport is { } viewport)
             _viewport = viewport;
 
         if (_viewport == null)

@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Numerics;
 using Content.Shared.Database;
 using Content.Shared.Follower.Components;
@@ -5,6 +6,7 @@ using Content.Shared.Ghost;
 using Content.Shared.Hands;
 using Content.Shared.Movement.Events;
 using Content.Shared.Movement.Pulling.Events;
+using Content.Shared.Polymorph;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Tag;
 using Content.Shared.Verbs;
@@ -15,6 +17,7 @@ using Robust.Shared.Network;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Systems;
 using Robust.Shared.Utility;
+using Robust.Shared.GameStates;
 
 namespace Content.Shared.Follower;
 
@@ -35,16 +38,39 @@ public sealed class FollowerSystem : EntitySystem
         SubscribeLocalEvent<FollowerComponent, MoveInputEvent>(OnFollowerMove);
         SubscribeLocalEvent<FollowerComponent, PullStartedMessage>(OnPullStarted);
         SubscribeLocalEvent<FollowerComponent, EntityTerminatingEvent>(OnFollowerTerminating);
+        SubscribeLocalEvent<FollowerComponent, AfterAutoHandleStateEvent>(OnAfterHandleState);
 
         SubscribeLocalEvent<FollowerComponent, GotEquippedHandEvent>(OnGotEquippedHand);
         SubscribeLocalEvent<FollowedComponent, EntityTerminatingEvent>(OnFollowedTerminating);
-        SubscribeLocalEvent<BeforeSaveEvent>(OnBeforeSave);
+        SubscribeLocalEvent<BeforeSerializationEvent>(OnBeforeSave);
+        SubscribeLocalEvent<FollowedComponent, PolymorphedEvent>(OnFollowedPolymorphed);
     }
 
-    private void OnBeforeSave(BeforeSaveEvent ev)
+    private void OnFollowedAttempt(Entity<FollowedComponent> ent, ref ComponentGetStateAttemptEvent args)
     {
-        // Some followers will not be map savable. This ensures that maps don't get saved with empty/invalid
-        // followers, but just stopping any following on the map being saved.
+        if (args.Cancelled)
+            return;
+
+        // Clientside VV stay losing
+        var playerEnt = args.Player?.AttachedEntity;
+
+        if (playerEnt == null ||
+            !ent.Comp.Following.Contains(playerEnt.Value) && !HasComp<GhostComponent>(playerEnt.Value))
+        {
+            args.Cancelled = true;
+        }
+    }
+
+    private void OnBeforeSave(BeforeSerializationEvent ev)
+    {
+        // Some followers will not be map savable. This ensures that maps don't get saved with some entities that have
+        // empty/invalid followers, by just stopping any following happening on the map being saved.
+        // I hate this so much.
+        // TODO WeakEntityReference
+        // We need some way to store entity references in a way that doesn't imply that the entity still exists.
+        // Then we wouldn't have to deal with this shit.
+
+        var maps = ev.Entities.Select(x => Transform(x).MapUid).ToHashSet();
 
         var query = AllEntityQuery<FollowerComponent, TransformComponent, MetaDataComponent>();
         while (query.MoveNext(out var uid, out var follower, out var xform, out var meta))
@@ -52,7 +78,7 @@ public sealed class FollowerSystem : EntitySystem
             if (meta.EntityPrototype == null || meta.EntityPrototype.MapSavable)
                 continue;
 
-            if (xform.MapUid != ev.Map)
+            if (!maps.Contains(xform.MapUid))
                 continue;
 
             StopFollowingEntity(uid, follower.Following);
@@ -116,11 +142,25 @@ public sealed class FollowerSystem : EntitySystem
         StopFollowingEntity(uid, component.Following, deparent: false);
     }
 
+    private void OnAfterHandleState(Entity<FollowerComponent> entity, ref AfterAutoHandleStateEvent args)
+    {
+        StartFollowingEntity(entity, entity.Comp.Following);
+    }
+
     // Since we parent our observer to the followed entity, we need to detach
     // before they get deleted so that we don't get recursively deleted too.
     private void OnFollowedTerminating(EntityUid uid, FollowedComponent component, ref EntityTerminatingEvent args)
     {
         StopAllFollowers(uid, component);
+    }
+
+    private void OnFollowedPolymorphed(Entity<FollowedComponent> entity, ref PolymorphedEvent args)
+    {
+        foreach (var follower in entity.Comp.Following)
+        {
+            // Stop following the target's old entity and start following the new one
+            StartFollowingEntity(follower, args.NewEntity);
+        }
     }
 
     /// <summary>
@@ -183,6 +223,7 @@ public sealed class FollowerSystem : EntitySystem
         RaiseLocalEvent(follower, followerEv);
         RaiseLocalEvent(entity, entityEv);
         Dirty(entity, followedComp);
+        Dirty(follower, followerComp);
     }
 
     /// <summary>
@@ -194,7 +235,7 @@ public sealed class FollowerSystem : EntitySystem
         if (!Resolve(target, ref followed, false))
             return;
 
-        if (!HasComp<FollowerComponent>(uid))
+        if (!TryComp<FollowerComponent>(uid, out var followerComp) || followerComp.Following != target)
             return;
 
         followed.Following.Remove(uid);

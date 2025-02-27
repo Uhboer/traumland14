@@ -20,8 +20,18 @@ public sealed partial class LoadMapRuleComponent : Component
     [DataField]
     public ProtoId<GameMapPrototype>? GameMap;
 
+    /// <summary>
+    /// A map to load.
+    /// </summary>
     [DataField]
     public ResPath? MapPath;
+
+    /// <summary>
+    /// A <see cref="PreloadedGridPrototype"/> to move to a new map.
+    /// If there are no instances left nothing is done.
+    /// </summary>
+    [DataField]
+    public ResPath? GridPath;
 
     [DataField]
     public ProtoId<PreloadedGridPrototype>? PreloadedGrid;

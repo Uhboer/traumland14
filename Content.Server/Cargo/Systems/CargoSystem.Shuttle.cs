@@ -13,7 +13,6 @@ using Content.Shared.GameTicking;
 using Content.Shared.Shuttles.Components;
 using Content.Shared.Tiles;
 using Content.Shared.Whitelist;
-using Robust.Server.Maps;
 using Robust.Shared.Map;
 using Robust.Shared.Random;
 using Robust.Shared.Audio;
@@ -373,21 +372,9 @@ public sealed partial class CargoSystem
 
     private void SetupTradePost()
     {
-        if (CargoMap != null && _sharedMapSystem.MapExists(CargoMap.Value))
-        {
-            return;
-        }
-
         // It gets mapinit which is okay... buuutt we still want it paused to avoid power draining.
-        var mapEntId = _mapSystem.CreateMap();
-        CargoMap = _entityManager.GetComponent<MapComponent>(mapEntId).MapId;
-
-        var options = new MapLoadOptions
-        {
-            LoadMap = true,
-        };
-
-        _mapLoader.TryLoad((MapId) CargoMap, "/Maps/Shuttles/trading_outpost.yml", out var rootUids, options); // Oh boy oh boy, hardcoded paths!
+        if (!_mapLoader.TryLoadMap(new ResPath("/Maps/Shuttles/trading_outpost.yml"), out var CargoMap, out var rootUids)) // Oh boy oh boy, hardcoded paths!)
+            return;
 
         // If this fails to load for whatever reason, cargo is fucked
         if (rootUids == null || !rootUids.Any())
@@ -404,7 +391,7 @@ public sealed partial class CargoSystem
             Dirty(grid, shuttleComponent);
         }
 
-        var mapUid = _sharedMapSystem.GetMap(CargoMap.Value);
+        var mapUid = _sharedMapSystem.GetMap(CargoMap.Value.Comp.MapId);
         var ftl = EnsureComp<FTLDestinationComponent>(mapUid);
 
         ftl.Whitelist = new EntityWhitelist()

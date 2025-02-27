@@ -22,5 +22,5 @@ public sealed partial class SurgeryMarkingConditionComponent : Component
     ///     against the entity to validate that the marking is not already present.
     /// </summary>
     [DataField]
-    public String MatchString = "";
+    public string MatchString = string.Empty;
 }

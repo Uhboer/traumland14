@@ -212,7 +212,7 @@ namespace Content.Client.Gameplay
             {
                 var mousePosWorld = vp.PixelToMap(kArgs.PointerLocation.Position);
 
-                if (vp is ZScalingViewport svp)
+                if (vp is ScalingViewport svp)
                 {
                     entityToClick = GetClickedEntity(mousePosWorld, svp.Eye);
                 }

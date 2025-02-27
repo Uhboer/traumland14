@@ -4,7 +4,8 @@ using Content.Server.Station.Events;
 using Content.Server.Station.Systems;
 using Content.Shared.Teleportation.Systems;
 using Robust.Server.GameObjects;
-using Robust.Server.Maps;
+using Robust.Shared.EntitySerialization;
+using Robust.Shared.EntitySerialization.Systems;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server._CP14.StationDungeonMap;
@@ -30,16 +31,21 @@ public sealed partial class CP14StationAdditionalMapSystem : EntitySystem
         if (!TryComp(addMap, out StationDataComponent? dataComp))
             return;
 
+        var options = new DeserializationOptions()
+        {
+            InitializeMaps = true
+        };
+
         foreach (var path in addMap.Comp.MapPaths)
         {
-            var mapUid = _map.CreateMap(out var mapId);
-            Log.Info($"Created map {mapId} for StationAdditionalMap system");
-            var options = new MapLoadOptions { LoadMap = true };
-            if (!_mapLoader.TryLoad(mapId, path.ToString(), out var roots, options))
+            if (!_mapLoader.TryLoadMap(path, out var map, out _, options: options))
             {
                 Log.Error($"Failed to load map from {path}!");
-                Del(mapUid);
                 return;
+            }
+            else
+            {
+                Log.Info($"Created map for StationAdditionalMap system");
             }
         }
     }

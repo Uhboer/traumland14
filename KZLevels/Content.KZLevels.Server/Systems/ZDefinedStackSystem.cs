@@ -3,7 +3,8 @@ using Content.KayMisaZlevels.Server.Components;
 using Content.KayMisaZlevels.Shared.Components;
 using Content.KayMisaZlevels.Shared.Systems;
 using Robust.Server.GameObjects;
-using Robust.Server.Maps;
+using Robust.Shared.EntitySerialization;
+using Robust.Shared.EntitySerialization.Systems;
 using Robust.Shared.GameObjects;
 using Robust.Shared.IoC;
 using Robust.Shared.Map;
@@ -52,18 +53,19 @@ public sealed partial class ZDefinedStackSystem : EntitySystem
 
     private void LoadLevel(EntityUid? stackLoc, ResPath path)
     {
-        var mapUid = _map.CreateMap(out var mapId);
-        var options = new MapLoadOptions { LoadMap = true };
-
-        if (_mapLoader.TryLoad(mapId, path.ToString(), out var roots, options))
+        var options = new DeserializationOptions()
         {
-            _zStack.AddToStack(roots[0], ref stackLoc);
-            Log.Info($"Created map {mapId} for ZDefinedStackSystem system");
+            InitializeMaps = true
+        };
+
+        if (_mapLoader.TryLoadMap(path, out var map, out _, options: options))
+        {
+            _zStack.AddToStack(map.Value, ref stackLoc);
+            Log.Info($"Created map {map.Value} for ZDefinedStackSystem system");
         }
         else
         {
             Log.Error($"Failed to load map from {path}!");
-            Del(mapUid);
             return;
         }
     }

@@ -3,6 +3,7 @@ using Content.Client.Examine;
 using Content.Client.Gameplay;
 using Content.Client.UserInterface.Controls;
 using Content.Client.UserInterface.Systems.Viewport;
+using Content.Client.Viewport;
 using Content.KayMisaZlevels.Client;
 using Content.Shared.CCVar;
 using Content.Shared.Maps;
@@ -30,7 +31,7 @@ public sealed class ViewportUserInterfaceOverlay : Overlay
     [Dependency] private readonly IClyde _clyde = default!;
 
     private ViewportUIController _viewportUIController;
-    private ZScalingViewport? _viewport;
+    private ScalingViewport? _viewport;
 
     private Vector2i _viewportPosition;
     private Vector2i _viewportSize;
@@ -74,7 +75,7 @@ public sealed class ViewportUserInterfaceOverlay : Overlay
             RenderTargetColorFormat.Rgba8Srgb);
     }
 
-    private void ResolveViewport(ZScalingViewport? control = null)
+    private void ResolveViewport(ScalingViewport? control = null)
     {
         // FIXME: Need send some information into VPGui manager for KeyBind events.
         // Need refactor or rewrite idk just make it better than this shit
@@ -117,8 +118,8 @@ public sealed class ViewportUserInterfaceOverlay : Overlay
     protected override void Draw(in OverlayDrawArgs args)
     {
         var handle = args.ScreenHandle;
-        var viewport = (args.ViewportControl as ZScalingViewport);
-        var uiScale = (args.ViewportControl as ZScalingViewport)?.UIScale ?? 1f;
+        var viewport = (args.ViewportControl as ScalingViewport);
+        var uiScale = (args.ViewportControl as ScalingViewport)?.UIScale ?? 1f;
 
         if (viewport is null)
             return;
