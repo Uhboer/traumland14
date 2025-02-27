@@ -113,7 +113,10 @@ public abstract class SharedLayingDownSystem : EntitySystem
             || HasComp<KnockedDownComponent>(uid)
             || _mobState.IsIncapacitated(uid)
             || !_standing.Stand(uid))
+        {
             component.CurrentState = StandingState.Lying;
+            return;
+        }
 
         component.CurrentState = StandingState.Standing;
     }
