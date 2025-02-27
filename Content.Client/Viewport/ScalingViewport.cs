@@ -175,7 +175,6 @@ public sealed class ScalingViewport : Control, IViewportControl
         DebugTools.AssertNotNull(_viewport);
 
         var drawBox = GetDrawBox();
-        Logger.Info($"From Viewport DrawBox: {drawBox.ToString()};");
         var drawBoxGlobal = drawBox.Translated(GlobalPixelPosition);
 
         if (_eye is not null)
