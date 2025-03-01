@@ -1,6 +1,6 @@
 # NetPunk
 
-<p align="center"><img src="./Raw/Screenshots/1.png"  /></p>
+<p align="center"><img src="./Raw/Screenshots/wwdp.png"  /></p>
 
 [![en][icon-en]][en] [![ru][icon-ru]][ru]
 
