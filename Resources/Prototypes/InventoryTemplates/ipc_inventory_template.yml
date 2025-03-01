@@ -104,7 +104,7 @@
       strippingWindowPos: 1,4
       displayName: Belt
     - name: suitstorage
-      slotTexture: suit_storage
+      slotTexture: gun_storage
       slotFlags:   SUITSTORAGE
       #slotGroup: MainHotbar
       stripTime: 3

@@ -89,7 +89,7 @@
       displayName: Pocket 2
       stripHidden: true
     - name: suitstorage
-      slotTexture: suit_storage
+      slotTexture: gun_storage
       slotFlags:   SUITSTORAGE
       slotGroup: MainHotbar
       stripTime: 3

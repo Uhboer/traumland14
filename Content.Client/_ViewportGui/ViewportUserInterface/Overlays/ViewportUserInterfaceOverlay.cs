@@ -54,11 +54,14 @@ public sealed class ViewportUserInterfaceOverlay : Overlay
         _viewportPosition = new Vector2i(0, 0);
         _contentSize = new Vector2i((_viewportSize.X + 1) * EyeManager.PixelsPerMeter, _viewportSize.Y * EyeManager.PixelsPerMeter);
 
+        /*
         _cfg.OnValueChanged(CCVars.ViewportWidth, (newValue) =>
         {
             _viewportSize.X = newValue;
             RestoreBuffer();
+            ResolveViewport();
         });
+        */
 
         _buffer = _clyde.CreateRenderTarget(
             _contentSize,
@@ -92,6 +95,7 @@ public sealed class ViewportUserInterfaceOverlay : Overlay
             _viewport = control;
 
         _vpUIManager.Viewport = _viewport;
+        _vpUIManager.Viewport.OffsetSize = (1, 0); // TODO: Also, need be configured
     }
 
     protected override void DisposeBehavior()

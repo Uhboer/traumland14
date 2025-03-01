@@ -1,25 +1,25 @@
 
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using Content.KayMisaZlevels.Server.Systems;
+using System.Numerics;
 using Content.KayMisaZlevels.Shared.Components;
 using Content.KayMisaZlevels.Shared.Miscellaneous;
+using Content.KayMisaZlevels.Shared.Systems;
 using Content.Shared.Movement.Pulling.Components;
 using Content.Shared.Movement.Pulling.Systems;
 using Content.Shared.Teleportation.Components;
-using Robust.Server.GameObjects;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Physics.Events;
 using Robust.Shared.Player;
 
-namespace Content.Server._KMZLevels.ZTransition;
+namespace Content.Shared._KMZLevels.ZTransition;
 
-public class ZTransitionStairsSystem : EntitySystem
+public class SharedZTransitionStairsSystem : EntitySystem
 {
     [Dependency] private readonly PullingSystem _pulling = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly ZStackSystem _zStack = default!;
+    [Dependency] private readonly SharedZStackSystem _zStack = default!;
 
     private const string UpFixture = "upFixture";
     private const string DownFixture = "downFixture";
@@ -37,20 +37,30 @@ public class ZTransitionStairsSystem : EntitySystem
         if (!TryGetTargetMapUid(ent, (ZDirection) dir, out var mapUid))
             return;
 
-        var other = args.OtherEntity;
+        var user = args.OtherEntity;
 
-        var otherCoords = _transform.GetMapCoordinates(other);
+        var otherCoords = _transform.GetMapCoordinates(user);
         var teleporter = _transform.GetMapCoordinates(ent);
+
+        var targetPosition = _transform.GetWorldPosition(ent);
+        var targetRotation = _transform.GetWorldRotation(ent);
+
+        Vector2 offset;
+        if (dir == ZDirection.Down)
+            offset = targetRotation.ToWorldVec() * ent.Comp.Adjust;
+        else
+            offset = targetRotation.ToWorldVec() * (-ent.Comp.Adjust);
 
         var diff = otherCoords.Position - teleporter.Position;
         if (diff.Length() > 10)
             return;
 
         teleporter = teleporter.Offset(diff);
-        teleporter = teleporter.Offset(ent.Comp.Adjust);
+        var newPosition = new Vector2(teleporter.X, teleporter.Y) + offset;
+        teleporter = new MapCoordinates(newPosition, teleporter.MapId);
 
         // Shit, i don't like RMC-14 code. Why are we teleports by HandlePulling? What the fuck?
-        HandlePulling(other, (EntityUid) mapUid, teleporter);
+        HandlePulling(user, (EntityUid) mapUid, teleporter);
     }
 
     private bool TryGetTargetMapUid(EntityUid ent, ZDirection dir, [NotNullWhen(true)] out EntityUid? mapUid)

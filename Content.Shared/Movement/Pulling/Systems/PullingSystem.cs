@@ -48,6 +48,8 @@ using Content.Shared.Throwing;
 using System.Numerics;
 using Robust.Shared.Prototypes;
 using Content.Shared.MouseRotator;
+using Content.Shared.Coordinates;
+using Content.Shared.Weapons.Melee;
 
 namespace Content.Shared.Movement.Pulling.Systems;
 
@@ -74,19 +76,23 @@ public sealed class PullingSystem : EntitySystem
     [Dependency] private readonly StaminaSystem _stamina = default!;
     [Dependency] private readonly SharedColorFlashEffectSystem _color = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly INetManager _netManager = default!;
     [Dependency] private readonly SharedVirtualItemSystem _virtualSystem = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly SharedIntentSystem _intent = default!;
     [Dependency] private readonly GrabThrownSystem _grabThrown = default!;
     [Dependency] private readonly ThrowingSystem _throwing = default!;
-    [Dependency] private readonly RotateToFaceSystem _rotateTo = default!; // NETPUNK EDIT
+    [Dependency] private readonly RotateToFaceSystem _rotateTo = default!; // FINSTER EDIT
+    [Dependency] private readonly SharedMeleeWeaponSystem _melee = default!; // FINSTER EDIT
 
     public ProtoId<AlertPrototype> PullingAlert = "Pulling";
     public ProtoId<AlertCategoryPrototype> PullingCategory = "Pulling";
 
     public ProtoId<AlertPrototype> ResistAlert = "Resist";
     public ProtoId<AlertCategoryPrototype> ResistCategory = "Resist";
+
+    private const string PullEffect = "EffectGrab";
+
+    private readonly SoundSpecifier _pullSound = new SoundPathSpecifier("/Audio/Effects/thudswoosh.ogg");
 
     public override void Initialize()
     {
@@ -116,6 +122,8 @@ public sealed class PullingSystem : EntitySystem
         SubscribeLocalEvent<PullerComponent, ComponentShutdown>(OnPullerShutdown);
 
         SubscribeLocalEvent<PullerComponent, PullStoppedMessage>(OnPullerPullStopped);
+
+        SubscribeLocalEvent<PullableComponent, PullStartedMessage>(OnPullAnimation);
 
         SubscribeLocalEvent<PullableComponent, StrappedEvent>(OnBuckled);
         SubscribeLocalEvent<PullableComponent, BuckledEvent>(OnGotBuckled);
@@ -150,6 +158,17 @@ public sealed class PullingSystem : EntitySystem
     private void OnGotBuckled(Entity<PullableComponent> ent, ref BuckledEvent args)
     {
         StopPulling(ent, ent);
+    }
+
+    private void OnPullAnimation(Entity<PullableComponent> ent, ref PullStartedMessage args)
+    {
+        if (args.PulledUid != ent.Owner)
+            return;
+
+        //if (!_timing.ApplyingState)
+        //    EnsureComp<BeingPulledComponent>(ent);
+
+        PlayPullEffect(args.PullerUid, args.PulledUid);
     }
 
     public override void Shutdown()
@@ -195,8 +214,8 @@ public sealed class PullingSystem : EntitySystem
 
     public override void Update(float frameTime)
     {
-        if (_net.IsClient) // Client cannot predict this
-            return;
+        //if (_net.IsClient) // Client cannot predict this
+        //    return;
 
         var query = EntityQueryEnumerator<PullerComponent, PhysicsComponent, TransformComponent>();
         while (query.MoveNext(out var puller, out var pullerComp, out var pullerPhysics, out var pullerXForm))
@@ -405,10 +424,24 @@ public sealed class PullingSystem : EntitySystem
                 TryStopPull(args.BlockingEntity, comp, uid, true);
                 _grabThrown.Throw(args.BlockingEntity, uid, direction * 2f, 120f, damage * component.GrabThrowDamageModifier, damage * component.GrabThrowDamageModifier);
                 _throwing.TryThrow(uid, -direction * 0.5f);
-                _audio.PlayPvs(new SoundPathSpecifier("/Audio/Effects/thudswoosh.ogg"), uid);
+                _audio.PlayPvs(_pullSound, uid);
                 component.NextStageChange.Add(TimeSpan.FromSeconds(2f));  // To avoid grab and throw spamming
             }
         }
+    }
+
+    public void PlayPullEffect(EntityUid puller, EntityUid pulled)
+    {
+        var userXform = Transform(puller);
+        var targetPos = _xformSys.GetWorldPosition(pulled);
+        var localPos = Vector2.Transform(targetPos, _xformSys.GetInvWorldMatrix(userXform));
+        localPos = userXform.LocalRotation.RotateVec(localPos);
+
+        _melee.DoLunge(puller, puller, Angle.Zero, localPos, null);
+        _audio.PlayPredicted(_pullSound, pulled, puller);
+
+        if (_net.IsServer)
+            SpawnAttachedTo(PullEffect, pulled.ToCoordinates());
     }
 
     private void AddPullVerbs(EntityUid uid, PullableComponent component, GetVerbsEvent<Verb> args)
@@ -732,14 +765,20 @@ public sealed class PullingSystem : EntitySystem
         if (!Resolve(pullable, ref pullable.Comp, false))
             return false;
 
-        if (pullable.Comp.Puller != pullerUid)
-            return TryStartPull(pullerUid, pullable, pullableComp: pullable);
+        if (TryComp<PullerComponent>(pullerUid, out var pullerComp))
+        {
+            if (!CanPullerPull(pullerUid))
+                return false;
 
-        if (TryGrab(pullable, pullerUid))
-            return true;
+            if (pullable.Comp.Puller != pullerUid)
+                return TryStartPull(pullerUid, pullable, pullableComp: pullable, pullerComp: pullerComp);
 
-        if (TryComp<PullerComponent>(pullerUid, out var pullerComp) && _timing.CurTime < pullerComp.NextStageChange)
-            return true;
+            if (TryGrab(pullable, pullerUid))
+                return true;
+
+            if (_timing.CurTime < pullerComp.NextStageChange)
+                return true;
+        }
 
         return TryStopPull(pullable, pullable.Comp, ignoreGrab: true);
     }
@@ -750,6 +789,21 @@ public sealed class PullingSystem : EntitySystem
             return false;
 
         return TogglePull((puller.Pulling.Value, pullable), pullerUid);
+    }
+
+    public bool CanPullerPull(EntityUid pullerUid)
+    {
+        if (!TryComp<PullableComponent>(pullerUid, out var pullable))
+            return true; // Because puller doesn't have pullable comp
+
+        if (!TryComp<PullerComponent>(pullable.Puller, out var pullerComp))
+            return true; // Because... Puller is not pulled.
+
+        // So, if yes - then check grab level
+        if (pullerComp.GrabStage >= GrabStage.Hard)
+            return false;
+
+        return true;
     }
 
     public bool TryStartPull(EntityUid pullerUid, EntityUid pullableUid,
@@ -785,7 +839,7 @@ public sealed class PullingSystem : EntitySystem
             if (!TryStopPull(pullableUid, pullableComp, pullableComp.Puller))
             {
                 // Not succeed to retake grabbed entity
-                if (_netManager.IsServer)
+                if (_net.IsServer)
                 {
                     _popup.PopupEntity(Loc.GetString("popup-grab-retake-fail",
                         ("puller", Identity.Entity(pullableComp.Puller.Value, EntityManager)),
@@ -802,7 +856,7 @@ public sealed class PullingSystem : EntitySystem
             else if (pullableComp.GrabStage != GrabStage.No)
             {
                 // Successful retake
-                if (_netManager.IsServer)
+                if (_net.IsServer)
                 {
                     _popup.PopupEntity(Loc.GetString("popup-grab-retake-success",
                         ("puller", Identity.Entity(pullableComp.Puller.Value, EntityManager)),
@@ -894,12 +948,12 @@ public sealed class PullingSystem : EntitySystem
         {
             if (!AttemptGrabRelease(pullableUid))
             {
-                if (_netManager.IsServer && user != null && user.Value == pullableUid)
+                if (_net.IsServer && user != null && user.Value == pullableUid)
                     _popup.PopupEntity(Loc.GetString("popup-grab-release-fail-self"), pullableUid, pullableUid, PopupType.SmallCaution);
                 return false;
             }
 
-            if (_netManager.IsServer && user != null && user.Value == pullableUid)
+            if (_net.IsServer && user != null && user.Value == pullableUid)
             {
                 _popup.PopupEntity(Loc.GetString("popup-grab-release-success-self"), pullableUid, pullableUid, PopupType.SmallCaution);
                 _popup.PopupEntity(Loc.GetString("popup-grab-release-success-puller", ("target", Identity.Entity(pullableUid, EntityManager))), pullerUidNull.Value, pullerUidNull.Value, PopupType.MediumCaution);
@@ -937,7 +991,7 @@ public sealed class PullingSystem : EntitySystem
         if (!HasComp<MobStateComponent>(pullable))
             return false;
 
-        _intent.SetIntent(pullable, Intent.Grab);
+        _intent.SetIntent(pullable, Intent.Help);
 
         // Delay to avoid spamming
         puller.Comp.NextStageChange = _timing.CurTime + puller.Comp.StageChangeCooldown;
@@ -1008,15 +1062,15 @@ public sealed class PullingSystem : EntitySystem
         _blocker.UpdateCanMove(pullable);
         _modifierSystem.RefreshMovementSpeedModifiers(puller);
 
+        PlayPullEffect(puller, pullable);
+
         // I'm lazy to write client code
-        if (!_netManager.IsServer)
+        if (!_net.IsServer)
             return true;
 
         _popup.PopupEntity(Loc.GetString($"popup-grab-{puller.Comp.GrabStage.ToString().ToLower()}-target", ("puller", Identity.Entity(puller, EntityManager))), pullable, pullable, popupType);
         _popup.PopupEntity(Loc.GetString($"popup-grab-{puller.Comp.GrabStage.ToString().ToLower()}-self", ("target", Identity.Entity(pullable, EntityManager))), pullable, puller, PopupType.Medium);
         _popup.PopupEntity(Loc.GetString($"popup-grab-{puller.Comp.GrabStage.ToString().ToLower()}-others", ("target", Identity.Entity(pullable, EntityManager)), ("puller", Identity.Entity(puller, EntityManager))), pullable, filter, true, popupType);
-
-        _audio.PlayPvs(new SoundPathSpecifier("/Audio/Effects/thudswoosh.ogg"), pullable);
 
         Dirty(pullable);
         Dirty(puller);
@@ -1045,7 +1099,7 @@ public sealed class PullingSystem : EntitySystem
                     if (!_virtualSystem.TrySpawnVirtualItemInHand(pullable, puller.Owner, out var item, true))
                     {
                         // I'm lazy write client code
-                        if (_netManager.IsServer)
+                        if (_net.IsServer)
                             _popup.PopupEntity(Loc.GetString("popup-grab-need-hand"), puller, puller, PopupType.Medium);
 
                         return false;

@@ -1,6 +1,6 @@
 using System.Numerics;
 
-namespace Content.Server._KMZLevels.ZTransition;
+namespace Content.Shared._KMZLevels.ZTransition;
 
 /// <summary>
 /// Marks if entity is stairs, for moving between Z levels.
@@ -9,5 +9,5 @@ namespace Content.Server._KMZLevels.ZTransition;
 public sealed partial class ZStairsComponent : Component
 {
     [DataField]
-    public Vector2 Adjust = Vector2.Zero;
+    public float Adjust = 0.25f;
 }
