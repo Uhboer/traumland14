@@ -10,7 +10,7 @@ namespace Content.Shared._Finster.Rulebook;
 public sealed partial class StatisticsComponent : Component
 {
     [DataField, AutoNetworkedField]
-    public Dictionary<AttributeType, int> Attributes { get; set; } = new();
+    public Dictionary<Attribute, int> Attributes { get; set; } = new();
 
     /// <summary>
     /// Calculate modifier, given by the attribute.
@@ -23,7 +23,7 @@ public sealed partial class StatisticsComponent : Component
     }
 }
 
-public enum AttributeType
+public enum Attribute
 {
     /// <summary>
     /// It can help you to deal more damage. Also it help to control fire from
@@ -54,7 +54,8 @@ public enum AttributeType
     Perception
 }
 
-public enum SkillType
+// TODO: Move into prototypes or generic values by string?
+public enum Skill
 {
     /// <summary>
     /// How good are you can use melee weapons. Mostly affected by Dexterity.
@@ -87,12 +88,12 @@ public enum SkillType
     //MartialArts,
 }
 
-public enum SkillLevelType
+public enum SkillLevel
 {
-    Weak = DiceType.D4,
-    Normal = DiceType.D6,
-    Good = DiceType.D8,
-    Expert = DiceType.D10,
-    Master = DiceType.D12,
-    Legendary = DiceType.D20
+    NonSkilled,
+    Basic,
+    Trained,
+    Experienced,
+    Master,
+    Legendary // Fuck them all!
 }

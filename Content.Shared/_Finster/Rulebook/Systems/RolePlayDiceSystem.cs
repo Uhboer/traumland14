@@ -26,7 +26,7 @@ public sealed class RolePlayDiceSystem : EntitySystem
     /// <param name="isCriticalFailure"></param>
     /// <returns></returns>
     public int Roll(
-        DiceType diceType,
+        Dice diceType,
         out bool isCriticalSuccess,
         out bool isCriticalFailure,
         int modifier = 0)
@@ -55,7 +55,7 @@ public sealed class RolePlayDiceSystem : EntitySystem
 /// <summary>
 /// Holy...
 /// </summary>
-public enum DiceType
+public enum Dice
 {
     D4 = 4,
     D6 = 6,
