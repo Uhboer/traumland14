@@ -92,7 +92,7 @@ public sealed class PullingSystem : EntitySystem
 
     private const string PullEffect = "EffectGrab";
 
-    private readonly SoundSpecifier _pullSound = new SoundPathSpecifier("/Audio/Effects/thudswoosh.ogg");
+    private readonly SoundSpecifier _pullSound = new SoundPathSpecifier("/Audio/_Finster/Effects/Combat/grab.ogg");
 
     public override void Initialize()
     {
