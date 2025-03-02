@@ -31,6 +31,7 @@ using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 using ItemToggleMeleeWeaponComponent = Content.Shared.Item.ItemToggle.Components.ItemToggleMeleeWeaponComponent;
+using Content.Shared.Movement.Pulling.Components;
 
 namespace Content.Shared.Weapons.Melee;
 
@@ -388,9 +389,18 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
         if (weapon.NextAttack < curTime)
             weapon.NextAttack = curTime;
 
+        // It needs for grab cooldown
+        PullerComponent? pullerComp = null;
+        if (TryComp<PullerComponent>(user, out var pullerUserComp))
+            pullerComp = pullerUserComp;
+
         while (weapon.NextAttack <= curTime)
         {
-            weapon.NextAttack += fireRate;
+            // FIXME: Oh hell no, hardcoded grab cooldown :woozy_face:
+            if (pullerComp is not null && attack as GrabAttackEvent is not null)
+                weapon.NextAttack += pullerComp.StageChangeCooldown;
+            else
+                weapon.NextAttack += fireRate;
             swings++;
         }
 

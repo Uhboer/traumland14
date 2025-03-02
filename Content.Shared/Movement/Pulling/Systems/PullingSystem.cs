@@ -50,6 +50,8 @@ using Robust.Shared.Prototypes;
 using Content.Shared.MouseRotator;
 using Content.Shared.Coordinates;
 using Content.Shared.Weapons.Melee;
+using Robust.Shared.Configuration;
+using Content.Shared.CCVar;
 
 namespace Content.Shared.Movement.Pulling.Systems;
 
@@ -60,6 +62,7 @@ public sealed class PullingSystem : EntitySystem
 {
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly ISharedAdminLogManager _adminLogger = default!;
+    [Dependency] private readonly IConfigurationManager _cfg = default!;
     [Dependency] private readonly INetManager _net = default!;
     [Dependency] private readonly ActionBlockerSystem _blocker = default!;
     [Dependency] private readonly AlertsSystem _alertsSystem = default!;
@@ -94,6 +97,8 @@ public sealed class PullingSystem : EntitySystem
 
     private readonly SoundSpecifier _pullSound = new SoundPathSpecifier("/Audio/_Finster/Effects/Combat/grab.ogg");
 
+    private bool _canAnimateEffect = false;
+
     public override void Initialize()
     {
         base.Initialize();
@@ -127,6 +132,12 @@ public sealed class PullingSystem : EntitySystem
 
         SubscribeLocalEvent<PullableComponent, StrappedEvent>(OnBuckled);
         SubscribeLocalEvent<PullableComponent, BuckledEvent>(OnGotBuckled);
+
+        _canAnimateEffect = _cfg.GetCVar(CCVars.PullingAnimationEffect);
+        _cfg.OnValueChanged(CCVars.PullingAnimationEffect, (newValue) =>
+        {
+            _canAnimateEffect = newValue;
+        });
 
         CommandBinds.Builder
             .Bind(ContentKeyFunctions.MovePulledObject, new PointerInputCmdHandler(OnRequestMovePulledObject))
@@ -430,7 +441,7 @@ public sealed class PullingSystem : EntitySystem
         }
     }
 
-    public void PlayPullEffect(EntityUid puller, EntityUid pulled)
+    public void PlayPullEffect(EntityUid puller, EntityUid pulled, bool isServerOnly = false)
     {
         var userXform = Transform(puller);
         var targetPos = _xformSys.GetWorldPosition(pulled);
@@ -438,9 +449,12 @@ public sealed class PullingSystem : EntitySystem
         localPos = userXform.LocalRotation.RotateVec(localPos);
 
         _melee.DoLunge(puller, puller, Angle.Zero, localPos, null);
-        _audio.PlayPredicted(_pullSound, pulled, puller);
+        if (isServerOnly)
+            _audio.PlayPvs(_pullSound, pulled);
+        else
+            _audio.PlayPredicted(_pullSound, pulled, puller);
 
-        if (_net.IsServer)
+        if (_net.IsServer && _canAnimateEffect)
             SpawnAttachedTo(PullEffect, pulled.ToCoordinates());
     }
 
@@ -972,7 +986,11 @@ public sealed class PullingSystem : EntitySystem
     /// <param name="ignoreCombatMode">If true, will ignore disabled combat mode</param>
     /// <exception cref="ArgumentOutOfRangeException"></exception>
     /// <returns></returns>
-    public bool TryGrab(Entity<PullableComponent?> pullable, Entity<PullerComponent?> puller, bool ignoreCombatMode = false)
+    public bool TryGrab(
+        Entity<PullableComponent?> pullable,
+        Entity<PullerComponent?> puller,
+        bool ignoreCombatMode = false,
+        bool isServerOnlySoundEffect = false)
     {
         if (!Resolve(pullable.Owner, ref pullable.Comp))
             return false;
@@ -1025,14 +1043,18 @@ public sealed class PullingSystem : EntitySystem
 
         var newStage = puller.Comp.GrabStage + nextStageAddition;
 
-        if (!TrySetGrabStages((puller.Owner, puller.Comp), (pullable.Owner, pullable.Comp), newStage))
+        if (!TrySetGrabStages((puller.Owner, puller.Comp), (pullable.Owner, pullable.Comp), newStage, isServerOnlySoundEffect: isServerOnlySoundEffect))
             return true;
 
         _color.RaiseEffect(Color.Yellow, new List<EntityUid> { pullable }, Filter.Pvs(pullable, entityManager: EntityManager));
         return true;
     }
 
-    private bool TrySetGrabStages(Entity<PullerComponent> puller, Entity<PullableComponent> pullable, GrabStage stage)
+    private bool TrySetGrabStages(
+        Entity<PullerComponent> puller,
+        Entity<PullableComponent> pullable,
+        GrabStage stage,
+        bool isServerOnlySoundEffect = false)
     {
         puller.Comp.GrabStage = stage;
         pullable.Comp.GrabStage = stage;
@@ -1062,7 +1084,7 @@ public sealed class PullingSystem : EntitySystem
         _blocker.UpdateCanMove(pullable);
         _modifierSystem.RefreshMovementSpeedModifiers(puller);
 
-        PlayPullEffect(puller, pullable);
+        PlayPullEffect(puller, pullable, isServerOnlySoundEffect);
 
         // I'm lazy to write client code
         if (!_net.IsServer)
