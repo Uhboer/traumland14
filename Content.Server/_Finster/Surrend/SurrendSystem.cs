@@ -45,7 +45,8 @@ public sealed class SurrendSystem : EntitySystem
             !Resolve(ent, ref metaData))
             return;
 
-        if (!_actionBlocker.CanEmote(ent) ||
+        if (!comp.IsStunable ||
+            !_actionBlocker.CanEmote(ent) ||
             _statusEffects.HasStatusEffect(ent, "Stun"))
             return;
 
