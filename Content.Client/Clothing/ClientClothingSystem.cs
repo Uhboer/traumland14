@@ -353,8 +353,12 @@ public sealed class ClientClothingSystem : ClothingSystem
             // Another "temporary" fix for clothing stencil masks.
             // Sprite layer redactor when
             // Sprite "redactor" just a week away.
-            if (slot == Jumpsuit)
-                layerData.Shader ??= "StencilDraw";
+            // NOTE BY FINSTER: By some reasons it broke jumpsuit layer
+            // in examine menu. So, i commented it.
+            // We don't have plans to add monkeys into the game (with clothes),
+            // so... i think it is unnecessary.
+            //if (slot == Jumpsuit)
+            //    layerData.Shader ??= "StencilDraw";
 
             if (inventorySlots.HiddenSlots.Contains(slot))
                 layerData.Visible = false;
