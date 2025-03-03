@@ -3,13 +3,13 @@
   sound:
     params:
       volume: -10
-    collection: AmbienceTown
-  rules: OnMapGrid
+    collection: AmbienceTestHaus
+  rules: OnDevMap
   fadeIn: false
   interruptable: true
   minCooldownTime: 0
   maxCooldownTime: 0
-  priority: 2
+  priority: 5
 
 - type: ambientMusic
   id: Space
@@ -90,6 +90,11 @@
     - /Audio/_Finster/Ambience/DreamWeb-The-Deliverer.ogg
 
 - type: soundCollection
+  id: AmbienceTestHaus
+  files:
+    - /Audio/_Finster/Ambience/TestHaus.ogg
+
+- type: soundCollection
   id: AmbienceGeneral
   files:
     #- /Audio/_Finster/Ambience/general.ogg
@@ -151,6 +156,15 @@
     - !type:CombatModeRule
       state: false
     - !type:OnMapGridRule
+
+- type: rules
+  id: OnDevMap
+  rules:
+    - !type:NearbyMusicSourceRule
+      state: false
+    - !type:CombatModeRule
+      state: false
+    - !type:OnDevMapRule
 
 # TODO
 - type: rules
