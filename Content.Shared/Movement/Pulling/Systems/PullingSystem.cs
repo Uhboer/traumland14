@@ -814,7 +814,7 @@ public sealed class PullingSystem : EntitySystem
             return true; // Because... Puller is not pulled.
 
         // So, if yes - then check grab level
-        if (pullerComp.GrabStage >= GrabStage.Hard)
+        if (pullerComp.GrabStage > GrabStage.No)
             return false;
 
         return true;

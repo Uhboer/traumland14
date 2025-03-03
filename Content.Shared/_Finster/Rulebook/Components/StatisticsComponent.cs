@@ -1,4 +1,5 @@
 using Robust.Shared.GameStates;
+using Robust.Shared.Serialization;
 
 namespace Content.Shared._Finster.Rulebook;
 
@@ -55,6 +56,7 @@ public enum Attribute
 }
 
 // TODO: Move into prototypes or generic values by string?
+/*
 public enum Skill
 {
     /// <summary>
@@ -87,8 +89,10 @@ public enum Skill
     /// </summary>
     //MartialArts,
 }
+*/
 
-public enum SkillLevel
+[Serializable, NetSerializable]
+public enum SkillLevel : int
 {
     NonSkilled,
     Basic,
