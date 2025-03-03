@@ -165,6 +165,10 @@ public sealed partial class MeleeWeaponSystem : SharedMeleeWeaponSystem
                 _intent.GetIntent(entity) != Intent.Harm)
                 return;
 
+            // We should not punch anyone with guns or ranged weapon instead from HARM
+            if (altDown && _intent.GetIntent(entity) != Intent.Harm)
+                return;
+
             // WD EDIT START
             if (weapon.AltDisarm && weaponUid == entity && _intent.GetIntent(entity) == Intent.Disarm)
             {
