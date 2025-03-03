@@ -1,0 +1,20 @@
+# Any generic skills. Can be used by everyone
+- type: skillCategory
+  id: Common
+
+# Specific skills group for fighting.
+- type: skillCategory
+  id: Fighting
+
+# All what mention first aid help or medical help.
+- type: skillCategory
+  id: Medecine
+
+# Construct, crafting and another more.
+- type: skillCategory
+  id: Engineering
+
+# Working with computers, terminals and learn some things about the world.
+- type: skillCategory
+  id: Science
+

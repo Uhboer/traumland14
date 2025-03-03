@@ -1,0 +1,17 @@
+# It can help you to deal more damage. Also it help to control fire from
+# ranged weapon, and another calculations.
+- type: attribute
+  id: Strength
+
+# Dodge attacks from the enemies! It help to deal aimed damage without
+# missing attacks (in melee combat).
+- type: attribute
+  id: Dexterity
+
+# Affect on communication skills, understading and learning something new.
+- type: attribute
+  id: Intelligence
+
+# Reduce any damage, like physical. It also can reduce time in crit, when your death is become.
+- type: attribute
+  id: Endurance

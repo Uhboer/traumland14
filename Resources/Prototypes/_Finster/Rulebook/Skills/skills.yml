@@ -1,0 +1,28 @@
+# How good you can use any melee weapons.
+# Fencing is abandoned school, so now - everyone should know how to
+# deal with bastard-sword and knifes in near combat.
+# Also prevent disarm the weapon.
+- type: skill
+  id: Melee
+  category: Fighting
+
+# How good you can deal with ranged weapons.
+# It may be help to control the guns and deal aimed damage
+# into body parts, and prevent disarm the weapon.
+- type: skill
+  id: Ranged
+  category: Fighting
+
+# Can you build something in the world
+# (e.g. walls, tiles, structures, furniture).
+# Based skill for engineers
+- type: skill
+  id: Construction
+  category: Engineering
+
+# Can you heal the creatures.
+# With low skill you can't use effectivly bandages and etc.
+# Also you take too many failures, when you try to surgery on the creature.
+- type: skill
+  id: Medecine
+  category: Medecine
