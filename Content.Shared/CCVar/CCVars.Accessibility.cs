@@ -17,12 +17,12 @@ public sealed partial class CCVars
     ///     Please do not use this CVar as a bandaid for effects that could otherwise be made accessible without issue.
     /// </summary>
     public static readonly CVarDef<bool> ReducedMotion =
-        CVarDef.Create("accessibility.reduced_motion", false, CVar.CLIENTONLY | CVar.ARCHIVE);
+        CVarDef.Create("accessibility.reduced_motion", false, CVar.REPLICATED | CVar.SERVER);
 
     public static readonly CVarDef<bool> ChatEnableColorName =
         CVarDef.Create("accessibility.enable_color_name",
             true,
-            CVar.CLIENTONLY | CVar.ARCHIVE,
+            CVar.REPLICATED | CVar.SERVER,
             "Toggles displaying names with individual colors.");
 
     /// <summary>
@@ -30,18 +30,18 @@ public sealed partial class CCVars
     ///     Goes from 0 (no recoil at all) to 1 (regular amounts of recoil)
     /// </summary>
     public static readonly CVarDef<float> ScreenShakeIntensity =
-        CVarDef.Create("accessibility.screen_shake_intensity", 1f, CVar.CLIENTONLY | CVar.ARCHIVE);
+        CVarDef.Create("accessibility.screen_shake_intensity", 0.10f, CVar.REPLICATED | CVar.SERVER);
 
     /// <summary>
     ///     A generic toggle for various visual effects that are color sensitive.
     ///     As of 2/16/24, only applies to progress bar colors.
     /// </summary>
     public static readonly CVarDef<bool> AccessibilityColorblindFriendly =
-        CVarDef.Create("accessibility.colorblind_friendly", false, CVar.CLIENTONLY | CVar.ARCHIVE);
+        CVarDef.Create("accessibility.colorblind_friendly", false, CVar.REPLICATED | CVar.SERVER);
 
     /// <summary>
     /// Disables all vision filters for species like Vulpkanin or Harpies. There are good reasons someone might want to disable these.
     /// </summary>
     public static readonly CVarDef<bool> NoVisionFilters =
-        CVarDef.Create("accessibility.no_vision_filters", true, CVar.CLIENTONLY | CVar.ARCHIVE);
+        CVarDef.Create("accessibility.no_vision_filters", false, CVar.REPLICATED | CVar.SERVER);
 }
