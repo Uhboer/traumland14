@@ -1,6 +1,17 @@
 meta:
-  format: 6
-  postmapinit: false
+  format: 7
+  category: Map
+  engineVersion: 247.2.0
+  forkId: ""
+  forkVersion: ""
+  time: 03/03/2025 11:12:04
+  entityCount: 94
+maps:
+- 1
+grids:
+- 1
+orphans: []
+nullspace: []
 tilemap:
   0: Space
   32: CultFloor
@@ -186,13 +197,14 @@ entities:
       name: FinsterDev -2
     - type: Transform
     - type: Map
+      mapPaused: True
     - type: PhysicsMap
     - type: GridTree
     - type: MovedGrids
     - type: Broadphase
     - type: OccluderTree
     - type: TimeCycleMember
-      trackerId: "finster_dev_time"
+      trackerId: finster_dev_time
     - type: MapLight
     - type: Biome
       forcedMarkerLayers: []
@@ -761,10 +773,28 @@ entities:
       chunkCollection:
         version: 2
         nodes: []
-    - type: LoadedMap
     - type: GravityShake
       shakeTimes: 10
     - type: RadiationGridResistance
+    - type: TestHaus
+  - uid: 92
+    components:
+    - type: MetaData
+    - type: Transform
+      gridTraversal: False
+      pos: -29.86241,-1.7385377
+      parent: 1
+    - type: ZLoader
+    - type: ViewSubscriber
+  - uid: 93
+    components:
+    - type: MetaData
+    - type: Transform
+      gridTraversal: False
+      pos: -27.314524,-0.32780224
+      parent: 1
+    - type: ZLoader
+    - type: ViewSubscriber
 - proto: FinsterWallStone
   entities:
   - uid: 2
@@ -1147,51 +1177,39 @@ entities:
     - type: Transform
       pos: -12.5,0.5
       parent: 1
-- proto: LadderBottomMetalDamaged
+- proto: LadderAutoLinkSquareBottom
   entities:
-  - uid: 78
+  - uid: 94
     components:
     - type: Transform
       pos: -10.5,-0.5
       parent: 1
-    - type: Warper
-      location: d_dungeon_l_up
-    - type: WarpPoint
-      follow: True
-      location: d_dungeon_l_down
-  - uid: 79
-    components:
-    - type: Transform
-      pos: 9.5,-0.5
-      parent: 1
-    - type: Warper
-      location: d_dungeon_r_up
-    - type: WarpPoint
-      location: d_dungeon_r_down
+    - type: ZTransitionMarker
+      direction: Up
 - proto: N14Torch
   entities:
-  - uid: 80
+  - uid: 78
     components:
     - type: Transform
       pos: 1.5,1.5
       parent: 1
     - type: Fixtures
       fixtures: {}
-  - uid: 81
+  - uid: 79
     components:
     - type: Transform
       pos: -2.5,-2.5
       parent: 1
     - type: Fixtures
       fixtures: {}
-  - uid: 82
+  - uid: 80
     components:
     - type: Transform
       pos: -2.5,1.5
       parent: 1
     - type: Fixtures
       fixtures: {}
-  - uid: 83
+  - uid: 81
     components:
     - type: Transform
       pos: 1.5,-2.5
@@ -1200,7 +1218,7 @@ entities:
       fixtures: {}
 - proto: N14TorchWall
   entities:
-  - uid: 84
+  - uid: 82
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
@@ -1208,14 +1226,14 @@ entities:
       parent: 1
     - type: Fixtures
       fixtures: {}
-  - uid: 85
+  - uid: 83
     components:
     - type: Transform
       pos: -10.5,-1.5
       parent: 1
     - type: Fixtures
       fixtures: {}
-  - uid: 86
+  - uid: 84
     components:
     - type: Transform
       rot: 3.141592653589793 rad
@@ -1223,7 +1241,7 @@ entities:
       parent: 1
     - type: Fixtures
       fixtures: {}
-  - uid: 87
+  - uid: 85
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
@@ -1231,7 +1249,7 @@ entities:
       parent: 1
     - type: Fixtures
       fixtures: {}
-  - uid: 88
+  - uid: 86
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
@@ -1239,7 +1257,7 @@ entities:
       parent: 1
     - type: Fixtures
       fixtures: {}
-  - uid: 89
+  - uid: 87
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -1247,7 +1265,7 @@ entities:
       parent: 1
     - type: Fixtures
       fixtures: {}
-  - uid: 90
+  - uid: 88
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -1255,7 +1273,7 @@ entities:
       parent: 1
     - type: Fixtures
       fixtures: {}
-  - uid: 91
+  - uid: 89
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -1263,14 +1281,14 @@ entities:
       parent: 1
     - type: Fixtures
       fixtures: {}
-  - uid: 92
+  - uid: 90
     components:
     - type: Transform
       pos: 9.5,-1.5
       parent: 1
     - type: Fixtures
       fixtures: {}
-  - uid: 93
+  - uid: 91
     components:
     - type: Transform
       rot: 3.141592653589793 rad

@@ -45,6 +45,7 @@
                     <BoxContainer HorizontalExpand="True" Orientation="Vertical">
                         <BoxContainer Margin="10" Orientation="Vertical" HorizontalExpand="True">
                             <!-- Species -->
+                            <!--
                             <BoxContainer HorizontalExpand="True">
                                 <Label Text="{Loc 'humanoid-profile-editor-species-label'}" />
                                 <Control HorizontalExpand="True"/>
@@ -52,6 +53,7 @@
                                     ToolTip="{Loc 'humanoid-profile-editor-guidebook-button-tooltip'}"/>
                                 <OptionButton Name="SpeciesButton" HorizontalAlignment="Right" />
                             </BoxContainer>
+                            -->
                             <!-- Species -->
                             <BoxContainer Name="CCustomSpecieName" HorizontalExpand="True">
                                 <Label Text="{Loc 'humanoid-profile-editor-customspeciename-label'}" />

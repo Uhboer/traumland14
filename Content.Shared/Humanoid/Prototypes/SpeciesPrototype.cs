@@ -106,13 +106,13 @@ public sealed partial class SpeciesPrototype : IPrototype
     ///     Characters younger than this are too young to be hired by Nanotrasen.
     /// </summary>
     [DataField]
-    public int MinAge = 18;
+    public int MinAge = 16;
 
     /// <summary>
     ///     Characters younger than this appear young.
     /// </summary>
     [DataField]
-    public int YoungAge = 30;
+    public int YoungAge = 25;
 
     /// <summary>
     ///     Characters older than this appear old. Characters in between young and old age appear middle aged.

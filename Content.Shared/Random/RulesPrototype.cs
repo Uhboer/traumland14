@@ -99,6 +99,13 @@ public sealed partial class OnMapGridRule : RulesRule
 }
 
 /// <summary>
+/// On dev map
+/// </summary>
+public sealed partial class OnDevMapRule : RulesRule
+{
+}
+
+/// <summary>
 /// Checks for an entity nearby with the specified access.
 /// </summary>
 public sealed partial class NearbyAccessRule : RulesRule

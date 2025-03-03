@@ -1,5 +1,6 @@
 using System.Numerics;
 using Content.Client.Instruments;
+using Content.Shared._Finster.TestHaus;
 using Content.Shared.Access.Components;
 using Content.Shared.Access.Systems;
 using Content.Shared.Audio.Jukebox;
@@ -284,6 +285,18 @@ public class RulesSystem : EntitySystem
                     if (!TryComp<TransformComponent>(uid, out var xform) ||
                         xform.GridUid != xform.MapUid ||
                         xform.MapUid == null)
+                    {
+                        return false;
+                    }
+
+                    break;
+                }
+                case OnDevMapRule:
+                {
+                    if (!TryComp<TransformComponent>(uid, out var xform) ||
+                        xform.GridUid != xform.MapUid ||
+                        xform.MapUid == null ||
+                        !TryComp<TestHausComponent>(xform.MapUid, out var _))
                     {
                         return false;
                     }

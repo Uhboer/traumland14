@@ -89,11 +89,11 @@ public class HUDLookupLabel : HUDControl
             FindInWorld();
 
         var targetX = bounds.X / 2;
-        var targetY = Scale * 2;
+        var targetY = Scale;
 
         var dimensions = handle.GetDimensions(_font, _text, 1f);
         handle.DrawString(_font,
-            new Vector2(targetX, targetY) - new Vector2(dimensions.X / 2, dimensions.Y + (Scale / 2)),
+            new Vector2(targetX, targetY) - new Vector2(dimensions.X / 2, 0),
             _text,
             1f,
             Color.Gainsboro.WithAlpha(0.25f));

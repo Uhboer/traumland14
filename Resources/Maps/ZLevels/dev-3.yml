@@ -1,6 +1,17 @@
 meta:
-  format: 6
-  postmapinit: false
+  format: 7
+  category: Map
+  engineVersion: 247.2.0
+  forkId: ""
+  forkVersion: ""
+  time: 03/03/2025 11:12:04
+  entityCount: 4
+maps:
+- 1
+grids:
+- 1
+orphans: []
+nullspace: []
 tilemap:
   0: Space
   32: CultFloor
@@ -186,13 +197,14 @@ entities:
       name: FinsterDev 1
     - type: Transform
     - type: Map
+      mapPaused: True
     - type: PhysicsMap
     - type: GridTree
     - type: MovedGrids
     - type: Broadphase
     - type: OccluderTree
     - type: TimeCycleMember
-      trackerId: "finster_dev_time"
+      trackerId: finster_dev_time
     - type: MapLight
     - type: Biome
       forcedMarkerLayers: []
@@ -245,9 +257,27 @@ entities:
       chunkCollection:
         version: 2
         nodes: []
-    - type: LoadedMap
     - type: GravityShake
       shakeTimes: 10
+    - type: TestHaus
+  - uid: 3
+    components:
+    - type: MetaData
+    - type: Transform
+      gridTraversal: False
+      pos: -29.86241,-1.7385377
+      parent: 1
+    - type: ZLoader
+    - type: ViewSubscriber
+  - uid: 4
+    components:
+    - type: MetaData
+    - type: Transform
+      gridTraversal: False
+      pos: -27.314524,-0.32780224
+      parent: 1
+    - type: ZLoader
+    - type: ViewSubscriber
 - proto: LadderTopMetalRusted
   entities:
   - uid: 2
@@ -255,6 +285,8 @@ entities:
     - type: Transform
       pos: -20.5,-10.5
       parent: 1
+    - type: ZTransitionMarker
+      direction: Down
     - type: Warper
       location: house_ladder_down
     - type: Fixtures

@@ -152,7 +152,7 @@ public class HUDInventoryPanel : HUDTextureRect
         MiscSlotsContainer.Position = (0, 0);
     }
 
-    public void UpdateHands(HandsComponent? handsComp)
+    public void UpdateHands(HandsComponent? handsComp, string? ignoreHand = null)
     {
         ClearHands();
 
@@ -161,7 +161,8 @@ public class HUDInventoryPanel : HUDTextureRect
         {
             foreach (var (name, data) in handsComp.Hands)
             {
-                CreateHandButton(name, data, handsComp);
+                if (name != ignoreHand)
+                    CreateHandButton(name, data, handsComp);
             }
 
             // TODO: Fuck! Need to think, how i can move my hands in some slot by better way

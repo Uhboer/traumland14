@@ -265,7 +265,7 @@ public sealed class HUDInventoryUIController : UIController, IOnStateEntered<Gam
 
     private void RemoveHand(string handName)
     {
-        InventoryPanel?.UpdateHands(_playerHandsComponent);
+        InventoryPanel?.UpdateHands(_playerHandsComponent, ignoreHand: handName);
         //RemoveHand(handName, out var _);
     }
 
