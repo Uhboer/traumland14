@@ -39,6 +39,12 @@ using Robust.Shared.Utility;
 using Direction = Robust.Shared.Maths.Direction;
 using Content.Client.Info.PlaytimeStats;
 
+/*
+
+    If you need find disabled species feature - find by 'NO SPECIES'
+
+*/
+
 namespace Content.Client.Lobby.UI
 {
     [GenerateTypedNameReferences]
@@ -234,6 +240,7 @@ namespace Content.Client.Lobby.UI
 
             RefreshSpecies();
 
+            /* NO SPECIES
             SpeciesButton.OnItemSelected += args =>
             {
                 SpeciesButton.SelectId(args.Id);
@@ -243,6 +250,7 @@ namespace Content.Client.Lobby.UI
                 UpdateCustomSpecieNameEdit();
                 UpdateHeightWidthSliders();
             };
+            */
 
             #endregion Species
 
@@ -529,8 +537,8 @@ namespace Content.Client.Lobby.UI
             ShowClothes.OnToggled += _ => { SetProfile(Profile, CharacterSlot); };
             ShowLoadouts.OnToggled += _ => { SetProfile(Profile, CharacterSlot); };
 
-            SpeciesInfoButton.OnPressed += OnSpeciesInfoButtonPressed;
-            UpdateSpeciesGuidebookIcon();
+            //SpeciesInfoButton.OnPressed += OnSpeciesInfoButtonPressed; // NO SPECIES
+            //UpdateSpeciesGuidebookIcon(); // NO SPECIES
 
             ReloadPreview();
             IsDirty = false;
@@ -586,12 +594,13 @@ namespace Content.Client.Lobby.UI
         /// Refreshes the species selector
         public void RefreshSpecies()
         {
-            SpeciesButton.Clear();
+            //SpeciesButton.Clear(); // NO SPECIES
             _species.Clear();
 
             _species.AddRange(_prototypeManager.EnumeratePrototypes<SpeciesPrototype>().Where(o => o.RoundStart));
             var speciesIds = _species.Select(o => o.ID).ToList();
 
+            /* NO SPECIES
             for (var i = 0; i < _species.Count; i++)
             {
                 SpeciesButton.AddItem(Loc.GetString(_species[i].Name), i);
@@ -599,6 +608,7 @@ namespace Content.Client.Lobby.UI
                 if (Profile?.Species.Equals(_species[i].ID) == true)
                     SpeciesButton.SelectId(i);
             }
+            */
 
             // If our species isn't available, reset it to default
             if (Profile != null && !speciesIds.Contains(Profile.Species))
@@ -1292,7 +1302,7 @@ namespace Content.Client.Lobby.UI
             // Changing species provides inaccurate sliders without these
             UpdateHeightWidthSliders();
             UpdateWeight();
-            UpdateSpeciesGuidebookIcon();
+            //UpdateSpeciesGuidebookIcon(); NO SPECIES
             IsDirty = true;
             ReloadProfilePreview();
             ReloadClothes(); // Species may have job-specific gear, reload the clothes
@@ -1475,6 +1485,7 @@ namespace Content.Client.Lobby.UI
             }
         }
 
+        /* NO SPECIES
         public void UpdateSpeciesGuidebookIcon()
         {
             SpeciesInfoButton.StyleClasses.Clear();
@@ -1488,6 +1499,7 @@ namespace Content.Client.Lobby.UI
             const string style = "SpeciesInfoDefault";
             SpeciesInfoButton.StyleClasses.Add(style);
         }
+        */
 
         private void UpdateMarkings()
         {
