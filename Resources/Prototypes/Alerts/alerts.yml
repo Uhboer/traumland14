@@ -577,6 +577,18 @@
   onClick: !type:RetakeVow  { }
   description: alerts-vow-broken-desc
 
+- type: alert
+  id: Surrend
+  onClick: !type:TrySurrend { }
+  sprite: Alerts/surrend.rsi
+  states:
+  - surrend0
+  name: alerts-surrend-name
+  description: alerts-surrend-desc
+  hudPositionX: 0
+  hudPositionY: 224
+  isGeneric: false
+
 # FINSTER EDIT - No need Pulled anymore
 #- type: alert
 #  id: Pulled

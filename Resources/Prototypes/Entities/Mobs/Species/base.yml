@@ -83,6 +83,7 @@
     bounds: -0.5,-0.5,0.5,0.5
   - type: Telescope
     divisor: 0.3
+  - type: Surrender
   - type: RotationVisuals
     defaultRotation: 90
     horizontalRotation: 90
