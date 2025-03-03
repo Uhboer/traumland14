@@ -34,14 +34,13 @@ public sealed partial class LamiaSystem : EntitySystem
         base.Initialize();
         //Parent subscriptions
         SubscribeLocalEvent<SegmentedEntityComponent, HitScanAfterRayCastEvent>(OnShootHitscan);
-        SubscribeLocalEvent<SegmentedEntityComponent, InsertIntoEntityStorageAttemptEvent>(OnLamiaStorageInsertAttempt);
         SubscribeLocalEvent<SegmentedEntityComponent, DidEquipEvent>(OnDidEquipEvent);
         SubscribeLocalEvent<SegmentedEntityComponent, DidUnequipEvent>(OnDidUnequipEvent);
         SubscribeLocalEvent<SegmentedEntityComponent, ComponentInit>(OnInit);
         SubscribeLocalEvent<SegmentedEntityComponent, ComponentShutdown>(OnShutdown);
         SubscribeLocalEvent<SegmentedEntityComponent, JointRemovedEvent>(OnJointRemoved);
         SubscribeLocalEvent<SegmentedEntityComponent, EntParentChangedMessage>(OnParentChanged);
-        SubscribeLocalEvent<SegmentedEntityComponent, StoreMobInItemContainerAttemptEvent>(OnStoreSnekAttempt);
+        SubscribeLocalEvent<SegmentedEntityComponent, InsertIntoEntityStorageAttemptEvent>(OnStoreSnekAttempt);
 
         //Child subscriptions
         SubscribeLocalEvent<SegmentedEntitySegmentComponent, InsertIntoEntityStorageAttemptEvent>(OnSegmentStorageInsertAttempt);
@@ -124,7 +123,7 @@ public sealed partial class LamiaSystem : EntitySystem
 
     }
 
-    public void OnStoreSnekAttempt(EntityUid uid, SegmentedEntityComponent comp, ref StoreMobInItemContainerAttemptEvent args)
+    public void OnStoreSnekAttempt(EntityUid uid, SegmentedEntityComponent comp, ref InsertIntoEntityStorageAttemptEvent args)
     {
         args.Cancelled = true;
     }
@@ -239,11 +238,6 @@ public sealed partial class LamiaSystem : EntitySystem
             return;
 
         _damageableSystem.TryChangeDamage(component.Lamia, args.DamageDelta);
-    }
-
-    private void OnLamiaStorageInsertAttempt(EntityUid uid, SegmentedEntityComponent comp, ref InsertIntoEntityStorageAttemptEvent args)
-    {
-        args.Cancelled = true;
     }
 
     private void OnSegmentStorageInsertAttempt(EntityUid uid, SegmentedEntitySegmentComponent comp, ref InsertIntoEntityStorageAttemptEvent args)
