@@ -46,7 +46,7 @@ public sealed class SurrendSystem : EntitySystem
             return;
 
         if (!comp.IsStunable ||
-            !_actionBlocker.CanEmote(ent) ||
+            !_actionBlocker.CanInteract(ent, ent) ||
             _statusEffects.HasStatusEffect(ent, "Stun"))
             return;
 
