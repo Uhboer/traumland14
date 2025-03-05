@@ -1,0 +1,20 @@
+FINSTER
+
+
+         FINSTER
+
+        ^
+This is | reference on berserk 97 anime
+
+Underground RolePlay expirience in unique lore and content. Mostly based on Space Station 14. Made in abyss.
+
+|| Building ||
+VV          VV
+
+- Git
+- .NET SDK 9.0.101
+- Run `git submodule update --init --recursive`
+Run `Tools/(bat/sh)/buildAllDebug.(bat/sh)` after any changes to the project code
+- Run `Tools/(bat/sh)/runQuickAll.(bat/sh)` to start the client and server
+
+May be you want update engine, right? Do it by keyboard + terminal, using `git merge; git checkout`
