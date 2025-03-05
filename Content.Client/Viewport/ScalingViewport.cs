@@ -1,5 +1,3 @@
-using System;
-using System.Collections.Generic;
 using System.Numerics;
 using Content.Client.UserInterface.Systems.Viewport;
 using Content.KayMisaZlevels.Client;
@@ -8,15 +6,11 @@ using Robust.Client.Input;
 using Robust.Client.Player;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.CustomControls;
-using Robust.Shared.GameObjects;
+using Robust.Shared.ContentPack;
 using Robust.Shared.Graphics;
-using Robust.Shared.IoC;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
-using Robust.Shared.Maths;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
-using Robust.Shared.ViewVariables;
 using SixLabors.ImageSharp.PixelFormats;
 
 namespace Content.Client.Viewport;
@@ -31,7 +25,9 @@ public sealed class ScalingViewport : Control, IViewportControl
     [Dependency] private readonly IEntityManager _entityManager = default!;
     [Dependency] private readonly IPlayerManager _playerManager = default!;
     [Dependency] private readonly IInputManager _inputManager = default!;
+    [Dependency] private readonly IUserInterfaceManager _uiManager = default!;
     [Dependency] private readonly IMapManager _mapManager = default!;
+    [Dependency] private readonly IResourceManager _resManager = default!;
     //[Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     private ZStackSystem? _zStack = default!;
 
@@ -198,7 +194,7 @@ public sealed class ScalingViewport : Control, IViewportControl
                 foreach (var toDraw in stack.Value.Comp.Maps)
                 {
                     if (first)
-                        _viewport!.ClearColor = Color.Magenta;
+                        _viewport!.ClearColor = Robust.Shared.Maths.Color.Magenta;
                     else
                         _viewport!.ClearColor = null;
 
