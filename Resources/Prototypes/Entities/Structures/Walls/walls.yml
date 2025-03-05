@@ -3,7 +3,7 @@
   parent: BaseStructure
   id: BaseWall
   name: basewall
-  description: Keeps the air in and the greytide out.
+  description: The greatest material barrier against danger.
   placement:
     mode: SnapgridCenter
     snap:
@@ -539,7 +539,7 @@
   id: WallPlastitaniumDiagonalIndestructible
   name: plastitanium wall
   suffix: diagonal, indestructible
-  description: Keeps the air in and the greytide out.
+  description: The greatest material barrier against danger.
   placement:
     mode: SnapgridCenter
     snap:
@@ -803,7 +803,7 @@
   id: WallShuttleDiagonal
   name: shuttle wall
   suffix: diagonal
-  description: Keeps the air in and the greytide out.
+  description: The greatest material barrier against danger.
   placement:
     mode: SnapgridCenter
     snap:
