@@ -10,7 +10,7 @@ public sealed partial class CCVars
     /// </summary>
     /// <seealso cref="ChatRateLimitCount"/>
     public static readonly CVarDef<float> ChatRateLimitPeriod =
-        CVarDef.Create("chat.rate_limit_period", 2f, CVar.SERVERONLY);
+        CVarDef.Create("finster_chat.rate_limit_period", 2f, CVar.SERVERONLY);
 
     /// <summary>
     ///     How many chat messages are allowed in a single rate limit period.
@@ -21,41 +21,41 @@ public sealed partial class CCVars
     /// </remarks>
     /// <seealso cref="ChatRateLimitPeriod"/>
     public static readonly CVarDef<int> ChatRateLimitCount =
-        CVarDef.Create("chat.rate_limit_count", 10, CVar.SERVERONLY);
+        CVarDef.Create("finster_chat.rate_limit_count", 10, CVar.SERVERONLY);
 
     /// <summary>
     ///     Minimum delay (in seconds) between notifying admins about chat message rate limit violations.
     ///     A negative value disables admin announcements.
     /// </summary>
     public static readonly CVarDef<int> ChatRateLimitAnnounceAdminsDelay =
-        CVarDef.Create("chat.rate_limit_announce_admins_delay", 15, CVar.SERVERONLY);
+        CVarDef.Create("finster_chat.rate_limit_announce_admins_delay", 15, CVar.SERVERONLY);
 
     public static readonly CVarDef<int> ChatMaxMessageLength =
-        CVarDef.Create("chat.max_message_length", 1000, CVar.SERVER | CVar.REPLICATED);
+        CVarDef.Create("finster_chat.max_message_length", 1000, CVar.SERVER | CVar.REPLICATED);
 
     public static readonly CVarDef<int> ChatMaxAnnouncementLength =
-        CVarDef.Create("chat.max_announcement_length", 256, CVar.SERVER | CVar.REPLICATED);
+        CVarDef.Create("finster_chat.max_announcement_length", 256, CVar.SERVER | CVar.REPLICATED);
 
     public static readonly CVarDef<bool> ChatSanitizerEnabled =
-        CVarDef.Create("chat.chat_sanitizer_enabled", true, CVar.SERVERONLY);
+        CVarDef.Create("finster_chat.chat_sanitizer_enabled", true, CVar.SERVERONLY);
 
     public static readonly CVarDef<bool> ChatShowTypingIndicator =
-        CVarDef.Create("chat.show_typing_indicator", true, CVar.ARCHIVE | CVar.REPLICATED | CVar.SERVER);
+        CVarDef.Create("finster_chat.show_typing_indicator", true, CVar.ARCHIVE | CVar.REPLICATED | CVar.SERVER);
 
     public static readonly CVarDef<bool> ChatEnableFancyBubbles =
-        CVarDef.Create("chat.enable_fancy_bubbles",
+        CVarDef.Create("finster_chat.enable_fancy_bubbles",
             false,
             CVar.CLIENTONLY | CVar.ARCHIVE,
             "Toggles displaying fancy speech bubbles, which display the speaking character's name.");
 
     public static readonly CVarDef<bool> ChatFancyNameBackground =
-        CVarDef.Create("chat.fancy_name_background",
+        CVarDef.Create("finster_chat.fancy_name_background",
             false,
             CVar.CLIENTONLY | CVar.ARCHIVE,
             "Toggles displaying a background under the speaking character's name.");
 
     public static readonly CVarDef<int> ChatStackLastLines =
-        CVarDef.Create("chat.chatstack_last_lines", 1, CVar.CLIENTONLY | CVar.ARCHIVE, "How far into the chat history to look when looking for similiar messages to coalesce them.");
+        CVarDef.Create("finster_chat.chatstack_last_lines", 1, CVar.CLIENTONLY | CVar.ARCHIVE, "How far into the chat history to look when looking for similiar messages to coalesce them.");
 
     /// <summary>
     ///     A message broadcast to each player that joins the lobby.
@@ -64,11 +64,11 @@ public sealed partial class CCVars
     ///     May be requested by any player through use of the "get-motd" command.
     /// </summary>
     public static readonly CVarDef<string> MOTD =
-        CVarDef.Create("chat.motd",
+        CVarDef.Create("finster_chat.motd",
             "",
             CVar.SERVER | CVar.SERVERONLY | CVar.ARCHIVE,
             "A message broadcast to each player that joins the lobby.");
 
     public static readonly CVarDef<bool> ChatPointingVisuals =
-        CVarDef.Create("chat.icon_pointing_enable", true, CVar.CLIENTONLY | CVar.ARCHIVE);
+        CVarDef.Create("finster_chat.icon_pointing_enable", true, CVar.CLIENTONLY | CVar.ARCHIVE);
 }

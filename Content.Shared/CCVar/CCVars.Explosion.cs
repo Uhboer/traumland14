@@ -12,7 +12,7 @@ public sealed partial class CCVars
     ///     unnaturally "slow" explosions.
     /// </remarks>
     public static readonly CVarDef<int> ExplosionTilesPerTick =
-        CVarDef.Create("explosion.tiles_per_tick", 100, CVar.SERVERONLY);
+        CVarDef.Create("finster_explosion.tiles_per_tick", 100, CVar.SERVERONLY);
 
     /// <summary>
     ///     Upper limit on the size of an explosion before physics-throwing is disabled.
@@ -23,7 +23,7 @@ public sealed partial class CCVars
     ///     incrementally.
     /// </remarks>
     public static readonly CVarDef<int> ExplosionThrowLimit =
-        CVarDef.Create("explosion.throw_limit", 400, CVar.SERVERONLY);
+        CVarDef.Create("finster_explosion.throw_limit", 400, CVar.SERVERONLY);
 
     /// <summary>
     ///     If this is true, explosion processing will pause the NodeGroupSystem to pause updating.
@@ -34,7 +34,7 @@ public sealed partial class CCVars
     ///     every tick as the explosion shreds the station, causing significant slowdown.
     /// </remarks>
     public static readonly CVarDef<bool> ExplosionSleepNodeSys =
-        CVarDef.Create("explosion.node_sleep", true, CVar.SERVERONLY);
+        CVarDef.Create("finster_explosion.node_sleep", true, CVar.SERVERONLY);
 
     /// <summary>
     ///     Upper limit on the total area that an explosion can affect before the neighbor-finding algorithm just
@@ -44,7 +44,7 @@ public sealed partial class CCVars
     ///     Actual area may be larger, as it currently doesn't terminate mid neighbor finding. I.e., area may be that of a ~51 tile radius circle instead.
     /// </remarks>
     public static readonly CVarDef<int> ExplosionMaxArea =
-        CVarDef.Create("explosion.max_area", (int)3.14f * 256 * 256, CVar.SERVERONLY);
+        CVarDef.Create("finster_explosion.max_area", (int)3.14f * 256 * 256, CVar.SERVERONLY);
 
     /// <summary>
     ///     Upper limit on the number of neighbor finding steps for the explosion system neighbor-finding algorithm.
@@ -54,7 +54,7 @@ public sealed partial class CCVars
     ///     instances, <see cref="ExplosionMaxArea"/> will likely be hit before this becomes a limiting factor.
     /// </remarks>
     public static readonly CVarDef<int> ExplosionMaxIterations =
-        CVarDef.Create("explosion.max_iterations", 500, CVar.SERVERONLY);
+        CVarDef.Create("finster_explosion.max_iterations", 500, CVar.SERVERONLY);
 
     /// <summary>
     ///     Max Time in milliseconds to spend processing explosions every tick.
@@ -65,7 +65,7 @@ public sealed partial class CCVars
     ///     spawning cannot currently be interrupted & resumed, and may lead to exceeding this time limit.
     /// </remarks>
     public static readonly CVarDef<float> ExplosionMaxProcessingTime =
-        CVarDef.Create("explosion.max_tick_time", 7f, CVar.SERVERONLY);
+        CVarDef.Create("finster_explosion.max_tick_time", 7f, CVar.SERVERONLY);
 
     /// <summary>
     ///     If the explosion is being processed incrementally over several ticks, this variable determines whether
@@ -77,13 +77,13 @@ public sealed partial class CCVars
     ///     expands, just suddenly at the end.
     /// </remarks>
     public static readonly CVarDef<bool> ExplosionIncrementalTileBreaking =
-        CVarDef.Create("explosion.incremental_tile", false, CVar.SERVERONLY);
+        CVarDef.Create("finster_explosion.incremental_tile", false, CVar.SERVERONLY);
 
     /// <summary>
     ///     This determines for how many seconds an explosion should stay visible once it has finished expanding.
     /// </summary>
     public static readonly CVarDef<float> ExplosionPersistence =
-        CVarDef.Create("explosion.persistence", 1.0f, CVar.SERVERONLY);
+        CVarDef.Create("finster_explosion.persistence", 1.0f, CVar.SERVERONLY);
 
     /// <summary>
     ///     If an explosion covers a larger area than this number, the damaging/processing will always start during
@@ -97,12 +97,12 @@ public sealed partial class CCVars
     ///     though most of the computational cost is still in the second tick.
     /// </remarks>
     public static readonly CVarDef<int> ExplosionSingleTickAreaLimit =
-        CVarDef.Create("explosion.single_tick_area_limit", 400, CVar.SERVERONLY);
+        CVarDef.Create("finster_explosion.single_tick_area_limit", 400, CVar.SERVERONLY);
 
     /// <summary>
     ///     Whether or not explosions are allowed to create tiles that have
     ///     <see cref="ContentTileDefinition.MapAtmosphere"/> set to true.
     /// </summary>
     public static readonly CVarDef<bool> ExplosionCanCreateVacuum =
-        CVarDef.Create("explosion.can_create_vacuum", true, CVar.SERVERONLY);
+        CVarDef.Create("finster_explosion.can_create_vacuum", true, CVar.SERVERONLY);
 }

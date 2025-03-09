@@ -18,11 +18,11 @@ public sealed partial class CCVars : CVars
     /// A simple toggle to test <c>OptionsVisualizerComponent</c>.
     /// </summary>
     public static readonly CVarDef<bool> DebugOptionVisualizerTest =
-        CVarDef.Create("debug.option_visualizer_test", false, CVar.CLIENTONLY);
+        CVarDef.Create("finster_debug.option_visualizer_test", false, CVar.CLIENTONLY);
 
     /// <summary>
     /// Set to true to disable parallel processing in the pow3r solver.
     /// </summary>
     public static readonly CVarDef<bool> DebugPow3rDisableParallel =
-        CVarDef.Create("debug.pow3r_disable_parallel", true, CVar.SERVERONLY);
+        CVarDef.Create("finster_debug.pow3r_disable_parallel", true, CVar.SERVERONLY);
 }

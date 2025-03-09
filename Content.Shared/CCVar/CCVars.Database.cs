@@ -5,10 +5,10 @@ namespace Content.Shared.CCVar;
 public sealed partial class CCVars
 {
     public static readonly CVarDef<string> DatabaseEngine =
-        CVarDef.Create("database.engine", "sqlite", CVar.SERVERONLY);
+        CVarDef.Create("finster_database.engine", "sqlite", CVar.SERVERONLY);
 
     public static readonly CVarDef<string> DatabaseSqliteDbPath =
-        CVarDef.Create("database.sqlite_dbpath", "preferences.db", CVar.SERVERONLY);
+        CVarDef.Create("finster_database.sqlite_dbpath", "preferences.db", CVar.SERVERONLY);
 
     /// <summary>
     /// Milliseconds to asynchronously delay all SQLite database acquisitions with.
@@ -19,7 +19,7 @@ public sealed partial class CCVars
     /// (because SQLite is not actually asynchronous normally)
     /// </remarks>
     public static readonly CVarDef<int> DatabaseSqliteDelay =
-        CVarDef.Create("database.sqlite_delay", DefaultSqliteDelay, CVar.SERVERONLY);
+        CVarDef.Create("finster_database.sqlite_delay", DefaultSqliteDelay, CVar.SERVERONLY);
 
     /// <summary>
     /// Amount of concurrent SQLite database operations.
@@ -30,7 +30,7 @@ public sealed partial class CCVars
     /// SQLite operations are normally ran on the thread pool, which may cause thread pool starvation if the concurrency is too high.
     /// </remarks>
     public static readonly CVarDef<int> DatabaseSqliteConcurrency =
-        CVarDef.Create("database.sqlite_concurrency", 3, CVar.SERVERONLY);
+        CVarDef.Create("finster_database.sqlite_concurrency", 3, CVar.SERVERONLY);
 
 #if DEBUG
     private const int DefaultSqliteDelay = 1;
@@ -40,25 +40,25 @@ public sealed partial class CCVars
 
 
     public static readonly CVarDef<string> DatabasePgHost =
-        CVarDef.Create("database.pg_host", "localhost", CVar.SERVERONLY);
+        CVarDef.Create("finster_database.pg_host", "localhost", CVar.SERVERONLY);
 
     public static readonly CVarDef<int> DatabasePgPort =
-        CVarDef.Create("database.pg_port", 5432, CVar.SERVERONLY);
+        CVarDef.Create("finster_database.pg_port", 5432, CVar.SERVERONLY);
 
     public static readonly CVarDef<string> DatabasePgDatabase =
-        CVarDef.Create("database.pg_database", "ss14", CVar.SERVERONLY);
+        CVarDef.Create("finster_database.pg_database", "ss14", CVar.SERVERONLY);
 
     public static readonly CVarDef<string> DatabasePgUsername =
-        CVarDef.Create("database.pg_username", "postgres", CVar.SERVERONLY);
+        CVarDef.Create("finster_database.pg_username", "postgres", CVar.SERVERONLY);
 
     public static readonly CVarDef<string> DatabasePgPassword =
-        CVarDef.Create("database.pg_password", "", CVar.SERVERONLY | CVar.CONFIDENTIAL);
+        CVarDef.Create("finster_database.pg_password", "", CVar.SERVERONLY | CVar.CONFIDENTIAL);
 
     /// <summary>
     /// Max amount of concurrent Postgres database operations.
     /// </summary>
     public static readonly CVarDef<int> DatabasePgConcurrency =
-        CVarDef.Create("database.pg_concurrency", 8, CVar.SERVERONLY);
+        CVarDef.Create("finster_database.pg_concurrency", 8, CVar.SERVERONLY);
 
     /// <summary>
     /// Milliseconds to asynchronously delay all PostgreSQL database operations with.
@@ -68,9 +68,9 @@ public sealed partial class CCVars
     /// as the lag is applied after acquiring the database lock.
     /// </remarks>
     public static readonly CVarDef<int> DatabasePgFakeLag =
-        CVarDef.Create("database.pg_fake_lag", 0, CVar.SERVERONLY);
+        CVarDef.Create("finster_database.pg_fake_lag", 0, CVar.SERVERONLY);
 
     // Basically only exists for integration tests to avoid race conditions.
     public static readonly CVarDef<bool> DatabaseSynchronous =
-        CVarDef.Create("database.sync", false, CVar.SERVERONLY);
+        CVarDef.Create("finster_database.sync", false, CVar.SERVERONLY);
 }

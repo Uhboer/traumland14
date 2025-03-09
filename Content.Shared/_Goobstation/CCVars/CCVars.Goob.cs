@@ -11,7 +11,7 @@ public sealed partial class GoobCVars
     ///     Whether or not players can use mech guns outside of mechs.
     /// </summary>
     public static readonly CVarDef<bool> MechGunOutsideMech =
-        CVarDef.Create("mech.gun_outside_mech", true, CVar.SERVER | CVar.REPLICATED);
+        CVarDef.Create("finster_mech.gun_outside_mech", true, CVar.SERVER | CVar.REPLICATED);
 
     #endregion
 }

@@ -9,13 +9,13 @@ public sealed partial class CCVars
     ///     false.
     /// </summary>
     public static readonly CVarDef<bool> ReplayRecordAdminChat =
-        CVarDef.Create("replay.record_admin_chat", false, CVar.ARCHIVE);
+        CVarDef.Create("finster_replay.record_admin_chat", false, CVar.ARCHIVE);
 
     /// <summary>
     ///     Automatically record full rounds as replays.
     /// </summary>
     public static readonly CVarDef<bool> ReplayAutoRecord =
-        CVarDef.Create("replay.auto_record", false, CVar.SERVERONLY);
+        CVarDef.Create("finster_replay.auto_record", false, CVar.SERVERONLY);
 
     /// <summary>
     ///     The file name to record automatic replays to. The path is relative to <see cref="CVars.ReplayDirectory"/>.
@@ -29,7 +29,7 @@ public sealed partial class CCVars
     /// </para>
     /// </remarks>
     public static readonly CVarDef<string> ReplayAutoRecordName =
-        CVarDef.Create("replay.auto_record_name",
+        CVarDef.Create("finster_replay.auto_record_name",
             "{year}_{month}_{day}-{hour}_{minute}-round_{round}.zip",
             CVar.SERVERONLY);
 
@@ -39,5 +39,5 @@ public sealed partial class CCVars
     ///     Unless this path is rooted, it will be relative to <see cref="CVars.ReplayDirectory"/>.
     /// </summary>
     public static readonly CVarDef<string> ReplayAutoRecordTempDir =
-        CVarDef.Create("replay.auto_record_temp_dir", "", CVar.SERVERONLY);
+        CVarDef.Create("finster_replay.auto_record_temp_dir", "", CVar.SERVERONLY);
 }

@@ -17,17 +17,17 @@ public sealed partial class CCVars
 #endif
     */
     public static readonly CVarDef<bool> MoodEnabled =
-        CVarDef.Create("mood.enabled", true, CVar.SERVER);
+        CVarDef.Create("finster_mood.enabled", true, CVar.SERVER);
 
     public static readonly CVarDef<bool> MoodIncreasesSpeed =
-        CVarDef.Create("mood.increases_speed", true, CVar.SERVER);
+        CVarDef.Create("finster_mood.increases_speed", true, CVar.SERVER);
 
     public static readonly CVarDef<bool> MoodDecreasesSpeed =
-        CVarDef.Create("mood.decreases_speed", true, CVar.SERVER);
+        CVarDef.Create("finster_mood.decreases_speed", true, CVar.SERVER);
 
     public static readonly CVarDef<bool> MoodModifiesThresholds =
-        CVarDef.Create("mood.modify_thresholds", false, CVar.SERVER);
+        CVarDef.Create("finster_mood.modify_thresholds", false, CVar.SERVER);
 
     public static readonly CVarDef<bool> MoodVisualEffects =
-        CVarDef.Create("mood.visual_effects", false, CVar.CLIENTONLY | CVar.ARCHIVE);
+        CVarDef.Create("finster_mood.visual_effects", false, CVar.CLIENTONLY | CVar.ARCHIVE);
 }

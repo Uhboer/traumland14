@@ -8,5 +8,5 @@ public sealed partial class CCVars
     ///     Whether or not a Material Reclaimer is allowed to eat people when emagged.
     /// </summary>
     public static readonly CVarDef<bool> ReclaimerAllowGibbing =
-        CVarDef.Create("reclaimer.allow_gibbing", true, CVar.SERVER);
+        CVarDef.Create("finster_reclaimer.allow_gibbing", true, CVar.SERVER);
 }
