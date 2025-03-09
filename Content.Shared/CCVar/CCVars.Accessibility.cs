@@ -9,7 +9,7 @@ public sealed partial class CCVars
     ///     Goes from to 0 (completely transparent) to 1 (completely opaque)
     /// </summary>
     public static readonly CVarDef<float> ChatWindowOpacity =
-        CVarDef.Create("accessibility.chat_window_transparency", 0.85f, CVar.CLIENTONLY | CVar.ARCHIVE);
+        CVarDef.Create("finster_accessibility.chat_window_transparency", 0.85f, CVar.CLIENTONLY | CVar.ARCHIVE);
 
     /// <summary>
     ///     Toggle for visual effects that may potentially cause motion sickness.
@@ -17,10 +17,10 @@ public sealed partial class CCVars
     ///     Please do not use this CVar as a bandaid for effects that could otherwise be made accessible without issue.
     /// </summary>
     public static readonly CVarDef<bool> ReducedMotion =
-        CVarDef.Create("accessibility.reduced_motion", false, CVar.REPLICATED | CVar.SERVER);
+        CVarDef.Create("finster_accessibility.reduced_motion", false, CVar.REPLICATED | CVar.SERVER);
 
     public static readonly CVarDef<bool> ChatEnableColorName =
-        CVarDef.Create("accessibility.enable_color_name",
+        CVarDef.Create("finster_accessibility.enable_color_name",
             true,
             CVar.REPLICATED | CVar.SERVER,
             "Toggles displaying names with individual colors.");
@@ -30,18 +30,18 @@ public sealed partial class CCVars
     ///     Goes from 0 (no recoil at all) to 1 (regular amounts of recoil)
     /// </summary>
     public static readonly CVarDef<float> ScreenShakeIntensity =
-        CVarDef.Create("accessibility.screen_shake_intensity", 0.10f, CVar.REPLICATED | CVar.SERVER);
+        CVarDef.Create("finster_accessibility.screen_shake_intensity", 0.10f, CVar.REPLICATED | CVar.SERVER);
 
     /// <summary>
     ///     A generic toggle for various visual effects that are color sensitive.
     ///     As of 2/16/24, only applies to progress bar colors.
     /// </summary>
     public static readonly CVarDef<bool> AccessibilityColorblindFriendly =
-        CVarDef.Create("accessibility.colorblind_friendly", false, CVar.REPLICATED | CVar.SERVER);
+        CVarDef.Create("finster_accessibility.colorblind_friendly", false, CVar.REPLICATED | CVar.SERVER);
 
     /// <summary>
     /// Disables all vision filters for species like Vulpkanin or Harpies. There are good reasons someone might want to disable these.
     /// </summary>
     public static readonly CVarDef<bool> NoVisionFilters =
-        CVarDef.Create("accessibility.no_vision_filters", false, CVar.REPLICATED | CVar.SERVER);
+        CVarDef.Create("finster_accessibility.no_vision_filters", false, CVar.REPLICATED | CVar.SERVER);
 }

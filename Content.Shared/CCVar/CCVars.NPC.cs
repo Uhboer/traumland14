@@ -5,12 +5,12 @@ namespace Content.Shared.CCVar;
 public sealed partial class CCVars
 {
     public static readonly CVarDef<int> NPCMaxUpdates =
-        CVarDef.Create("npc.max_updates", 128);
+        CVarDef.Create("finster_npc.max_updates", 128);
 
-    public static readonly CVarDef<bool> NPCEnabled = CVarDef.Create("npc.enabled", true);
+    public static readonly CVarDef<bool> NPCEnabled = CVarDef.Create("finster_npc.enabled", true);
 
     /// <summary>
     ///     Should NPCs pathfind when steering. For debug purposes.
     /// </summary>
-    public static readonly CVarDef<bool> NPCPathfinding = CVarDef.Create("npc.pathfinding", true);
+    public static readonly CVarDef<bool> NPCPathfinding = CVarDef.Create("finster_npc.pathfinding", true);
 }

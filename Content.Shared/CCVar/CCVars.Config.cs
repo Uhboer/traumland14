@@ -16,7 +16,7 @@ public sealed partial class CCVars
     ///     Only the file name (without extension) must be given for this variable.
     /// </remarks>
     public static readonly CVarDef<string> ConfigPresets =
-        CVarDef.Create("config.presets", "", CVar.SERVERONLY);
+        CVarDef.Create("finster_config.presets", "", CVar.SERVERONLY);
 
     /// <summary>
     ///     Whether to load the preset development CVars.
@@ -24,12 +24,12 @@ public sealed partial class CCVars
     ///     Even when true, these are only loaded if the game is compiled with <c>DEVELOPMENT</c> set.
     /// </summary>
     public static readonly CVarDef<bool> ConfigPresetDevelopment =
-        CVarDef.Create("config.preset_development", true, CVar.SERVERONLY);
+        CVarDef.Create("finster_config.preset_development", true, CVar.SERVERONLY);
 
     /// <summary>
     ///     Whether to load the preset debug CVars.
     ///     Even when true, these are only loaded if the game is compiled with <c>DEBUG</c> set.
     /// </summary>
     public static readonly CVarDef<bool> ConfigPresetDebug =
-        CVarDef.Create("config.preset_debug", true, CVar.SERVERONLY);
+        CVarDef.Create("finster_config.preset_debug", true, CVar.SERVERONLY);
 }

@@ -28,6 +28,7 @@ public sealed class ScalingViewport : Control, IViewportControl
     [Dependency] private readonly IUserInterfaceManager _uiManager = default!;
     [Dependency] private readonly IMapManager _mapManager = default!;
     [Dependency] private readonly IResourceManager _resManager = default!;
+    [Dependency] private readonly IEyeManager _eyeManager = default!;
     //[Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     private ZStackSystem? _zStack = default!;
 
@@ -262,6 +263,35 @@ public sealed class ScalingViewport : Control, IViewportControl
         _viewport.RenderScreenOverlaysAbove(renderHandle, this, drawBoxGlobal);
     }
 
+    public bool TryFindEmptyTiles(EntityUid mapUid, MapId mapId)
+    {
+        var drawBox = GetDrawBox();
+
+        var mapCoordsBottomLeft = _eyeManager.ScreenToMap(drawBox.BottomLeft);
+        var mapCoordsTopRight = _eyeManager.ScreenToMap(drawBox.TopRight);
+
+        if (!_mapManager.TryFindGridAt(mapUid, mapCoordsBottomLeft.Position, out var ent, out var grid))
+            return false;
+
+        var tileBottomLeft = grid.TileIndicesFor(mapCoordsBottomLeft);
+        var tileTopRight = grid.TileIndicesFor(mapCoordsTopRight);
+
+        for (int x = tileBottomLeft.X; x <= tileTopRight.X; x++)
+        {
+            for (int y = tileBottomLeft.Y; y <= tileTopRight.Y; y++)
+            {
+                var tile = grid.GetTileRef(new Vector2i(x, y));
+
+                if (tile.Tile.IsEmpty)
+                {
+                    return true; // So, tile is empty, then we should render layers
+                }
+            }
+        }
+
+        return false; // No layers? Then do not render layers
+    }
+
     /// <summary>
     ///
     /// </summary>
@@ -310,7 +340,7 @@ public sealed class ScalingViewport : Control, IViewportControl
 
         if (FixedStretchSize == null)
         {
-            var (ratioX, ratioY) = ourSize / vpSize;
+            var (ratioX, ratioY) = ourSize / new Vector2(vpSize.X, vpSizeSized.Y);
             var ratio = 1f;
             switch (_ignoreDimension)
             {

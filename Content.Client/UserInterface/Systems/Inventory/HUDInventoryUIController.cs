@@ -13,6 +13,8 @@ using Content.Client.UserInterface.Systems.Inventory.Controls;
 using Content.Client.UserInterface.Systems.Inventory.Widgets;
 using Content.Client.UserInterface.Systems.Inventory.Windows;
 using Content.Client.UserInterface.Systems.Storage;
+using Content.Client.UserInterface.Systems.Viewport;
+using Content.Shared.CCVar;
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Hands;
 using Content.Shared.Hands.Components;
@@ -20,6 +22,7 @@ using Content.Shared.Input;
 using Content.Shared.Inventory.VirtualItem;
 using Content.Shared.Storage;
 using Robust.Client.GameObjects;
+using Robust.Client.Graphics;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controllers;
 using Robust.Client.UserInterface.Controls;
@@ -87,7 +90,7 @@ public sealed class HUDInventoryUIController : UIController, IOnStateEntered<Gam
         InventoryPanel.Texture = _vpUIManager.GetTexturePath("/Textures/Interface/Default/down_panel_background_full.png");
         if (InventoryPanel.Texture is not null)
             InventoryPanel.Size = (InventoryPanel.Texture.Size.X, InventoryPanel.Texture.Size.Y);
-        InventoryPanel.Position = (0, 32 * (15 - 1)); // fucking calculus
+        InventoryPanel.Position = (0, EyeManager.PixelsPerMeter * ViewportUIController.ViewportHeight); // fucking calculus
 
         _vpUIManager.Root.AddChild(InventoryPanel);
         // VPGui edit end
@@ -185,11 +188,13 @@ public sealed class HUDInventoryUIController : UIController, IOnStateEntered<Gam
             return;
         }
 
-        if (args.Function == EngineKeyFunctions.TextCursorSelect) // (args.Function == ContentKeyFunctions.ExamineEntity)
+        if (args.Function == EngineKeyFunctions.TextCursorSelect ||
+            args.Function == ContentKeyFunctions.ExamineEntity)
         {
             _inventorySystem.UIInventoryExamine(slot, _playerUid.Value);
         }
-        else if (args.Function == EngineKeyFunctions.UIRightClick) // (args.Function == EngineKeyFunctions.UseSecondary)
+        else if (args.Function == EngineKeyFunctions.UIRightClick ||
+            args.Function == EngineKeyFunctions.UseSecondary)
         {
             _inventorySystem.UIInventoryOpenContextMenu(slot, _playerUid.Value);
         }
@@ -220,7 +225,8 @@ public sealed class HUDInventoryUIController : UIController, IOnStateEntered<Gam
         {
             _handsSystem.UIHandClick(_playerHandsComponent, hand.SlotName);
         }
-        else if (args.Function == EngineKeyFunctions.UIRightClick) // (args.Function == EngineKeyFunctions.UseSecondary)
+        else if (args.Function == EngineKeyFunctions.UIRightClick ||
+            args.Function == EngineKeyFunctions.UseSecondary)
         {
             _handsSystem.UIHandOpenContextMenu(hand.SlotName);
         }
@@ -232,7 +238,8 @@ public sealed class HUDInventoryUIController : UIController, IOnStateEntered<Gam
         {
             _handsSystem.UIHandAltActivateItem(hand.SlotName);
         }
-        else if (args.Function == EngineKeyFunctions.TextCursorSelect) // (args.Function == ContentKeyFunctions.ExamineEntity)
+        else if (args.Function == EngineKeyFunctions.TextCursorSelect ||
+            args.Function == ContentKeyFunctions.ExamineEntity)
         {
             _handsSystem.UIInventoryExamine(hand.SlotName);
         }

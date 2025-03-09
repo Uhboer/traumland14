@@ -1,29 +1,29 @@
-﻿[game]
+﻿[finster_game]
 # Straight in-game baby
 lobbyenabled = false
 # Dev map for faster loading & convenience
 map = "FinsterDevMap"
 role_timers = false
 
-[gateway]
+[finster_gateway]
 generator_enabled = false
 
 [physics]
 # Makes mapping annoying
 grid_splitting = false
 
-[procgen]
+[finster_procgen]
 preload = false
 
-[salvage]
+[finster_salvage]
 expedition_cooldown = 30.0
 
-[shuttle]
+[finster_shuttle]
 grid_fill = false
 auto_call_time = 0
 emergency = false
 arrivals = false
 preload_grids = false
 
-[admin]
+[finster_admin]
 see_own_notes = true
