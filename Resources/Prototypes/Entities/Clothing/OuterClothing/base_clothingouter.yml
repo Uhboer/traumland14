@@ -156,6 +156,7 @@
   - type: Item
     size: Ginormous
   - type: Armor
+    protectedArea: FullBodyHandsFeet # WWDP
     modifiers:
       coefficients:
         Blunt: 0.90

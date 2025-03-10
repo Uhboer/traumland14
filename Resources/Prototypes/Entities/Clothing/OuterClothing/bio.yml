@@ -10,6 +10,7 @@
   - type: Clothing
     sprite: Clothing/OuterClothing/Bio/general.rsi
   - type: Armor
+    protectedArea: FullBody # WWDP
     modifiers:
       coefficients:
         Caustic: 0.5
