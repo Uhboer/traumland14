@@ -77,7 +77,7 @@ namespace Content.Shared.Examine
             }
             message.AddMessage(GetFormattedMessageFromExamineEntries(group.Entries));
 
-            SendExamineTooltip(user, target, message, false, false);
+            SendExamineMessage(user, target, message, false, false);
         }
 
         /// <returns>A FormattedMessage based on all <paramref name="entries"/>, sorted.</returns>
@@ -144,7 +144,7 @@ namespace Content.Shared.Examine
             {
                 Act = () =>
                 {
-                    SendExamineTooltip(verbsEvent.User, verbsEvent.Target, formattedMessage, false, false);
+                    SendExamineMessage(verbsEvent.User, verbsEvent.Target, formattedMessage, false, false);
                 },
                 Text = verbText,
                 Message = hoverMessage,

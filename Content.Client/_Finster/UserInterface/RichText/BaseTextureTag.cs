@@ -61,10 +61,10 @@ public abstract class BaseTextureTag : IMarkupTag
 
         stringUid = ClearString(stringUid);
 
-        if (!EntityUid.TryParse(stringUid, out var entityUid))
+        if (!NetEntity.TryParse(stringUid, out var netEntity))
             return false;
 
-        spriteView.SetEntity(entityUid);
+        spriteView.SetEntity(netEntity);
         spriteView.Scale = new Vector2(2, 2);
 
         control = spriteView;

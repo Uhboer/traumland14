@@ -87,9 +87,9 @@ public sealed class PopupMessageSystem : EntitySystem
         if (!_examine.InRangeUnOccluded(_player.LocalEntity.Value, Transform(ent).Coordinates, 10))
             return;
         */
-
+        var netEntity = GetNetEntity(ent);
         var fontsize = _fontSizeDict.GetValueOrDefault(type, FontSize);
-        var tag = Loc.GetString("ent-texture-tag", ("id", ent.Id), ("size", fontsize));
+        var tag = Loc.GetString("ent-texture-tag", ("id", netEntity.Id), ("size", fontsize));
         DoMessage(message, type, tag, true);
     }
 }

@@ -49,7 +49,7 @@ public sealed partial class ConstructionSystem
         {
             Act = () =>
             {
-                _examineSystem.SendExamineTooltip(args.User, uid, markup, getVerbs: false, centerAtCursor: false);
+                _examineSystem.SendExamineMessage(args.User, uid, markup, getVerbs: false, centerAtCursor: false);
             },
             Text = Loc.GetString("machine-upgrade-examinable-verb-text"),
             Message = Loc.GetString("machine-upgrade-examinable-verb-message"),

@@ -1,4 +1,5 @@
 ﻿using Content.Server.Chat.Managers;
+using Content.Server.Examine;
 using Content.Shared.Alert;
 using Content.Shared.Chat;
 using Content.Shared.Damage;
@@ -20,6 +21,7 @@ public sealed partial class CheckHealth : IAlertClick
         var playerManager = IoCManager.Resolve<IPlayerManager>();
 
         var healthExaminableSystem = entityManager.System<HealthExaminableSystem>();
+        var examineSystem = entityManager.System<ExamineSystem>();
 
         if (!entityManager.TryGetComponent(player, out HealthExaminableComponent? healthExaminable) ||
             !entityManager.TryGetComponent(player, out DamageableComponent? damageable) ||
@@ -27,18 +29,9 @@ public sealed partial class CheckHealth : IAlertClick
             return;
 
         var baseMsg = Loc.GetString("health-alert-start");
-        SendMessage(chatManager, baseMsg, session);
-        var markup = healthExaminableSystem.GetMarkup(player, (player, healthExaminable), damageable).ToMarkup();
-        SendMessage(chatManager, markup, session);
-    }
-
-    private static void SendMessage(IChatManager chatManager, string msg, ICommonSession session)
-    {
-        chatManager.ChatMessageToOne(ChatChannel.Emotes,
-            msg,
-            msg,
-            EntityUid.Invalid,
-            false,
-            session.Channel);
+        var markup = healthExaminableSystem.GetMarkup(player, (player, healthExaminable), damageable);
+        if (markup is null)
+            return;
+        examineSystem.SendExamineMessage(player, player, markup, false, false, baseMsg);
     }
 }

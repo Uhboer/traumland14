@@ -29,7 +29,7 @@ namespace Content.Server.DetailExaminable
                 {
                     var markup = new FormattedMessage();
                     markup.AddMarkup(component.Content);
-                    _examineSystem.SendExamineTooltip(args.User, uid, markup, false, false);
+                    _examineSystem.SendExamineMessage(args.User, uid, markup, false, false);
                 },
                 Text = Loc.GetString("detail-examinable-verb-text"),
                 Category = VerbCategory.Examine,

@@ -35,7 +35,7 @@ public sealed class HealthExaminableSystem : EntitySystem
             Act = () =>
             {
                 var markup = GetMarkup(args.User, (uid, component), damage);
-                _examineSystem.SendExamineTooltip(args.User, uid, markup, false, false);
+                _examineSystem.SendExamineMessage(args.User, uid, markup, false, false);
             },
             Text = Loc.GetString("health-examinable-verb-text"),
             Category = VerbCategory.Examine,

@@ -872,7 +872,7 @@ public abstract partial class SharedSolutionContainerSystem : EntitySystem
             Act = () =>
             {
                 var markup = GetSolutionExamine(solutionHolder);
-                ExamineSystem.SendExamineTooltip(user, target, markup, false, false);
+                ExamineSystem.SendExamineMessage(user, target, markup, false, false);
             },
             Text = Loc.GetString("scannable-solution-verb-text"),
             Message = Loc.GetString("scannable-solution-verb-message"),
