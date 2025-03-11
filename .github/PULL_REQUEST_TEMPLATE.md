@@ -20,11 +20,3 @@ Description.
 </details>
 
 ---
-
-# Changelog
-
-:cl:
-- add: Added fun :D
-- tweak: Tweaked fun
-- fix: Fixed fun!
-- remove: Removed fun :(
