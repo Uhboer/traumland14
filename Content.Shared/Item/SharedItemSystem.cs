@@ -122,8 +122,10 @@ public abstract class SharedItemSystem : EntitySystem
     private void OnExamine(EntityUid uid, ItemComponent component, ExaminedEvent args)
     {
         // show at end of message generally
-        args.PushMarkup(Loc.GetString("item-component-on-examine-size" + "\n",
-            ("size", GetItemSizeLocale(component.Size))), priority: -1);
+        var text = Loc.GetString("item-component-on-examine-size",
+            ("size", GetItemSizeLocale(component.Size)));
+        text += "\n";
+        args.PushMarkup(text, priority: -1);
     }
 
     public ItemSizePrototype GetSizePrototype(ProtoId<ItemSizePrototype> id)
