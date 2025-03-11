@@ -126,7 +126,8 @@
     baseDamage:
       types:
         Blunt: 30
-
+  - type: Hearing # WWDP
+  - type: CombatLogs # WWDP
 
 # Used for mobs that can enter combat mode and can attack.
 - type: entity
