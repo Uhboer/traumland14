@@ -11,6 +11,7 @@ namespace Content.Client._Finster.UserInterface.Controls;
 public sealed class CustomOutputPanel : Control
 {
     [Dependency] private readonly MarkupTagManager _tagManager = default!;
+    [Dependency] private readonly IEntityManager _entManager = default!;
 
     public const string StylePropertyStyleBox = "stylebox";
 
@@ -45,7 +46,7 @@ public sealed class CustomOutputPanel : Control
 
     public void UpdateLastMessage(FormattedMessage message)
     {
-        var newEnt = new CustomRichTextEntry(message, this, _tagManager, null);
+        var newEnt = new CustomRichTextEntry(message, this, _tagManager, _entManager, null);
         newEnt.Update(_tagManager, _getFont(), _getContentBox().Width, UIScale);
         _entries[_entries.Count - 1] = newEnt;
     }
@@ -94,7 +95,7 @@ public sealed class CustomOutputPanel : Control
 
     public void AddMessage(FormattedMessage message)
     {
-        var entry = new CustomRichTextEntry(message, this, _tagManager, null);
+        var entry = new CustomRichTextEntry(message, this, _tagManager, _entManager, null);
 
         entry.Update(_tagManager, _getFont(), _getContentBox().Width, UIScale);
 

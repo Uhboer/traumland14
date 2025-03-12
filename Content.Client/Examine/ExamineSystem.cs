@@ -168,7 +168,7 @@ namespace Content.Client.Examine
             // TODO: For now BaseTextureTag is broken with chat stack.
             // But also, for now i don't wanna use, so if i want use textures
             // then i should fix it, instead of ignoring stacks
-            chatMsg.IgnoreChatStack = true;
+            //chatMsg.IgnoreChatStack = true;
 
             _ui.GetUIController<ChatUIController>().ProcessChatMessage(chatMsg);
         }

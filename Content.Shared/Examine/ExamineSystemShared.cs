@@ -272,6 +272,7 @@ namespace Content.Shared.Examine
             PushFont(ref message);
 
             message.PushNewline();
+            message.PushTag(new MarkupNode("examineborder", null, null)); // border
 
             // Push entity name
             var entityName = Name(entity);
@@ -311,6 +312,7 @@ namespace Content.Shared.Examine
             PushLine(ref newMessage);
             newMessage.PushNewline();
 
+            newMessage.Pop(); // border
             // pop font & size tag
             newMessage.Pop();
 

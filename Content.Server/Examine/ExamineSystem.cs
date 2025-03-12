@@ -47,6 +47,7 @@ namespace Content.Server.Examine
             // And add some customizations
             PushFont(ref newMessage);
             newMessage.PushNewline();
+            newMessage.PushTag(new MarkupNode("examineborder", null, null)); // border
             if (titleName is not null)
                 PushTitleLine(ref newMessage, titleName);
             else if (player == target)
@@ -63,6 +64,7 @@ namespace Content.Server.Examine
             newMessage.PushNewline();
             PushLine(ref newMessage);
             newMessage.PushNewline();
+            newMessage.Pop(); // border
             newMessage.Pop();
 
             var ev = new ExamineSystemMessages.ExamineInfoResponseMessage(
