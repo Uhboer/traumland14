@@ -19,6 +19,8 @@ using Robust.Server.Player;
 using Robust.Shared.Player;
 using Robust.Shared.Configuration;
 using Content.Shared.CCVar;
+using Content.Server.Examine;
+using Robust.Shared.Utility;
 
 namespace Content.Server.Mood;
 
@@ -404,14 +406,15 @@ public sealed partial class ShowMoodEffects : IAlertClick
         var chatManager = IoCManager.Resolve<IChatManager>();
         var playerManager = IoCManager.Resolve<IPlayerManager>();
 
+        var examineSystem = entityManager.System<ExamineSystem>();
+
         if (!entityManager.TryGetComponent<MoodComponent>(uid, out var comp)
             || comp.CurrentMoodThreshold == MoodThreshold.Dead
             || !playerManager.TryGetSessionByEntity(uid, out var session))
             return;
 
-        var msgStart = Loc.GetString("mood-show-effects-start");
-        chatManager.ChatMessageToOne(ChatChannel.Emotes, msgStart, msgStart, EntityUid.Invalid, false,
-            session.Channel);
+        var titleMsg = Loc.GetString("mood-show-effects-start");
+        var message = new FormattedMessage();
 
         foreach (var (_, protoId) in comp.CategorisedEffects)
         {
@@ -419,7 +422,8 @@ public sealed partial class ShowMoodEffects : IAlertClick
                 || proto.Hidden)
                 continue;
 
-            SendDescToChat(proto, session);
+            message.AddText(GetDescription(proto));
+            message.PushNewline();
         }
 
         foreach (var (protoId, _) in comp.UncategorisedEffects)
@@ -428,23 +432,18 @@ public sealed partial class ShowMoodEffects : IAlertClick
                 || proto.Hidden)
                 continue;
 
-            SendDescToChat(proto, session);
+            message.AddText(GetDescription(proto));
+            message.PushNewline();
         }
+
+        examineSystem.SendExamineMessage(uid, uid, message, false, false, titleMsg);
     }
 
-    private void SendDescToChat(MoodEffectPrototype proto, ICommonSession session)
+    private string GetDescription(MoodEffectPrototype proto)
     {
-        var chatManager = IoCManager.Resolve<IChatManager>();
-
         var color = (proto.MoodChange > 0) ? "#008000" : "#BA0000";
-        var msg = $"[font size=10][color={color}]{proto.Description}[/color][/font]";
+        var msg = $"[color={color}]{proto.Description}[/color]";
 
-        chatManager.ChatMessageToOne(
-            ChatChannel.Emotes,
-            msg,
-            msg,
-            EntityUid.Invalid,
-            false,
-            session.Channel);
+        return msg;
     }
 }

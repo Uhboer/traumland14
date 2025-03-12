@@ -25,6 +25,23 @@ namespace Content.Server._White.Examine
         [Dependency] private readonly INetConfigurationManager _netConfigManager = default!;
 
 
+        public static Dictionary<string, string> SlotLabels = new Dictionary<string, string>
+            {
+                { "head", "head-" },
+                { "eyes", "eyes-" },
+                { "mask", "mask-" },
+                { "neck", "neck-" },
+                { "ears", "ears-" },
+                { "jumpsuit", "jumpsuit-" },
+                { "pants", "pants-" },
+                { "outerClothing", "outer-" },
+                { "back", "back-" },
+                { "gloves", "gloves-" },
+                { "belt", "belt-" },
+                { "shoes", "shoes-" }
+            };
+
+
         public override void Initialize()
         {
             SubscribeLocalEvent<ExaminableClothesComponent, ExaminedEvent>(HandleExamine);
@@ -45,47 +62,20 @@ namespace Content.Server._White.Examine
         {
             var infoLines = new List<string>();
 
-            var name = Name(uid);
-
             var ev = new SeeIdentityAttemptEvent();
             RaiseLocalEvent(uid, ev);
-            if (ev.Cancelled)
-            {
-                if (_idCard.TryFindIdCard(uid, out var id) && !string.IsNullOrWhiteSpace(id.Comp.FullName))
-                {
-                    name = id.Comp.FullName;
-                }
-                else
-                {
-                    name = Loc.GetString("examine-uknown");
-                }
-            }
-            infoLines.Add($"{Loc.GetString("examine-present")} [bold]{name}[/bold]!");
 
             var idInfoString = GetInfo(uid);
             if (!string.IsNullOrEmpty(idInfoString))
             {
-                infoLines.Add(idInfoString);
+                //infoLines.Add(idInfoString);
                 args.PushMarkup(idInfoString);
             }
 
-            var slotLabels = new Dictionary<string, string>
-            {
-                { "head", "head-" },
-                { "eyes", "eyes-" },
-                { "mask", "mask-" },
-                { "neck", "neck-" },
-                { "ears", "ears-" },
-                { "jumpsuit", "jumpsuit-" },
-                { "pants", "pants-" },
-                { "outerClothing", "outer-" },
-                { "back", "back-" },
-                { "gloves", "gloves-" },
-                { "belt", "belt-" },
-                { "shoes", "shoes-" }
-            };
+            var examinedSlots = 0;
+            string markup = "";
 
-            foreach (var slotEntry in slotLabels)
+            foreach (var slotEntry in SlotLabels)
             {
                 var slotName = slotEntry.Key;
                 var slotLabel = slotEntry.Value;
@@ -114,18 +104,38 @@ namespace Content.Server._White.Examine
 
                 if (_entityManager.TryGetComponent<MetaDataComponent>(slotEntity, out var metaData))
                 {
-                    var item = $"{Loc.GetString(slotLabel)} [bold]{metaData.EntityName}[/bold].";
-                    args.PushMarkup(item);
-                    infoLines.Add(item);
+                    examinedSlots++;
+                    var item = $"{Loc.GetString(slotLabel)} [color=paleturquoise][bold]{metaData.EntityName}[/bold][/color].\n";
+                    markup += item;
+                    //infoLines.Add(item);
                 }
             }
 
-            var combinedInfo = string.Join("\n", infoLines);
+            if (markup != string.Empty)
+                args.PushMarkup(markup, -2);
 
-            if (TryComp(args.Examiner, out ActorComponent? actorComponent))
+            //var combinedInfo = string.Join("\n", infoLines);
+
+            //if (TryComp(args.Examiner, out ActorComponent? actorComponent))
+            //{
+            //    SendNoticeMessage(actorComponent, combinedInfo);
+            //}
+        }
+
+        private int GetUsedSlotsCount(EntityUid uid)
+        {
+            var slots = 0;
+            foreach (var slotEntry in SlotLabels)
             {
-                SendNoticeMessage(actorComponent, combinedInfo);
+                var slotName = slotEntry.Key;
+
+                if (!_inventorySystem.TryGetSlotEntity(uid, slotName, out var slotEntity))
+                    continue;
+
+                slots++;
             }
+
+            return slots;
         }
 
         private string GetInfo(EntityUid uid)

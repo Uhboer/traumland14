@@ -26,6 +26,8 @@ public class StaticSpriteView : Control
     [ViewVariables]
     public NetEntity? NetEnt { get; private set; }
 
+    public bool IsVisible { get; set; } = true;
+
     /// <summary>
     /// This field configures automatic scaling of the sprite. This automatic scaling is done before
     /// applying the explicitly set scale <see cref="SunriseStaticSpriteView.Scale"/>.

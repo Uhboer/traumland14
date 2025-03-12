@@ -45,9 +45,15 @@ namespace Content.Shared.Examine
         protected const float ExamineBlurrinessMult = 2.5f;
 
         /// <summary>
-        ///     Creates a new examine tooltip with arbitrary info.
+        ///     Creates a new examine with arbitrary info.
         /// </summary>
-        public abstract void SendExamineTooltip(EntityUid player, EntityUid target, FormattedMessage message, bool getVerbs, bool centerAtCursor);
+        public abstract void SendExamineMessage(
+                EntityUid player,
+                EntityUid target,
+                FormattedMessage message,
+                bool getVerbs,
+                bool centerAtCursor,
+                string? titleName = null);
 
         public bool IsInDetailsRange(EntityUid examiner, EntityUid entity)
         {
@@ -262,16 +268,35 @@ namespace Content.Shared.Examine
                 return message;
             }
 
+            // Push custom font
+            PushFont(ref message);
+
+            message.PushNewline();
+            message.PushTag(new MarkupNode("examineborder", null, null)); // border
+
+            // Push entity name
+            var entityName = Name(entity);
+            if (entityName is not null && entity != examiner)
+                PushEntityNameLine(ref message, entity, entityName);
+            else if (entity == examiner)
+                PushExamineYourselfLine(ref message);
+
+            // And aad border line
+            message.PushNewline();
+            PushLine(ref message);
+            message.PushNewline();
+
             var hasDescription = false;
 
             //Add an entity description if one is declared
-            if (!string.IsNullOrEmpty(EntityManager.GetComponent<MetaDataComponent>(entity).EntityDescription))
+            var entDesc = EntityManager.GetComponent<MetaDataComponent>(entity).EntityDescription;
+            if (!string.IsNullOrEmpty(entDesc))
             {
-                message.AddText(EntityManager.GetComponent<MetaDataComponent>(entity).EntityDescription);
+                message.AddText(entDesc);
                 hasDescription = true;
             }
 
-            message.PushColor(Color.DarkGray);
+            message.PushColor(Color.DarkGray); // message.PushColor(Color.FromHex("#aeabc4"));
 
             // Raise the event and let things that subscribe to it change the message...
             var isInDetailsRange = IsInDetailsRange(examiner.Value, entity);
@@ -281,6 +306,14 @@ namespace Content.Shared.Examine
             var newMessage = examinedEvent.GetTotalMessage();
 
             // pop color tag
+            newMessage.Pop();
+
+            // And aad border line
+            PushLine(ref newMessage);
+            newMessage.PushNewline();
+
+            newMessage.Pop(); // border
+            // pop font & size tag
             newMessage.Pop();
 
             return newMessage;

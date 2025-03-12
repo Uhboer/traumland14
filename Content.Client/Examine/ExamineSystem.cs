@@ -23,6 +23,8 @@ using static Robust.Client.UserInterface.Controls.BoxContainer;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Item;
 using Direction = Robust.Shared.Maths.Direction;
+using Content.Shared.Chat;
+using Content.Client.UserInterface.Systems.Chat;
 
 namespace Content.Client.Examine
 {
@@ -31,6 +33,7 @@ namespace Content.Client.Examine
     {
         [Dependency] private readonly IUserInterfaceManager _userInterfaceManager = default!;
         [Dependency] private readonly IPlayerManager _playerManager = default!;
+        [Dependency] private readonly IUserInterfaceManager _ui = default!;
         [Dependency] private readonly IEyeManager _eyeManager = default!;
         [Dependency] private readonly VerbSystem _verbSystem = default!;
 
@@ -52,33 +55,11 @@ namespace Content.Client.Examine
 
             SubscribeNetworkEvent<ExamineSystemMessages.ExamineInfoResponseMessage>(OnExamineInfoResponse);
 
-            SubscribeLocalEvent<ItemComponent, DroppedEvent>(OnExaminedItemDropped);
-
             CommandBinds.Builder
                 .Bind(ContentKeyFunctions.ExamineEntity, new PointerInputCmdHandler(HandleExamine, outsidePrediction: true))
                 .Register<ExamineSystem>();
 
             _idCounter = 0;
-        }
-
-        private void OnExaminedItemDropped(EntityUid item, ItemComponent comp, DroppedEvent args)
-        {
-            if (!args.User.Valid)
-                return;
-            if (_examineTooltipOpen == null)
-                return;
-
-            if (item == _examinedEntity && args.User == _playerManager.LocalEntity)
-                CloseTooltip();
-        }
-
-        public override void Update(float frameTime)
-        {
-            if (_examineTooltipOpen is not {Visible: true}) return;
-            if (!_examinedEntity.Valid || !_playerEntity.Valid) return;
-
-            if (!CanExamine(_playerEntity, _examinedEntity))
-                CloseTooltip();
         }
 
         public override void Shutdown()
@@ -159,195 +140,37 @@ namespace Content.Client.Examine
             // since there's probably one open already if it's coming in from the server.
             var entity = GetEntity(ev.EntityUid);
 
-            OpenTooltip(player.Value, entity, ev.CenterAtCursor, ev.OpenAtOldTooltip, ev.KnowTarget);
-            UpdateTooltipInfo(player.Value, entity, ev.Message, ev.Verbs);
+            UpdateTooltipInfo(player.Value, entity, ev.Message);
         }
 
-        public override void SendExamineTooltip(EntityUid player, EntityUid target, FormattedMessage message, bool getVerbs, bool centerAtCursor)
+        public override void SendExamineMessage(
+                EntityUid player,
+                EntityUid target,
+                FormattedMessage message,
+                bool getVerbs,
+                bool centerAtCursor,
+                string? titleName = null)
         {
-            OpenTooltip(player, target, centerAtCursor, false);
-            UpdateTooltipInfo(player, target, message);
-        }
-
-        /// <summary>
-        ///     Opens the tooltip window and sets spriteview/name/etc, but does
-        ///     not fill it with information. This is done when the server sends examine info/verbs,
-        ///     or immediately if it's entirely clientside.
-        /// </summary>
-        public void OpenTooltip(EntityUid player, EntityUid target, bool centeredOnCursor=true, bool openAtOldTooltip=true, bool knowTarget = true)
-        {
-            // Close any examine tooltip that might already be opened
-            // Before we do that, save its position. We'll prioritize opening any new popups there if
-            // openAtOldTooltip is true.
-            ScreenCoordinates? oldTooltipPos = _examineTooltipOpen != null ? _popupPos : null;
-            CloseTooltip();
-
-            // cache entity for Update function
-            _examinedEntity = target;
-
-            const float minWidth = 300;
-
-            if (openAtOldTooltip && oldTooltipPos != null)
-            {
-                _popupPos = oldTooltipPos.Value;
-            }
-            else if (centeredOnCursor)
-            {
-                _popupPos = _userInterfaceManager.MousePositionScaled;
-            }
-            else
-            {
-                _popupPos = _eyeManager.CoordinatesToScreen(Transform(target).Coordinates);
-                _popupPos = _userInterfaceManager.ScreenToUIPosition(_popupPos);
-            }
-
-            // Actually open the tooltip.
-            _examineTooltipOpen = new Popup { MaxWidth = 400 };
-            _userInterfaceManager.ModalRoot.AddChild(_examineTooltipOpen);
-            var panel = new PanelContainer() { Name = "ExaminePopupPanel" };
-            panel.AddStyleClass(StyleClassEntityTooltip);
-            panel.ModulateSelfOverride = Color.LightGray.WithAlpha(0.90f);
-            _examineTooltipOpen.AddChild(panel);
-
-            var vBox = new BoxContainer
-            {
-                Name = "ExaminePopupVbox",
-                Orientation = LayoutOrientation.Vertical,
-                MaxWidth = _examineTooltipOpen.MaxWidth
-            };
-            panel.AddChild(vBox);
-
-            var hBox = new BoxContainer
-            {
-                Orientation = LayoutOrientation.Horizontal,
-                SeparationOverride = 5,
-                Margin = new Thickness(6, 0, 6, 0)
-            };
-
-            vBox.AddChild(hBox);
-
-            if (EntityManager.HasComponent<SpriteComponent>(target))
-            {
-                var spriteView = new SpriteView
-                {
-                    OverrideDirection = Direction.South,
-                    SetSize = new Vector2(32, 32)
-                };
-                spriteView.SetEntity(target);
-                hBox.AddChild(spriteView);
-            }
-
-            if (knowTarget)
-            {
-                var itemName = FormattedMessage.RemoveMarkup(Identity.Name(target, EntityManager, player));
-                var labelMessage = FormattedMessage.FromMarkup($"[bold]{itemName}[/bold]");
-                var label = new RichTextLabel();
-                label.SetMessage(labelMessage);
-                hBox.AddChild(label);
-            }
-            else
-            {
-                var label = new RichTextLabel();
-                label.SetMessage(FormattedMessage.FromMarkup("[bold]???[/bold]"));
-                hBox.AddChild(label);
-            }
-
-            panel.Measure(Vector2Helpers.Infinity);
-            var size = Vector2.Max(new Vector2(minWidth, 0), panel.DesiredSize);
-
-            _examineTooltipOpen.Open(UIBox2.FromDimensions(_popupPos.Position, size));
+            //UpdateTooltipInfo(player, target, message);
         }
 
         /// <summary>
-        ///     Fills the examine tooltip with a message and buttons if applicable.
+        ///     Fills the examine tooltip with a message.
         /// </summary>
-        public void UpdateTooltipInfo(EntityUid player, EntityUid target, FormattedMessage message, List<Verb>? verbs=null)
+        public void UpdateTooltipInfo(EntityUid player, EntityUid target, FormattedMessage message)
         {
-            var vBox = _examineTooltipOpen?.GetChild(0).GetChild(0);
-            if (vBox == null)
-            {
-                return;
-            }
+            var chatMsg = new ChatMessage(ChatChannel.Emotes,
+                message.ToString(),
+                message.ToMarkup(),
+                NetEntity.Invalid,
+                null);
 
-            foreach (var msg in message.Nodes)
-            {
-                if (msg.Name != null)
-                    continue;
+            // TODO: For now BaseTextureTag is broken with chat stack.
+            // But also, for now i don't wanna use, so if i want use textures
+            // then i should fix it, instead of ignoring stacks
+            //chatMsg.IgnoreChatStack = true;
 
-                var text = msg.Value.StringValue ?? "";
-
-                if (string.IsNullOrWhiteSpace(text))
-                    continue;
-
-                var richLabel = new RichTextLabel() { Margin = new Thickness(4, 4, 0, 4)};
-                richLabel.SetMessage(message);
-                vBox.AddChild(richLabel);
-                break;
-            }
-
-            verbs ??= new List<Verb>();
-            var totalVerbs = _verbSystem.GetLocalVerbs(target, player, typeof(ExamineVerb));
-            totalVerbs.UnionWith(verbs);
-
-            AddVerbsToTooltip(totalVerbs);
-        }
-
-        private void AddVerbsToTooltip(IEnumerable<Verb> verbs)
-        {
-            if (_examineTooltipOpen == null)
-                return;
-
-            var buttonsHBox = new BoxContainer
-            {
-                Name = "ExamineButtonsHBox",
-                Orientation = LayoutOrientation.Horizontal,
-                HorizontalAlignment = Control.HAlignment.Right,
-                VerticalAlignment = Control.VAlignment.Bottom,
-            };
-
-            // Examine button time
-            foreach (var verb in verbs)
-            {
-                if (verb is not ExamineVerb examine)
-                    continue;
-
-                if (examine.Icon == null)
-                    continue;
-
-                if (!examine.ShowOnExamineTooltip)
-                    continue;
-
-                var button = new ExamineButton(examine);
-
-                button.OnPressed += VerbButtonPressed;
-                buttonsHBox.AddChild(button);
-            }
-
-            var vbox = _examineTooltipOpen?.GetChild(0).GetChild(0);
-            if (vbox == null)
-            {
-                buttonsHBox.Dispose();
-                return;
-            }
-
-            // Remove any existing buttons hbox, in case we generated it from the client
-            // then received ones from the server
-            var hbox = vbox.Children.Where(c => c.Name == "ExamineButtonsHBox").ToArray();
-            if (hbox.Any())
-            {
-                vbox.Children.Remove(hbox.First());
-            }
-            vbox.AddChild(buttonsHBox);
-        }
-
-        public void VerbButtonPressed(BaseButton.ButtonEventArgs obj)
-        {
-            if (obj.Button is ExamineButton button)
-            {
-                _verbSystem.ExecuteVerb(_examinedEntity, button.Verb);
-                if (button.Verb.CloseMenu ?? button.Verb.CloseMenuDefault)
-                    CloseTooltip();
-            }
+            _ui.GetUIController<ChatUIController>().ProcessChatMessage(chatMsg);
         }
 
         public void DoExamine(EntityUid entity, bool centeredOnCursor = true, EntityUid? userOverride = null)
@@ -361,13 +184,11 @@ namespace Content.Client.Examine
             // Basically this just predicts that we can't make out the entity if we have poor vision.
             var canSeeClearly = !HasComp<BlurryVisionComponent>(playerEnt);
 
-            OpenTooltip(playerEnt.Value, entity, centeredOnCursor, false, knowTarget: canSeeClearly);
-
             // Always update tooltip info from client first.
             // If we get it wrong, server will correct us later anyway.
             // This will usually be correct (barring server-only components, which generally only adds, not replaces text)
-            message = GetExamineText(entity, playerEnt);
-            UpdateTooltipInfo(playerEnt.Value, entity, message);
+            //message = GetExamineText(entity, playerEnt);
+            //UpdateTooltipInfo(playerEnt.Value, entity, message);
 
             if (!IsClientSide(entity))
             {
@@ -381,28 +202,6 @@ namespace Content.Client.Examine
 
             RaiseLocalEvent(entity, new ClientExaminedEvent(entity, playerEnt.Value));
             _lastExaminedEntity = entity;
-        }
-
-        private void CloseTooltip()
-        {
-            if (_examineTooltipOpen != null)
-            {
-                foreach (var control in _examineTooltipOpen.Children)
-                {
-                    if (control is ExamineButton button)
-                    {
-                        button.OnPressed -= VerbButtonPressed;
-                    }
-                }
-                _examineTooltipOpen.Dispose();
-                _examineTooltipOpen = null;
-            }
-
-            if (_requestCancelTokenSource != null)
-            {
-                _requestCancelTokenSource.Cancel();
-                _requestCancelTokenSource = null;
-            }
         }
     }
 

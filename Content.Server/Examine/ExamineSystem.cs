@@ -25,7 +25,13 @@ namespace Content.Server.Examine
             SubscribeNetworkEvent<ExamineSystemMessages.RequestExamineInfoMessage>(ExamineInfoRequest);
         }
 
-        public override void SendExamineTooltip(EntityUid player, EntityUid target, FormattedMessage message, bool getVerbs, bool centerAtCursor)
+        public override void SendExamineMessage(
+                EntityUid player,
+                EntityUid target,
+                FormattedMessage message,
+                bool getVerbs,
+                bool centerAtCursor,
+                string? titleName = null)
         {
             if (!TryComp<ActorComponent>(player, out var actor))
                 return;
@@ -36,8 +42,33 @@ namespace Content.Server.Examine
             if (getVerbs)
                 verbs = _verbSystem.GetLocalVerbs(target, player, typeof(ExamineVerb));
 
+            var newMessage = new FormattedMessage();
+
+            // And add some customizations
+            PushFont(ref newMessage);
+            newMessage.PushNewline();
+            newMessage.PushTag(new MarkupNode("examineborder", null, null)); // border
+            if (titleName is not null)
+                PushTitleLine(ref newMessage, titleName);
+            else if (player == target)
+                PushExamineYourselfLine(ref newMessage);
+            else
+                PushEntityNameLine(ref newMessage, target, Name(target));
+
+            newMessage.PushNewline();
+            PushLine(ref newMessage);
+            newMessage.PushNewline();
+
+            newMessage.AddMessage(message);
+
+            newMessage.PushNewline();
+            PushLine(ref newMessage);
+            newMessage.PushNewline();
+            newMessage.Pop(); // border
+            newMessage.Pop();
+
             var ev = new ExamineSystemMessages.ExamineInfoResponseMessage(
-                GetNetEntity(target), 0, message, verbs?.ToList(), centerAtCursor
+                GetNetEntity(target), 0, newMessage, verbs?.ToList(), centerAtCursor
             );
 
             RaiseNetworkEvent(ev, session.Channel);

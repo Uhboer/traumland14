@@ -1,7 +1,12 @@
 # Cringers examine system
 
-examine-present = This is
-examine-uknown = uknown
+examine-border-line = —————————————————————
+# examine-present = This is a [bold]{$name}[/bold]!
+examine-present-tex = This is a [enttex id="{ $id }" size={ $size }] [bold]{$name}[/bold]!
+examine-present = This is a [bold]{$name}[/bold]!
+examine-present-line = ═══
+examine-himself = You examine yourself
+examine-uknown = unknown
 
 # He
 

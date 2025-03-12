@@ -32,7 +32,7 @@ namespace Content.Server.Power.EntitySystems
                 return;
 
             var markup = FormattedMessage.FromMarkup(GenerateCableMarkup(uid));
-            _examineSystem.SendExamineTooltip(args.User, uid, markup, false, false);
+            _examineSystem.SendExamineMessage(args.User, uid, markup, false, false);
             args.Handled = true;
         }
 
@@ -57,7 +57,7 @@ namespace Content.Server.Power.EntitySystems
                     Act = () =>
                     {
                         var markup = FormattedMessage.FromMarkup(GenerateCableMarkup(uid));
-                        _examineSystem.SendExamineTooltip(args.User, uid, markup, false, false);
+                        _examineSystem.SendExamineMessage(args.User, uid, markup, false, false);
                     }
                 };
 

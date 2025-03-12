@@ -95,13 +95,16 @@ public sealed class FieldOfViewSystem : EntitySystem
                 if (!TryComp<MapComponent>(mapUid, out var mapComp))
                     continue;
 
-                _lookup.GetEntitiesInRange(mapComp.MapId, mapPos.Position, fovComp.MaxDistance, lookup, LookupFlags.Dynamic);
+                _lookup.GetEntitiesInRange(mapComp.MapId, mapPos.Position, fovComp.MaxDistance, lookup, LookupFlags.Dynamic | LookupFlags.Sundries);
             }
         }
         else
         {
-            lookup = _lookup.GetEntitiesInRange(playerUid, fovComp.MaxDistance, LookupFlags.Dynamic);
+            lookup = _lookup.GetEntitiesInRange(playerUid, fovComp.MaxDistance, LookupFlags.Dynamic | LookupFlags.Sundries);
         }
+
+        //TODO: LookupFlags.Dynamic should also use some addional flags, because
+        // corpses can moved or not, and we can't to take they into vision
 
         foreach (var ent in lookup)
         {
