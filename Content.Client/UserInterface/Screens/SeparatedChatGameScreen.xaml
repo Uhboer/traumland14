@@ -52,8 +52,8 @@
             <BoxContainer Orientation="Horizontal" HorizontalExpand="True">
                 <BoxContainer Orientation="Vertical" HorizontalExpand="True" SeparationOverride="10" Margin="10">
                     <SplitContainer State="Auto" VerticalExpand="True" Orientation="Vertical">
-                        <chat:ChatBox VerticalExpand="True" HorizontalExpand="True" Name="Chat" Access="Protected" MinSize="0 0"/>
                         <us:UserActionsPanel Name="UserActionsPanel" Access="Public"></us:UserActionsPanel>
+                        <chat:ChatBox VerticalExpand="True" HorizontalExpand="True" Name="Chat" Access="Protected" MinSize="0 0"/>
                     </SplitContainer>
                 </BoxContainer>
             </BoxContainer>
