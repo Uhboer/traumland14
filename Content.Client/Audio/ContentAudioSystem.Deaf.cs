@@ -28,7 +28,11 @@ public sealed partial class ContentAudioSystem
 
     private void OnDeafMapInit(EntityUid uid, AudioComponent component, ref ComponentInit args)
     {
-        if (TryComp<DeafComponent>(_player.LocalEntity, out var comp) && comp.BlockSounds)
-            Audio.SetVolume(uid, -100f, component);
+        if (TryComp<DeafComponent>(_player.LocalEntity, out var comp) && comp.BlockSounds &&
+            TryComp<TransformComponent>(uid, out var xformComp) && xformComp.MapUid is not null)
+        {
+            Audio.SetVolume(uid, -15f, component);
+            //Audio.SetEffect(uid, component, "ConcertHall");
+        }
     }
 }
