@@ -51,8 +51,8 @@ public sealed class ViewportUserInterfaceOverlay : Overlay
         // Well, because we need define _buffer with _contentSize.
         // Maybe i rewrite it later...
         _viewportSize = new Vector2i(CCVars.ViewportWidth.DefaultValue, ViewportUIController.ViewportHeight);
-        _viewportPosition = new Vector2i(0, 0);
-        _contentSize = new Vector2i((_viewportSize.X + 1) * EyeManager.PixelsPerMeter, (_viewportSize.Y + 1) * EyeManager.PixelsPerMeter);
+        _viewportPosition = new Vector2i(-3, 0);
+        _contentSize = new Vector2i((_viewportSize.X + 3 + 1) * EyeManager.PixelsPerMeter, _viewportSize.Y * EyeManager.PixelsPerMeter);
 
         /*
         _cfg.OnValueChanged(CCVars.ViewportWidth, (newValue) =>
@@ -95,7 +95,8 @@ public sealed class ViewportUserInterfaceOverlay : Overlay
             _viewport = control;
 
         _vpUIManager.Viewport = _viewport;
-        _vpUIManager.Viewport.OffsetSize = (1, 1); // TODO: Also, need be configured
+        _vpUIManager.Viewport.OffsetSize = (3 + 1, 0); // TODO: Also, need be configured
+        _vpUIManager.Viewport.OffsetPosition = (3, 0);
     }
 
     protected override void DisposeBehavior()

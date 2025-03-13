@@ -583,7 +583,7 @@
   name: alerts-surrend-name
   description: alerts-surrend-desc
   hudPositionX: 0
-  hudPositionY: 416
+  hudPositionY: 128
   isGeneric: false
 
 - type: alert
@@ -636,8 +636,8 @@
   minSeverity: 0
   maxSeverity: 4
   #hudPositionX: -192
-  hudPositionX: -160
-  hudPositionY: 480
+  hudPositionX: -544
+  hudPositionY: 416
   isGeneric: false
 
 # FINSTER EDIT - Resist Alert
@@ -651,7 +651,7 @@
   name: alerts-resist-name
   description: alerts-resist-desc
   hudPositionX: 0
-  hudPositionY: 480
+  hudPositionY: 448
   isGeneric: false
 # FINSTER EDIT END
 
@@ -700,8 +700,8 @@
   description: alerts-walking-desc
   minSeverity: 0
   maxSeverity: 1
-  hudPositionX: -32
-  hudPositionY: 480
+  hudPositionX: -512
+  hudPositionY: 448
   isGeneric: false
 
 - type: alert
@@ -716,8 +716,8 @@
   description: alerts-combatmode-desc
   minSeverity: 0
   maxSeverity: 1
-  hudPositionX: -64
-  hudPositionY: 480
+  hudPositionX: -576
+  hudPositionY: 448
   isGeneric: false
 
 - type: alert
@@ -748,8 +748,8 @@
   description: alerts-drop-desc
   minSeverity: 0
   maxSeverity: 1
-  hudPositionX: -128
-  hudPositionY: 480
+  hudPositionX: -512
+  hudPositionY: 416
   isGeneric: false
 
 - type: alert
@@ -764,8 +764,8 @@
   description: alerts-throw-desc
   minSeverity: 0
   maxSeverity: 1
-  hudPositionX: -128
-  hudPositionY: 496
+  hudPositionX: -512
+  hudPositionY: 432
   isGeneric: false
 
 - type: alert
@@ -780,8 +780,8 @@
   description: alerts-intent-help-desc
   minSeverity: 0
   maxSeverity: 1
-  hudPositionX: -96
-  hudPositionY: 480
+  hudPositionX: -576
+  hudPositionY: 416
   isGeneric: false
 
 - type: alert
@@ -796,8 +796,8 @@
   description: alerts-intent-disarm-desc
   minSeverity: 0
   maxSeverity: 1
-  hudPositionX: -80
-  hudPositionY: 480
+  hudPositionX: -560
+  hudPositionY: 416
   isGeneric: false
 
 - type: alert
@@ -812,8 +812,8 @@
   description: alerts-intent-grab-desc
   minSeverity: 0
   maxSeverity: 1
-  hudPositionX: -80
-  hudPositionY: 496
+  hudPositionX: -560
+  hudPositionY: 432
   isGeneric: false
 
 - type: alert
@@ -828,8 +828,8 @@
   description: alerts-intent-harm-desc
   minSeverity: 0
   maxSeverity: 1
-  hudPositionX: -96
-  hudPositionY: 496
+  hudPositionX: -576
+  hudPositionY: 432
   isGeneric: false
 
 # Moods

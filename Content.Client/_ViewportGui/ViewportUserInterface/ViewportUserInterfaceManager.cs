@@ -106,6 +106,7 @@ public sealed class ViewportUserInterfaceManager : IViewportUserInterfaceManager
         ContentKeyFunctions.SwapHands,
         ContentKeyFunctions.UseItemInHand,
         ContentKeyFunctions.AltUseItemInHand,
+        ContentKeyFunctions.Arcade3,
 
         // Debug info
         EngineKeyFunctions.ShowDebugConsole,

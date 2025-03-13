@@ -20,6 +20,10 @@ public class HUDInventoryPanel : HUDTextureRect
     private HUDHandButton? _activeHand;
 
     /// <summary>
+    /// Used by inventoryTemplate. We should separate some buttons into groups.
+    /// </summary>
+    public const string MiscGroup = "Misc";
+    /// <summary>
     /// DON'T USE IT WITH inventoryTemplate! It is only for hands definition on UIControler's layer.
     /// </summary>
     public const string HandsGroup = "Hands";
@@ -37,9 +41,19 @@ public class HUDInventoryPanel : HUDTextureRect
     public HUDBoxContainer SlotsContainer;
 
     /// <summary>
+    /// Unnecessary slots, what can be toggled by player.
+    /// </summary>
+    public HUDBoxContainer MiscSlotsContainer;
+
+    /// <summary>
     /// For hands!
     /// </summary>
     public HUDBoxContainer HandsContainer;
+
+    /// <summary>
+    /// Enable/Disable visible for unnecessary (MiscSlots)
+    /// </summary>
+    public HUDTextureButton ToggleMiscSlotsButton;
 
     public HUDInventoryPanel(HUDInventoryUIController controller)
     {
@@ -52,10 +66,25 @@ public class HUDInventoryPanel : HUDTextureRect
         SlotsContainer.OnChildRemoved += RemoveChildFromSlots;
         AddChild(SlotsContainer);
 
+        MiscSlotsContainer = new();
+        MiscSlotsContainer.OnChildAdded += AddChildToSlots;
+        MiscSlotsContainer.OnChildRemoved += RemoveChildFromSlots;
+        AddChild(MiscSlotsContainer);
+
         HandsContainer = new();
         HandsContainer.OnChildAdded += AddChildToSlots;
         HandsContainer.OnChildRemoved += RemoveChildFromSlots;
         AddChild(HandsContainer);
+
+        ToggleMiscSlotsButton = new();
+        ToggleMiscSlotsButton.Texture = _uiManager.CurrentTheme.ResolveTexture("slots_toggle");
+        if (ToggleMiscSlotsButton.Texture != null)
+            ToggleMiscSlotsButton.Size = ToggleMiscSlotsButton.Texture.Size;
+        ToggleMiscSlotsButton.OnPressed += (_) =>
+        {
+            ToggleMiscSlots();
+        };
+        AddChild(ToggleMiscSlotsButton);
     }
 
     private void AddChildToSlots(HUDControl child)
@@ -80,6 +109,11 @@ public class HUDInventoryPanel : HUDTextureRect
             Slots.Remove(childToRemove);
     }
 
+    private void ToggleMiscSlots()
+    {
+        MiscSlotsContainer.Visible = !MiscSlotsContainer.Visible;
+    }
+
     public void UpdateSlots(InventorySlotsComponent? invComp)
     {
         ClearSlots();
@@ -92,8 +126,19 @@ public class HUDInventoryPanel : HUDTextureRect
                 CreateSlotButton(data);
             }
 
-            SlotsContainer.Position = (0, DefaultButtonSize);
+            // TODO: Fuck! Need to think how i can set position by better way
+            /*
+            SlotsContainer.Position = (0, Math.Clamp(0 - (SlotsContainer.Size.Y - DefaultButtonSize), -480, 0));
+            if (HandsContainer.Position.Y == 0 && HandsContainer.Position.X == 0)
+                MiscSlotsContainer.Position = (0, 0);
+            else
+                MiscSlotsContainer.Position = (HandsContainer.Size.X, 0);
+            */
+            SlotsContainer.Position = (0, -64);
+            MiscSlotsContainer.Position = (HandsContainer.Size.X, -64);
         }
+
+        UpdateToggleMiscButton();
     }
 
     public void ClearSlots()
@@ -101,6 +146,10 @@ public class HUDInventoryPanel : HUDTextureRect
         SlotsContainer.RemoveAllChildren();
         SlotsContainer.Size = (0, 0);
         SlotsContainer.Position = (0, 0);
+
+        MiscSlotsContainer.RemoveAllChildren();
+        MiscSlotsContainer.Size = (0, 0);
+        MiscSlotsContainer.Position = (0, 0);
     }
 
     public void UpdateHands(HandsComponent? handsComp, string? ignoreHand = null)
@@ -116,11 +165,19 @@ public class HUDInventoryPanel : HUDTextureRect
                     CreateHandButton(name, data, handsComp);
             }
 
-            HandsContainer.Position = (0, DefaultButtonSize + (DefaultButtonSize * 3));
+            // TODO: Fuck! Need to think, how i can move my hands in some slot by better way
+            /*
+            HandsContainer.Position = (0, SlotsContainer.Position.Y + DefaultButtonSize);
+            MiscSlotsContainer.Position = (HandsContainer.Size.X, 0);
+            */
+            HandsContainer.Position = (0, 0 - DefaultButtonSize);
+            MiscSlotsContainer.Position = (HandsContainer.Size.X, -64);
 
             if (handsComp.ActiveHand != null)
                 SetActiveHand(handsComp.ActiveHand.Name);
         }
+
+        UpdateToggleMiscButton();
     }
 
     public void ClearHands()
@@ -128,6 +185,23 @@ public class HUDInventoryPanel : HUDTextureRect
         HandsContainer.RemoveAllChildren();
         HandsContainer.Size = (0, 0);
         HandsContainer.Position = (0, 0);
+    }
+
+    // FIXME: Make it looks better?
+    private void UpdateToggleMiscButton()
+    {
+        if (MiscSlotsContainer.ChildCount >= 1)
+        {
+            ToggleMiscSlotsButton.Visible = true;
+        }
+        else
+        {
+            ToggleMiscSlotsButton.Visible = false;
+            return;
+        }
+
+        // Calculate position for the button.
+        ToggleMiscSlotsButton.Position = (HandsContainer.Size.X, HandsContainer.Position.Y);
     }
 
     private HUDSlotButton CreateSlotButton(SlotData data)
@@ -138,7 +212,10 @@ public class HUDInventoryPanel : HUDTextureRect
         slotButton.Position = slotDef.HUDWindowPosition * DefaultButtonSize;
         slotButton.Pressed += _controller.ItemPressed;
 
-        SlotsContainer.AddChild(slotButton);
+        if (slotDef.HUDSlotGroup == MiscGroup)
+            MiscSlotsContainer.AddChild(slotButton);
+        else
+            SlotsContainer.AddChild(slotButton);
 
         return slotButton;
     }
@@ -159,7 +236,7 @@ public class HUDInventoryPanel : HUDTextureRect
             handsComp.Hands.Count == 2) // because two hands
         {
             var switchHandsButton = new HUDHandButton("switchbutton", data.Location);
-            switchHandsButton.Position = ((parentChildCount + 1) * DefaultButtonSize, DefaultButtonSize);
+            switchHandsButton.Position = ((parentChildCount + 1) * DefaultButtonSize, 0);
             switchHandsButton.OnPressed += (_) =>
             {
                 SwitchHands(switchHandsButton);

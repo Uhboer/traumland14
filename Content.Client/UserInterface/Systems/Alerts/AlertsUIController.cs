@@ -37,13 +37,12 @@ public sealed class AlertsUIController : UIController, IOnStateEntered<GameplayS
         // VPGui edit
         AlertsPanel = new HUDAlertsPanel();
         AlertsPanel.Name = "AlertsPanel";
-        AlertsPanel.Texture = _vpUIManager.GetTexturePath("/Textures/Interface/Default/right_panel_background_full.png");
+        AlertsPanel.Texture = _vpUIManager.GetThemeTexture("right_panel_background_full");
         if (AlertsPanel.Texture is not null)
         {
             AlertsPanel.Size = (AlertsPanel.Texture.Size.X, AlertsPanel.Texture.Size.Y);
             AlertsPanel.Position = (
-                EyeManager.PixelsPerMeter * (ViewportUIController.ViewportHeight + 1) -
-                AlertsPanel.Texture.Size.X, 0); // fucking calculus
+                EyeManager.PixelsPerMeter * (3 + ViewportUIController.ViewportHeight), 0); // fucking calculus
         }
 
         _vpUIManager.Root.AddChild(AlertsPanel);
