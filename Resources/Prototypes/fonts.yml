@@ -176,4 +176,8 @@
   id: HomeVideo
   path: /Fonts/home-video-font/HomeVideo-BLG6G.ttf
 
+- type: font
+  id: Font19187
+  path: /Fonts/19187.ttf
+
 # FINSTER EDIT END

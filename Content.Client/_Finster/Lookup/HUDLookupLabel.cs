@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Numerics;
 using Content.Client._ViewportGui.ViewportUserInterface;
 using Content.Client._ViewportGui.ViewportUserInterface.UI;
@@ -8,6 +9,8 @@ using Content.Client.UserInterface.Systems.Inventory.Controls;
 using Content.Client.Viewport;
 using Content.Shared.CCVar;
 using Content.Shared.Maps;
+using Content.Shared.Movement.Components;
+using Content.Shared.Tag;
 using MathNet.Numerics;
 using Robust.Client.Graphics;
 using Robust.Client.Input;
@@ -33,14 +36,16 @@ public class HUDLookupLabel : HUDControl
     [Dependency] private readonly IConfigurationManager _cfg = default!;
     [Dependency] private readonly IMapManager _mapManager = default!;
 
-    private string _fontPath = "/Fonts/home-video-font/HomeVideo-BLG6G.ttf";
+    private string _fontPath = "/Fonts/19187.ttf";
     private Font _font;
     private string _text = string.Empty;
 
     /// <summary>
     /// Text's font scale.
     /// </summary>
-    public int Scale { get; set; } = 8;
+    public int Scale { get; set; } = 10;
+
+    public int TextPositionX { get; set; } = 336;
 
     /// <summary>
     /// Return current font path or set a new font with the path.
@@ -82,21 +87,42 @@ public class HUDLookupLabel : HUDControl
         _text = string.Empty;
 
         // First - try to find focused HUD controls, instead find tiles or entity in the world
+        EntityUid? hoveredEnt = null;
         var hudBoundsArgs = _vpUIManager.TryFindHUDControl();
         if (hudBoundsArgs is not null && (hudBoundsArgs.Value.IsFocused || hudBoundsArgs.Value.InBounds))
             FindInHUD(hudBoundsArgs);
         else
-            FindInWorld();
+            hoveredEnt = FindInWorld();
 
-        var targetX = bounds.X / 2;
-        var targetY = Scale;
+        // Normalaize text
+        _text = _text.ToUpper();
+
+        // TODO: Players name color
+        var textColor = Color.Gainsboro.WithAlpha(0.1f);
+        if (hoveredEnt is not null)
+        {
+            if (_entManager.TryGetComponent<MobMoverComponent>(hoveredEnt.Value, out var _))
+            {
+                textColor = Color.Gainsboro.WithAlpha(0.5f);
+            }
+            else if (_entManager.TryGetComponent<TagComponent>(hoveredEnt.Value, out var tagComp) && tagComp != null)
+            {
+                var found = tagComp.Tags.FirstOrDefault(x => x == "Wall");
+                if (found == default)
+                    textColor = Color.Gainsboro.WithAlpha(0.25f);
+            }
+        }
+
+        // Im lazy. I don't it would be too difficult to change it.
+        var targetX = TextPositionX;
+        var targetY = 480 - Scale - (Scale / 2);
 
         var dimensions = handle.GetDimensions(_font, _text, 1f);
         handle.DrawString(_font,
             new Vector2(targetX, targetY) - new Vector2(dimensions.X / 2, 0),
             _text,
             1f,
-            Color.Gainsboro.WithAlpha(0.25f));
+            textColor);
     }
 
     private void FindInHUD(HUDBoundsCheckArgs? args)
@@ -135,7 +161,7 @@ public class HUDLookupLabel : HUDControl
             _text = control.Name;
     }
 
-    private void FindInWorld()
+    private EntityUid? FindInWorld()
     {
         var mouseScreenPos = _inputManager.MouseScreenPosition;
         var mousePos = _eyeManager.ScreenToMap(mouseScreenPos);
@@ -147,18 +173,18 @@ public class HUDLookupLabel : HUDControl
         TileRef? tile = null;
 
         if (_player.LocalEntity is null)
-            return;
+            return null;
         if (!_entManager.TryGetComponent<TransformComponent>(_player.LocalEntity, out var xformComp))
-            return;
+            return null;
 
         if (mousePos.MapId == MapId.Nullspace || mousePos.MapId != xformComp.MapID)
-            return;
+            return null;
 
         var mapUid = _mapManager.GetMapEntityId(xformComp.MapID);
         //var nodePos = _maps.WorldToTile(mapUid, grid, mousePos.Position);
 
         if (!examineSys.CanExamine(_player.LocalEntity.Value, mousePos))
-            return;
+            return null;
 
         if (mousePos != MapCoordinates.Nullspace)
         {
@@ -176,7 +202,7 @@ public class HUDLookupLabel : HUDControl
 
         var currentState = _stateManager.CurrentState;
         if (currentState is not GameplayStateBase screen)
-            return;
+            return null;
 
         var entityToClick = screen.GetClickedEntity(mousePos);
 
@@ -192,5 +218,7 @@ public class HUDLookupLabel : HUDControl
             if (tileDef.ID != ContentTileDefinition.SpaceID)
                 _text = $"{Loc.GetString(tileDef.Name)}";
         }
+
+        return entityToClick;
     }
 }
