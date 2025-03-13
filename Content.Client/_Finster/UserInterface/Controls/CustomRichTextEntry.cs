@@ -209,13 +209,23 @@ internal struct CustomRichTextEntry
         Font defaultFont,
         UIBox2 drawBox,
         float verticalOffset,
+        Vector2i scrollBarPixelSize,
         MarkupDrawingContext context,
         float uiScale,
         float lineHeightScale = 1)
     {
         var screenHandle = (DrawingHandleScreen) handle;
         // TODO: It should precalculate, instead of drawing, calculate and draw again
-        var bounds = DrawBoxContent(tagManager, handle, defaultFont, drawBox, verticalOffset, context, uiScale, lineHeightScale);
+        var bounds = DrawBoxContent(
+                tagManager,
+                handle,
+                defaultFont,
+                drawBox,
+                verticalOffset,
+                scrollBarPixelSize,
+                context,
+                uiScale,
+                lineHeightScale);
 
         // Draw background box
         if (IsInBox)
@@ -236,7 +246,7 @@ internal struct CustomRichTextEntry
         }
 
         // And draw actual content
-        DrawBoxContent(tagManager, handle, defaultFont, drawBox, verticalOffset, context, uiScale, lineHeightScale);
+        DrawBoxContent(tagManager, handle, defaultFont, drawBox, verticalOffset, scrollBarPixelSize, context, uiScale, lineHeightScale);
     }
 
     private UIBox2 DrawBoxContent(
@@ -245,6 +255,7 @@ internal struct CustomRichTextEntry
         Font defaultFont,
         UIBox2 drawBox,
         float verticalOffset,
+        Vector2i scrollBarPixelSize,
         MarkupDrawingContext context,
         float uiScale,
         float lineHeightScale = 1)
@@ -253,13 +264,17 @@ internal struct CustomRichTextEntry
         context.Color.Push(_defaultColor);
         context.Font.Push(defaultFont);
 
+        float sPixelWidth = 0f;
         float margin = 0f;
         if (IsInBox)
+        {
+            sPixelWidth = scrollBarPixelSize.X;
             margin = (Margin / 2) * uiScale;
+        }
 
         var globalBreakCounter = 0;
         var lineBreakIndex = 0;
-        var baseLine = drawBox.TopLeft + new Vector2(margin, defaultFont.GetAscent(uiScale) + verticalOffset);
+        var baseLine = drawBox.TopLeft + new Vector2(margin - sPixelWidth, defaultFont.GetAscent(uiScale) + verticalOffset);
         var baseLineBase = baseLine;
         var controlYAdvance = 0f;
 
@@ -282,7 +297,7 @@ internal struct CustomRichTextEntry
                 if (lineBreakIndex < LineBreaks.Count &&
                     LineBreaks[lineBreakIndex] == globalBreakCounter)
                 {
-                    baseLine = new Vector2(drawBox.Left + margin, baseLine.Y + GetLineHeight(font, uiScale, lineHeightScale) + controlYAdvance);
+                    baseLine = new Vector2(drawBox.Left + margin - sPixelWidth, baseLine.Y + GetLineHeight(font, uiScale, lineHeightScale) + controlYAdvance);
                     controlYAdvance = 0;
                     lineBreakIndex += 1;
                 }
@@ -345,8 +360,8 @@ internal struct CustomRichTextEntry
         var boxPadding = (BoxPadding * uiScale);
 
         return new UIBox2(
-                new Vector2(drawBox.Left + (margin - boxPadding), baseLineBase.Y - boxPadding),
-                new Vector2(drawBox.Right - (margin - boxPadding), baseLine.Y - GetLineHeight(defaultFont, uiScale, lineHeightScale) + boxPadding));
+                new Vector2(drawBox.Left + (margin - boxPadding) - sPixelWidth, baseLineBase.Y - boxPadding),
+                new Vector2(drawBox.Right - (margin - boxPadding) - sPixelWidth, baseLine.Y - GetLineHeight(defaultFont, uiScale, lineHeightScale) + boxPadding));
     }
 
     private readonly string ProcessNode(MarkupTagManager tagManager, MarkupNode node, MarkupDrawingContext context)

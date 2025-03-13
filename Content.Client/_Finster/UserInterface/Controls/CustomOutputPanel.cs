@@ -162,7 +162,7 @@ public sealed class CustomOutputPanel : Control
                 continue;
             }
 
-            entry.Draw(_tagManager, handle, font, contentBox, entryOffset, context, UIScale);
+            entry.Draw(_tagManager, handle, font, contentBox, entryOffset, _scrollBar.PixelSize, context, UIScale);
 
             entryOffset += entry.Height + lineSeparation;
         }
