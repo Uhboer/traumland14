@@ -98,18 +98,18 @@ public class HUDLookupLabel : HUDControl
         _text = _text.ToUpper();
 
         // TODO: Players name color
-        var textColor = Color.Gainsboro.WithAlpha(0.1f);
+        var textColor = Color.Gainsboro.WithAlpha(0.25f);
         if (hoveredEnt is not null)
         {
             if (_entManager.TryGetComponent<MobMoverComponent>(hoveredEnt.Value, out var _))
             {
-                textColor = Color.Gainsboro.WithAlpha(0.5f);
+                textColor = Color.Gainsboro.WithAlpha(0.65f);
             }
             else if (_entManager.TryGetComponent<TagComponent>(hoveredEnt.Value, out var tagComp) && tagComp != null)
             {
                 var found = tagComp.Tags.FirstOrDefault(x => x == "Wall");
                 if (found == default)
-                    textColor = Color.Gainsboro.WithAlpha(0.25f);
+                    textColor = Color.Gainsboro.WithAlpha(0.5f);
             }
         }
 
