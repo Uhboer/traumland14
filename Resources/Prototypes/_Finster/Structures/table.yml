@@ -1,0 +1,80 @@
+- type: entity
+  parent: N14TableWoodSquare
+  id: FinsterTableFancy
+  name: fancy table
+  description: A fancy table.
+  components:
+  - type: Sprite
+    sprite: _Finster/Structures/table.rsi
+    state: fancy
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+            bounds: "-0.5,-0.5,0.5,0.5"
+        density: 55
+        mask:
+        - TableMask
+        layer:
+        - TableLayer
+
+- type: entity
+  parent: FinsterTableFancy
+  id: FinsterTableFancyDirt
+  name: fancy table
+  description: A dirt fancy table.
+  components:
+  - type: Sprite
+    sprite: _Finster/Structures/table.rsi
+    state: fancy_dirt
+
+- type: entity
+  parent: FinsterTableFancy
+  id: FinsterTableWooden
+  name: wooden table
+  description: A wooden table.
+  components:
+  - type: Sprite
+    sprite: _Finster/Structures/table.rsi
+    state: wooden
+
+- type: entity
+  parent: FinsterTableFancy
+  id: FinsterTableWoodenDirt
+  name: wooden table
+  description: A dirt wooden table.
+  components:
+  - type: Sprite
+    sprite: _Finster/Structures/table.rsi
+    state: wooden_dirt
+
+- type: entity
+  parent: FinsterTableFancy
+  id: FinsterTableWood1
+  name: wood table
+  description: A wood table.
+  components:
+  - type: Sprite
+    sprite: _Finster/Structures/table.rsi
+    state: wood1
+
+- type: entity
+  parent: FinsterTableFancy
+  id: FinsterTableWood2
+  name: wood table
+  description: A wood table.
+  components:
+  - type: Sprite
+    sprite: _Finster/Structures/table.rsi
+    state: wood2
+
+- type: entity
+  parent: FinsterTableFancy
+  id: FinsterTableWood2
+  name: metall table
+  description: A metallic table.
+  components:
+  - type: Sprite
+    sprite: _Finster/Structures/table.rsi
+    state: metal
