@@ -5,6 +5,7 @@
   components:
   - type: Item
     size: Normal
+    canBeUsedWhileWorn: true # WWDP
   - type: Sprite
   - type: Tag
     tags:
