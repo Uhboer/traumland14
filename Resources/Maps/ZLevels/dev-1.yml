@@ -777,6 +777,8 @@ entities:
       shakeTimes: 10
     - type: RadiationGridResistance
     - type: TestHaus
+    - type: Roof
+      data: {}
   - uid: 92
     components:
     - type: MetaData

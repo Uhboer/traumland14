@@ -51,8 +51,8 @@ public abstract class SharedWeatherSystem : EntitySystem
 
         var tileDef = (ContentTileDefinition) _tileDefManager[tileRef.Tile.TypeId];
 
-        if (!tileDef.Weather)
-            return false;
+        //if (!tileDef.Weather)
+        //    return false;
 
         var anchoredEntities = _mapSystem.GetAnchoredEntitiesEnumerator(uid, grid, tileRef.GridIndices);
 

@@ -1,4 +1,5 @@
 using System.Numerics;
+using Content.KayMisaZlevels.Client;
 using Content.Shared.Light.Components;
 using Content.Shared.Light.EntitySystems;
 using Content.Shared.Maps;
@@ -20,6 +21,7 @@ public sealed class RoofOverlay : Overlay
     private readonly EntityLookupSystem _lookup;
     private readonly SharedMapSystem _mapSystem;
     private readonly SharedRoofSystem _roof = default!;
+    private readonly ZStackSystem _zStack;
     private readonly SharedTransformSystem _xformSystem;
 
     private List<Entity<MapGridComponent>> _grids = new();
@@ -36,6 +38,7 @@ public sealed class RoofOverlay : Overlay
         _lookup = _entManager.System<EntityLookupSystem>();
         _mapSystem = _entManager.System<SharedMapSystem>();
         _roof = _entManager.System<SharedRoofSystem>();
+        _zStack = _entManager.System<ZStackSystem>();
         _xformSystem = _entManager.System<SharedTransformSystem>();
 
         ZIndex = ContentZIndex;
@@ -94,7 +97,7 @@ public sealed class RoofOverlay : Overlay
                     // Due to stencilling we essentially draw on unrooved tiles
                     while (tileEnumerator.MoveNext(out var tileRef))
                     {
-                        var color = _roof.GetColor(roofEnt, tileRef.GridIndices);
+                        var color = GetColor(roofEnt, tileRef.GridIndices);
 
                         if (color == null)
                         {
@@ -108,5 +111,28 @@ public sealed class RoofOverlay : Overlay
             }, null);
 
         worldHandle.SetTransform(Matrix3x2.Identity);
+    }
+
+    private Color? GetColor(Entity<MapGridComponent, RoofComponent> ent, Vector2i index)
+    {
+        Color? defaultResult = _roof.GetColor(ent, index);
+        if (!_zStack.TryGetZStack(ent, out var stack))
+            return defaultResult;
+
+        // AHTUNG!!! Only works for planet non-move grids
+        var maps = stack.Value.Comp.Maps;
+        var mapIdx = maps.IndexOf(ent);
+
+        for (int i = maps.Count - 1; i >= mapIdx; i--)
+        {
+            if (!_entManager.TryGetComponent(maps[i], out RoofComponent? lvroof) ||
+                !_entManager.TryGetComponent(maps[i], out MapGridComponent? lvmapGrid))
+                continue;
+
+            var result = _roof.GetColor((lvmapGrid.Owner, lvmapGrid, lvroof), index);
+            if (result is not null)
+                return result;
+        }
+        return null;
     }
 }
