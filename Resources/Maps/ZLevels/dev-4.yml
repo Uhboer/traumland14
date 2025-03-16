@@ -256,6 +256,8 @@ entities:
     - type: GravityShake
       shakeTimes: 10
     - type: TestHaus
+    - type: Roof
+      data: {}
   - uid: 2
     components:
     - type: MetaData

@@ -54,6 +54,7 @@ public sealed class ScalingViewport : Control, IViewportControl
     /// </summary>
     public Vector2i SizeInTiles { get; set; } = new Vector2i(ViewportUIController.ViewportHeight, ViewportUIController.ViewportHeight);
     public Vector2i OffsetSize { get; set; } = Vector2i.Zero;
+    public Vector2i OffsetPosition { get; set; } = Vector2i.Zero;
 
     public int CurrentRenderScale => _curRenderScale;
 
@@ -359,6 +360,11 @@ public sealed class ScalingViewport : Control, IViewportControl
             var sizeSized = vpSizeSized * ratio;
             // Size
             var pos = (ourSize - sizeSized) / 2;
+            var offsetInPixels = new Vector2(
+                OffsetPosition.X * EyeManager.PixelsPerMeter * (vpSize.X / baseWidth) * ratio,
+                OffsetPosition.Y * EyeManager.PixelsPerMeter * (vpSize.Y / baseHeight) * ratio
+            );
+            pos += offsetInPixels;
 
             return (UIBox2i) UIBox2.FromDimensions(pos, size);
         }
@@ -371,6 +377,12 @@ public sealed class ScalingViewport : Control, IViewportControl
 
             // Center only, no scaling.
             var pos = (ourSize - fixedStretchSizeSized) / 2;
+            var offsetInPixels = new Vector2(
+                OffsetPosition.X * EyeManager.PixelsPerMeter * (fixedStretchSize.X / baseWidth),
+                OffsetPosition.Y * EyeManager.PixelsPerMeter * (fixedStretchSize.Y / baseHeight)
+            );
+            pos += offsetInPixels;
+
             return (UIBox2i) UIBox2.FromDimensions(pos, fixedStretchSize);
         }
     }

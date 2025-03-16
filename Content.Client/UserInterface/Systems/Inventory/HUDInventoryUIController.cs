@@ -87,10 +87,10 @@ public sealed class HUDInventoryUIController : UIController, IOnStateEntered<Gam
         // VPGui edit
         InventoryPanel = new HUDInventoryPanel(this);
         InventoryPanel.Name = "InventoryPanel";
-        InventoryPanel.Texture = _vpUIManager.GetTexturePath("/Textures/Interface/Default/down_panel_background_full.png");
+        InventoryPanel.Texture = _vpUIManager.GetThemeTexture("left_panel_background");
         if (InventoryPanel.Texture is not null)
             InventoryPanel.Size = (InventoryPanel.Texture.Size.X, InventoryPanel.Texture.Size.Y);
-        InventoryPanel.Position = (0, EyeManager.PixelsPerMeter * ViewportUIController.ViewportHeight); // fucking calculus
+        InventoryPanel.Position = (0, 0); // fucking calculus
 
         _vpUIManager.Root.AddChild(InventoryPanel);
         // VPGui edit end
