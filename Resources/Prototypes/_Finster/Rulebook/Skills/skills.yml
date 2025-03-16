@@ -22,7 +22,14 @@
 
 # Can you heal the creatures.
 # With low skill you can't use effectivly bandages and etc.
-# Also you take too many failures, when you try to surgery on the creature.
+# Affects by inteligence
 - type: skill
-  id: Medecine
+  id: FirstAid
+  category: Medecine
+
+# Like FirstAid, but affect on surgery.
+# With low skill you have a higher chance to deal damage to the body, instead heal/do operation.
+# Affects by inteligence
+- type: skill
+  id: Surgery
   category: Medecine

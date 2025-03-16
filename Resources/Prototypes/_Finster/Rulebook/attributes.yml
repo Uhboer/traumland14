@@ -15,3 +15,13 @@
 # Reduce any damage, like physical. It also can reduce time in crit, when your death is become.
 - type: attribute
   id: Endurance
+
+# Can help to aim with ranged weapons and detected some trap.
+- type: attribute
+  id: Perception
+
+# It helps you to live. Reduce negative effects for mood and increase time for crit, before you can die.
+- type: attribute
+  id: Willpower
+
+
