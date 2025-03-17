@@ -71,7 +71,7 @@
 
 - type: entity
   parent: FinsterTableFancy
-  id: FinsterTableWood2
+  id: FinsterTableMetal
   name: metall table
   description: A metallic table.
   components:
