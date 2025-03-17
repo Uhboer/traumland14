@@ -1,9 +1,12 @@
+using Content.Shared.GameTicking;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Components;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
+using System.Threading;
+using Timer = Robust.Shared.Timing.Timer;
 
 namespace Content.Shared._Finster.Audio;
 
@@ -17,17 +20,28 @@ public partial class SharedAudioEffectsSystem : EntitySystem
     /// Захешированные эффекты под их прототипами пренитов. Позволяет не засрать слоты OpenAL сотней одинаковых эффектов
     /// </summary>
     private static readonly Dictionary<ProtoId<AudioPresetPrototype>, EntityUid> CachedEffects = new();
+    private static CancellationTokenSource _tokenSource = new();
 
-    private static readonly TimeSpan RaceConditionWaiting = TimeSpan.FromTicks(10L);
+    private static readonly TimeSpan RaceConditionWaiting = TimeSpan.FromTicks(25L);
 
     public override void Initialize()
     {
         base.Initialize();
+
+        SubscribeLocalEvent<RoundRestartCleanupEvent>(_ => Clear());
     }
 
     public override void Shutdown()
     {
         base.Shutdown();
+
+        Clear();
+    }
+
+    private void Clear()
+    {
+        _tokenSource.Cancel();
+        _tokenSource = new();
 
         foreach (var kvp in CachedEffects)
         {
@@ -58,7 +72,7 @@ public partial class SharedAudioEffectsSystem : EntitySystem
          */
         if (_net.IsServer)
         {
-            Timer.Spawn(RaceConditionWaiting, () => _audio.SetAuxiliary(sound, sound, effect));
+            Timer.Spawn(RaceConditionWaiting, () => _audio.SetAuxiliary(sound, sound, effect), _tokenSource.Token);
         }
         else
         {

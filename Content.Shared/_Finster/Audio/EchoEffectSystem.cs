@@ -25,7 +25,8 @@ public sealed partial class EchoEffectSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<AudioComponent, MapInitEvent>(OnMapInit, before: [typeof(SharedAudioSystem)]);
+        // Disable, until it will be fixed
+        //SubscribeLocalEvent<AudioComponent, MapInitEvent>(OnMapInit, before: [typeof(SharedAudioSystem)]);
     }
 
     private void OnMapInit(Entity<AudioComponent> ent, ref MapInitEvent args)

@@ -23,7 +23,7 @@ public sealed partial class SkillsComponent : Component
     {
         switch (level)
         {
-            case SkillLevel.NonSkilled:
+            case SkillLevel.Weak:
                 return Dice.D4;
             case SkillLevel.Basic:
                 return Dice.D6;

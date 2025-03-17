@@ -5,7 +5,7 @@ namespace Content.Shared._Finster.Rulebook;
 [Serializable, NetSerializable]
 public enum SkillLevel : int
 {
-    NonSkilled,
+    Weak,
     Basic,
     Trained,
     Experienced,
