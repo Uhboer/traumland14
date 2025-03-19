@@ -1,3 +1,5 @@
+using Content.Client._ViewportGui.ViewportUserInterface;
+using Content.Client._ViewportGui.ViewportUserInterface.UI;
 using Content.Client.Hands;
 using Content.Client.UserInterface.Controls;
 using Content.Client.UserInterface.Screens;
@@ -20,6 +22,7 @@ namespace Content.Client.Gameplay
         [Dependency] private readonly IOverlayManager _overlayManager = default!;
         [Dependency] private readonly IGameTiming _gameTiming = default!;
         [Dependency] private readonly IUserInterfaceManager _uiManager = default!;
+        [Dependency] private readonly IViewportUserInterfaceManager _vpUIManager = default!;
         [Dependency] private readonly IConfigurationManager _configurationManager = default!;
 
         private FpsCounter _fpsCounter = default!;
@@ -86,19 +89,19 @@ namespace Content.Client.Gameplay
         {
             _loadController.UnloadScreen();
             _uiManager.UnloadScreen();
+            _vpUIManager.UnloadScreen();
         }
 
         private void LoadMainScreen()
         {
+            /*
             var screenTypeString = _configurationManager.GetCVar(CCVars.UILayout);
             if (!Enum.TryParse(screenTypeString, out ScreenType screenType))
             {
                 screenType = ScreenType.Separated;
             }
-
+            */
             // We should'nt use overlay chat. So - disable it.
-            _uiManager.LoadScreen<SeparatedChatGameScreen>();
-
             /*
             switch (screenType)
             {
@@ -111,6 +114,10 @@ namespace Content.Client.Gameplay
             }
             */
 
+            _uiManager.LoadScreen<SeparatedChatGameScreen>();
+            var hudType = _configurationManager.GetCVar(CCVars.HudType);
+            var gameplayHud = new HUDGameplayState((HUDGameplayType) hudType);
+            _vpUIManager.LoadScreen(gameplayHud);
             _loadController.LoadScreen();
         }
 

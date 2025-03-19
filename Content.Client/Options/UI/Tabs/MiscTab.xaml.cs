@@ -1,4 +1,5 @@
 using System.Linq;
+using Content.Client._ViewportGui.ViewportUserInterface.UI;
 using Content.Client.UserInterface.Screens;
 using Content.Shared.CCVar;
 using Content.Shared.HUD;
@@ -23,13 +24,15 @@ namespace Content.Client.Options.UI.Tabs
         [Dependency] private readonly IConfigurationManager _cfg = default!;
         [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
 
-        private readonly Dictionary<string, int> _hudThemeIdToIndex = new();
+        //private readonly Dictionary<string, int> _hudThemeIdToIndex = new();
+        private readonly Dictionary<string, int> _hudTypeIdToIndex = new();
 
         public MiscTab()
         {
             RobustXamlLoader.Load(this);
             IoCManager.InjectDependencies(this);
 
+            /*
             var themes = _prototypeManager.EnumeratePrototypes<HudThemePrototype>().ToList();
             themes.Sort();
             foreach (var gear in themes)
@@ -37,6 +40,11 @@ namespace Content.Client.Options.UI.Tabs
                 HudThemeOption.AddItem(Loc.GetString(gear.Name));
                 _hudThemeIdToIndex.Add(gear.ID, HudThemeOption.GetItemId(HudThemeOption.ItemCount - 1));
             }
+            */
+            HudTypeOption.AddItem(HUDGameplayType.Interbay.ToString());
+            _hudTypeIdToIndex.Add(HUDGameplayType.Interbay.ToString(), HudTypeOption.GetItemId(HudTypeOption.ItemCount - 1));
+            HudTypeOption.AddItem(HUDGameplayType.Lifeweb.ToString());
+            _hudTypeIdToIndex.Add(HUDGameplayType.Lifeweb.ToString(), HudTypeOption.GetItemId(HudTypeOption.ItemCount - 1));
 
             var hudLayout = _cfg.GetCVar(CCVars.UILayout);
             var id = 0;
@@ -77,7 +85,8 @@ namespace Content.Client.Options.UI.Tabs
             // ReSharper disable once ConditionalAccessQualifierIsNonNullableAccordingToAPIContract
             ShowOocPatronColor.Visible = _playerManager.LocalSession?.Channel?.UserData.PatronTier is { };
 
-            HudThemeOption.OnItemSelected += OnHudThemeChanged;
+            //HudThemeOption.OnItemSelected += OnHudThemeChanged;
+            HudTypeOption.OnItemSelected += OnHudTypeChanged;
             DiscordRich.OnToggled += OnCheckBoxToggled;
             ShowOocPatronColor.OnToggled += OnCheckBoxToggled;
             ShowLoocAboveHeadCheckBox.OnToggled += OnCheckBoxToggled;
@@ -98,7 +107,12 @@ namespace Content.Client.Options.UI.Tabs
             ShowLookupHint.OnToggled += OnCheckBoxToggled;
             DisableFiltersCheckBox.OnToggled += OnCheckBoxToggled;
 
-            HudThemeOption.SelectId(_hudThemeIdToIndex.GetValueOrDefault(_cfg.GetCVar(CVars.InterfaceTheme), 0));
+            //HudThemeOption.SelectId(_hudThemeIdToIndex.GetValueOrDefault(_cfg.GetCVar(CVars.InterfaceTheme), 0));
+            var curHudType = _cfg.GetCVar(CCVars.HudType);
+            if (curHudType == (int) HUDGameplayType.Lifeweb)
+                HudTypeOption.SelectId(_hudTypeIdToIndex.GetValueOrDefault(HUDGameplayType.Lifeweb.ToString(), 0));
+            else
+                HudTypeOption.SelectId(0);
             DiscordRich.Pressed = _cfg.GetCVar(CVars.DiscordEnabled);
             ShowOocPatronColor.Pressed = _cfg.GetCVar(CCVars.ShowOocPatronColor);
             ShowLoocAboveHeadCheckBox.Pressed = _cfg.GetCVar(CCVars.LoocAboveHeadShow);
@@ -129,9 +143,17 @@ namespace Content.Client.Options.UI.Tabs
             UpdateApplyButton();
         }
 
+        /*
         private void OnHudThemeChanged(OptionButton.ItemSelectedEventArgs args)
         {
             HudThemeOption.SelectId(args.Id);
+            UpdateApplyButton();
+        }
+        */
+
+        private void OnHudTypeChanged(OptionButton.ItemSelectedEventArgs args)
+        {
+            HudTypeOption.SelectId(args.Id);
             UpdateApplyButton();
         }
 
@@ -150,6 +172,7 @@ namespace Content.Client.Options.UI.Tabs
 
         private void OnApplyButtonPressed(BaseButton.ButtonEventArgs args)
         {
+            /*
             foreach (var theme in _prototypeManager.EnumeratePrototypes<HudThemePrototype>())
             {
                 if (_hudThemeIdToIndex[theme.ID] != HudThemeOption.SelectedId)
@@ -157,6 +180,9 @@ namespace Content.Client.Options.UI.Tabs
                 _cfg.SetCVar(CVars.InterfaceTheme, theme.ID);
                 break;
             }
+            */
+
+            _cfg.SetCVar(CCVars.HudType, HudTypeOption.SelectedId);
 
             _cfg.SetCVar(CVars.DiscordEnabled, DiscordRich.Pressed);
             _cfg.SetCVar(CCVars.HudHeldItemShow, ShowHeldItemCheckBox.Pressed);
@@ -192,7 +218,8 @@ namespace Content.Client.Options.UI.Tabs
 
         private void UpdateApplyButton()
         {
-            var isHudThemeSame = HudThemeOption.SelectedId == _hudThemeIdToIndex.GetValueOrDefault(_cfg.GetCVar(CVars.InterfaceTheme), 0);
+            //var isHudThemeSame = HudThemeOption.SelectedId == _hudThemeIdToIndex.GetValueOrDefault(_cfg.GetCVar(CVars.InterfaceTheme), 0);
+            var isHudTypeSame = HudTypeOption.SelectedId == _cfg.GetCVar(CCVars.HudType);
             //var isLayoutSame = HudLayoutOption.SelectedMetadata is string opt && opt == _cfg.GetCVar(CCVars.UILayout);
             var isDiscordSame = DiscordRich.Pressed == _cfg.GetCVar(CVars.DiscordEnabled);
             var isShowHeldItemSame = ShowHeldItemCheckBox.Pressed == _cfg.GetCVar(CCVars.HudHeldItemShow);
@@ -215,7 +242,8 @@ namespace Content.Client.Options.UI.Tabs
             var isNoVisionFiltersSame = DisableFiltersCheckBox.Pressed == _cfg.GetCVar(CCVars.NoVisionFilters);
             var isChatStackTheSame = ChatStackOption.SelectedId == _cfg.GetCVar(CCVars.ChatStackLastLines);
 
-            ApplyButton.Disabled = isHudThemeSame &&
+            ApplyButton.Disabled = //isHudThemeSame &&
+                                   isHudTypeSame &&
                                    //isLayoutSame &&
                                    isDiscordSame &&
                                    isShowHeldItemSame &&

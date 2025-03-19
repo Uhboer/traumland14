@@ -12,7 +12,7 @@ namespace Content.Client.UserInterface.Systems.Inventory.Controls;
 /// <summary>
 /// Left panel of the HUD.
 /// </summary>
-public class HUDInventoryPanel : HUDTextureRect
+public class HUDInventoryPanel : HUDTextureRect, IInventoryPanel
 {
     [Dependency] private readonly IUserInterfaceManager _uiManager = default!;
 
@@ -41,11 +41,13 @@ public class HUDInventoryPanel : HUDTextureRect
     /// </summary>
     public HUDBoxContainer HandsContainer;
 
-    public HUDInventoryPanel(HUDInventoryUIController controller)
+    public HUDInventoryPanel(HUDInventoryUIController controller, Vector2i size)
     {
         IoCManager.InjectDependencies(this);
 
         _controller = controller;
+        Size = size;
+        Name = "InventoryPanel";
 
         SlotsContainer = new();
         SlotsContainer.OnChildAdded += AddChildToSlots;

@@ -7,6 +7,9 @@ public sealed partial class CCVars
     public static readonly CVarDef<int> HudTheme =
         CVarDef.Create("finster_hud.theme", 0, CVar.ARCHIVE | CVar.CLIENTONLY);
 
+    public static readonly CVarDef<int> HudType =
+        CVarDef.Create("finster_hud.type", 0, CVar.ARCHIVE | CVar.CLIENTONLY);
+
     public static readonly CVarDef<bool> HudHeldItemShow =
         CVarDef.Create("finster_hud.held_item_show", true, CVar.ARCHIVE | CVar.CLIENTONLY);
 

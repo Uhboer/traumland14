@@ -1,31 +1,36 @@
 using Content.Client._Finster.UserActions.Tabs;
 using Content.Client._ViewportGui.ViewportUserInterface;
+using Content.Client._ViewportGui.ViewportUserInterface.UI;
 using Robust.Client.UserInterface.Controllers;
 
 namespace Content.Client._Finster.Lookup;
 
-public sealed class LookupUIController : UIController, IOnSystemChanged<LookupSystem>
+public sealed class LookupUIController : UIController
 {
     [Dependency] private readonly IViewportUserInterfaceManager _vpUIManager = default!;
 
     public HUDLookupLabel? LookupLabel;
 
-    public void OnSystemLoaded(LookupSystem system)
+    public override void Initialize()
     {
-        LookupLabel = new();
-        _vpUIManager.Root.AddChild(LookupLabel);
+        base.Initialize();
 
-        //system.PlayerAttachedEvent += OnAttached;
-        //system.PlayerDetachedEvent += OnDetached;
+        _vpUIManager.OnScreenLoad += OnHudScreenLoad;
+        _vpUIManager.OnScreenUnload += OnHudScreenUnload;
     }
 
-    public void OnSystemUnloaded(LookupSystem system)
+    private void OnHudScreenLoad(HUDRoot hud)
     {
-        LookupLabel?.Dispose();
-        LookupLabel = null;
+        var hudGameplay = hud as HUDGameplayState;
+        if (hudGameplay is null)
+            return;
 
-        //system.PlayerAttachedEvent -= OnAttached;
-        //system.PlayerDetachedEvent -= OnDetached;
+        LookupLabel = hudGameplay.LookupLabel;
+    }
+
+    private void OnHudScreenUnload(HUDRoot hud)
+    {
+        LookupLabel = null;
     }
 
     private void OnAttached()

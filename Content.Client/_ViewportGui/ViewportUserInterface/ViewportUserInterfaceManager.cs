@@ -22,6 +22,9 @@ namespace Content.Client._ViewportGui.ViewportUserInterface;
 
 public interface IViewportUserInterfaceManager
 {
+    event Action<HUDRoot>? OnScreenLoad;
+    event Action<HUDRoot>? OnScreenUnload;
+
     /// <summary>
     /// Contain position, size, content size and another useful info.
     /// </summary>
@@ -36,7 +39,7 @@ public interface IViewportUserInterfaceManager
     /// <summary>
     /// Contains all HUD elements near viewport. And should do only that.
     /// </summary>
-    HUDRoot Root { get; }
+    HUDRoot? Root { get; }
 
     /// <summary>
     /// Can we interact with world objects on screen position.
@@ -62,6 +65,9 @@ public interface IViewportUserInterfaceManager
         HUDKeyBindInfo? keyBindInfo,
         Vector2i mousePos,
         bool canInteract = true);
+    void LoadScreen(HUDRoot root);
+    void ReloadScreen(HUDRoot root);
+    void UnloadScreen();
     HUDBoundsCheckArgs? TryFindHUDControl(HUDControl? root = null);
     Vector2i? ConvertGlobalToLocal(ScreenCoordinates mousePos);
 
@@ -87,6 +93,9 @@ public sealed class ViewportUserInterfaceManager : IViewportUserInterfaceManager
     [Dependency] private readonly IAudioManager _audioManager = default!;
     [Dependency] private readonly IConfigurationManager _cfg = default!;
     [Dependency] private readonly IUserInterfaceManager _uiManager = default!;
+
+    public event Action<HUDRoot>? OnScreenLoad;
+    public event Action<HUDRoot>? OnScreenUnload;
 
     private List<BoundKeyFunction> _whitelistBoundKeys = new()
     {
@@ -139,7 +148,7 @@ public sealed class ViewportUserInterfaceManager : IViewportUserInterfaceManager
         }
     }
 
-    public HUDRoot Root { get; private set; } = new HUDRoot();
+    public HUDRoot? Root { get; private set; }
 
     public bool CanMouseInteractInWorld { get; private set; } = true;
 
@@ -153,7 +162,7 @@ public sealed class ViewportUserInterfaceManager : IViewportUserInterfaceManager
 
     public void FrameUpdate(FrameEventArgs args)
     {
-        Root.FrameUpdate(args);
+        Root?.FrameUpdate(args);
     }
 
     public void Draw(ViewportUIDrawArgs args)
@@ -162,7 +171,7 @@ public sealed class ViewportUserInterfaceManager : IViewportUserInterfaceManager
 
         args.ScreenHandle.RenderInRenderTarget(args.RenderTexture, () =>
         {
-            Root.Draw(args);
+            Root?.Draw(args);
 
             // Debug bounds drawing
             //handle.DrawRect(new UIBox2(new Vector2(0, 0), args.ContentSize), Color.Green.WithAlpha(0.5f), true);
@@ -216,12 +225,20 @@ public sealed class ViewportUserInterfaceManager : IViewportUserInterfaceManager
 
     public bool TryGetControl<T>(string controlName, out T? control) where T : HUDControl
     {
+        control = null;
+        if (Root is null)
+            return false;
+
         control = Root.Children.OfType<T>().FirstOrDefault(c => c.Name == controlName);
         return control != null;
     }
 
     public bool TryGetControl<T>(out T? control) where T : HUDControl
     {
+        control = null;
+        if (Root is null)
+            return false;
+
         control = Root.Children.OfType<T>().FirstOrDefault();
         return control != null;
     }
@@ -285,6 +302,33 @@ public sealed class ViewportUserInterfaceManager : IViewportUserInterfaceManager
         _hoverSoundSource?.Restart();
     }
 
+    public void LoadScreen(HUDRoot root)
+    {
+        Root = root;
+        DrawingInfo = root.DrawingInfo;
+
+        OnScreenLoad?.Invoke(root);
+    }
+
+    public void ReloadScreen(HUDRoot root)
+    {
+        UnloadScreen();
+        LoadScreen(root);
+    }
+
+    public void UnloadScreen()
+    {
+        if (Root is null)
+            return;
+
+        OnScreenUnload?.Invoke(Root);
+
+        Root?.Dispose();
+        Root = null;
+
+        DrawingInfo = null;
+    }
+
     private void OnKeyBindDown(GUIBoundKeyEventArgs args)
     {
         var keyBindInfo = new HUDKeyBindInfo(HUDKeyBindType.Down, args);
@@ -329,6 +373,8 @@ public sealed class ViewportUserInterfaceManager : IViewportUserInterfaceManager
     {
         if (root is null)
             root = Root;
+        if (root is null)
+            return null;
 
         var mouseScreenPos = _inputManager.MouseScreenPosition;
         var localMousePos = ConvertGlobalToLocal(mouseScreenPos);
@@ -344,6 +390,9 @@ public sealed class ViewportUserInterfaceManager : IViewportUserInterfaceManager
     // Because need apply some specific logic for only VPGui
     private HUDBoundsCheckArgs? TryFindHUDControlInternal(HUDKeyBindInfo keyBindInfo)
     {
+        if (Root is null)
+            return null;
+
         var mouseScreenPos = _inputManager.MouseScreenPosition;
         var localMousePos = ConvertGlobalToLocal(mouseScreenPos);
         if (localMousePos is null)
@@ -504,14 +553,19 @@ public struct ViewportDrawingInfo
     public Vector2i ViewportPosition { get; set; }
     public Vector2i ViewportSize { get; set; }
     public Vector2i ContentSize { get; set; }
-
+    public Vector2i OffsetSize { get; set; }
+    public Vector2i OffsetPosition { get; set; }
     public ViewportDrawingInfo(
         Vector2i viewportPosition,
         Vector2i viewportSize,
-        Vector2i contentSize)
+        Vector2i contentSize,
+        Vector2i offsetSize,
+        Vector2i offsetPosition)
     {
         ViewportPosition = viewportPosition;
         ViewportSize = viewportSize;
         ContentSize = contentSize;
+        OffsetSize = offsetSize;
+        OffsetPosition = offsetPosition;
     }
 }

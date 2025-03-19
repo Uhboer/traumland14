@@ -22,51 +22,37 @@ public sealed class AlertsUIController : UIController, IOnStateEntered<GameplayS
 
     [UISystemDependency] private readonly ClientAlertsSystem? _alertsSystem = default;
 
-    // VPGui edit
-    /// <summary>
-    /// Should be used to attach all right content to the... Right.
-    /// Like alerts, buttons and another content
-    /// </summary>
-    public HUDAlertsPanel? AlertsPanel;
-    // VPGui edit end
+    public HUDAlertsPanel? AlertsPanel { get; private set; }
 
     public override void Initialize()
     {
         base.Initialize();
 
-        // VPGui edit
-        AlertsPanel = new HUDAlertsPanel();
-        AlertsPanel.Name = "AlertsPanel";
-        AlertsPanel.Texture = _vpUIManager.GetThemeTexture("right_panel_background_full");
-        if (AlertsPanel.Texture is not null)
-        {
-            AlertsPanel.Size = (AlertsPanel.Texture.Size.X, AlertsPanel.Texture.Size.Y);
-            AlertsPanel.Position = (
-                EyeManager.PixelsPerMeter * (3 + ViewportUIController.ViewportHeight), 0); // fucking calculus
-        }
-
-        _vpUIManager.Root.AddChild(AlertsPanel);
-        // VPGui edit end
-
-        var gameplayStateLoad = UIManager.GetUIController<GameplayStateLoadController>();
-        gameplayStateLoad.OnScreenLoad += OnScreenLoad;
-        gameplayStateLoad.OnScreenUnload += OnScreenUnload;
+        _vpUIManager.OnScreenLoad += OnHudScreenLoad;
+        _vpUIManager.OnScreenUnload += OnHudScreenUnload;
     }
 
-    private void OnScreenUnload()
+    private void OnHudScreenLoad(HUDRoot hud)
     {
-        var widget = AlertsPanel;
-        if (widget != null)
-            widget.AlertPressed -= OnAlertPressed;
-    }
+        var hudGameplay = hud as HUDGameplayState;
+        if (hudGameplay is null)
+            return;
 
-    private void OnScreenLoad()
-    {
+        AlertsPanel = hudGameplay.AlertsPanel;
+
         var widget = AlertsPanel;
         if (widget != null)
             widget.AlertPressed += OnAlertPressed;
 
         SyncAlerts();
+    }
+
+    private void OnHudScreenUnload(HUDRoot hud)
+    {
+        var widget = AlertsPanel;
+        if (widget != null)
+            widget.AlertPressed -= OnAlertPressed;
+        AlertsPanel = null;
     }
 
     private void OnAlertPressed(object? sender, ProtoId<AlertPrototype> e)

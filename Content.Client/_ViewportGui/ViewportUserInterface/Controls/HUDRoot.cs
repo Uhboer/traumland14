@@ -5,4 +5,5 @@ namespace Content.Client._ViewportGui.ViewportUserInterface.UI;
 /// </summary>
 public class HUDRoot : HUDControl
 {
+    public ViewportDrawingInfo DrawingInfo { get; set; }
 }

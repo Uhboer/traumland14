@@ -1,6 +1,7 @@
 
 using Content.Client._ViewportGui.ViewportUserInterface.Overlays;
 using Robust.Client.Graphics;
+using Robust.Shared.Configuration;
 
 namespace Content.Client._ViewportGui.ViewportUserInterface.Systems;
 public sealed class ViewportUserInterfaceSystem : EntitySystem
