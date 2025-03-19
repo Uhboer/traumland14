@@ -123,7 +123,8 @@ namespace Content.Client.Gameplay
             var hudType = _configurationManager.GetCVar(CCVars.HudType);
             HUDRoot gameplayHud = new HUDGameplayState((HUDGameplayType) hudType);
             if (_playerManager.LocalEntity is not null &&
-                _entityManager.TryGetComponent<GhostComponent>(_playerManager.LocalEntity.Value, out var ghotComp))
+                _entityManager.TryGetComponent<GhostComponent>(_playerManager.LocalEntity.Value, out var ghostComp) &&
+                ghostComp.EnableGhostOverlay)
             {
                 gameplayHud = new HUDGhostState();
             }

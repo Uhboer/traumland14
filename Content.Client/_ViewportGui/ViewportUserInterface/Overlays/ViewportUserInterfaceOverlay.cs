@@ -71,7 +71,8 @@ public sealed class ViewportUserInterfaceOverlay : Overlay
         HUDRoot gameplayHud = new HUDGameplayState((HUDGameplayType) hudType);
 
         if (_player.LocalEntity is not null &&
-            _entManager.TryGetComponent<GhostComponent>(_player.LocalEntity.Value, out var ghostComp))
+            _entManager.TryGetComponent<GhostComponent>(_player.LocalEntity.Value, out var ghostComp) &&
+            ghostComp.EnableGhostOverlay)
             gameplayHud = new HUDGhostState();
 
         _vpUIManager.ReloadScreen(gameplayHud);
