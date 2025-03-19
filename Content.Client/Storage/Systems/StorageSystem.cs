@@ -115,7 +115,8 @@ public sealed class StorageSystem : SharedStorageSystem
         if (entity.Comp.ClientOpenInterfaces.GetValueOrDefault(StorageComponent.StorageUiKey.Key) is not { } bui)
             return;
 
-        bui.Close();
+        // TODO: It can'not be queued. Need fix it or refactor by self for the game.
+        //bui.Close();
     }
 
     private void OnShutdown(Entity<StorageComponent> ent, ref ComponentShutdown args)
