@@ -8,6 +8,7 @@ using Robust.Client.Player;
 using Content.Client._ViewportGui.ViewportUserInterface;
 using Content.Client._Shitmed.UserInterface.Systems.Targeting.Controls;
 using Content.Client.UserInterface.Systems.Alerts.Controls;
+using Content.Client._ViewportGui.ViewportUserInterface.UI;
 
 namespace Content.Client._Shitmed.UserInterface.Systems.Targeting;
 
@@ -21,7 +22,30 @@ public sealed class TargetingUIController : UIController, IOnStateEntered<Gamepl
     private TargetingComponent? _targetingComponent;
     //private TargetingControl? TargetingControl => UIManager.GetActiveUIWidgetOrNull<TargetingControl>();
 
-    private HUDTargetDoll? TargetingControl;
+    public HUDTargetDoll? TargetingControl { get; private set; }
+
+    public override void Initialize()
+    {
+        base.Initialize();
+
+        _vpUIManager.OnScreenLoad += OnHudScreenLoad;
+        _vpUIManager.OnScreenUnload += OnHudScreenUnload;
+    }
+
+    private void OnHudScreenLoad(HUDRoot hud)
+    {
+        var hudGameplay = hud as HUDGameplayState;
+        if (hudGameplay is null)
+            return;
+
+        TargetingControl = hudGameplay.TargetingControl;
+        UpdateTargetingControl();
+    }
+
+    private void OnHudScreenUnload(HUDRoot hud)
+    {
+        TargetingControl = null;
+    }
 
     public void OnSystemLoaded(TargetingSystem system)
     {
@@ -35,12 +59,26 @@ public sealed class TargetingUIController : UIController, IOnStateEntered<Gamepl
         system.TargetingStartup -= AddTargetingControl;
         system.TargetingShutdown -= RemoveTargetingControl;
         system.TargetChange -= CycleTarget;
-
-        TargetingControl?.Dispose();
-        TargetingControl = null;
     }
 
     public void OnStateEntered(GameplayState state)
+    {
+        UpdateTargetingControl();
+    }
+
+    public void AddTargetingControl(TargetingComponent component)
+    {
+        _targetingComponent = component;
+        UpdateTargetingControl();
+    }
+
+    public void RemoveTargetingControl()
+    {
+        _targetingComponent = null;
+        UpdateTargetingControl();
+    }
+
+    public void UpdateTargetingControl()
     {
         if (TargetingControl == null)
             return;
@@ -49,35 +87,6 @@ public sealed class TargetingUIController : UIController, IOnStateEntered<Gamepl
 
         if (_targetingComponent != null)
             TargetingControl.SetBodyPartsVisible(_targetingComponent.Target);
-    }
-
-    public void AddTargetingControl(TargetingComponent component)
-    {
-        _targetingComponent = component;
-
-        if (TargetingControl == null)
-        {
-            TargetingControl = new HUDTargetDoll(this);
-            if (_vpUIManager.TryGetControl<HUDAlertsPanel>(out var panel) && panel is not null)
-                panel.AddChild(TargetingControl);
-        }
-
-        TargetingControl.SetTargetDollVisible(_targetingComponent != null);
-
-        if (_targetingComponent != null)
-            TargetingControl.SetBodyPartsVisible(_targetingComponent.Target);
-    }
-
-    public void RemoveTargetingControl()
-    {
-        if (TargetingControl != null)
-        {
-            TargetingControl.SetTargetDollVisible(false);
-            TargetingControl?.Dispose();
-            TargetingControl = null;
-        }
-
-        _targetingComponent = null;
     }
 
     public void CycleTarget(TargetBodyPart bodyPart)

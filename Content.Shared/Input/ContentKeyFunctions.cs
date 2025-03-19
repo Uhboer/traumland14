@@ -87,6 +87,11 @@ namespace Content.Shared.Input
         public static readonly BoundKeyFunction ShuttleRotateRight = "ShuttleRotateRight";
         public static readonly BoundKeyFunction ShuttleBrake = "ShuttleBrake";
 
+        public static readonly BoundKeyFunction IntentHelp = "IntentHelp";
+        public static readonly BoundKeyFunction IntentDisarm = "IntentDisarm";
+        public static readonly BoundKeyFunction IntentGrab = "IntentGrab";
+        public static readonly BoundKeyFunction IntentHarm = "IntentHarm";
+
         public static readonly BoundKeyFunction Hotbar0 = "Hotbar0";
         public static readonly BoundKeyFunction Hotbar1 = "Hotbar1";
         public static readonly BoundKeyFunction Hotbar2 = "Hotbar2";
@@ -116,7 +121,7 @@ namespace Content.Shared.Input
         public static BoundKeyFunction[] GetIntentsBoundKeys() =>
             new[]
             {
-                Hotbar1, Hotbar2, Hotbar3, Hotbar4
+                IntentHelp, IntentDisarm, IntentGrab, IntentHarm
             };
 
         public static readonly BoundKeyFunction Vote0 = "Vote0";

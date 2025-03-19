@@ -418,7 +418,7 @@
   minSeverity: 0
   maxSeverity: 2
   hudPositionX: 0
-  hudPositionY: 128
+  hudPositionY: 96
   isGeneric: false
 
 - type: alert
@@ -638,6 +638,8 @@
   #hudPositionX: -192
   hudPositionX: -544
   hudPositionY: 416
+  altHudPositionX: -160
+  altHudPositionY: 480
   isGeneric: false
 
 # FINSTER EDIT - Resist Alert
@@ -652,6 +654,8 @@
   description: alerts-resist-desc
   hudPositionX: 0
   hudPositionY: 448
+  altHudPositionX: 0
+  altHudPositionY: 480
   isGeneric: false
 # FINSTER EDIT END
 
@@ -702,6 +706,8 @@
   maxSeverity: 1
   hudPositionX: -512
   hudPositionY: 448
+  altHudPositionX: -32
+  altHudPositionY: 480
   isGeneric: false
 
 - type: alert
@@ -718,6 +724,8 @@
   maxSeverity: 1
   hudPositionX: -576
   hudPositionY: 448
+  altHudPositionX: -64
+  altHudPositionY: 480
   isGeneric: false
 
 - type: alert
@@ -750,6 +758,8 @@
   maxSeverity: 1
   hudPositionX: -512
   hudPositionY: 416
+  altHudPositionX: -128
+  altHudPositionY: 480
   isGeneric: false
 
 - type: alert
@@ -766,6 +776,8 @@
   maxSeverity: 1
   hudPositionX: -512
   hudPositionY: 432
+  altHudPositionX: -128
+  altHudPositionY: 496
   isGeneric: false
 
 - type: alert
@@ -782,6 +794,8 @@
   maxSeverity: 1
   hudPositionX: -576
   hudPositionY: 416
+  altHudPositionX: -96
+  altHudPositionY: 480
   isGeneric: false
 
 - type: alert
@@ -798,6 +812,8 @@
   maxSeverity: 1
   hudPositionX: -560
   hudPositionY: 416
+  altHudPositionX: -80
+  altHudPositionY: 480
   isGeneric: false
 
 - type: alert
@@ -814,6 +830,8 @@
   maxSeverity: 1
   hudPositionX: -560
   hudPositionY: 432
+  altHudPositionX: -80
+  altHudPositionY: 496
   isGeneric: false
 
 - type: alert
@@ -830,6 +848,8 @@
   maxSeverity: 1
   hudPositionX: -576
   hudPositionY: 432
+  altHudPositionX: -96
+  altHudPositionY: 496
   isGeneric: false
 
 # Moods

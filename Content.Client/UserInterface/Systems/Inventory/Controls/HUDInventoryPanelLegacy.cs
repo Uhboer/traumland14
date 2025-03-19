@@ -12,7 +12,7 @@ namespace Content.Client.UserInterface.Systems.Inventory.Controls;
 /// <summary>
 /// Left panel of the HUD.
 /// </summary>
-public class HUDInventoryPanel : HUDTextureRect
+public class HUDInventoryPanelLegacy : HUDTextureRect, IInventoryPanel
 {
     [Dependency] private readonly IUserInterfaceManager _uiManager = default!;
 
@@ -55,11 +55,13 @@ public class HUDInventoryPanel : HUDTextureRect
     /// </summary>
     public HUDTextureButton ToggleMiscSlotsButton;
 
-    public HUDInventoryPanel(HUDInventoryUIController controller)
+    public HUDInventoryPanelLegacy(HUDInventoryUIController controller, Vector2i size)
     {
         IoCManager.InjectDependencies(this);
 
         _controller = controller;
+        Size = size;
+        Name = "InventoryPanel";
 
         SlotsContainer = new();
         SlotsContainer.OnChildAdded += AddChildToSlots;
@@ -209,7 +211,7 @@ public class HUDInventoryPanel : HUDTextureRect
         var slotDef = data.SlotDef;
 
         var slotButton = new HUDSlotButton(data);
-        slotButton.Position = slotDef.HUDWindowPosition * DefaultButtonSize;
+        slotButton.Position = slotDef.AltHUDWindowPosition * DefaultButtonSize;
         slotButton.Pressed += _controller.ItemPressed;
 
         if (slotDef.HUDSlotGroup == MiscGroup)

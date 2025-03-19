@@ -10,6 +10,7 @@
       stripTime: 6
       uiWindowPos: 0,0
       hudWindowPos: 0,2
+      altHudWindowPos: 2,2
       strippingWindowPos: 0,2
       displayName: Back
     - name: pocket1
@@ -20,7 +21,7 @@
       stripTime: 3
       uiWindowPos: 0,0
       hudWindowPos: 0,6
-      hudSlotGroup: Misc
+      altHudWindowPos: 3,2
       strippingWindowPos: 0,5
       displayName: Pocket 1
       stripHidden: true
@@ -32,7 +33,7 @@
       stripTime: 3
       uiWindowPos: 0,0
       hudWindowPos: 0,7
-      hudSlotGroup: Misc
+      altHudWindowPos: 5,2
       strippingWindowPos: 0,6
       displayName: Pocket 3
       stripHidden: true
@@ -44,7 +45,7 @@
       stripTime: 6
       uiWindowPos: 0,0
       hudWindowPos: 1,7
-      hudSlotGroup: Misc
+      altHudWindowPos: 0,2
       strippingWindowPos: 1,6
       displayName: ID
     # center
@@ -53,6 +54,7 @@
       slotFlags: HEAD
       uiWindowPos: 0,0
       hudWindowPos: 1,0
+      altHudWindowPos: 1,0
       strippingWindowPos: 1,0
       displayName: Head
     - name: mask
@@ -60,6 +62,7 @@
       slotFlags: MASK
       uiWindowPos: 0,0
       hudWindowPos: 1,1
+      altHudWindowPos: 2,0
       strippingWindowPos: 1,1
       displayName: Mask
     - name: pocket2
@@ -70,6 +73,7 @@
       stripTime: 3
       uiWindowPos: 0,0
       hudWindowPos: 2,6
+      altHudWindowPos: 4,2
       strippingWindowPos: 2,5
       displayName: Pocket 2
       stripHidden: true
@@ -81,6 +85,7 @@
       stripTime: 3
       uiWindowPos: 0,0
       hudWindowPos: 2,7
+      altHudWindowPos: 6,2
       strippingWindowPos: 2,6
       displayName: Pocket 4
       stripHidden: true

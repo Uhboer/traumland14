@@ -9,6 +9,8 @@ namespace Content.Shared.Alert;
 [Prototype]
 public sealed partial class AlertPrototype : IPrototype
 {
+    public const int NonVisiblePosition = -8192;
+
     /// <summary>
     /// Type of alert, no 2 alert prototypes should have the same one.
     /// </summary>
@@ -90,10 +92,16 @@ public sealed partial class AlertPrototype : IPrototype
 
     // VPGui edit
     [DataField]
-    public int HudPositionX { get; set; } = -32;
+    public int HudPositionX { get; set; } = NonVisiblePosition;
 
     [DataField]
-    public int HudPositionY { get; set; } = -32;
+    public int HudPositionY { get; set; } = NonVisiblePosition;
+
+    [DataField]
+    public int AltHudPositionX { get; set; } = NonVisiblePosition;
+
+    [DataField]
+    public int AltHudPositionY { get; set; } = NonVisiblePosition;
 
     /// <summary>
     /// If true - all alerts should be placed into single control, what can switch icons every 3 seconds

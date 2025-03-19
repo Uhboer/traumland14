@@ -34,8 +34,17 @@ public class HUDAlertControl : HUDButton
         _textureRect.SetFromSpriteSpecifier(sprite);
 
         Size = _textureRect.Size;
+        var targetPosX = alert.HudPositionX;
+        var targetPosY = alert.HudPositionY;
+        if (IsInterbay())
+        {
+            if (alert.AltHudPositionX != AlertPrototype.NonVisiblePosition)
+                targetPosX = alert.AltHudPositionX;
+            if (alert.AltHudPositionY != AlertPrototype.NonVisiblePosition)
+                targetPosY = alert.AltHudPositionY;
+        }
         if (!alert.IsGeneric)
-            Position = (alert.HudPositionX, alert.HudPositionY);
+            Position = (targetPosX, targetPosY);
     }
 
     /// <summary>
@@ -50,6 +59,18 @@ public class HUDAlertControl : HUDButton
         var icon = Alert.GetIcon(_severity);
         var sprite = _vpUIManager.GetThemeRsi(Alert.Sprite, icon);
         _textureRect.SetFromSpriteSpecifier(sprite);
+    }
+
+    private bool IsInterbay()
+    {
+        var hudGameplay = _vpUIManager.Root as HUDGameplayState;
+        if (hudGameplay is null)
+            return false;
+
+        if (hudGameplay.Type == HUDGameplayType.Interbay)
+            return true;
+        else
+            return false;
     }
 }
 

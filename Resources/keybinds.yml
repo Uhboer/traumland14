@@ -519,6 +519,22 @@ binds:
   type: State
   mod1: Shift
   key: K
+- function: IntentHelp
+  type: State
+  key: Num1
+  mod1: Shift
+- function: IntentDisarm
+  type: State
+  key: Num2
+  mod1: Shift
+- function: IntentGrab
+  type: State
+  key: Num3
+  mod1: Shift
+- function: IntentHarm
+  type: State
+  key: Num4
+  mod1: Shift
 - function: Hotbar0
   type: State
   key: Num0

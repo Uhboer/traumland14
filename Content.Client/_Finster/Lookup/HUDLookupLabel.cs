@@ -45,7 +45,8 @@ public class HUDLookupLabel : HUDControl
     /// </summary>
     public int Scale { get; set; } = 10;
 
-    public int TextPositionX { get; set; } = 336;
+    public int TextPositionX { get; set; } = 240;
+    public LookupAlignment Alignment { get; set; } = LookupAlignment.Top;
 
     /// <summary>
     /// Return current font path or set a new font with the path.
@@ -115,7 +116,9 @@ public class HUDLookupLabel : HUDControl
 
         // Im lazy. I don't it would be too difficult to change it.
         var targetX = TextPositionX;
-        var targetY = 480 - Scale - (Scale / 2);
+        var targetY = Scale - (Scale / 2);
+        if (Alignment == LookupAlignment.Bottom)
+            targetY = 480 - Scale - (Scale / 2);
 
         var dimensions = handle.GetDimensions(_font, _text, 1f);
         handle.DrawString(_font,
@@ -221,4 +224,10 @@ public class HUDLookupLabel : HUDControl
 
         return entityToClick;
     }
+}
+
+public enum LookupAlignment
+{
+    Top,
+    Bottom
 }

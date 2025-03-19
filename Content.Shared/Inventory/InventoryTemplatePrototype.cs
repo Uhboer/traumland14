@@ -38,6 +38,8 @@ public sealed partial class SlotDefinition
     /// </summary>
     [DataField("hudWindowPos")]
     public Vector2i HUDWindowPosition { get; private set; } = Vector2i.Zero;
+    [DataField("altHudWindowPos")]
+    public Vector2i AltHUDWindowPosition { get; private set; } = Vector2i.Zero;
 
     [DataField("strippingWindowPos", required: true)]
     public Vector2i StrippingWindowPos { get; private set; }

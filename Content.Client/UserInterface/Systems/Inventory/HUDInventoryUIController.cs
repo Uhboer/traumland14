@@ -52,12 +52,7 @@ public sealed class HUDInventoryUIController : UIController, IOnStateEntered<Gam
     private HandsUIController? _hands;
     private StorageUIController? _storage;
 
-    // VPGui edit
-    /// <summary>
-    /// Should be used to attach all left content to the... Left.
-    /// </summary>
-    public HUDInventoryPanel? InventoryPanel;
-    // VPGui edit end
+    private IInventoryPanel? _inventoryPanel;
 
     private EntityUid? _playerUid;
 
@@ -84,19 +79,11 @@ public sealed class HUDInventoryUIController : UIController, IOnStateEntered<Gam
     {
         base.Initialize();
 
-        // VPGui edit
-        InventoryPanel = new HUDInventoryPanel(this);
-        InventoryPanel.Name = "InventoryPanel";
-        InventoryPanel.Texture = _vpUIManager.GetThemeTexture("left_panel_background");
-        if (InventoryPanel.Texture is not null)
-            InventoryPanel.Size = (InventoryPanel.Texture.Size.X, InventoryPanel.Texture.Size.Y);
-        InventoryPanel.Position = (0, 0); // fucking calculus
-
-        _vpUIManager.Root.AddChild(InventoryPanel);
-        // VPGui edit end
-
         var gameplayStateLoad = UIManager.GetUIController<GameplayStateLoadController>();
         gameplayStateLoad.OnScreenLoad += OnScreenLoad;
+
+        _vpUIManager.OnScreenLoad += OnHudScreenLoad;
+        _vpUIManager.OnScreenUnload += OnHudScreenUnload;
 
         _inventory = UIManager.GetUIController<InventoryUIController>();
         _hands = UIManager.GetUIController<HandsUIController>();
@@ -106,6 +93,22 @@ public sealed class HUDInventoryUIController : UIController, IOnStateEntered<Gam
     private void OnScreenLoad()
     {
         UpdateInventoryHotbar(_playerInventory);
+    }
+
+    private void OnHudScreenLoad(HUDRoot hud)
+    {
+        var hudGameplay = hud as HUDGameplayState;
+        if (hudGameplay is null)
+            return;
+
+        _inventoryPanel = hudGameplay.InventoryPanel;
+        UpdateInventoryHotbar(_playerInventory);
+        UpdateHandsHotbar(_playerHandsComponent);
+    }
+
+    private void OnHudScreenUnload(HUDRoot hud)
+    {
+        _inventoryPanel = null;
     }
 
     public void OnStateEntered(GameplayState state)
@@ -257,22 +260,22 @@ public sealed class HUDInventoryUIController : UIController, IOnStateEntered<Gam
 
     private void AddSlot(SlotData data)
     {
-        InventoryPanel?.UpdateSlots(_playerInventory);
+        _inventoryPanel?.UpdateSlots(_playerInventory);
     }
 
     private void RemoveSlot(SlotData data)
     {
-        InventoryPanel?.UpdateSlots(_playerInventory);
+        _inventoryPanel?.UpdateSlots(_playerInventory);
     }
 
     private void AddHand(string handName, HandLocation location)
     {
-        InventoryPanel?.UpdateHands(_playerHandsComponent);
+        _inventoryPanel?.UpdateHands(_playerHandsComponent);
     }
 
     private void RemoveHand(string handName)
     {
-        InventoryPanel?.UpdateHands(_playerHandsComponent, ignoreHand: handName);
+        _inventoryPanel?.UpdateHands(_playerHandsComponent, ignoreHand: handName);
         //RemoveHand(handName, out var _);
     }
 
@@ -301,7 +304,7 @@ public sealed class HUDInventoryUIController : UIController, IOnStateEntered<Gam
 
     private void UpdateInventoryHotbar(InventorySlotsComponent? clientInv)
     {
-        InventoryPanel?.UpdateSlots(clientInv);
+        _inventoryPanel?.UpdateSlots(clientInv);
 
         if (clientInv is null)
             return;
@@ -316,7 +319,7 @@ public sealed class HUDInventoryUIController : UIController, IOnStateEntered<Gam
 
     private void UpdateHandsHotbar(HandsComponent? handsComp)
     {
-        InventoryPanel?.UpdateHands(handsComp);
+        _inventoryPanel?.UpdateHands(handsComp);
 
         if (handsComp is null)
             return;
@@ -332,11 +335,11 @@ public sealed class HUDInventoryUIController : UIController, IOnStateEntered<Gam
                 // TODO: By some reasons we can'not render virtual items.
                 // And Action events works shity. So - just block hands, instead of show pulling or vitual items.
                 //virt.BlockingEntity
-                InventoryPanel?.SetHandEntity(handName, null, true);
+                _inventoryPanel?.SetHandEntity(handName, null, true);
             }
             else
             {
-                InventoryPanel?.SetHandEntity(handName, entity);
+                _inventoryPanel?.SetHandEntity(handName, entity);
             }
         }
     }
@@ -346,9 +349,9 @@ public sealed class HUDInventoryUIController : UIController, IOnStateEntered<Gam
         var (entity, group, name, showStorage) = update;
 
         if (_entities.TryGetComponent(entity, out VirtualItemComponent? virtb))
-            InventoryPanel?.SetSlotEntity(name, virtb.BlockingEntity, true);
+            _inventoryPanel?.SetSlotEntity(name, virtb.BlockingEntity, true);
         else
-            InventoryPanel?.SetSlotEntity(name, entity);
+            _inventoryPanel?.SetSlotEntity(name, entity);
     }
 
     // Monkey Sees Action
@@ -388,7 +391,7 @@ public sealed class HUDInventoryUIController : UIController, IOnStateEntered<Gam
 
     private void OnAddHand(string name, HandLocation location)
     {
-        InventoryPanel?.UpdateHands(_playerHandsComponent);
+        _inventoryPanel?.UpdateHands(_playerHandsComponent);
     }
 
     private void OnHandItemAdded(string name, EntityUid entity)
@@ -398,22 +401,22 @@ public sealed class HUDInventoryUIController : UIController, IOnStateEntered<Gam
             // TODO: By some reasons we can'not render virtual items.
             // And Action events works shity. So - just block hands, instead of show pulling or vitual items.
             //virt.BlockingEntity
-            InventoryPanel?.SetHandEntity(name, null, true);
+            _inventoryPanel?.SetHandEntity(name, null, true);
         }
         else
         {
-            InventoryPanel?.SetHandEntity(name, entity);
+            _inventoryPanel?.SetHandEntity(name, entity);
         }
     }
 
     private void OnHandItemRemoved(string name, EntityUid entity)
     {
-        InventoryPanel?.SetHandEntity(name, null);
+        _inventoryPanel?.SetHandEntity(name, null);
     }
 
     private void SetActiveHand(string? handName)
     {
-        InventoryPanel?.SetActiveHand(handName);
+        _inventoryPanel?.SetActiveHand(handName);
     }
 
     private void LoadPlayerHands(HandsComponent handsComp)
@@ -432,11 +435,11 @@ public sealed class HUDInventoryUIController : UIController, IOnStateEntered<Gam
 
     private void HandBlocked(string handName)
     {
-        InventoryPanel?.SetHandEntity(handName, null, true, doNotSetEntity: true);
+        _inventoryPanel?.SetHandEntity(handName, null, true, doNotSetEntity: true);
     }
 
     private void HandUnblocked(string handName)
     {
-        InventoryPanel?.SetHandEntity(handName, null, false, doNotSetEntity: true);
+        _inventoryPanel?.SetHandEntity(handName, null, false, doNotSetEntity: true);
     }
 }

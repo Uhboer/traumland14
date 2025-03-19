@@ -28,8 +28,11 @@ public class HUDAlertsPanel : HUDTextureRect
     /// </summary>
     public HUDGenericAlertsControl GenericContainer;
 
-    public HUDAlertsPanel()
+    public HUDAlertsPanel(Vector2i size)
     {
+        Size = size;
+        Name = "AlertsPanel";
+
         IoCManager.InjectDependencies(this);
 
         Container = new HUDControl();
@@ -38,7 +41,7 @@ public class HUDAlertsPanel : HUDTextureRect
         GenericContainer = new HUDGenericAlertsControl();
         // TODO: Should be configurated
         GenericContainer.Position = (0,
-            (ViewportUIController.ViewportHeight * EyeManager.PixelsPerMeter) - (EyeManager.PixelsPerMeter * 2));
+            size.Y - (EyeManager.PixelsPerMeter * 2));
         AddChild(GenericContainer);
     }
 
