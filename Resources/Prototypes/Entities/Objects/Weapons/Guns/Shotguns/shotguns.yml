@@ -19,17 +19,12 @@
     slots:
     - Back
     - suitStorage
-<<<<<<< HEAD
-  - type: AmmoCounter
-  - type: Gun
-=======
   # - type: AmmoCounter # WWDP
   - type: Gun # change WeaponShotgunBulldog too if updating this
     bonusAngleIncreaseMove: 40    # wwdp
     bonusAngleIncreaseTurn: 0.25  # wwdp
     bonusAngleDecay: 40           # wwdp
     maxBonusAngle: 20             # wwdp
->>>>>>> cce56e56ce ([Tweak] The Gunnening (#285))
     fireRate: 2
     selectedMode: SemiAuto
     availableModes:
@@ -40,6 +35,7 @@
       path: /Audio/Weapons/Guns/Empty/empty.ogg
     fireOnDropChance: 0.2
   - type: BallisticAmmoProvider
+    autoCycle: false
     whitelist:
       tags:
       - ShellShotgun
