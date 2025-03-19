@@ -6,8 +6,10 @@ using Content.Client.UserInterface.Screens;
 using Content.Client.UserInterface.Systems.Gameplay;
 using Content.Client.Viewport;
 using Content.Shared.CCVar;
+using Content.Shared.Ghost;
 using Robust.Client.Graphics;
 using Robust.Client.Input;
+using Robust.Client.Player;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.CustomControls;
 using Robust.Shared.Configuration;
@@ -24,6 +26,8 @@ namespace Content.Client.Gameplay
         [Dependency] private readonly IUserInterfaceManager _uiManager = default!;
         [Dependency] private readonly IViewportUserInterfaceManager _vpUIManager = default!;
         [Dependency] private readonly IConfigurationManager _configurationManager = default!;
+        [Dependency] private readonly IPlayerManager _playerManager = default!;
+        [Dependency] private readonly IEntityManager _entityManager = default!;
 
         private FpsCounter _fpsCounter = default!;
 
@@ -115,9 +119,16 @@ namespace Content.Client.Gameplay
             */
 
             _uiManager.LoadScreen<SeparatedChatGameScreen>();
+
             var hudType = _configurationManager.GetCVar(CCVars.HudType);
-            var gameplayHud = new HUDGameplayState((HUDGameplayType) hudType);
+            HUDRoot gameplayHud = new HUDGameplayState((HUDGameplayType) hudType);
+            if (_playerManager.LocalEntity is not null &&
+                _entityManager.TryGetComponent<GhostComponent>(_playerManager.LocalEntity.Value, out var ghotComp))
+            {
+                gameplayHud = new HUDGhostState();
+            }
             _vpUIManager.LoadScreen(gameplayHud);
+
             _loadController.LoadScreen();
         }
 

@@ -8,6 +8,7 @@ using Content.Client.UserInterface.Systems.Viewport;
 using Content.Client.Viewport;
 using Content.KayMisaZlevels.Client;
 using Content.Shared.CCVar;
+using Content.Shared.Ghost;
 using Content.Shared.Maps;
 using Content.Shared.Parallax.Biomes;
 using Robust.Client.Graphics;
@@ -31,8 +32,10 @@ public sealed class ViewportUserInterfaceOverlay : Overlay
     [Dependency] private readonly IEntityManager _entManager = default!;
     [Dependency] private readonly IUserInterfaceManager _uiManager = default!;
     [Dependency] private readonly IViewportUserInterfaceManager _vpUIManager = default!;
+    [Dependency] private readonly IPlayerManager _player = default!;
     [Dependency] private readonly IClyde _clyde = default!;
 
+    private ViewportUserInterfaceSystem _vpUISystem;
     private ViewportUIController _viewportUIController;
     private ScalingViewport? _viewport;
 
@@ -42,16 +45,36 @@ public sealed class ViewportUserInterfaceOverlay : Overlay
     {
         IoCManager.InjectDependencies(this);
 
+        _vpUISystem = _entManager.System<ViewportUserInterfaceSystem>();
         _viewportUIController = _uiManager.GetUIController<ViewportUIController>();
 
         _cfg.OnValueChanged(CCVars.HudType, (_) =>
         {
-            var hudType = _cfg.GetCVar(CCVars.HudType);
-            var gameplayHud = new HUDGameplayState((HUDGameplayType) hudType);
-            _vpUIManager.ReloadScreen(gameplayHud);
-            ResolveViewport();
+            RestoreHud();
         });
 
+        _vpUISystem.PlayerAttachedEvent += () =>
+        {
+            RestoreHud();
+        };
+        _vpUISystem.PlayerDetachedEvent += () =>
+        {
+            _vpUIManager.UnloadScreen();
+        };
+
+        ResolveViewport();
+    }
+
+    private void RestoreHud()
+    {
+        var hudType = _cfg.GetCVar(CCVars.HudType);
+        HUDRoot gameplayHud = new HUDGameplayState((HUDGameplayType) hudType);
+
+        if (_player.LocalEntity is not null &&
+            _entManager.TryGetComponent<GhostComponent>(_player.LocalEntity.Value, out var ghostComp))
+            gameplayHud = new HUDGhostState();
+
+        _vpUIManager.ReloadScreen(gameplayHud);
         ResolveViewport();
     }
 
