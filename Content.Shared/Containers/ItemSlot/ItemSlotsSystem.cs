@@ -213,7 +213,7 @@ namespace Content.Shared.Containers.ItemSlots
                 if (!slot.InsertOnInteract)
                     continue;
 
-                if (!CanInsert(uid, args.Used, args.User, slot, swap: slot.Swap ?? _defaultQuickSwap, popup: args.User))
+                if (!CanInsert(uid, args.Used, args.User, slot, swap: slot.Swap, popup: args.User))
                     continue;
 
                 // Drop the held item onto the floor. Return if the user cannot drop.

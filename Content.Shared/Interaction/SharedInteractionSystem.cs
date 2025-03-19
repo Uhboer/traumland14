@@ -1214,10 +1214,10 @@ namespace Content.Shared.Interaction
             // lest it becomes completely unavailable. Thus, it is relegated to a separate event,
             // fired before looking for altverbs.
             // Look upon my shit, and despair.
-            var ev = new AlternativeInteractionEvent(user);
-            RaiseLocalEvent(target, ev);
-            if (ev.Handled)
-                return true;
+            //var ev = new AlternativeInteractionEvent(user);
+            //RaiseLocalEvent(target, ev);
+            //if (ev.Handled)
+            //    return true;
 			// WD EDIT END
 
             // Get list of alt-interact verbs
