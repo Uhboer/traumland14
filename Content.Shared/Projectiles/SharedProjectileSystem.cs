@@ -40,6 +40,7 @@ public abstract partial class SharedProjectileSystem : EntitySystem
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly SharedBodySystem _body = default!;
     [Dependency] private readonly StandingStateSystem _standing = default!;
+    [Dependency] private readonly SharedHandsSystem _hands = default!;
 
     public override void Initialize()
     {
@@ -154,7 +155,7 @@ public abstract partial class SharedProjectileSystem : EntitySystem
             || _standing.IsDown(args.Target))
             return;
 
-        Embed(uid, args.Target, null, component, args.TargetPart);
+        Embed(uid, args.Target, null, component, targetPart: args.TargetPart);
     }
 
     private void OnEmbedProjectileHit(EntityUid uid, EmbeddableProjectileComponent component, ref ProjectileHitEvent args)
@@ -172,7 +173,7 @@ public abstract partial class SharedProjectileSystem : EntitySystem
         }
     }
 
-    public void Embed(EntityUid uid, EntityUid target, EntityUid? user, EmbeddableProjectileComponent component, bool raiseEvent = true) // WD EDIT
+    public void Embed(EntityUid uid, EntityUid target, EntityUid? user, EmbeddableProjectileComponent component, bool raiseEvent = true, TargetBodyPart? targetPart = null) // WD EDIT
     {
         // WD EDIT START
         if (!TryComp<PhysicsComponent>(uid, out var physics)
@@ -272,14 +273,6 @@ public abstract partial class SharedProjectileSystem : EntitySystem
     }
 
     // WD EDIT START
-    private void OnEmbedActivate(EntityUid uid, EmbeddableProjectileComponent component, ActivateInWorldEvent args)
-    {
-        if (args.Handled
-            || !AttemptEmbedRemove(uid, args.User, component))
-            return;
-
-        args.Handled = true;
-    }
 
     private bool AttemptEmbedRemove(EntityUid uid, EntityUid user, EmbeddableProjectileComponent? component = null)
     {
