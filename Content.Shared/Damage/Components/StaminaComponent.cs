@@ -73,6 +73,10 @@ public sealed partial class StaminaComponent : Component
     [DataField, AutoNetworkedField]
     public float SlowdownMultiplier = 0.75f;
 
+    // Урон от бега. ЗАБАЛАНСИ МЕНЯ!!!!!!!
+    [ViewVariables(VVAccess.ReadWrite), DataField("sprintStaminaMultiplier"), AutoNetworkedField]
+    public float SprintStaminaMultiplier = 3f;
+
     [DataField]
     public ProtoId<AlertPrototype> StaminaAlert = "Stamina";
 }

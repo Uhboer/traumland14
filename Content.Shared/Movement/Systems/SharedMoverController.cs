@@ -29,6 +29,8 @@ using Robust.Shared.Physics.Systems;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
 using PullableComponent = Content.Shared.Movement.Pulling.Components.PullableComponent;
+using Content.Shared.Damage.Systems;
+using Content.Shared.Damage.Components;
 
 
 namespace Content.Shared.Movement.Systems
@@ -55,6 +57,7 @@ namespace Content.Shared.Movement.Systems
         [Dependency] private readonly SharedTransformSystem _transform = default!;
         [Dependency] private readonly TagSystem _tags = default!;
         [Dependency] private readonly IEntityManager _entities = default!; // Delta V-NoShoesSilentFootstepsComponent
+        [Dependency] private readonly StaminaSystem _staminaSystem = default!;
 
         protected EntityQuery<InputMoverComponent> MoverQuery;
         protected EntityQuery<MobMoverComponent> MobMoverQuery;
@@ -174,6 +177,22 @@ namespace Content.Shared.Movement.Systems
             var weightless = _gravity.IsWeightless(physicsUid, physicsComponent, xform);
             var (walkDir, sprintDir) = GetVelocityInput(mover);
             var touching = false;
+
+            // Deal stamina damage on running.
+            if (TryComp<StaminaComponent>(uid, out var stamina))
+            {
+                if (stamina.StaminaDamage >= stamina.CritThreshold * 0.7f)
+                {
+                    walkDir = sprintDir + walkDir;
+                    sprintDir = Vector2.Zero;
+                }
+                else if (sprintDir != Vector2.Zero)
+                {
+                    var sprintAmount = sprintDir.Length();
+                    var staminaDamage = sprintAmount * frameTime * stamina.SprintStaminaMultiplier;
+                    _staminaSystem.TakeStaminaDamage(uid, staminaDamage, stamina, visual: false);
+                }
+            }
 
 
             // Handle wall-pushes.
@@ -305,7 +324,7 @@ namespace Content.Shared.Movement.Systems
                 if (!weightless && MobMoverQuery.TryGetComponent(uid, out var mobMover) &&
                     TryGetSound(weightless, uid, mover, mobMover, xform, out var sound, tileDef: tileDef))
                 {
-                    var soundModifier = mover.Sprinting ? 3.5f : 1.5f;
+                    var soundModifier = sprintDir != Vector2.Zero ? 3.5f : 1.5f;
                     var volume = sound.Params.Volume + soundModifier;
 
                     if (_entities.TryGetComponent(uid, out FootstepVolumeModifierComponent? volumeModifier))

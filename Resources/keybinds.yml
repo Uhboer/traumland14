@@ -162,7 +162,7 @@ binds:
   key: P
 - function: SwapHands
   type: State
-  key: X
+  key: Space
 - function: MoveStoredItem
   type: State
   key: MouseLeft
