@@ -31,6 +31,7 @@ using Robust.Shared.Utility;
 using PullableComponent = Content.Shared.Movement.Pulling.Components.PullableComponent;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Damage.Components;
+using Robust.Shared.Player;
 
 
 namespace Content.Shared.Movement.Systems
@@ -179,7 +180,8 @@ namespace Content.Shared.Movement.Systems
             var touching = false;
 
             // Deal stamina damage on running.
-            if (TryComp<StaminaComponent>(uid, out var stamina))
+            if (TryComp<StaminaComponent>(uid, out var stamina) &&
+                TryComp<ActorComponent>(uid, out var actor)) // only players should affected
             {
                 if (stamina.StaminaDamage >= stamina.CritThreshold * 0.7f)
                 {
