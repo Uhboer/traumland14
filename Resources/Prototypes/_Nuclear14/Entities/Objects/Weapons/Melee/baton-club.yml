@@ -48,6 +48,8 @@
     slots:
     - belt
     - suitStorage
+    - Back
+    - Back2
   - type: StaticPrice
     price: 20
 
@@ -121,5 +123,7 @@
     slots:
     - belt
     - suitStorage
+    - Back
+    - Back2
   - type: StaticPrice
     price: 30

@@ -90,6 +90,7 @@
     quickEquip: false
     slots:
     - Back
+    - Back2
     - suitStorage
   - type: Item
     size: Large
@@ -135,6 +136,7 @@
     quickEquip: false
     slots:
     - Back
+    - Back2
     - suitStorage
   - type: Item
     size: Large

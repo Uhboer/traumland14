@@ -14,6 +14,7 @@
     quickEquip: false
     slots:
     - Back
+    - Back2
     - SuitStorage
   - type: Item
     size: Huge
@@ -42,7 +43,7 @@
     slots:
       cell_slot:
         name: power-cell-slot-component-slot-name-default
-  - type: Stretched 
+  - type: Stretched
   - type: Powered
   - type: Appearance
   - type: StretchedVisuals
@@ -70,6 +71,7 @@
     quickEquip: false
     slots:
     - Back
+    - Back2
     - SuitStorage
   - type: Construction
     deconstructionTarget: null

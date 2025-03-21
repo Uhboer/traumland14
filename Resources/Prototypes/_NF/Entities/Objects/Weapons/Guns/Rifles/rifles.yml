@@ -241,6 +241,7 @@
     quickEquip: false
     slots:
     - Back
+    - Back2
     - suitStorage
   - type: Gun
     fireRate: 3

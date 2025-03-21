@@ -13,6 +13,9 @@
     - 8,0,9,3
   - type: Clothing # WWDP
     equipSound: /Audio/_White/Equip/clothingrustle4.ogg
+    slots:
+    - back
+    - back2
   - type: Item # WWDP
     canBeUsedWhileWorn: true
 

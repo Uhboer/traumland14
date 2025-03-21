@@ -21,6 +21,7 @@
     - Belt
     - suitStorage
     - Back
+    - Back2
     sprite: _Goobstation/Objects/Weapons/Guns/Battery/erevolver.rsi
   - type: Gun
     fireRate: 1.5

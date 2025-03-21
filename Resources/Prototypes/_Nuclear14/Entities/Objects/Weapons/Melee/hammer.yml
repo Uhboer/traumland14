@@ -25,8 +25,9 @@
     sprite: _Nuclear14/Objects/Weapons/Melee/sledgehammer.rsi
     quickEquip: false
     slots:
-    - back
     - suitStorage
+    - Back
+    - Back2
   # - type: Tool
     # qualities:
       # - Crushing
@@ -61,6 +62,7 @@
     quickEquip: false
     slots:
     - back
+    - Back2
     - suitStorage
   - type: StaticPrice
     price: 100
@@ -89,6 +91,7 @@
     quickEquip: false
     slots:
     - back
+    - Back2
     - suitStorage
   - type: StaticPrice
     price: 60
@@ -119,6 +122,7 @@
     quickEquip: false
     slots:
     - back
+    - Back2
     - suitStorage
   - type: StaticPrice
     price: 60

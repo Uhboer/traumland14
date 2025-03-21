@@ -89,6 +89,7 @@
     quickEquip: false
     slots:
     - back
+    - Back2
     - suitStorage
   - type: StaticPrice
     price: 0
@@ -120,6 +121,7 @@
     quickEquip: false
     slots:
     - back
+    - Back2
     - suitStorage
   - type: StaticPrice
     price: 0

@@ -71,6 +71,7 @@
     quickEquip: false
     slots:
     - Back
+    - Back2
     - suitStorage
   - type: Sprite
     sprite: _Nuclear14/Objects/Weapons/Guns/Snipers/antimateriel.rsi
@@ -304,6 +305,8 @@
     slots:
     - suitStorage
     - Belt
+    - Back
+    - Back2
   - type: Sprite
     sprite: _Nuclear14/Objects/Weapons/Guns/Snipers/shortlevercarbine.rsi
   - type: Wieldable

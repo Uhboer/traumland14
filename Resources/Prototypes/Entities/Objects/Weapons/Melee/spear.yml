@@ -62,6 +62,7 @@
     quickEquip: false
     slots:
     - back
+    - Back2
     - suitStorage
   - type: Construction
     graph: Spear
@@ -257,6 +258,7 @@
     quickEquip: false
     slots:
     - back
+    - Back2
     - suitStorage
   - type: SolutionContainerManager
     solutions:

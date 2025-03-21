@@ -23,6 +23,7 @@
     quickEquip: false
     slots:
     - Back
+    - Back2
     - suitStorage
   - type: Sprite
     sprite: _Nuclear14/Objects/Weapons/Guns/SMGs/10mmSMG.rsi
@@ -79,6 +80,7 @@
     quickEquip: false
     slots:
     - Back
+    - Back2
     - suitStorage
   - type: Sprite
     sprite: _Nuclear14/Objects/Weapons/Guns/SMGs/12mmSMG.rsi
@@ -136,6 +138,7 @@
     quickEquip: false
     slots:
     - Back
+    - Back2
     - suitStorage
   - type: Sprite
     sprite: _Nuclear14/Objects/Weapons/Guns/SMGs/12mmPIPE.rsi
@@ -218,6 +221,7 @@
     quickEquip: false
     slots:
     - Back
+    - Back2
     - suitStorage
   - type: Sprite
     sprite: _Nuclear14/Objects/Weapons/Guns/SMGs/10mmPIPE.rsi
@@ -298,6 +302,7 @@
     quickEquip: false
     slots:
     - Back
+    - Back2
     - suitStorage
   - type: Sprite
     sprite: _Nuclear14/Objects/Weapons/Guns/SMGs/advance12mm.rsi
@@ -355,6 +360,7 @@
     quickEquip: false
     slots:
     - Back
+    - Back2
     - suitStorage
   - type: Sprite
     sprite: _Nuclear14/Objects/Weapons/Guns/SMGs/9mmSMG.rsi
@@ -411,6 +417,7 @@
     quickEquip: false
     slots:
     - Back
+    - Back2
     - suitStorage
   - type: Sprite
     sprite: _Nuclear14/Objects/Weapons/Guns/SMGs/45SMG.rsi
@@ -467,6 +474,7 @@
     quickEquip: false
     slots:
     - Back
+    - Back2
     - suitStorage
   - type: Sprite
     sprite: _Nuclear14/Objects/Weapons/Guns/SMGs/canadianSMG.rsi
@@ -523,6 +531,7 @@
     quickEquip: false
     slots:
     - Back
+    - Back2
     - suitStorage
   - type: Sprite
     sprite: _Nuclear14/Objects/Weapons/Guns/SMGs/canadianadvanceSMG.rsi
@@ -580,6 +589,7 @@
     quickEquip: false
     slots:
     - Back
+    - Back2
     - suitStorage
   - type: Sprite
     sprite: _Nuclear14/Objects/Weapons/Guns/SMGs/chineseadvanceSMG.rsi
@@ -637,6 +647,7 @@
     quickEquip: false
     slots:
     - Back
+    - Back2
     - suitStorage
   - type: Sprite
     sprite: _Nuclear14/Objects/Weapons/Guns/SMGs/chineseSMG.rsi

@@ -125,19 +125,29 @@
       hudSlotGroup: Misc
       strippingWindowPos: 2,1
       displayName: Ears
-    - name: suitstorage
-      slotTexture: gun_storage
-      slotFlags:   SUITSTORAGE
+    #- name: suitstorage
+    #  slotTexture: gun_storage
+    #  slotFlags:   SUITSTORAGE
+    #  #slotGroup: MainHotbar
+    #  stripTime: 3
+    #  uiWindowPos: 0,0
+    #  hudWindowPos: 2,2
+    #  altHudWindowPos: 1,2
+    #  strippingWindowPos: 2,2
+    #  dependsOn: outerClothing
+    #  dependsOnComponents:
+    #  - type: AllowSuitStorage
+    #  displayName: Suit Storage
+    - name: back2
+      slotTexture: back2
+      slotFlags:   BACK2
       #slotGroup: MainHotbar
-      stripTime: 3
+      stripTime: 6
       uiWindowPos: 0,0
       hudWindowPos: 2,2
       altHudWindowPos: 1,2
       strippingWindowPos: 2,2
-      dependsOn: outerClothing
-      dependsOnComponents:
-      - type: AllowSuitStorage
-      displayName: Suit Storage
+      displayName: Back 2
     - name: gloves
       slotTexture: gloves
       slotFlags: GLOVES

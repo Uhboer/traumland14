@@ -158,6 +158,7 @@
     sprite: Objects/Tanks/Jetpacks/captain.rsi
     slots:
       - Back
+      - Back2
       - SuitStorage
   - type: Item
     sprite: Objects/Tanks/Jetpacks/captain.rsi
@@ -200,6 +201,7 @@
       sprite: Objects/Tanks/Jetpacks/mini.rsi
       slots:
         - Back
+        - Back2
         - suitStorage
         - Belt
     - type: GasTank
@@ -276,6 +278,7 @@
     sprite: Objects/Tanks/Jetpacks/void.rsi
     slots:
       - Back
+      - Back2
       - suitStorage
       - Belt
 
@@ -311,6 +314,7 @@
       sprite: Objects/Tanks/Jetpacks/mini.rsi
       slots:
         - Back
+        - Back2
         - suitStorage
         - Belt
     - type: GasTank

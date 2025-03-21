@@ -1,0 +1,10 @@
+namespace Content.Shared._Finster.Inventory;
+public sealed class SharedCustomInventorySystem : EntitySystem
+{
+    private void OnEquipAttempt(EntityUid uid, CuffableComponent component, IsEquippingAttemptEvent args)
+    {
+        // is this a self-equip, or are they being stripped?
+        if (args.Equipee == uid)
+            CheckAct(uid, component, args);
+    }
+}

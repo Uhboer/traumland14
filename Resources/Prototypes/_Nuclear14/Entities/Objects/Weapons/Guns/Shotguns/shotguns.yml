@@ -16,6 +16,7 @@
     quickEquip: false
     slots:
     - Back
+    - Back2
     - suitStorage
   - type: AmmoCounter
   - type: Gun
@@ -52,6 +53,7 @@
     quickEquip: false
     slots:
     - Back
+    - Back2
     - suitStorage
   - type: Sprite
     sprite: _Nuclear14/Objects/Weapons/Guns/Shotguns/pump.rsi
@@ -83,6 +85,7 @@
     quickEquip: false
     slots:
     - Back
+    - Back2
     - suitStorage
   - type: Sprite
     sprite: _Nuclear14/Objects/Weapons/Guns/Shotguns/double_shotgun.rsi
@@ -177,6 +180,7 @@
     quickEquip: false
     slots:
     - Back
+    - Back2
     - suitStorage
   - type: Item
     size: Large
@@ -230,6 +234,7 @@
     quickEquip: false
     slots:
     - Back
+    - Back2
     - suitStorage
   - type: Sprite
     sprite: _Nuclear14/Objects/Weapons/Guns/Shotguns/caravan_shotgun.rsi
@@ -263,6 +268,7 @@
     slots:
     - Belt
     - Back
+    - Back2
     - suitStorage
   - type: Sprite
     sprite: _Nuclear14/Objects/Weapons/Guns/Shotguns/lever_shotgun.rsi
@@ -301,6 +307,7 @@
     slots:
     - Belt
     - Back
+    - Back2
     - suitStorage
   - type: Sprite
     sprite: _Nuclear14/Objects/Weapons/Guns/Shotguns/riot_shotgun.rsi
@@ -368,6 +375,7 @@
     slots:
     - Belt
     - Back
+    - Back2
     - suitStorage
   - type: Sprite
     sprite: _Nuclear14/Objects/Weapons/Guns/Shotguns/shortpump.rsi
@@ -404,6 +412,7 @@
     quickEquip: false
     slots:
     - Back
+    - Back2
     - suitStorage
   - type: Sprite
     sprite: _Nuclear14/Objects/Weapons/Guns/Shotguns/blowback.rsi
@@ -437,6 +446,7 @@
     quickEquip: false
     slots:
     - Back
+    - Back2
     - suitStorage
   - type: Sprite
     sprite: _Nuclear14/Objects/Weapons/Guns/Shotguns/chinese_shotgun.rsi
@@ -470,6 +480,7 @@
     quickEquip: false
     slots:
     - Back
+    - Back2
     - suitStorage
   - type: Sprite
     sprite: _Nuclear14/Objects/Weapons/Guns/Shotguns/canadian_shotgun.rsi
@@ -498,6 +509,7 @@
     quickEquip: false
     slots:
     - Back
+    - Back2
     - suitStorage
   - type: Sprite
     sprite: _Nuclear14/Objects/Weapons/Guns/Shotguns/boomstick.rsi
@@ -531,6 +543,7 @@
     quickEquip: false
     slots:
     - Back
+    - Back2
     - suitStorage
   - type: Sprite
     sprite: _Nuclear14/Objects/Weapons/Guns/Shotguns/boomstick2.rsi
@@ -564,6 +577,7 @@
     quickEquip: false
     slots:
     - Back
+    - Back2
     - suitStorage
   - type: Sprite
     sprite: _Nuclear14/Objects/Weapons/Guns/Shotguns/pipe_shotgun.rsi

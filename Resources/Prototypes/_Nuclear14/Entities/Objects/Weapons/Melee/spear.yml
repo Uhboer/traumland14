@@ -52,6 +52,7 @@
     quickEquip: false
     slots:
     - back
+    - Back2
     - suitStorage
   - type: SolutionContainerManager
     solutions:
@@ -135,6 +136,7 @@
     quickEquip: false
     slots:
     - back
+    - Back2
     - suitStorage
   - type: SolutionContainerManager
     solutions:
@@ -173,6 +175,7 @@
     quickEquip: false
     slots:
     - back
+    - Back2
     - suitStorage
   - type: Tag
     tags:
@@ -195,6 +198,7 @@
     quickEquip: false
     slots:
     - back
+    - Back2
     - suitStorage
   - type: Sprite
     sprite: _Nuclear14/Objects/Weapons/Melee/tribalspear.rsi
@@ -222,6 +226,7 @@
     quickEquip: false
     slots:
     - back
+    - Back2
     - suitStorage
   - type: Sprite
     sprite: _Nuclear14/Objects/Weapons/Melee/polearm.rsi

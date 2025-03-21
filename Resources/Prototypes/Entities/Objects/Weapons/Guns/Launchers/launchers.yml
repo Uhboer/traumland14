@@ -51,6 +51,7 @@
     sprite: Objects/Weapons/Guns/Launchers/china_lake.rsi
     slots:
     - Back
+    - Back2
     - suitStorage
   # - type: AmmoCounter # WWDP
   - type: Gun
@@ -429,6 +430,7 @@
     quickEquip: false
     slots:
     - Back
+    - Back2
     - Belt
     - suitStorage
   - type: BallisticAmmoProvider

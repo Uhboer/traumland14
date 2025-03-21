@@ -7,6 +7,7 @@
     quickEquip: false
     slots:
     - Back
+    - Back2
     - suitStorage
   - type: Wieldable
   - type: GunWieldBonus
@@ -35,6 +36,7 @@
     quickEquip: false
     slots:
     - Back
+    - Back2
     - suitStorage
   - type: Sprite
     sprite: _Nuclear14/Objects/Weapons/Guns/Rifles/r91.rsi
@@ -82,6 +84,7 @@
     quickEquip: false
     slots:
     - Back
+    - Back2
     - suitStorage
   - type: Sprite
     sprite: _Nuclear14/Objects/Weapons/Guns/Rifles/chineserifle.rsi
@@ -130,6 +133,7 @@
     quickEquip: false
     slots:
     - Back
+    - Back2
     - suitStorage
   - type: Sprite
     sprite: _Nuclear14/Objects/Weapons/Guns/Rifles/assaultcarbine.rsi
@@ -181,6 +185,7 @@
     quickEquip: false
     slots:
     - Back
+    - Back2
     - suitStorage
   - type: Sprite
     sprite: _Nuclear14/Objects/Weapons/Guns/Rifles/marksman.rsi
@@ -232,6 +237,7 @@
     quickEquip: false
     slots:
     - Back
+    - Back2
     - suitStorage
   - type: Sprite
     sprite: _Nuclear14/Objects/Weapons/Guns/Rifles/servicerifle.rsi
@@ -283,6 +289,7 @@
     quickEquip: false
     slots:
     - Back
+    - Back2
     - suitStorage
   - type: Sprite
     sprite: _Nuclear14/Objects/Weapons/Guns/Rifles/scoutrifle.rsi
@@ -336,6 +343,7 @@
     quickEquip: false
     slots:
     - Back
+    - Back2
     - suitStorage
   - type: Sprite
     sprite: _Nuclear14/Objects/Weapons/Guns/Rifles/battlerifle.rsi
@@ -392,6 +400,7 @@
     quickEquip: false
     slots:
     - Back
+    - Back2
     - suitStorage
   - type: Sprite
     sprite: _Nuclear14/Objects/Weapons/Guns/Rifles/carbine.rsi
@@ -443,6 +452,7 @@
     quickEquip: false
     slots:
     - Back
+    - Back2
     - suitStorage
   - type: Sprite
     sprite: _Nuclear14/Objects/Weapons/Guns/Rifles/canadianrifle.rsi
@@ -494,6 +504,7 @@
     quickEquip: false
     slots:
     - Back
+    - Back2
     - suitStorage
   - type: Sprite
     sprite: _Nuclear14/Objects/Weapons/Guns/Rifles/em2.rsi
@@ -546,6 +557,7 @@
     quickEquip: false
     slots:
     - Back
+    - Back2
     - suitStorage
   - type: Sprite
     sprite: _Nuclear14/Objects/Weapons/Guns/Rifles/fal.rsi
@@ -597,6 +609,7 @@
     quickEquip: false
     slots:
     - Back
+    - Back2
     - suitStorage
   - type: Sprite
     sprite: _Nuclear14/Objects/Weapons/Guns/Rifles/m14.rsi
@@ -648,6 +661,7 @@
     quickEquip: false
     slots:
     - Back
+    - Back2
     - suitStorage
   - type: Sprite
     sprite: _Nuclear14/Objects/Weapons/Guns/Rifles/canadianmarksman.rsi
@@ -702,6 +716,7 @@
     quickEquip: false
     slots:
     - Back
+    - Back2
     - suitStorage
   - type: Sprite
     sprite: _Nuclear14/Objects/Weapons/Guns/Rifles/chinesemarksman.rsi
@@ -756,6 +771,7 @@
     quickEquip: false
     slots:
     - Back
+    - Back2
     - suitStorage
   - type: Sprite
     sprite: _Nuclear14/Objects/Weapons/Guns/Rifles/chinesecarbine.rsi
@@ -807,6 +823,7 @@
     quickEquip: false
     slots:
     - Back
+    - Back2
     - suitStorage
   - type: Sprite
     sprite: _Nuclear14/Objects/Weapons/Guns/Rifles/pipeassaultrifle.rsi
@@ -920,6 +937,7 @@
     quickEquip: false
     slots:
     - Back
+    - Back2
     - suitStorage
   - type: Sprite
     sprite: _Nuclear14/Objects/Weapons/Guns/Rifles/butcheredrifle.rsi

@@ -14,6 +14,7 @@
     quickEquip: false
     slots:
     - Back
+    - Back2
     - suitStorage
   # - type: AmmoCounter # WWDP
   - type: Gun # if changing also update WeaponDisablerSMG

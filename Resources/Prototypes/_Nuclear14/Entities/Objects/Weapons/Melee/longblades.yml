@@ -18,6 +18,8 @@
     slots:
     - Belt
     - suitStorage
+    - Back
+    - Back2
   - type: Sprite
     sprite: _Nuclear14/Objects/Weapons/Melee/machete.rsi
     state: icon
@@ -39,6 +41,8 @@
     slots:
     - Belt
     - suitStorage
+    - Back
+    - Back2
   - type: Sprite
     sprite: _Nuclear14/Objects/Weapons/Melee/tribal_machete.rsi
     state: icon
@@ -69,6 +73,8 @@
     slots:
     - Belt
     - suitStorage
+    - Back
+    - Back2
   - type: Sprite
     sprite: _Nuclear14/Objects/Weapons/Melee/scrap_machete.rsi
     state: icon
@@ -99,6 +105,8 @@
     slots:
     - Belt
     - suitStorage
+    - Back
+    - Back2
   - type: Sprite
     sprite: _Nuclear14/Objects/Weapons/Melee/ripper.rsi
     state: icon
@@ -163,6 +171,8 @@
     slots:
     - Belt
     - suitStorage
+    - Back
+    - Back2
   - type: Sprite
     sprite: _Nuclear14/Objects/Weapons/Melee/ceremonialsword.rsi
     state: icon
@@ -193,6 +203,8 @@
     slots:
     - Belt
     - suitStorage
+    - Back
+    - Back2
   - type: Sprite
     sprite: _Nuclear14/Objects/Weapons/Melee/chinesesword.rsi
   - type: DamageOtherOnHit
