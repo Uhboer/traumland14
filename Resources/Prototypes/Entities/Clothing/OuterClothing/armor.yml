@@ -134,7 +134,7 @@
   - type: Clothing
     sprite: Clothing/OuterClothing/Armor/armor_reflec.rsi
   - type: Armor
-    protectedArea: BodyArms # WWDP
+    protectedArea: UpperBody # WWDP
     modifiers:
       coefficients:
         Blunt: 0.9

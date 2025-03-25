@@ -122,7 +122,7 @@ public sealed class IdentitySystem : SharedIdentitySystem
         SetIdentityRecordsIcon(uid);
     }
 
-    private string GetIdentityName(EntityUid target, IdentityRepresentation representation)
+    public string GetIdentityName(EntityUid target, IdentityRepresentation representation)
     {
         var ev = new SeeIdentityAttemptEvent();
 
@@ -145,7 +145,7 @@ public sealed class IdentitySystem : SharedIdentitySystem
     ///     Gets an 'identity representation' of an entity, with their true name being the entity name
     ///     and their 'presumed name' and 'presumed job' being the name/job on their ID card, if they have one.
     /// </summary>
-    private IdentityRepresentation GetIdentityRepresentation(EntityUid target,
+    public IdentityRepresentation GetIdentityRepresentation(EntityUid target,
         InventoryComponent? inventory=null,
         HumanoidAppearanceComponent? appearance=null)
     {

@@ -1,10 +1,12 @@
-﻿using Content.Server.Chat.Managers;
+﻿using Content.Server._White.Notice;
+using Content.Server.Chat.Managers;
 using Content.Server.IdentityManagement;
 using Content.Shared.Chat;
 using Content.Shared.Damage;
 using Content.Shared.IdentityManagement.Components;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
+using Content.Shared.Popups;
 using Content.Shared.Projectiles;
 using Content.Shared.Weapons.Melee;
 using Content.Shared.Weapons.Melee.Events;
@@ -14,26 +16,24 @@ using Robust.Shared.Player;
 
 namespace Content.Server._White.Chat.CombatLogs;
 
-public sealed class CombatLogsSystem: EntitySystem
+public sealed class CombatLogsSystem : EntitySystem
 {
     //[Dependency] private readonly PopupSystem _popupSystem = default!;
     [Dependency] private readonly IChatManager _chatManager = default!;
     [Dependency] private readonly IdentitySystem _identitySystem = default!;
+    [Dependency] private readonly NoticeSystem _notice = default!;
 
     public override void Initialize()
     {
         base.Initialize();
 
-        SubscribeLocalEvent<CombatLogsComponent, AttackedEvent>(OnAttacked);
+        SubscribeLocalEvent<DamageableComponent, AttackedEvent>(OnAttacked);
         SubscribeLocalEvent<ProjectileComponent, ProjectileHitEvent>(OnProjectileHit);
         SubscribeLocalEvent<DamageableComponent, HitScanReflectAttemptEvent>(OnHitscan);
     }
 
-    public void OnAttacked(EntityUid entity, CombatLogsComponent comp, AttackedEvent args)
+    public void OnAttacked(EntityUid entity, DamageableComponent comp, AttackedEvent args)
     {
-        if (!TryComp<ActorComponent>(entity, out var actor))
-            return;
-
         if (!TryComp<MobStateComponent>(entity, out var playermobstate) || playermobstate.CurrentState == MobState.Dead)
             return;
 
@@ -41,22 +41,30 @@ public sealed class CombatLogsSystem: EntitySystem
         string attacker;
 
         if (HasComp<IdentityComponent>(args.User))
-            attacker = _identitySystem.GetEntityIdentity(args.User);
+        {
+            var representation = _identitySystem.GetIdentityRepresentation(args.User);
+            if (representation is not null)
+                attacker = _identitySystem.GetIdentityName(args.User, representation);
+            else
+                attacker = Name(args.User);
+        }
         else
+        {
             attacker = Name(args.User);
+        }
 
         // Get weapon's name
         string weapon = Name(args.Used);
+        if (!TryComp<MeleeWeaponComponent>(args.Used, out var weaponComponent))
+            return;
 
-        // Get the attack verb from the melee weapon if there is one
-        string verbRoot = "hit";
-        string verbPresent = "hits";
-
-        TryComp<MeleeWeaponComponent>(args.Used, out var weaponComponent);
+        var targetPart = args.TargetPart.ToString();
+        if (targetPart is null)
+            targetPart = string.Empty;
 
         if (playermobstate.CurrentState == MobState.Critical) // Cant see shit in crit
         {
-            LogMessage($"Something {verbPresent} you in the {args.TargetPart.ToString()}!");
+            LogMessage(Loc.GetString("combatlogs-crit-hits", ("bodyPart", targetPart)));
             return;
         }
 
@@ -66,67 +74,68 @@ public sealed class CombatLogsSystem: EntitySystem
         {
             if (unarmed)
             {
-                LogMessage($"You {verbRoot} yourself in the {args.TargetPart.ToString()}!");
+                LogMessage(Loc.GetString("combatlogs-unarmed-hit-self", ("bodyPart", targetPart)));
                 return;
             }
-            LogMessage($"You {verbRoot} yourself in the {args.TargetPart.ToString()} with a {weapon}!");
+            LogMessage(Loc.GetString("combatlogs-hit-self", ("bodyPart", targetPart), ("weapon", weapon)));
             return;
         }
 
         if (unarmed)
         {
-            LogMessage($"{attacker} {verbPresent} you in the {args.TargetPart.ToString()}!");
+            LogMessage(Loc.GetString("combatlogs-unarmed-hit", ("attacker", attacker), ("bodyPart", targetPart)));
             return;
         }
-        LogMessage($"{attacker} {verbPresent} you in the {args.TargetPart.ToString()} with a {weapon}!");
+        LogMessage(Loc.GetString("combatlogs-hit", ("attacker", attacker), ("bodyPart", targetPart), ("weapon", weapon)));
         return;
 
         void LogMessage(string message)
         {
-            LogToChat(message, actor);
+            LogToChat(message, entity);
         }
-
     }
 
     public void OnProjectileHit(EntityUid entity, ProjectileComponent comp, ProjectileHitEvent args)
     {
-        if (!TryComp<ActorComponent>(args.Target, out var actor))
-            return;
-
         if (!TryComp<MobStateComponent>(args.Target, out var playermobstate) || playermobstate.CurrentState == MobState.Dead)
             return;
 
-        string projectile = MetaData(entity).EntityName;
-        string message = $"{projectile} hits you in the {args.TargetPart.ToString()}!";
+        var targetPart = args.TargetPart.ToString();
+        if (targetPart is null)
+            targetPart = string.Empty;
 
-        var intensity = 12; // Base font size (i think)
+        string projectile = MetaData(entity).EntityName;
+        string message = Loc.GetString("combatlogs-projectile-hit", ("projectile", projectile), ("bodyPart", targetPart));
 
         if (playermobstate.CurrentState == MobState.Critical) // Cant see shit in crit
-            message = $"Something hits you in the {args.TargetPart.ToString()}!";
+            message = Loc.GetString("combatlogs-crit-hits", ("bodyPart", targetPart));
 
-        LogToChat(message, actor);
+        LogToChat(message, args.Target);
     }
 
     public void OnHitscan(EntityUid entity, DamageableComponent comp, HitScanReflectAttemptEvent args)
     {
-        if (!TryComp<ActorComponent>(args.Target, out var actor))
-            return;
-
         if (!TryComp<MobStateComponent>(entity, out var playermobstate) || playermobstate.CurrentState == MobState.Dead)
             return;
 
+        var targetPart = args.TargetPart.ToString();
+        if (targetPart is null)
+            targetPart = string.Empty;
+
         string message = args.Reflected
-            ? $"A beam of energy reflects off of you!"
-            : $"A beam of energy hits you in the {args.TargetPart.ToString()}!"; // todo WD lasers
+            ? Loc.GetString("combatlogs-hitscan-reflect")
+            : Loc.GetString("combatlogs-hitscan-hit", ("bodyPart", targetPart));
 
-        LogToChat(message, actor);
-
+        LogToChat(message, args.Target);
     }
 
-    public void LogToChat(string message, ActorComponent actor)
-        {
-            var wrap = $"[font size=12][bold]{message}[/bold][/font]";
-            _chatManager.ChatMessageToOne(ChatChannel.Local, message, wrap, EntityUid.Invalid, false, actor.PlayerSession.Channel,
-                    Color.Red);
-        }
+    public void LogToChat(string message, EntityUid? actor)
+    {
+        if (actor is null)
+            return;
+
+        _notice.SendNoticeMessage(actor.Value,
+            message,
+            PopupType.SmallCaution);
+    }
 }
