@@ -230,13 +230,13 @@
   - type: Puller
   - type: Speech
     fontId: Allods
-    speechSounds: DeathnetMan # Alto
+    speechSounds: Alto
   - type: DamageForceSay
   - type: Vocal
     sounds:
-      Male: DeathnetMaleHuman
-      Female: DeathnetFemaleHuman
-      Unsexed: DeathnetMaleHuman
+      Male: MaleHuman
+      Female: FemaleHuman
+      Unsexed: MaleHuman
   - type: Emoting
   - type: BodyEmotes
     soundsId: GeneralBodyEmotes
@@ -259,6 +259,13 @@
     - DoorBumpOpener
   - type: Targeting
   - type: SurgeryTarget
+  - type: ESWeightOverload
+    #overloadDamage:
+    #  types:
+    #    Blunt: 1
+    #    Bloodloss: 1
+  - type: ESWeight
+    hideInExamine: true
 
 - type: entity
   save: false

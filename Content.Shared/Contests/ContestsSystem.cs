@@ -19,13 +19,13 @@ public sealed partial class ContestsSystem : EntitySystem
     ///     The presumed average mass of a player entity
     ///     Defaulted to the average mass of an adult human
     /// </summary>
-    private const float AverageMass = 71f;
+    public const float AverageMass = 71f;
 
     /// <summary>
     ///     The presumed average sum of a Psionic's Baseline Amplification and Baseline Dampening.
     ///     Since Baseline casting stats are a random value between 0.4 and 1.2, this is defaulted to 0.8 + 0.8.
     /// </summary>
-    private const float AveragePsionicPotential = 1.6f;
+    public const float AveragePsionicPotential = 1.6f;
 
     #region Mass Contests
     /// <summary>

@@ -14,7 +14,7 @@
       - map: ["enum.SolutionContainerLayers.Fill"]
   - type: SophicScribe
   - type: Speech
-    speechSounds: DeathnetMan # Tenor
+    speechSounds: Tenor
   - type: IntrinsicRadioReceiver
   - type: IntrinsicRadioTransmitter
   - type: ActiveRadio

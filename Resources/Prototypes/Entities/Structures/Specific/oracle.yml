@@ -14,7 +14,7 @@
       - map: ["enum.SolutionContainerLayers.Fill"]
         state: oracle-0
   - type: Speech
-    speechSounds: DeathnetMan # Tenor
+    speechSounds: Tenor
   - type: Actions
   - type: Psionic
     removable: false
