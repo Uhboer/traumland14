@@ -1,7 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Numerics;
-using Content.Shared._Goobstation.MartialArts.Events;
 using Content.Shared._Shitmed.Targeting; // Goobstation - Martial Arts
 using Content.Shared._White;
 using Content.Shared.ActionBlocker;
@@ -547,10 +546,10 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
             targetPart = targeting.Target;
 
         var modifiedDamage = DamageSpecifier.ApplyModifierSets(damage + hitEvent.BonusDamage + attackedEvent.BonusDamage, hitEvent.ModifiersList);
-        var damageResult = Damageable.TryChangeDamage(target, modifiedDamage, origin:user, ignoreResistances: resistanceBypass, partMultiplier: component.ClickPartDamageMultiplier, targetPart: targetPart);
+        var damageResult = Damageable.TryChangeDamage(target, modifiedDamage, origin: user, ignoreResistances: resistanceBypass, partMultiplier: component.ClickPartDamageMultiplier, targetPart: targetPart);
         // WWDP edit end
-        var comboEv = new ComboAttackPerformedEvent(user, target.Value, meleeUid, ComboAttackType.Harm);
-        RaiseLocalEvent(user, comboEv);
+        //var comboEv = new ComboAttackPerformedEvent(user, target.Value, meleeUid, ComboAttackType.Harm);
+        //RaiseLocalEvent(user, comboEv);
 
         if (damageResult is { Empty: false })
         {
@@ -727,8 +726,8 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
 
             var damageResult = Damageable.TryChangeDamage(entity, modifiedDamage, origin: user, partMultiplier: component.HeavyPartDamageMultiplier, targetPart: targetPart);
             // WWDP edit end
-            var comboEv = new ComboAttackPerformedEvent(user, entity, meleeUid, ComboAttackType.HarmLight);
-            RaiseLocalEvent(user, comboEv);
+            //var comboEv = new ComboAttackPerformedEvent(user, entity, meleeUid, ComboAttackType.HarmLight);
+            //RaiseLocalEvent(user, comboEv);
 
             if (damageResult != null && damageResult.GetTotal() > FixedPoint2.Zero)
             {
