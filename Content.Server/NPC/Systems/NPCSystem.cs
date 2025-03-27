@@ -1,16 +1,12 @@
 using System.Diagnostics.CodeAnalysis;
-using System.Linq;
 using Content.Server.NPC.Components;
 using Content.Server.NPC.HTN;
-using Content.Server.Standing;
 using Content.Shared.CCVar;
-using Content.Shared.DoAfter;
 using Content.Shared.Mind;
 using Content.Shared.Mind.Components;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.NPC;
-using Content.Shared.Standing;
 using Robust.Server.GameObjects;
 using Robust.Shared.Configuration;
 using Robust.Shared.Player;
@@ -25,9 +21,6 @@ namespace Content.Server.NPC.Systems
         [Dependency] private readonly IConfigurationManager _configurationManager = default!;
         [Dependency] private readonly HTNSystem _htn = default!;
         [Dependency] private readonly MobStateSystem _mobState = default!;
-        [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
-        [Dependency] private readonly Shared.Standing.StandingStateSystem _standing = default!;
-        [Dependency] private readonly LayingDownSystem _laying = default!;
 
         /// <summary>
         /// Whether any NPCs are allowed to run at all.
@@ -145,20 +138,6 @@ namespace Content.Server.NPC.Systems
             _count = 0;
             // Add your system here.
             _htn.UpdateNPC(ref _count, _maxUpdates, frameTime);
-
-            // Try to stand the npc. Because they can'not
-            var query = EntityQueryEnumerator<HTNComponent, StandingStateComponent, LayingDownComponent, DoAfterComponent>();
-            while (query.MoveNext(out var uid, out var htn, out var standing, out var laying, out var doAfter))
-            {
-                if (!IsAwake(uid, htn) || _mobState.IsIncapacitated(uid) || standing.CurrentState != StandingState.Lying)
-                    continue;
-
-                if (doAfter.DoAfters.Values.Any(x => x.Args.Event is StandingUpDoAfterEvent && !x.Cancelled && !x.Completed))
-                    continue;
-
-                _standing.Down(uid);
-                _laying.TryStandUp(uid, laying);
-            }
         }
 
         public void OnMobStateChange(EntityUid uid, HTNComponent component, MobStateChangedEvent args)
