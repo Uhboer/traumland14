@@ -2,6 +2,14 @@
 - type: htnCompound
   id: IdleCompound
   branches:
+    # Standing state
+    - preconditions:
+        - !type:StandingStatePrecondition
+          isStanding: false
+      tasks:
+        - !type:HTNPrimitiveTask
+          operator: !type:StandUpOperator
+
     # Pick a new spot and wait there.
     - preconditions:
         - !type:BuckledPrecondition
@@ -41,6 +49,14 @@
           preconditions:
             - !type:KeyExistsPrecondition
               key: IdleTime
+
+    # Standing state
+    - preconditions:
+        - !type:StandingStatePrecondition
+          isStanding: false
+      tasks:
+        - !type:HTNPrimitiveTask
+          operator: !type:StandUpOperator
 
     # Pick a new angle and spin there
     - tasks:
