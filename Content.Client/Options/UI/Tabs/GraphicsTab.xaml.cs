@@ -45,7 +45,8 @@ namespace Content.Client.Options.UI.Tabs
             LightingPresetOption.AddItem(Loc.GetString("ui-options-lighting-very-low"));
             LightingPresetOption.AddItem(Loc.GetString("ui-options-lighting-low"));
             LightingPresetOption.AddItem(Loc.GetString("ui-options-lighting-medium"));
-            LightingPresetOption.AddItem(Loc.GetString("ui-options-lighting-high"));
+            // Bugged roof lighting
+            //LightingPresetOption.AddItem(Loc.GetString("ui-options-lighting-high"));
             LightingPresetOption.OnItemSelected += OnLightingQualityChanged;
 
             UIScaleOption.AddItem(Loc.GetString("ui-options-scale-auto",
@@ -100,7 +101,7 @@ namespace Content.Client.Options.UI.Tabs
             ViewportLowResCheckBox.OnToggled += OnCheckBoxToggled;
             ParallaxLowQualityCheckBox.OnToggled += OnCheckBoxToggled;
             FpsCounterCheckBox.OnToggled += OnCheckBoxToggled;
-            MoodVisualEffectsCheckBox.OnToggled += OnCheckBoxToggled;
+            PostProcessCheckBox.OnToggled += OnCheckBoxToggled;
             ApplyButton.OnPressed += OnApplyButtonPressed;
             VSyncCheckBox.Pressed = _cfg.GetCVar(CVars.DisplayVSync);
             FullscreenCheckBox.Pressed = ConfigIsFullscreen;
@@ -113,7 +114,8 @@ namespace Content.Client.Options.UI.Tabs
             ViewportLowResCheckBox.Pressed = !_cfg.GetCVar(CCVars.ViewportScaleRender);
             ParallaxLowQualityCheckBox.Pressed = _cfg.GetCVar(CCVars.ParallaxLowQuality);
             FpsCounterCheckBox.Pressed = _cfg.GetCVar(CCVars.HudFpsCounterVisible);
-            MoodVisualEffectsCheckBox.Pressed = _cfg.GetCVar(CCVars.MoodVisualEffects);
+            //MoodVisualEffectsCheckBox.Pressed = _cfg.GetCVar(CCVars.MoodVisualEffects);
+            PostProcessCheckBox.Pressed = _cfg.GetCVar(CCVars.PostProcess);
             //ViewportWidthSlider.Value = _cfg.GetCVar(CCVars.ViewportWidth);
 
             _cfg.OnValueChanged(CCVars.ViewportMinimumWidth, _ => UpdateViewportWidthRange());
@@ -158,7 +160,8 @@ namespace Content.Client.Options.UI.Tabs
             _cfg.SetCVar(CCVars.ViewportScaleRender, !ViewportLowResCheckBox.Pressed);
             _cfg.SetCVar(CCVars.ParallaxLowQuality, ParallaxLowQualityCheckBox.Pressed);
             _cfg.SetCVar(CCVars.HudFpsCounterVisible, FpsCounterCheckBox.Pressed);
-            _cfg.SetCVar(CCVars.MoodVisualEffects, MoodVisualEffectsCheckBox.Pressed);
+            //_cfg.SetCVar(CCVars.MoodVisualEffects, MoodVisualEffectsCheckBox.Pressed);
+            _cfg.SetCVar(CCVars.PostProcess, PostProcessCheckBox.Pressed);
             //_cfg.SetCVar(CCVars.ViewportWidth, (int) ViewportWidthSlider.Value);
 
             _cfg.SaveToFile();
@@ -190,6 +193,7 @@ namespace Content.Client.Options.UI.Tabs
             var isVPResSame = ViewportLowResCheckBox.Pressed == !_cfg.GetCVar(CCVars.ViewportScaleRender);
             var isPLQSame = ParallaxLowQualityCheckBox.Pressed == _cfg.GetCVar(CCVars.ParallaxLowQuality);
             var isFpsCounterVisibleSame = FpsCounterCheckBox.Pressed == _cfg.GetCVar(CCVars.HudFpsCounterVisible);
+            var isPostProcessSame = PostProcessCheckBox.Pressed == _cfg.GetCVar(CCVars.PostProcess);
             //var isWidthSame = (int) ViewportWidthSlider.Value == _cfg.GetCVar(CCVars.ViewportWidth);
 
             ApplyButton.Disabled = isVSyncSame &&
@@ -202,7 +206,8 @@ namespace Content.Client.Options.UI.Tabs
                                    isVPStretchSame &&
                                    isVPResSame &&
                                    isPLQSame &&
-                                   isFpsCounterVisibleSame;
+                                   isFpsCounterVisibleSame &&
+                                   isPostProcessSame;
                                    //isWidthSame;
                                    //isVPVerticalFitSame &&
         }

@@ -40,6 +40,7 @@ using Robust.Shared.Replays;
 using Robust.Shared.Timing;
 using Content.Shared.CCVar;
 using Content.Client._ViewportGui.ViewportUserInterface;
+using Content.Client.Overlays;
 
 namespace Content.Client.Entry
 {
@@ -160,6 +161,7 @@ namespace Content.Client.Entry
 
             _parallaxManager.LoadDefaultParallax();
 
+            _overlayManager.AddOverlay(new BasePostProcessOverlay());
             _overlayManager.AddOverlay(new SingularityOverlay());
             _overlayManager.AddOverlay(new FlashOverlay());
             _overlayManager.AddOverlay(new RadiationPulseOverlay());

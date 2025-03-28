@@ -29,5 +29,5 @@ public sealed partial class CCVars
         CVarDef.Create("finster_mood.modify_thresholds", false, CVar.SERVER);
 
     public static readonly CVarDef<bool> MoodVisualEffects =
-        CVarDef.Create("finster_mood.visual_effects", false, CVar.CLIENTONLY | CVar.ARCHIVE);
+        CVarDef.Create("finster_mood.visual_effects", true, CVar.REPLICATED);
 }
