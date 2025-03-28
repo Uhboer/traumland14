@@ -4,6 +4,7 @@ namespace Content.Server.Entry
     public static class IgnoredComponents
     {
         public static string[] List => new[] {
+            "WaveShader",
             "ConstructionGhost",
             "IconSmooth",
             "InteractionOutline",
