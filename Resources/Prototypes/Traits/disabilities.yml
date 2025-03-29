@@ -187,6 +187,7 @@
       traits:
         - ParkourTraining
         - SnailPaced
+        - WheelchairBound
     - !type:CharacterSpeciesRequirement
       inverted: true
       species:
@@ -209,6 +210,7 @@
       traits:
         - ParkourTraining
         - Sluggish
+        - WheelchairBound
     - !type:CharacterSpeciesRequirement
       inverted: true
       species:
