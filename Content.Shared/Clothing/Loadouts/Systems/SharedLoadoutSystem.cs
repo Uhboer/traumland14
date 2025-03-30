@@ -221,7 +221,6 @@ public sealed class PlayerLoadoutAppliedEvent : EntityEventArgs
     public ICommonSession Player { get; }
     public string? JobId { get; }
     public bool LateJoin { get; }
-    public bool Silent { get; }
     public EntityUid Station { get; }
     public HumanoidCharacterProfile Profile { get; }
 
@@ -232,7 +231,6 @@ public sealed class PlayerLoadoutAppliedEvent : EntityEventArgs
         ICommonSession player,
         string? jobId,
         bool lateJoin,
-        bool silent,
         int joinOrder,
         EntityUid station,
         HumanoidCharacterProfile profile)
@@ -241,7 +239,6 @@ public sealed class PlayerLoadoutAppliedEvent : EntityEventArgs
         Player = player;
         JobId = jobId;
         LateJoin = lateJoin;
-        Silent = silent;
         Station = station;
         Profile = profile;
         JoinOrder = joinOrder;

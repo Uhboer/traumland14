@@ -63,7 +63,7 @@ public sealed class LoadoutSystem : EntitySystem
             ev.Player.ContentData()?.Whitelisted ?? false,
             jobProto: job);
 
-        RaiseLocalEvent(ev.Mob, new PlayerLoadoutAppliedEvent(ev.Mob, ev.Player, ev.JobId, ev.LateJoin, ev.Silent, ev.JoinOrder, ev.Station, ev.Profile), broadcast: true);
+        RaiseLocalEvent(ev.Mob, new PlayerLoadoutAppliedEvent(ev.Mob, ev.Player, ev.JobId, ev.LateJoin, ev.JoinOrder, ev.Station, ev.Profile), broadcast: true);
     }
 
 
