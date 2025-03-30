@@ -3,7 +3,7 @@
          xmlns:animatedBackground="clr-namespace:Content.Client._White.UI.AnimatedBackground"
          xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls">
     <animatedBackground:AnimatedBackgroundControl Access="Public" Name="Background" VerticalExpand="True" HorizontalExpand="True"
-        Stretch="KeepAspectCentered" />
+        Stretch="KeepAspectCovered" />
     <Control HorizontalAlignment="Center" VerticalAlignment="Center">
         <PanelContainer StyleClasses="AngleRect" />
         <BoxContainer Orientation="Vertical">

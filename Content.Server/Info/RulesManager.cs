@@ -27,6 +27,7 @@ public sealed class RulesManager
         if (IPAddress.IsLoopback(e.Channel.RemoteEndPoint.Address) && _cfg.GetCVar(CCVars.RulesExemptLocal))
             return;
 
+        /* FUCK RULES! YOHOHOHO!!!! YARRR!!!
         var lastRead = await _dbManager.GetLastReadRules(e.Channel.UserId);
         if (lastRead > LastValidReadTime)
             return;
@@ -34,6 +35,7 @@ public sealed class RulesManager
         var message = new ShowRulesPopupMessage();
         message.PopupTime = _cfg.GetCVar(CCVars.RulesWaitTime);
         _netManager.ServerSendMessage(message, e.Channel);
+        */
     }
 
     private async void OnRulesAccepted(RulesAcceptedMessage message)

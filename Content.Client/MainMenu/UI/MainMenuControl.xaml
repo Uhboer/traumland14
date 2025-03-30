@@ -2,7 +2,7 @@
          xmlns:animatedBackground="clr-namespace:Content.Client._White.UI.AnimatedBackground"
          xmlns:clog="clr-namespace:Content.Client.Changelog">
     <animatedBackground:AnimatedBackgroundControl Access="Public" Name="Background" VerticalExpand="True" HorizontalExpand="True"
-        Stretch="KeepAspectCentered" />
+        Stretch="KeepAspectCovered" />
     <BoxContainer Name="VBox"
                   Orientation="Vertical"
                   HorizontalAlignment="Center"

@@ -4,7 +4,7 @@
          VerticalExpand="True" HorizontalExpand="True"
          MouseFilter="Stop">
     <animatedBackground:AnimatedBackgroundControl Access="Public" Name="Background" VerticalExpand="True" HorizontalExpand="True"
-        Stretch="KeepAspectCentered" />
+        Stretch="KeepAspectCovered" />
     <Control VerticalExpand="True"
              MaxWidth="800"
              MaxHeight="900">

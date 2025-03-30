@@ -1,18 +1,26 @@
 - type: animatedLobbyScreen
-  id: Uncuny
-  path: /Textures/_Finster/LobbyScreens/uncuny.rsi
+  id: NekoWarrior
+  path: /Textures/LobbyScreens/Neko_warrior.rsi
 
 - type: animatedLobbyScreen
-  id: Toshiro
-  path: /Textures/_Finster/LobbyScreens/toshiro.rsi
+  id: NekoAce
+  path: /Textures/LobbyScreens/Neco_ace.rsi
 
 - type: animatedLobbyScreen
-  id: Syberbuling
-  path: /Textures/_Finster/LobbyScreens/syberbuling.rsi
+  id: BB14
+  path: /Textures/LobbyScreens/BB_14.rsi
 
 - type: animatedLobbyScreen
-  id: Goida
-  path: /Textures/_Finster/LobbyScreens/goida.rsi
+  id: PumaSisters
+  path: /Textures/LobbyScreens/Puma_sisters.rsi
+
+- type: animatedLobbyScreen
+  id: PartyX
+  path: /Textures/LobbyScreens/Party_X.rsi
+
+- type: animatedLobbyScreen
+  id: PlaneCrash
+  path: /Textures/LobbyScreens/PlaneCrash.rsi
 
 #- type: animatedLobbyScreen
 #  id: Rogue
