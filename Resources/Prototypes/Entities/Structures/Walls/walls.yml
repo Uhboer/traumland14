@@ -21,7 +21,6 @@
   - type: Tag
     tags:
     - Wall
-  - type: IsRoof
   - type: Sprite
     drawdepth: Walls
   - type: Icon
@@ -58,6 +57,8 @@
   id: WallBrick
   name: brick wall
   components:
+  - type: IsRoof
+    tile: Lattice
   - type: Tag
     tags:
       - Wall
@@ -97,6 +98,8 @@
       - Wall
   - type: Sprite
     sprite: Structures/Walls/clock.rsi
+  - type: IsRoof
+    tile: PlatingBrass
   - type: Icon
     sprite: Structures/Walls/clock.rsi
   - type: Construction
@@ -131,6 +134,8 @@
     sprite: Structures/Walls/clown.rsi
   - type: Icon
     sprite: Structures/Walls/clown.rsi
+  - type: IsRoof
+    tile: Lattice
   - type: Construction
     graph: Girder
     node: bananiumWall
@@ -161,6 +166,8 @@
   name: meat wall
   description: Sticky.
   components:
+  - type: IsRoof
+    tile: FloorFlesh
   - type: Tag
     tags:
       - Wall
@@ -195,6 +202,8 @@
   name: cult wall
   description: Keeps the cult in and the crew out.
   components:
+  - type: IsRoof
+    tile: CultFloor
   - type: Tag
     tags:
       - Wall
@@ -291,6 +300,8 @@
   id: WallGold
   name: gold wall
   components:
+  - type: IsRoof
+    tile: Lattice
   - type: Tag
     tags:
       - Wall
@@ -336,6 +347,8 @@
   id: WallIce
   name: ice wall
   components:
+  - type: IsRoof
+    tile: Lattice
   - type: Tag
     tags:
       - Wall
@@ -365,6 +378,8 @@
   id: WallPlasma
   name: plasma wall
   components:
+  - type: IsRoof
+    tile: Lattice
   - type: Tag
     tags:
       - Wall
@@ -458,6 +473,8 @@
   name: plastitanium wall
   suffix: indestructible
   components:
+    - type: IsRoof
+      tile: Lattice
     - type: Tag
       tags:
         - Wall
@@ -541,6 +558,8 @@
   id: WallReinforced
   name: reinforced wall
   components:
+  - type: IsRoof
+    tile: Lattice
   - type: Sprite
     sprite: Structures/Walls/solid.rsi
   - type: Icon
@@ -644,6 +663,8 @@
   id: WallRiveted
   name: riveted wall
   components:
+  - type: IsRoof
+    tile: Lattice
   - type: Tag
     tags:
       - Wall
@@ -882,6 +903,8 @@
   id: WallSolid
   name: solid wall
   components:
+  - type: IsRoof
+    tile: Lattice
   - type: Tag
     tags:
       - Wall
@@ -968,6 +991,8 @@
   id: WallUranium
   name: uranium wall
   components:
+  - type: IsRoof
+    tile: Lattice
   - type: Sprite
     sprite: Structures/Walls/uranium.rsi
   - type: Icon
@@ -1008,6 +1033,8 @@
   id: WallWood
   name: wood wall
   components:
+  - type: IsRoof
+    tile: FloorWood
   - type: Sprite
     sprite: Structures/Walls/wood.rsi
   - type: Icon
@@ -1045,7 +1072,6 @@
   parent: BaseWall
   id: WallWeb
   name: web wall
-  description: Keeps the spiders in and the greytide out.
   components:
   - type: Clickable
   - type: MeleeSound
@@ -1053,6 +1079,8 @@
       Brute:
         path:
           "/Audio/Weapons/slash.ogg"
+  - type: IsRoof
+    tile: FloorWebTile
   - type: Damageable
     damageModifierSet: Web
   - type: Tag
@@ -1093,6 +1121,8 @@
   id: WallNecropolis
   name: stone wall
   components:
+  - type: IsRoof
+    tile: Lattice
   - type: Tag
     tags:
       - Wall
@@ -1117,6 +1147,8 @@
   id: WallMining
   name: wall
   components:
+  - type: IsRoof
+    tile: Lattice
   - type: Tag
     tags:
       - Wall
@@ -1167,6 +1199,8 @@
   name: alien vault wall
   description: A mysterious ornate looking wall. There may be ancient dangers inside.
   components:
+  - type: IsRoof
+    tile: Lattice
   - type: Sprite
     sprite: Structures/Walls/vault.rsi
     state: alienvault
@@ -1271,6 +1305,8 @@
   - type: Tag
     tags:
       - Wall
+  - type: IsRoof
+    tile: Lattice
   - type: Sprite
     sprite: Structures/Walls/cobblebrick.rsi
   - type: Icon
@@ -1296,6 +1332,8 @@
   id: WallBasaltCobblebrick
   name: basalt brick wall
   components:
+  - type: IsRoof
+    tile: Lattice
   - type: Sprite
     sprite: Structures/Walls/cobblebrick_basalt.rsi
   - type: Icon
@@ -1351,6 +1389,8 @@
   components:
   - type: Sprite
     sprite: Structures/Walls/cobblebrick_chromite.rsi
+  - type: IsRoof
+    tile: FloorChromite
   - type: Icon
     sprite: Structures/Walls/cobblebrick_chromite.rsi
   - type: IconSmooth

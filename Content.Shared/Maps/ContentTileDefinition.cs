@@ -129,5 +129,8 @@ namespace Content.Shared.Maps
 
         [DataField]
         public float TileRipResistance = 125f;
+
+        [DataField]
+        public bool CanCastShadow = true;
     }
 }

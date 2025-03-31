@@ -13,6 +13,8 @@
   - type: IconSmooth
     key: walls
     mode: NoSprite
+  - type: IsRoof
+    tile: FloorCave
   - type: SmoothEdge
   - type: Icon
     sprite: Structures/Walls/rock.rsi
@@ -2032,6 +2034,8 @@
     - type: Icon
       sprite: Structures/Walls/rock.rsi
       state: rock_chromite
+    - type: IsRoof
+      tile: FloorChromite
     - type: Sprite
       sprite: Structures/Walls/rock.rsi
       layers:

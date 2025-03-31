@@ -1345,6 +1345,7 @@
     collection: FootstepTile
   itemDrop: SheetGlass1
   heatCapacity: 10000
+  canCastShadow: false
 
 - type: tile
   id: FloorRGlass
@@ -1363,6 +1364,7 @@
     collection: FootstepTile
   itemDrop: SheetRGlass1
   heatCapacity: 10000
+  canCastShadow: false
 
 # Circuits
 - type: tile

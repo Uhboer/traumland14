@@ -53,6 +53,8 @@
   suffix: slanted
   abstract: true
   components:
+  - type: IsRoof
+    tile: Lattice
   - type: Damageable
     damageContainer: Inorganic
     damageModifierSet: Rock
@@ -64,7 +66,7 @@
       behaviors:
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
-    
+
 - type: entity
   parent: N14BaseWallSlanted
   id: N14BaseWallSlantedMetalWeak
@@ -73,7 +75,7 @@
   - type: Damageable
     damageContainer: Inorganic
     damageModifierSet: PerforatedMetallic
-    
+
 - type: entity
   parent: N14BaseWallSlanted
   id: N14BaseWallSlantedMetal
@@ -90,7 +92,7 @@
       behaviors:
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
-    
+
 - type: entity
   parent: N14BaseWallSlanted
   id: N14BaseWallSlantedMetalStrong
@@ -109,7 +111,7 @@
       behaviors:
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
-    
+
 - type: entity
   parent: N14BaseWallSlanted
   id: N14BaseWallSlantedWood
@@ -140,6 +142,8 @@
   id: N14WallBrickSlantedIndestructible
   name: brick wall
   components:
+  - type: IsRoof
+    tile: Lattice
   - type: Sprite
     sprite: _Nuclear14/Structures/Walls/ms13/slanted/brick.rsi
   - type: Icon
@@ -147,18 +151,20 @@
   - type: IconSmooth
     key: walls
     base: slantedbrick
-    
+
 - type: entity
   parent: [ N14WallBrickSlantedIndestructible, N14BaseWallSlanted ]
   id: N14WallBrickSlanted
   name: brick wall
   suffix: slanted
-    
+
 - type: entity
   parent: BaseWallIndestructible
   id: N14WallBrickAltSlantedIndestructible
   name: brick wall
   components:
+  - type: IsRoof
+    tile: Lattice
   - type: Sprite
     sprite: _Nuclear14/Structures/Walls/ms13/slanted/brickalt.rsi
   - type: Icon
@@ -166,18 +172,20 @@
   - type: IconSmooth
     key: walls
     base: slantedbrickalt
-    
+
 - type: entity
   parent: [ N14WallBrickAltSlantedIndestructible, N14BaseWallSlanted ]
   id: N14WallBrickAltSlanted
   name: brick wall
   suffix: slanted
-    
+
 - type: entity
   parent: BaseWallIndestructible
   id: N14WallBrickGraySlantedIndestructible
   name: brick wall
   components:
+  - type: IsRoof
+    tile: Lattice
   - type: Sprite
     sprite: _Nuclear14/Structures/Walls/ms13/slanted/brickgray.rsi
   - type: Icon
@@ -185,7 +193,7 @@
   - type: IconSmooth
     key: walls
     base: slantedbrickgray
-    
+
 - type: entity
   parent: [ N14WallBrickGraySlantedIndestructible, N14BaseWallSlanted ]
   id: N14WallBrickGraySlanted
@@ -197,6 +205,8 @@
   id: N14WallConcreteSlantedIndestructible
   name: concrete wall
   components:
+  - type: IsRoof
+    tile: Lattice
   - type: Sprite
     sprite: _Nuclear14/Structures/Walls/ms13/slanted/concrete.rsi
   - type: Icon
@@ -210,6 +220,8 @@
   id: N14WallConcreteAltSlantedIndestructible
   name: concrete wall
   components:
+  - type: IsRoof
+    tile: Lattice
   - type: Sprite
     sprite: _Nuclear14/Structures/Walls/ms13/slanted/concretealt.rsi
   - type: Icon
@@ -217,7 +229,7 @@
   - type: IconSmooth
     key: walls
     base: slantedconcretealt
-    
+
 - type: entity
   parent: [ N14WallConcreteAltSlantedIndestructible, N14BaseWallSlanted ]
   id: N14WallConcreteAltSlanted
@@ -229,6 +241,8 @@
   id: N14WallMetalSlantedIndestructible
   name: metal wall
   components:
+  - type: IsRoof
+    tile: Lattice
   - type: Sprite
     sprite: _Nuclear14/Structures/Walls/ms13/slanted/metal.rsi
   - type: Icon
@@ -236,7 +250,7 @@
   - type: IconSmooth
     key: walls
     base: slantedmetal
-    
+
 - type: entity
   parent: [ N14WallMetalSlantedIndestructible, N14BaseWallSlantedMetal ]
   id: N14WallMetalSlanted
@@ -248,6 +262,8 @@
   id: N14WallReinfMetalSlantedIndestructible
   name: reinforced metal wall
   components:
+  - type: IsRoof
+    tile: Lattice
   - type: Sprite
     sprite: _Nuclear14/Structures/Walls/ms13/slanted/reinfmetal.rsi
   - type: Icon
@@ -255,7 +271,7 @@
   - type: IconSmooth
     key: walls
     base: slantedreinfmetal
-    
+
 - type: entity
   parent: [ N14WallReinfMetalSlantedIndestructible, N14BaseWallSlantedMetal ]
   id: N14WallReinfMetalSlanted
@@ -267,6 +283,8 @@
   id: N14WallRoughScrapSlantedIndestructible
   name: rough scrap wall
   components:
+  - type: IsRoof
+    tile: Lattice
   - type: Sprite
     sprite: _Nuclear14/Structures/Walls/ms13/slanted/roughscrap.rsi
   - type: Icon
@@ -274,18 +292,20 @@
   - type: IconSmooth
     key: walls
     base: slantedroughscrap
-    
+
 - type: entity
   parent: [ N14WallRoughScrapSlantedIndestructible, N14BaseWallSlantedMetalWeak ]
   id: N14WallRoughScrapSlanted
   name: rough scrap wall
   suffix: slanted
-    
+
 - type: entity
   parent: BaseWallIndestructible
   id: N14WallIndustrialRustSlantedIndestructible
   name: industrial rust wall
   components:
+  - type: IsRoof
+    tile: Lattice
   - type: Sprite
     sprite: _Nuclear14/Structures/Walls/ms13/slanted/rustindustrial.rsi
   - type: Icon
@@ -293,18 +313,20 @@
   - type: IconSmooth
     key: walls
     base: slantedrustindustrial
-    
+
 - type: entity
   parent: [ N14WallIndustrialRustSlantedIndestructible, N14BaseWallSlantedMetal ]
   id: N14WallIndustrialRustSlanted
   name: industrial rust wall
   suffix: slanted
-    
+
 - type: entity
   parent: BaseWallIndestructible
   id: N14WallMetalRustSlantedIndestructible
   name: metal rust wall
   components:
+  - type: IsRoof
+    tile: Lattice
   - type: Sprite
     sprite: _Nuclear14/Structures/Walls/ms13/slanted/rustmetal.rsi
   - type: Icon
@@ -312,7 +334,7 @@
   - type: IconSmooth
     key: walls
     base: slantedrustmetal
-    
+
 - type: entity
   parent: [ N14WallMetalRustSlantedIndestructible, N14BaseWallSlantedMetal ]
   id: N14WallMetalRustSlantedSlanted
@@ -324,6 +346,8 @@
   id: N14WallScrapBlueSlantedIndestructible
   name: blue scrap wall
   components:
+  - type: IsRoof
+    tile: Lattice
   - type: Sprite
     sprite: _Nuclear14/Structures/Walls/ms13/slanted/scrapblue.rsi
   - type: Icon
@@ -331,18 +355,20 @@
   - type: IconSmooth
     key: walls
     base: slantedscrap
-    
+
 - type: entity
   parent: [ N14WallScrapBlueSlantedIndestructible, N14BaseWallSlantedMetalWeak ]
   id: N14WallScrapBlueSlanted
   name: blue scrap wall
   suffix: slanted
-    
+
 - type: entity
   parent: BaseWallIndestructible
   id: N14WallScrapRedSlantedIndestructible
   name: red scrap wall
   components:
+  - type: IsRoof
+    tile: Lattice
   - type: Sprite
     sprite: _Nuclear14/Structures/Walls/ms13/slanted/scrapred.rsi
   - type: Icon
@@ -350,18 +376,20 @@
   - type: IconSmooth
     key: walls
     base: slantedscrap
-    
+
 - type: entity
   parent: [ N14WallScrapRedSlantedIndestructible, N14BaseWallSlantedMetalWeak ]
   id: N14WallScrapRedSlanted
   name: red scrap wall
   suffix: slanted
-    
+
 - type: entity
   parent: BaseWallIndestructible
   id: N14WallScrapWhiteSlantedIndestructible
   name: white scrap wall
   components:
+  - type: IsRoof
+    tile: Lattice
   - type: Sprite
     sprite: _Nuclear14/Structures/Walls/ms13/slanted/scrapwhite.rsi
   - type: Icon
@@ -369,7 +397,7 @@
   - type: IconSmooth
     key: walls
     base: slantedscrap
-    
+
 - type: entity
   parent: [ N14WallScrapWhiteSlantedIndestructible, N14BaseWallSlantedMetalWeak ]
   id: N14WallScrapWhiteSlanted
@@ -381,6 +409,8 @@
   id: N14WallSidingSlantedIndestructible
   name: siding wall
   components:
+  - type: IsRoof
+    tile: Lattice
   - type: Sprite
     sprite: _Nuclear14/Structures/Walls/ms13/slanted/siding.rsi
   - type: Icon
@@ -388,18 +418,20 @@
   - type: IconSmooth
     key: walls
     base: slantedsiding
-    
+
 - type: entity
   parent: [ N14WallSidingSlantedIndestructible, N14BaseWallSlantedWood ]
   id: N14WallSidingSlanted
   name: siding wall
   suffix: slanted
-    
+
 - type: entity
   parent: BaseWallIndestructible
   id: N14WallSidingBlueSlantedIndestructible
   name: blue siding wall
   components:
+  - type: IsRoof
+    tile: Lattice
   - type: Sprite
     sprite: _Nuclear14/Structures/Walls/ms13/slanted/sidingblue.rsi
   - type: Icon
@@ -419,6 +451,8 @@
   id: N14WallSidingRedSlantedIndestructible
   name: red siding wall
   components:
+  - type: IsRoof
+    tile: Lattice
   - type: Sprite
     sprite: _Nuclear14/Structures/Walls/ms13/slanted/sidingred.rsi
   - type: Icon
@@ -426,18 +460,20 @@
   - type: IconSmooth
     key: walls
     base: slantedsiding
-    
+
 - type: entity
   parent: [ N14WallSidingRedSlantedIndestructible, N14BaseWallSlantedWood ]
   id: N14WallSidingRedSlanted
   name: red siding wall
   suffix: slanted
-    
+
 - type: entity
   parent: BaseWallIndestructible
   id: N14WallSidingGreenSlantedIndestructible
   name: green siding wall
   components:
+  - type: IsRoof
+    tile: Lattice
   - type: Sprite
     sprite: _Nuclear14/Structures/Walls/ms13/slanted/sidinggreen.rsi
   - type: Icon
@@ -445,7 +481,7 @@
   - type: IconSmooth
     key: walls
     base: slantedsiding
-    
+
 - type: entity
   parent: [ N14WallSidingGreenSlantedIndestructible, N14BaseWallSlantedWood ]
   id: N14WallSidingGreenSlanted
@@ -457,6 +493,8 @@
   id: N14WallWoodSlantedIndestructible
   name: wood wall
   components:
+  - type: IsRoof
+    tile: FloorWoodHouse
   - type: Sprite
     sprite: _Nuclear14/Structures/Walls/ms13/slanted/wood.rsi
   - type: Icon
@@ -464,7 +502,7 @@
   - type: IconSmooth
     key: walls
     base: slantedwood
-    
+
 - type: entity
   parent: [ N14WallWoodSlantedIndestructible, N14BaseWallSlantedWood ]
   id: N14WallWoodSlanted
@@ -474,12 +512,14 @@
   - type: Construction
     graph: N14WoodWall
     node: WoodWall
-    
+
 - type: entity
   parent: BaseWallIndestructible
   id: N14WallWoodAltSlantedIndestructible
   name: wood wall
   components:
+  - type: IsRoof
+    tile: FloorWoodHouse
   - type: Sprite
     sprite: _Nuclear14/Structures/Walls/ms13/slanted/woodalt.rsi
   - type: Icon
@@ -487,13 +527,13 @@
   - type: IconSmooth
     key: walls
     base: slantedwood
-    
+
 - type: entity
   parent: [ N14WallWoodAltSlantedIndestructible, N14BaseWallSlantedWood ]
   id: N14WallWoodAltSlanted
   name: wood wall
   suffix: slanted
-    
+
 - type: entity
   id: N14WallRebar
   parent: BaseStructure

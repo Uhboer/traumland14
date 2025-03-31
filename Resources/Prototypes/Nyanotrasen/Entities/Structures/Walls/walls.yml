@@ -60,6 +60,8 @@
   name: drywall
   description: It looks sturdy enough.
   components:
+  - type: IsRoof
+    tile: FloorWood
   - type: Sprite
     sprite: Nyanotrasen/Structures/Walls/drywall.rsi
   - type: Icon

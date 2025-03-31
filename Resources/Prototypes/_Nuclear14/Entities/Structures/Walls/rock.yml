@@ -243,6 +243,8 @@
   name: rock
   suffix: planetmap
   components:
+    - type: IsRoof
+      tile: FloorCaveDrought
     - type: Transform
       noRot: true
     - type: SoundOnGather
@@ -423,6 +425,8 @@
     - type: Icon
       sprite: Structures/Walls/rock.rsi
       state: rock_wall
+    - type: IsRoof
+      tile: FloorBasalt
     - type: Sprite
       sprite: Structures/Walls/rock.rsi
       layers:
@@ -577,6 +581,8 @@
     - type: Icon
       sprite: Structures/Walls/rock.rsi
       state: rock_sand
+    - type: IsRoof
+      tile: FloorAsteroidSand
     - type: Sprite
       sprite: Structures/Walls/rock.rsi
       layers:
@@ -728,6 +734,8 @@
   name: andesite
   parent: N14WallRock
   components:
+    - type: IsRoof
+      tile: FloorCave
     - type: Icon
       sprite: Structures/Walls/rock.rsi
       state: rock_andesite

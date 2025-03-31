@@ -3,6 +3,7 @@ using Content.Server.Light.Components;
 using Content.Shared.Light.Components;
 using Content.Shared.Light.EntitySystems;
 using Content.Shared.Maps;
+using Robust.Server.GameObjects;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 
@@ -13,6 +14,7 @@ public sealed class RoofSystem : SharedRoofSystem
 {
     [Dependency] private readonly SharedMapSystem _maps = default!;
     [Dependency] private readonly ZStackSystem _zstack = default!;
+    [Dependency] private readonly TransformSystem _xform = default!;
     [Dependency] private readonly IMapManager _mapManager = default!;
     [Dependency] private readonly ITileDefinitionManager _tileDefinitionManager = default!;
 
@@ -24,7 +26,37 @@ public sealed class RoofSystem : SharedRoofSystem
         _gridQuery = GetEntityQuery<MapGridComponent>();
         SubscribeLocalEvent<SetRoofComponent, ComponentStartup>(OnFlagStartup);
         SubscribeLocalEvent<RoofComponent, MapInitEvent>(OnMapInit, after: [typeof(ZDefinedStackSystem)]);
+        SubscribeLocalEvent<IsRoofComponent, ComponentStartup>(OnStartup);
+
         SubscribeLocalEvent<TileChangedEvent>(OnTileChanged);
+    }
+
+    private void OnStartup(EntityUid uid, IsRoofComponent roof, ref ComponentStartup args)
+    {
+        var xform = Transform(uid);
+        if (_zstack.TryGetZStack(uid, out var zStack) &&
+            xform != null &&
+            xform.MapUid != null &&
+            roof.Tile != null)
+        {
+            var maps = zStack.Value.Comp.Maps;
+            var mapIdx = maps.IndexOf(xform.MapUid.Value);
+
+            if (mapIdx + 1 >= maps.Count)
+                return;
+
+            var targetMap = maps[mapIdx + 1];
+
+            if (!_mapManager.TryFindGridAt(targetMap, xform.WorldPosition, out _, out var zGrid))
+                return;
+
+            _maps.TryGetTile(zGrid, xform.Coordinates.ToVector2i(EntityManager, _mapManager, _xform), out var tile);
+
+            if (!tile.IsSpace())
+                return;
+
+            zGrid.SetTile(new EntityCoordinates(zGrid.Owner, xform.WorldPosition), new Tile(_tileDefinitionManager[roof.Tile].TileId));
+        }
     }
 
     private void OnMapInit(Entity<RoofComponent> ent, ref MapInitEvent args)
@@ -53,7 +85,8 @@ public sealed class RoofSystem : SharedRoofSystem
             ContentTileDefinition tileDef = (ContentTileDefinition) _tileDefinitionManager[tileRef.Value.Tile.TypeId];
 
             bool isRoofed;
-            if (tileDef.ID == ContentTileDefinition.SpaceID)
+            if (tileDef.ID == ContentTileDefinition.SpaceID ||
+                !tileDef.CanCastShadow)
                 isRoofed = false;
             else
                 isRoofed = true;
@@ -87,7 +120,8 @@ public sealed class RoofSystem : SharedRoofSystem
         ContentTileDefinition? tileDef = (ContentTileDefinition) _tileDefinitionManager[args.NewTile.Tile.TypeId];
 
         bool isRoofed;
-        if (tileDef.ID == ContentTileDefinition.SpaceID)
+        if (tileDef.ID == ContentTileDefinition.SpaceID ||
+            !tileDef.CanCastShadow)
             isRoofed = false;
         else
             isRoofed = true;

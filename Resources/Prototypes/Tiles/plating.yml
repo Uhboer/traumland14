@@ -103,6 +103,7 @@
   isSpace: true
   itemDrop: PartRodMetal1
   heatCapacity: 10000
+  canCastShadow: false
 
 - type: tile
   id: TrainLattice
@@ -120,3 +121,4 @@
   isSpace: true
   itemDrop: PartRodMetal1
   heatCapacity: 10000
+  canCastShadow: false

@@ -1,4 +1,6 @@
+using Content.Shared.Maps;
 using Robust.Shared.GameStates;
+using Robust.Shared.Prototypes;
 
 namespace Content.Shared.Light.Components;
 
@@ -19,4 +21,10 @@ public sealed partial class IsRoofComponent : Component
     /// </remarks>
     [DataField, AutoNetworkedField]
     public Color? Color;
+
+    /// <summary>
+    /// Should a tile placed under entity, if it is enabled.
+    /// </summary>
+    [DataField]
+    public ProtoId<ContentTileDefinition>? Tile;
 }
