@@ -11,12 +11,40 @@
   path: /Textures/LobbyScreens/BB_14.rsi
 
 - type: animatedLobbyScreen
+  id: BB84
+  path: /Textures/LobbyScreens/BB_84.rsi
+
+- type: animatedLobbyScreen
+  id: Mechanic
+  path: /Textures/LobbyScreens/Mechanic.rsi
+
+- type: animatedLobbyScreen
+  id: Warrior
+  path: /Textures/LobbyScreens/Warrior.rsi
+
+- type: animatedLobbyScreen
   id: PumaSisters
   path: /Textures/LobbyScreens/Puma_sisters.rsi
 
 - type: animatedLobbyScreen
   id: PartyX
   path: /Textures/LobbyScreens/Party_X.rsi
+
+- type: animatedLobbyScreen
+  id: Party
+  path: /Textures/LobbyScreens/Party.rsi
+
+- type: animatedLobbyScreen
+  id: Fight
+  path: /Textures/LobbyScreens/Fight.rsi
+
+- type: animatedLobbyScreen
+  id: Crusader
+  path: /Textures/LobbyScreens/Crusader.rsi
+
+- type: animatedLobbyScreen
+  id: Gnome
+  path: /Textures/LobbyScreens/Gnome.rsi
 
 - type: animatedLobbyScreen
   id: PlaneCrash
