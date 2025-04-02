@@ -36,14 +36,14 @@ public class HUDLookupLabel : HUDControl
     [Dependency] private readonly IConfigurationManager _cfg = default!;
     [Dependency] private readonly IMapManager _mapManager = default!;
 
-    private string _fontPath = "/Fonts/19187.ttf";
+    private string _fontPath = "/Fonts/Bedstead/Bedstead.otf";
     private Font _font;
     private string _text = string.Empty;
 
     /// <summary>
     /// Text's font scale.
     /// </summary>
-    public int Scale { get; set; } = 10;
+    public int Scale { get; set; } = 8;
 
     public int TextPositionX { get; set; } = 240;
     public LookupAlignment Alignment { get; set; } = LookupAlignment.Top;
