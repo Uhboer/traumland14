@@ -45,8 +45,7 @@ namespace Content.Client.Options.UI.Tabs
             LightingPresetOption.AddItem(Loc.GetString("ui-options-lighting-very-low"));
             LightingPresetOption.AddItem(Loc.GetString("ui-options-lighting-low"));
             LightingPresetOption.AddItem(Loc.GetString("ui-options-lighting-medium"));
-            // Bugged roof lighting
-            //LightingPresetOption.AddItem(Loc.GetString("ui-options-lighting-high"));
+            LightingPresetOption.AddItem(Loc.GetString("ui-options-lighting-high"));
             LightingPresetOption.OnItemSelected += OnLightingQualityChanged;
 
             UIScaleOption.AddItem(Loc.GetString("ui-options-scale-auto",
