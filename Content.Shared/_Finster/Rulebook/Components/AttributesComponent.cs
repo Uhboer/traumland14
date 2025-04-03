@@ -11,9 +11,19 @@ namespace Content.Shared._Finster.Rulebook;
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class AttributesComponent : Component
 {
-    [AutoNetworkedField]
-    [ViewVariables(VVAccess.ReadWrite), DataField]
-    public Dictionary<ProtoId<AttributePrototype>, Enum> Attributes { get; set; } = new();
+    // Basic points for all attributes
+    public const int BaseStatsPoint = 10;
+
+    [DataField, AutoNetworkedField]
+    public Dictionary<Attributes, int> Stats { get; set; } = new()
+    {
+        { Attributes.Strength, BaseStatsPoint },
+        { Attributes.Dexterity, BaseStatsPoint },
+        { Attributes.Intelligence, BaseStatsPoint },
+        { Attributes.Endurance, BaseStatsPoint },
+        { Attributes.Perception, BaseStatsPoint },
+        { Attributes.Willpower, BaseStatsPoint }
+    };
 
     /// <summary>
     /// Calculate modifier, given by the attribute.
@@ -22,6 +32,54 @@ public sealed partial class AttributesComponent : Component
     /// <returns></returns>
     public int GetModifier(int attributeValue)
     {
-        return (attributeValue - 10) / 2;
+        return (attributeValue - BaseStatsPoint) / 2;
     }
+}
+
+/*
+EXAMPLE OF ADDING ATTRS:
+- type: entity
+  id: ExampleEntity
+  components:
+  - type: Attributes
+    attributes:
+      Strength: 15  # Overrides default 10
+      Dexterity: 12 # Overrides default 8
+      Intelligence: 14 # Adds new entry
+*/
+
+[Serializable, NetSerializable]
+public enum Attributes : byte
+{
+    /// <summary>
+    ///     It can help you to deal more damage. Also it help to control fire from
+    ///     ranged weapon, and another calculations.
+    /// </summary>
+    Strength,
+
+    /// <summary>
+    ///     Dodge attacks from the enemies! It help to deal aimed damage without
+    ///     missing attacks (in melee combat).
+    /// </summary>
+    Dexterity,
+
+    /// <summary>
+    ///     Affect on communication skills, understading and learning something new.
+    /// </summary>
+    Intelligence,
+
+    /// <summary>
+    ///     Reduce any damage, like physical. It also can reduce time in crit, when your death is become.
+    /// </summary>
+    Endurance,
+
+    /// <summary>
+    ///     Can help to aim with ranged weapons and detected some trap.
+    /// </summary>
+    Perception,
+
+    /// <summary>
+    ///     It helps you to live. Reduce negative effects for mood and increase time for crit, before you can die.
+    /// </summary>
+    Willpower
 }
