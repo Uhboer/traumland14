@@ -47,6 +47,9 @@ namespace Content.Shared.CombatMode
         [DataField]
         public ProtoId<AlertCategoryPrototype> CombatModeCategory = "NativeActions";
 
+        [DataField]
+        public ProtoId<AlertPrototype> DefenseModeAlert = "DefenseMode";
+
         [ViewVariables(VVAccess.ReadWrite), DataField("isInCombatMode"), AutoNetworkedField]
         public bool IsInCombatMode;
 
@@ -70,6 +73,20 @@ namespace Content.Shared.CombatMode
         [DataField, AutoNetworkedField]
         public bool SmoothRotation = true;
         // BACKMEN END
+
+        /// <summary>
+        ///     Set the defense style for the character.
+        ///     If parry - character will try to parry attacks using his weapon.
+        ///     If dodge - character will try dodge attacks using his dexterity attribute.
+        /// </summary>
+        [DataField, AutoNetworkedField]
+        public DefenseMode DefenseMode = DefenseMode.Parry;
+    }
+
+    public enum DefenseMode : uint
+    {
+        Parry,
+        Dodge
     }
 
     [Serializable, NetSerializable]

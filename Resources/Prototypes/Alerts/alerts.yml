@@ -638,7 +638,7 @@
   #hudPositionX: -192
   hudPositionX: -544
   hudPositionY: 416
-  altHudPositionX: -160
+  altHudPositionX: -288
   altHudPositionY: 480
   isGeneric: false
 
@@ -724,7 +724,24 @@
   maxSeverity: 1
   hudPositionX: -576
   hudPositionY: 448
-  altHudPositionX: -64
+  altHudPositionX: -96
+  altHudPositionY: 480
+  isGeneric: false
+
+- type: alert
+  id: DefenseMode
+  onClick: !type:ToggleDefenseModeAlert { }
+  sprite: Alerts/combat_mode.rsi
+  states:
+  - defense0
+  - defense1
+  name: alerts-defense-name
+  description: alerts-defense-desc
+  minSeverity: 0
+  maxSeverity: 1
+  hudPositionX: -576
+  hudPositionY: 288
+  altHudPositionX: -192
   altHudPositionY: 480
   isGeneric: false
 
@@ -757,7 +774,7 @@
   minSeverity: 0
   maxSeverity: 1
   hudPositionX: -512
-  hudPositionY: 416
+  hudPositionY: 288
   altHudPositionX: -128
   altHudPositionY: 480
   isGeneric: false
@@ -775,7 +792,7 @@
   minSeverity: 0
   maxSeverity: 1
   hudPositionX: -512
-  hudPositionY: 432
+  hudPositionY: 304
   altHudPositionX: -128
   altHudPositionY: 496
   isGeneric: false
@@ -792,9 +809,9 @@
   description: alerts-intent-help-desc
   minSeverity: 0
   maxSeverity: 1
-  hudPositionX: -576
-  hudPositionY: 416
-  altHudPositionX: -96
+  hudPositionX: -544
+  hudPositionY: 288
+  altHudPositionX: -160
   altHudPositionY: 480
   isGeneric: false
 
@@ -810,9 +827,9 @@
   description: alerts-intent-disarm-desc
   minSeverity: 0
   maxSeverity: 1
-  hudPositionX: -560
-  hudPositionY: 416
-  altHudPositionX: -80
+  hudPositionX: -528
+  hudPositionY: 288
+  altHudPositionX: -144
   altHudPositionY: 480
   isGeneric: false
 
@@ -828,9 +845,9 @@
   description: alerts-intent-grab-desc
   minSeverity: 0
   maxSeverity: 1
-  hudPositionX: -560
-  hudPositionY: 432
-  altHudPositionX: -80
+  hudPositionX: -528
+  hudPositionY: 304
+  altHudPositionX: -144
   altHudPositionY: 496
   isGeneric: false
 
@@ -846,9 +863,9 @@
   description: alerts-intent-harm-desc
   minSeverity: 0
   maxSeverity: 1
-  hudPositionX: -576
-  hudPositionY: 432
-  altHudPositionX: -96
+  hudPositionX: -544
+  hudPositionY: 304
+  altHudPositionX: -160
   altHudPositionY: 496
   isGeneric: false
 

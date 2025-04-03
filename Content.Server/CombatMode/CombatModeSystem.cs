@@ -60,9 +60,20 @@ public sealed class CombatModeSystem : SharedCombatModeSystem
             PopupType.SmallCaution);
     }
 
+    public void ToggleDefenseMode(EntityUid uid, CombatModeComponent comp)
+    {
+        if (comp.DefenseMode == DefenseMode.Parry)
+            comp.DefenseMode = DefenseMode.Dodge;
+        else
+            comp.DefenseMode = DefenseMode.Parry;
+
+        RefreshAlert(uid, comp);
+    }
+
     public void RefreshAlert(EntityUid uid, CombatModeComponent comp)
     {
         _alerts.ShowAlert(uid, comp.CombatModeAlert, comp.IsInCombatMode ? (short) 1 : (short) 0);
+        _alerts.ShowAlert(uid, comp.DefenseModeAlert, (short) comp.DefenseMode);
     }
 
     protected override bool IsNpc(EntityUid uid)
@@ -82,5 +93,19 @@ public sealed partial class ToggleCombatModeAlert : IAlertClick
             return;
 
         entityManager.System<CombatModeSystem>().ToggleCombatMode(uid, comp);
+    }
+}
+
+[UsedImplicitly, DataDefinition]
+public sealed partial class ToggleDefenseModeAlert : IAlertClick
+{
+    public void AlertClicked(EntityUid uid)
+    {
+        var entityManager = IoCManager.Resolve<IEntityManager>();
+
+        if (!entityManager.TryGetComponent(uid, out CombatModeComponent? comp))
+            return;
+
+        entityManager.System<CombatModeSystem>().ToggleDefenseMode(uid, comp);
     }
 }
