@@ -47,9 +47,6 @@ namespace Content.Shared.CombatMode
         [DataField]
         public ProtoId<AlertCategoryPrototype> CombatModeCategory = "NativeActions";
 
-        [DataField]
-        public ProtoId<AlertPrototype> DefenseModeAlert = "DefenseMode";
-
         [ViewVariables(VVAccess.ReadWrite), DataField("isInCombatMode"), AutoNetworkedField]
         public bool IsInCombatMode;
 
@@ -80,13 +77,77 @@ namespace Content.Shared.CombatMode
         ///     If dodge - character will try dodge attacks using his dexterity attribute.
         /// </summary>
         [DataField, AutoNetworkedField]
-        public DefenseMode DefenseMode = DefenseMode.Parry;
+        public DefenseMode DefenseStyle = DefenseMode.Dodge;
+
+        /// <summary>
+        ///     Combat style. <seealso cref="CombatIntent"/>
+        /// </summary>
+        [DataField, AutoNetworkedField]
+        public CombatIntent Style = CombatIntent.Feint;
+
+        // Show popup combat intents list.
+        public bool ShowCombatStyles = false;
     }
 
     public enum DefenseMode : uint
     {
         Parry,
         Dodge
+    }
+
+    /// <summary>
+    ///     Hardcoded combat styles.
+    ///     It should be hardcoded, because there is no reasons to seperate it
+    ///     or make modulary.
+    /// </summary>
+    [Serializable, NetSerializable]
+    public enum CombatIntent : uint
+    {
+        /// <summary>
+        ///     Deal weak damage, like for friedly fire
+        /// </summary>
+        Weak,
+
+        /// <summary>
+        ///     Deal accurate attacks to oponent (based on Dexterity).
+        ///     But increase melee attacking cooldown.
+        /// </summary>
+        Aimed,
+
+        /// <summary>
+        ///     Fury attack add debuff for oponent parrity.
+        ///     But also add debuff on aiming for attacker.
+        /// </summary>
+        Furious,
+
+        /// <summary>
+        ///     Make strong attack (from Strength attribute).
+        ///     But cost stamina (or, on heavy AOE attack - it costs more).
+        /// </summary>
+        Strong,
+
+        /// <summary>
+        ///     Increase parry bonus, debuff to attacking, reduce movement speed.
+        ///     It also increase modifier for attacker on feint.
+        /// </summary>
+        Defend,
+
+        /// <summary>
+        ///     Make able to use two attacks (from all hands).
+        ///     Debuff to aiming.
+        /// </summary>
+        Dual,
+
+        /// <summary>
+        ///     On succesful parrying from oponent - add on him effect to make
+        ///     ignore parrying on next attacking from attacker.
+        ///
+        ///     Do not deal damage on succesful feint. But can deal, when oponent under effect (generic damage).
+        /// </summary>
+        Feint,
+
+        // He-he, thats not intent. Do not use :eyes:
+        Max
     }
 
     [Serializable, NetSerializable]

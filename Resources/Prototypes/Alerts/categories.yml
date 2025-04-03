@@ -98,3 +98,6 @@
 - type: alertCategory
   id: Bleed
   group: Content16
+
+- type: alertCategory
+  id: CombatIntent

@@ -1,0 +1,116 @@
+
+### CLOSE BUTTON
+
+- type: alert
+  id: CombatStyleClose
+  onClick: !type:ShowCombatIntentsMenuAlert { }
+  sprite: Alerts/Intents/close.rsi
+  states:
+  - close
+  name: alerts-combatintent-name
+  description: alerts-combatintent-desc
+  hudPositionX: -544
+  hudPositionY: 375
+  altHudPositionX: -64
+  altHudPositionY: 407
+  isGeneric: false
+
+### INTENTS
+
+- type: alert
+  id: CombatStyleWeak
+  onClick: !type:SetCombatStyleAlert { intent: Weak }
+  sprite: Alerts/Intents/intent_styles.rsi
+  states:
+  - weak
+  name: alerts-combatintent-name
+  description: alerts-combatintent-desc
+  hudPositionX: -544
+  hudPositionY: 399
+  altHudPositionX: -64
+  altHudPositionY: 431
+  isGeneric: false
+
+- type: alert
+  id: CombatStyleAimed
+  onClick: !type:SetCombatStyleAlert { intent: Aimed }
+  sprite: Alerts/Intents/intent_styles.rsi
+  states:
+  - aimed
+  name: alerts-combatintent-name
+  description: alerts-combatintent-desc
+  hudPositionX: -544
+  hudPositionY: 406
+  altHudPositionX: -64
+  altHudPositionY: 438
+  isGeneric: false
+
+- type: alert
+  id: CombatStyleFurious
+  onClick: !type:SetCombatStyleAlert { intent: Furious }
+  sprite: Alerts/Intents/intent_styles.rsi
+  states:
+  - furious
+  name: alerts-combatintent-name
+  description: alerts-combatintent-desc
+  hudPositionX: -544
+  hudPositionY: 413
+  altHudPositionX: -64
+  altHudPositionY: 445
+  isGeneric: false
+
+- type: alert
+  id: CombatStyleStrong
+  onClick: !type:SetCombatStyleAlert { intent: Strong }
+  sprite: Alerts/Intents/intent_styles.rsi
+  states:
+  - strong
+  name: alerts-combatintent-name
+  description: alerts-combatintent-desc
+  hudPositionX: -544
+  hudPositionY: 420
+  altHudPositionX: -64
+  altHudPositionY: 452
+  isGeneric: false
+
+- type: alert
+  id: CombatStyleDefend
+  onClick: !type:SetCombatStyleAlert { intent: Defend }
+  sprite: Alerts/Intents/intent_styles.rsi
+  states:
+  - defend
+  name: alerts-combatintent-name
+  description: alerts-combatintent-desc
+  hudPositionX: -544
+  hudPositionY: 427
+  altHudPositionX: -64
+  altHudPositionY: 459
+  isGeneric: false
+
+- type: alert
+  id: CombatStyleDual
+  onClick: !type:SetCombatStyleAlert { intent: Dual }
+  sprite: Alerts/Intents/intent_styles.rsi
+  states:
+  - dual
+  name: alerts-combatintent-name
+  description: alerts-combatintent-desc
+  hudPositionX: -544
+  hudPositionY: 434
+  altHudPositionX: -64
+  altHudPositionY: 466
+  isGeneric: false
+
+- type: alert
+  id: CombatStyleFeint
+  onClick: !type:SetCombatStyleAlert { intent: Feint }
+  sprite: Alerts/Intents/intent_styles.rsi
+  states:
+  - feint
+  name: alerts-combatintent-name
+  description: alerts-combatintent-desc
+  hudPositionX: -544
+  hudPositionY: 441
+  altHudPositionX: -64
+  altHudPositionY: 473
+  isGeneric: false

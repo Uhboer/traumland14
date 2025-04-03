@@ -12,6 +12,7 @@
     - category: NADrop
     - category: NAThrow
     - category: NACombatMode
+    - category: CombatIntent
     # Right Top content:
     - category: Hunger
     - category: Thirst
@@ -39,6 +40,14 @@
     # Bottom content
     - category: Resist
     - category: Pulling
+    - alertType: CombatStyleClose
+    - alertType: CombatStyleWeak
+    - alertType: CombatStyleAimed
+    - alertType: CombatStyleFurious
+    - alertType: CombatStyleStrong
+    - alertType: CombatStyleDefend
+    - alertType: CombatStyleDual
+    - alertType: CombatStyleFeint
 
 - type: entity
   id: AlertSpriteView
@@ -707,6 +716,29 @@
   hudPositionX: -512
   hudPositionY: 448
   altHudPositionX: -32
+  altHudPositionY: 480
+  isGeneric: false
+
+- type: alert
+  id: CombatIntent
+  category: CombatIntent
+  onClick: !type:ShowCombatIntentsMenuAlert { }
+  sprite: Alerts/Intents/intent_combat.rsi
+  states:
+  - weak
+  - aimed
+  - furious
+  - strong
+  - defend
+  - dual
+  - feint
+  name: alerts-combatintent-name
+  description: alerts-combatintent-desc
+  minSeverity: 0
+  maxSeverity: 6
+  hudPositionX: -544
+  hudPositionY: 448
+  altHudPositionX: -64
   altHudPositionY: 480
   isGeneric: false
 
