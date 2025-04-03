@@ -8,12 +8,14 @@ using Content.Shared._Finster.FieldOfView;
 using Content.Shared.CCVar;
 using Content.Shared.Maps;
 using Content.Shared.Parallax.Biomes;
+using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Client.Input;
 using Robust.Client.Player;
 using Robust.Client.ResourceManagement;
 using Robust.Client.State;
 using Robust.Client.UserInterface;
+using Robust.Client.Utility;
 using Robust.Shared.Configuration;
 using Robust.Shared.Enums;
 using Robust.Shared.Map;
@@ -29,9 +31,13 @@ public sealed class FieldOfViewOverlay : Overlay
     [Dependency] private readonly IEyeManager _eyeManager = default!;
     [Dependency] private readonly IMapManager _mapManager = default!;
 
+    private readonly FieldOfViewSystem _fovSystem;
+
     public FieldOfViewOverlay()
     {
         IoCManager.InjectDependencies(this);
+
+        _fovSystem = _entManager.System<FieldOfViewSystem>();
 
         ZIndex = DamageOverlay.DrawingDepth - 1;
     }
@@ -53,21 +59,32 @@ public sealed class FieldOfViewOverlay : Overlay
         var playerEntity = _player.LocalEntity.Value;
 
         if (!_entManager.TryGetComponent<TransformComponent>(playerEntity, out var playerTransform) ||
-            !_entManager.TryGetComponent<FieldOfViewComponent>(playerEntity, out var fovComp))
+            !_entManager.TryGetComponent<FieldOfViewComponent>(playerEntity, out var fovComp) ||
+            !_entManager.TryGetComponent<EyeComponent>(playerEntity, out var eyeComp))
             return;
 
         var viewport = args.WorldBounds;
 
-        DrawDarkenedArea(args.WorldHandle, viewport, playerTransform, fovComp);
+        DrawDarkenedArea(args.WorldHandle, viewport, playerTransform, fovComp, eyeComp);
     }
 
     private void DrawDarkenedArea(
         DrawingHandleWorld handle,
         Box2Rotated viewport,
         TransformComponent playerTransform,
-        FieldOfViewComponent fieldOfView)
+        FieldOfViewComponent fieldOfView,
+        EyeComponent eyeComp)
     {
-        var playerRotation = playerTransform.WorldRotation;
+        var playerRotation = playerTransform.WorldRotation + eyeComp.Rotation;
+        playerRotation = playerRotation.Reduced().FlipPositive();
+
+        if (fieldOfView.Simple4DirMode)
+        {
+            var rsiDirection = SpriteComponent.Layer.GetDirection(Robust.Shared.Graphics.RSI.RsiDirectionType.Dir4, playerRotation);
+            var targetDirection = rsiDirection.Convert();
+            playerRotation = targetDirection.ToAngle();
+        }
+
         var blockedViewDir = fieldOfView.GetRotation(fieldOfView.Direction);
 
         var startAngle = playerRotation + MathHelper.DegreesToRadians(blockedViewDir - fieldOfView.Angle / 2);

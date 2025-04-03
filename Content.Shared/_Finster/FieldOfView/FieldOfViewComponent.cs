@@ -20,6 +20,9 @@ public sealed partial class FieldOfViewComponent : Component
     [DataField, AutoNetworkedField]
     public BlockedVisionDirection Direction = BlockedVisionDirection.Backward;
 
+    [DataField, AutoNetworkedField]
+    public bool Simple4DirMode = true;
+
     public float GetRotation(BlockedVisionDirection dir)
     {
         switch (dir)

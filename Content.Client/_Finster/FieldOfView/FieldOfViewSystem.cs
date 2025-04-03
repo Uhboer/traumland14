@@ -5,6 +5,7 @@ using Content.Shared.Movement.Components;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Client.Player;
+using Robust.Client.Utility;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Player;
 
@@ -120,7 +121,14 @@ public sealed class FieldOfViewSystem : EntitySystem
                 continue;
             }
 
-            var result = IsInFieldOfView(playerUid, ent, fovComp.Angle, fovComp.MaxDistance, fovComp.GetRotation(fovComp.Direction));
+            var result = IsInFieldOfView(
+                playerUid,
+                ent,
+                fovComp.Angle,
+                fovComp.MaxDistance,
+                fovComp.GetRotation(fovComp.Direction),
+                simple4DirMode: fovComp.Simple4DirMode);
+
             if (!result && !_hiddenList.Contains(ent))
                 _hiddenList.Add(ent);
             else if (result && _hiddenList.Contains(ent))
@@ -138,11 +146,14 @@ public sealed class FieldOfViewSystem : EntitySystem
             float fovAngle,
             float maxDistance,
             float offsetAngle = -90f,
+            bool simple4DirMode = false,
             TransformComponent? viewerTransform = null,
-            TransformComponent? targetTransform = null)
+            TransformComponent? targetTransform = null,
+            EyeComponent? eyeComp = null)
     {
         if (!Resolve(viewer, ref viewerTransform) ||
-            !Resolve(target, ref targetTransform))
+            !Resolve(target, ref targetTransform) ||
+            !Resolve(viewer, ref eyeComp))
             return false;
 
         // Вычисляем направление от наблюдателя к цели
@@ -153,7 +164,16 @@ public sealed class FieldOfViewSystem : EntitySystem
             return false;
 
         // Вычисляем угол между направлением взгляда наблюдателя и направлением на цель
-        var viewerAngle = viewerTransform.WorldRotation; // Угол поворота наблюдателя
+        var viewerAngle = viewerTransform.WorldRotation + eyeComp.Rotation; // Угол поворота наблюдателя
+        viewerAngle = viewerAngle.Reduced().FlipPositive();
+
+        if (simple4DirMode)
+        {
+            var rsiDirection = SpriteComponent.Layer.GetDirection(Robust.Shared.Graphics.RSI.RsiDirectionType.Dir4, viewerAngle);
+            var targetDirection = rsiDirection.Convert();
+            viewerAngle = targetDirection.ToAngle();
+        }
+
         var angleToTarget = Math.Atan2(direction.Y, direction.X); // Угол до цели
 
         // Нормализуем углы в диапазоне [0, 2π)
