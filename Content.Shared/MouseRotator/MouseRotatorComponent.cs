@@ -38,6 +38,9 @@ public sealed partial class MouseRotatorComponent : Component
     /// </summary>
     [DataField, AutoNetworkedField]
     public bool Simple4DirMode = true;
+
+    [DataField, AutoNetworkedField]
+    public bool OnlyOnPressed = false;
 }
 
 /// <summary>

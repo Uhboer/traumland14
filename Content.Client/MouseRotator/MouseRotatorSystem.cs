@@ -1,8 +1,10 @@
 ﻿using Content.Shared.MouseRotator;
+using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Client.Input;
 using Robust.Client.Player;
 using Robust.Client.Replays.Loading;
+using Robust.Shared.Input;
 using Robust.Shared.Map;
 using Robust.Shared.Timing;
 
@@ -15,18 +17,25 @@ public sealed class MouseRotatorSystem : SharedMouseRotatorSystem
     [Dependency] private readonly IPlayerManager _player = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly IEyeManager _eye = default!;
+    [Dependency] private readonly InputSystem _inputSystem = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
 
     public override void Update(float frameTime)
     {
         base.Update(frameTime);
 
-        if (!_timing.IsFirstTimePredicted || !_input.MouseScreenPosition.IsValid)
+        if (!_timing.IsFirstTimePredicted ||
+            !_input.MouseScreenPosition.IsValid)
             return;
 
         var player = _player.LocalEntity;
 
         if (player == null || !TryComp<MouseRotatorComponent>(player, out var rotator))
+            return;
+
+        // Do not rotate if RMB is not pressed
+        if (rotator.OnlyOnPressed &&
+            _inputSystem.CmdStates.GetState(EngineKeyFunctions.UIRightClick) != BoundKeyState.Down)
             return;
 
         var xform = Transform(player.Value);

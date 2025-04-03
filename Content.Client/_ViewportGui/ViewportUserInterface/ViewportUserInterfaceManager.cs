@@ -124,6 +124,16 @@ public sealed class ViewportUserInterfaceManager : IViewportUserInterfaceManager
         // EE Based keys
         ContentKeyFunctions.LookUp,
         ContentKeyFunctions.ToggleStanding,
+        ContentKeyFunctions.Loadout0,
+        ContentKeyFunctions.Loadout1,
+        ContentKeyFunctions.Loadout2,
+        ContentKeyFunctions.Loadout3,
+        ContentKeyFunctions.Loadout4,
+        ContentKeyFunctions.Loadout5,
+        ContentKeyFunctions.Loadout6,
+        ContentKeyFunctions.Loadout7,
+        ContentKeyFunctions.Loadout8,
+        ContentKeyFunctions.Loadout9,
     };
 
     private IAudioSource? _clickSoundSource;

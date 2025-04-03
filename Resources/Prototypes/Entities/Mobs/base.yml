@@ -135,6 +135,8 @@
   abstract: true
   components:
   - type: CombatMode
+  - type: MouseRotator
+    onlyOnPressed: true
   - type: Intent
   - type: MeleeWeapon
     hidden: true
