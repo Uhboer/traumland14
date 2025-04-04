@@ -61,21 +61,21 @@ namespace Content.Client.Physics.Controllers
             // What if the entity is being pulled by a vehicle controlled by the player?
         }
 
-        private void OnRelayPlayerAttached(Entity<RelayInputMoverComponent> entity, ref LocalPlayerAttachedEvent args)
-        {
-            Physics.UpdateIsPredicted(entity.Owner);
-            Physics.UpdateIsPredicted(entity.Comp.RelayEntity);
-            if (MoverQuery.TryGetComponent(entity.Comp.RelayEntity, out var inputMover))
-                SetMoveInput((entity.Comp.RelayEntity, inputMover), MoveButtons.None);
-        }
+    private void OnRelayPlayerAttached(Entity<RelayInputMoverComponent> entity, ref LocalPlayerAttachedEvent args)
+    {
+        PhysicsSystem.UpdateIsPredicted(entity.Owner);
+        PhysicsSystem.UpdateIsPredicted(entity.Comp.RelayEntity);
+        if (MoverQuery.TryGetComponent(entity.Comp.RelayEntity, out var inputMover))
+            SetMoveInput((entity.Comp.RelayEntity, inputMover), MoveButtons.None);
+    }
 
-        private void OnRelayPlayerDetached(Entity<RelayInputMoverComponent> entity, ref LocalPlayerDetachedEvent args)
-        {
-            Physics.UpdateIsPredicted(entity.Owner);
-            Physics.UpdateIsPredicted(entity.Comp.RelayEntity);
-            if (MoverQuery.TryGetComponent(entity.Comp.RelayEntity, out var inputMover))
-                SetMoveInput((entity.Comp.RelayEntity, inputMover), MoveButtons.None);
-        }
+    private void OnRelayPlayerDetached(Entity<RelayInputMoverComponent> entity, ref LocalPlayerDetachedEvent args)
+    {
+        PhysicsSystem.UpdateIsPredicted(entity.Owner);
+        PhysicsSystem.UpdateIsPredicted(entity.Comp.RelayEntity);
+        if (MoverQuery.TryGetComponent(entity.Comp.RelayEntity, out var inputMover))
+            SetMoveInput((entity.Comp.RelayEntity, inputMover), MoveButtons.None);
+    }
 
         private void OnPlayerAttached(Entity<InputMoverComponent> entity, ref LocalPlayerAttachedEvent args)
         {
