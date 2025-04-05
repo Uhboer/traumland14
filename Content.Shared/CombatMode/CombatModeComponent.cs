@@ -87,6 +87,20 @@ namespace Content.Shared.CombatMode
 
         // Show popup combat intents list.
         public bool ShowCombatStyles = false;
+
+        public EntityUid? StaminaDrainSource;
+
+        /// <summary>
+        ///     Stamin drain rate, when entity is in combat.
+        /// </summary>
+        [DataField, AutoNetworkedField]
+        public float StaminaDrainRate = 0.15f;
+
+        /// <summary>
+        ///     Should entity drain the stamina in combat mode.
+        /// </summary>
+        [DataField, AutoNetworkedField]
+        public bool IsDrainable = true;
     }
 
     public enum DefenseMode : uint

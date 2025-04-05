@@ -35,8 +35,8 @@ public sealed class MouseRotatorSystem : SharedMouseRotatorSystem
 
         // Do not rotate if RMB is not pressed
         if (rotator.OnlyOnPressed &&
-            (_inputSystem.CmdStates.GetState(EngineKeyFunctions.UIRightClick) != BoundKeyState.Down ||
-            _inputSystem.CmdStates.GetState(EngineKeyFunctions.UIClick) != BoundKeyState.Down))
+            _inputSystem.CmdStates.GetState(EngineKeyFunctions.UIRightClick) != BoundKeyState.Down &&
+            _inputSystem.CmdStates.GetState(EngineKeyFunctions.UIClick) != BoundKeyState.Down)
             return;
 
         var xform = Transform(player.Value);

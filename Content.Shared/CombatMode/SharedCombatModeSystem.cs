@@ -1,7 +1,9 @@
 using Content.Shared.Actions;
+using Content.Shared.Damage.Systems;
 using Content.Shared.MouseRotator;
 using Content.Shared.Movement.Components;
 using Content.Shared.Popups;
+using Robust.Shared.Map;
 using Robust.Shared.Network;
 using Robust.Shared.Timing;
 
@@ -13,6 +15,7 @@ public abstract class SharedCombatModeSystem : EntitySystem
     [Dependency] private   readonly INetManager _netMan = default!;
     [Dependency] private   readonly SharedActionsSystem _actionsSystem = default!;
     [Dependency] private   readonly SharedPopupSystem _popup = default!;
+    [Dependency] private   readonly StaminaSystem _stamina = default!;
 
     public override void Initialize()
     {
@@ -80,6 +83,21 @@ public abstract class SharedCombatModeSystem : EntitySystem
 
         if (component.IsInCombatMode == value)
             return;
+
+        // Apply stamina draining on entity, when combat mode is enabled.
+        // If disabled - remove draining
+        if (!value && component.StaminaDrainSource is not null)
+        {
+            _stamina.ToggleStaminaDrain(entity, component.StaminaDrainRate, false, false, source: component.StaminaDrainSource);
+            QueueDel(component.StaminaDrainSource);
+            component.StaminaDrainSource = null;
+        }
+        else if (component.IsDrainable)
+        {
+            var drainEnt = Spawn(null, MapCoordinates.Nullspace);
+            _stamina.ToggleStaminaDrain(entity, component.StaminaDrainRate, true, false, source: drainEnt);
+            component.StaminaDrainSource = drainEnt;
+        }
 
         component.IsInCombatMode = value;
         Dirty(entity, component);
