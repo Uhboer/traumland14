@@ -1,3 +1,4 @@
+using Robust.Shared.Player;
 using Robust.Shared.Random;
 
 namespace Content.Shared._Finster.Rulebook;
@@ -49,6 +50,33 @@ public sealed class RolePlayDiceSystem : EntitySystem
         }
 
         return result + modifier;
+    }
+
+    /// <summary>
+    /// Get correct attribute poins, with buffs and debuffs.
+    /// </summary>
+    /// <param name="targetAttribute"></param>
+    /// <returns></returns>
+    public bool TryGetAttributePoints(
+        EntityUid uid,
+        Attributes targetAttribute,
+        out int points,
+        AttributesComponent? comp = null,
+        bool ignoreEffects = false)
+    {
+        points = -1;
+
+        if (!Resolve(uid, ref comp))
+            return false;
+
+        // Set the basic stat poins.
+        points = comp.Stats[targetAttribute];
+        if (ignoreEffects)
+            return true;
+
+        // TODO: Effects - buffs or debuffs
+
+        return true;
     }
 }
 

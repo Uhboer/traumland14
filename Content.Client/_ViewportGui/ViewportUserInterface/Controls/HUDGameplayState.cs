@@ -1,4 +1,5 @@
 using Content.Client._Finster.Lookup;
+using Content.Client._Finster.Rulebook;
 using Content.Client._Shitmed.UserInterface.Systems.Targeting;
 using Content.Client._Shitmed.UserInterface.Systems.Targeting.Controls;
 using Content.Client.UserInterface.Systems.Alerts.Controls;
@@ -25,6 +26,7 @@ public class HUDGameplayState : HUDRoot
 
     public HUDAlertsPanel AlertsPanel { get; set; }
     public HUDTargetDoll TargetingControl { get; set; }
+    public HUDAttributeStats AttributeStats { get; set; }
     public HUDLookupLabel LookupLabel { get; set; }
 
     public HUDGameplayState(HUDGameplayType hudType)
@@ -63,12 +65,14 @@ public class HUDGameplayState : HUDRoot
             LookupLabel.TextPositionX = 336;
 
             TargetingControl = new HUDTargetDoll(targetingController);
+            AttributeStats = new HUDAttributeStats();
 
             InventoryPanel = inventoryPanel;
             AddChild(inventoryPanel);
             AddChild(AlertsPanel);
             AddChild(LookupLabel);
             AlertsPanel.AddChild(TargetingControl);
+            AlertsPanel.AddChild(AttributeStats);
         }
         else // By default - Interbay
         {
@@ -95,12 +99,14 @@ public class HUDGameplayState : HUDRoot
             LookupLabel = new HUDLookupLabel();
 
             TargetingControl = new HUDTargetDoll(targetingController);
+            AttributeStats = new HUDAttributeStats();
 
             InventoryPanel = inventoryPanel;
             AddChild(inventoryPanel);
             AddChild(AlertsPanel);
             AddChild(LookupLabel);
             AlertsPanel.AddChild(TargetingControl);
+            AlertsPanel.AddChild(AttributeStats);
         }
     }
 }

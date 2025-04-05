@@ -13,6 +13,8 @@ public class HUDTextureRect : HUDControl
     /// </summary>
     public Texture? Texture { get; set; }
 
+    public UIBox2? SubRegion { get; set; }
+
     public override void Draw(in ViewportUIDrawArgs args)
     {
         var handle = args.ScreenHandle;
@@ -23,7 +25,7 @@ public class HUDTextureRect : HUDControl
             return;
         }
 
-        handle.DrawTextureRect(Texture, new UIBox2(GlobalPosition, GlobalPosition + Size));
+        handle.DrawTextureRectRegion(Texture, new UIBox2(GlobalPosition, GlobalPosition + Size), SubRegion);
         base.Draw(args);
     }
 }

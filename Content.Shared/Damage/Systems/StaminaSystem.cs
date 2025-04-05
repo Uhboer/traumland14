@@ -85,12 +85,12 @@ public sealed partial class StaminaSystem : EntitySystem
             RemCompDeferred<ActiveStaminaComponent>(uid);
         }
 
-        SetStaminaAlert(uid);
+        //SetStaminaAlert(uid);
     }
 
     private void OnStartup(EntityUid uid, StaminaComponent component, ComponentStartup args)
     {
-        SetStaminaAlert(uid, component);
+        //SetStaminaAlert(uid, component);
     }
 
     [PublicAPI]
@@ -113,7 +113,7 @@ public sealed partial class StaminaSystem : EntitySystem
 
         component.StaminaDamage = 0;
         RemComp<ActiveStaminaComponent>(uid);
-        SetStaminaAlert(uid, component);
+        //SetStaminaAlert(uid, component);
         Dirty(uid, component);
     }
 
@@ -227,6 +227,7 @@ public sealed partial class StaminaSystem : EntitySystem
         TakeStaminaDamage(target, damage, source: uid, sound: component.Sound);
     }
 
+    /*
     private void SetStaminaAlert(EntityUid uid, StaminaComponent? component = null)
     {
         if (!Resolve(uid, ref component, false) || component.Deleted)
@@ -238,6 +239,7 @@ public sealed partial class StaminaSystem : EntitySystem
         var severity = ContentHelpers.RoundToLevels(MathF.Max(0f, component.CritThreshold - component.StaminaDamage), component.CritThreshold, 11);
         _alerts.ShowAlert(uid, component.StaminaAlert, (short) severity);
     }
+    */
 
     /// <summary>
     /// Tries to take stamina damage without raising the entity over the crit threshold.
@@ -286,7 +288,7 @@ public sealed partial class StaminaSystem : EntitySystem
         }
         if (allowsSlowdown == true)
             _movementSpeed.RefreshMovementSpeedModifiers(uid);
-        SetStaminaAlert(uid, component);
+        //SetStaminaAlert(uid, component);
 
         if (!component.Critical)
         {
@@ -423,7 +425,7 @@ public sealed partial class StaminaSystem : EntitySystem
         component.StaminaDamage = component.CritThreshold - float.Epsilon; // Yea, standing up after fainting from fatigue... not exactly easy
         component.NextUpdate = _timing.CurTime;
         _movementSpeed.RefreshMovementSpeedModifiers(uid);
-        SetStaminaAlert(uid, component);
+        //SetStaminaAlert(uid, component);
         Dirty(uid, component);
         _adminLogger.Add(LogType.Stamina, LogImpact.Low, $"{ToPrettyString(uid):user} recovered from stamina crit");
     }

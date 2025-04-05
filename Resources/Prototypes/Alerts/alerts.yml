@@ -22,7 +22,7 @@
     - category: Bleed
     - category: Mood
     - category: Health
-    - category: Stamina
+    #- category: Stamina
     - category: NALaying
     - category: NAWalking
     # Generic alerts content:
@@ -66,7 +66,7 @@
   name: alerts-airok-name
   description: alerts-airok-desc
   hudPositionX: 0
-  hudPositionY: 192
+  hudPositionY: 160
   isGeneric: false
 
 - type: alert
@@ -78,7 +78,7 @@
   name: alerts-low-oxygen-name
   description: alerts-low-oxygen-desc
   hudPositionX: 0
-  hudPositionY: 192
+  hudPositionY: 160
   isGeneric: false
 
 - type: alert
@@ -90,7 +90,7 @@
   name: alerts-low-nitrogen-name
   description: alerts-low-nitrogen-desc
   hudPositionX: 0
-  hudPositionY: 192
+  hudPositionY: 160
   isGeneric: false
 
 - type: alert
@@ -102,7 +102,7 @@
   name: alerts-low-plasma-name
   description: alerts-low-plasma-desc
   hudPositionX: 0
-  hudPositionY: 192
+  hudPositionY: 160
   isGeneric: false
 
 - type: alert
@@ -114,7 +114,7 @@
   name: alerts-high-oxygen-name
   description: alerts-high-oxygen-desc
   hudPositionX: 0
-  hudPositionY: 192
+  hudPositionY: 160
   isGeneric: false
 
 - type: alert
@@ -150,7 +150,7 @@
   name: alerts-good-pressure-name
   description: alerts-good-pressure-desc
   hudPositionX: 0
-  hudPositionY: 224
+  hudPositionY: 192
   isGeneric: false
 
 - type: alert
@@ -164,7 +164,7 @@
   name: alerts-low-pressure-name
   description: alerts-low-pressure-desc
   hudPositionX: 0
-  hudPositionY: 224
+  hudPositionY: 192
   isGeneric: false
 
 - type: alert
@@ -178,7 +178,7 @@
   name: alerts-high-pressure-name
   description: alerts-high-pressure-desc
   hudPositionX: 0
-  hudPositionY: 224
+  hudPositionY: 192
   isGeneric: false
 
 # FINSTER EDIT
@@ -210,7 +210,7 @@
   name: alerts-too-cold-name
   description: alerts-too-cold-desc
   hudPositionX: 0
-  hudPositionY: 160
+  hudPositionY: 128
   isGeneric: false
 
 - type: alert
@@ -222,7 +222,7 @@
   name: alerts-normal-temperature-name
   description: alerts-normal-temperature-desc
   hudPositionX: 0
-  hudPositionY: 160
+  hudPositionY: 128
   isGeneric: false
 
 - type: alert
@@ -237,7 +237,7 @@
   name: alerts-too-hot-name
   description: alerts-too-hot-desc
   hudPositionX: 0
-  hudPositionY: 160
+  hudPositionY: 128
   isGeneric: false
 
 #- type: alert
@@ -301,7 +301,7 @@
   name: alerts-crit-name
   description: alerts-crit-desc
   hudPositionX: 0
-  hudPositionY: 288
+  hudPositionY: 320
   isGeneric: false
 
 - type: alert
@@ -313,7 +313,7 @@
   name: alerts-dead-name
   description: alerts-dead-desc
   hudPositionX: 0
-  hudPositionY: 288
+  hudPositionY: 320
   isGeneric: false
 
 - type: alert
@@ -332,7 +332,7 @@
   minSeverity: 0
   maxSeverity: 4
   hudPositionX: 0
-  hudPositionY: 288
+  hudPositionY: 320
   isGeneric: false
 
 - type: alert
@@ -350,7 +350,7 @@
   minSeverity: 0
   maxSeverity: 4
   hudPositionX: 0
-  hudPositionY: 288
+  hudPositionY: 320
   isGeneric: false
 
 - type: alert
@@ -362,7 +362,7 @@
   name: alerts-crit-name
   description: alerts-crit-desc
   hudPositionX: 0
-  hudPositionY: 288
+  hudPositionY: 320
   isGeneric: false
 
 - type: alert
@@ -374,7 +374,7 @@
   name: alerts-dead-name
   description: alerts-dead-desc
   hudPositionX: 0
-  hudPositionY: 288
+  hudPositionY: 320
   isGeneric: false
 
 - type: alert
@@ -397,9 +397,6 @@
   description: alerts-battery-desc
   minSeverity: 0
   maxSeverity: 10
-  hudPositionX: 0
-  hudPositionY: 384
-  isGeneric: false
 
 - type: alert
   id: BorgBatteryNone
@@ -470,29 +467,29 @@
   name: alerts-overfed-name
   description: alerts-overfed-desc
 
-- type: alert
-  id: Stamina
-  category: Stamina
-  sprite: Alerts/stamina.rsi
-  states:
-  - stamina0
-  - stamina1
-  - stamina2
-  - stamina3
-  - stamina4
-  - stamina5
-  - stamina6
-  - stamina7
-  - stamina8
-  - stamina9
-  - stamina10
-  name: alerts-stamina-name
-  description: alerts-stamina-desc
-  minSeverity: 0
-  maxSeverity: 10
-  hudPositionX: 0
-  hudPositionY: 320
-  isGeneric: false
+#- type: alert
+#  id: Stamina
+#  category: Stamina
+#  sprite: Alerts/stamina.rsi
+#  states:
+#  - stamina0
+#  - stamina1
+#  - stamina2
+#  - stamina3
+#  - stamina4
+#  - stamina5
+#  - stamina6
+#  - stamina7
+#  - stamina8
+#  - stamina9
+#  - stamina10
+#  name: alerts-stamina-name
+#  description: alerts-stamina-desc
+#  minSeverity: 0
+#  maxSeverity: 10
+#  hudPositionX: 0
+#  hudPositionY: 320
+#  isGeneric: false
 
 - type: alert
   id: HungerDead
@@ -592,7 +589,7 @@
   name: alerts-surrend-name
   description: alerts-surrend-desc
   hudPositionX: 0
-  hudPositionY: 128
+  hudPositionY: 96
   isGeneric: false
 
 - type: alert
@@ -606,8 +603,10 @@
   description: alerts-fixed-desc
   minSeverity: 0
   maxSeverity: 1
-  hudPositionX: 0
-  hudPositionY: 256
+  hudPositionX: -544
+  hudPositionY: 320
+  altHudPositionX: 0
+  altHudPositionY: 416
   isGeneric: false
 
 # FINSTER EDIT - No need Pulled anymore
@@ -647,7 +646,7 @@
   #hudPositionX: -192
   hudPositionX: -544
   hudPositionY: 416
-  altHudPositionX: -288
+  altHudPositionX: -192
   altHudPositionY: 480
   isGeneric: false
 
@@ -773,7 +772,7 @@
   maxSeverity: 1
   hudPositionX: -576
   hudPositionY: 288
-  altHudPositionX: -192
+  altHudPositionX: -288
   altHudPositionY: 480
   isGeneric: false
 
@@ -807,7 +806,7 @@
   maxSeverity: 1
   hudPositionX: -512
   hudPositionY: 288
-  altHudPositionX: -128
+  altHudPositionX: -256
   altHudPositionY: 480
   isGeneric: false
 
@@ -825,7 +824,7 @@
   maxSeverity: 1
   hudPositionX: -512
   hudPositionY: 304
-  altHudPositionX: -128
+  altHudPositionX: -256
   altHudPositionY: 496
   isGeneric: false
 

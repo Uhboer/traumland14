@@ -6,7 +6,7 @@ using Robust.Client.UserInterface;
 
 namespace Content.Client._Shitmed.UserInterface.Systems.Targeting.Controls;
 
-public class HUDTargetDoll : HUDTextureRect
+public class HUDTargetDoll : HUDTextureRect, IHUDDescription
 {
     [Dependency] private readonly IUserInterfaceManager _uiManager = default!;
 
@@ -17,6 +17,8 @@ public class HUDTargetDoll : HUDTextureRect
     public Texture? TextureHovered;
     public Texture? TextureFocused;
 
+    public string Description { get; set; }
+
     private readonly Dictionary<TargetBodyPart, HUDButton> _bodyPartControls;
 
     public HUDTargetDoll(TargetingUIController controller)
@@ -24,6 +26,7 @@ public class HUDTargetDoll : HUDTextureRect
         IoCManager.InjectDependencies(this);
 
         Name = "TargetDoll";
+        Description = "hud-desc-targetdoll";
         Size = (32, 64);
         Position = (0, 32);
         _controller = controller;

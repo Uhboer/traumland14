@@ -157,6 +157,9 @@ public class HUDLookupLabel : HUDControl
                 _text = Loc.GetString(slotControl.HoverName);
                 return;
                 break;
+            case IHUDDescription descControl:
+                _text = descControl.Description;
+                return;
         }
 
         // TODO: Maybe need make something like "FocusName"?

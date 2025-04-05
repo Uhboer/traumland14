@@ -26,6 +26,13 @@ public sealed partial class AttributesComponent : Component
     };
 
     /// <summary>
+    /// Contains ID of prototypes of buffs and debuffs on specific attributes.
+    /// </summary>
+    [DataField, ViewVariables(VVAccess.ReadOnly)]
+    [AutoNetworkedField]
+    public List<string> Effects = new();
+
+    /// <summary>
     /// Calculate modifier, given by the attribute.
     /// </summary>
     /// <param name="attributeValue">Attribute?</param>
@@ -42,7 +49,7 @@ EXAMPLE OF ADDING ATTRS:
   id: ExampleEntity
   components:
   - type: Attributes
-    attributes:
+    stats:
       Strength: 15  # Overrides default 10
       Dexterity: 12 # Overrides default 8
       Intelligence: 14 # Adds new entry
@@ -81,5 +88,8 @@ public enum Attributes : byte
     /// <summary>
     ///     It helps you to live. Reduce negative effects for mood and increase time for crit, before you can die.
     /// </summary>
-    Willpower
+    Willpower,
+
+    // Not attribute
+    Max
 }
