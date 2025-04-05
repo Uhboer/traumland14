@@ -259,6 +259,10 @@ binds:
 - function: OfferItem
   type: State
   key: F
+  mod1: Shift
+- function: FixedDirection
+  type: State
+  key: F
 - function: ToggleStanding
   type: State
   key: G
@@ -593,6 +597,22 @@ binds:
   type: State
   key: Space
   mod1: Shift
+- function: IntentHelp
+  type: State
+  key: Num1
+  mod1: Shift
+- function: IntentDisarm
+  type: State
+  key: Num2
+  mod1: Shift
+- function: IntentGrab
+  type: State
+  key: Num3
+  mod1: Shift
+- function: IntentHarm
+  type: State
+  key: Num4
+  mod1: Shift
 - function: MappingUnselect
   type: State
   key: MouseRight
@@ -626,4 +646,9 @@ binds:
   type: State
   key: MouseRight
   canFocus: true
-
+- function: OpenContextMenu
+  type: State
+  key: MouseRight
+  mod1: Shift
+  canFocus: true
+  priority: -2 # Before UseSecondary

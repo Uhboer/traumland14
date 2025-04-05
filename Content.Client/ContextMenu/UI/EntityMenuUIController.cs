@@ -70,7 +70,7 @@ namespace Content.Client.ContextMenu.UI
             _context.OnContextKeyEvent += OnKeyBindDown;
 
             CommandBinds.Builder
-                .Bind(EngineKeyFunctions.UseSecondary,  new PointerInputCmdHandler(HandleOpenEntityMenu, outsidePrediction: true))
+                .Bind(ContentKeyFunctions.OpenContextMenu, new PointerInputCmdHandler(HandleOpenEntityMenu, outsidePrediction: true))
                 .Register<EntityMenuUIController>();
         }
 

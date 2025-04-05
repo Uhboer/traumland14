@@ -123,6 +123,11 @@ public sealed class ViewportUserInterfaceManager : IViewportUserInterfaceManager
 
         // EE Based keys
         ContentKeyFunctions.LookUp,
+        ContentKeyFunctions.FixedDirection,
+        ContentKeyFunctions.IntentHelp,
+        ContentKeyFunctions.IntentDisarm,
+        ContentKeyFunctions.IntentGrab,
+        ContentKeyFunctions.IntentHarm,
         ContentKeyFunctions.ToggleStanding,
         ContentKeyFunctions.Loadout0,
         ContentKeyFunctions.Loadout1,

@@ -26,6 +26,7 @@ namespace Content.Client.Input
             common.AddFunction(ContentKeyFunctions.CycleChatChannelBackward);
             common.AddFunction(ContentKeyFunctions.EscapeContext);
             common.AddFunction(ContentKeyFunctions.ExamineEntity);
+            common.AddFunction(ContentKeyFunctions.OpenContextMenu);
             common.AddFunction(ContentKeyFunctions.OpenAHelp);
             common.AddFunction(ContentKeyFunctions.TakeScreenshot);
             common.AddFunction(ContentKeyFunctions.TakeScreenshotNoUI);
@@ -74,6 +75,7 @@ namespace Content.Client.Input
             human.AddFunction(ContentKeyFunctions.OpenBackpack);
             human.AddFunction(ContentKeyFunctions.OpenBelt);
             human.AddFunction(ContentKeyFunctions.OfferItem);
+            human.AddFunction(ContentKeyFunctions.FixedDirection);
             human.AddFunction(ContentKeyFunctions.ToggleStanding);
             human.AddFunction(ContentKeyFunctions.ToggleCrawlingUnder);
             human.AddFunction(ContentKeyFunctions.ToggleCombatMode);
@@ -86,6 +88,10 @@ namespace Content.Client.Input
             human.AddFunction(ContentKeyFunctions.Arcade2);
             human.AddFunction(ContentKeyFunctions.Arcade3);
             human.AddFunction(ContentKeyFunctions.LookUp);
+            human.AddFunction(ContentKeyFunctions.IntentHelp);
+            human.AddFunction(ContentKeyFunctions.IntentDisarm);
+            human.AddFunction(ContentKeyFunctions.IntentGrab);
+            human.AddFunction(ContentKeyFunctions.IntentHarm);
             // Shitmed Change Start - TODO: Add groin targeting.
             human.AddFunction(ContentKeyFunctions.TargetHead);
             human.AddFunction(ContentKeyFunctions.TargetTorso);
@@ -124,6 +130,12 @@ namespace Content.Client.Input
             aghost.AddFunction(ContentKeyFunctions.TryPullObject);
             aghost.AddFunction(ContentKeyFunctions.MovePulledObject);
             aghost.AddFunction(ContentKeyFunctions.ReleasePulledObject);
+            aghost.AddFunction(ContentKeyFunctions.ToggleCombatMode);
+            aghost.AddFunction(ContentKeyFunctions.LookUp);
+            aghost.AddFunction(ContentKeyFunctions.IntentHelp);
+            aghost.AddFunction(ContentKeyFunctions.IntentDisarm);
+            aghost.AddFunction(ContentKeyFunctions.IntentGrab);
+            aghost.AddFunction(ContentKeyFunctions.IntentHarm);
 
             var ghost = contexts.New("ghost", "human");
             ghost.AddFunction(EngineKeyFunctions.MoveUp);

@@ -56,10 +56,15 @@ namespace Content.Shared.Input
         public static readonly BoundKeyFunction ZoomIn = "ZoomIn";
         public static readonly BoundKeyFunction ResetZoom = "ResetZoom";
         public static readonly BoundKeyFunction OfferItem = "OfferItem";
+        public static readonly BoundKeyFunction FixedDirection = "FixedDirection";
         public static readonly BoundKeyFunction ToggleStanding = "ToggleStanding";
         public static readonly BoundKeyFunction ToggleCrawlingUnder = "ToggleCrawlingUnder";
         public static readonly BoundKeyFunction ToggleCombatMode = "ToggleCombatMode";
         public static readonly BoundKeyFunction LookUp = "LookUp";
+        public static readonly BoundKeyFunction IntentHelp = "IntentHelp";
+        public static readonly BoundKeyFunction IntentDisarm = "IntentDisarm";
+        public static readonly BoundKeyFunction IntentGrab = "IntentGrab";
+        public static readonly BoundKeyFunction IntentHarm = "IntentHarm";
         public static readonly BoundKeyFunction TargetHead = "TargetHead";
         public static readonly BoundKeyFunction TargetTorso = "TargetTorso";
         public static readonly BoundKeyFunction TargetLeftArm = "TargetLeftArm";
@@ -116,7 +121,7 @@ namespace Content.Shared.Input
         public static BoundKeyFunction[] GetIntentsBoundKeys() =>
             new[]
             {
-                Loadout1, Loadout2, Loadout3, Loadout4
+                IntentHelp, IntentDisarm, IntentGrab, IntentHarm
             };
 
         public static readonly BoundKeyFunction Vote0 = "Vote0";
@@ -142,5 +147,6 @@ namespace Content.Shared.Input
         public static readonly BoundKeyFunction MappingRemoveDecal = "MappingRemoveDecal";
         public static readonly BoundKeyFunction MappingCancelEraseDecal = "MappingCancelEraseDecal";
         public static readonly BoundKeyFunction MappingOpenContextMenu = "MappingOpenContextMenu";
+        public static readonly BoundKeyFunction OpenContextMenu = "OpenContextMenu";
     }
 }

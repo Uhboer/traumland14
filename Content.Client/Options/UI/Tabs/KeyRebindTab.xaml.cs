@@ -187,6 +187,7 @@ namespace Content.Client.Options.UI.Tabs
             AddHeader("ui-options-header-interaction-basic");
             AddButton(EngineKeyFunctions.Use);
             AddButton(EngineKeyFunctions.UseSecondary);
+            AddButton(ContentKeyFunctions.OpenContextMenu);
             AddButton(ContentKeyFunctions.UseItemInHand);
             AddButton(ContentKeyFunctions.AltUseItemInHand);
             AddButton(ContentKeyFunctions.ActivateItemInWorld);
@@ -202,6 +203,11 @@ namespace Content.Client.Options.UI.Tabs
             AddButton(ContentKeyFunctions.ToggleCrawlingUnder);
             AddButton(ContentKeyFunctions.ToggleCombatMode);
             AddButton(ContentKeyFunctions.LookUp);
+            AddButton(ContentKeyFunctions.FixedDirection);
+            AddButton(ContentKeyFunctions.IntentHelp);
+            AddButton(ContentKeyFunctions.IntentDisarm);
+            AddButton(ContentKeyFunctions.IntentGrab);
+            AddButton(ContentKeyFunctions.IntentHarm);
             AddCheckBox("ui-options-function-auto-get-up", _cfg.GetCVar(CCVars.AutoGetUp), HandleToggleAutoGetUp);
 
             AddHeader("ui-options-header-interaction-adv");

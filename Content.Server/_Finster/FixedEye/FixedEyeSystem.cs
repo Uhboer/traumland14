@@ -1,6 +1,10 @@
 using Content.Shared.ActionBlocker;
 using Content.Shared.Alert;
+using Content.Shared.Input;
 using Content.Shared.Movement.Components;
+using Robust.Shared.Input.Binding;
+using Robust.Shared.Map;
+using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server._Finster.FixedEye;
@@ -22,6 +26,10 @@ public sealed class FixedEyeSystem : EntitySystem
         // FIXME: Move into mover controller and make events?
         SubscribeLocalEvent<NoRotateOnMoveComponent, ComponentAdd>(OnNoRotateAdded);
         SubscribeLocalEvent<NoRotateOnMoveComponent, ComponentRemove>(OnNoRotateRemoved);
+
+        CommandBinds.Builder
+            .Bind(ContentKeyFunctions.FixedDirection, new PointerInputCmdHandler(HandleToggleFixedEye))
+            .Register<FixedEyeSystem>();
     }
 
     private void OnStartup(Entity<FixedEyeComponent> ent, ref ComponentStartup args)
@@ -42,6 +50,16 @@ public sealed class FixedEyeSystem : EntitySystem
     private void OnNoRotateRemoved(Entity<NoRotateOnMoveComponent> ent, ref ComponentRemove args)
     {
         RefreshAlert(ent);
+    }
+
+    private bool HandleToggleFixedEye(ICommonSession? playerSession, EntityCoordinates coordinates, EntityUid entity)
+    {
+        if (playerSession?.AttachedEntity is not { Valid: true } player || !Exists(player))
+            return false;
+
+        Toggle(player);
+
+        return true;
     }
 
     public void RefreshAlert(EntityUid uid, FixedEyeComponent? fixedEyeComp = null)
