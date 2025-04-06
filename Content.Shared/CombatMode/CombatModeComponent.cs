@@ -18,29 +18,6 @@ namespace Content.Shared.CombatMode
     [Access(typeof(SharedCombatModeSystem))]
     public sealed partial class CombatModeComponent : Component
     {
-        #region Disarm
-
-        /// <summary>
-        /// Whether we are able to disarm. This requires our active hand to be free.
-        /// False if it's toggled off for whatever reason, null if it's not possible.
-        /// </summary>
-        [ViewVariables(VVAccess.ReadWrite), DataField("canDisarm")]
-        public bool? CanDisarm;
-
-        [DataField("disarmSuccessSound")]
-        public SoundSpecifier DisarmSuccessSound = new SoundPathSpecifier("/Audio/Effects/thudswoosh.ogg");
-
-        [DataField("disarmFailChance")]
-        public float BaseDisarmFailChance = 0.75f;
-
-        #endregion
-
-        [DataField("combatToggleAction", customTypeSerializer: typeof(PrototypeIdSerializer<EntityPrototype>))]
-        public string CombatToggleAction = "ActionCombatModeToggle";
-
-        [DataField, AutoNetworkedField]
-        public EntityUid? CombatToggleActionEntity;
-
         [DataField]
         public ProtoId<AlertPrototype> CombatModeAlert = "CombatMode";
 
@@ -88,13 +65,13 @@ namespace Content.Shared.CombatMode
         // Show popup combat intents list.
         public bool ShowCombatStyles = false;
 
-        public EntityUid? StaminaDrainSource;
-
         /// <summary>
         ///     Stamin drain rate, when entity is in combat.
         /// </summary>
         [DataField, AutoNetworkedField]
         public float StaminaDrainRate = 0.15f;
+
+        public EntityUid? StaminaDrainSource;
 
         /// <summary>
         ///     Should entity drain the stamina in combat mode.

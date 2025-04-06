@@ -34,6 +34,7 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 using ItemToggleMeleeWeaponComponent = Content.Shared.Item.ItemToggle.Components.ItemToggleMeleeWeaponComponent;
 using Content.Shared.Movement.Pulling.Components;
+using Content.Shared._Finster.Rulebook;
 
 namespace Content.Shared.Weapons.Melee;
 
@@ -54,7 +55,9 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
     [Dependency] private readonly IPrototypeManager _protoManager = default!;
     [Dependency] private readonly StaminaSystem _stamina = default!;
     [Dependency] private readonly ContestsSystem _contests = default!;
-    [Dependency] private   readonly SharedTargetingSystem   _targeting       = default!; // WWDP
+    [Dependency] private readonly SharedTargetingSystem _targeting = default!; // WWDP
+
+    public const string SkillMartialArts = "MartialArts";
 
     private const int AttackMask = (int) (CollisionGroup.MobMask | CollisionGroup.Opaque);
 
@@ -355,11 +358,34 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
                     return false;
 
                 // Can't self-attack if you're the weapon
-                if (weaponUid == target)
-                    return false;
+                // DocNight's note - no, i CAN. Why i can't to punch myself like Taino Dernul from Fight club?
+                //if (weaponUid == target)
+                //    return false;
 
                 break;
-            case HeavyAttackEvent:
+            case HeavyAttackEvent heavy:
+                // Can't use heavy AOE attack by hands.
+                // But we can do it with martial arts!
+                if (weaponUid == user)
+                {
+                    if (!TryComp<SkillsComponent>(user, out var skills) ||
+                        !_protoManager.TryIndex<SkillPrototype>(SkillMartialArts, out var skill))
+                        return false;
+
+                    var founded = false;
+                    foreach (var skillEntry in skills.Skills)
+                    {
+                        if (skillEntry.Key.Id == skill.ID)
+                        {
+                            founded = true;
+                            break;
+                        }
+                    }
+
+                    if (!founded)
+                        return false;
+                }
+
                 fireRateSwingModifier = weapon.HeavyRateModifier;
                 break;
             case DisarmAttackEvent disarm:

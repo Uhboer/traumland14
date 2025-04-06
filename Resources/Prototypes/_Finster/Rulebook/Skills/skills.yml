@@ -6,6 +6,10 @@
   id: Melee
   category: Fighting
 
+- type: skill
+  id: MartialArts
+  category: Fighting
+
 # How good you can deal with ranged weapons.
 # It may be help to control the guns and deal aimed damage
 # into body parts, and prevent disarm the weapon.

@@ -12,7 +12,7 @@ public sealed partial class SkillsComponent : Component
 {
     [AutoNetworkedField]
     [ViewVariables(VVAccess.ReadWrite), DataField]
-    public Dictionary<ProtoId<SkillPrototype>, Enum> Skills = new();
+    public Dictionary<ProtoId<SkillPrototype>, SkillLevel> Skills = new();
 
     /// <summary>
     ///  Take 2d(sides) by skill level.
