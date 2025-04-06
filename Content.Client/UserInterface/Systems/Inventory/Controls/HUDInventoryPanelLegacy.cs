@@ -137,7 +137,7 @@ public class HUDInventoryPanelLegacy : HUDTextureRect, IInventoryPanel
                 MiscSlotsContainer.Position = (HandsContainer.Size.X, 0);
             */
             SlotsContainer.Position = (0, -64);
-            MiscSlotsContainer.Position = (HandsContainer.Size.X, -64);
+            MiscSlotsContainer.Position = (3 * DefaultButtonSize, -64);
         }
 
         UpdateToggleMiscButton();
@@ -173,7 +173,7 @@ public class HUDInventoryPanelLegacy : HUDTextureRect, IInventoryPanel
             MiscSlotsContainer.Position = (HandsContainer.Size.X, 0);
             */
             HandsContainer.Position = (0, 0 - DefaultButtonSize);
-            MiscSlotsContainer.Position = (HandsContainer.Size.X, -64);
+            MiscSlotsContainer.Position = (3 * DefaultButtonSize, -64);
 
             if (handsComp.ActiveHand != null)
                 SetActiveHand(handsComp.ActiveHand.Name);
@@ -203,7 +203,7 @@ public class HUDInventoryPanelLegacy : HUDTextureRect, IInventoryPanel
         }
 
         // Calculate position for the button.
-        ToggleMiscSlotsButton.Position = (HandsContainer.Size.X, HandsContainer.Position.Y);
+        ToggleMiscSlotsButton.Position = (3 * DefaultButtonSize, -32);
     }
 
     private HUDSlotButton CreateSlotButton(SlotData data)
@@ -238,7 +238,7 @@ public class HUDInventoryPanelLegacy : HUDTextureRect, IInventoryPanel
             handsComp.Hands.Count == 2) // because two hands
         {
             var switchHandsButton = new HUDHandButton("switchbutton", data.Location);
-            switchHandsButton.Position = ((parentChildCount + 1) * DefaultButtonSize, 0);
+            switchHandsButton.Position = (5 * DefaultButtonSize, 1 * DefaultButtonSize);
             switchHandsButton.OnPressed += (_) =>
             {
                 SwitchHands(switchHandsButton);

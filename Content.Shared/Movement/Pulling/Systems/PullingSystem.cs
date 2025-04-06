@@ -254,8 +254,8 @@ public sealed class PullingSystem : EntitySystem
             // NETPUNK EDIT - Rotate character's face to pulled object
             if (pullerComp.PushingTowards is null)
             {
-                if (HasComp<MouseRotatorComponent>(puller))
-                    continue;
+                //if (HasComp<MouseRotatorComponent>(puller))
+                //    continue;
                 if (!_timing.ApplyingState)
                     EnsureComp<NoRotateOnMoveComponent>(puller);
 

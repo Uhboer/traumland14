@@ -211,11 +211,15 @@
 - type: soundCollection
   id: FootstepBlood
   files:
-  - /Audio/_Finster/Effects/Footsteps/FTSHAL_1.ogg
-  - /Audio/_Finster/Effects/Footsteps/FTSHAL_2.ogg
-  - /Audio/_Finster/Effects/Footsteps/FTSHAL_3.ogg
-  - /Audio/_Finster/Effects/Footsteps/FTSHAL_4.ogg
-  - /Audio/_Finster/Effects/Footsteps/FTSHAL_5.ogg
+  - /Audio/_Finster/Effects/Footsteps/footstep_shoe_flesh_step.ogg
+  - /Audio/_Finster/Effects/Footsteps/footstep_shoe_flesh_step2.ogg
+  - /Audio/_Finster/Effects/Footsteps/footstep_shoe_flesh_step3.ogg
+  - /Audio/_Finster/Effects/Footsteps/footstep_shoe_flesh_step4.ogg
+  #- /Audio/_Finster/Effects/Footsteps/FTSHAL_1.ogg
+  #- /Audio/_Finster/Effects/Footsteps/FTSHAL_2.ogg
+  #- /Audio/_Finster/Effects/Footsteps/FTSHAL_3.ogg
+  #- /Audio/_Finster/Effects/Footsteps/FTSHAL_4.ogg
+  #- /Audio/_Finster/Effects/Footsteps/FTSHAL_5.ogg
 
 - type: soundCollection
   id: FootstepMud
