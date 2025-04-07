@@ -166,6 +166,9 @@ namespace Content.Server.GameTicking
             bool lateJoin = true,
             bool silent = false)
         {
+            // Fuck it.
+            silent = true;
+
             // Can't spawn players with a dummy ticker!
             if (DummyTicker)
                 return;

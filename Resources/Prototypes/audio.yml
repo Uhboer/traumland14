@@ -119,8 +119,8 @@
 - type: soundCollection
   id: AmbienceCombatMode
   files:
-    - /Audio/_Finster/Ambience/DreamWeb-Like-Killing-Hitler.ogg
-    #- /Audio/_Finster/Ambience/combat_vamp2.ogg
+    #- /Audio/_Finster/Ambience/DreamWeb-Like-Killing-Hitler.ogg
+    - /Audio/Music/Combat/bloodlust1.ogg
 
 # Rules
 - type: rules
