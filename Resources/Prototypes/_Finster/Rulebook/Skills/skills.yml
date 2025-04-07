@@ -6,6 +6,7 @@
   id: Melee
   category: Fighting
 
+# Hand By Hand combat with any additions and modifiers
 - type: skill
   id: MartialArts
   category: Fighting
@@ -37,3 +38,7 @@
 - type: skill
   id: Surgery
   category: Medecine
+
+# Add abillity to climp ond the wall or carefully jump to down.
+- type: skill
+  id: Climbing

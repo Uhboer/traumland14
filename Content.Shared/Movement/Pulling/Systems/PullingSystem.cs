@@ -724,8 +724,10 @@ public sealed class PullingSystem : EntitySystem
         if (args.PulledUid == ent.Owner)
             return;
 
-        if (!_timing.ApplyingState && !HasComp<MouseRotatorComponent>(ent))
+        if (!_timing.ApplyingState)
+        {
             RemCompDeferred<NoRotateOnMoveComponent>(ent);
+        }
     }
 
     public bool CanPull(EntityUid puller, EntityUid pullableUid, PullerComponent? pullerComp = null)

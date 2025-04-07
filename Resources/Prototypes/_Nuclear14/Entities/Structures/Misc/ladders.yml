@@ -23,7 +23,12 @@
       - Structure
   - type: InteractionOutline
   #- type: Warper
-  - type: ZTransitionMarker
+  - type: Climbable
+    ignoreTiles: true
+    startClimbSound:
+      collection: LadderUsing
+    finishClimbSound:
+      collection: LadderUsing
   - type: ZLadder
   #- type: ZTransitionAutoLink
 
@@ -37,8 +42,13 @@
   components:
   - type: Sprite
     state: ladder_top
-  - type: ZTransitionMarker
-    directionStr: down
+  - type: Climbable
+    descendDirection: Down
+    ignoreTiles: true
+    startClimbSound:
+      collection: LadderUsing
+    finishClimbSound:
+      collection: LadderUsing
 
 - type: entity
   parent: BaseLadder
@@ -49,8 +59,13 @@
   components:
   - type: Sprite
     state: ladder_bottom
-  - type: ZTransitionMarker
-    directionStr: up
+  - type: Climbable
+    descendDirection: Up
+    ignoreTiles: true
+    startClimbSound:
+      collection: LadderUsing
+    finishClimbSound:
+      collection: LadderUsing
   - type: Fixtures
     fixtures:
       fix1:
@@ -84,7 +99,6 @@
   components:
   - type: ZTransitionAutoLink
     otherSideProto: LadderBottomMetal
-    direction: down
 
 - type: entity
   parent: LadderTop
@@ -106,7 +120,6 @@
   components:
   - type: ZTransitionAutoLink
     otherSideProto: LadderBottomMetal
-    direction: down
 
 - type: entity
   parent: LadderTop
@@ -126,7 +139,6 @@
   components:
   - type: ZTransitionAutoLink
     otherSideProto: LadderSquareBottom
-    direction: down
 
 - type: entity
   parent: LadderBottom
@@ -158,7 +170,6 @@
   components:
   - type: ZTransitionAutoLink
     otherSideProto: LadderSquareTop
-    direction: up
 
 - type: entity
   parent: LadderSquareBottom
@@ -190,7 +201,6 @@
   components:
   - type: ZTransitionAutoLink
     otherSideProto: LadderRopeBottom1
-    direction: up
 
 
 - type: entity
@@ -213,7 +223,6 @@
   components:
   - type: ZTransitionAutoLink
     otherSideProto: LadderRopeTop1
-    direction: up
 
 
 - type: entity
@@ -245,7 +254,6 @@
   components:
   - type: ZTransitionAutoLink
     otherSideProto: LadderBottomMetal
-    direction: down
 
 - type: entity
   parent: LadderTopBunkerClosed
@@ -266,7 +274,6 @@
   components:
   - type: ZTransitionAutoLink
     otherSideProto: LadderBottomMetal
-    direction: down
 
 # SS14 Sprites
 # Tops
@@ -295,7 +302,6 @@
   components:
   - type: ZTransitionAutoLink
     otherSideProto: LadderBottomMetal
-    direction: down
 
 - type: entity
   parent: LadderTopMetal
@@ -321,7 +327,6 @@
   components:
   - type: ZTransitionAutoLink
     otherSideProto: LadderBottomMetalPaint2
-    direction: down
 
 - type: entity
   parent: LadderTopMetal
@@ -347,7 +352,6 @@
   components:
   - type: ZTransitionAutoLink
     otherSideProto: LadderBottomMetalPaint3
-    direction: down
 
 - type: entity
   parent: LadderTopMetal
@@ -368,7 +372,6 @@
   components:
   - type: ZTransitionAutoLink
     otherSideProto: LadderBottomMetalRusted
-    direction: down
 
 - type: entity
   parent: LadderTopMetal
@@ -387,7 +390,6 @@
   components:
   - type: ZTransitionAutoLink
     otherSideProto: LadderBottomMetalDamaged
-    direction: down
 
 - type: entity
   parent: LadderTopMetal
@@ -408,7 +410,6 @@
   components:
   - type: ZTransitionAutoLink
     otherSideProto: LadderBottomRope
-    direction: down
 
 # Bottoms
 - type: entity
@@ -429,7 +430,6 @@
   components:
   - type: ZTransitionAutoLink
     otherSideProto: LadderTopMetal
-    direction: up
 
 - type: entity
   parent: LadderBottomMetal
@@ -455,7 +455,6 @@
   components:
   - type: ZTransitionAutoLink
     otherSideProto: LadderTopMetalPaint2
-    direction: up
 
 - type: entity
   parent: LadderBottomMetal
@@ -481,7 +480,6 @@
   components:
   - type: ZTransitionAutoLink
     otherSideProto: LadderTopMetalPaint2
-    direction: up
 
 - type: entity
   parent: LadderBottomMetal
@@ -507,7 +505,6 @@
   components:
   - type: ZTransitionAutoLink
     otherSideProto: LadderTopMetalPaint3
-    direction: up
 
 - type: entity
   parent: LadderBottomMetal
@@ -526,7 +523,6 @@
   components:
   - type: ZTransitionAutoLink
     otherSideProto: LadderTopMetalDamaged
-    direction: up
 
 - type: entity
   parent: LadderBottomMetal
@@ -547,7 +543,6 @@
   components:
   - type: ZTransitionAutoLink
     otherSideProto: LadderTopMetalRusted
-    direction: up
 
 - type: entity
   parent: LadderBottomMetal
@@ -568,7 +563,6 @@
   components:
   - type: ZTransitionAutoLink
     otherSideProto: LadderTopRope
-    direction: up
 
 - type: entity
   parent: LadderBottomMetal
@@ -589,4 +583,3 @@
   components:
   - type: ZTransitionAutoLink
     otherSideProto: LadderTopRope
-    direction: up

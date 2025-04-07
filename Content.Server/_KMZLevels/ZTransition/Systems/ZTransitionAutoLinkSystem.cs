@@ -1,6 +1,7 @@
 using Content.KayMisaZlevels.Server.Systems;
 using Content.KayMisaZlevels.Shared.Components;
 using Content.KayMisaZlevels.Shared.Miscellaneous;
+using Content.Shared.Climbing.Components;
 using Content.Shared.Teleportation.Components;
 using Content.Shared.Teleportation.Systems;
 using Robust.Server.GameObjects;
@@ -41,9 +42,6 @@ public class ZTransitionAutoLinkSystem : EntitySystem
         if (!TryComp<TransformComponent>(entity, out var fXformComp) || fXformComp.MapUid is null)
             return false;
 
-        if (!TryComp<ZTransitionMarkerComponent>(entity, out var zTransMarkerComp))
-            return false;
-
         var firstMapUid = fXformComp.MapUid.Value;
 
         if (!_zStack.TryGetZStack(firstMapUid, out var zStack))
@@ -54,17 +52,43 @@ public class ZTransitionAutoLinkSystem : EntitySystem
         var mapIdx = maps.IndexOf(firstMapUid);
         int moveDir;
 
-        if (zTransMarkerComp.Dir == ZDirection.Up)
+        // TODO: I think it should be rewrited.
+        // Check if there is transition components
+        if (TryComp<ClimbableComponent>(entity, out var climbableComp) &&
+            climbableComp.DescendDirection is not null)
         {
-            if (mapIdx >= maps.Count - 1)
-                return false;
-            moveDir = 1;
+            if (climbableComp.DescendDirection.Value == ClimbDirection.Up)
+            {
+                if (mapIdx >= maps.Count - 1)
+                    return false;
+                moveDir = 1;
+            }
+            else
+            {
+                if (mapIdx <= 0)
+                    return false;
+                moveDir = -1;
+            }
+        }
+        else if (TryComp<ZTransitionMarkerComponent>(entity, out var zTransMarkerComp))
+        {
+            if (zTransMarkerComp.Dir == ZDirection.Up)
+            {
+                if (mapIdx >= maps.Count - 1)
+                    return false;
+                moveDir = 1;
+            }
+            else
+            {
+                if (mapIdx <= 0)
+                    return false;
+                moveDir = -1;
+            }
         }
         else
         {
-            if (mapIdx <= 0)
-                return false;
-            moveDir = -1;
+            // Not founded ZTransitionMarker or Climbable
+            return false;
         }
 
         linkedEntityId = Spawn(entity.Comp.OtherSideProto, new EntityCoordinates(maps[mapIdx + moveDir], coords));

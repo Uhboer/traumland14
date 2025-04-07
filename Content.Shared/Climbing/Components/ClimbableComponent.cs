@@ -1,3 +1,4 @@
+using Content.KayMisaZlevels.Shared.Miscellaneous;
 using Content.Shared.Interaction;
 using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
@@ -32,5 +33,24 @@ namespace Content.Shared.Climbing.Components
         /// </summary>
         [DataField("finishClimbSound")]
         public SoundSpecifier? FinishClimbSound = null;
+
+        /// <summary>
+        /// If not null - move player on Z level.
+        /// </summary>
+        [DataField]
+        public ClimbDirection? DescendDirection;
+
+        /// <summary>
+        /// Should be used for ladders on descend.
+        /// </summary>
+        [DataField]
+        public bool IgnoreTiles;
+    }
+
+    public enum ClimbDirection : byte
+    {
+        None,
+        Up,
+        Down,
     }
 }

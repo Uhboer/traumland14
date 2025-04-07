@@ -25,11 +25,11 @@ public sealed class FallingSystem : EntitySystem
 
     private void OnDropped(Entity<FallingComponent> ent, ref ZLevelDroppedEvent args)
     {
-        _stun.TryParalyze(ent, TimeSpan.FromSeconds(ent.Comp.ParalyzeTime), true);
+        _stun.TryParalyze(ent, ent.Comp.LandingStunTime, true);
         if (!ent.Comp.IgnoreDamage)
         {
-            _damSystem.TryChangeDamage(ent, ent.Comp.BaseDamage * args.Distance, ignoreResistances: true, targetPart: TargetBodyPart.LeftLeg);
-            _damSystem.TryChangeDamage(ent, ent.Comp.BaseDamage * args.Distance, ignoreResistances: true, targetPart: TargetBodyPart.RightLeg);
+            _damSystem.TryChangeDamage(ent, ent.Comp.BaseDamage * args.Distance * ent.Comp.DamageModifier, ignoreResistances: true, targetPart: TargetBodyPart.LeftLeg);
+            _damSystem.TryChangeDamage(ent, ent.Comp.BaseDamage * args.Distance * ent.Comp.DamageModifier, ignoreResistances: true, targetPart: TargetBodyPart.RightLeg);
         }
     }
 }

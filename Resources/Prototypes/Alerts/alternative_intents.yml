@@ -1,0 +1,52 @@
+- type: alert
+  id: Kick
+  onClick: !type:SetAlternativeIntentAlert { intent: Kick }
+  sprite: Alerts/Intents/intent_kick.rsi
+  states:
+  - kick0
+  - kick1
+  name: alerts-kick-name
+  description: alerts-kick-desc
+  minSeverity: 0
+  maxSeverity: 1
+  hudPositionX: -512
+  hudPositionY: 288
+  altHudPositionX: -128
+  altHudPositionY: 480
+  isGeneric: false
+
+- type: alert
+  id: Climb
+  onClick: !type:SetAlternativeIntentAlert { intent: Climb }
+  sprite: Alerts/Intents/intent_climb.rsi
+  states:
+  - climb0
+  - climb1
+  name: alerts-climb-name
+  description: alerts-climb-desc
+  minSeverity: 0
+  maxSeverity: 1
+  hudPositionX: -512
+  hudPositionY: 298
+  altHudPositionX: -128
+  altHudPositionY: 490
+  isGeneric: false
+
+- type: alert
+  id: Jump
+  onClick: !type:SetAlternativeIntentAlert { intent: Jump }
+  sprite: Alerts/Intents/intent_jump.rsi
+  states:
+  - jump0
+  - jump1
+  name: alerts-jump-name
+  description: alerts-jump-desc
+  minSeverity: 0
+  maxSeverity: 1
+  hudPositionX: -512
+  hudPositionY: 309
+  altHudPositionX: -128
+  altHudPositionY: 501
+  isGeneric: false
+
+# another buttons near alt intents

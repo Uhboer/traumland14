@@ -10,8 +10,8 @@ public sealed partial class SkillPrototype : IPrototype
     [ViewVariables(VVAccess.ReadWrite), DataField]
     public Color Color { get; set; } = new Color(255, 255, 255);
 
-    [ViewVariables(VVAccess.ReadWrite), DataField(required: true)]
-    public ProtoId<SkillCategoryPrototype> Category = default!;
+    [ViewVariables(VVAccess.ReadWrite), DataField]
+    public ProtoId<SkillCategoryPrototype>? Category;
 
     [ViewVariables(VVAccess.ReadWrite), DataField]
     public List<Enum> Blocked = new();

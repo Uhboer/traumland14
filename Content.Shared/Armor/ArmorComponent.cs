@@ -29,7 +29,7 @@ public sealed partial class ArmorComponent : Component
     /// WWDP - What body parts this armor piece can protect.
     /// </summary>
     [DataField/*(required: true)*/, AutoNetworkedField] // todo make required
-    public TargetBodyPart ProtectedArea;
+    public TargetBodyPart? ProtectedArea;
 }
 
 /// <summary>

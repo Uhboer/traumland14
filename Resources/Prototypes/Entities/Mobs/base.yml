@@ -128,6 +128,10 @@
     baseDamage:
       types:
         Blunt: 30
+  - type: Jumping
+    baseCollideDamage:
+      types:
+        Blunt: 5
   - type: Hearing # WWDP
 
 # Used for mobs that can enter combat mode and can attack.

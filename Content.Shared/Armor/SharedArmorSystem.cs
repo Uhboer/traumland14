@@ -49,7 +49,8 @@ public abstract class SharedArmorSystem : EntitySystem
         if (args.Args.TargetPart == null)
             return;
 
-        if (!component.ProtectedArea.HasFlag(args.Args.TargetPart.Value))
+        if (component.ProtectedArea is not null &&
+            !component.ProtectedArea.Value.HasFlag(args.Args.TargetPart.Value))
             return;
 
         if (!_inventory.TryGetContainingEntity(uid, out var wearer))

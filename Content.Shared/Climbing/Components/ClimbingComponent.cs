@@ -1,5 +1,6 @@
 using System.Numerics;
 using Robust.Shared.GameStates;
+using Robust.Shared.Map;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 
 namespace Content.Shared.Climbing.Components;
@@ -37,6 +38,19 @@ public sealed partial class ClimbingComponent : Component
     /// </summary>
     [AutoNetworkedField, DataField]
     public Vector2 Direction;
+
+    /// <summary>
+    /// Base range for descdending.
+    /// It should use for descend on bottom maps from top.
+    /// </summary>
+    [DataField]
+    public float DescendRange = 2f;
+
+    /// <summary>
+    /// If is not null - instead of climb on object, we should move
+    /// character on target map (on top or bottom)
+    /// </summary>
+    public EntityCoordinates? DescendCoords;
 
     /// <summary>
     /// How fast the entity is moved when climbing.

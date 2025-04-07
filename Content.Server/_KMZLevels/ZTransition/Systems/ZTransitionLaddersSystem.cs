@@ -3,6 +3,7 @@ using Content.Server.DoAfter;
 using Content.Server.Popups;
 using Content.Server.Warps;
 using Content.Shared._KMZLevels.ZTransition;
+using Content.Shared.Climbing.Systems;
 using Content.Shared.DoAfter;
 using Content.Shared.Ghost;
 using Content.Shared.Interaction;
@@ -22,6 +23,7 @@ public class ZTransitionLaddersSystem : EntitySystem
     [Dependency] private readonly PopupSystem _popupSystem = default!;
     [Dependency] private readonly DoAfterSystem _doAfter = default!;
     [Dependency] private readonly LinkedEntitySystem _linkedEntitySystem = default!;
+    [Dependency] private readonly ClimbSystem _climb = default!;
 
     private uint _nextKeyId = 0;
 
@@ -33,7 +35,7 @@ public class ZTransitionLaddersSystem : EntitySystem
 
         SubscribeLocalEvent<ZLadderComponent, InteractHandEvent>(OnInteractHand);
         SubscribeLocalEvent<ZLadderComponent, GetVerbsEvent<Verb>>(AddVerbs);
-        SubscribeLocalEvent<ZLadderComponent, LadderMoveDoAfterEvent>(OnDoAfter);
+        //SubscribeLocalEvent<ZLadderComponent, LadderMoveDoAfterEvent>(OnDoAfter);
     }
 
     private void OnShutdown(Entity<ZLadderComponent> entity, ref ComponentShutdown args)
@@ -47,6 +49,28 @@ public class ZTransitionLaddersSystem : EntitySystem
             Del(linkedEntity);
     }
 
+    private void AddVerbs(EntityUid uid, ZLadderComponent component, GetVerbsEvent<Verb> args)
+    {
+        if (!args.CanAccess || !args.CanInteract)
+            return;
+
+        var verb = new Verb()
+        {
+            Text = Loc.GetString("ladder-verb-use"),
+            Act = () => _climb.TryClimb(args.User, args.User, args.Target, out var _),
+            // TryInteract(uid, args.User, args.Target, component),
+        };
+
+        args.Verbs.Add(verb);
+    }
+
+    private void OnInteractHand(EntityUid uid, ZLadderComponent component, InteractHandEvent args)
+    {
+        _climb.TryClimb(args.User, args.User, args.Target, out var _);
+        //TryInteract(uid, args.User, args.Target, component);
+    }
+
+    /*
     private void OnDoAfter(Entity<ZLadderComponent> entity, ref LadderMoveDoAfterEvent args)
     {
         if (args.Handled || args.Cancelled ||
@@ -57,25 +81,7 @@ public class ZTransitionLaddersSystem : EntitySystem
 
         args.Handled = true;
     }
-
-    private void AddVerbs(EntityUid uid, ZLadderComponent component, GetVerbsEvent<Verb> args)
-    {
-        if (!args.CanAccess || !args.CanInteract)
-            return;
-
-        var verb = new Verb()
-        {
-            Text = Loc.GetString("ladder-verb-use"),
-            Act = () => TryInteract(uid, args.User, args.Target, component),
-        };
-
-        args.Verbs.Add(verb);
-    }
-
-    private void OnInteractHand(EntityUid uid, ZLadderComponent component, InteractHandEvent args)
-    {
-        TryInteract(uid, args.User, args.Target, component);
-    }
+    */
 
     /// <summary>
     /// FIXME: I don't know how DoAfterEvent works, so i use <seealso cref="SimpleDoAfterEvent"/> with three uid of entity.
@@ -87,6 +93,7 @@ public class ZTransitionLaddersSystem : EntitySystem
     /// <param name="target">Ladder...</param>
     /// <param name="component"></param>
     /// <param name="doAftered">Used only from OnDoAfter callback</param>
+    /*
     private void TryInteract(EntityUid uid, EntityUid user, EntityUid target, ZLadderComponent? component = null, bool doAftered = false)
     {
         if (!TryComp<LinkedEntityComponent>(uid, out var linkComp) || linkComp.LinkedEntities.Count <= 0)
@@ -157,4 +164,5 @@ public class ZTransitionLaddersSystem : EntitySystem
     {
         _popupSystem.PopupEntity(Loc.GetString("ladder-goes-nowhere", ("ladder", target)), user, Filter.Entities(user), true);
     }
+    */
 }

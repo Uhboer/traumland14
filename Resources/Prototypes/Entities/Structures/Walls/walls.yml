@@ -51,6 +51,8 @@
     resistance: 1
   - type: BlockWeather
   - type: SunShadowCast
+  - type: Climbable
+    descendDirection: Up
 
 - type: entity
   parent: BaseWall

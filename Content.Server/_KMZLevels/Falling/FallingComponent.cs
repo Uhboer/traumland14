@@ -11,7 +11,10 @@ public sealed partial class FallingComponent : Component
     /// How many seconds the mob will be paralyzed for.
     /// </summary>
     [DataField]
-    public float ParalyzeTime = 5f;
+    public TimeSpan LandingStunTime = TimeSpan.FromSeconds(5);
+
+    [DataField]
+    public float DamageModifier = 1f;
 
     /// <summary>
     ///  Base damage from falling. It can be increase by falling distance.
