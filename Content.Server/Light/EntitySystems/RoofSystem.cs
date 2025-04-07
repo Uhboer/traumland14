@@ -50,8 +50,11 @@ public sealed class RoofSystem : SharedRoofSystem
             if (!_mapManager.TryFindGridAt(targetMap, xform.WorldPosition, out _, out var zGrid))
                 return;
 
-            _maps.TryGetTile(zGrid, xform.Coordinates.ToVector2i(EntityManager, _mapManager, _xform), out var tile);
+            var intPos = xform.Coordinates.ToVector2i(EntityManager, _mapManager, _xform);
+            _maps.TryGetTile(zGrid, intPos, out var tile);
 
+            // TODO: For now we can replace lattice by the wall's roof.
+            // So, maybe should make better checking - is tile empty or not?
             if (!tile.IsSpace())
                 return;
 
