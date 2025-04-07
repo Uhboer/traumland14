@@ -1,0 +1,15 @@
+- type: soundCollection
+  id: LadderUsing
+  files:
+  - /Audio/_Finster/Effects/Ladder/ladder.ogg
+  #- /Audio/_Finster/Effects/Ladder/ladder2.ogg
+  #- /Audio/_Finster/Effects/Ladder/ladder3.ogg
+  #- /Audio/_Finster/Effects/Ladder/ladder4.ogg
+
+- type: soundCollection
+  id: WallUsing
+  files:
+  - /Audio/Effects/climb.ogg
+  #- /Audio/_Finster/Effects/Ladder/ladder2.ogg
+  #- /Audio/_Finster/Effects/Ladder/ladder3.ogg
+  #- /Audio/_Finster/Effects/Ladder/ladder4.ogg

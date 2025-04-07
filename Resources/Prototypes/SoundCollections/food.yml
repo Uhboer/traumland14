@@ -4,3 +4,14 @@
   - /Audio/Items/eating_1.ogg
   - /Audio/Items/eating_2.ogg
   - /Audio/Items/eating_3.ogg
+  - /Audio/Items/eating_4.ogg
+  - /Audio/Items/eating_5.ogg
+
+- type: soundCollection
+  id: drinking
+  files:
+  - /Audio/Items/drink.ogg
+  - /Audio/Items/drink2.ogg
+  - /Audio/Items/drink3.ogg
+  - /Audio/Items/drink4.ogg
+  - /Audio/Items/drink5.ogg

@@ -16,19 +16,26 @@ public sealed class ContentAudioSystem : SharedContentAudioSystem
     [ValidatePrototypeId<SoundCollectionPrototype>]
     private const string LobbyMusicCollection = "LobbyMusic";
 
+    [ValidatePrototypeId<SoundCollectionPrototype>]
+    private const string CreditsMusicCollection = "CreditsMusic";
+
     [Dependency] private readonly AudioSystem _serverAudio = default!;
     [Dependency] private readonly IRobustRandom _robustRandom = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
 
     private SoundCollectionPrototype _lobbyMusicCollection = default!;
+    private SoundCollectionPrototype _creditsMusicCollection = default!;
     private string[]? _lobbyPlaylist;
+    private string[]? _creditsPlaylist;
 
     public override void Initialize()
     {
         base.Initialize();
 
         _lobbyMusicCollection = _prototypeManager.Index<SoundCollectionPrototype>(LobbyMusicCollection);
+        _creditsMusicCollection = _prototypeManager.Index<SoundCollectionPrototype>(CreditsMusicCollection);
         _lobbyPlaylist = ShuffleLobbyPlaylist();
+        _creditsPlaylist = ShuffleCreditsPlaylist();
 
         SubscribeLocalEvent<RoundEndMessageEvent>(OnRoundEnd);
         SubscribeLocalEvent<PlayerJoinedLobbyEvent>(OnPlayerJoinedLobby);
@@ -40,6 +47,13 @@ public sealed class ContentAudioSystem : SharedContentAudioSystem
     private void OnRoundCleanup(RoundRestartCleanupEvent ev)
     {
         SilenceAudio();
+
+        // The lobby song is set here instead of in RestartRound,
+        // because ShowRoundEndScoreboard triggers the start of the music playing
+        // at the end of a round, and this needs to be set before RestartRound
+        // in order for the lobby song status display to be accurate.
+        _lobbyPlaylist = ShuffleLobbyPlaylist();
+        RaiseNetworkEvent(new LobbyPlaylistChangedEvent(_lobbyPlaylist));
     }
 
     private void OnProtoReload(PrototypesReloadedEventArgs obj)
@@ -70,8 +84,8 @@ public sealed class ContentAudioSystem : SharedContentAudioSystem
         // because ShowRoundEndScoreboard triggers the start of the music playing
         // at the end of a round, and this needs to be set before RestartRound
         // in order for the lobby song status display to be accurate.
-        _lobbyPlaylist = ShuffleLobbyPlaylist();
-        RaiseNetworkEvent(new LobbyPlaylistChangedEvent(_lobbyPlaylist));
+        _creditsPlaylist = ShuffleCreditsPlaylist();
+        RaiseNetworkEvent(new LobbyPlaylistChangedEvent(_creditsPlaylist));
     }
 
     private string[] ShuffleLobbyPlaylist()
@@ -79,8 +93,16 @@ public sealed class ContentAudioSystem : SharedContentAudioSystem
         var playlist = _lobbyMusicCollection.PickFiles
                                             .Select(x => x.ToString())
                                             .ToArray();
-         _robustRandom.Shuffle(playlist);
+        _robustRandom.Shuffle(playlist);
+        return playlist;
+    }
 
-         return playlist;
+    private string[] ShuffleCreditsPlaylist()
+    {
+        var playlist = _creditsMusicCollection.PickFiles
+                                            .Select(x => x.ToString())
+                                            .ToArray();
+        _robustRandom.Shuffle(playlist);
+        return playlist;
     }
 }

@@ -269,7 +269,8 @@
     - HEAD
   - type: Food
     solution: drink
-    useSound: /Audio/Items/drink.ogg
+    useSound:
+      collection: drinking
     eatMessage: drink-component-try-use-drink-success-slurp
     delay: 0.5
     forceFeedDelay: 1.5

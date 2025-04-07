@@ -9,6 +9,14 @@
     shape:
     - 0,0,2,2
   - type: Storage
+    storageOpenSound:
+      path: /Audio/Effects/Storage/box.ogg
+      params:
+        variation: 0.125
+    storageCloseSound:
+      path: /Audio/Effects/Storage/box.ogg
+      params:
+        variation: 0.125
     maxItemSize: Small
     grid:
     - 0,0,3,3

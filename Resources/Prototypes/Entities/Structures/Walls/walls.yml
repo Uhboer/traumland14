@@ -53,6 +53,10 @@
   - type: SunShadowCast
   - type: Climbable
     descendDirection: Up
+    startClimbSound:
+      collection: WallUsing
+    finishClimbSound:
+      collection: WallUsing
 
 - type: entity
   parent: BaseWall

@@ -1,0 +1,4 @@
+- type: soundCollection
+  id: CreditsMusic
+  files:
+    - /Audio/Music/good_ending.ogg

@@ -7,6 +7,14 @@
   - type: Item
     size: Ginormous
   - type: Storage
+    storageOpenSound:
+      path: /Audio/Effects/Storage/briefcase.ogg
+      params:
+        variation: 0.125
+    storageCloseSound:
+      path: /Audio/Effects/Storage/briefcase.ogg
+      params:
+        variation: 0.125
     grid:
     - 0,0,5,3
   - type: MeleeWeapon

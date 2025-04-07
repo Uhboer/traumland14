@@ -567,6 +567,14 @@
     quickInsert: true
     areaInsert: true
     areaInsertRadius: 1
+    storageOpenSound:
+      path: /Audio/Effects/Storage/pillbottle.ogg
+      params:
+        variation: 0.125
+    storageCloseSound:
+      path: /Audio/Effects/Storage/pillbottle.ogg
+      params:
+        variation: 0.125
     storageInsertSound: /Audio/Effects/pill_insert.ogg
     storageRemoveSound: /Audio/Effects/pill_remove.ogg
   - type: Dumpable

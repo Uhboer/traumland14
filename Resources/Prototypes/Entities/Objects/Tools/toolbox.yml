@@ -15,6 +15,14 @@
     sound:
       path: /Audio/Items/toolbox_drop.ogg
   - type: Storage
+    storageOpenSound:
+      path: /Audio/Effects/Storage/toolbox.ogg
+      params:
+        variation: 0.125
+    storageCloseSound:
+      path: /Audio/Effects/Storage/toolbox.ogg
+      params:
+        variation: 0.125
     maxItemSize: Normal
     grid:
     - 0,0,6,3
