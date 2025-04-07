@@ -33,8 +33,8 @@ public class ZTransitionLaddersSystem : EntitySystem
 
         SubscribeLocalEvent<ZLadderComponent, ComponentShutdown>(OnShutdown);
 
-        SubscribeLocalEvent<ZLadderComponent, InteractHandEvent>(OnInteractHand);
-        SubscribeLocalEvent<ZLadderComponent, GetVerbsEvent<Verb>>(AddVerbs);
+        //SubscribeLocalEvent<ZLadderComponent, InteractHandEvent>(OnInteractHand);
+        //SubscribeLocalEvent<ZLadderComponent, GetVerbsEvent<Verb>>(AddVerbs);
         //SubscribeLocalEvent<ZLadderComponent, LadderMoveDoAfterEvent>(OnDoAfter);
     }
 
@@ -49,6 +49,7 @@ public class ZTransitionLaddersSystem : EntitySystem
             Del(linkedEntity);
     }
 
+    /*
     private void AddVerbs(EntityUid uid, ZLadderComponent component, GetVerbsEvent<Verb> args)
     {
         if (!args.CanAccess || !args.CanInteract)
@@ -70,7 +71,6 @@ public class ZTransitionLaddersSystem : EntitySystem
         //TryInteract(uid, args.User, args.Target, component);
     }
 
-    /*
     private void OnDoAfter(Entity<ZLadderComponent> entity, ref LadderMoveDoAfterEvent args)
     {
         if (args.Handled || args.Cancelled ||
@@ -81,7 +81,6 @@ public class ZTransitionLaddersSystem : EntitySystem
 
         args.Handled = true;
     }
-    */
 
     /// <summary>
     /// FIXME: I don't know how DoAfterEvent works, so i use <seealso cref="SimpleDoAfterEvent"/> with three uid of entity.
