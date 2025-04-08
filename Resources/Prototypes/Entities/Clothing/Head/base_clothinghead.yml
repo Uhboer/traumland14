@@ -148,10 +148,13 @@
 - type: entity
   abstract: true
   # No parent since we aren't actually an item.
+  # must parent both this and the desired helmet base when using
   id: ClothingHeadHardsuitBase
   name: base hardsuit helmet
   categories: [ HideSpawnMenu ]
   components:
+  - type: SlotBlock
+    slots: [eyes, mask]
   - type: Sprite
     state: icon # default state used by most inheritors
   - type: Clickable
