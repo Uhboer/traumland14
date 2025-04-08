@@ -404,17 +404,18 @@ namespace Content.Shared.Interaction
             if (!ValidateInteractAndFace(user, coordinates))
                 return;
 
+            /* No, i don't like it
             // Because we should do HARM every click in harm mode.
             // Use another intents instead
             if (!altInteract && _intent.GetIntent(user) == Intent.Harm)
                 return;
-            /*
+            */
+
             if (!altInteract && _intent.GetIntent(user) == Intent.Harm) // WD EDIT
             {
                 if (!CombatModeCanHandInteract(user, target))
                     return;
             }
-            */
 
             if (altInteract && target != null)
             {
