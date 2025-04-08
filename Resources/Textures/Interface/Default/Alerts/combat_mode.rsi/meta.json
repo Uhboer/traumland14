@@ -12,13 +12,15 @@
     },
     {
       "name": "harm1",
-      "delays": [[0.2, 0.2, 0.2, 0.2]]
+      "delays": [[0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03]]
     },
     {
-      "name": "defense0"
+      "name": "defense0",
+      "delays": [[0.25, 15]]
     },
     {
-      "name": "defense1"
+      "name": "defense1",
+      "delays": [[0.25, 15]]
     }
   ]
 }

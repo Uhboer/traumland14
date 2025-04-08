@@ -805,7 +805,7 @@
   minSeverity: 0
   maxSeverity: 1
   hudPositionX: -512
-  hudPositionY: 320
+  hudPositionY: 288
   altHudPositionX: -256
   altHudPositionY: 480
   isGeneric: false
@@ -822,10 +822,10 @@
   description: alerts-throw-desc
   minSeverity: 0
   maxSeverity: 1
-  hudPositionX: -512
-  hudPositionY: 336
-  altHudPositionX: -256
-  altHudPositionY: 496
+  hudPositionX: -576
+  hudPositionY: 288
+  altHudPositionX: -224
+  altHudPositionY: 480
   isGeneric: false
 
 - type: alert
