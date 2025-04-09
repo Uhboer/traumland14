@@ -169,8 +169,8 @@ namespace Content.Client.ContextMenu.UI
             if (_stateManager.CurrentState is not GameplayStateBase)
                 return false;
 
-            if (_intent.GetIntent(args.Session?.AttachedEntity) == Intent.Harm) // WD EDIT
-                return false;
+            //if (_intent.GetIntent(args.Session?.AttachedEntity) == Intent.Harm) // WD EDIT
+            //    return false;
 
             var coords = args.Coordinates.ToMap(_entityManager, _xform);
 

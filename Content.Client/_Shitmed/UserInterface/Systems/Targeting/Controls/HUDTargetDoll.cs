@@ -35,29 +35,29 @@ public class HUDTargetDoll : HUDTextureRect, IHUDDescription
 
         var headButton = new HUDButton()
         {
-            Size = (6, 8),
-            Position = (13, 4)
+            Size = (12, 16),
+            Position = (10, 3)
         };
         AddChild(headButton);
 
         var neckButton = new HUDButton()
         {
-            Size = (6, 4),
-            Position = (13, 12)
+            Size = (10, 5),
+            Position = (11, 17)
         };
         AddChild(neckButton);
 
         var chestButton = new HUDButton()
         {
-            Size = (10, 16),
-            Position = (11, 14)
+            Size = (14, 15),
+            Position = (9, 19)
         };
         AddChild(chestButton);
 
         var groinButton = new HUDButton()
         {
-            Size = (10, 8),
-            Position = (11, 29)
+            Size = (12, 12),
+            Position = (10, 31)
         };
         AddChild(groinButton);
 
@@ -67,29 +67,29 @@ public class HUDTargetDoll : HUDTextureRect, IHUDDescription
 
         var rightArmButton = new HUDButton()
         {
-            Size = (6, 20),
-            Position = (6, 14)
+            Size = (7, 15),
+            Position = (3, 19)
         };
         AddChild(rightArmButton);
 
         var rightHandButton = new HUDButton()
         {
-            Size = (6, 6),
-            Position = (3, 31)
+            Size = (5, 8),
+            Position = (3, 32)
         };
         AddChild(rightHandButton);
 
         var leftArmButton = new HUDButton()
         {
-            Size = (6, 20),
-            Position = (20, 14),
+            Size = (7, 15),
+            Position = (22, 19),
         };
         AddChild(leftArmButton);
 
         var leftHandButton = new HUDButton()
         {
-            Size = (6, 6),
-            Position = (23, 31)
+            Size = (5, 8),
+            Position = (24, 32)
         };
         AddChild(leftHandButton);
 
@@ -99,29 +99,29 @@ public class HUDTargetDoll : HUDTextureRect, IHUDDescription
 
         var leftLegButton = new HUDButton()
         {
-            Size = (7, 24),
-            Position = (16, 34)
+            Size = (7, 19),
+            Position = (17, 38)
         };
         AddChild(leftLegButton);
 
         var leftFootButton = new HUDButton()
         {
-            Size = (7, 3),
-            Position = (16, 57)
+            Size = (8, 6),
+            Position = (19, 55)
         };
         AddChild(leftFootButton);
 
         var rightLegButton = new HUDButton()
         {
-            Size = (7, 24),
-            Position = (9, 34)
+            Size = (7, 19),
+            Position = (8, 38)
         };
         AddChild(rightLegButton);
 
         var rightFootButton = new HUDButton()
         {
-            Size = (7, 3),
-            Position = (9, 57)
+            Size = (8, 6),
+            Position = (5, 55)
         };
         AddChild(rightFootButton);
 

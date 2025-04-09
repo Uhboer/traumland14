@@ -103,8 +103,8 @@ namespace Content.Client.Verbs.UI
             if (_playerManager.LocalEntity is not {Valid: true} user)
                 return;
 
-            if (!force && _intent.GetIntent() == Intent.Harm) // WD EDIT
-                return;
+            //if (!force && _intent.GetIntent() == Intent.Harm) // WD EDIT
+            //    return;
 
             Close();
 

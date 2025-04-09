@@ -75,7 +75,7 @@ public sealed class FieldOfViewOverlay : Overlay
         FieldOfViewComponent fieldOfView,
         EyeComponent eyeComp)
     {
-        var playerRotation = playerTransform.WorldRotation + eyeComp.Rotation;
+        var playerRotation = playerTransform.WorldRotation; // + eyeComp.Rotation;
         playerRotation = playerRotation.Reduced().FlipPositive();
 
         if (fieldOfView.Simple4DirMode)

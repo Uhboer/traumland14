@@ -10,6 +10,7 @@ using Content.Shared.Movement.Pulling.Systems;
 using Content.Shared.Teleportation.Components;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
+using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Events;
 using Robust.Shared.Player;
 
@@ -32,6 +33,10 @@ public class SharedZTransitionStairsSystem : EntitySystem
     private void OnTeleportStartCollide(Entity<ZStairsComponent> ent, ref StartCollideEvent args)
     {
         if (!ShouldCollide(args.OurFixtureId, out var dir) || dir == null)
+            return;
+
+        if (TryComp<PhysicsComponent>(args.OtherEntity, out var othPhys) &&
+            othPhys.BodyStatus == BodyStatus.InAir)
             return;
 
         if (!TryGetTargetMapUid(ent, (ZDirection) dir, out var mapUid))

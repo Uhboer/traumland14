@@ -164,7 +164,7 @@ public sealed class FieldOfViewSystem : EntitySystem
             return false;
 
         // Вычисляем угол между направлением взгляда наблюдателя и направлением на цель
-        var viewerAngle = viewerTransform.WorldRotation + eyeComp.Rotation; // Угол поворота наблюдателя
+        var viewerAngle = viewerTransform.WorldRotation; // + eyeComp.Rotation; // Угол поворота наблюдателя
         viewerAngle = viewerAngle.Reduced().FlipPositive();
 
         if (simple4DirMode)

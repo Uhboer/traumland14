@@ -13,7 +13,6 @@ using Content.Shared.Standing;
 using Content.Shared.Projectiles;
 using Robust.Shared.Physics.Events;
 using Robust.Shared.Physics.Components;
-using JetBrains.FormatRipper.Elf;
 using Content.Shared._Shitmed.Targeting;
 using Content.Server.Stunnable;
 using Content.Shared.Damage;
