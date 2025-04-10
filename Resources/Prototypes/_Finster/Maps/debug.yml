@@ -10,7 +10,7 @@
 - type: gameMap
   id: FinsterDevMap
   mapName: The Great DeBug Valley
-  mapPath: /Maps/_Finster/Test/dev.yml
+  mapPath: /Maps/Test/dev.yml
   minPlayers: 0
   stations:
     FinsterDev:
