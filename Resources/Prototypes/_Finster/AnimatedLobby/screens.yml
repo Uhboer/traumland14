@@ -1,84 +1,11 @@
 - type: animatedLobbyScreen
-  id: NekoWarrior
-  path: /Textures/LobbyScreens/Neko_warrior.rsi
-
-- type: animatedLobbyScreen
-  id: NekoAce
-  path: /Textures/LobbyScreens/Neco_ace.rsi
-
-- type: animatedLobbyScreen
   id: BB14
   path: /Textures/LobbyScreens/BB_14.rsi
-
-- type: animatedLobbyScreen
-  id: BB84
-  path: /Textures/LobbyScreens/BB_84.rsi
-
-- type: animatedLobbyScreen
-  id: Mechanic
-  path: /Textures/LobbyScreens/Mechanic.rsi
 
 - type: animatedLobbyScreen
   id: Warrior
   path: /Textures/LobbyScreens/Warrior.rsi
 
 - type: animatedLobbyScreen
-  id: PumaSisters
-  path: /Textures/LobbyScreens/Puma_sisters.rsi
-
-- type: animatedLobbyScreen
   id: PartyX
   path: /Textures/LobbyScreens/Party_X.rsi
-
-- type: animatedLobbyScreen
-  id: Party
-  path: /Textures/LobbyScreens/Party.rsi
-
-- type: animatedLobbyScreen
-  id: Fight
-  path: /Textures/LobbyScreens/Fight.rsi
-
-- type: animatedLobbyScreen
-  id: Crusader
-  path: /Textures/LobbyScreens/Crusader.rsi
-
-- type: animatedLobbyScreen
-  id: Gnome
-  path: /Textures/LobbyScreens/Gnome.rsi
-
-- type: animatedLobbyScreen
-  id: PlaneCrash
-  path: /Textures/LobbyScreens/PlaneCrash.rsi
-
-#- type: animatedLobbyScreen
-#  id: Rogue
-#  path: /Textures/_Finster/LobbyScreens/rogue.rsi
-
-#- type: animatedLobbyScreen
-#  id: Forest
-#  path: /Textures/_Finster/LobbyScreens/forest.rsi
-
-#- type: animatedLobbyScreen
-#  id: CentcommLobbyScreen
-##  path: /Textures/_White/LobbyScreens/centcomm.rsi
-#- type: animatedLobbyScreen
-#  id: CubeLobbyScreen
-#  path: /Textures/_White/LobbyScreens/cube.rsi
-#- type: animatedLobbyScreen
-#  id: MilkywayLobbyScreen
-#  path: /Textures/_White/LobbyScreens/milkyway.rsi
-#- type: animatedLobbyScreen
-#  id: NativeLobbyScreen
-#  path: /Textures/_White/LobbyScreens/native.rsi
-#- type: animatedLobbyScreen
-#  id: RocketLobbyScreen
-#  path: /Textures/_White/LobbyScreens/rocket.rsi
-#- type: animatedLobbyScreen
-#  id: SeaLobbyScreen
-#  path: /Textures/_White/LobbyScreens/sea.rsi
-#- type: animatedLobbyScreen
-#  id: SyndicateLobbyScreen
-#  path: /Textures/_White/LobbyScreens/syndicate.rsi
-#- type: animatedLobbyScreen
-#  id: VangoghLobbyScreen
-#  path: /Textures/_White/LobbyScreens/vangogh.rsi

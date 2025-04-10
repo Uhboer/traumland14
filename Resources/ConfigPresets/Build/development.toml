@@ -8,8 +8,8 @@ role_timers = false
 [finster_gateway]
 generator_enabled = false
 
-[movement]
-mob_pushing = true
+[finster_movement]
+mob_pushing = false
 
 [physics]
 # Makes mapping annoying
