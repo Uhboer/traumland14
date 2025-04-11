@@ -105,7 +105,8 @@
 - type: soundCollection
   id: AmbienceGeneral
   files:
-    - /Audio/_Finster/Ambience/empty.ogg
+    #- /Audio/_Finster/Ambience/empty.ogg
+    - /Audio/Ambience/Underground/dark-ritual-texture.ogg
 
 - type: soundCollection
   id: AmbienceHoly
