@@ -53,9 +53,7 @@ public sealed class RoofSystem : SharedRoofSystem
             var intPos = xform.Coordinates.ToVector2i(EntityManager, _mapManager, _xform);
             _maps.TryGetTile(zGrid, intPos, out var tile);
 
-            // TODO: For now we can replace lattice by the wall's roof.
-            // So, maybe should make better checking - is tile empty or not?
-            if (!tile.IsSpace())
+            if (!tile.IsEmpty)
                 return;
 
             zGrid.SetTile(new EntityCoordinates(zGrid.Owner, xform.WorldPosition), new Tile(_tileDefinitionManager[roof.Tile].TileId));

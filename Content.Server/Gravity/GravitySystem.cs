@@ -1,3 +1,4 @@
+using Content.KayMisaZlevels.Shared.Miscellaneous;
 using Content.KayMisaZlevels.Shared.Systems;
 using Content.Shared.Gravity;
 using Content.Shared.Maps;
@@ -13,6 +14,7 @@ namespace Content.Server.Gravity
     {
         [Dependency] private readonly ITileDefinitionManager _tileDefinitionManager = default!;
         [Dependency] private readonly SharedMapSystem _mapSystem = default!;
+        [Dependency] private readonly ZPhysicsSystem _zPhysics = default!;
 
         public override void Initialize()
         {
@@ -48,9 +50,11 @@ namespace Content.Server.Gravity
 
         private void OnGravitySource(ref IsGravitySource args)
         {
-            // TODO: For space maps there should be added some checks for grid gravity
-            if (TryComp<GravityComponent>(args.Target, out var comp))
+            if (_zPhysics.TryGetTileWithEntity(args.Entity, ZDirection.Down, out var _, out var targetMap) &&
+                TryComp<GravityComponent>(targetMap, out var comp))
                 args.Handled = comp.Enabled;
+            else // not founded
+                args.Handled = false;
         }
 
         /// <summary>

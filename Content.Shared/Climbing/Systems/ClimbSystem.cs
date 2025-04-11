@@ -556,12 +556,12 @@ public sealed partial class ClimbSystem : VirtualController
             // Check grid on current map.
             _mapSys.TryGetTile(grid, currentEntityCoords.ToVector2i(EntityManager, _mapManager, _xformSystem), out var tile);
             // Tile should be empty.
-            if (!tile.IsSpace())
+            if (!tile.IsEmpty)
                 return false;
 
             // Check for grid on bottom map. Because we can't descend on the empty tile.
             _mapSys.TryGetTile(bottomGrid, descendEntityCoords.Value.ToVector2i(EntityManager, _mapManager, _xformSystem), out var bottomTile);
-            if (bottomTile.IsSpace())
+            if (bottomTile.IsEmpty)
                 return false;
 
             // TODO: Add checking for the walls
@@ -577,12 +577,12 @@ public sealed partial class ClimbSystem : VirtualController
             // Check grid on top map from cur position. Because we can't dodge the roof hehe.
             _mapSys.TryGetTile(topGrid, currentEntityCoords.ToVector2i(EntityManager, _mapManager, _xformSystem), out var tile);
             // Tile should be empty.
-            if (!tile.IsSpace())
+            if (!tile.IsEmpty)
                 return false;
 
             // Check for grid on bottom map. Because we can't descend on the empty tile.
             _mapSys.TryGetTile(topGrid, descendEntityCoords.Value.ToVector2i(EntityManager, _mapManager, _xformSystem), out var topTile);
-            if (topTile.IsSpace())
+            if (topTile.IsEmpty)
                 return false;
 
             // TODO: Add checking for the walls

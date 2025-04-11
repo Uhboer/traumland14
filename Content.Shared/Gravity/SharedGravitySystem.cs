@@ -7,6 +7,8 @@ using Robust.Shared.Physics.Components;
 using Robust.Shared.Serialization;
 using Robust.Shared.Timing;
 using Content.Shared.Flight;
+using Content.KayMisaZlevels.Shared.Systems;
+using Content.KayMisaZlevels.Shared.Miscellaneous;
 
 namespace Content.Shared.Gravity
 {
@@ -14,6 +16,8 @@ namespace Content.Shared.Gravity
     {
         [Dependency] protected readonly IGameTiming Timing = default!;
         [Dependency] private readonly AlertsSystem _alerts = default!;
+        [Dependency] private readonly SharedZStackSystem _zStack = default!;
+        [Dependency] private readonly ZPhysicsSystem _zPhysics = default!;
 
         [ValidatePrototypeId<AlertPrototype>]
         //public const string WeightlessAlert = "Weightless";
@@ -67,8 +71,19 @@ namespace Content.Shared.Gravity
         {
             entity.Comp ??= Transform(entity);
 
-            return _gravityQuery.TryComp(entity.Comp.GridUid, out var gravity) && gravity.Enabled ||
-                   _gravityQuery.TryComp(entity.Comp.MapUid, out var mapGravity) && mapGravity.Enabled;
+            if (_zStack.TryGetZStack(entity, out var stack))
+            {
+                if (!_zPhysics.TryGetTileWithEntity(entity, ZDirection.Down, out var tile, out var targetMap) ||
+                    tile is null)
+                    return false;
+
+                return _gravityQuery.TryComp(targetMap, out var gravity) && gravity.Enabled;
+            }
+            else
+            {
+                return _gravityQuery.TryComp(entity.Comp.GridUid, out var gravity) && gravity.Enabled ||
+                    _gravityQuery.TryComp(entity.Comp.MapUid, out var mapGravity) && mapGravity.Enabled;
+            }
         }
 
         public override void Initialize()

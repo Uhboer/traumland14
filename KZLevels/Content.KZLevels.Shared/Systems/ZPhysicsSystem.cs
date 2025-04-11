@@ -1,11 +1,14 @@
 ﻿using System.Collections.Generic;
+using System.Numerics;
 using Content.KayMisaZlevels.Shared.Components;
+using Content.KayMisaZlevels.Shared.Miscellaneous;
 using Robust.Shared.Configuration;
 using Robust.Shared.GameObjects;
 using Robust.Shared.IoC;
 using Robust.Shared.Map;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Systems;
+using Robust.Shared.Toolshed.Commands.Values;
 
 namespace Content.KayMisaZlevels.Shared.Systems;
 
@@ -27,6 +30,7 @@ namespace Content.KayMisaZlevels.Shared.Systems;
 
 public sealed class ZPhysicsSystem : EntitySystem
 {
+    [Dependency] private readonly SharedMapSystem _maps = default!;
     [Dependency] private readonly SharedZStackSystem _zStack = default!;
     [Dependency] private readonly SharedTransformSystem _xform = default!;
     [Dependency] private readonly SharedPhysicsSystem _physics = default!;
@@ -80,7 +84,7 @@ public sealed class ZPhysicsSystem : EntitySystem
         for (var i = mapIdx - 1; i >= 0; i--)
         {
             levels.Add(maps[i]);
-            var gravityEv = new IsGravitySource(maps[i], false);
+            var gravityEv = new IsGravitySource(ent, maps[i], false);
             RaiseLocalEvent(maps[i], ref gravityEv, true);
             if (gravityEv.Handled)
             {
@@ -91,7 +95,7 @@ public sealed class ZPhysicsSystem : EntitySystem
             // Try for grid.
             if (_mapManager.TryFindGridAt(maps[i], coords, out var gridId, out _))
             {
-                gravityEv = new IsGravitySource(gridId, false);
+                gravityEv = new IsGravitySource(ent, gridId, false);
                 RaiseLocalEvent(gridId, ref gravityEv, broadcast: true);
                 if (gravityEv.Handled)
                     gravitySource = gridId;
@@ -121,6 +125,141 @@ public sealed class ZPhysicsSystem : EntitySystem
         var fellEv = new ZLevelDroppedEvent(ent, distance, levels, gravitySource.Value, false);
         RaiseLocalEvent(ent, ref fellEv, broadcast: true);
     }
+
+    public bool TryGetTileWithEntity(
+        EntityUid ent,
+        ZDirection direction,
+        out Tile? tile,
+        out EntityUid? targetMap,
+        ZStackTrackerComponent? zStack = null,
+        TransformComponent? xform = null,
+        bool recursive = true)
+    {
+        tile = null;
+        targetMap = null;
+
+        if (!Resolve(ent, ref xform) ||
+            xform.MapUid is null)
+            return false;
+
+        if (zStack is null)
+        {
+            if (!_zStack.TryGetZStack(xform.MapUid.Value, out var _zStackComp))
+                return false;
+
+            zStack = _zStackComp.Value.Comp;
+        }
+
+        if (direction == ZDirection.Down)
+        {
+            var result = GetTileFromBottom(ent, zStack, xform, recursive);
+            if (result is not null)
+            {
+                targetMap = result.Value.Item1;
+                tile = result.Value.Item2;
+            }
+        }
+        else
+        {
+            var result = GetTileFromTop(ent, zStack, xform, recursive);
+            if (result is not null)
+            {
+                targetMap = result.Value.Item1;
+                tile = result.Value.Item2;
+            }
+        }
+
+        if (tile is null)
+            return false;
+        else
+            return true;
+    }
+
+    private (EntityUid, Tile)? GetTile(EntityUid targetMap, EntityUid ent, TransformComponent xform)
+    {
+        if (!_mapManager.TryFindGridAt(targetMap, _xform.GetWorldPosition(ent), out _, out var zGrid))
+            return null;
+
+        var intPos = xform.Coordinates.ToVector2i(EntityManager, _mapManager, _xform);
+        _maps.TryGetTile(zGrid, intPos, out var resultTile);
+
+        if (resultTile.IsEmpty)
+            return null;
+
+        return (targetMap, resultTile);
+    }
+
+    private (EntityUid, Tile)? GetTileFromBottom(
+        EntityUid ent,
+        ZStackTrackerComponent zStack,
+        TransformComponent xform,
+        bool recursive = true)
+    {
+        if (xform.MapUid is null)
+            return null;
+
+        var maps = zStack.Maps;
+        var mapIdx = maps.IndexOf(xform.MapUid.Value);
+        var targetMap = maps[mapIdx];
+
+        if (recursive)
+        {
+            for (int i = mapIdx; i >= 0; i--)
+            {
+                targetMap = maps[i];
+
+                var result = GetTile(targetMap, ent, xform);
+                if (result is not null)
+                    return result;
+            }
+        }
+        else
+        {
+            var result = GetTile(targetMap, ent, xform);
+            if (result is not null)
+                return result;
+        }
+
+        return null;
+    }
+
+    private (EntityUid, Tile)? GetTileFromTop(
+        EntityUid ent,
+        ZStackTrackerComponent zStack,
+        TransformComponent xform,
+        bool recursive = true)
+    {
+        if (xform.MapUid is null)
+            return null;
+
+        var maps = zStack.Maps;
+        var mapIdx = maps.IndexOf(xform.MapUid.Value);
+
+        if (mapIdx + 1 >= maps.Count)
+            return null;
+
+        var targetMap = maps[mapIdx + 1];
+
+        if (recursive)
+        {
+            for (int i = mapIdx + 1; i < maps.Count; i++)
+            {
+                targetMap = maps[i];
+
+                var result = GetTile(targetMap, ent, xform);
+                if (result is not null)
+                    return result;
+            }
+        }
+        else
+        {
+            var result = GetTile(targetMap, ent, xform);
+            if (result is not null)
+                return result;
+        }
+
+        return null;
+    }
 }
 
 [ByRefEvent]
@@ -130,7 +269,7 @@ public record struct IsGravityAffectedEvent(EntityUid Target, bool Affected)
 }
 
 [ByRefEvent]
-public record struct IsGravitySource(EntityUid Target, bool Handled)
+public record struct IsGravitySource(EntityUid Entity, EntityUid Target, bool Handled)
 {
     public void Handle() => Handled = true;
 }

@@ -32,6 +32,8 @@ using PullableComponent = Content.Shared.Movement.Pulling.Components.PullableCom
 using Content.Shared.Damage.Systems;
 using Content.Shared.Damage.Components;
 using Robust.Shared.Player;
+using Content.KayMisaZlevels.Shared.Systems;
+using Content.KayMisaZlevels.Shared.Miscellaneous;
 
 
 namespace Content.Shared.Movement.Systems
@@ -54,6 +56,7 @@ namespace Content.Shared.Movement.Systems
         [Dependency] private readonly SharedContainerSystem _container = default!;
         [Dependency] private readonly SharedMapSystem _mapSystem = default!;
         [Dependency] private readonly SharedGravitySystem _gravity = default!;
+        [Dependency] private readonly ZPhysicsSystem _zPhysics = default!;
         [Dependency] protected readonly SharedPhysicsSystem Physics = default!;
         [Dependency] private readonly SharedTransformSystem _transform = default!;
         [Dependency] private readonly TagSystem _tags = default!;
@@ -208,7 +211,8 @@ namespace Content.Shared.Movement.Systems
             // Handle wall-pushes.
             if (weightless)
             {
-                if (xform.GridUid != null)
+                // Check if is there any tile under entity
+                if (_zPhysics.TryGetTileWithEntity(uid, ZDirection.Down, out var ztile, out var _, xform: xform, recursive: false))
                     touching = true;
 
                 if (!touching)
