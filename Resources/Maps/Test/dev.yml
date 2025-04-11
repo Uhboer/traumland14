@@ -1,15 +1,15 @@
 meta:
   format: 7
   category: Map
-  engineVersion: 249.0.0
+  engineVersion: 247.2.0
   forkId: ""
   forkVersion: ""
-  time: 04/10/2025 20:44:15
-  entityCount: 173
+  time: 03/03/2025 11:12:04
+  entityCount: 88
 maps:
-- 1
+  - 1
 grids:
-- 1
+  - 1
 orphans: []
 nullspace: []
 tilemap:
@@ -153,7 +153,6 @@ tilemap:
   131: FloorRubbleIndoors
   89: FloorShuttleBlack
   122: FloorSteelBurnt
-  174: FloorSteelCheckerDark
   139: FloorSteelLime
   160: FloorWasteland
   128: FloorWood
@@ -165,7 +164,6 @@ tilemap:
   148: FloorWoodOak
   152: FloorWoodOakBroken
   156: FloorWoodTile
-  176: Lattice
   117: N14FloorConcrete
   116: N14FloorConcreteDark
   115: N14FloorConcreteGreyBay
@@ -185,1006 +183,743 @@ tilemap:
   83: N14FloorRoadOuterMiddlePath
   80: N14FloorRoadRight
   104: N14FloorRoadTop
-  175: Plating
   147: WaterDeep
   146: WaterMedium
   142: WaterRiver
   145: WaterShallow
 entities:
-- proto: ""
-  entities:
-  - uid: 1
-    components:
-    - type: MetaData
-      desc: Палуба снабжения & также основная палуба с жилыми помещениями
-      name: Deck 2
-    - type: Transform
-    - type: Map
-      mapPaused: True
-    - type: PhysicsMap
-    - type: GridTree
-    - type: MovedGrids
-    - type: Broadphase
-    - type: OccluderTree
-    - type: MapLight
-    - type: MapAtmosphere
-    - type: SpreaderGrid
-      updateAccumulator: 0.9009614
-    - type: StationIgnoreTransform
-    - type: BecomesStation
-      id: FinsterDev
-    - type: MapGrid
-      chunks:
-        0,-1:
-          ind: 0,-1
-          tiles: rgAAAAAArgAAAAAArgAAAAAArgAAAAAArgAAAAAArwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAArgAAAAAArgAAAAAArgAAAAAArgAAAAAArgAAAAAArwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAArgAAAAAArgAAAAAArgAAAAAArgAAAAAArgAAAAAArwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAArgAAAAAArgAAAAAArgAAAAAArgAAAAAArgAAAAAArwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAArgAAAAAArgAAAAAArgAAAAAArgAAAAAArgAAAAAArwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAArgAAAAAArgAAAAAAAAAAAAAAAAAAAAAArwAAAAAArwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAArgAAAAAArgAAAAAAAAAAAAAAAAAAAAAArwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAArgAAAAAArgAAAAAArgAAAAAArgAAAAAArwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAArgAAAAAArgAAAAAArgAAAAAArgAAAAAArwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAArgAAAAAArgAAAAAAWgAAAAAAWgAAAAAArwAAAAAArwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAArgAAAAAArgAAAAAArgAAAAAArgAAAAAArgAAAAAArwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAArgAAAAAArgAAAAAArgAAAAAArgAAAAAArgAAAAAArwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAArgAAAAAArgAAAAAArgAAAAAArgAAAAAArgAAAAAArwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAArgAAAAAArgAAAAAArgAAAAAArwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAArgAAAAAArgAAAAAArgAAAAAArwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAArgAAAAAArgAAAAAArgAAAAAArwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-          version: 6
-        0,0:
-          ind: 0,0
-          tiles: rgAAAAAArgAAAAAArgAAAAAArgAAAAAArgAAAAAArwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAArgAAAAAArgAAAAAArgAAAAAArgAAAAAArgAAAAAArwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAArgAAAAAArgAAAAAArgAAAAAArgAAAAAArwAAAAAArwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAArgAAAAAArgAAAAAArgAAAAAArwAAAAAArwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAArgAAAAAArgAAAAAArgAAAAAArwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAArgAAAAAArgAAAAAArgAAAAAArwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAArgAAAAAArgAAAAAArwAAAAAArwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAArgAAAAAArgAAAAAArwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAArgAAAAAArgAAAAAArwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAArwAAAAAArwAAAAAAsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-          version: 6
-        -1,-1:
-          ind: -1,-1
-          tiles: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAArwAAAAAArgAAAAAArgAAAAAArgAAAAAArgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAArwAAAAAArgAAAAAArgAAAAAArgAAAAAArgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAArwAAAAAArgAAAAAArgAAAAAArgAAAAAArgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAArwAAAAAArgAAAAAArgAAAAAArgAAAAAArgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAArwAAAAAArgAAAAAArgAAAAAArgAAAAAArgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAArwAAAAAArwAAAAAAAAAAAAAAAAAAAAAArgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAArwAAAAAAAAAAAAAAAAAAAAAArgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAArwAAAAAArgAAAAAArgAAAAAArgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAArwAAAAAArgAAAAAArgAAAAAArgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAArwAAAAAArwAAAAAAWgAAAAAAWgAAAAAArgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAArwAAAAAArgAAAAAArgAAAAAArgAAAAAArgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAArwAAAAAArgAAAAAArgAAAAAArgAAAAAArgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAArwAAAAAArgAAAAAArgAAAAAArgAAAAAArgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAArwAAAAAArgAAAAAArgAAAAAArgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAArwAAAAAArgAAAAAArgAAAAAArgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAArwAAAAAArgAAAAAArgAAAAAArgAAAAAAAAAAAAAA
-          version: 6
-        -1,0:
-          ind: -1,0
-          tiles: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAArwAAAAAArgAAAAAArgAAAAAArgAAAAAArgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAArwAAAAAArgAAAAAArgAAAAAArgAAAAAArgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAArwAAAAAArwAAAAAArgAAAAAArgAAAAAArgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAArwAAAAAArwAAAAAArgAAAAAArgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAArwAAAAAArgAAAAAArgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAArwAAAAAArgAAAAAArgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAArwAAAAAArwAAAAAArgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAArwAAAAAArgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAArwAAAAAArgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAsAAAAAAArwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-          version: 6
-        -1,-2:
-          ind: -1,-2
-          tiles: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAArwAAAAAArwAAAAAArwAAAAAArwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAArwAAAAAArgAAAAAArgAAAAAArwAAAAAArwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAArwAAAAAArgAAAAAArgAAAAAArgAAAAAArgAAAAAA
-          version: 6
-        0,-2:
-          ind: 0,-2
-          tiles: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAArwAAAAAArwAAAAAArwAAAAAArwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAArwAAAAAArwAAAAAArwAAAAAArgAAAAAArgAAAAAArwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAArgAAAAAArgAAAAAArgAAAAAArgAAAAAArgAAAAAArwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-          version: 6
-    - type: GridPathfinding
-    - type: Gravity
-      gravityShakeSound: !type:SoundPathSpecifier
-        path: /Audio/Effects/alert.ogg
-    - type: DecalGrid
-      chunkCollection:
-        version: 2
-        nodes: []
-    - type: ZDefinedStack
-      upLevels:
-      - /Maps/Test/dev-3.yml
-      - /Maps/Test/dev-4.yml
-      - /Maps/Test/dev-5.yml
-      downLevels:
-      - /Maps/Test/dev-1.yml
-      - /Maps/Test/dev-2.yml
-    - type: GravityShake
-      shakeTimes: 10
-    - type: ViewSubscriber
-    - type: Roof
-      data:
-        0,-1: 2242545357980376851
-        -1,-1: 17361641481138401424
-        0,-2: 1377854229525241631
-        -1,-2: 10444112453497319664
-        0,0: 220403737621896991
-        -1,0: 9286457754270101744
-        0,-3: 2242511139453796352
-        -1,-3: 17361376563513262080
-        0,1: 3
-        -1,1: 128
-    - type: RadiationGridResistance
-  - uid: 2
-    components:
-    - type: MetaData
-    - type: Transform
-      gridTraversal: False
-      pos: -7.500037,-1.515152
-      parent: 1
-    - type: ZLoader
-    - type: ViewSubscriber
-  - uid: 3
-    components:
-    - type: MetaData
-    - type: Transform
-      gridTraversal: False
-      pos: -0.61272454,-2.3829622
-      parent: 1
-    - type: ZLoader
-    - type: ViewSubscriber
-  - uid: 173
-    components:
-    - type: MetaData
-    - type: Transform
-      gridTraversal: False
-      pos: 0.87097347,-1.550989
-      parent: 1
-    - type: ZLoader
-    - type: ViewSubscriber
-- proto: CableApcExtension
-  entities:
-  - uid: 4
-    components:
-    - type: Transform
-      pos: 2.5,5.5
-      parent: 1
-  - uid: 5
-    components:
-    - type: Transform
-      pos: 1.5,5.5
-      parent: 1
-  - uid: 6
-    components:
-    - type: Transform
-      pos: 0.5,5.5
-      parent: 1
-  - uid: 7
-    components:
-    - type: Transform
-      pos: -0.5,5.5
-      parent: 1
-  - uid: 8
-    components:
-    - type: Transform
-      pos: -1.5,5.5
-      parent: 1
-  - uid: 9
-    components:
-    - type: Transform
-      pos: -3.5,1.5
-      parent: 1
-  - uid: 10
-    components:
-    - type: Transform
-      pos: -2.5,1.5
-      parent: 1
-  - uid: 11
-    components:
-    - type: Transform
-      pos: -1.5,1.5
-      parent: 1
-  - uid: 12
-    components:
-    - type: Transform
-      pos: -0.5,1.5
-      parent: 1
-  - uid: 13
-    components:
-    - type: Transform
-      pos: 0.5,1.5
-      parent: 1
-  - uid: 14
-    components:
-    - type: Transform
-      pos: 1.5,1.5
-      parent: 1
-  - uid: 15
-    components:
-    - type: Transform
-      pos: 2.5,1.5
-      parent: 1
-  - uid: 16
-    components:
-    - type: Transform
-      pos: 3.5,1.5
-      parent: 1
-  - uid: 17
-    components:
-    - type: Transform
-      pos: 4.5,1.5
-      parent: 1
-  - uid: 18
-    components:
-    - type: Transform
-      pos: 0.5,4.5
-      parent: 1
-  - uid: 19
-    components:
-    - type: Transform
-      pos: 0.5,3.5
-      parent: 1
-  - uid: 20
-    components:
-    - type: Transform
-      pos: 0.5,2.5
-      parent: 1
-  - uid: 21
-    components:
-    - type: Transform
-      pos: -1.5,0.5
-      parent: 1
-  - uid: 22
-    components:
-    - type: Transform
-      pos: -1.5,-0.5
-      parent: 1
-  - uid: 23
-    components:
-    - type: Transform
-      pos: -1.5,-1.5
-      parent: 1
-  - uid: 24
-    components:
-    - type: Transform
-      pos: -1.5,-2.5
-      parent: 1
-  - uid: 25
-    components:
-    - type: Transform
-      pos: -1.5,-3.5
-      parent: 1
-  - uid: 26
-    components:
-    - type: Transform
-      pos: -1.5,-4.5
-      parent: 1
-  - uid: 27
-    components:
-    - type: Transform
-      pos: 2.5,0.5
-      parent: 1
-  - uid: 28
-    components:
-    - type: Transform
-      pos: 2.5,-0.5
-      parent: 1
-  - uid: 29
-    components:
-    - type: Transform
-      pos: 2.5,-1.5
-      parent: 1
-  - uid: 30
-    components:
-    - type: Transform
-      pos: 2.5,-2.5
-      parent: 1
-  - uid: 31
-    components:
-    - type: Transform
-      pos: 2.5,-3.5
-      parent: 1
-  - uid: 32
-    components:
-    - type: Transform
-      pos: 0.5,-3.5
-      parent: 1
-  - uid: 33
-    components:
-    - type: Transform
-      pos: 0.5,-4.5
-      parent: 1
-  - uid: 34
-    components:
-    - type: Transform
-      pos: 0.5,-5.5
-      parent: 1
-  - uid: 35
-    components:
-    - type: Transform
-      pos: 0.5,-6.5
-      parent: 1
-  - uid: 36
-    components:
-    - type: Transform
-      pos: 1.5,-3.5
-      parent: 1
-  - uid: 37
-    components:
-    - type: Transform
-      pos: -0.5,-3.5
-      parent: 1
-  - uid: 38
-    components:
-    - type: Transform
-      pos: 2.5,-4.5
-      parent: 1
-  - uid: 39
-    components:
-    - type: Transform
-      pos: 0.5,-7.5
-      parent: 1
-  - uid: 40
-    components:
-    - type: Transform
-      pos: 0.5,-8.5
-      parent: 1
-  - uid: 41
-    components:
-    - type: Transform
-      pos: 0.5,-9.5
-      parent: 1
-  - uid: 42
-    components:
-    - type: Transform
-      pos: 0.5,-10.5
-      parent: 1
-  - uid: 43
-    components:
-    - type: Transform
-      pos: 0.5,-12.5
-      parent: 1
-  - uid: 44
-    components:
-    - type: Transform
-      pos: 0.5,-13.5
-      parent: 1
-  - uid: 45
-    components:
-    - type: Transform
-      pos: 0.5,-14.5
-      parent: 1
-  - uid: 46
-    components:
-    - type: Transform
-      pos: 0.5,-15.5
-      parent: 1
-  - uid: 47
-    components:
-    - type: Transform
-      pos: 0.5,-16.5
-      parent: 1
-  - uid: 48
-    components:
-    - type: Transform
-      pos: 0.5,-11.5
-      parent: 1
-  - uid: 49
-    components:
-    - type: Transform
-      pos: 1.5,-16.5
-      parent: 1
-  - uid: 50
-    components:
-    - type: Transform
-      pos: 2.5,-16.5
-      parent: 1
-  - uid: 51
-    components:
-    - type: Transform
-      pos: 3.5,-16.5
-      parent: 1
-  - uid: 52
-    components:
-    - type: Transform
-      pos: -0.5,-16.5
-      parent: 1
-  - uid: 53
-    components:
-    - type: Transform
-      pos: -1.5,-16.5
-      parent: 1
-  - uid: 54
-    components:
-    - type: Transform
-      pos: -2.5,-16.5
-      parent: 1
-  - uid: 55
-    components:
-    - type: Transform
-      pos: 1.5,-11.5
-      parent: 1
-  - uid: 56
-    components:
-    - type: Transform
-      pos: 3.5,-11.5
-      parent: 1
-  - uid: 57
-    components:
-    - type: Transform
-      pos: 2.5,-11.5
-      parent: 1
-  - uid: 58
-    components:
-    - type: Transform
-      pos: -1.5,-11.5
-      parent: 1
-  - uid: 59
-    components:
-    - type: Transform
-      pos: -0.5,-11.5
-      parent: 1
-  - uid: 60
-    components:
-    - type: Transform
-      pos: -2.5,-11.5
-      parent: 1
-- proto: CableHV
-  entities:
-  - uid: 171
-    components:
-    - type: Transform
-      pos: 0.5,-3.5
-      parent: 1
-  - uid: 172
-    components:
-    - type: Transform
-      pos: 1.5,-3.5
-      parent: 1
-- proto: CableMV
-  entities:
-  - uid: 170
-    components:
-    - type: Transform
-      pos: 1.5,-3.5
-      parent: 1
-- proto: ClothingShoesBootsMagAdv
-  entities:
-  - uid: 61
-    components:
-    - type: Transform
-      pos: -3.5352216,-3.425818
-      parent: 1
-- proto: DebugAPC
-  entities:
-  - uid: 168
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 1.5,-3.5
-      parent: 1
-- proto: DebugGenerator
-  entities:
-  - uid: 167
-    components:
-    - type: Transform
-      pos: 0.5,-3.5
-      parent: 1
-- proto: DebugSubstation
-  entities:
-  - uid: 169
-    components:
-    - type: Transform
-      pos: 1.5,-3.5
-      parent: 1
-- proto: GravityGeneratorMini
-  entities:
-  - uid: 166
-    components:
-    - type: Transform
-      pos: -0.5,-3.5
-      parent: 1
-- proto: LadderAutoLinkTopMetalDamaged
-  entities:
-  - uid: 165
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 2.5,-1.5
-      parent: 1
-    - type: Fixtures
-      fixtures: {}
-- proto: PoweredlightLED
-  entities:
-  - uid: 62
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: 4.5,-5.5
-      parent: 1
-  - uid: 63
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -3.5,-5.5
-      parent: 1
-  - uid: 64
-    components:
-    - type: Transform
-      pos: -3.5,1.5
-      parent: 1
-  - uid: 65
-    components:
-    - type: Transform
-      pos: 4.5,1.5
-      parent: 1
-  - uid: 66
-    components:
-    - type: Transform
-      pos: 2.5,5.5
-      parent: 1
-  - uid: 67
-    components:
-    - type: Transform
-      pos: -1.5,5.5
-      parent: 1
-  - uid: 68
-    components:
-    - type: Transform
-      pos: 4.5,-11.5
-      parent: 1
-  - uid: 69
-    components:
-    - type: Transform
-      pos: -3.5,-11.5
-      parent: 1
-  - uid: 70
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: -2.5,-17.5
-      parent: 1
-  - uid: 71
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: 3.5,-17.5
-      parent: 1
-- proto: SpawnPointScourger
-  entities:
-  - uid: 72
-    components:
-    - type: Transform
-      pos: -2.5,-3.5
-      parent: 1
-- proto: StairsAutoLinkDarkDown
-  entities:
-  - uid: 73
-    components:
-    - type: Transform
-      pos: 3.5,-6.5
-      parent: 1
-    - type: ZTransitionMarker
-      direction: Up
-  - uid: 74
-    components:
-    - type: Transform
-      pos: 2.5,-6.5
-      parent: 1
-    - type: ZTransitionMarker
-      direction: Up
-  - uid: 75
-    components:
-    - type: Transform
-      pos: -1.5,-6.5
-      parent: 1
-    - type: ZTransitionMarker
-      direction: Up
-  - uid: 76
-    components:
-    - type: Transform
-      pos: -2.5,-6.5
-      parent: 1
-    - type: ZTransitionMarker
-      direction: Up
-- proto: Table
-  entities:
-  - uid: 77
-    components:
-    - type: Transform
-      pos: 4.5,-5.5
-      parent: 1
-  - uid: 78
-    components:
-    - type: Transform
-      pos: 4.5,-3.5
-      parent: 1
-  - uid: 79
-    components:
-    - type: Transform
-      pos: 4.5,-4.5
-      parent: 1
-  - uid: 80
-    components:
-    - type: Transform
-      pos: -3.5,-5.5
-      parent: 1
-  - uid: 81
-    components:
-    - type: Transform
-      pos: -3.5,-4.5
-      parent: 1
-  - uid: 82
-    components:
-    - type: Transform
-      pos: -3.5,-3.5
-      parent: 1
-- proto: WallReinforced
-  entities:
-  - uid: 83
-    components:
-    - type: Transform
-      pos: 1.5,9.5
-      parent: 1
-  - uid: 84
-    components:
-    - type: Transform
-      pos: 2.5,9.5
-      parent: 1
-  - uid: 85
-    components:
-    - type: Transform
-      pos: 0.5,9.5
-      parent: 1
-  - uid: 86
-    components:
-    - type: Transform
-      pos: -0.5,9.5
-      parent: 1
-  - uid: 87
-    components:
-    - type: Transform
-      pos: -1.5,8.5
-      parent: 1
-  - uid: 88
-    components:
-    - type: Transform
-      pos: -1.5,7.5
-      parent: 1
-  - uid: 89
-    components:
-    - type: Transform
-      pos: -1.5,6.5
-      parent: 1
-  - uid: 90
-    components:
-    - type: Transform
-      pos: -2.5,6.5
-      parent: 1
-  - uid: 91
-    components:
-    - type: Transform
-      pos: -2.5,5.5
-      parent: 1
-  - uid: 92
-    components:
-    - type: Transform
-      pos: -2.5,4.5
-      parent: 1
-  - uid: 93
-    components:
-    - type: Transform
-      pos: -2.5,3.5
-      parent: 1
-  - uid: 94
-    components:
-    - type: Transform
-      pos: -3.5,3.5
-      parent: 1
-  - uid: 95
-    components:
-    - type: Transform
-      pos: -3.5,2.5
-      parent: 1
-  - uid: 96
-    components:
-    - type: Transform
-      pos: -4.5,2.5
-      parent: 1
-  - uid: 97
-    components:
-    - type: Transform
-      pos: -4.5,1.5
-      parent: 1
-  - uid: 98
-    components:
-    - type: Transform
-      pos: -4.5,0.5
-      parent: 1
-  - uid: 99
-    components:
-    - type: Transform
-      pos: -4.5,-0.5
-      parent: 1
-  - uid: 100
-    components:
-    - type: Transform
-      pos: -4.5,-1.5
-      parent: 1
-  - uid: 101
-    components:
-    - type: Transform
-      pos: -4.5,-2.5
-      parent: 1
-  - uid: 102
-    components:
-    - type: Transform
-      pos: -4.5,-3.5
-      parent: 1
-  - uid: 103
-    components:
-    - type: Transform
-      pos: -4.5,-4.5
-      parent: 1
-  - uid: 104
-    components:
-    - type: Transform
-      pos: -4.5,-5.5
-      parent: 1
-  - uid: 105
-    components:
-    - type: Transform
-      pos: -4.5,-6.5
-      parent: 1
-  - uid: 106
-    components:
-    - type: Transform
-      pos: -3.5,-6.5
-      parent: 1
-  - uid: 107
-    components:
-    - type: Transform
-      pos: -3.5,-7.5
-      parent: 1
-  - uid: 108
-    components:
-    - type: Transform
-      pos: -3.5,-8.5
-      parent: 1
-  - uid: 109
-    components:
-    - type: Transform
-      pos: -3.5,-9.5
-      parent: 1
-  - uid: 110
-    components:
-    - type: Transform
-      pos: -3.5,-10.5
-      parent: 1
-  - uid: 111
-    components:
-    - type: Transform
-      pos: -4.5,-10.5
-      parent: 1
-  - uid: 112
-    components:
-    - type: Transform
-      pos: -4.5,-11.5
-      parent: 1
-  - uid: 113
-    components:
-    - type: Transform
-      pos: -4.5,-12.5
-      parent: 1
-  - uid: 114
-    components:
-    - type: Transform
-      pos: -4.5,-13.5
-      parent: 1
-  - uid: 115
-    components:
-    - type: Transform
-      pos: -4.5,-14.5
-      parent: 1
-  - uid: 116
-    components:
-    - type: Transform
-      pos: -4.5,-15.5
-      parent: 1
-  - uid: 117
-    components:
-    - type: Transform
-      pos: -4.5,-16.5
-      parent: 1
-  - uid: 118
-    components:
-    - type: Transform
-      pos: -4.5,-17.5
-      parent: 1
-  - uid: 119
-    components:
-    - type: Transform
-      pos: -4.5,-18.5
-      parent: 1
-  - uid: 120
-    components:
-    - type: Transform
-      pos: -2.5,-18.5
-      parent: 1
-  - uid: 121
-    components:
-    - type: Transform
-      pos: -1.5,-18.5
-      parent: 1
-  - uid: 122
-    components:
-    - type: Transform
-      pos: -3.5,-18.5
-      parent: 1
-  - uid: 123
-    components:
-    - type: Transform
-      pos: -1.5,-17.5
-      parent: 1
-  - uid: 124
-    components:
-    - type: Transform
-      pos: -0.5,-17.5
-      parent: 1
-  - uid: 125
-    components:
-    - type: Transform
-      pos: 0.5,-17.5
-      parent: 1
-  - uid: 126
-    components:
-    - type: Transform
-      pos: 1.5,-17.5
-      parent: 1
-  - uid: 127
-    components:
-    - type: Transform
-      pos: 2.5,-17.5
-      parent: 1
-  - uid: 128
-    components:
-    - type: Transform
-      pos: 2.5,-18.5
-      parent: 1
-  - uid: 129
-    components:
-    - type: Transform
-      pos: 3.5,-18.5
-      parent: 1
-  - uid: 130
-    components:
-    - type: Transform
-      pos: 4.5,-18.5
-      parent: 1
-  - uid: 131
-    components:
-    - type: Transform
-      pos: 5.5,-18.5
-      parent: 1
-  - uid: 132
-    components:
-    - type: Transform
-      pos: 5.5,-17.5
-      parent: 1
-  - uid: 133
-    components:
-    - type: Transform
-      pos: 5.5,-16.5
-      parent: 1
-  - uid: 134
-    components:
-    - type: Transform
-      pos: 5.5,-15.5
-      parent: 1
-  - uid: 135
-    components:
-    - type: Transform
-      pos: 5.5,-14.5
-      parent: 1
-  - uid: 136
-    components:
-    - type: Transform
-      pos: 5.5,-13.5
-      parent: 1
-  - uid: 137
-    components:
-    - type: Transform
-      pos: 5.5,-12.5
-      parent: 1
-  - uid: 138
-    components:
-    - type: Transform
-      pos: 5.5,-11.5
-      parent: 1
-  - uid: 139
-    components:
-    - type: Transform
-      pos: 5.5,-10.5
-      parent: 1
-  - uid: 140
-    components:
-    - type: Transform
-      pos: 4.5,-10.5
-      parent: 1
-  - uid: 141
-    components:
-    - type: Transform
-      pos: 4.5,-9.5
-      parent: 1
-  - uid: 142
-    components:
-    - type: Transform
-      pos: 4.5,-8.5
-      parent: 1
-  - uid: 143
-    components:
-    - type: Transform
-      pos: 4.5,-7.5
-      parent: 1
-  - uid: 144
-    components:
-    - type: Transform
-      pos: 4.5,-6.5
-      parent: 1
-  - uid: 145
-    components:
-    - type: Transform
-      pos: 5.5,-6.5
-      parent: 1
-  - uid: 146
-    components:
-    - type: Transform
-      pos: 5.5,-5.5
-      parent: 1
-  - uid: 147
-    components:
-    - type: Transform
-      pos: 5.5,-4.5
-      parent: 1
-  - uid: 148
-    components:
-    - type: Transform
-      pos: 5.5,-3.5
-      parent: 1
-  - uid: 149
-    components:
-    - type: Transform
-      pos: 5.5,-2.5
-      parent: 1
-  - uid: 150
-    components:
-    - type: Transform
-      pos: 5.5,-1.5
-      parent: 1
-  - uid: 151
-    components:
-    - type: Transform
-      pos: 5.5,-0.5
-      parent: 1
-  - uid: 152
-    components:
-    - type: Transform
-      pos: 5.5,0.5
-      parent: 1
-  - uid: 153
-    components:
-    - type: Transform
-      pos: 5.5,1.5
-      parent: 1
-  - uid: 154
-    components:
-    - type: Transform
-      pos: 5.5,2.5
-      parent: 1
-  - uid: 155
-    components:
-    - type: Transform
-      pos: 4.5,2.5
-      parent: 1
-  - uid: 156
-    components:
-    - type: Transform
-      pos: 4.5,3.5
-      parent: 1
-  - uid: 157
-    components:
-    - type: Transform
-      pos: 3.5,3.5
-      parent: 1
-  - uid: 158
-    components:
-    - type: Transform
-      pos: 3.5,4.5
-      parent: 1
-  - uid: 159
-    components:
-    - type: Transform
-      pos: 3.5,5.5
-      parent: 1
-  - uid: 160
-    components:
-    - type: Transform
-      pos: 3.5,6.5
-      parent: 1
-  - uid: 161
-    components:
-    - type: Transform
-      pos: 2.5,6.5
-      parent: 1
-  - uid: 162
-    components:
-    - type: Transform
-      pos: 2.5,7.5
-      parent: 1
-  - uid: 163
-    components:
-    - type: Transform
-      pos: 2.5,8.5
-      parent: 1
-  - uid: 164
-    components:
-    - type: Transform
-      pos: -1.5,9.5
-      parent: 1
-...
+  - proto: ""
+    entities:
+      - uid: 1
+        components:
+          - type: MetaData
+            desc: Develompment world
+            name: Dev Map
+          - type: Transform
+          - type: Map
+            mapPaused: True
+          - type: PhysicsMap
+          - type: GridTree
+          - type: MovedGrids
+          - type: Broadphase
+          - type: OccluderTree
+          - type: MapLight
+          - type: Biome
+            forcedMarkerLayers: []
+            markerLayers: []
+            loadedMarkers: {}
+            pendingMarkers: {}
+            loadedChunks: []
+            entities: {}
+            decals: {}
+            modifiedTiles: {}
+            template: Caves
+            layers: []
+            enabled: False
+          - type: MapAtmosphere
+            mixture:
+              volume: 2500
+              immutable: True
+              temperature: 293.15
+              moles:
+                - 21.82478
+                - 82.10312
+                - 0
+                - 0
+                - 0
+                - 0
+                - 0
+                - 0
+                - 0
+                - 0
+                - 0
+                - 0
+          - type: SpreaderGrid
+            updateAccumulator: 0.9009614
+          - type: StationIgnoreTransform
+          - type: BecomesStation
+            id: FinsterDev
+          - type: MapGrid
+            chunks:
+              -1,-1:
+                ind: -1,-1
+                tiles: AQAAAAAAAQAAAAAAAQAAAAAABwAAAAAABwAAAAAABwAAAAAABwAAAAAABwAAAAAACwAAAAAACwAAAAAACwAAAAAACwAAAAAACwAAAAAAFAAAAAAAFAAAAAAAFAAAAAAAAQAAAAAAAQAAAAAAAQAAAAAABwAAAAAABwAAAAAABwAAAAAABwAAAAAABwAAAAAACwAAAAAACwAAAAAACwAAAAAACwAAAAAACwAAAAAAFAAAAAAAFAAAAAAAFAAAAAAAAQAAAAAAAQAAAAAAAQAAAAAABwAAAAAABwAAAAAABwAAAAAABwAAAAAABwAAAAAACwAAAAAACwAAAAAACwAAAAAACwAAAAAACwAAAAAAFAAAAAAAFAAAAAAAFAAAAAAAAgAAAAAAAgAAAAAAAgAAAAAACAAAAAAACAAAAAAACAAAAAAACAAAAAAACAAAAAAADQAAAAAADQAAAAAADQAAAAAADQAAAAAADQAAAAAAFgAAAAAAFgAAAAAAFgAAAAAAAgAAAAAAAgAAAAAAAgAAAAAACAAAAAAACAAAAAAACAAAAAAACAAAAAAACAAAAAAADQAAAAAADQAAAAAADQAAAAAADQAAAAAADQAAAAAAFgAAAAAAFgAAAAAAFgAAAAAAAgAAAAAAAgAAAAAAAgAAAAAACAAAAAAACAAAAAAACAAAAAAACAAAAAAACAAAAAAADQAAAAAADQAAAAAADQAAAAAADQAAAAAADQAAAAAAFgAAAAAAFgAAAAAAFgAAAAAAAgAAAAAAAgAAAAAAAgAAAAAACAAAAAAACAAAAAAACAAAAAAACAAAAAAACAAAAAAADQAAAAAADQAAAAAADQAAAAAADQAAAAAADQAAAAAAFgAAAAAAFgAAAAAAFgAAAAAAAgAAAAAAAgAAAAAAAgAAAAAACAAAAAAACAAAAAAACAAAAAAACAAAAAAACAAAAAAADQAAAAAADQAAAAAADQAAAAAADQAAAAAADQAAAAAAFgAAAAAAFgAAAAAAFgAAAAAABAAAAAAABAAAAAAABAAAAAAACQAAAAAACQAAAAAACQAAAAAACQAAAAAACQAAAAAADgAAAAAADgAAAAAADgAAAAAADgAAAAAADgAAAAAAFwAAAAAAFwAAAAAAFwAAAAAABAAAAAAABAAAAAAABAAAAAAACQAAAAAACQAAAAAACQAAAAAACQAAAAAACQAAAAAADgAAAAAADgAAAAAADgAAAAAADgAAAAAADgAAAAAAFwAAAAAAFwAAAAAAFwAAAAAABAAAAAAABAAAAAAABAAAAAAACQAAAAAACQAAAAAACQAAAAAACQAAAAAACQAAAAAADgAAAAAADgAAAAAADgAAAAAADgAAAAAADgAAAAAAFwAAAAAAFwAAAAAAFwAAAAAABAAAAAAABAAAAAAABAAAAAAACQAAAAAACQAAAAAACQAAAAAACQAAAAAACQAAAAAADgAAAAAADgAAAAAADgAAAAAADgAAAAAADgAAAAAAFwAAAAAAFwAAAAAAFwAAAAAABAAAAAAABAAAAAAABAAAAAAACQAAAAAACQAAAAAACQAAAAAACQAAAAAACQAAAAAADgAAAAAADgAAAAAADgAAAAAADgAAAAAAJwAAAAAAJwAAAAAAJwAAAAAAJwAAAAAABQAAAAAABQAAAAAABQAAAAAACgAAAAAACgAAAAAACgAAAAAACgAAAAAACgAAAAAAEwAAAAACEwAAAAAAEwAAAAACEwAAAAADJwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABQAAAAAABQAAAAAABQAAAAAACgAAAAAACgAAAAAACgAAAAAACgAAAAAACgAAAAAAEwAAAAAAEwAAAAABEwAAAAABEwAAAAACJwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABQAAAAAABQAAAAAABQAAAAAACgAAAAAACgAAAAAACgAAAAAACgAAAAAACgAAAAAAEwAAAAAAEwAAAAADEwAAAAAAEwAAAAACJwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+                version: 6
+              -1,0:
+                ind: -1,0
+                tiles: BQAAAAAABQAAAAAABQAAAAAACgAAAAAACgAAAAAACgAAAAAACgAAAAAACgAAAAAAEwAAAAAAEwAAAAAAEwAAAAAAEwAAAAABJwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABQAAAAAABQAAAAAABQAAAAAACgAAAAAACgAAAAAACgAAAAAACgAAAAAACgAAAAAAEwAAAAABEwAAAAABEwAAAAACEwAAAAAAJwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGQAAAAAAGQAAAAAAGQAAAAAAHQAAAAAAHQAAAAAAHQAAAAAAHQAAAAAAHQAAAAAAHwAAAAAAHwAAAAAAHwAAAAAAHwAAAAAAJwAAAAAAJwAAAAAAJwAAAAAAJwAAAAAAGQAAAAAAGQAAAAAAGQAAAAAAHQAAAAAAHQAAAAAAHQAAAAAAHQAAAAAAHQAAAAAAHwAAAAAAHwAAAAAAHwAAAAAAHwAAAAAAHwAAAAAAIgAAAAAAIgAAAAADIgAAAAADGQAAAAAAGQAAAAAAGQAAAAAAHQAAAAAAHQAAAAAAHQAAAAAAHQAAAAAAHQAAAAAAHwAAAAAAHwAAAAAAHwAAAAAAHwAAAAAAHwAAAAAAIgAAAAAAIgAAAAADIgAAAAABGQAAAAAAGQAAAAAAGQAAAAAAHQAAAAAAHQAAAAAAHQAAAAAAHQAAAAAAHQAAAAAAHwAAAAAAHwAAAAAAHwAAAAAAHwAAAAAAHwAAAAAAIgAAAAABIgAAAAACIgAAAAADGQAAAAAAGQAAAAAAGQAAAAAAHQAAAAAAHQAAAAAAHQAAAAAAHQAAAAAAHQAAAAAAHwAAAAAAHwAAAAAAHwAAAAAAHwAAAAAAHwAAAAAAIgAAAAADIgAAAAABIgAAAAABGgAAAAAAGgAAAAAAGgAAAAAAHgAAAAAAHgAAAAABHgAAAAACHgAAAAADHgAAAAABIAAAAAAAIAAAAAAAIAAAAAAAIAAAAAAAIAAAAAAAIwAAAAABIwAAAAACIwAAAAAGGgAAAAAAGgAAAAAAGgAAAAAAHgAAAAAAHgAAAAADHgAAAAABHgAAAAACHgAAAAAAIAAAAAAAIAAAAAAAIAAAAAAAIAAAAAAAIAAAAAAAIwAAAAAFIwAAAAABIwAAAAADGgAAAAAAGgAAAAAAGgAAAAAAHgAAAAAAHgAAAAABHgAAAAACHgAAAAADHgAAAAACIAAAAAAAIAAAAAAAIAAAAAAAIAAAAAAAIAAAAAAAIwAAAAACIwAAAAAEIwAAAAAFGgAAAAAAGgAAAAAAGgAAAAAAHgAAAAAAHgAAAAADHgAAAAADHgAAAAADHgAAAAAAIAAAAAAAIAAAAAAAIAAAAAAAIAAAAAAAIAAAAAAAIwAAAAACIwAAAAADIwAAAAAGGgAAAAAAGgAAAAAAGgAAAAAAHgAAAAACHgAAAAABHgAAAAACHgAAAAACHgAAAAAAIAAAAAAAIAAAAAAAIAAAAAAAIAAAAAAAIAAAAAAAIwAAAAAEIwAAAAAGIwAAAAABGwAAAAACGwAAAAACGwAAAAAAGwAAAAADGwAAAAABGwAAAAAAGwAAAAADGwAAAAAAGwAAAAAAGwAAAAADGwAAAAADGwAAAAABGwAAAAAAGwAAAAABGwAAAAAAGwAAAAADGwAAAAACGwAAAAAAGwAAAAAAGwAAAAAAGwAAAAABGwAAAAABGwAAAAAAGwAAAAABGwAAAAAAGwAAAAABGwAAAAAAGwAAAAACGwAAAAABGwAAAAAAGwAAAAADGwAAAAACGwAAAAADGwAAAAABGwAAAAABGwAAAAACGwAAAAACGwAAAAABGwAAAAABGwAAAAADGwAAAAADGwAAAAACGwAAAAAAGwAAAAADGwAAAAAAGwAAAAADGwAAAAACGwAAAAAAHAAAAAABHAAAAAABHAAAAAADHAAAAAABHAAAAAABHAAAAAADHAAAAAACHAAAAAAAHAAAAAABHAAAAAADHAAAAAACHAAAAAACHAAAAAADHAAAAAAAHAAAAAABHAAAAAAA
+                version: 6
+              -2,0:
+                ind: -2,0
+                tiles: GwAAAAABGwAAAAAAGwAAAAABGwAAAAACGwAAAAADUAAAAAAAUwAAAAAAUwAAAAAAVAAAAAAAGwAAAAABGwAAAAADGwAAAAADGwAAAAACGwAAAAACBQAAAAAABQAAAAAAGwAAAAAAGwAAAAADGwAAAAABGwAAAAADGwAAAAACUAAAAAAAUwAAAAAAUwAAAAAAVAAAAAAAGwAAAAADGwAAAAAAGwAAAAADGwAAAAABGwAAAAACBQAAAAAABQAAAAAAGwAAAAADGwAAAAADGwAAAAACGwAAAAABGwAAAAAAUAAAAAAAUwAAAAAAUwAAAAAAVAAAAAAAGwAAAAAAGwAAAAABGwAAAAABGwAAAAADGwAAAAACGQAAAAAAGQAAAAAAGwAAAAAAGwAAAAABGwAAAAADGwAAAAACGwAAAAAAUAAAAAAAUwAAAAAAUwAAAAAAVAAAAAAAHAAAAAADGwAAAAACGwAAAAAAGwAAAAACGwAAAAAAGQAAAAAAGQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAUAAAAAAAUwAAAAAAUwAAAAAAVAAAAAAAHAAAAAAAGwAAAAADGwAAAAABGwAAAAADGwAAAAADGQAAAAAAGQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAUAAAAAAAUwAAAAAAUwAAAAAAVAAAAAAAHAAAAAACGwAAAAAAGwAAAAADGwAAAAAAGwAAAAACGQAAAAAAGQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAUAAAAAAAUwAAAAAAUwAAAAAAVAAAAAAAHAAAAAABGwAAAAABGwAAAAADGwAAAAACGwAAAAACGQAAAAAAGQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAUAAAAAAAUwAAAAAAUwAAAAAAVAAAAAAAHAAAAAAAGwAAAAAAGwAAAAABGwAAAAACGwAAAAABGgAAAAAAGgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAUAAAAAAAUwAAAAAAUwAAAAAAVAAAAAAAHAAAAAACGwAAAAAAGwAAAAADGwAAAAACGwAAAAABGgAAAAAAGgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAUAAAAAAAUwAAAAAAUwAAAAAAVAAAAAAAHAAAAAACHAAAAAACGwAAAAACGwAAAAACGwAAAAAAGgAAAAAAGgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAUAAAAAAAUwAAAAAAUwAAAAAAVAAAAAAAHAAAAAAAHAAAAAADGwAAAAADGwAAAAACGwAAAAAAGgAAAAAAGgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAUAAAAAAAUwAAAAAAUwAAAAAAVAAAAAAAHAAAAAAAHAAAAAABGwAAAAADGwAAAAAAGwAAAAADGgAAAAAAGgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAUAAAAAAAUwAAAAAAUwAAAAAAVAAAAAAAHAAAAAAAHAAAAAADGwAAAAAAGwAAAAADGwAAAAACGwAAAAADGwAAAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAUAAAAAAAUwAAAAAAUwAAAAAAVAAAAAAAHAAAAAABHAAAAAADGwAAAAACGwAAAAABGwAAAAADGwAAAAAAGwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAUAAAAAAAUwAAAAAAUwAAAAAAVAAAAAAAHAAAAAAAHAAAAAAAGwAAAAAAGwAAAAAAGwAAAAABGwAAAAABGwAAAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAUAAAAAAAUwAAAAAAUwAAAAAAVAAAAAAAHAAAAAABHAAAAAAAHAAAAAADHAAAAAACHAAAAAADHAAAAAABHAAAAAAC
+                version: 6
+              -2,-1:
+                ind: -2,-1
+                tiles: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAUAAAAAAAUwAAAAAAUwAAAAAAVAAAAAAAHAAAAAABGwAAAAACGwAAAAAAGwAAAAACGwAAAAAAAQAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAUAAAAAAAUwAAAAAAUwAAAAAAVAAAAAAAHAAAAAABGwAAAAACGwAAAAABGwAAAAACGwAAAAAAAQAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAUAAAAAAAUwAAAAAAUwAAAAAAVAAAAAAAHAAAAAAAGwAAAAABGwAAAAADGwAAAAAAGwAAAAAAAQAAAAAAAQAAAAAAGwAAAAADGwAAAAABGwAAAAABGwAAAAAAGwAAAAABUAAAAAAAUwAAAAAAUwAAAAAAVAAAAAAATwAAAAAATwAAAAAATwAAAAAATwAAAAAATwAAAAAAAgAAAAAAAgAAAAAAGwAAAAABGwAAAAADGwAAAAADGwAAAAACGwAAAAADUAAAAAAAUwAAAAAAUwAAAAAAVAAAAAAATwAAAAAATwAAAAAATwAAAAAATwAAAAAATwAAAAAAAgAAAAAAAgAAAAAAGwAAAAAAGwAAAAADGwAAAAABGwAAAAACGwAAAAAAUAAAAAAAUwAAAAAAUwAAAAAAVAAAAAAATwAAAAAATwAAAAAATwAAAAAATwAAAAAATwAAAAAAAgAAAAAAAgAAAAAAGwAAAAADGwAAAAAAGwAAAAACGwAAAAAAGwAAAAACUAAAAAAAUwAAAAAAUwAAAAAAVAAAAAAATwAAAAAATwAAAAAATwAAAAAATwAAAAAATwAAAAAAAgAAAAAAAgAAAAAAGwAAAAACGwAAAAABGwAAAAACGwAAAAACGwAAAAAAUAAAAAAAUwAAAAAAUwAAAAAAVAAAAAAATwAAAAAATwAAAAAATwAAAAAATwAAAAAATwAAAAAAAgAAAAAAAgAAAAAAGwAAAAABGwAAAAABGwAAAAACGwAAAAADGwAAAAABUAAAAAAAUwAAAAAAUwAAAAAAVAAAAAAAGwAAAAADGwAAAAABGwAAAAABGwAAAAABGwAAAAAABAAAAAAABAAAAAAAGwAAAAADGwAAAAADGwAAAAACGwAAAAABGwAAAAADUAAAAAAAUwAAAAAAUwAAAAAAVAAAAAAAGwAAAAACGwAAAAACCAAAAAAACAAAAAAACAAAAAAABAAAAAAABAAAAAAABAAAAAAABAAAAAAACAAAAAAACAAAAAAACAAAAAAAUAAAAAAAUwAAAAAAUwAAAAAAVAAAAAAABAAAAAAABAAAAAAABAAAAAAABAAAAAAABAAAAAAABAAAAAAABAAAAAAABAAAAAAABAAAAAAACAAAAAAACAAAAAAACAAAAAAAUAAAAAAAUwAAAAAAUwAAAAAAVAAAAAAABAAAAAAABAAAAAAABAAAAAAABAAAAAAABAAAAAAABAAAAAAABAAAAAAABAAAAAAABAAAAAAABAAAAAAABAAAAAAABAAAAAAAUAAAAAAAUwAAAAAAUwAAAAAAVAAAAAAABAAAAAAABAAAAAAACAAAAAAACAAAAAAABAAAAAAABAAAAAAABAAAAAAAGwAAAAAAGwAAAAABGwAAAAAAGwAAAAACGwAAAAABUAAAAAAAUwAAAAAAUwAAAAAAVAAAAAAAGwAAAAACGwAAAAAACAAAAAAACAAAAAAACAAAAAAABQAAAAAABQAAAAAAGwAAAAACGwAAAAABGwAAAAAAGwAAAAABGwAAAAADUAAAAAAAUwAAAAAAUwAAAAAAVAAAAAAAGwAAAAADGwAAAAACGwAAAAAAGwAAAAAAGwAAAAAABQAAAAAABQAAAAAAGwAAAAABGwAAAAACGwAAAAADGwAAAAAAGwAAAAAAUAAAAAAAUwAAAAAAUwAAAAAAVAAAAAAAGwAAAAAAGwAAAAABGwAAAAADGwAAAAACGwAAAAAABQAAAAAABQAAAAAA
+                version: 6
+              0,0:
+                ind: 0,0
+                tiles: AAAAAAAAAAAAAAAAJwAAAAAAJAAAAAAAJAAAAAAAJAAAAAABJAAAAAABHAAAAAACHAAAAAACHAAAAAABHAAAAAADHAAAAAADKQAAAAABKQAAAAAAKQAAAAABKQAAAAADAAAAAAAAAAAAAAAAJwAAAAAAJAAAAAADJAAAAAAAJAAAAAADJAAAAAAAHAAAAAABHAAAAAAAHAAAAAADHAAAAAACHAAAAAAAKQAAAAAAKQAAAAABKQAAAAACKQAAAAACJwAAAAAAJwAAAAAAJwAAAAAAJQAAAAADJQAAAAABJQAAAAADJQAAAAABJwAAAAACJwAAAAACJwAAAAAAJwAAAAADJwAAAAAAKgAAAAAAKgAAAAACKgAAAAABKgAAAAABIgAAAAABIgAAAAADJQAAAAACJQAAAAADJQAAAAADJQAAAAAAJQAAAAADJwAAAAABJwAAAAADJwAAAAADJwAAAAACJwAAAAACKgAAAAABKgAAAAABKgAAAAACKgAAAAABIgAAAAACIgAAAAABJQAAAAABJQAAAAACJQAAAAADJQAAAAADJQAAAAADJwAAAAABJwAAAAADJwAAAAADJwAAAAAAJwAAAAADKgAAAAABKgAAAAABKgAAAAACKgAAAAABIgAAAAABIgAAAAADJQAAAAABJQAAAAABJQAAAAABJQAAAAADJQAAAAAAJwAAAAABJwAAAAACJwAAAAACJwAAAAADJwAAAAAAKgAAAAABKgAAAAADKgAAAAADKgAAAAABIgAAAAADIgAAAAABJQAAAAADJQAAAAABJQAAAAABJQAAAAABJQAAAAADJwAAAAACJwAAAAACJwAAAAADJwAAAAAAJwAAAAABKgAAAAACKgAAAAAAKgAAAAACKgAAAAACIwAAAAABIwAAAAAEJgAAAAAAJgAAAAAAJgAAAAAAJgAAAAAAJgAAAAAAKAAAAAABKAAAAAACKAAAAAAAKAAAAAABKAAAAAAAKwAAAAAAKwAAAAAAKwAAAAAAKwAAAAAAIwAAAAABIwAAAAABJgAAAAAAJgAAAAAAJgAAAAAAJgAAAAAAJgAAAAAAKAAAAAABKAAAAAABKAAAAAABKAAAAAADKAAAAAACKwAAAAAAKwAAAAAAKwAAAAAAKwAAAAAAIwAAAAABIwAAAAAGJgAAAAAAJgAAAAAAJgAAAAAAJgAAAAAAJgAAAAAAKAAAAAABKAAAAAAAKAAAAAABKAAAAAAAKAAAAAABKwAAAAAAKwAAAAAAKwAAAAAAKwAAAAAAIwAAAAAEIwAAAAAFJgAAAAAAJgAAAAAAJgAAAAAAJgAAAAAAJgAAAAAAKAAAAAABKAAAAAACKAAAAAABKAAAAAABKAAAAAAAKwAAAAAAKwAAAAAAKwAAAAAAKwAAAAAAIwAAAAACIwAAAAAHJgAAAAAAJgAAAAAAJgAAAAAAJgAAAAAAJgAAAAAAKAAAAAACKAAAAAACKAAAAAAAKAAAAAACKAAAAAAAKwAAAAAAKwAAAAAAKwAAAAAAKwAAAAAAGwAAAAAAGwAAAAAAGwAAAAABGwAAAAADGwAAAAACGwAAAAACGwAAAAACGwAAAAADGwAAAAACGwAAAAACGwAAAAADGwAAAAABGwAAAAADGwAAAAABGwAAAAACGwAAAAADGwAAAAACGwAAAAAAGwAAAAABGwAAAAACGwAAAAABGwAAAAADGwAAAAABGwAAAAADGwAAAAACGwAAAAACGwAAAAAAGwAAAAACGwAAAAADGwAAAAABGwAAAAAAGwAAAAAAGwAAAAAAGwAAAAACGwAAAAADGwAAAAADGwAAAAAAGwAAAAAAGwAAAAADGwAAAAABGwAAAAACGwAAAAABGwAAAAABGwAAAAAAGwAAAAAAGwAAAAABGwAAAAACGwAAAAAAHAAAAAAAHAAAAAABHAAAAAAAHAAAAAADHAAAAAAAHAAAAAABHAAAAAABHAAAAAACHAAAAAAAHAAAAAABHAAAAAACHAAAAAABHAAAAAAAHAAAAAACHAAAAAABHAAAAAAA
+                version: 6
+              0,-1:
+                ind: 0,-1
+                tiles: FAAAAAAAFAAAAAAALAAAAAAALAAAAAAALAAAAAAALAAAAAAALAAAAAAALwAAAAAALwAAAAAALwAAAAAALwAAAAAALwAAAAAAMQAAAAADMQAAAAAAMQAAAAAAMQAAAAADFAAAAAAAFAAAAAAALAAAAAAALAAAAAAALAAAAAAALAAAAAAALAAAAAAALwAAAAAALwAAAAAALwAAAAAALwAAAAAALwAAAAAAMQAAAAACMQAAAAADMQAAAAACMQAAAAABFAAAAAAAFAAAAAAALAAAAAAALAAAAAAALAAAAAAALAAAAAAALAAAAAAALwAAAAAALwAAAAAALwAAAAAALwAAAAAALwAAAAAAMQAAAAAAMQAAAAAAMQAAAAADMQAAAAADFgAAAAAAFgAAAAAALQAAAAAALQAAAAABLQAAAAADLQAAAAADLQAAAAADMAAAAAAAMAAAAAABMAAAAAABMAAAAAABMAAAAAABMgAAAAAAMgAAAAADMgAAAAADMgAAAAACFgAAAAAAFgAAAAAALQAAAAABLQAAAAADLQAAAAADLQAAAAAALQAAAAABMAAAAAACMAAAAAAAMAAAAAAAMAAAAAADMAAAAAACMgAAAAADMgAAAAAAMgAAAAABMgAAAAADFgAAAAAAFgAAAAAALQAAAAACLQAAAAABLQAAAAAALQAAAAAALQAAAAADMAAAAAAAMAAAAAABMAAAAAACMAAAAAACMAAAAAACMgAAAAAAMgAAAAADMgAAAAAAMgAAAAAAFgAAAAAAFgAAAAAALQAAAAAALQAAAAAALQAAAAACLQAAAAACLQAAAAADMAAAAAADMAAAAAABMAAAAAAAMAAAAAABMAAAAAABMgAAAAACMgAAAAAAMgAAAAABMgAAAAAAFgAAAAAAFgAAAAAALQAAAAACLQAAAAABLQAAAAABLQAAAAAALQAAAAABMAAAAAAAMAAAAAADMAAAAAACMAAAAAABMAAAAAAAMgAAAAABMgAAAAADMgAAAAADMgAAAAAAFwAAAAAAFwAAAAAALgAAAAAALgAAAAAALgAAAAAALgAAAAAALgAAAAAAGwAAAAACGwAAAAADGwAAAAACGwAAAAAAGwAAAAADMwAAAAAAMwAAAAADMwAAAAAAMwAAAAADFwAAAAAAFwAAAAAALgAAAAAALgAAAAAALgAAAAAALgAAAAAALgAAAAAAGwAAAAACGwAAAAACGwAAAAABGwAAAAADGwAAAAACMwAAAAAAMwAAAAAAMwAAAAADMwAAAAABFwAAAAAAFwAAAAAALgAAAAAALgAAAAAALgAAAAAALgAAAAAALgAAAAAAGwAAAAABGwAAAAAAGwAAAAACGwAAAAADGwAAAAABMwAAAAADMwAAAAABMwAAAAACMwAAAAADFwAAAAAAFwAAAAAALgAAAAAALgAAAAAALgAAAAAALgAAAAAALgAAAAAAGwAAAAADGwAAAAACGwAAAAABGwAAAAABGwAAAAABMwAAAAACMwAAAAACMwAAAAACMwAAAAADJwAAAAAAJwAAAAAAJwAAAAAALgAAAAAALgAAAAAALgAAAAAALgAAAAAAGwAAAAADGwAAAAABGwAAAAABGwAAAAAAGwAAAAACMwAAAAAAMwAAAAADMwAAAAAAMwAAAAADAAAAAAAAAAAAAAAAJwAAAAAAJAAAAAACJAAAAAABJAAAAAAAJAAAAAADHAAAAAADHAAAAAABHAAAAAAAHAAAAAAAHAAAAAADKQAAAAACKQAAAAADKQAAAAAAKQAAAAAAAAAAAAAAAAAAAAAAJwAAAAAAJAAAAAADJAAAAAABJAAAAAAAJAAAAAAAHAAAAAACHAAAAAABHAAAAAABHAAAAAADHAAAAAAAKQAAAAABKQAAAAAAKQAAAAAAKQAAAAAAAAAAAAAAAAAAAAAAJwAAAAAAJAAAAAACJAAAAAACJAAAAAABJAAAAAABHAAAAAABHAAAAAABHAAAAAACHAAAAAABHAAAAAACKQAAAAADKQAAAAACKQAAAAAAKQAAAAAB
+                version: 6
+              -1,-2:
+                ind: -1,-2
+                tiles: UwAAAAAAUwAAAAAAUwAAAAAAUwAAAAAAUwAAAAAAUwAAAAAAUwAAAAAAUwAAAAAAUwAAAAAAUwAAAAAAUwAAAAAAUwAAAAAAUwAAAAAAUwAAAAAAUwAAAAAAUwAAAAAAVQAAAAAAVQAAAAAAVQAAAAAAVQAAAAAAVQAAAAAAVQAAAAAAVQAAAAAAVQAAAAAAVQAAAAAAVQAAAAAAVQAAAAAAVQAAAAAAVQAAAAAAVQAAAAAAVQAAAAAAVQAAAAAAGwAAAAABGwAAAAADGwAAAAACGwAAAAAAGwAAAAADGwAAAAADGwAAAAADGwAAAAABGwAAAAACGwAAAAAAGwAAAAABGwAAAAACGwAAAAADGwAAAAAAGwAAAAACGwAAAAACHAAAAAADHAAAAAADHAAAAAABHAAAAAAAHAAAAAADHAAAAAADHAAAAAABHAAAAAADHAAAAAAAHAAAAAAAHAAAAAADHAAAAAAAHAAAAAABHAAAAAABHAAAAAACHAAAAAAAHAAAAAAAHAAAAAABHAAAAAABHAAAAAADHAAAAAACHAAAAAADHAAAAAACHAAAAAACHAAAAAACHAAAAAACHAAAAAABHAAAAAAAHAAAAAABHAAAAAADHAAAAAACHAAAAAAAHAAAAAABHAAAAAAAHAAAAAADHAAAAAABHAAAAAABHAAAAAABHAAAAAADHAAAAAACHAAAAAABHAAAAAADHAAAAAACHAAAAAABHAAAAAAAHAAAAAACHAAAAAADHAAAAAACGwAAAAAAGwAAAAACGwAAAAABGwAAAAACGwAAAAACGwAAAAADGwAAAAABGwAAAAADGwAAAAABGwAAAAABGwAAAAABGwAAAAADGwAAAAACGwAAAAACGwAAAAABGwAAAAABGwAAAAAAGwAAAAACGwAAAAABGwAAAAAAGwAAAAACGwAAAAAAGwAAAAABGwAAAAABGwAAAAAAGwAAAAADGwAAAAACGwAAAAADGwAAAAADGwAAAAABGwAAAAACGwAAAAADGwAAAAACGwAAAAACGwAAAAABGwAAAAABGwAAAAADGwAAAAADGwAAAAACGwAAAAADGwAAAAABGwAAAAABGwAAAAADGwAAAAADGwAAAAABGwAAAAAAGwAAAAADGwAAAAADNAAAAAAANAAAAAAANAAAAAAAOAAAAAAAOAAAAAAAOAAAAAAAOAAAAAAAOAAAAAAAOQAAAAAAOQAAAAAAOQAAAAAAOQAAAAAAOQAAAAAAOgAAAAAAOgAAAAAAOgAAAAAANQAAAAACNQAAAAACNwAAAAAAOAAAAAAAOAAAAAAAOAAAAAAAOAAAAAAAOAAAAAAAOQAAAAAAOQAAAAAAOQAAAAAAOQAAAAAAOQAAAAAAOgAAAAAAOgAAAAAAOgAAAAAANQAAAAACNQAAAAABNwAAAAAAOAAAAAAAOAAAAAAAOAAAAAAAOAAAAAAAOAAAAAAAOQAAAAAAOQAAAAAAOQAAAAAAOQAAAAAAOQAAAAAAOgAAAAAAOgAAAAAAOgAAAAAANQAAAAADNQAAAAADNwAAAAAAOAAAAAAAOAAAAAAAOAAAAAAAOAAAAAAAOAAAAAAAOQAAAAAAOQAAAAAAOQAAAAAAOQAAAAAAOQAAAAAAOgAAAAAAOgAAAAAAOgAAAAAANgAAAAAANgAAAAAANgAAAAAAOAAAAAAAOAAAAAAAOAAAAAAAOAAAAAAAOAAAAAAAOQAAAAAAOQAAAAAAOQAAAAAAOQAAAAAAOQAAAAAAOgAAAAAAOgAAAAAAOgAAAAAAAQAAAAAAAQAAAAAAAQAAAAAABwAAAAAABwAAAAAABwAAAAAABwAAAAAABwAAAAAACwAAAAAACwAAAAAACwAAAAAACwAAAAAACwAAAAAAFAAAAAAAFAAAAAAAFAAAAAAAAQAAAAAAAQAAAAAAAQAAAAAABwAAAAAABwAAAAAABwAAAAAABwAAAAAABwAAAAAACwAAAAAACwAAAAAACwAAAAAACwAAAAAACwAAAAAAFAAAAAAAFAAAAAAAFAAAAAAA
+                version: 6
+              0,-2:
+                ind: 0,-2
+                tiles: UwAAAAAAVAAAAAAAGwAAAAACGwAAAAADGwAAAAADGwAAAAABGwAAAAAAGwAAAAAAGwAAAAADGwAAAAADGwAAAAABGwAAAAABGwAAAAACGwAAAAAAGwAAAAAAGwAAAAACVQAAAAAAVgAAAAAAGwAAAAABGwAAAAADGwAAAAABGwAAAAABGwAAAAADGwAAAAACGwAAAAABGwAAAAACGwAAAAAAGwAAAAAAGwAAAAACGwAAAAABGwAAAAABGwAAAAABGwAAAAACGwAAAAAAGwAAAAABGwAAAAADGwAAAAAAGwAAAAAAHAAAAAADHAAAAAABHAAAAAAAGwAAAAABGwAAAAADGwAAAAADGwAAAAADGwAAAAAAGwAAAAACGwAAAAADHAAAAAADHAAAAAADHAAAAAAAHAAAAAADHAAAAAAAHAAAAAACHAAAAAACHAAAAAAAHAAAAAAAGwAAAAADGwAAAAABGwAAAAACGwAAAAACGwAAAAACGwAAAAACGwAAAAACHAAAAAABHAAAAAADHAAAAAACHAAAAAAAHAAAAAABHAAAAAAAHAAAAAADHAAAAAACHAAAAAACGwAAAAACGwAAAAADGwAAAAAAPQAAAAAAPQAAAAAAPQAAAAAAPQAAAAAAHAAAAAABHAAAAAAAHAAAAAACHAAAAAADHAAAAAAAHAAAAAACHAAAAAAAHAAAAAABHAAAAAACGwAAAAADGwAAAAACGwAAAAABPQAAAAAAPQAAAAAAPQAAAAAAPQAAAAAAGwAAAAACGwAAAAADGwAAAAADGwAAAAABGwAAAAAAGwAAAAAAGwAAAAADGwAAAAABGwAAAAABGwAAAAADGwAAAAAAGwAAAAACPQAAAAAAPQAAAAAAPQAAAAAAPQAAAAAAGwAAAAAAGwAAAAABGwAAAAAAGwAAAAAAGwAAAAAAGwAAAAAAGwAAAAADGwAAAAADGwAAAAACGwAAAAADGwAAAAAAGwAAAAAAPQAAAAAAPQAAAAAAPQAAAAAAPQAAAAAAGwAAAAAAGwAAAAACGwAAAAACGwAAAAADGwAAAAAAGwAAAAAAGwAAAAABGwAAAAACGwAAAAADGwAAAAADGwAAAAADGwAAAAABPQAAAAAAPQAAAAAAPQAAAAAAPQAAAAAAOgAAAAAAOgAAAAAAOwAAAAAAOwAAAAAAOwAAAAAAOwAAAAAAOwAAAAAAPAAAAAABPAAAAAABPAAAAAAAPAAAAAABPAAAAAABPgAAAAAAPgAAAAAAPgAAAAACPgAAAAABOgAAAAAAOgAAAAAAOwAAAAAAOwAAAAAAOwAAAAAAOwAAAAAAOwAAAAAAPAAAAAAAPAAAAAAAPAAAAAABPAAAAAAAPAAAAAAAPgAAAAABPgAAAAABPgAAAAACPgAAAAACOgAAAAAAOgAAAAAAOwAAAAAAOwAAAAAAOwAAAAAAOwAAAAAAOwAAAAAAPAAAAAAAPAAAAAABPAAAAAABPAAAAAAAPAAAAAAAPgAAAAABPgAAAAAAPgAAAAABPgAAAAAAOgAAAAAAOgAAAAAAOwAAAAAAOwAAAAAAOwAAAAAAOwAAAAAAOwAAAAAAPAAAAAABPAAAAAAAPAAAAAAAPAAAAAAAPAAAAAAAPgAAAAAAPgAAAAABPgAAAAABPgAAAAAAOgAAAAAAOgAAAAAAOwAAAAAAOwAAAAAAOwAAAAAAOwAAAAAAOwAAAAAAPAAAAAAAPAAAAAAAPAAAAAABPAAAAAAAPAAAAAAAPgAAAAABPgAAAAACPgAAAAACPgAAAAABFAAAAAAAFAAAAAAALAAAAAAALAAAAAAALAAAAAAALAAAAAAALAAAAAAALwAAAAAALwAAAAAALwAAAAAALwAAAAAALwAAAAAAMQAAAAACMQAAAAADMQAAAAABMQAAAAABFAAAAAAAFAAAAAAALAAAAAAALAAAAAAALAAAAAAALAAAAAAALAAAAAAALwAAAAAALwAAAAAALwAAAAAALwAAAAAALwAAAAAAMQAAAAABMQAAAAADMQAAAAABMQAAAAAD
+                version: 6
+              -2,-2:
+                ind: -2,-2
+                tiles: AAAAAAAAAAAAAAAAAAAAAAAAHAAAAAAAHAAAAAADUAAAAAAAUwAAAAAAUwAAAAAAUwAAAAAAUwAAAAAAUwAAAAAAUwAAAAAAUwAAAAAAUwAAAAAAUwAAAAAAUwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAADHAAAAAAAUAAAAAAAUwAAAAAAUwAAAAAAVwAAAAAAVQAAAAAAVQAAAAAAVQAAAAAAVQAAAAAAVQAAAAAAVQAAAAAAVQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAAAHAAAAAACUAAAAAAAUwAAAAAAUwAAAAAAVAAAAAAAHAAAAAADHAAAAAAAGwAAAAABGwAAAAAAGwAAAAADGwAAAAADGwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAACHAAAAAADUAAAAAAAUwAAAAAAUwAAAAAAVAAAAAAAHAAAAAABHAAAAAAAHAAAAAAAHAAAAAAAHAAAAAACHAAAAAAAHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAABHAAAAAAAUAAAAAAAUwAAAAAAUwAAAAAAVAAAAAAAHAAAAAACHAAAAAACHAAAAAACHAAAAAADHAAAAAACHAAAAAABHAAAAAADAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAADHAAAAAADUAAAAAAAUwAAAAAAUwAAAAAAVAAAAAAAHAAAAAACHAAAAAACHAAAAAABHAAAAAACHAAAAAAAHAAAAAAAHAAAAAADAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAABHAAAAAADUAAAAAAAUwAAAAAAUwAAAAAAVAAAAAAAHAAAAAADHAAAAAADGwAAAAABGwAAAAACGwAAAAABGwAAAAABGwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAABHAAAAAADUAAAAAAAUwAAAAAAUwAAAAAAVAAAAAAAHAAAAAABHAAAAAABGwAAAAADGwAAAAACGwAAAAACGwAAAAADGwAAAAADAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAABHAAAAAABUAAAAAAAUwAAAAAAUwAAAAAAVAAAAAAAHAAAAAACHAAAAAACGwAAAAABGwAAAAAAGwAAAAADGwAAAAABGwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAUAAAAAAAUwAAAAAAUwAAAAAAVAAAAAAAHAAAAAACHAAAAAAAGwAAAAADGwAAAAABGwAAAAAANAAAAAAANAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAUAAAAAAAUwAAAAAAUwAAAAAAVAAAAAAAHAAAAAABHAAAAAACGwAAAAABGwAAAAABGwAAAAAAPwAAAAAANQAAAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAUAAAAAAAUwAAAAAAUwAAAAAAVAAAAAAAHAAAAAACHAAAAAABGwAAAAADGwAAAAACGwAAAAACPwAAAAAANQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAUAAAAAAAUwAAAAAAUwAAAAAAVAAAAAAAHAAAAAADHAAAAAABGwAAAAAAGwAAAAABGwAAAAAAPwAAAAAANQAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAUAAAAAAAUwAAAAAAUwAAAAAAVAAAAAAAHAAAAAAAHAAAAAACGwAAAAABGwAAAAABGwAAAAAANgAAAAAANgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAUAAAAAAAUwAAAAAAUwAAAAAAVAAAAAAAHAAAAAACGwAAAAAAGwAAAAAAGwAAAAABGwAAAAAAAQAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAUAAAAAAAUwAAAAAAUwAAAAAAVAAAAAAAHAAAAAABGwAAAAACGwAAAAABGwAAAAABGwAAAAAAAQAAAAAAAQAAAAAA
+                version: 6
+              1,-2:
+                ind: 1,-2
+                tiles: GwAAAAACGwAAAAADGwAAAAAAGwAAAAABGwAAAAABGwAAAAADGwAAAAAAGwAAAAAAGwAAAAAAGwAAAAAAGwAAAAACGwAAAAADGwAAAAADGwAAAAABGwAAAAADGwAAAAAAGwAAAAAAGwAAAAABGwAAAAACGwAAAAABGwAAAAAAGwAAAAADGwAAAAADGwAAAAAAGwAAAAACGwAAAAABGwAAAAACGwAAAAAAGwAAAAAAGwAAAAADGwAAAAABGwAAAAAAGwAAAAAAGwAAAAAAGwAAAAADGwAAAAADGwAAAAABGwAAAAABGwAAAAADGwAAAAAAGwAAAAACGwAAAAACGwAAAAACGwAAAAADGwAAAAABGwAAAAACHAAAAAADHAAAAAAAGwAAAAACGwAAAAAAGwAAAAABGwAAAAADGwAAAAAAGwAAAAAAGwAAAAADGwAAAAADGwAAAAACGwAAAAADGwAAAAAAGwAAAAADGwAAAAAAGwAAAAAAHAAAAAABHAAAAAABPQAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQwAAAAAAQwAAAAAAQwAAAAAAQwAAAAAAQwAAAAAAGwAAAAABGwAAAAABGwAAAAABHAAAAAABHAAAAAABPQAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQwAAAAAAQwAAAAAAQwAAAAAAQwAAAAAAQwAAAAAAGwAAAAADGwAAAAAAGwAAAAAAHAAAAAADHAAAAAAAPQAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQwAAAAAAQwAAAAAAQwAAAAAAQwAAAAAAQwAAAAAAGwAAAAACGwAAAAADGwAAAAACHAAAAAACHAAAAAADPQAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQwAAAAAAQwAAAAAAQwAAAAAAQwAAAAAAQwAAAAAAGwAAAAABGwAAAAAAGwAAAAADHAAAAAAAHAAAAAACPQAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQwAAAAAAQwAAAAAAQwAAAAAAQwAAAAAAQwAAAAAAGwAAAAAAGwAAAAABGwAAAAACHAAAAAABHAAAAAADPgAAAAAAQQAAAAAAQQAAAAAAQQAAAAAAQQAAAAAAQQAAAAAARAAAAAAARAAAAAAARAAAAAAARAAAAAAARAAAAAAAGwAAAAAAGwAAAAABGwAAAAACHAAAAAABHAAAAAADPgAAAAACQQAAAAAAQQAAAAAAQQAAAAAAQQAAAAAAQQAAAAAARAAAAAAARAAAAAAARAAAAAAARAAAAAAARAAAAAAAGwAAAAACGwAAAAAAGwAAAAAAHAAAAAACHAAAAAADPgAAAAAAQQAAAAAAQQAAAAAAQQAAAAAAQQAAAAAAQQAAAAAARAAAAAAARAAAAAAARAAAAAAARAAAAAAARAAAAAAAGwAAAAACGwAAAAABGwAAAAAAHAAAAAAAHAAAAAAAPgAAAAACQQAAAAAAQQAAAAAAQQAAAAAAQQAAAAAAQQAAAAAARAAAAAAARAAAAAAARAAAAAAARAAAAAAARAAAAAAAGwAAAAABGwAAAAACGwAAAAAAHAAAAAADHAAAAAABPgAAAAAAQQAAAAAAQQAAAAAAQQAAAAAAQQAAAAAAQQAAAAAARAAAAAAARAAAAAAARAAAAAAARAAAAAAARAAAAAAAGwAAAAAAGwAAAAAAGwAAAAAAHAAAAAADHAAAAAADMQAAAAADQgAAAAAAQgAAAAAAQgAAAAAAQgAAAAAAQgAAAAAARQAAAAABRQAAAAABRQAAAAABRQAAAAACRQAAAAACGwAAAAAAGwAAAAABGwAAAAAAHAAAAAABHAAAAAAAMQAAAAABQgAAAAAAQgAAAAAAQgAAAAAAQgAAAAAAQgAAAAAARQAAAAADRQAAAAADRQAAAAABRQAAAAACRQAAAAAAGwAAAAAAGwAAAAAAGwAAAAADHAAAAAAAHAAAAAAD
+                version: 6
+              1,-1:
+                ind: 1,-1
+                tiles: MQAAAAACQgAAAAAAQgAAAAAAQgAAAAAAQgAAAAAAQgAAAAAARQAAAAAARQAAAAAARQAAAAADRQAAAAAARQAAAAAAGwAAAAABGwAAAAACGwAAAAACHAAAAAAAHAAAAAADMQAAAAADQgAAAAAAQgAAAAAAQgAAAAAAQgAAAAAAQgAAAAAARQAAAAAARQAAAAACRQAAAAADRQAAAAAARQAAAAACGwAAAAACGwAAAAABGwAAAAAAHAAAAAABHAAAAAACMQAAAAADQgAAAAAAQgAAAAAAQgAAAAAAQgAAAAAAQgAAAAAARQAAAAAARQAAAAAARQAAAAAARQAAAAADRQAAAAAAGwAAAAABGwAAAAADGwAAAAAAHAAAAAACHAAAAAABMgAAAAACRgAAAAAARgAAAAAARgAAAAAARgAAAAAARgAAAAAASQAAAAADSQAAAAACSQAAAAAASQAAAAADSQAAAAAAGwAAAAAAGwAAAAAAGwAAAAACHAAAAAADHAAAAAACMgAAAAABRgAAAAAARgAAAAAARgAAAAAARgAAAAAARgAAAAAASQAAAAABSQAAAAACSQAAAAADSQAAAAADSQAAAAABGwAAAAADGwAAAAACGwAAAAAAHAAAAAADHAAAAAADMgAAAAAARgAAAAAARgAAAAAARgAAAAAARgAAAAAARgAAAAAASQAAAAABSQAAAAACSQAAAAADSQAAAAABSQAAAAACGwAAAAABGwAAAAABGwAAAAADHAAAAAAAHAAAAAADMgAAAAAARgAAAAAARgAAAAAARgAAAAAARgAAAAAARgAAAAAASQAAAAABSQAAAAACSQAAAAACSQAAAAABSQAAAAAAGwAAAAAAGwAAAAAAGwAAAAABHAAAAAADHAAAAAACMgAAAAACRgAAAAAARgAAAAAARgAAAAAARgAAAAAARgAAAAAASQAAAAADSQAAAAABSQAAAAACSQAAAAAASQAAAAABGwAAAAACGwAAAAADGwAAAAACHAAAAAABHAAAAAABMwAAAAAARwAAAAAARwAAAAAARwAAAAAARwAAAAAARwAAAAAASgAAAAABSgAAAAABSgAAAAABSgAAAAABSgAAAAABGwAAAAABGwAAAAADGwAAAAABHAAAAAACHAAAAAADMwAAAAACRwAAAAAARwAAAAAARwAAAAAARwAAAAAARwAAAAAASgAAAAABSgAAAAABSgAAAAABSgAAAAAASgAAAAABGwAAAAADGwAAAAACGwAAAAADHAAAAAADHAAAAAADMwAAAAAARwAAAAAARwAAAAAARwAAAAAARwAAAAAARwAAAAAASgAAAAABSgAAAAABSgAAAAABSgAAAAABSgAAAAAAGwAAAAACGwAAAAABGwAAAAACHAAAAAADHAAAAAAAMwAAAAABRwAAAAAARwAAAAAARwAAAAAARwAAAAAARwAAAAAASgAAAAAASgAAAAAASgAAAAAASgAAAAABSgAAAAABGwAAAAAAGwAAAAABGwAAAAAAHAAAAAABHAAAAAADMwAAAAADRwAAAAAARwAAAAAARwAAAAAARwAAAAAARwAAAAAASgAAAAABSgAAAAABSgAAAAAASgAAAAAASgAAAAABGwAAAAACGwAAAAABGwAAAAADHAAAAAABHAAAAAABKQAAAAADSAAAAAAASAAAAAAASAAAAAAASAAAAAAASAAAAAAASwAAAAAASwAAAAAASwAAAAAASwAAAAAASwAAAAAAGwAAAAABGwAAAAABGwAAAAADHAAAAAAAHAAAAAABKQAAAAACSAAAAAAASAAAAAAASAAAAAAASAAAAAAASAAAAAAASwAAAAAASwAAAAAASwAAAAAASwAAAAAASwAAAAAAGwAAAAABGwAAAAABGwAAAAAAHAAAAAACHAAAAAACKQAAAAADSAAAAAAASAAAAAAASAAAAAAASAAAAAAASAAAAAAASwAAAAAASwAAAAAASwAAAAAASwAAAAAASwAAAAAAGwAAAAAAGwAAAAADGwAAAAADHAAAAAACHAAAAAAB
+                version: 6
+              1,0:
+                ind: 1,0
+                tiles: KQAAAAADSAAAAAAASAAAAAAASAAAAAAASAAAAAAASAAAAAAASwAAAAAASwAAAAAASwAAAAAASwAAAAAASwAAAAAAGwAAAAAAGwAAAAAAGwAAAAADHAAAAAACHAAAAAACKQAAAAABSAAAAAAASAAAAAAASAAAAAAASAAAAAAASAAAAAAASwAAAAAASwAAAAAASwAAAAAASwAAAAAASwAAAAAAGwAAAAADGwAAAAABGwAAAAADHAAAAAADHAAAAAADKgAAAAABTAAAAAAATAAAAAAATAAAAAAATAAAAAAATAAAAAAATgAAAAAATgAAAAAATgAAAAAATgAAAAAATgAAAAAAGwAAAAACGwAAAAADGwAAAAAAHAAAAAACHAAAAAABKgAAAAABTAAAAAAATAAAAAAATAAAAAAATAAAAAAATAAAAAAATgAAAAAATgAAAAAATgAAAAAATgAAAAAATgAAAAAAGwAAAAADGwAAAAABGwAAAAAAHAAAAAACHAAAAAAAKgAAAAAATAAAAAAATAAAAAAATAAAAAAATAAAAAAATAAAAAAATgAAAAAATgAAAAAATgAAAAAATgAAAAAATgAAAAAAGwAAAAAAGwAAAAABGwAAAAAAHAAAAAABHAAAAAABKgAAAAABTAAAAAAATAAAAAAATAAAAAAATAAAAAAATAAAAAAATgAAAAAATgAAAAAATgAAAAAATgAAAAAATgAAAAAAGwAAAAAAGwAAAAADGwAAAAAAHAAAAAACHAAAAAAAKgAAAAAATAAAAAAATAAAAAAATAAAAAAATAAAAAAATAAAAAAATgAAAAAATgAAAAAATgAAAAAATgAAAAAATgAAAAAAGwAAAAADGwAAAAACGwAAAAAAHAAAAAABHAAAAAAAKwAAAAAATQAAAAAATQAAAAACTQAAAAAATQAAAAACTQAAAAABTwAAAAAATwAAAAAATwAAAAAATwAAAAAATwAAAAAAGwAAAAAAGwAAAAADGwAAAAAAHAAAAAABHAAAAAABKwAAAAAATQAAAAACTQAAAAADTQAAAAACTQAAAAABTQAAAAAATwAAAAAATwAAAAAATwAAAAAATwAAAAAATwAAAAAAGwAAAAAAGwAAAAABGwAAAAACHAAAAAADHAAAAAADKwAAAAAATQAAAAABTQAAAAAATQAAAAACTQAAAAAATQAAAAABTwAAAAAATwAAAAAATwAAAAAATwAAAAAATwAAAAAAGwAAAAAAGwAAAAACGwAAAAACHAAAAAABHAAAAAACKwAAAAAATQAAAAAATQAAAAABTQAAAAAATQAAAAADTQAAAAABTwAAAAAATwAAAAAATwAAAAAATwAAAAAATwAAAAAAGwAAAAACGwAAAAADGwAAAAADHAAAAAADHAAAAAABKwAAAAAATQAAAAAATQAAAAACTQAAAAAATQAAAAACTQAAAAABTwAAAAAATwAAAAAATwAAAAAATwAAAAAATwAAAAAAGwAAAAABGwAAAAACGwAAAAABHAAAAAADHAAAAAABGwAAAAABGwAAAAADGwAAAAADGwAAAAADGwAAAAACGwAAAAABGwAAAAAAGwAAAAACGwAAAAABGwAAAAABGwAAAAAAGwAAAAACGwAAAAACGwAAAAADHAAAAAACHAAAAAACGwAAAAAAGwAAAAABGwAAAAACGwAAAAADGwAAAAAAGwAAAAADGwAAAAAAGwAAAAACGwAAAAABGwAAAAADGwAAAAAAGwAAAAABGwAAAAADGwAAAAACHAAAAAAAHAAAAAACGwAAAAABGwAAAAABGwAAAAACGwAAAAADGwAAAAACGwAAAAADGwAAAAACGwAAAAACGwAAAAADGwAAAAABGwAAAAACGwAAAAAAGwAAAAADGwAAAAACHAAAAAACHAAAAAADHAAAAAADHAAAAAABHAAAAAACHAAAAAABHAAAAAACHAAAAAAAHAAAAAACHAAAAAABHAAAAAAAHAAAAAACHAAAAAABHAAAAAAAHAAAAAAAHAAAAAABHAAAAAABHAAAAAAC
+                version: 6
+              1,1:
+                ind: 1,1
+                tiles: HAAAAAADHAAAAAACHAAAAAACHAAAAAAAHAAAAAAAHAAAAAACHAAAAAADHAAAAAABHAAAAAABHAAAAAABHAAAAAACHAAAAAAAHAAAAAACHAAAAAAAHAAAAAAAHAAAAAABHAAAAAADHAAAAAABHAAAAAAAHAAAAAADHAAAAAACHAAAAAABHAAAAAABHAAAAAADHAAAAAABHAAAAAAAHAAAAAACHAAAAAAAHAAAAAADHAAAAAABHAAAAAAAHAAAAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+                version: 6
+              0,1:
+                ind: 0,1
+                tiles: HAAAAAADHAAAAAABHAAAAAABHAAAAAAAHAAAAAADHAAAAAABHAAAAAACHAAAAAAAHAAAAAABHAAAAAABHAAAAAABHAAAAAACHAAAAAABHAAAAAABHAAAAAACHAAAAAACHAAAAAABHAAAAAABHAAAAAABHAAAAAACHAAAAAACHAAAAAACHAAAAAADHAAAAAADHAAAAAABHAAAAAACHAAAAAADHAAAAAACHAAAAAADHAAAAAADHAAAAAABHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+                version: 6
+              -1,1:
+                ind: -1,1
+                tiles: HAAAAAACHAAAAAABHAAAAAABHAAAAAADHAAAAAACHAAAAAABHAAAAAACHAAAAAADHAAAAAAAHAAAAAABHAAAAAADHAAAAAABHAAAAAABHAAAAAAAHAAAAAABHAAAAAADHAAAAAACHAAAAAADHAAAAAACHAAAAAAAHAAAAAABHAAAAAABHAAAAAACHAAAAAABHAAAAAAAHAAAAAABHAAAAAABHAAAAAADHAAAAAAAHAAAAAAAHAAAAAADHAAAAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+                version: 6
+              -2,1:
+                ind: -2,1
+                tiles: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAUAAAAAAAUwAAAAAAUwAAAAAAVAAAAAAAHAAAAAAAHAAAAAACHAAAAAABHAAAAAADHAAAAAAAHAAAAAADHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWAAAAAAAVQAAAAAAVQAAAAAAVgAAAAAAHAAAAAADHAAAAAACHAAAAAABHAAAAAAAHAAAAAACHAAAAAAAHAAAAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+                version: 6
+              1,-3:
+                ind: 1,-3
+                tiles: WgAAAAAFXQAAAAAHXQAAAAAEXQAAAAAFXQAAAAAFXQAAAAAGYAAAAAAHYAAAAAAEYAAAAAAEYAAAAAAEYAAAAAAGYwAAAAABYwAAAAAEYwAAAAAGYwAAAAAGYwAAAAAHWgAAAAAGXQAAAAAHXQAAAAAEXQAAAAAEXQAAAAAHXQAAAAAGYAAAAAAGYAAAAAAFYAAAAAAHYAAAAAAFYAAAAAAFYwAAAAAHYwAAAAAEYwAAAAAEYwAAAAAFYwAAAAACWgAAAAADXQAAAAAHXQAAAAAGXQAAAAADXQAAAAAEXQAAAAAGYAAAAAAHYAAAAAAGYAAAAAACYAAAAAAFYAAAAAAHYwAAAAAHYwAAAAAGYwAAAAAHYwAAAAACYwAAAAAHWgAAAAADXQAAAAAGXQAAAAAGXQAAAAAGXQAAAAAHXQAAAAACYAAAAAAGYAAAAAAHYAAAAAAFYAAAAAADYAAAAAAFYwAAAAAFYwAAAAAFYwAAAAACYwAAAAACYwAAAAAGWgAAAAAEXQAAAAAEXQAAAAACXQAAAAAHXQAAAAADXQAAAAAGYAAAAAAHYAAAAAACYAAAAAAHYAAAAAAEYAAAAAAHYwAAAAAGYwAAAAAGYwAAAAABYwAAAAAFYwAAAAADWwAAAAAAXgAAAAAHXgAAAAAHXgAAAAAHXgAAAAAHXgAAAAAFYQAAAAABYQAAAAACYQAAAAADYQAAAAADYQAAAAABZAAAAAADZAAAAAAHZAAAAAADZAAAAAADZAAAAAABWwAAAAAAXgAAAAAFXgAAAAACXgAAAAAFXgAAAAAGXgAAAAADYQAAAAACYQAAAAADYQAAAAACYQAAAAADYQAAAAACZAAAAAADZAAAAAAEZAAAAAABZAAAAAAHZAAAAAAFWwAAAAAAXgAAAAADXgAAAAAGXgAAAAADXgAAAAADXgAAAAAFYQAAAAADYQAAAAACYQAAAAACYQAAAAADYQAAAAACZAAAAAAGZAAAAAAFZAAAAAACZAAAAAAGZAAAAAAHWwAAAAAAXgAAAAAFXgAAAAAGXgAAAAAHXgAAAAAFXgAAAAADYQAAAAABYQAAAAADYQAAAAADYQAAAAABYQAAAAACZAAAAAAEZAAAAAAGZAAAAAAGZAAAAAADZAAAAAAHWwAAAAAAXgAAAAAEXgAAAAADXgAAAAAGXgAAAAAFXgAAAAAHYQAAAAADYQAAAAADYQAAAAADYQAAAAADYQAAAAADZAAAAAADZAAAAAAEZAAAAAAGZAAAAAAFZAAAAAAEXAAAAAAAXwAAAAAAXwAAAAAAXwAAAAAAXwAAAAAAXwAAAAAAYgAAAAAGYgAAAAAEYgAAAAAGYgAAAAAFYgAAAAADZQAAAAAFZQAAAAAGZQAAAAAHZQAAAAAFZQAAAAAFXAAAAAAAXwAAAAAAXwAAAAAAXwAAAAAAXwAAAAAAXwAAAAAAYgAAAAADYgAAAAAFYgAAAAAHYgAAAAAGYgAAAAADZQAAAAAGZQAAAAAHZQAAAAAEZQAAAAAGZQAAAAAHXAAAAAAAXwAAAAAAXwAAAAAAXwAAAAAAXwAAAAAAXwAAAAAAYgAAAAACYgAAAAABYgAAAAAGYgAAAAACYgAAAAADZQAAAAAEZQAAAAAHZQAAAAAEZQAAAAAHZQAAAAAGXAAAAAAAXwAAAAAAXwAAAAAAXwAAAAAAXwAAAAAAXwAAAAAAYgAAAAAHYgAAAAACYgAAAAADYgAAAAAHYgAAAAAGZQAAAAABZQAAAAAFZQAAAAAGZQAAAAAFZQAAAAAHXAAAAAAAXwAAAAAAXwAAAAAAXwAAAAAAXwAAAAAAXwAAAAAAYgAAAAAHYgAAAAAHYgAAAAAFYgAAAAAHYgAAAAAHZQAAAAAEZQAAAAAEZQAAAAAHZQAAAAAGZQAAAAAGGwAAAAADGwAAAAACGwAAAAADGwAAAAACGwAAAAABGwAAAAABGwAAAAAAGwAAAAAAGwAAAAAAGwAAAAADGwAAAAACGwAAAAADGwAAAAABGwAAAAACGwAAAAADGwAAAAAD
+                version: 6
+              0,-3:
+                ind: 0,-3
+                tiles: ZgAAAAAAZgAAAAAAagAAAAAAagAAAAAAagAAAAAAagAAAAAAagAAAAAAbQAAAAAAbQAAAAAAbQAAAAAAbQAAAAAAbQAAAAAAWgAAAAAHWgAAAAAFWgAAAAACWgAAAAAHZgAAAAAAZgAAAAAAagAAAAAAagAAAAAAagAAAAAAagAAAAAAagAAAAAAbQAAAAAAbQAAAAAAbQAAAAAAbQAAAAAAbQAAAAAAWgAAAAAFWgAAAAAEWgAAAAAHWgAAAAAGZgAAAAAAZgAAAAAAagAAAAAAagAAAAAAagAAAAAAagAAAAAAagAAAAAAbQAAAAAAbQAAAAAAbQAAAAAAbQAAAAAAbQAAAAAAWgAAAAADWgAAAAAGWgAAAAAFWgAAAAADZgAAAAAAZgAAAAAAagAAAAAAagAAAAAAagAAAAAAagAAAAAAagAAAAAAbQAAAAAAbQAAAAAAbQAAAAAAbQAAAAAAbQAAAAAAWgAAAAAGWgAAAAADWgAAAAAEWgAAAAAGZgAAAAAAZgAAAAAAagAAAAAAagAAAAAAagAAAAAAagAAAAAAagAAAAAAbQAAAAAAbQAAAAAAbQAAAAAAbQAAAAAAbQAAAAAAWgAAAAAHWgAAAAAHWgAAAAAFWgAAAAAFIQAAAAAAIQAAAAABawAAAAAAawAAAAAAawAAAAAAawAAAAAAawAAAAAAbgAAAAAAbgAAAAAAbgAAAAAAbgAAAAAAbgAAAAAAWwAAAAAAWwAAAAAAWwAAAAAAWwAAAAAAIQAAAAAAIQAAAAAAawAAAAAAawAAAAAAawAAAAAAawAAAAAAawAAAAAAbgAAAAAAbgAAAAAAbgAAAAAAbgAAAAAAbgAAAAAAWwAAAAAAWwAAAAAAWwAAAAAAWwAAAAAAIQAAAAAAIQAAAAABawAAAAAAawAAAAAAawAAAAAAawAAAAAAawAAAAAAbgAAAAAAbgAAAAAAbgAAAAAAbgAAAAAAbgAAAAAAWwAAAAAAWwAAAAAAWwAAAAAAWwAAAAAAIQAAAAADIQAAAAADawAAAAAAawAAAAAAawAAAAAAawAAAAAAawAAAAAAbgAAAAAAbgAAAAAAbgAAAAAAbgAAAAAAbgAAAAAAWwAAAAAAWwAAAAAAWwAAAAAAWwAAAAAAIQAAAAADIQAAAAAAawAAAAAAawAAAAAAawAAAAAAawAAAAAAawAAAAAAbgAAAAAAbgAAAAAAbgAAAAAAbgAAAAAAbgAAAAAAWwAAAAAAWwAAAAAAWwAAAAAAWwAAAAAAZwAAAAAAZwAAAAAAbAAAAAAAbAAAAAAAbAAAAAAAbAAAAAAAbAAAAAAAbwAAAAAAbwAAAAAAbwAAAAAAbwAAAAAAbwAAAAAAXAAAAAAAXAAAAAAAXAAAAAAAXAAAAAAAZwAAAAAAZwAAAAAAbAAAAAAAbAAAAAAAbAAAAAAAbAAAAAAAbAAAAAAAbwAAAAAAbwAAAAAAbwAAAAAAbwAAAAAAbwAAAAAAXAAAAAAAXAAAAAAAXAAAAAAAXAAAAAAAZwAAAAAAZwAAAAAAbAAAAAAAbAAAAAAAbAAAAAAAbAAAAAAAbAAAAAAAbwAAAAAAbwAAAAAAbwAAAAAAbwAAAAAAbwAAAAAAXAAAAAAAXAAAAAAAXAAAAAAAXAAAAAAAZwAAAAAAZwAAAAAAbAAAAAAAbAAAAAAAbAAAAAAAbAAAAAAAbAAAAAAAbwAAAAAAbwAAAAAAbwAAAAAAbwAAAAAAbwAAAAAAXAAAAAAAXAAAAAAAXAAAAAAAXAAAAAAAZwAAAAAAZwAAAAAAbAAAAAAAbAAAAAAAbAAAAAAAbAAAAAAAbAAAAAAAbwAAAAAAbwAAAAAAbwAAAAAAbwAAAAAAbwAAAAAAXAAAAAAAXAAAAAAAXAAAAAAAXAAAAAAAaAAAAAAAaQAAAAAAGwAAAAABGwAAAAADGwAAAAAAGwAAAAACGwAAAAADGwAAAAACGwAAAAADGwAAAAAAGwAAAAACGwAAAAACGwAAAAADGwAAAAADGwAAAAAAGwAAAAAC
+                version: 6
+              -1,-3:
+                ind: -1,-3
+                tiles: cAAAAAAAcAAAAAAAcAAAAAAAcwAAAAAAcwAAAAAAcwAAAAAAcwAAAAAAcwAAAAAAdgAAAAAFdgAAAAAEdgAAAAACdgAAAAAEdgAAAAAEZgAAAAAAZgAAAAAAZgAAAAAAcAAAAAAAcAAAAAAAcAAAAAAAcwAAAAAAcwAAAAAAcwAAAAAAcwAAAAAAcwAAAAAAdgAAAAAEdgAAAAAFdgAAAAAEdgAAAAABdgAAAAAEZgAAAAAAZgAAAAAAZgAAAAAAcAAAAAAAcAAAAAAAcAAAAAAAcwAAAAAAcwAAAAAAcwAAAAAAcwAAAAAAcwAAAAAAdgAAAAADdgAAAAABdgAAAAAEdgAAAAAFdgAAAAABZgAAAAAAZgAAAAAAZgAAAAAAcAAAAAAAcAAAAAAAcAAAAAAAcwAAAAAAcwAAAAAAcwAAAAAAcwAAAAAAcwAAAAAAdgAAAAADdgAAAAAFdgAAAAADdgAAAAAFdgAAAAACZgAAAAAAZgAAAAAAZgAAAAAAcAAAAAAAcAAAAAAAcAAAAAAAcwAAAAAAcwAAAAAAcwAAAAAAcwAAAAAAcwAAAAAAdgAAAAACdgAAAAABdgAAAAAFdgAAAAAFdgAAAAAFZgAAAAAAZgAAAAAAZgAAAAAAcQAAAAAAcQAAAAAAcQAAAAAAdAAAAAAEdAAAAAAFdAAAAAAEdAAAAAAFdAAAAAAEdwAAAAAAdwAAAAAAdwAAAAAAdwAAAAAAdwAAAAAAIQAAAAABIQAAAAABIQAAAAACcQAAAAAAcQAAAAAAcQAAAAAAdAAAAAAEdAAAAAAEdAAAAAAEdAAAAAADdAAAAAAFdwAAAAAAdwAAAAAAdwAAAAAAdwAAAAAAdwAAAAAAIQAAAAADIQAAAAADIQAAAAACcQAAAAAAcQAAAAAAcQAAAAAAdAAAAAABdAAAAAADdAAAAAAFdAAAAAAFdAAAAAAEdwAAAAAAdwAAAAAAdwAAAAAAdwAAAAAAdwAAAAAAIQAAAAABIQAAAAAAIQAAAAABcQAAAAAAcQAAAAAAcQAAAAAAdAAAAAACdAAAAAAFdAAAAAAFdAAAAAAFdAAAAAADdwAAAAAAdwAAAAAAdwAAAAAAdwAAAAAAdwAAAAAAIQAAAAADIQAAAAACIQAAAAAAcQAAAAAAcQAAAAAAcQAAAAAAdAAAAAADdAAAAAAFdAAAAAACdAAAAAABdAAAAAADdwAAAAAAdwAAAAAAdwAAAAAAdwAAAAAAdwAAAAAAIQAAAAACIQAAAAABIQAAAAABcgAAAAAAcgAAAAAAcgAAAAAAdQAAAAADdQAAAAADdQAAAAAEdQAAAAAEdQAAAAAEeAAAAAABeAAAAAABeAAAAAACeAAAAAACeAAAAAACZwAAAAAAZwAAAAAAZwAAAAAAcgAAAAAAcgAAAAAAcgAAAAAAdQAAAAABdQAAAAADdQAAAAACdQAAAAAFdQAAAAAFeAAAAAADeAAAAAACeAAAAAADeAAAAAABeAAAAAABZwAAAAAAZwAAAAAAZwAAAAAAcgAAAAAAcgAAAAAAcgAAAAAAdQAAAAADdQAAAAACdQAAAAADdQAAAAADdQAAAAADeAAAAAAAeAAAAAABeAAAAAADeAAAAAAAeAAAAAACZwAAAAAAZwAAAAAAZwAAAAAAcgAAAAAAcgAAAAAAcgAAAAAAdQAAAAAEdQAAAAAFdQAAAAAEdQAAAAABdQAAAAADeAAAAAADeAAAAAADeAAAAAADeAAAAAAAeAAAAAABZwAAAAAAZwAAAAAAZwAAAAAAcgAAAAAAcgAAAAAAcgAAAAAAdQAAAAAEdQAAAAADdQAAAAAFdQAAAAAEdQAAAAAFeAAAAAADeAAAAAABeAAAAAAAeAAAAAADeAAAAAADZwAAAAAAZwAAAAAAZwAAAAAAaAAAAAAAaAAAAAAAaAAAAAAAaAAAAAAAaAAAAAAAaAAAAAAAaAAAAAAAaAAAAAAAaAAAAAAAaAAAAAAAaAAAAAAAaAAAAAAAaAAAAAAAaAAAAAAAaAAAAAAAaAAAAAAA
+                version: 6
+              -2,-3:
+                ind: -2,-3
+                tiles: AAAAAAAAAAAAAAAAAAAAAAAAHAAAAAABHAAAAAABUAAAAAAAUwAAAAAAUwAAAAAAVAAAAAAAegAAAAAAegAAAAABegAAAAABegAAAAAAegAAAAABcAAAAAAAcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAABHAAAAAADUAAAAAAAUwAAAAAAUwAAAAAAVAAAAAAAegAAAAABegAAAAAAegAAAAABegAAAAAAegAAAAAAcAAAAAAAcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAACHAAAAAABUAAAAAAAUwAAAAAAUwAAAAAAVAAAAAAAegAAAAAAegAAAAABegAAAAABegAAAAAAegAAAAAAcAAAAAAAcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAACHAAAAAADUAAAAAAAUwAAAAAAUwAAAAAAVAAAAAAAegAAAAABegAAAAAAegAAAAAAegAAAAABegAAAAAAcAAAAAAAcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAAAHAAAAAADUAAAAAAAUwAAAAAAUwAAAAAAVAAAAAAAegAAAAAAegAAAAAAegAAAAAAegAAAAABegAAAAAAcAAAAAAAcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAABHAAAAAABUAAAAAAAUwAAAAAAUwAAAAAAVAAAAAAAewAAAAABewAAAAADewAAAAACewAAAAADewAAAAADcQAAAAAAcQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAACHAAAAAADUAAAAAAAUwAAAAAAUwAAAAAAVAAAAAAAewAAAAAAewAAAAADewAAAAAAewAAAAABewAAAAADcQAAAAAAcQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAACHAAAAAACUAAAAAAAUwAAAAAAUwAAAAAAVAAAAAAAewAAAAADewAAAAADewAAAAADewAAAAACewAAAAABcQAAAAAAcQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAADHAAAAAADUAAAAAAAUwAAAAAAUwAAAAAAVAAAAAAAewAAAAADewAAAAAAewAAAAADewAAAAAAewAAAAABcQAAAAAAcQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAAAHAAAAAAAUAAAAAAAUwAAAAAAUwAAAAAAVAAAAAAAewAAAAADewAAAAADewAAAAADewAAAAAAewAAAAAAcQAAAAAAcQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAABHAAAAAABUAAAAAAAUwAAAAAAUwAAAAAAVAAAAAAAfAAAAAABfAAAAAAAfAAAAAABfAAAAAAAfAAAAAAAcgAAAAAAcgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAADHAAAAAACUAAAAAAAUwAAAAAAUwAAAAAAVAAAAAAAfAAAAAAAfAAAAAABfAAAAAAAfAAAAAAAfAAAAAADcgAAAAAAcgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAAAHAAAAAADUAAAAAAAUwAAAAAAUwAAAAAAVAAAAAAAfAAAAAAAfAAAAAACfAAAAAACfAAAAAACfAAAAAABcgAAAAAAcgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAACHAAAAAACUAAAAAAAUwAAAAAAUwAAAAAAVAAAAAAAfAAAAAADfAAAAAACfAAAAAACfAAAAAADfAAAAAABcgAAAAAAcgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAADHAAAAAAAUAAAAAAAUwAAAAAAUwAAAAAAVAAAAAAAfAAAAAADfAAAAAACfAAAAAABfAAAAAABfAAAAAAAcgAAAAAAcgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAADHAAAAAAAUAAAAAAAUwAAAAAAUwAAAAAAeQAAAAAAaAAAAAAAaAAAAAAAaAAAAAAAaAAAAAAAaAAAAAAAaAAAAAAAaAAAAAAA
+                version: 6
+              -3,-1:
+                ind: -3,-1
+                tiles: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGwAAAAADGwAAAAADGwAAAAADGwAAAAABGwAAAAACGwAAAAAAGwAAAAAAGwAAAAADGwAAAAACGwAAAAAAGwAAAAABGwAAAAABGwAAAAABGwAAAAAAGwAAAAABGwAAAAAAGwAAAAACGwAAAAADGwAAAAADGwAAAAADGwAAAAADGwAAAAADGwAAAAADGwAAAAABGwAAAAADGwAAAAACGwAAAAADGwAAAAAAGwAAAAAAGwAAAAADGwAAAAADGwAAAAABGwAAAAAAGwAAAAABGwAAAAACGwAAAAADGwAAAAAAGwAAAAAAGwAAAAABGwAAAAABGwAAAAABGwAAAAACGwAAAAABGwAAAAACGwAAAAAAGwAAAAADGwAAAAAAGwAAAAABGwAAAAABGwAAAAABGwAAAAACGwAAAAAAGwAAAAAAGwAAAAAAGwAAAAACGwAAAAADGwAAAAAAGwAAAAADGwAAAAACGwAAAAACGwAAAAACGwAAAAABGwAAAAAAGwAAAAACGwAAAAACGwAAAAAAGwAAAAACGwAAAAACGwAAAAAAGwAAAAAAGwAAAAACGwAAAAACGwAAAAAAGwAAAAADGwAAAAAAGwAAAAAAGwAAAAADGwAAAAAAGwAAAAADGwAAAAADGwAAAAABGwAAAAABGwAAAAADGwAAAAAAGwAAAAABGwAAAAAAGwAAAAADGwAAAAAAGwAAAAACGwAAAAADGwAAAAAAGwAAAAACGwAAAAABGwAAAAACGwAAAAACGwAAAAADGwAAAAADGwAAAAAAGwAAAAADGwAAAAAAGwAAAAACGwAAAAACGwAAAAACGwAAAAACGwAAAAABGwAAAAADGwAAAAAAGwAAAAACGwAAAAACGwAAAAAAGwAAAAADGwAAAAACCAAAAAAACAAAAAAACAAAAAAACAAAAAAACAAAAAAABAAAAAAABAAAAAAABAAAAAAABAAAAAAABAAAAAAABAAAAAAABAAAAAAACAAAAAAACAAAAAAABAAAAAAABAAAAAAABAAAAAAABAAAAAAABAAAAAAABAAAAAAABAAAAAAABAAAAAAABAAAAAAABAAAAAAABAAAAAAABAAAAAAABAAAAAAABAAAAAAACAAAAAAACAAAAAAABAAAAAAABAAAAAAABAAAAAAABAAAAAAABAAAAAAABAAAAAAABAAAAAAABAAAAAAACAAAAAAACAAAAAAACAAAAAAACAAAAAAACAAAAAAACAAAAAAACAAAAAAACAAAAAAABAAAAAAABAAAAAAAGwAAAAACGwAAAAACGwAAAAABGwAAAAABGwAAAAACGwAAAAACGwAAAAABGwAAAAABGwAAAAABGwAAAAABGwAAAAACGwAAAAABGwAAAAACGwAAAAABGwAAAAAAGwAAAAAAGwAAAAACGwAAAAAAGwAAAAAAGwAAAAABGwAAAAAAGwAAAAADGwAAAAACGwAAAAADGwAAAAABGwAAAAAAGwAAAAABGwAAAAADGwAAAAADGwAAAAAAGwAAAAABGwAAAAADGwAAAAAAGwAAAAABGwAAAAACGwAAAAABGwAAAAAAGwAAAAADGwAAAAADGwAAAAADGwAAAAADGwAAAAADGwAAAAACGwAAAAAAGwAAAAADGwAAAAABGwAAAAAAGwAAAAAB
+                version: 6
+              -3,0:
+                ind: -3,0
+                tiles: GwAAAAADGwAAAAACGwAAAAACGwAAAAADGwAAAAABGwAAAAABGwAAAAACGwAAAAABGwAAAAACGwAAAAAAGwAAAAACGwAAAAAAGwAAAAABGwAAAAACGwAAAAAAGwAAAAADGwAAAAABGwAAAAADGwAAAAACGwAAAAACGwAAAAABGwAAAAADGwAAAAAAGwAAAAABGwAAAAAAGwAAAAACGwAAAAABGwAAAAADGwAAAAACGwAAAAAAGwAAAAABGwAAAAABGwAAAAADGwAAAAADGwAAAAACGwAAAAACGwAAAAABGwAAAAADGwAAAAAAGwAAAAAAGwAAAAABGwAAAAADGwAAAAADGwAAAAABGwAAAAAAGwAAAAABGwAAAAAAGwAAAAADGwAAAAACGwAAAAACGwAAAAAAGwAAAAAAGwAAAAABGwAAAAABGwAAAAACGwAAAAADGwAAAAACGwAAAAABGwAAAAADGwAAAAADGwAAAAACGwAAAAAAGwAAAAAAGwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+                version: 6
+              -4,-1:
+                ind: -4,-1
+                tiles: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGwAAAAAAGwAAAAABGwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGwAAAAACGwAAAAAAGwAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGwAAAAAAGwAAAAADGwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGwAAAAAAGwAAAAADGwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGwAAAAABGwAAAAABGwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGwAAAAABGwAAAAADGwAAAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGwAAAAADGwAAAAAAGwAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAABAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAABAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAACAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGwAAAAAAGwAAAAABGwAAAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGwAAAAAAGwAAAAACGwAAAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGwAAAAADGwAAAAAAGwAAAAAD
+                version: 6
+              -4,0:
+                ind: -4,0
+                tiles: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGwAAAAABGwAAAAAAGwAAAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGwAAAAADGwAAAAABGwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGwAAAAAAGwAAAAACGwAAAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGwAAAAADGwAAAAACGwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+                version: 6
+              2,-2:
+                ind: 2,-2
+                tiles: GwAAAAACGwAAAAACGwAAAAACGwAAAAAAGwAAAAACGwAAAAACGwAAAAACGwAAAAACHAAAAAADHAAAAAADHAAAAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGwAAAAAAGwAAAAAAGwAAAAADGwAAAAACGwAAAAACGwAAAAAAGwAAAAACGwAAAAACHAAAAAABHAAAAAACHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAABHAAAAAAAHAAAAAADHAAAAAAAHAAAAAABHAAAAAABHAAAAAACHAAAAAAAHAAAAAABHAAAAAABHAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAADHAAAAAABHAAAAAAAHAAAAAACHAAAAAABHAAAAAAAHAAAAAADHAAAAAABHAAAAAAAHAAAAAACHAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAACHAAAAAADHAAAAAADHAAAAAACHAAAAAABHAAAAAAAHAAAAAABHAAAAAADHAAAAAABHAAAAAAAHAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+                version: 6
+              2,-3:
+                ind: 2,-3
+                tiles: fQAAAAACfQAAAAACfQAAAAABfQAAAAACfQAAAAACGwAAAAADGwAAAAACGwAAAAAAHAAAAAACHAAAAAACHAAAAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAfQAAAAACfQAAAAACfQAAAAACfQAAAAACfQAAAAACGwAAAAAAGwAAAAABGwAAAAABHAAAAAACHAAAAAAAHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAfQAAAAACfQAAAAACfQAAAAACfQAAAAACfQAAAAACGwAAAAADGwAAAAACGwAAAAACHAAAAAAAHAAAAAAAHAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAfQAAAAACfQAAAAACfQAAAAACfQAAAAACfQAAAAACGwAAAAAAGwAAAAACGwAAAAACHAAAAAACHAAAAAABHAAAAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAfQAAAAACfQAAAAABfQAAAAABfQAAAAABfQAAAAACGwAAAAABGwAAAAACGwAAAAADHAAAAAABHAAAAAADHAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAfgAAAAAAfgAAAAAAfgAAAAAAfgAAAAAAfgAAAAAAGwAAAAAAGwAAAAADGwAAAAACHAAAAAADHAAAAAACHAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAfgAAAAAAfgAAAAAAfgAAAAAAfgAAAAAAfgAAAAAAGwAAAAAAGwAAAAAAGwAAAAADHAAAAAADHAAAAAABHAAAAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAfgAAAAAAfgAAAAAAfgAAAAAAfgAAAAAAfgAAAAAAGwAAAAADGwAAAAAAGwAAAAACHAAAAAADHAAAAAAAHAAAAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAfgAAAAAAfgAAAAAAfgAAAAAAfgAAAAAAfgAAAAAAGwAAAAAAGwAAAAAAGwAAAAAAHAAAAAADHAAAAAADHAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAfgAAAAAAfgAAAAAAfgAAAAAAfgAAAAAAfgAAAAAAGwAAAAACGwAAAAACGwAAAAACHAAAAAABHAAAAAACHAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAfwAAAAACfwAAAAACfwAAAAADfwAAAAACfwAAAAACGwAAAAAAGwAAAAAAGwAAAAACHAAAAAABHAAAAAABHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAfwAAAAADfwAAAAADfwAAAAACfwAAAAADfwAAAAABGwAAAAAAGwAAAAABGwAAAAADHAAAAAADHAAAAAADHAAAAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAfwAAAAADfwAAAAADfwAAAAADfwAAAAADfwAAAAACGwAAAAADGwAAAAAAGwAAAAAAHAAAAAAAHAAAAAABHAAAAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAfwAAAAACfwAAAAADfwAAAAADfwAAAAADfwAAAAABGwAAAAADGwAAAAADGwAAAAACHAAAAAACHAAAAAABHAAAAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAfwAAAAABfwAAAAABfwAAAAABfwAAAAACfwAAAAADGwAAAAAAGwAAAAABGwAAAAADHAAAAAADHAAAAAAAHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGwAAAAAAGwAAAAADGwAAAAAAGwAAAAADGwAAAAAAGwAAAAAAGwAAAAADGwAAAAAAHAAAAAACHAAAAAAAHAAAAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+                version: 6
+              2,-1:
+                ind: 2,-1
+                tiles: HAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+                version: 6
+              2,0:
+                ind: 2,0
+                tiles: HAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+                version: 6
+              2,1:
+                ind: 2,1
+                tiles: HAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+                version: 6
+              -1,-4:
+                ind: -1,-4
+                tiles: gQAAAAAFgQAAAAAEgQAAAAAFhQAAAAADhQAAAAADhQAAAAAChQAAAAADhQAAAAACiAAAAAABiAAAAAABiAAAAAABiAAAAAABiAAAAAABjAAAAAACjAAAAAABjAAAAAACggAAAAAAggAAAAAAggAAAAAAhgAAAAAAhgAAAAAAhgAAAAAAhgAAAAAAhgAAAAAAiQAAAAAAaAAAAAAAaAAAAAAAaAAAAAAAaQAAAAAAjQAAAAACjQAAAAADjQAAAAADggAAAAAAggAAAAAAggAAAAAAhgAAAAAAhgAAAAAAhgAAAAAAhgAAAAAAhgAAAAAAUAAAAAAAUwAAAAAAUwAAAAAAUwAAAAAAVAAAAAAAjQAAAAABjQAAAAADjQAAAAADggAAAAAAggAAAAAAggAAAAAAhgAAAAAAhgAAAAAAhgAAAAAAhgAAAAAAhgAAAAAAUAAAAAAAUwAAAAAAUwAAAAAAUwAAAAAAVAAAAAAAjQAAAAADjQAAAAABjQAAAAACggAAAAAAggAAAAAAggAAAAAAhgAAAAAAhgAAAAAAhgAAAAAAhgAAAAAAhgAAAAAAUAAAAAAAUwAAAAAAUwAAAAAAUwAAAAAAVAAAAAAAjQAAAAADjQAAAAACjQAAAAADggAAAAAAggAAAAAAggAAAAAAhgAAAAAAhgAAAAAAhgAAAAAAhgAAAAAAhgAAAAAAWAAAAAAAVQAAAAAAVQAAAAAAVQAAAAAAVgAAAAAAjQAAAAADjQAAAAACjQAAAAACgwAAAAAAgwAAAAAAgwAAAAAAUwAAAAAAUwAAAAAAUwAAAAAAUwAAAAAAUwAAAAAAigAAAAAAigAAAAAAigAAAAAAigAAAAAAigAAAAAAjgAAAAABjgAAAAADjgAAAAADgwAAAAAAgwAAAAAAgwAAAAAAUwAAAAAAUwAAAAAAUwAAAAAAUwAAAAAAUwAAAAAAigAAAAAAigAAAAAAigAAAAAAigAAAAAAigAAAAAAjgAAAAACjgAAAAACjgAAAAADgwAAAAAAgwAAAAAAgwAAAAAAUwAAAAAAUwAAAAAAUwAAAAAAUwAAAAAAUwAAAAAAigAAAAAAigAAAAAAigAAAAAAigAAAAAAigAAAAAAjgAAAAADjgAAAAABjgAAAAADgwAAAAAAgwAAAAAAgwAAAAAAUwAAAAAAUwAAAAAAUwAAAAAAUwAAAAAAUwAAAAAAigAAAAAAigAAAAAAigAAAAAAigAAAAAAigAAAAAAjgAAAAADjgAAAAABjgAAAAADgwAAAAAAgwAAAAAAgwAAAAAAUwAAAAAAUwAAAAAAUwAAAAAAUwAAAAAAUwAAAAAAigAAAAAAigAAAAAAigAAAAAAigAAAAAAigAAAAAAjgAAAAADjgAAAAACjgAAAAADhAAAAAAAhAAAAAAAhAAAAAAChwAAAAABhwAAAAAChwAAAAAAhwAAAAABhwAAAAADiwAAAAADiwAAAAACiwAAAAADiwAAAAACiwAAAAADjwAAAAABjwAAAAADjwAAAAAAhAAAAAADhAAAAAAAhAAAAAAAhwAAAAADhwAAAAAFhwAAAAAEhwAAAAABhwAAAAAFiwAAAAAAiwAAAAADiwAAAAAAiwAAAAADiwAAAAACjwAAAAAAjwAAAAADjwAAAAAAhAAAAAADhAAAAAAAhAAAAAADhwAAAAAFhwAAAAADhwAAAAABhwAAAAAChwAAAAACiwAAAAACiwAAAAAAiwAAAAAAiwAAAAAAiwAAAAADjwAAAAACjwAAAAAAjwAAAAAAhAAAAAADhAAAAAAChAAAAAAChwAAAAADhwAAAAAFhwAAAAADhwAAAAAAhwAAAAABiwAAAAABiwAAAAABiwAAAAADiwAAAAABiwAAAAAAjwAAAAACjwAAAAAAjwAAAAAAhAAAAAAChAAAAAAChAAAAAAChwAAAAAEhwAAAAAChwAAAAAFhwAAAAADhwAAAAAFiwAAAAABiwAAAAABiwAAAAAAiwAAAAACiwAAAAABjwAAAAAAjwAAAAAAjwAAAAAC
+                version: 6
+              -2,-4:
+                ind: -2,-4
+                tiles: AAAAAAAAAAAAAAAAAAAAAAAAHAAAAAADHAAAAAABUAAAAAAAUwAAAAAAUwAAAAAAVAAAAAAAkAAAAAABkAAAAAAEkAAAAAADkAAAAAAGkAAAAAACgQAAAAACgQAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAADHAAAAAAAUAAAAAAAUwAAAAAAUwAAAAAAVAAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAggAAAAAAggAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAABHAAAAAABUAAAAAAAUwAAAAAAUwAAAAAAVAAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAggAAAAAAggAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAABHAAAAAADUAAAAAAAUwAAAAAAUwAAAAAAVAAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAggAAAAAAggAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAADHAAAAAABUAAAAAAAUwAAAAAAUwAAAAAAVAAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAggAAAAAAggAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAADHAAAAAABUAAAAAAAUwAAAAAAUwAAAAAAVAAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAggAAAAAAggAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAACHAAAAAAAUAAAAAAAUwAAAAAAUwAAAAAAVAAAAAAAkgAAAAAAkgAAAAAAkgAAAAAAkgAAAAAAkgAAAAAAgwAAAAAAgwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAABHAAAAAACUAAAAAAAUwAAAAAAUwAAAAAAVAAAAAAAkgAAAAAAkgAAAAAAkgAAAAAAkgAAAAAAkgAAAAAAgwAAAAAAgwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAADHAAAAAACUAAAAAAAUwAAAAAAUwAAAAAAVAAAAAAAkgAAAAAAkgAAAAAAkgAAAAAAkgAAAAAAkgAAAAAAgwAAAAAAgwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAAAHAAAAAADUAAAAAAAUwAAAAAAUwAAAAAAVAAAAAAAkgAAAAAAkgAAAAAAkgAAAAAAkgAAAAAAkgAAAAAAgwAAAAAAgwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAACHAAAAAAAUAAAAAAAUwAAAAAAUwAAAAAAVAAAAAAAkgAAAAAAkgAAAAAAkgAAAAAAkgAAAAAAkgAAAAAAgwAAAAAAgwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAADHAAAAAAAUAAAAAAAUwAAAAAAUwAAAAAAVAAAAAAAkwAAAAAAkwAAAAAAkwAAAAAAkwAAAAAAkwAAAAAAhAAAAAAAhAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAAAHAAAAAACUAAAAAAAUwAAAAAAUwAAAAAAVAAAAAAAkwAAAAAAkwAAAAAAkwAAAAAAkwAAAAAAkwAAAAAAhAAAAAAChAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAACHAAAAAABUAAAAAAAUwAAAAAAUwAAAAAAVAAAAAAAkwAAAAAAkwAAAAAAkwAAAAAAkwAAAAAAkwAAAAAAhAAAAAADhAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAADHAAAAAADUAAAAAAAUwAAAAAAUwAAAAAAVAAAAAAAkwAAAAAAkwAAAAAAkwAAAAAAkwAAAAAAkwAAAAAAhAAAAAAAhAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAACHAAAAAACUAAAAAAAUwAAAAAAUwAAAAAAVAAAAAAAkwAAAAAAkwAAAAAAkwAAAAAAkwAAAAAAkwAAAAAAhAAAAAAAhAAAAAAB
+                version: 6
+              0,-4:
+                ind: 0,-4
+                tiles: jAAAAAADjAAAAAAClAAAAAAClAAAAAADlAAAAAABlAAAAAAClAAAAAADmAAAAAABmAAAAAADmAAAAAACmAAAAAADmAAAAAABnAAAAAACnAAAAAADnAAAAAAAnAAAAAAAjQAAAAACjQAAAAADlQAAAAADlQAAAAADlQAAAAABlQAAAAABlQAAAAADmQAAAAADmQAAAAACmQAAAAADmQAAAAABmQAAAAACnQAAAAACnQAAAAABnQAAAAADnQAAAAABjQAAAAACjQAAAAABlQAAAAADlQAAAAADlQAAAAADlQAAAAAClQAAAAADmQAAAAADmQAAAAADmQAAAAACmQAAAAADmQAAAAADnQAAAAADnQAAAAABnQAAAAADnQAAAAACjQAAAAACjQAAAAADlQAAAAADlQAAAAADlQAAAAAClQAAAAAClQAAAAADmQAAAAACmQAAAAADmQAAAAADmQAAAAADmQAAAAABnQAAAAADnQAAAAADnQAAAAADnQAAAAADjQAAAAADjQAAAAADlQAAAAADlQAAAAABlQAAAAADlQAAAAABlQAAAAADmQAAAAACmQAAAAACmQAAAAACmQAAAAABmQAAAAACnQAAAAACnQAAAAACnQAAAAACnQAAAAACjQAAAAADjQAAAAAClQAAAAADlQAAAAADlQAAAAADlQAAAAAClQAAAAABmQAAAAACmQAAAAACmQAAAAADmQAAAAADmQAAAAADnQAAAAADnQAAAAADnQAAAAABnQAAAAADjgAAAAADjgAAAAADlgAAAAAAlgAAAAAAlgAAAAAAlgAAAAAAlgAAAAAAmgAAAAAHmgAAAAAEmgAAAAAHmgAAAAAHmgAAAAAFngAAAAAEngAAAAADngAAAAAEngAAAAAHjgAAAAACjgAAAAADlgAAAAAAlgAAAAAAlgAAAAAAlgAAAAAAlgAAAAAAmgAAAAAHmgAAAAAEmgAAAAAHmgAAAAADmgAAAAADngAAAAAHngAAAAAHngAAAAADngAAAAAGjgAAAAADjgAAAAAClgAAAAAAlgAAAAAAlgAAAAAAlgAAAAAAlgAAAAAAmgAAAAAFmgAAAAAFmgAAAAACmgAAAAAHmgAAAAAFngAAAAAFngAAAAAGngAAAAAHngAAAAAFjgAAAAACjgAAAAADlgAAAAAAlgAAAAAAlgAAAAAAlgAAAAAAlgAAAAAAmgAAAAAEmgAAAAAFmgAAAAAHmgAAAAAHmgAAAAADngAAAAAHngAAAAAEngAAAAAHngAAAAAHjgAAAAADjgAAAAADlgAAAAAAlgAAAAAAlgAAAAAAlgAAAAAAlgAAAAAAmgAAAAADmgAAAAAFmgAAAAAHmgAAAAADmgAAAAADngAAAAAFngAAAAAHngAAAAAFngAAAAAFjwAAAAADjwAAAAAAlwAAAAAAlwAAAAAAlwAAAAAAlwAAAAAAlwAAAAAAmwAAAAAGmwAAAAAGmwAAAAAGmwAAAAABmwAAAAAFnwAAAAAEnwAAAAAHnwAAAAAHnwAAAAADjwAAAAACjwAAAAADlwAAAAAAlwAAAAAAlwAAAAAAlwAAAAAAlwAAAAAAmwAAAAAFmwAAAAADmwAAAAAFmwAAAAAHmwAAAAAHnwAAAAAGnwAAAAAGnwAAAAAFnwAAAAAEjwAAAAAAjwAAAAADlwAAAAAAlwAAAAAAlwAAAAAAlwAAAAAAlwAAAAAAmwAAAAACmwAAAAABmwAAAAAFmwAAAAACmwAAAAAGnwAAAAAGnwAAAAAGnwAAAAAGnwAAAAABjwAAAAAAjwAAAAABlwAAAAAAlwAAAAAAlwAAAAAAlwAAAAAAlwAAAAAAmwAAAAADmwAAAAAEmwAAAAADmwAAAAAHmwAAAAAGnwAAAAAHnwAAAAAHnwAAAAADnwAAAAAEjwAAAAABjwAAAAAAlwAAAAAAlwAAAAAAlwAAAAAAlwAAAAAAlwAAAAAAmwAAAAAHmwAAAAACmwAAAAAGmwAAAAAGmwAAAAAHnwAAAAAGnwAAAAAFnwAAAAADnwAAAAAC
+                version: 6
+              1,-4:
+                ind: 1,-4
+                tiles: nAAAAAACoAAAAAACoAAAAAABoAAAAAABoAAAAAADoAAAAAACpAAAAAAFpAAAAAAHpAAAAAAJpAAAAAAJpAAAAAADGwAAAAACGwAAAAAAGwAAAAAAGwAAAAADGwAAAAACnQAAAAADoQAAAAADoQAAAAADoQAAAAABoQAAAAABoQAAAAADpQAAAAACpQAAAAADpQAAAAACpQAAAAADpQAAAAACqAAAAAACqAAAAAABqAAAAAACqAAAAAACqAAAAAADnQAAAAADoQAAAAACoQAAAAADoQAAAAADoQAAAAACoQAAAAACpQAAAAADpQAAAAADpQAAAAADpQAAAAADpQAAAAADqAAAAAACqAAAAAADqAAAAAACqAAAAAADqAAAAAADnQAAAAACoQAAAAABoQAAAAABoQAAAAADoQAAAAACoQAAAAACpQAAAAACpQAAAAACpQAAAAADpQAAAAABpQAAAAACqAAAAAADqAAAAAADqAAAAAADqAAAAAACqAAAAAADnQAAAAADoQAAAAADoQAAAAACoQAAAAACoQAAAAADoQAAAAADpQAAAAABpQAAAAACpQAAAAACpQAAAAADpQAAAAADqAAAAAACqAAAAAADqAAAAAABqAAAAAACqAAAAAADnQAAAAABoQAAAAADoQAAAAACoQAAAAACoQAAAAADoQAAAAACpQAAAAABpQAAAAADpQAAAAABpQAAAAACpQAAAAABqAAAAAADqAAAAAACqAAAAAABqAAAAAADqAAAAAACngAAAAAGogAAAAAEogAAAAACogAAAAAEogAAAAAFogAAAAAGpgAAAAAHpgAAAAABpgAAAAAEpgAAAAAFpgAAAAACqQAAAAADqQAAAAAFqQAAAAAFqQAAAAAEqQAAAAAHngAAAAAHogAAAAAEogAAAAAHogAAAAAFogAAAAAHogAAAAAGpgAAAAAHpgAAAAAFpgAAAAAHpgAAAAAHpgAAAAAGqQAAAAAGqQAAAAAFqQAAAAAEqQAAAAABqQAAAAAFngAAAAABogAAAAAHogAAAAAGogAAAAAGogAAAAAGogAAAAAFpgAAAAAEpgAAAAAGpgAAAAAEpgAAAAAEpgAAAAAHqQAAAAADqQAAAAAGqQAAAAAFqQAAAAABqQAAAAAFngAAAAAHogAAAAAHogAAAAAFogAAAAAGogAAAAAFogAAAAABpgAAAAAGpgAAAAAHpgAAAAABpgAAAAAHpgAAAAACqQAAAAADqQAAAAAFqQAAAAADqQAAAAAFqQAAAAAGngAAAAAEogAAAAAHogAAAAAFogAAAAAEogAAAAAHogAAAAAGpgAAAAADpgAAAAACpgAAAAAHpgAAAAAGpgAAAAADqQAAAAAEqQAAAAAGqQAAAAAHqQAAAAAFqQAAAAAEnwAAAAAEowAAAAAAowAAAAAAowAAAAAAowAAAAAAowAAAAAApwAAAAABpwAAAAABpwAAAAACpwAAAAACpwAAAAACqgAAAAAHqgAAAAACqgAAAAAGqgAAAAAGqgAAAAADnwAAAAADowAAAAAAowAAAAAAowAAAAAAowAAAAAAowAAAAAApwAAAAACpwAAAAACpwAAAAACpwAAAAACpwAAAAABqgAAAAAHqgAAAAAEqgAAAAABqgAAAAAGqgAAAAABnwAAAAAFowAAAAAAowAAAAAAowAAAAAAowAAAAAAowAAAAAApwAAAAACpwAAAAABpwAAAAABpwAAAAACpwAAAAACqgAAAAAEqgAAAAAFqgAAAAAHqgAAAAAHqgAAAAAGnwAAAAAHowAAAAAAowAAAAAAowAAAAAAowAAAAAAowAAAAAApwAAAAACpwAAAAACpwAAAAABpwAAAAACpwAAAAACqgAAAAAGqgAAAAAGqgAAAAADqgAAAAADqgAAAAAEnwAAAAAHowAAAAAAowAAAAAAowAAAAAAowAAAAAAowAAAAAApwAAAAACpwAAAAACpwAAAAACpwAAAAACpwAAAAACqgAAAAAGqgAAAAAGqgAAAAACqgAAAAAEqgAAAAAF
+                version: 6
+              2,-4:
+                ind: 2,-4
+                tiles: GwAAAAAAGwAAAAABGwAAAAACGwAAAAABGwAAAAADGwAAAAABGwAAAAACGwAAAAAAGwAAAAABHAAAAAAAHAAAAAACHAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAqwAAAAACqwAAAAABqwAAAAACqwAAAAADqwAAAAADGwAAAAACGwAAAAABGwAAAAAAHAAAAAACHAAAAAACHAAAAAABHAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAqwAAAAADqwAAAAACqwAAAAADqwAAAAADqwAAAAABGwAAAAABGwAAAAADGwAAAAAAHAAAAAABHAAAAAABHAAAAAAAHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAqwAAAAACqwAAAAACqwAAAAACqwAAAAACqwAAAAADGwAAAAABGwAAAAAAGwAAAAADHAAAAAACHAAAAAAAHAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAqwAAAAADqwAAAAACqwAAAAACqwAAAAACqwAAAAADGwAAAAADGwAAAAADGwAAAAADHAAAAAABHAAAAAABHAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAqwAAAAADqwAAAAACqwAAAAACqwAAAAABqwAAAAADGwAAAAAAGwAAAAACGwAAAAADHAAAAAADHAAAAAABHAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAArAAAAAAGrAAAAAAHrAAAAAAHrAAAAAAHrAAAAAADGwAAAAACGwAAAAADGwAAAAACHAAAAAACHAAAAAACHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAArAAAAAAHrAAAAAADrAAAAAAFrAAAAAAHrAAAAAAHGwAAAAABGwAAAAADGwAAAAABHAAAAAADHAAAAAADHAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAArAAAAAAHrAAAAAAFrAAAAAAGrAAAAAAHrAAAAAAFGwAAAAAAGwAAAAACGwAAAAACHAAAAAACHAAAAAABHAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAArAAAAAAHrAAAAAACrAAAAAAErAAAAAAHrAAAAAAHGwAAAAABGwAAAAABGwAAAAAAHAAAAAACHAAAAAABHAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAArAAAAAAHrAAAAAAFrAAAAAADrAAAAAAFrAAAAAAGGwAAAAAAGwAAAAACGwAAAAACHAAAAAABHAAAAAACHAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAArQAAAAAErQAAAAAFrQAAAAAGrQAAAAAGrQAAAAABGwAAAAAAGwAAAAADGwAAAAADHAAAAAACHAAAAAABHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAArQAAAAADrQAAAAAGrQAAAAAGrQAAAAACrQAAAAAHGwAAAAAAGwAAAAADGwAAAAADHAAAAAADHAAAAAAAHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAArQAAAAAGrQAAAAAFrQAAAAAFrQAAAAAFrQAAAAAEGwAAAAABGwAAAAADGwAAAAAAHAAAAAAAHAAAAAAAHAAAAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAArQAAAAAGrQAAAAAGrQAAAAAHrQAAAAAFrQAAAAAHGwAAAAACGwAAAAABGwAAAAABHAAAAAAAHAAAAAACHAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAArQAAAAAGrQAAAAAHrQAAAAACrQAAAAADrQAAAAAFGwAAAAABGwAAAAADGwAAAAADHAAAAAAAHAAAAAAAHAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+                version: 6
+              -2,-5:
+                ind: -2,-5
+                tiles: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAAAHAAAAAADHAAAAAACHAAAAAAAHAAAAAAAHAAAAAAAHAAAAAACHAAAAAAAHAAAAAABHAAAAAADHAAAAAABHAAAAAACHAAAAAADAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAAAHAAAAAACHAAAAAADHAAAAAABHAAAAAADHAAAAAACHAAAAAAAHAAAAAABHAAAAAACHAAAAAABHAAAAAABHAAAAAACHAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAABHAAAAAABHAAAAAACHAAAAAAAHAAAAAABHAAAAAAAHAAAAAADHAAAAAACHAAAAAACHAAAAAABHAAAAAAAHAAAAAADHAAAAAADAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAACHAAAAAAAHAAAAAABGwAAAAACGwAAAAABGwAAAAABGwAAAAABGwAAAAABGwAAAAABGwAAAAADGwAAAAAAGwAAAAABGwAAAAADAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAAAHAAAAAADHAAAAAADGwAAAAADGwAAAAAAGwAAAAAAGwAAAAACGwAAAAACGwAAAAACGwAAAAAAGwAAAAABGwAAAAACGwAAAAADAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAABHAAAAAABHAAAAAADGwAAAAADaAAAAAAAGwAAAAABGwAAAAACGwAAAAAAGwAAAAACGwAAAAACGwAAAAADGwAAAAADGwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAADHAAAAAADiQAAAAAAaAAAAAAAaAAAAAAAaQAAAAAAkAAAAAAGkAAAAAAFkAAAAAAEkAAAAAAEkAAAAAAFgQAAAAACgQAAAAACAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAADHAAAAAACUAAAAAAAUwAAAAAAUwAAAAAAVAAAAAAAkAAAAAAFkAAAAAABkAAAAAAFkAAAAAAFkAAAAAAFgQAAAAAGgQAAAAABAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAAAHAAAAAADUAAAAAAAUwAAAAAAUwAAAAAAVAAAAAAAkAAAAAADkAAAAAAGkAAAAAAGkAAAAAAGkAAAAAACgQAAAAACgQAAAAAFAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAACHAAAAAACUAAAAAAAUwAAAAAAUwAAAAAAVAAAAAAAkAAAAAAGkAAAAAAEkAAAAAAGkAAAAAACkAAAAAACgQAAAAABgQAAAAAA
+                version: 6
+              -1,-5:
+                ind: -1,-5
+                tiles: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAAAHAAAAAADHAAAAAADHAAAAAAAHAAAAAADHAAAAAADHAAAAAACHAAAAAAAHAAAAAABHAAAAAAAHAAAAAAAHAAAAAABHAAAAAACHAAAAAADHAAAAAABHAAAAAACHAAAAAABHAAAAAACHAAAAAADHAAAAAADHAAAAAAAHAAAAAABHAAAAAABHAAAAAAAHAAAAAACHAAAAAAAHAAAAAADHAAAAAACHAAAAAAAHAAAAAADHAAAAAAAHAAAAAACHAAAAAACHAAAAAACHAAAAAABHAAAAAABHAAAAAADHAAAAAAAHAAAAAAAHAAAAAACHAAAAAADHAAAAAAAHAAAAAACHAAAAAACHAAAAAABHAAAAAABHAAAAAADHAAAAAAAGwAAAAABGwAAAAAAGwAAAAAAGwAAAAAAGwAAAAABGwAAAAABGwAAAAABGwAAAAABGwAAAAADGwAAAAAAGwAAAAAAGwAAAAADGwAAAAADGwAAAAAAGwAAAAACGwAAAAAAGwAAAAABGwAAAAABGwAAAAADGwAAAAAAGwAAAAADGwAAAAABGwAAAAADGwAAAAAAGwAAAAABGwAAAAADGwAAAAABGwAAAAADGwAAAAADGwAAAAADGwAAAAADGwAAAAADGwAAAAADGwAAAAADGwAAAAACGwAAAAAAGwAAAAADGwAAAAACGwAAAAAAGwAAAAAAGwAAAAAAGwAAAAAAGwAAAAABGwAAAAACGwAAAAABGwAAAAACGwAAAAAAGwAAAAADgQAAAAAGgQAAAAAFgQAAAAADhQAAAAADhQAAAAAChQAAAAAChQAAAAAChQAAAAADiAAAAAABiAAAAAABiAAAAAABiAAAAAABiAAAAAABjAAAAAACjAAAAAACjAAAAAADgQAAAAACgQAAAAAEgQAAAAABhQAAAAADhQAAAAAChQAAAAAChQAAAAADhQAAAAADiAAAAAABiAAAAAABiAAAAAABiAAAAAABiAAAAAABjAAAAAACjAAAAAABjAAAAAABgQAAAAAEgQAAAAAGgQAAAAAEhQAAAAADhQAAAAADhQAAAAABhQAAAAAChQAAAAADiAAAAAABiAAAAAABiAAAAAABiAAAAAABiAAAAAABjAAAAAADjAAAAAACjAAAAAABgQAAAAADgQAAAAAEgQAAAAAFhQAAAAADhQAAAAADhQAAAAADhQAAAAAChQAAAAADiAAAAAABiAAAAAABiAAAAAABiAAAAAABiAAAAAABjAAAAAADjAAAAAADjAAAAAAC
+                version: 6
+              0,-5:
+                ind: 0,-5
+                tiles: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAAAHAAAAAABHAAAAAADHAAAAAABHAAAAAAAHAAAAAADHAAAAAABHAAAAAAAHAAAAAADHAAAAAAAHAAAAAACHAAAAAAAHAAAAAAAHAAAAAABHAAAAAACHAAAAAABHAAAAAADHAAAAAADHAAAAAABHAAAAAADHAAAAAACHAAAAAABHAAAAAADHAAAAAAAHAAAAAABHAAAAAABHAAAAAADHAAAAAAAHAAAAAACHAAAAAAAHAAAAAADHAAAAAAAHAAAAAACHAAAAAAAHAAAAAABHAAAAAAAHAAAAAAAHAAAAAADHAAAAAACHAAAAAADHAAAAAABHAAAAAAAHAAAAAACHAAAAAACHAAAAAAAHAAAAAADHAAAAAADHAAAAAADGwAAAAAAGwAAAAADGwAAAAABGwAAAAACGwAAAAADGwAAAAABGwAAAAACGwAAAAACGwAAAAACGwAAAAADGwAAAAACGwAAAAAAGwAAAAAAGwAAAAAAGwAAAAACGwAAAAABGwAAAAAAGwAAAAADGwAAAAADGwAAAAACGwAAAAACGwAAAAABGwAAAAADGwAAAAAAGwAAAAABGwAAAAADGwAAAAAAGwAAAAABGwAAAAADGwAAAAABGwAAAAADGwAAAAAAGwAAAAAAGwAAAAABGwAAAAACGwAAAAADGwAAAAAAGwAAAAACGwAAAAAAGwAAAAACGwAAAAAAGwAAAAACGwAAAAACGwAAAAAAGwAAAAABGwAAAAACGwAAAAACGwAAAAADjAAAAAACjAAAAAAClAAAAAADlAAAAAAClAAAAAABlAAAAAAClAAAAAACmAAAAAABmAAAAAADmAAAAAACmAAAAAADmAAAAAACnAAAAAAAnAAAAAADnAAAAAACnAAAAAABjAAAAAADjAAAAAADlAAAAAABlAAAAAADlAAAAAADlAAAAAADlAAAAAADmAAAAAABmAAAAAADmAAAAAADmAAAAAADmAAAAAABnAAAAAAAnAAAAAABnAAAAAACnAAAAAABjAAAAAABjAAAAAABlAAAAAAClAAAAAADlAAAAAAClAAAAAADlAAAAAACmAAAAAADmAAAAAACmAAAAAADmAAAAAACmAAAAAADnAAAAAACnAAAAAAAnAAAAAAAnAAAAAADjAAAAAADjAAAAAAClAAAAAADlAAAAAAClAAAAAADlAAAAAABlAAAAAACmAAAAAADmAAAAAABmAAAAAACmAAAAAADmAAAAAABnAAAAAABnAAAAAACnAAAAAACnAAAAAAB
+                version: 6
+              1,-5:
+                ind: 1,-5
+                tiles: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAAAHAAAAAACHAAAAAABHAAAAAADHAAAAAAAHAAAAAADHAAAAAACHAAAAAACHAAAAAADHAAAAAABHAAAAAABHAAAAAACHAAAAAADHAAAAAADHAAAAAACHAAAAAADHAAAAAABHAAAAAADHAAAAAACHAAAAAAAHAAAAAABHAAAAAADHAAAAAAAHAAAAAACHAAAAAADHAAAAAAAHAAAAAACHAAAAAABHAAAAAACHAAAAAACHAAAAAADHAAAAAACHAAAAAAAHAAAAAAAHAAAAAAAHAAAAAACHAAAAAABHAAAAAACHAAAAAACHAAAAAADHAAAAAADHAAAAAADHAAAAAABHAAAAAAAHAAAAAABHAAAAAADHAAAAAACHAAAAAADGwAAAAACGwAAAAAAGwAAAAACGwAAAAABGwAAAAAAGwAAAAABGwAAAAADGwAAAAAAGwAAAAAAGwAAAAADGwAAAAADGwAAAAABGwAAAAAAGwAAAAACGwAAAAACGwAAAAABGwAAAAADGwAAAAACGwAAAAABGwAAAAACGwAAAAADGwAAAAACGwAAAAAAGwAAAAADGwAAAAABGwAAAAACGwAAAAADGwAAAAABGwAAAAAAGwAAAAADGwAAAAADGwAAAAABGwAAAAADGwAAAAABGwAAAAAAGwAAAAADGwAAAAAAGwAAAAACGwAAAAAAGwAAAAABGwAAAAAAGwAAAAADGwAAAAABGwAAAAABGwAAAAAAGwAAAAAAGwAAAAAAGwAAAAACnAAAAAADoAAAAAADoAAAAAADoAAAAAACoAAAAAABoAAAAAABpAAAAAAJpAAAAAAJpAAAAAAFpAAAAAAIpAAAAAACGwAAAAABGwAAAAAAGwAAAAACGwAAAAADGwAAAAADnAAAAAACoAAAAAADoAAAAAADoAAAAAADoAAAAAADoAAAAAACpAAAAAAIpAAAAAAGpAAAAAABpAAAAAAIpAAAAAAHGwAAAAABGwAAAAADGwAAAAACGwAAAAAAGwAAAAADnAAAAAACoAAAAAACoAAAAAADoAAAAAADoAAAAAABoAAAAAADpAAAAAAGpAAAAAAEpAAAAAAJpAAAAAAHpAAAAAAGGwAAAAAAGwAAAAADGwAAAAAAGwAAAAADGwAAAAADnAAAAAADoAAAAAADoAAAAAACoAAAAAACoAAAAAACoAAAAAADpAAAAAAHpAAAAAAHpAAAAAAFpAAAAAAHpAAAAAAEGwAAAAABGwAAAAADGwAAAAACGwAAAAACGwAAAAAB
+                version: 6
+              2,-5:
+                ind: 2,-5
+                tiles: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAADHAAAAAAAHAAAAAADHAAAAAACHAAAAAAAHAAAAAADHAAAAAABHAAAAAACHAAAAAABHAAAAAABHAAAAAADHAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAACHAAAAAADHAAAAAADHAAAAAACHAAAAAACHAAAAAACHAAAAAABHAAAAAACHAAAAAACHAAAAAACHAAAAAACHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAADHAAAAAACHAAAAAABHAAAAAADHAAAAAACHAAAAAACHAAAAAABHAAAAAAAHAAAAAADHAAAAAAAHAAAAAAAHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGwAAAAACGwAAAAAAGwAAAAABGwAAAAACGwAAAAAAGwAAAAAAGwAAAAADGwAAAAADGwAAAAAAHAAAAAADHAAAAAADHAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGwAAAAAAGwAAAAABGwAAAAABGwAAAAABGwAAAAADGwAAAAADGwAAAAAAGwAAAAACGwAAAAACHAAAAAADHAAAAAAAHAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGwAAAAACGwAAAAAAGwAAAAAAGwAAAAADGwAAAAAAGwAAAAAAGwAAAAADGwAAAAABGwAAAAADHAAAAAAAHAAAAAABHAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGwAAAAAAGwAAAAADGwAAAAACGwAAAAAAGwAAAAACGwAAAAACGwAAAAADGwAAAAABGwAAAAADHAAAAAABHAAAAAADHAAAAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGwAAAAACGwAAAAAAGwAAAAABGwAAAAABGwAAAAACGwAAAAACGwAAAAABGwAAAAADGwAAAAABHAAAAAAAHAAAAAACHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGwAAAAADGwAAAAADGwAAAAAAGwAAAAABGwAAAAABGwAAAAADGwAAAAABGwAAAAADGwAAAAABHAAAAAABHAAAAAABHAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGwAAAAACGwAAAAADGwAAAAADGwAAAAABGwAAAAABGwAAAAACGwAAAAACGwAAAAACGwAAAAACHAAAAAACHAAAAAACHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+                version: 6
+          - type: GridPathfinding
+          - type: Gravity
+            gravityShakeSound: !type:SoundPathSpecifier
+              path: /Audio/Effects/alert.ogg
+            inherent: True
+            enabled: True
+          - type: DecalGrid
+            chunkCollection:
+              version: 2
+              nodes: []
+          - type: ZDefinedStack
+            upLevels:
+              - /Maps/Test/dev-3.yml
+              - /Maps/Test/dev-4.yml
+            downLevels:
+              - /Maps/Test/dev-1.yml
+              - /Maps/Test/dev-2.yml
+          - type: GravityShake
+            shakeTimes: 10
+          - type: RadiationGridResistance
+          - type: ViewSubscriber
+          - type: Roof
+            data: {}
+      - uid: 2
+        components:
+          - type: MetaData
+          - type: Transform
+            gridTraversal: False
+            pos: -1.1443727,-0.5
+            parent: 1
+          - type: ZLoader
+          - type: ViewSubscriber
+      - uid: 3
+        components:
+          - type: MetaData
+          - type: Transform
+            gridTraversal: False
+            pos: -22.817823,-2.169732
+            parent: 1
+          - type: ZLoader
+          - type: ViewSubscriber
+      - uid: 61
+        components:
+          - type: MetaData
+          - type: Transform
+            gridTraversal: False
+            pos: -29.86241,-1.7385377
+            parent: 1
+          - type: ZLoader
+          - type: ViewSubscriber
+      - uid: 87
+        components:
+          - type: MetaData
+          - type: Transform
+            gridTraversal: False
+            pos: -27.314524,-0.32780224
+            parent: 1
+          - type: ZLoader
+          - type: ViewSubscriber
+  - proto: FinsterWallStone
+    entities:
+      - uid: 4
+        components:
+          - type: Transform
+            pos: -36.5,-6.5
+            parent: 1
+      - uid: 5
+        components:
+          - type: Transform
+            pos: -36.5,-7.5
+            parent: 1
+      - uid: 6
+        components:
+          - type: Transform
+            pos: -36.5,-9.5
+            parent: 1
+      - uid: 7
+        components:
+          - type: Transform
+            pos: -35.5,-6.5
+            parent: 1
+      - uid: 8
+        components:
+          - type: Transform
+            pos: -35.5,-7.5
+            parent: 1
+      - uid: 9
+        components:
+          - type: Transform
+            pos: -35.5,-8.5
+            parent: 1
+      - uid: 10
+        components:
+          - type: Transform
+            pos: -35.5,-9.5
+            parent: 1
+      - uid: 11
+        components:
+          - type: Transform
+            pos: -34.5,-6.5
+            parent: 1
+      - uid: 12
+        components:
+          - type: Transform
+            pos: -34.5,-7.5
+            parent: 1
+      - uid: 13
+        components:
+          - type: Transform
+            pos: -34.5,-8.5
+            parent: 1
+      - uid: 14
+        components:
+          - type: Transform
+            pos: -34.5,-9.5
+            parent: 1
+      - uid: 15
+        components:
+          - type: Transform
+            pos: -33.5,-6.5
+            parent: 1
+      - uid: 16
+        components:
+          - type: Transform
+            pos: -33.5,-7.5
+            parent: 1
+      - uid: 17
+        components:
+          - type: Transform
+            pos: -33.5,-8.5
+            parent: 1
+      - uid: 18
+        components:
+          - type: Transform
+            pos: -33.5,-9.5
+            parent: 1
+      - uid: 19
+        components:
+          - type: Transform
+            pos: -36.5,-8.5
+            parent: 1
+      - uid: 20
+        components:
+          - type: Transform
+            pos: -31.5,-6.5
+            parent: 1
+      - uid: 21
+        components:
+          - type: Transform
+            pos: -31.5,-7.5
+            parent: 1
+      - uid: 22
+        components:
+          - type: Transform
+            pos: -31.5,-8.5
+            parent: 1
+      - uid: 23
+        components:
+          - type: Transform
+            pos: -31.5,-9.5
+            parent: 1
+      - uid: 24
+        components:
+          - type: Transform
+            pos: -30.5,-6.5
+            parent: 1
+      - uid: 25
+        components:
+          - type: Transform
+            pos: -29.5,-6.5
+            parent: 1
+      - uid: 26
+        components:
+          - type: Transform
+            pos: -28.5,-6.5
+            parent: 1
+      - uid: 27
+        components:
+          - type: Transform
+            pos: -28.5,-7.5
+            parent: 1
+      - uid: 28
+        components:
+          - type: Transform
+            pos: -28.5,-8.5
+            parent: 1
+      - uid: 29
+        components:
+          - type: Transform
+            pos: -28.5,-9.5
+            parent: 1
+      - uid: 30
+        components:
+          - type: Transform
+            pos: -29.5,-9.5
+            parent: 1
+      - uid: 31
+        components:
+          - type: Transform
+            pos: -30.5,-7.5
+            parent: 1
+  - proto: FinsterWallStoneBrick
+    entities:
+      - uid: 32
+        components:
+          - type: Transform
+            pos: -36.5,0.5
+            parent: 1
+      - uid: 33
+        components:
+          - type: Transform
+            pos: -36.5,-0.5
+            parent: 1
+      - uid: 34
+        components:
+          - type: Transform
+            pos: -36.5,-1.5
+            parent: 1
+      - uid: 35
+        components:
+          - type: Transform
+            pos: -36.5,-2.5
+            parent: 1
+      - uid: 36
+        components:
+          - type: Transform
+            pos: -35.5,0.5
+            parent: 1
+      - uid: 37
+        components:
+          - type: Transform
+            pos: -35.5,-1.5
+            parent: 1
+      - uid: 38
+        components:
+          - type: Transform
+            pos: -35.5,-2.5
+            parent: 1
+      - uid: 39
+        components:
+          - type: Transform
+            pos: -34.5,0.5
+            parent: 1
+      - uid: 40
+        components:
+          - type: Transform
+            pos: -34.5,-0.5
+            parent: 1
+      - uid: 41
+        components:
+          - type: Transform
+            pos: -34.5,-1.5
+            parent: 1
+      - uid: 42
+        components:
+          - type: Transform
+            pos: -34.5,-2.5
+            parent: 1
+      - uid: 43
+        components:
+          - type: Transform
+            pos: -33.5,0.5
+            parent: 1
+      - uid: 44
+        components:
+          - type: Transform
+            pos: -35.5,-0.5
+            parent: 1
+      - uid: 45
+        components:
+          - type: Transform
+            pos: -33.5,-0.5
+            parent: 1
+      - uid: 46
+        components:
+          - type: Transform
+            pos: -33.5,-1.5
+            parent: 1
+      - uid: 47
+        components:
+          - type: Transform
+            pos: -33.5,-2.5
+            parent: 1
+      - uid: 48
+        components:
+          - type: Transform
+            pos: -31.5,0.5
+            parent: 1
+      - uid: 49
+        components:
+          - type: Transform
+            pos: -30.5,0.5
+            parent: 1
+      - uid: 50
+        components:
+          - type: Transform
+            pos: -29.5,0.5
+            parent: 1
+      - uid: 51
+        components:
+          - type: Transform
+            pos: -28.5,0.5
+            parent: 1
+      - uid: 52
+        components:
+          - type: Transform
+            pos: -28.5,-0.5
+            parent: 1
+      - uid: 53
+        components:
+          - type: Transform
+            pos: -28.5,-1.5
+            parent: 1
+      - uid: 54
+        components:
+          - type: Transform
+            pos: -28.5,-2.5
+            parent: 1
+      - uid: 55
+        components:
+          - type: Transform
+            pos: -31.5,-0.5
+            parent: 1
+      - uid: 56
+        components:
+          - type: Transform
+            pos: -31.5,-2.5
+            parent: 1
+      - uid: 57
+        components:
+          - type: Transform
+            pos: -31.5,-1.5
+            parent: 1
+      - uid: 58
+        components:
+          - type: Transform
+            pos: -30.5,-0.5
+            parent: 1
+      - uid: 59
+        components:
+          - type: Transform
+            pos: -29.5,-2.5
+            parent: 1
+  - proto: LadderAutoLinkTopMetalDamaged
+    entities:
+      - uid: 88
+        components:
+          - type: Transform
+            pos: -27.5,-0.5
+            parent: 1
+          - type: ZTransitionMarker
+            direction: Down
+          - type: Fixtures
+            fixtures: {}
+  - proto: LadderBottomMetalDamaged
+    entities:
+      - uid: 60
+        components:
+          - type: Transform
+            pos: -20.5,-10.5
+            parent: 1
+          - type: ZTransitionMarker
+            direction: Up
+          - type: Warper
+            location: house_ladder_up
+          - type: WarpPoint
+            location: house_ladder_down
+  - proto: N14DoorMakeshift
+    entities:
+      - uid: 62
+        components:
+          - type: Transform
+            pos: -20.5,-8.5
+            parent: 1
+      - uid: 63
+        components:
+          - type: Transform
+            pos: -22.5,-10.5
+            parent: 1
+      - uid: 64
+        components:
+          - type: Transform
+            pos: -18.5,-10.5
+            parent: 1
+      - uid: 65
+        components:
+          - type: Transform
+            pos: -20.5,-12.5
+            parent: 1
+  - proto: N14WallWoodDark
+    entities:
+      - uid: 66
+        components:
+          - type: Transform
+            pos: -22.5,-12.5
+            parent: 1
+      - uid: 67
+        components:
+          - type: Transform
+            pos: -21.5,-12.5
+            parent: 1
+      - uid: 68
+        components:
+          - type: Transform
+            pos: -22.5,-11.5
+            parent: 1
+      - uid: 69
+        components:
+          - type: Transform
+            pos: -19.5,-12.5
+            parent: 1
+      - uid: 70
+        components:
+          - type: Transform
+            pos: -18.5,-12.5
+            parent: 1
+      - uid: 71
+        components:
+          - type: Transform
+            pos: -18.5,-11.5
+            parent: 1
+      - uid: 72
+        components:
+          - type: Transform
+            pos: -18.5,-9.5
+            parent: 1
+      - uid: 73
+        components:
+          - type: Transform
+            pos: -18.5,-8.5
+            parent: 1
+      - uid: 74
+        components:
+          - type: Transform
+            pos: -19.5,-8.5
+            parent: 1
+      - uid: 75
+        components:
+          - type: Transform
+            pos: -21.5,-8.5
+            parent: 1
+      - uid: 76
+        components:
+          - type: Transform
+            pos: -22.5,-8.5
+            parent: 1
+      - uid: 77
+        components:
+          - type: Transform
+            pos: -22.5,-9.5
+            parent: 1
+  - proto: SpawnPointScourger
+    entities:
+      - uid: 78
+        components:
+          - type: Transform
+            pos: -21.5,-4.5
+            parent: 1
+  - proto: StairsAutoLinkDarkUp
+    entities:
+      - uid: 79
+        components:
+          - type: Transform
+            rot: 1.5707963267948966 rad
+            pos: -3.5,-0.5
+            parent: 1
+          - type: ZTransitionMarker
+            direction: Down
+      - uid: 80
+        components:
+          - type: Transform
+            rot: 1.5707963267948966 rad
+            pos: -3.5,-1.5
+            parent: 1
+          - type: ZTransitionMarker
+            direction: Down
+      - uid: 81
+        components:
+          - type: Transform
+            rot: 1.5707963267948966 rad
+            pos: -3.5,0.5
+            parent: 1
+          - type: ZTransitionMarker
+            direction: Down
+      - uid: 82
+        components:
+          - type: Transform
+            rot: -1.5707963267948966 rad
+            pos: 2.5,0.5
+            parent: 1
+          - type: ZTransitionMarker
+            direction: Down
+      - uid: 83
+        components:
+          - type: Transform
+            rot: -1.5707963267948966 rad
+            pos: 2.5,-0.5
+            parent: 1
+          - type: ZTransitionMarker
+            direction: Down
+      - uid: 84
+        components:
+          - type: Transform
+            rot: -1.5707963267948966 rad
+            pos: 2.5,-1.5
+            parent: 1
+          - type: ZTransitionMarker
+            direction: Down
+  - proto: StairsAutoLinkStageWoodUp
+    entities:
+      - uid: 85
+        components:
+          - type: Transform
+            rot: 3.141592653589793 rad
+            pos: -29.5,3.5
+            parent: 1
+          - type: ZTransitionMarker
+            direction: Down
+      - uid: 86
+        components:
+          - type: Transform
+            rot: 3.141592653589793 rad
+            pos: -30.5,3.5
+            parent: 1
+          - type: ZTransitionMarker
+            direction: Down

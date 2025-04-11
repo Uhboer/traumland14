@@ -32,8 +32,8 @@ public sealed partial class ContentAudioSystem
     [Dependency] private readonly RulesSystem _rules = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
 
-    private int _minAmbienceTime = 0; //TimeSpan.FromSeconds(0);
-    private int _maxAmbienceTime = 0; //TimeSpan.FromSeconds(0);
+    private int _minAmbienceTime = 30; //TimeSpan.FromSeconds(0);
+    private int _maxAmbienceTime = 60; //TimeSpan.FromSeconds(0);
 
     private const float AmbientMusicFadeTime = 10f;
     private static float _volumeSlider;
