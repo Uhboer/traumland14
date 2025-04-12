@@ -1,5 +1,6 @@
 using Content.Client.CombatMode;
 using Content.Client.Hands.Systems;
+using Content.Shared.CCVar;
 using Robust.Client.Graphics;
 using Robust.Client.Input;
 using Robust.Client.UserInterface;
@@ -26,6 +27,8 @@ public sealed class CursorUIController : UIController
     private Image<Rgba32>? _cursorPressedImage;
     private Image<Rgba32>? _cursorImage;
 
+    private bool _isCursorEnabled = false;
+
     public override void Initialize()
     {
         base.Initialize();
@@ -35,11 +38,17 @@ public sealed class CursorUIController : UIController
 
         stream = _resManager.ContentFileRead($"/Textures/Interface/cursor_pressed.png");
         _cursorPressedImage = Image.Load<Rgba32>(stream);
+
+        _config.OnValueChanged(CCVars.HudCustomCursor, (value) => { _isCursorEnabled = value; });
+        _isCursorEnabled = _config.GetCVar(CCVars.HudCustomCursor);
     }
 
     public override void FrameUpdate(FrameEventArgs args)
     {
         base.FrameUpdate(args);
+
+        if (!_isCursorEnabled)
+            return;
 
         // Update cursor
         if (_cursorImage is not null && _cursorPressedImage is not null)

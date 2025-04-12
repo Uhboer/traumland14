@@ -91,6 +91,7 @@ namespace Content.Client.Options.UI.Tabs
             ShowOocPatronColor.OnToggled += OnCheckBoxToggled;
             ShowLoocAboveHeadCheckBox.OnToggled += OnCheckBoxToggled;
             ShowHeldItemCheckBox.OnToggled += OnCheckBoxToggled;
+            ShowCustomCursorCheckBox.OnToggled += OnCheckBoxToggled;
             ShowCombatModeIndicatorsCheckBox.OnToggled += OnCheckBoxToggled;
             ShowOfferModeIndicatorsCheckBox.OnToggled += OnCheckBoxToggled;
             OpaqueStorageWindowCheckBox.OnToggled += OnCheckBoxToggled;
@@ -112,6 +113,7 @@ namespace Content.Client.Options.UI.Tabs
             ShowOocPatronColor.Pressed = _cfg.GetCVar(CCVars.ShowOocPatronColor);
             ShowLoocAboveHeadCheckBox.Pressed = _cfg.GetCVar(CCVars.LoocAboveHeadShow);
             ShowHeldItemCheckBox.Pressed = _cfg.GetCVar(CCVars.HudHeldItemShow);
+            ShowCustomCursorCheckBox.Pressed = _cfg.GetCVar(CCVars.HudCustomCursor);
             ShowCombatModeIndicatorsCheckBox.Pressed = _cfg.GetCVar(CCVars.CombatModeIndicatorsPointShow);
             ShowOfferModeIndicatorsCheckBox.Pressed = _cfg.GetCVar(CCVars.OfferModeIndicatorsPointShow);
             OpaqueStorageWindowCheckBox.Pressed = _cfg.GetCVar(CCVars.OpaqueStorageWindow);
@@ -163,6 +165,7 @@ namespace Content.Client.Options.UI.Tabs
 
             _cfg.SetCVar(CVars.DiscordEnabled, DiscordRich.Pressed);
             _cfg.SetCVar(CCVars.HudHeldItemShow, ShowHeldItemCheckBox.Pressed);
+            _cfg.SetCVar(CCVars.HudCustomCursor, ShowCustomCursorCheckBox.Pressed);
             _cfg.SetCVar(CCVars.CombatModeIndicatorsPointShow, ShowCombatModeIndicatorsCheckBox.Pressed);
             _cfg.SetCVar(CCVars.OfferModeIndicatorsPointShow, ShowOfferModeIndicatorsCheckBox.Pressed);
             _cfg.SetCVar(CCVars.OpaqueStorageWindow, OpaqueStorageWindowCheckBox.Pressed);
@@ -195,6 +198,7 @@ namespace Content.Client.Options.UI.Tabs
             //var isLayoutSame = HudLayoutOption.SelectedMetadata is string opt && opt == _cfg.GetCVar(CCVars.UILayout);
             var isDiscordSame = DiscordRich.Pressed == _cfg.GetCVar(CVars.DiscordEnabled);
             var isShowHeldItemSame = ShowHeldItemCheckBox.Pressed == _cfg.GetCVar(CCVars.HudHeldItemShow);
+            var isShowCustomCursorSame = ShowCustomCursorCheckBox.Pressed == _cfg.GetCVar(CCVars.HudCustomCursor);
             var isCombatModeIndicatorsSame = ShowCombatModeIndicatorsCheckBox.Pressed == _cfg.GetCVar(CCVars.CombatModeIndicatorsPointShow);
             var isOfferModeIndicatorsSame = ShowOfferModeIndicatorsCheckBox.Pressed == _cfg.GetCVar(CCVars.OfferModeIndicatorsPointShow);
             var isOpaqueStorageWindow = OpaqueStorageWindowCheckBox.Pressed == _cfg.GetCVar(CCVars.OpaqueStorageWindow);
@@ -214,6 +218,7 @@ namespace Content.Client.Options.UI.Tabs
                                    //isLayoutSame &&
                                    isDiscordSame &&
                                    isShowHeldItemSame &&
+                                   isShowCustomCursorSame &&
                                    isCombatModeIndicatorsSame &&
                                    isOfferModeIndicatorsSame &&
                                    isOpaqueStorageWindow &&

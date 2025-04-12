@@ -45,6 +45,7 @@
                 <Label Text="{Loc 'ui-options-general-cursor'}"
                        FontColorOverride="{xNamespace:Static s:StyleLora.LoraPurple}"
                        StyleClasses="LabelKeyText"/>
+                <CheckBox Name="ShowCustomCursorCheckBox" Text="{Loc 'ui-options-show-custom-cursor'}" />
                 <CheckBox Name="ShowHeldItemCheckBox" Text="{Loc 'ui-options-show-held-item'}" />
                 <CheckBox Name="ShowCombatModeIndicatorsCheckBox" Text="{Loc 'ui-options-show-combat-mode-indicators'}" />
                 <CheckBox Name="ShowOfferModeIndicatorsCheckBox" Text="{Loc 'ui-options-show-offer-mode-indicators'}" />
