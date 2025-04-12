@@ -1,8 +1,10 @@
+using Content.KayMisaZlevels.Shared.Systems;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Database;
 using Content.Shared.DeviceLinking.Events;
 using Content.Shared.DeviceNetwork;
 using Content.Shared.Popups;
+using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 
@@ -14,6 +16,7 @@ public abstract class SharedDeviceLinkSystem : EntitySystem
     [Dependency] private readonly SharedPopupSystem _popupSystem = default!;
     [Dependency] private readonly ISharedAdminLogManager _adminLogger = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
+    [Dependency] private readonly SharedZStackSystem _zStack = default!;
 
     public const string InvokedPort = "link_port";
 
@@ -529,8 +532,25 @@ public abstract class SharedDeviceLinkSystem : EntitySystem
 
     private bool InRange(EntityUid sourceUid, EntityUid sinkUid, float range)
     {
-        // TODO: This should be using an existing method and also coordinates inrange instead.
-        return _transform.GetMapCoordinates(sourceUid).InRange(_transform.GetMapCoordinates(sinkUid), range);
+        // If the map is a stack member of Z levels - then we can make multiZ link.
+        if (_zStack.TryGetZStack(sourceUid, out var stack))
+        {
+            return InRange(
+                _transform.GetMapCoordinates(sourceUid),
+                _transform.GetMapCoordinates(sinkUid),
+                range);
+        }
+        else
+        {
+            // TODO: This should be using an existing method and also coordinates inrange instead.
+            return _transform.GetMapCoordinates(sourceUid).InRange(_transform.GetMapCoordinates(sinkUid), range);
+        }
+    }
+
+    private bool InRange(MapCoordinates sourceCoords, MapCoordinates otherCoords, float range)
+    {
+        //TODO: Add checking for Z levels range
+        return (otherCoords.Position - sourceCoords.Position).LengthSquared() < range * range;
     }
 
     private void SendNewLinkEvent(EntityUid? user, EntityUid sourceUid, string source, EntityUid sinkUid, string sink)
