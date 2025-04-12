@@ -19,6 +19,7 @@ using Content.Shared.Physics;
 using Content.Shared.Popups;
 using Content.Shared.Standing;
 using Content.Shared.Stunnable;
+using Content.Shared.Tag;
 using Content.Shared.Traits.Assorted.Components;
 using Content.Shared.Verbs;
 using Robust.Shared.Audio.Systems;
@@ -51,9 +52,13 @@ public sealed partial class ClimbSystem : VirtualController
     [Dependency] private readonly SharedTransformSystem _xformSystem = default!;
     [Dependency] private readonly SharedZStackSystem _zStack = default!;
     [Dependency] private readonly SharedMapSystem _mapSys = default!;
+    [Dependency] private readonly EntityLookupSystem _lookup = default!;
+    [Dependency] private readonly TagSystem _tag = default!;
 
     private const string ClimbingFixtureName = "climb";
     private const int ClimbingCollisionGroup = (int) (CollisionGroup.TableLayer | CollisionGroup.LowImpassable);
+
+    private const string WallTag = "Wall";
 
     private EntityQuery<FixturesComponent> _fixturesQuery;
     private EntityQuery<TransformComponent> _xformQuery;
@@ -548,44 +553,62 @@ public sealed partial class ClimbSystem : VirtualController
                 return false;
 
             // Check if there is a bottom grid.
-            if (!_mapManager.TryFindGridAt(maps[targetMapIdx], targetPosition.Value, out _, out var bottomGrid))
+            if (!_mapManager.TryFindGridAt(maps[targetMapIdx], targetPosition.Value, out var bottomGridUid, out var bottomGrid))
                 return false;
 
             var currentEntityCoords = new EntityCoordinates(maps[mapIdx], targetPosition.Value);
+            var currentCoordsPosInt = currentEntityCoords.ToVector2i(EntityManager, _mapManager, _xformSystem);
+            var descendCoordsPosInt = descendEntityCoords.Value.ToVector2i(EntityManager, _mapManager, _xformSystem);
 
             // Check grid on current map.
-            _mapSys.TryGetTile(grid, currentEntityCoords.ToVector2i(EntityManager, _mapManager, _xformSystem), out var tile);
+            _mapSys.TryGetTile(grid, currentCoordsPosInt, out var tile);
             // Tile should be empty.
             if (!tile.IsEmpty)
                 return false;
 
             // Check for grid on bottom map. Because we can't descend on the empty tile.
-            _mapSys.TryGetTile(bottomGrid, descendEntityCoords.Value.ToVector2i(EntityManager, _mapManager, _xformSystem), out var bottomTile);
+            _mapSys.TryGetTile(bottomGrid, descendCoordsPosInt, out var bottomTile);
             if (bottomTile.IsEmpty)
                 return false;
 
-            // TODO: Add checking for the walls
+            // Check walls on the tile.
+            var tileBounds = new Box2(descendCoordsPosInt, descendCoordsPosInt + bottomGrid.TileSize);
+            tileBounds = tileBounds.Enlarged(-0.1f);
+            foreach (var ent in _lookup.GetEntitiesIntersecting(bottomGridUid, tileBounds))
+            {
+                if (_tag.HasTag(ent, WallTag))
+                    return false;
+            }
         }
         else // If we wanna go up
         {
             // Check if there is a bottom grid.
-            if (!_mapManager.TryFindGridAt(maps[targetMapIdx], targetPosition.Value, out _, out var topGrid))
+            if (!_mapManager.TryFindGridAt(maps[targetMapIdx], targetPosition.Value, out var topGridUid, out var topGrid))
                 return false;
 
             var currentEntityCoords = xform.Coordinates;
+            var currentCoordsPosInt = currentEntityCoords.ToVector2i(EntityManager, _mapManager, _xformSystem);
+            var descendCoordsPosInt = descendEntityCoords.Value.ToVector2i(EntityManager, _mapManager, _xformSystem);
 
             // Check grid on top map from cur position. Because we can't dodge the roof hehe.
-            _mapSys.TryGetTile(topGrid, currentEntityCoords.ToVector2i(EntityManager, _mapManager, _xformSystem), out var tile);
+            _mapSys.TryGetTile(topGrid, currentCoordsPosInt, out var tile);
             // Tile should be empty.
             if (!tile.IsEmpty)
                 return false;
 
             // Check for grid on bottom map. Because we can't descend on the empty tile.
-            _mapSys.TryGetTile(topGrid, descendEntityCoords.Value.ToVector2i(EntityManager, _mapManager, _xformSystem), out var topTile);
+            _mapSys.TryGetTile(topGrid, descendCoordsPosInt, out var topTile);
             if (topTile.IsEmpty)
                 return false;
 
-            // TODO: Add checking for the walls
+            // Check walls on the tile.
+            var tileBounds = new Box2(descendCoordsPosInt, descendCoordsPosInt + topGrid.TileSize);
+            tileBounds = tileBounds.Enlarged(-0.1f);
+            foreach (var ent in _lookup.GetEntitiesIntersecting(topGridUid, tileBounds))
+            {
+                if (_tag.HasTag(ent, WallTag))
+                    return false;
+            }
         }
 
         return true;
