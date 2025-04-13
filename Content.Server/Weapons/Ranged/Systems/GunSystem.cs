@@ -104,7 +104,7 @@ public sealed partial class GunSystem : SharedGunSystem
                 {
                     if (_mapManager.TryFindGridAt(map, TransformSystem.GetWorldPosition(toCoordinates.EntityId), out _, out var zGrid) &&
                         _mapSys.TryGetTile(zGrid, toCoordinates.ToVector2i(EntityManager, IoCManager.Resolve<IMapManager>(), TransformSystem), out var tile)
-                        && !tile.IsSpace())
+                        && !tile.IsEmpty)
                     {
                         targetMap = map;
                         break;
