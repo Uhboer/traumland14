@@ -89,6 +89,9 @@ namespace Content.Shared.Gravity
         public override void Initialize()
         {
             base.Initialize();
+
+            InitializeFalling();
+
             SubscribeLocalEvent<GridInitializeEvent>(OnGridInit);
             SubscribeLocalEvent<AlertSyncEvent>(OnAlertsSync);
             SubscribeLocalEvent<AlertsComponent, EntParentChangedMessage>(OnAlertsParentChange);

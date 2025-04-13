@@ -1,60 +1,17 @@
-using Content.KayMisaZlevels.Shared.Miscellaneous;
-using Content.KayMisaZlevels.Shared.Systems;
 using Content.Shared.Gravity;
-using Content.Shared.Maps;
 using JetBrains.Annotations;
-using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
-using Robust.Shared.Physics.Components;
 
 namespace Content.Server.Gravity
 {
     [UsedImplicitly]
     public sealed class GravitySystem : SharedGravitySystem
     {
-        [Dependency] private readonly ITileDefinitionManager _tileDefinitionManager = default!;
-        [Dependency] private readonly SharedMapSystem _mapSystem = default!;
-        [Dependency] private readonly ZPhysicsSystem _zPhysics = default!;
 
         public override void Initialize()
         {
             base.Initialize();
             SubscribeLocalEvent<GravityComponent, ComponentInit>(OnGravityInit);
-            SubscribeLocalEvent<IsGravityAffectedEvent>(OnGravityAffected);
-            SubscribeLocalEvent<IsGravitySource>(OnGravitySource);
-        }
-
-        private void OnGravityAffected(ref IsGravityAffectedEvent args)
-        {
-            // TODO: Maybe impelement better gravity affection for Z levels
-
-            if (!TryComp<TransformComponent>(args.Target, out var xform))
-                return;
-
-            if (!TryComp<PhysicsComponent>(args.Target, out var physicsComponent))
-                return;
-
-            ContentTileDefinition? tileDef = null;
-
-            // Don't bother getting the tiledef here if we're weightless or in-air
-            // since no tile-based modifiers should be applying in that situation
-            if (TryComp(xform.GridUid, out MapGridComponent? gridComp)
-                && _mapSystem.TryGetTileRef(xform.GridUid.Value, gridComp, xform.Coordinates, out var tile))
-            {
-                tileDef = (ContentTileDefinition) _tileDefinitionManager[tile.Tile.TypeId];
-            }
-
-            if ((tileDef is null || tileDef.ID == ContentTileDefinition.SpaceID) && physicsComponent.BodyStatus != BodyStatus.InAir)
-                args.Affected = true;
-        }
-
-        private void OnGravitySource(ref IsGravitySource args)
-        {
-            if (_zPhysics.TryGetTileWithEntity(args.Entity, ZDirection.Down, out var _, out var _, out var targetMap) &&
-                TryComp<GravityComponent>(targetMap, out var comp))
-                args.Handled = comp.Enabled;
-            else // not founded
-                args.Handled = false;
         }
 
         /// <summary>

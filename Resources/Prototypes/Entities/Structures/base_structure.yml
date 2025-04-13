@@ -49,6 +49,10 @@
   - type: Clickable
   - type: Physics
     bodyType: Dynamic
+  - type: Falling
+    baseDamage:
+      types:
+        Blunt: 30
   - type: Fixtures
     fixtures:
       fix1:

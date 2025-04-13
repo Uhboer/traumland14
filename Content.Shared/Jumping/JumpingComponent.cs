@@ -1,44 +1,43 @@
 using Content.Shared.Damage;
+using Robust.Shared.GameStates;
 
-namespace Content.Server.Jumping;
+namespace Content.Shared.Jumping;
 
-[RegisterComponent]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class JumpingComponent : Component
 {
-    [DataField]
+    [DataField, AutoNetworkedField]
     public float JumpRange = 5f;
 
-    [DataField]
+    [DataField, AutoNetworkedField]
     public float JumpSpeed = 3f;
 
     /// <summary>
     ///     Modifier for collide damage.
     /// </summary>
-    [DataField]
+    [DataField, AutoNetworkedField]
     public float DamageModifier = 1f;
 
     /// <summary>
     ///     Amount of damage, when character was collided by the wall or
     ///     another objects.
     /// </summary>
-    [DataField]
+    [DataField, AutoNetworkedField]
     public DamageSpecifier BaseCollideDamage = new DamageSpecifier();
 
     /// <summary>
     ///     Ignore collide damage.
     /// </summary>
-    [DataField]
+    [DataField, AutoNetworkedField]
     public bool IgnoreDamage;
 
-    [DataField]
+    [DataField, AutoNetworkedField]
     public TimeSpan JumpCooldown = TimeSpan.FromSeconds(2.5);
 
     /*
     [DataField]
     public TimeSpan LandingStunTime = TimeSpan.FromSeconds(0.5);
     */
-
-    public bool IsFailed = false;
 
     public TimeSpan? LastJump = null;
 }

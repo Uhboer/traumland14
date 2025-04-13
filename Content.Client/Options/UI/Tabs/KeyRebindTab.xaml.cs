@@ -218,6 +218,7 @@ namespace Content.Client.Options.UI.Tabs
             AddButton(ContentKeyFunctions.ThrowItemInHand);
             AddButton(ContentKeyFunctions.ThrowMode);
             AddButton(ContentKeyFunctions.TryPullObject);
+            AddButton(ContentKeyFunctions.Jump);
             AddButton(ContentKeyFunctions.MovePulledObject);
             AddButton(ContentKeyFunctions.ReleasePulledObject);
             AddButton(ContentKeyFunctions.Point);
