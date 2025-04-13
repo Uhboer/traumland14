@@ -40,19 +40,19 @@ public class HUDTargetDoll : HUDTextureRect, IHUDDescription
         };
         AddChild(headButton);
 
-        var neckButton = new HUDButton()
-        {
-            Size = (10, 5),
-            Position = (11, 17)
-        };
-        AddChild(neckButton);
-
         var chestButton = new HUDButton()
         {
             Size = (14, 15),
             Position = (9, 19)
         };
         AddChild(chestButton);
+
+        var neckButton = new HUDButton()
+        {
+            Size = (10, 5),
+            Position = (11, 17)
+        };
+        AddChild(neckButton);
 
         var groinButton = new HUDButton()
         {
