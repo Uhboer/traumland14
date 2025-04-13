@@ -36,6 +36,7 @@ using Robust.Shared.Random;
 using Robust.Shared.Serialization;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
+using Content.KayMisaZlevels.Shared.Systems;
 
 namespace Content.Shared.Weapons.Ranged.Systems;
 
@@ -67,6 +68,9 @@ public abstract partial class SharedGunSystem : EntitySystem
     [Dependency] protected readonly ThrowingSystem ThrowingSystem = default!;
     [Dependency] private   readonly UseDelaySystem _useDelay = default!;
     [Dependency] private readonly EntityWhitelistSystem _whitelistSystem = default!;
+    [Dependency] private readonly IEntityManager _entityManager = default!;
+    [Dependency] private readonly IMapManager _mapManager = default!;
+    [Dependency] private readonly SharedZStackSystem _zStack = default!;
 
     private const float InteractNextFire = 0.3f;
     private const double SafetyNextFire = 0.5;
@@ -439,7 +443,14 @@ public abstract partial class SharedGunSystem : EntitySystem
         EntityUid? user = null,
         bool throwItems = false);
 
-    public void ShootProjectile(EntityUid uid, Vector2 direction, Vector2 gunVelocity, EntityUid gunUid, EntityUid? user = null, float speed = 20f)
+    public void ShootProjectile(
+        EntityUid uid,
+        Vector2 direction,
+        Vector2 gunVelocity,
+        EntityUid gunUid,
+        EntityUid? user = null,
+        float speed = 20f,
+        EntityUid? targetMap = null)
     {
         var physics = EnsureComp<PhysicsComponent>(uid);
         Physics.SetBodyStatus(uid, physics, BodyStatus.InAir);
@@ -450,6 +461,7 @@ public abstract partial class SharedGunSystem : EntitySystem
         Physics.SetLinearVelocity(uid, finalLinear, body: physics);
 
         var projectile = EnsureComp<ProjectileComponent>(uid);
+        projectile.TargetMap = targetMap;
         Projectiles.SetShooter(uid, projectile, user ?? gunUid);
         projectile.Weapon = gunUid;
 

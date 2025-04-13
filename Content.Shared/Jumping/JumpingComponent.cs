@@ -34,6 +34,11 @@ public sealed partial class JumpingComponent : Component
     [DataField, AutoNetworkedField]
     public TimeSpan JumpCooldown = TimeSpan.FromSeconds(2.5);
 
+    /// <summary>
+    ///     Used as checking - if we fail the jumping. If tru - then... Wellh
+    /// </summary>
+    //public bool IsFailed;
+
     /*
     [DataField]
     public TimeSpan LandingStunTime = TimeSpan.FromSeconds(0.5);

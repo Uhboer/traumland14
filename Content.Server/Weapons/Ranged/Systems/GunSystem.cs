@@ -25,12 +25,18 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 using Robust.Shared.Containers;
 using Content.Shared._Shitmed.Targeting;
+using Content.KayMisaZlevels.Shared.Systems;
+using Content.Shared.Maps;
+using Robust.Server.GameObjects;
+using Content.KayMisaZlevels.Server.Systems;
 
 namespace Content.Server.Weapons.Ranged.Systems;
 
 public sealed partial class GunSystem : SharedGunSystem
 {
     [Dependency] private readonly IComponentFactory _factory = default!;
+    [Dependency] private readonly IEntityManager _entityManager = default!;
+    [Dependency] private readonly IMapManager _mapManager = default!;
     [Dependency] private readonly BatterySystem _battery = default!;
     [Dependency] private readonly DamageExamineSystem _damageExamine = default!;
     [Dependency] private readonly PricingSystem _pricing = default!;
@@ -40,6 +46,8 @@ public sealed partial class GunSystem : SharedGunSystem
     [Dependency] private readonly SharedContainerSystem _container = default!;
     [Dependency] private readonly ContestsSystem _contests = default!;
     [Dependency] private readonly SharedTargetingSystem _targeting = default!; // WWDP
+    [Dependency] private readonly MapSystem _mapSys = default!;
+    [Dependency] private readonly ZStackSystem _zStack = default!;
 
     private const float DamagePitchVariation = 0.05f;
 
@@ -81,6 +89,31 @@ public sealed partial class GunSystem : SharedGunSystem
             }
         }
 
+        // Z impl start
+        EntityUid? targetMap = null;
+        if (user != null && Transform(user.Value).MapUid != null)
+        {
+            var userMapId = Transform(user.Value).MapID;
+            var userMapUid = Transform(user.Value).MapUid;
+            if (_zStack.TryGetZStack(_mapManager.GetMapEntityIdOrThrow(userMapId), out var stack) && userMapUid != null)
+            {
+                var maps = stack.Value.Comp.Maps.ShallowClone();
+                maps.Reverse();
+                maps = maps.Slice(maps.IndexOf(userMapUid.Value), maps.Count - maps.IndexOf(userMapUid.Value));
+                foreach (var map in maps)
+                {
+                    if (_mapManager.TryFindGridAt(map, TransformSystem.GetWorldPosition(toCoordinates.EntityId), out _, out var zGrid) &&
+                        _mapSys.TryGetTile(zGrid, toCoordinates.ToVector2i(EntityManager, IoCManager.Resolve<IMapManager>(), TransformSystem), out var tile)
+                        && !tile.IsSpace())
+                    {
+                        targetMap = map;
+                        break;
+                    }
+                }
+            }
+        }
+        // Z impl end
+
         var fromMap = fromCoordinates.ToMap(EntityManager, TransformSystem);
         var toMap = toCoordinates.ToMapPos(EntityManager, TransformSystem);
         var mapDirection = toMap - fromMap.Position;
@@ -106,7 +139,7 @@ public sealed partial class GunSystem : SharedGunSystem
             // pneumatic cannon doesn't shoot bullets it just throws them, ignore ammo handling
             if (throwItems && ent != null)
             {
-                ShootOrThrow(ent.Value, mapDirection, gunVelocity, gun, gunUid, user);
+                ShootOrThrow(ent.Value, mapDirection, gunVelocity, gun, gunUid, user, targetMap: targetMap); // Z impl
                 continue;
             }
 
@@ -296,19 +329,19 @@ public sealed partial class GunSystem : SharedGunSystem
                 var angles = LinearSpread(mapAngle - spreadEvent.Spread / 2,
                     mapAngle + spreadEvent.Spread / 2, ammoSpreadComp.Count);
 
-                ShootOrThrow(ammoEnt, angles[0].ToVec(), gunVelocity, gun, gunUid, user);
+                ShootOrThrow(ammoEnt, angles[0].ToVec(), gunVelocity, gun, gunUid, user, targetMap: targetMap); // Z impl
                 shotProjectiles.Add(ammoEnt);
 
                 for (var i = 1; i < ammoSpreadComp.Count; i++)
                 {
                     var newuid = Spawn(ammoSpreadComp.Proto, fromEnt);
-                    ShootOrThrow(newuid, angles[i].ToVec(), gunVelocity, gun, gunUid, user);
+                    ShootOrThrow(newuid, angles[i].ToVec(), gunVelocity, gun, gunUid, user, targetMap: targetMap); // Z impl
                     shotProjectiles.Add(newuid);
                 }
             }
             else
             {
-                ShootOrThrow(ammoEnt, mapDirection, gunVelocity, gun, gunUid, user);
+                ShootOrThrow(ammoEnt, mapDirection, gunVelocity, gun, gunUid, user, targetMap: targetMap); // Z impl
                 shotProjectiles.Add(ammoEnt);
             }
 
@@ -317,7 +350,14 @@ public sealed partial class GunSystem : SharedGunSystem
         }
     }
 
-    private void ShootOrThrow(EntityUid uid, Vector2 mapDirection, Vector2 gunVelocity, GunComponent gun, EntityUid gunUid, EntityUid? user)
+    private void ShootOrThrow(
+            EntityUid uid,
+            Vector2 mapDirection,
+            Vector2 gunVelocity,
+            GunComponent gun,
+            EntityUid gunUid,
+            EntityUid? user,
+            EntityUid? targetMap = null) // Z impl
     {
         if (gun.Target is { } target && !TerminatingOrDeleted(target))
         {
@@ -340,7 +380,7 @@ public sealed partial class GunSystem : SharedGunSystem
             return;
         }
 
-        ShootProjectile(uid, mapDirection, gunVelocity, gunUid, user, gun.ProjectileSpeedModified);
+        ShootProjectile(uid, mapDirection, gunVelocity, gunUid, user, gun.ProjectileSpeedModified, targetMap: targetMap); // Z impl
     }
 
     /// <summary>

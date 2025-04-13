@@ -79,4 +79,10 @@ public sealed partial class ProjectileComponent : Component
     /// </summary>
     [DataField]
     public bool DamagedEntity;
+
+    /// <summary>
+    ///     Where the projectile should be placed/teleported. Used for Z levels systems.
+    /// </summary>
+    [DataField]
+    public EntityUid? TargetMap;
 }

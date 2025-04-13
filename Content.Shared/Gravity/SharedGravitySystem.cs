@@ -9,20 +9,31 @@ using Robust.Shared.Timing;
 using Content.Shared.Flight;
 using Content.KayMisaZlevels.Shared.Systems;
 using Content.KayMisaZlevels.Shared.Miscellaneous;
+using Robust.Shared.Network;
+using Robust.Shared.Map;
+using Content.Shared.Projectiles;
 
 namespace Content.Shared.Gravity
 {
     public abstract partial class SharedGravitySystem : EntitySystem
     {
+        [Dependency] private readonly ITileDefinitionManager _tileDefinitionManager = default!;
+        [Dependency] private readonly INetManager _net = default!;
+        [Dependency] private readonly IMapManager _mapManager = default!;
         [Dependency] protected readonly IGameTiming Timing = default!;
         [Dependency] private readonly AlertsSystem _alerts = default!;
+        [Dependency] private readonly SharedTransformSystem _xform = default!;
         [Dependency] private readonly SharedZStackSystem _zStack = default!;
+        [Dependency] private readonly SharedMapSystem _mapSystem = default!;
         [Dependency] private readonly ZPhysicsSystem _zPhysics = default!;
 
         [ValidatePrototypeId<AlertPrototype>]
         //public const string WeightlessAlert = "Weightless";
 
         private EntityQuery<GravityComponent> _gravityQuery;
+        private EntityQuery<TransformComponent> _xformQuery;
+        private EntityQuery<PhysicsComponent> _physicsQuery;
+        private EntityQuery<ProjectileComponent> _projectileQuery;
 
         public bool IsWeightless(EntityUid uid, PhysicsComponent? body = null, TransformComponent? xform = null)
         {
@@ -100,6 +111,9 @@ namespace Content.Shared.Gravity
             SubscribeLocalEvent<GravityComponent, ComponentHandleState>(OnHandleState);
 
             _gravityQuery = GetEntityQuery<GravityComponent>();
+            _xformQuery = GetEntityQuery<TransformComponent>();
+            _physicsQuery = GetEntityQuery<PhysicsComponent>();
+            _projectileQuery = GetEntityQuery<ProjectileComponent>();
         }
 
         public override void Update(float frameTime)
