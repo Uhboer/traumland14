@@ -25,7 +25,11 @@ public sealed partial class ZStackSystem
         TryComp(ent, out ActorComponent? actor);
         var session = actor?.PlayerSession;
         if (session is null)
+        {
+            QueueDel(ent);
             Log.Error($"BUG: No session on a {nameof(RebuildViewer)} target!");
+            return;
+        }
 
         if (session is not null)
             _viewSubscriber.AddViewSubscriber(stack.Value, session); // NOTE: We leak the subscription here, but this isn't a huge deal (it's only the z level's descriptor, no more)
