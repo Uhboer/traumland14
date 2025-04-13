@@ -65,7 +65,7 @@ public sealed partial class ZDefinedStackSystem : EntitySystem
         // Load level upper
         foreach (var path in defStackComp.UpLevels)
         {
-            var mapId = LoadLevel(stackLoc, path, initializeMaps);
+            var mapId = LoadLevel(stackLoc, path);
             if (mapId is not null)
                 mapsToInitialize.Add((MapId) mapId);
         }

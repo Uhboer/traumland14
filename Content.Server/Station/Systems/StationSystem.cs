@@ -1,5 +1,7 @@
 using System.Linq;
 using System.Numerics;
+using Content.KayMisaZlevels.Server.Systems;
+using Content.KayMisaZlevels.Shared.Components;
 using Content.Server.Chat.Systems;
 using Content.Server.GameTicking;
 using Content.Server.Station.Components;
@@ -35,6 +37,7 @@ public sealed class StationSystem : EntitySystem
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly MetaDataSystem _metaData = default!;
     [Dependency] private readonly MapSystem _map = default!;
+    [Dependency] private readonly ZStackSystem _zStack = default!;
 
     private ISawmill _sawmill = default!;
 
@@ -102,6 +105,18 @@ public sealed class StationSystem : EntitySystem
         RaiseNetworkEvent(new StationsUpdatedEvent(GetStationNames()), Filter.Broadcast());
     }
 
+    private List<EntityUid> GetZStationGrids(EntityUid baseGrid, ZStackTrackerComponent stack)
+    {
+        List<EntityUid> list = new();
+        foreach (var map in stack.Maps)
+        {
+            // TODO: Add method to find the grid, isntead of adding a map.
+            if (TryComp<MapGridComponent>(map, out var gridComp))
+                list.Add(map);
+        }
+        return list;
+    }
+
     private void OnPostGameMapLoad(PostGameMapLoad ev)
     {
         var dict = new Dictionary<string, List<EntityUid>>();
@@ -111,7 +126,21 @@ public sealed class StationSystem : EntitySystem
         {
             // We still setup the grid
             if (TryComp<BecomesStationComponent>(grid, out var becomesStation))
-                dict.GetOrNew(becomesStation.Id).Add(grid);
+            {
+                // TODO: FUCK, It should be decomposited
+                if (_zStack.TryGetZStack(grid, out var stack))
+                {
+                    var gridList = GetZStationGrids(grid, stack);
+                    foreach (var zGrid in gridList)
+                    {
+                        dict.GetOrNew(becomesStation.Id).Add(zGrid);
+                    }
+                }
+                else
+                {
+                    dict.GetOrNew(becomesStation.Id).Add(grid);
+                }
+            }
         }
 
         if (!dict.Any())

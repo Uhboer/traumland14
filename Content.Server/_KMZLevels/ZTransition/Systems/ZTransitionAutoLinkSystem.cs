@@ -21,7 +21,7 @@ public class ZTransitionAutoLinkSystem : EntitySystem
         base.Initialize();
 
         SubscribeLocalEvent<ZTransitionAutoLinkComponent, ComponentInit>(OnAutoLinkInit);
-        SubscribeLocalEvent<ZTransitionAutoLinkComponent, MapInitEvent>(HandleMapInitialization);
+        SubscribeLocalEvent<ZTransitionAutoLinkComponent, MapInitEvent>(HandleMapInitialization, after: new[] { typeof(ZDefinedStackSystem) });
     }
 
     private void OnAutoLinkInit(Entity<ZTransitionAutoLinkComponent> entity, ref ComponentInit args)
