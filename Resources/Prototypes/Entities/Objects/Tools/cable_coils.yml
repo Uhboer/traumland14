@@ -63,7 +63,7 @@
   - type: Item
     heldPrefix: coilhv
   - type: CablePlacer
-    cablePrototypeID: CableHV
+    cablePrototypeID: CableHV # TODO: Add alt mode for placing the vertical variants
     blockingWireType: HighVoltage
   - type: Appearance
   - type: Extractable

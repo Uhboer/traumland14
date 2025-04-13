@@ -31,6 +31,11 @@ namespace Content.Server.Power.Nodes
                     nodeDirs.Add((dir, node));
                 }
 
+                if (node is CableVerticalNode && node != this)
+                {
+                    nodeDirs.Add((dir, node));
+                }
+
                 if (node is CableDeviceNode && dir == Direction.Invalid)
                 {
                     // device on same tile

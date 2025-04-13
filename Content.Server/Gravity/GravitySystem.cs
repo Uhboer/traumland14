@@ -50,7 +50,7 @@ namespace Content.Server.Gravity
 
         private void OnGravitySource(ref IsGravitySource args)
         {
-            if (_zPhysics.TryGetTileWithEntity(args.Entity, ZDirection.Down, out var _, out var targetMap) &&
+            if (_zPhysics.TryGetTileWithEntity(args.Entity, ZDirection.Down, out var _, out var _, out var targetMap) &&
                 TryComp<GravityComponent>(targetMap, out var comp))
                 args.Handled = comp.Enabled;
             else // not founded

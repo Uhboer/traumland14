@@ -85,10 +85,20 @@ public class ZTransitionAutoLinkSystem : EntitySystem
                 moveDir = -1;
             }
         }
-        else
+        else // Or try to use internal direction
         {
-            // Not founded ZTransitionMarker or Climbable
-            return false;
+            if (entity.Comp.Direction == ZDirection.Up)
+            {
+                if (mapIdx >= maps.Count - 1)
+                    return false;
+                moveDir = 1;
+            }
+            else
+            {
+                if (mapIdx <= 0)
+                    return false;
+                moveDir = -1;
+            }
         }
 
         linkedEntityId = Spawn(entity.Comp.OtherSideProto, new EntityCoordinates(maps[mapIdx + moveDir], coords));

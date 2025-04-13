@@ -1,3 +1,4 @@
+using Content.KayMisaZlevels.Shared.Miscellaneous;
 using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
 
@@ -22,5 +23,5 @@ public sealed partial class ZTransitionAutoLinkComponent : Component
     public EntProtoId OtherSideProto = default!;
 
     [DataField("direction")]
-    public string Direction = "down";
+    public ZDirection Direction = ZDirection.Down;
 }

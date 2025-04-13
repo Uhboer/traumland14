@@ -6,6 +6,7 @@ using Robust.Shared.Configuration;
 using Robust.Shared.GameObjects;
 using Robust.Shared.IoC;
 using Robust.Shared.Map;
+using Robust.Shared.Map.Components;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Systems;
 using Robust.Shared.Toolshed.Commands.Values;
@@ -130,12 +131,14 @@ public sealed class ZPhysicsSystem : EntitySystem
         EntityUid ent,
         ZDirection direction,
         out Tile? tile,
+        out MapGridComponent? mapGrid,
         out EntityUid? targetMap,
         ZStackTrackerComponent? zStack = null,
         TransformComponent? xform = null,
         bool recursive = true)
     {
         tile = null;
+        mapGrid = null;
         targetMap = null;
 
         if (!Resolve(ent, ref xform) ||
@@ -156,7 +159,8 @@ public sealed class ZPhysicsSystem : EntitySystem
             if (result is not null)
             {
                 targetMap = result.Value.Item1;
-                tile = result.Value.Item2;
+                mapGrid = result.Value.Item2;
+                tile = result.Value.Item3;
             }
         }
         else
@@ -165,7 +169,8 @@ public sealed class ZPhysicsSystem : EntitySystem
             if (result is not null)
             {
                 targetMap = result.Value.Item1;
-                tile = result.Value.Item2;
+                mapGrid = result.Value.Item2;
+                tile = result.Value.Item3;
             }
         }
 
@@ -175,7 +180,7 @@ public sealed class ZPhysicsSystem : EntitySystem
             return true;
     }
 
-    private (EntityUid, Tile)? GetTile(EntityUid targetMap, EntityUid ent, TransformComponent xform)
+    private (EntityUid, MapGridComponent, Tile)? GetTile(EntityUid targetMap, EntityUid ent, TransformComponent xform)
     {
         if (!_mapManager.TryFindGridAt(targetMap, _xform.GetWorldPosition(ent), out _, out var zGrid))
             return null;
@@ -186,10 +191,10 @@ public sealed class ZPhysicsSystem : EntitySystem
         if (resultTile.IsEmpty)
             return null;
 
-        return (targetMap, resultTile);
+        return (targetMap, zGrid, resultTile);
     }
 
-    private (EntityUid, Tile)? GetTileFromBottom(
+    private (EntityUid, MapGridComponent, Tile)? GetTileFromBottom(
         EntityUid ent,
         ZStackTrackerComponent zStack,
         TransformComponent xform,
@@ -223,7 +228,7 @@ public sealed class ZPhysicsSystem : EntitySystem
         return null;
     }
 
-    private (EntityUid, Tile)? GetTileFromTop(
+    private (EntityUid, MapGridComponent, Tile)? GetTileFromTop(
         EntityUid ent,
         ZStackTrackerComponent zStack,
         TransformComponent xform,

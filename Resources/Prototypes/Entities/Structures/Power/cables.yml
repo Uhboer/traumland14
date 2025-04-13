@@ -49,7 +49,7 @@
   - type: RCDDeconstructable
     cost: 2
     delay: 0
-    fx: EffectRCDConstruct0  
+    fx: EffectRCDConstruct0
 
 - type: entity
   parent: CableBase
@@ -109,6 +109,36 @@
   - type: Cable
     cuttingQuality: null
 
+# HV Vertical variant
+- type: entity
+  parent: CableHV
+  id: CableHVVertical
+  suffix: vertical
+  components:
+  - type: Sprite
+    sprite: Structures/Power/Cables/hv_vertical_cable.rsi
+    state: hvcable_0
+    drawdepth: ThickWire
+  - type: Icon
+    sprite: Structures/Power/Cables/hv_vertical_cable.rsi
+    state: hvcable_4
+  - type: NodeContainer
+    nodes:
+      power:
+        !type:CableVerticalNode
+        nodeGroupID: HVPower
+  #- type: Cable
+  #  cableDroppedOnCutPrototype: CableHVStack1 # TODO: Create vertical cables or the mode for placing to vertical (like shift + click)
+   # cableType: HighVoltage
+
+- type: entity
+  id: CableHVVerticalUncuttable
+  parent: CableHVVertical
+  suffix: vertical, uncuttable
+  components:
+  - type: Cable
+    cuttingQuality: null
+
 - type: entity
   parent: CableBase
   id: CableMV
@@ -157,6 +187,37 @@
   id: CableMVUncuttable
   parent: CableMV
   suffix: uncuttable
+  components:
+  - type: Cable
+    cuttingQuality: null
+
+# MV Vertical variant
+- type: entity
+  parent: CableMV
+  id: CableMVVertical
+  suffix: vertical
+  components:
+  - type: Sprite
+    color: YellowGreen
+    sprite: Structures/Power/Cables/mv_vertical_cable.rsi
+    state: mvcable_0
+  - type: Icon
+    color: YellowGreen
+    sprite: Structures/Power/Cables/mv_vertical_cable.rsi
+    state: mvcable_4
+  - type: NodeContainer
+    nodes:
+      power:
+        !type:CableVerticalNode
+        nodeGroupID: MVPower
+  #- type: Cable
+  #  cableDroppedOnCutPrototype: CableMVStack1 # TODO: Create vertical cables or the mode for placing to vertical (like shift + click)
+  # cableType: MediumVoltage
+
+- type: entity
+  id: CableMVVerticalUncuttable
+  parent: CableMVVertical
+  suffix: vertical, uncuttable
   components:
   - type: Cable
     cuttingQuality: null
@@ -212,6 +273,37 @@
   id: CableApcExtensionUncuttable
   parent: CableApcExtension
   suffix: uncuttable
+  components:
+  - type: Cable
+    cuttingQuality: null
+
+# MV Vertical variant
+- type: entity
+  parent: CableApcExtension
+  id: CableApcExtensionVertical
+  suffix: vertical
+  components:
+  - type: Sprite
+    color: DarkGreen
+    sprite: Structures/Power/Cables/lv_vertical_cable.rsi
+    state: lvcable_0
+  - type: Icon
+    color: DarkGreen
+    sprite: Structures/Power/Cables/lv_vertical_cable.rsi
+    state: lvcable_4
+  - type: NodeContainer
+    nodes:
+      power:
+        !type:CableVerticalNode
+        nodeGroupID: Apc
+  #- type: Cable
+  #  cableDroppedOnCutPrototype: CableApcStack1 # TODO: Create vertical cables or the mode for placing to vertical (like shift + click)
+  # cableType: Apc
+
+- type: entity
+  id: CableApcExtensionVerticalUncuttable
+  parent: CableApcExtensionVertical
+  suffix: vertical, uncuttable
   components:
   - type: Cable
     cuttingQuality: null

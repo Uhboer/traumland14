@@ -73,7 +73,7 @@ namespace Content.Shared.Gravity
 
             if (_zStack.TryGetZStack(entity, out var stack))
             {
-                if (!_zPhysics.TryGetTileWithEntity(entity, ZDirection.Down, out var tile, out var targetMap) ||
+                if (!_zPhysics.TryGetTileWithEntity(entity, ZDirection.Down, out var tile, out var _, out var targetMap) ||
                     tile is null)
                     return false;
 
