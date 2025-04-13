@@ -400,5 +400,5 @@ public sealed partial class CCVars
     /// Configure what that looks like for you in Resources/Prototypes/Locale/en-US/dynamichostname/hostname.ftl
     /// </summary>
     public static readonly CVarDef<bool> UseDynamicHostname =
-        CVarDef.Create("finster_game.use_dynamic_hostname", false, CVar.SERVERONLY);
+        CVarDef.Create("finster_game.use_dynamic_hostname", true, CVar.SERVERONLY);
 }

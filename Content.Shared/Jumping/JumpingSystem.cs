@@ -27,6 +27,9 @@ public sealed class JumpingSystem : EntitySystem
     [Dependency] private readonly IGameTiming _gameTiming = default!;
     [Dependency] private readonly IRobustRandom _rand = default!;
 
+    private EntityQuery<PhysicsComponent> _physicsQuery;
+    private EntityQuery<JumpingComponent> _jumpingQuery;
+
     public override void Initialize()
     {
         base.Initialize();
@@ -36,12 +39,15 @@ public sealed class JumpingSystem : EntitySystem
                 .Register<JumpingSystem>();
         SubscribeLocalEvent<JumpingComponent, LandEvent>(OnLand);
         SubscribeLocalEvent<JumpingComponent, StartCollideEvent>(OnStartCollide);
+
+        _physicsQuery = GetEntityQuery<PhysicsComponent>();
+        _jumpingQuery = GetEntityQuery<JumpingComponent>();
     }
 
     public bool HandleJumpButton(ICommonSession? session, EntityCoordinates coords, EntityUid uid)
     {
         if (session == null || session.AttachedEntity == null ||
-            !TryComp<JumpingComponent>(session.AttachedEntity, out var jumpComp))
+            !_jumpingQuery.TryComp(session.AttachedEntity, out var jumpComp))
             return false;
 
         return TryJump(session.AttachedEntity.Value, coords.Position, jumpComp);
@@ -49,7 +55,10 @@ public sealed class JumpingSystem : EntitySystem
 
     private void OnStartCollide(EntityUid uid, JumpingComponent component, ref StartCollideEvent args)
     {
-        if (!TryComp<PhysicsComponent>(uid, out var phys) || !args.OtherFixture.Hard)
+        if (component.JumpingState < JumpingState.Jumping)
+            return;
+
+        if (!_physicsQuery.TryComp(uid, out var phys) || !args.OtherFixture.Hard)
             return;
 
         if (phys.BodyStatus == BodyStatus.InAir)
@@ -93,7 +102,10 @@ public sealed class JumpingSystem : EntitySystem
         //    jumpComp.IsFailed = true;
         _phys.SetLinearVelocity(uid, Vector2.Zero);
         _throwSys.TryThrow(uid, -direction, baseThrowSpeed: jumpComp.JumpSpeed);
+
         jumpComp.LastJump = _gameTiming.CurTime;
+        if (jumpComp.JumpingState <= JumpingState.Jumping)
+            jumpComp.JumpingState = JumpingState.Jumping;
 
         var afterJumpingEv = new AfterJumpingEvent(uid, position);
         RaiseLocalEvent(uid, ref afterJumpingEv, broadcast: true);
@@ -103,7 +115,12 @@ public sealed class JumpingSystem : EntitySystem
 
     private void OnLand(EntityUid uid, JumpingComponent jumpComp, ref LandEvent args)
     {
-        //jumpComp.IsFailed = false;
+        jumpComp.JumpingState = JumpingState.Landed;
+
+        var landingJumpingEv = new LandingAfterJumpEvent(uid);
+        RaiseLocalEvent(uid, ref landingJumpingEv, broadcast: true);
+
+        jumpComp.JumpingState = JumpingState.Standing;
     }
 }
 
@@ -114,4 +131,4 @@ public record struct BeforeJumpingEvent(EntityUid User, Vector2 TargetPosition, 
 public record struct AfterJumpingEvent(EntityUid User, Vector2 TargetPosition);
 
 [ByRefEvent]
-public record struct LandingEvent(EntityUid User);
+public record struct LandingAfterJumpEvent(EntityUid User);

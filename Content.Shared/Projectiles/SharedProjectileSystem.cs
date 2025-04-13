@@ -24,6 +24,8 @@ using Robust.Shared.Physics.Systems;
 using Robust.Shared.Serialization;
 using Robust.Shared.Timing;
 using Content.Shared.Standing;
+using Content.KayMisaZlevels.Shared.Systems;
+using Content.Shared.Gravity;
 
 namespace Content.Shared.Projectiles;
 
@@ -42,6 +44,8 @@ public abstract partial class SharedProjectileSystem : EntitySystem
     [Dependency] private readonly StandingStateSystem _standing = default!;
     [Dependency] private readonly SharedHandsSystem _hands = default!;
 
+    private EntityQuery<ProjectileComponent> _projectileQuery;
+
     public override void Initialize()
     {
         base.Initialize();
@@ -52,6 +56,21 @@ public abstract partial class SharedProjectileSystem : EntitySystem
         SubscribeLocalEvent<EmbeddableProjectileComponent, ActivateInWorldEvent>(OnEmbedActivate);
         SubscribeLocalEvent<EmbeddableProjectileComponent, RemoveEmbeddedProjectileEvent>(OnEmbedRemove);
         SubscribeLocalEvent<EmbeddableProjectileComponent, ExaminedEvent>(OnExamined);
+
+        _projectileQuery = GetEntityQuery<ProjectileComponent>();
+
+        SubscribeLocalEvent<ProjectileComponent, ZLevelDroppingEvent>(OnDropping, after: new[] { typeof(SharedGravitySystem) });
+    }
+
+    private void OnDropping(Entity<ProjectileComponent> ent, ref ZLevelDroppingEvent args)
+    {
+        if (ent.Comp.TargetMap is null)
+            return;
+
+        if (ent.Comp.TargetMap == Transform(args.Target).MapUid)
+            args.Handled = true; // Because projectile already descended to target map.
+        else
+            args.Handled = false;
     }
 
     // TODO: rename Embedded to Target in every context

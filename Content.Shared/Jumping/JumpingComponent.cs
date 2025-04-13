@@ -39,10 +39,20 @@ public sealed partial class JumpingComponent : Component
     /// </summary>
     //public bool IsFailed;
 
+    public JumpingState JumpingState = JumpingState.Standing;
+
     /*
     [DataField]
     public TimeSpan LandingStunTime = TimeSpan.FromSeconds(0.5);
     */
 
     public TimeSpan? LastJump = null;
+}
+
+public enum JumpingState
+{
+    Standing,
+    Jumping,
+    Failed,
+    Landed
 }
