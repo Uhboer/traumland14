@@ -23,10 +23,18 @@ public sealed class ZLayerOverlay : Overlay
 
     public override OverlaySpace Space => OverlaySpace.WorldSpaceBelowWorld;
 
+    private bool _drawBackgroundLayer = false;
+
     public ZLayerOverlay()
     {
         ZIndex = 0;
         IoCManager.InjectDependencies(this);
+
+        _drawBackgroundLayer = _configurationManager.GetCVar(CCVars.ZLayersBackgroundShader);
+        _configurationManager.OnValueChanged(CCVars.ZLayersBackgroundShader, (val) =>
+        {
+            _drawBackgroundLayer = val;
+        });
     }
 
     protected override bool BeforeDraw(in OverlayDrawArgs args)
@@ -42,7 +50,7 @@ public sealed class ZLayerOverlay : Overlay
         if (args.MapId == MapId.Nullspace)
             return;
 
-        if (!_configurationManager.GetCVar(CCVars.ZLayersBackgroundShader))
+        if (!_drawBackgroundLayer)
             return;
 
         var position = args.Viewport.Eye?.Position.Position ?? Vector2.Zero;

@@ -1,6 +1,7 @@
 using System.Numerics;
 using Content.Client.UserInterface.Systems.Viewport;
 using Content.KayMisaZlevels.Client;
+using Content.KayMisaZlevels.Shared.Systems;
 using Robust.Client.Graphics;
 using Robust.Client.Input;
 using Robust.Client.Player;
@@ -30,7 +31,10 @@ public sealed class ScalingViewport : Control, IViewportControl
     [Dependency] private readonly IResourceManager _resManager = default!;
     [Dependency] private readonly IEyeManager _eyeManager = default!;
     //[Dependency] private readonly IPrototypeManager _prototypeManager = default!;
+
     private ZStackSystem? _zStack = default!;
+
+    private EntityQuery<TransformComponent>? _xformQuery;
 
     // Drawing Shader
     public ShaderInstance? Shader;
@@ -174,123 +178,196 @@ public sealed class ScalingViewport : Control, IViewportControl
     protected override void Draw(IRenderHandle renderHandle)
     {
         var handle = renderHandle.DrawingHandleScreen;
-
         EnsureViewportCreated();
-
         DebugTools.AssertNotNull(_viewport);
 
+        // Cache frequently accessed components/systems
+        _xformQuery ??= _entityManager.GetEntityQuery<TransformComponent>();
+        var viewport = _viewport!; // Local reference to avoid null checks
         var drawBox = GetDrawBox();
         var drawBoxGlobal = drawBox.Translated(GlobalPixelPosition);
 
-        if (_eye is not null)
+        if (_eye is null)
         {
-            _zStack ??= _entityManager.System<ZStackSystem>();
-            var map = _eye.Position.MapId;
-            var id = _mapManager.GetMapEntityIdOrThrow(map);
+            RenderFinalOutput(renderHandle, viewport, drawBox, drawBoxGlobal);
+            return;
+        }
 
-            if (_zStack.TryGetZStack(id, out var stack))
+        // Cache systems and components
+        _zStack ??= _entityManager.System<ZStackSystem>();
+        var mapId = _eye.Position.MapId;
+        var mapEntityId = _mapManager.GetMapEntityIdOrThrow(mapId);
+
+        // If map is not multi-Z
+        if (!_zStack.TryGetZStack(mapEntityId, out var stack))
+        {
+            viewport.Eye = Eye;
+            viewport.Render();
+            RenderFinalOutput(renderHandle, viewport, drawBox, drawBoxGlobal);
+            return;
+        }
+
+        // Process multi-Z rendering
+        var stackMaps = stack.Value.Comp.Maps;
+        GetDrawingMapList(stackMaps, mapEntityId, out var drawMaps);
+
+        var depth = drawMaps.Count;
+        var idx = stackMaps.Count - depth;
+        var firstLayer = true;
+
+        foreach (var toDraw in drawMaps)
+        {
+            // Configure viewport for this layer
+            viewport.ClearColor = firstLayer ? Robust.Shared.Maths.Color.Magenta : null;
+
+            var mapComp = _entityManager.GetComponent<MapComponent>(toDraw);
+            var pos = new MapCoordinates(_eye.Position.Position, mapComp.MapId);
+
+            ConfigureZEye(viewport, pos, idx, depth, toDraw == mapEntityId);
+
+            // Render with appropriate effects
+            if (toDraw != mapEntityId)
             {
-                var first = true;
-                var idx = 0;
-                var depth = stack.Value.Comp.Maps.IndexOf(id);
-                foreach (var toDraw in stack.Value.Comp.Maps)
-                {
-                    if (first)
-                        _viewport!.ClearColor = Robust.Shared.Maths.Color.Magenta;
-                    else
-                        _viewport!.ClearColor = null;
-
-                    var pos = new MapCoordinates(_eye.Position.Position, _entityManager.GetComponent<MapComponent>(toDraw).MapId);
-                    _viewport!.Eye = new ZEye()
-                    {
-                        Position = pos, DrawFov = _eye.DrawFov, DrawLight = _eye.DrawLight, Offset = _eye.Offset,
-                        Rotation = _eye.Rotation, Scale = _eye.Scale - new Vector2(0.03f * depth, 0.03f * depth),
-                        Depth = idx,
-                        Top = toDraw == id,
-                    };
-
-                    // Add some shadows, blur and disable fov for background layers
-                    if (toDraw != id)
-                    {
-                        var preivousFov = SetEyeFov(_viewport!.Eye, false); // Remove black fov area
-                        //handle.UseShader(ZLayerShader);
-                        _viewport!.Render();
-                        //handle.UseShader(null);
-                        SetEyeFov(_viewport!.Eye, preivousFov); // Remove black fov area
-                    }
-                    else
-                    {
-                        _viewport!.Render();
-                    }
-
-                    first = false;
-                    idx++;
-                    depth--;
-                    if (toDraw == id) // Final, we're done here!
-                        break;
-                }
+                var previousFov = SetEyeFov(viewport.Eye, false);
+                viewport.Render();
+                SetEyeFov(viewport.Eye, previousFov);
             }
             else
             {
-                _viewport!.Eye = Eye;
-                //var preivousFov = SetEyeFov(_viewport!.Eye, false); // Remove black fov area
-                _viewport!.Render(); // just do the thing.
-                //SetEyeFov(_viewport!.Eye, preivousFov); // Remove black fov area
+                viewport.Render();
+                break; // Exit early after rendering main layer
             }
+
+            firstLayer = false;
+            idx++;
+            depth--;
         }
 
-        // Fix wrong Eye for overlays
-        FallbackDefaultEye();
+        RenderFinalOutput(renderHandle, viewport, drawBox, drawBoxGlobal);
+    }
 
+    private void ConfigureZEye(IClydeViewport viewport, MapCoordinates pos, int idx, int depth, bool isTop)
+    {
+        if (_eye is null)
+            return;
+
+        viewport.Eye = new ZEye()
+        {
+            Position = pos,
+            DrawFov = _eye.DrawFov,
+            DrawLight = _eye.DrawLight,
+            Offset = _eye.Offset,
+            Rotation = _eye.Rotation,
+            Scale = _eye.Scale - new Vector2(0.03f * depth, 0.03f * depth),
+            Depth = idx,
+            Top = isTop
+        };
+    }
+
+    private void RenderFinalOutput(IRenderHandle renderHandle, IClydeViewport viewport, UIBox2 drawBox, UIBox2i drawBoxGlobal)
+    {
+        var handle = renderHandle.DrawingHandleScreen;
+
+        // Restore the Eye
+        FallbackDefaultEye();
+        // Setup the shader
         handle.UseShader(Shader);
 
-        if (_queuedScreenshots.Count != 0)
+        // Process screenshots if any
+        if (_queuedScreenshots.Count > 0)
         {
             var callbacks = _queuedScreenshots.ToArray();
+            _queuedScreenshots.Clear();
 
-            _viewport!.RenderTarget.CopyPixelsToMemory<Rgba32>(image =>
+            viewport.RenderTarget.CopyPixelsToMemory<Rgba32>(image =>
             {
                 foreach (var callback in callbacks)
                 {
                     callback(image);
                 }
             });
-
-            _queuedScreenshots.Clear();
         }
 
-        _viewport!.RenderScreenOverlaysBelow(renderHandle, this, drawBoxGlobal);
-        handle.DrawTextureRect(_viewport.RenderTarget.Texture, drawBox);
-        _viewport.RenderScreenOverlaysAbove(renderHandle, this, drawBoxGlobal);
+        viewport.RenderScreenOverlaysBelow(renderHandle, this, drawBoxGlobal);
+        handle.DrawTextureRect(viewport.RenderTarget.Texture, drawBox);
+        viewport.RenderScreenOverlaysAbove(renderHandle, this, drawBoxGlobal);
     }
 
-    public bool TryFindEmptyTiles(EntityUid mapUid, MapId mapId)
+    public void GetDrawingMapList(List<EntityUid> sourceList, EntityUid currentMap, out List<EntityUid> mapList)
     {
+        mapList = new List<EntityUid>(sourceList.Count);
+
+        if (_eye is null)
+            return;
+
+        var mapIdx = sourceList.IndexOf(currentMap);
+        if (mapIdx < 0)
+            return;
+
+        for (int i = mapIdx; i >= 0; i--)
+        {
+            var targetMap = sourceList[i];
+            mapList.Add(targetMap);
+
+            if (!TryFindEmptyTiles(targetMap))
+                break;
+        }
+
+        // Reverse a new list
+        if (mapList.Count > 0)
+        {
+            var tempList = new List<EntityUid>(mapList.Count);
+            for (int i = mapList.Count - 1; i >= 0; i--)
+            {
+                tempList.Add(mapList[i]);
+            }
+            mapList = tempList;
+        }
+    }
+
+    public bool TryFindEmptyTiles(EntityUid mapUid)
+    {
+        if (_xformQuery is null || !_xformQuery.Value.TryComp(mapUid, out var xform))
+            return true;
+
         var drawBox = GetDrawBox();
+        var eyeManager = _eyeManager;
+        var mapManager = _mapManager;
 
-        var mapCoordsBottomLeft = _eyeManager.ScreenToMap(drawBox.BottomLeft);
-        var mapCoordsTopRight = _eyeManager.ScreenToMap(drawBox.TopRight);
+        var bottomLeftPos = eyeManager.ScreenToMap(drawBox.BottomLeft).Position;
+        var topRightPos = eyeManager.ScreenToMap(drawBox.TopRight).Position;
+        var mapId = xform.MapID;
 
-        if (!_mapManager.TryFindGridAt(mapUid, mapCoordsBottomLeft.Position, out var ent, out var grid))
-            return false;
+        var mapCoordsBottomLeft = new MapCoordinates(bottomLeftPos, mapId);
+        var mapCoordsTopRight = new MapCoordinates(topRightPos, mapId);
+
+        if (!mapManager.TryFindGridAt(mapUid, mapCoordsBottomLeft.Position, out _, out var grid))
+            return true;
 
         var tileBottomLeft = grid.TileIndicesFor(mapCoordsBottomLeft);
         var tileTopRight = grid.TileIndicesFor(mapCoordsTopRight);
 
-        for (int x = tileBottomLeft.X; x <= tileTopRight.X; x++)
+        int minX = tileBottomLeft.X - 1;
+        int maxX = tileTopRight.X + 1;
+        int minY = tileBottomLeft.Y - 1;
+        int maxY = tileTopRight.Y + 1;
+
+        Vector2i tilePos = default;
+
+        for (tilePos.X = minX; tilePos.X <= maxX; tilePos.X++)
         {
-            for (int y = tileBottomLeft.Y; y <= tileTopRight.Y; y++)
+            for (tilePos.Y = minY; tilePos.Y <= maxY; tilePos.Y++)
             {
-                var tile = grid.GetTileRef(new Vector2i(x, y));
+                var tile = grid.GetTileRef(tilePos);
 
                 if (tile.Tile.IsEmpty)
                 {
-                    return true; // So, tile is empty, then we should render layers
+                    return true;
                 }
             }
         }
 
-        return false; // No layers? Then do not render layers
+        return false;
     }
 
     /// <summary>
