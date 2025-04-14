@@ -46,44 +46,32 @@ namespace Content.Server.Chat.Commands
                 return;
             }
 
-            var protoMan = IoCManager.Resolve<IPrototypeManager>();
-            var random = IoCManager.Resolve<IRobustRandom>();
-            var audioSystem = EntitySystem.Get<SharedAudioSystem>();
-
-            if (protoMan.TryIndex<SoundCollectionPrototype>("SuicideTrying", out var proto))
-            {
-                var sound = new SoundPathSpecifier(proto.PickFiles[random.Next(proto.PickFiles.Count)]);
-                var filter = Filter.Empty();
-                filter.AddPlayer(player);
-                audioSystem.PlayEntity(sound, filter, (EntityUid) player.AttachedEntity, false, AudioParams.Default.WithVolume(-0.5f));
-                return;
-            }
-
-            /*
-        var coordinates = new EntityCoordinates(ourXform.MapUid.Value, args.WorldPoint);
-        var volume = MathF.Min(10f, 1f * MathF.Pow(jungleDiff, 0.5f) - 5f);
-        var audioParams = AudioParams.Default.WithVariation(SharedContentAudioSystem.DefaultVariation).WithVolume(volume);
-
-        _audio.PlayPvs(_shuttleImpactSound, coordinates, audioParams);
-            */
-
-            /*
             var gameTicker = EntitySystem.Get<GameTicker>();
             var suicideSystem = EntitySystem.Get<SuicideSystem>();
-            if (suicideSystem.Suicide(victim))
+            if (!suicideSystem.Suicide(victim))
             {
                 var deniedMessage = Loc.GetString("suicide-command-denied");
                 shell.WriteLine(deniedMessage);
                 _entityManager.System<PopupSystem>()
                     .PopupEntity(deniedMessage, victim, victim);
+
+                var protoMan = IoCManager.Resolve<IPrototypeManager>();
+                var random = IoCManager.Resolve<IRobustRandom>();
+                var audioSystem = EntitySystem.Get<SharedAudioSystem>();
+
+                if (protoMan.TryIndex<SoundCollectionPrototype>("SuicideTrying", out var proto))
+                {
+                    var sound = new SoundPathSpecifier(proto.PickFiles[random.Next(proto.PickFiles.Count)]);
+                    var filter = Filter.Empty();
+                    filter.AddPlayer(player);
+                    audioSystem.PlayEntity(sound, filter, (EntityUid) player.AttachedEntity, false, AudioParams.Default.WithVolume(-0.5f));
+                    return;
+                }
+
                 return;
             }
 
-            if (suicideSystem.Suicide(victim))
-                return;
-
             shell.WriteLine(Loc.GetString("ghost-command-denied"));
-            */
         }
     }
 }

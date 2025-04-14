@@ -1,6 +1,8 @@
 - type: entity
   name: arm blade
-  parent: BaseItem
+  parent:
+  - BaseItem
+  - BaseBreakableMeleeWeapon
   id: ArmBlade
   description: A grotesque blade made out of bone and flesh that cleaves through people as a hot knife through butter.
   components:

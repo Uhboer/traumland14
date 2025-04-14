@@ -1,5 +1,6 @@
 using Content.Client._Finster.Lookup;
 using Content.Client._Finster.Rulebook;
+using Content.Client._Finster.UserInterface.RichText;
 using Content.Client._Shitmed.UserInterface.Systems.Targeting;
 using Content.Client._Shitmed.UserInterface.Systems.Targeting.Controls;
 using Content.Client.UserInterface.Systems.Alerts.Controls;

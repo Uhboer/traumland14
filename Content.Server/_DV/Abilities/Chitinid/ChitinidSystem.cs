@@ -1,4 +1,5 @@
 using Content.Server.Nutrition.Components;
+using Content.Server.Sound;
 using Content.Shared.Actions;
 using Content.Shared.Actions.Events;
 using Content.Shared.Audio;
@@ -23,6 +24,7 @@ public sealed partial class ChitinidSystem : EntitySystem
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly DamageableSystem _damageable = default!;
     [Dependency] private readonly MobStateSystem _mobState = default!;
+    [Dependency] private readonly SoundVisualizeSystem _soundVis = default!;
 
     public override void Initialize()
     {
@@ -89,6 +91,7 @@ public sealed partial class ChitinidSystem : EntitySystem
 
         _popup.PopupEntity(Loc.GetString("chitzite-cough", ("name", Identity.Entity(ent, EntityManager))), ent);
         _audio.PlayPvs("/Audio/Animals/cat_hiss.ogg", ent, AudioHelpers.WithVariation(0.15f));
+        _soundVis.PlaySoundEffect(ent);
 
         var chitzite = EnsureComp<CoughingUpChitziteComponent>(ent);
         chitzite.NextCough = _timing.CurTime + chitzite.CoughUpTime;

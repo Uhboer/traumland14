@@ -8,7 +8,7 @@ public sealed partial class CCVars
     /// Is mob pushing enabled.
     /// </summary>
     public static readonly CVarDef<bool> MovementMobPushing =
-        CVarDef.Create("finster_movement.mob_pushing", false, CVar.SERVER | CVar.REPLICATED);
+        CVarDef.Create("finster_movement.mob_pushing", true, CVar.SERVER | CVar.REPLICATED);
 
     /// <summary>
     /// Can we push mobs not moving.

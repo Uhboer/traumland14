@@ -44,6 +44,7 @@ using Robust.Shared.Physics.Dynamics.Joints;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs;
 using Content.Shared._ERRORGATE.Hearing;
+using Content.Server.Sound;
 
 namespace Content.Server.Chat.Systems;
 
@@ -76,6 +77,7 @@ public sealed partial class ChatSystem : SharedChatSystem
     [Dependency] private readonly LanguageSystem _language = default!;
     [Dependency] private readonly TelepathicChatSystem _telepath = default!;
     [Dependency] private readonly EntityWhitelistSystem _whitelistSystem = default!;
+    [Dependency] private readonly SoundVisualizeSystem _soundVis = default!;
 
     public const int VoiceRange = 10; // how far voice goes in world units
     public const int WhisperClearRange = 2; // how far whisper goes while still being understandable, in world units

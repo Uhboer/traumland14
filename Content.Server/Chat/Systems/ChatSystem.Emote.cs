@@ -156,6 +156,7 @@ public partial class ChatSystem
         // if general params for all sounds set - use them
         var param = proto.GeneralParams ?? sound.Params;
         _audio.PlayPvs(sound, uid, param);
+        _soundVis.PlaySoundEffect(uid);
         return true;
     }
     /// <summary>

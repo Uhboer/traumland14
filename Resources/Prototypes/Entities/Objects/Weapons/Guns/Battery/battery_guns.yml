@@ -1,6 +1,8 @@
 - type: entity
   id: BaseWeaponBattery
-  parent: BaseItem
+  parent:
+  - BaseItem
+  - BaseBreakableRangedWeapon
   abstract: true
   components:
   - type: Sprite

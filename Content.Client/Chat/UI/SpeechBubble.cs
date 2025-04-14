@@ -1,4 +1,7 @@
 using System.Numerics;
+using Content.Client._Finster.UserInterface.RichText;
+using Content.Client._ViewportGui.ViewportUserInterface;
+using Content.Client._ViewportGui.ViewportUserInterface.UI;
 using Content.Client.Chat.Managers;
 using Content.Client.Viewport;
 using Content.KayMisaZlevels.Client;
@@ -15,12 +18,13 @@ using Robust.Shared.Utility;
 
 namespace Content.Client.Chat.UI
 {
-    public abstract class SpeechBubble : Control
+    public abstract class SpeechBubble : HUDControl
     {
         [Dependency] private readonly IEyeManager _eyeManager = default!;
         [Dependency] private readonly IEntityManager _entityManager = default!;
         [Dependency] protected readonly IConfigurationManager ConfigManager = default!;
-        [Dependency] protected readonly  IUserInterfaceManager _uiManager = default!;
+        [Dependency] protected readonly IUserInterfaceManager UiManager = default!;
+        [Dependency] private readonly IViewportUserInterfaceManager _vpUIManager = default!;
 
         private readonly SharedTransformSystem _transformSystem;
 
@@ -60,7 +64,10 @@ namespace Content.Client.Chat.UI
         public float VerticalOffset { get; set; }
         private float _verticalOffsetAchieved;
 
+        private Vector2 _worldPos = Vector2.Zero;
+
         public Vector2 ContentSize { get; private set; }
+        public readonly HUDRichTextLabel BubbleControl;
 
         // man down
         public event Action<EntityUid, SpeechBubble>? OnDied;
@@ -92,23 +99,15 @@ namespace Content.Client.Chat.UI
             _senderEntity = senderEntity;
             _transformSystem = _entityManager.System<SharedTransformSystem>();
 
-            // Use text clipping so new messages don't overlap old ones being pushed up.
-            RectClipContent = true;
-
-            var bubble = BuildBubble(message, speechStyleClass, fontColor);
-
-            AddChild(bubble);
-
-            ForceRunStyleUpdate();
-
-            bubble.Measure(Vector2Helpers.Infinity);
-            ContentSize = bubble.DesiredSize;
+            BubbleControl = BuildBubble(message, speechStyleClass, fontColor);
+            AddChild(BubbleControl);
+            ContentSize = BubbleControl.Size;
             _verticalOffsetAchieved = -ContentSize.Y;
         }
 
-        protected abstract Control BuildBubble(ChatMessage message, string speechStyleClass, Color? fontColor = null);
+        protected abstract HUDRichTextLabel BuildBubble(ChatMessage message, string speechStyleClass, Color? fontColor = null);
 
-        protected override void FrameUpdate(FrameEventArgs args)
+        public override void FrameUpdate(FrameEventArgs args)
         {
             base.FrameUpdate(args);
 
@@ -132,28 +131,39 @@ namespace Content.Client.Chat.UI
 
             if (!_entityManager.TryGetComponent<TransformComponent>(_senderEntity, out var xform) || xform.MapID != _eyeManager.CurrentMap)
             {
-                Modulate = Color.White.WithAlpha(0);
+                BubbleControl.DefaultColor = BubbleControl.DefaultColor.WithAlpha(0);
                 return;
             }
 
             if (_timeLeft <= FadeTime)
             {
                 // Update alpha if we're fading.
-                Modulate = Color.White.WithAlpha(_timeLeft / FadeTime);
+                BubbleControl.DefaultColor = BubbleControl.DefaultColor.WithAlpha(_timeLeft / FadeTime);
             }
+            /*
             else
             {
                 // Make opaque otherwise, because it might have been hidden before
-                Modulate = Color.White;
+                BubbleControl.DefaultColor = Color.White;
             }
+            */
 
             var baseOffset = 0f;
 
-           if (_entityManager.TryGetComponent<SpeechComponent>(_senderEntity, out var speech))
+            if (_entityManager.TryGetComponent<SpeechComponent>(_senderEntity, out var speech))
                 baseOffset = speech.SpeechBubbleOffset;
 
             var offset = (-_eyeManager.CurrentEye.Rotation).ToWorldVec() * -(EntityVerticalOffset + baseOffset);
-            var worldPos = _transformSystem.GetWorldPosition(xform) + offset;
+            _worldPos = _transformSystem.GetWorldPosition(xform) + offset;
+
+            var screenPos = _eyeManager.WorldToScreen(_worldPos);
+            var localPos = _vpUIManager.ConvertGlobalToLocal(screenPos);
+            if (localPos is null)
+                return;
+
+            Position = localPos.Value - (BubbleControl.Size / 2);
+
+            /*
 
             var lowerCenter = _eyeManager.WorldToScreen(worldPos) / UIScale;
             if (_eyeManager.MainViewport is not ScalingViewport svp)
@@ -166,6 +176,12 @@ namespace Content.Client.Chat.UI
 
             var height = MathF.Ceiling(MathHelper.Clamp(lowerCenter.Y - screenPos.Y, 0, ContentSize.Y));
             SetHeight = height;
+            */
+        }
+
+        public override void Draw(in ViewportUIDrawArgs args)
+        {
+            base.Draw(args);
         }
 
         private void Die()
@@ -212,23 +228,18 @@ namespace Content.Client.Chat.UI
         {
         }
 
-        protected override Control BuildBubble(ChatMessage message, string speechStyleClass, Color? fontColor = null)
+        protected override HUDRichTextLabel BuildBubble(ChatMessage message, string speechStyleClass, Color? fontColor = null)
         {
-            var label = new RichTextLabel
+            var label = new HUDRichTextLabel();
+            /*
             {
                 MaxWidth = SpeechMaxWidth,
             };
+            */
 
             label.SetMessage(FormatSpeech(message.WrappedMessage, fontColor));
 
-            var panel = new PanelContainer
-            {
-                StyleClasses = { "speechBox", speechStyleClass },
-                Children = { label },
-                ModulateSelfOverride = Color.White.WithAlpha(0.75f)
-            };
-
-            return panel;
+            return label;
         }
     }
 
@@ -240,68 +251,25 @@ namespace Content.Client.Chat.UI
         {
         }
 
-        protected override Control BuildBubble(ChatMessage message, string speechStyleClass, Color? fontColor = null)
+        protected override HUDRichTextLabel BuildBubble(ChatMessage message, string speechStyleClass, Color? fontColor = null)
         {
             if (!ConfigManager.GetCVar(CCVars.ChatEnableFancyBubbles))
             {
-                var label = new RichTextLabel
+                var label = new HUDRichTextLabel();
+                /*
                 {
                     MaxWidth = SpeechMaxWidth
                 };
+                */
 
                 label.SetMessage(ExtractAndFormatSpeechSubstring(message, "BubbleContent", fontColor));
-
-                var unfanciedPanel = new PanelContainer
-                {
-                    StyleClasses = { "speechBox", speechStyleClass },
-                    Children = { label },
-                    ModulateSelfOverride = Color.White.WithAlpha(0.75f)
-                };
-                return unfanciedPanel;
+                return label;
             }
 
-            var bubbleHeader = new RichTextLabel
-            {
-                Margin = new Thickness(1, 1, 1, 1)
-            };
-
-            var bubbleContent = new RichTextLabel
-            {
-                MaxWidth = SpeechMaxWidth,
-                Margin = new Thickness(2, 6, 2, 2),
-                StyleClasses = { "bubbleContent" }
-            };
-
-            //We'll be honest. *Yes* this is hacky. Doing this in a cleaner way would require a bottom-up refactor of how saycode handles sending chat messages. -Myr
-            bubbleHeader.SetMessage(ExtractAndFormatSpeechSubstring(message, "BubbleHeader", fontColor));
+            var bubbleContent = new HUDRichTextLabel();
             bubbleContent.SetMessage(ExtractAndFormatSpeechSubstring(message, "BubbleContent", fontColor));
 
-            //As for below: Some day this could probably be converted to xaml. But that is not today. -Myr
-            var mainPanel = new PanelContainer
-            {
-                StyleClasses = { "speechBox", speechStyleClass },
-                Children = { bubbleContent },
-                ModulateSelfOverride = Color.White.WithAlpha(0.75f),
-                HorizontalAlignment = HAlignment.Center,
-                VerticalAlignment = VAlignment.Bottom,
-                Margin = new Thickness(4, 14, 4, 2)
-            };
-
-            var headerPanel = new PanelContainer
-            {
-                StyleClasses = { "speechBox", speechStyleClass },
-                Children = { bubbleHeader },
-                ModulateSelfOverride = Color.White.WithAlpha(ConfigManager.GetCVar(CCVars.ChatFancyNameBackground) ? 0.75f : 0f),
-                HorizontalAlignment = HAlignment.Center,
-                VerticalAlignment = VAlignment.Top
-            };
-
-            var panel = new PanelContainer
-            {
-                Children = { mainPanel, headerPanel }
-            };
-
-            return panel;
+            return bubbleContent;
         }
     }
 }

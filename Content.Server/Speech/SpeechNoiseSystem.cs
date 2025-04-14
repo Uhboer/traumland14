@@ -7,6 +7,7 @@ using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 using Robust.Shared.Random;
+using Content.Server.Sound;
 
 namespace Content.Server.Speech
 {
@@ -16,6 +17,7 @@ namespace Content.Server.Speech
         [Dependency] private readonly IPrototypeManager _protoManager = default!;
         [Dependency] private readonly IRobustRandom _random = default!;
         [Dependency] private readonly SharedAudioSystem _audio = default!;
+        [Dependency] private readonly SoundVisualizeSystem _soundVis = default!;
 
         public override void Initialize()
         {
@@ -73,6 +75,7 @@ namespace Content.Server.Speech
             var sound = GetSpeechSound((uid, component), args.Message);
             component.LastTimeSoundPlayed = currentTime;
             _audio.PlayPvs(sound, uid);
+            _soundVis.PlaySoundEffect(uid);
         }
     }
 }

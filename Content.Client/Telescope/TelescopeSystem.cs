@@ -99,7 +99,7 @@ public sealed class TelescopeSystem : SharedTelescopeSystem
 
         var offset = Vector2.Zero;
 
-        if (!_toggled)
+        if (!_toggled && eye.Offset != offset)
         {
             RaiseEvent(offset);
             return;
@@ -138,7 +138,8 @@ public sealed class TelescopeSystem : SharedTelescopeSystem
             offset = new Angle(-eye.Rotation.Theta).RotateVec(offset);
         }
 
-        RaiseEvent(offset);
+        if (eye.Offset != offset)
+            RaiseEvent(offset);
     }
 
     private void RaiseEvent(Vector2 offset)

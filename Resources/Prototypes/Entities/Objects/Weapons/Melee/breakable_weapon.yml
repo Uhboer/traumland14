@@ -1,0 +1,6 @@
+- type: entity
+  id: BaseBreakableMeleeWeapon
+  abstract: true
+  components:
+  - type: Breakable
+  - type: Destructible

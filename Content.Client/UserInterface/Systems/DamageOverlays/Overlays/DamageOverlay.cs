@@ -50,6 +50,8 @@ public sealed class DamageOverlay : Overlay
 
     public const int DrawingDepth = 10;
 
+    private EntityQuery<EyeComponent> _eyeQuery;
+
     public DamageOverlay()
     {
         // TODO: Replace
@@ -59,19 +61,23 @@ public sealed class DamageOverlay : Overlay
         _bruteShader = _prototypeManager.Index<ShaderPrototype>("GradientCircleMask").InstanceUnique();
         _greyscaleShader = _prototypeManager.Index<ShaderPrototype>("GreyscaleFullscreen").InstanceUnique();
 
+        _eyeQuery = _entityManager.GetEntityQuery<EyeComponent>();
+
         ZIndex = DrawingDepth;
+    }
+
+    protected override bool BeforeDraw(in OverlayDrawArgs args)
+    {
+        if (!_eyeQuery.TryComp(_playerManager.LocalEntity, out var eyeComp) ||
+            args.Viewport.Eye is null ||
+            args.Viewport.Eye.Position.MapId != eyeComp.Eye.Position.MapId)
+            return false;
+
+        return true;
     }
 
     protected override void Draw(in OverlayDrawArgs args)
     {
-        if (!_entityManager.TryGetComponent(_playerManager.LocalEntity, out EyeComponent? eyeComp))
-            return;
-
-        // FINSTER EDIT - Doesn't work with KZLevels
-        //if (args.Viewport.Eye != eyeComp.Eye)
-        //    return;
-        // FINSTER EDIT END
-
         /*
          * Here's the rundown:
          * 1. There's lerping for each level so the transitions are smooth.

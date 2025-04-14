@@ -1,5 +1,6 @@
 using Content.Server.Actions;
 using Content.Server.Chat.Systems;
+using Content.Server.Sound;
 using Content.Server.Speech.Components;
 using Content.Shared.ActionBlocker;
 using Content.Shared.CCVar;
@@ -24,6 +25,7 @@ public sealed class VocalSystem : EntitySystem
     [Dependency] private readonly ActionsSystem _actions = default!;
     [Dependency] private readonly ActionBlockerSystem _actionBlocker = default!;
     [Dependency] private readonly IConfigurationManager _config = default!;
+    [Dependency] private readonly SoundVisualizeSystem _soundVis = default!;
 
     [ValidatePrototypeId<ReplacementAccentPrototype>]
     private const string MuzzleAccent = "mumble";
@@ -94,6 +96,7 @@ public sealed class VocalSystem : EntitySystem
     {
         if (_random.Prob(component.WilhelmProbability))
         {
+            _soundVis.PlaySoundEffect(uid);
             _audio.PlayPvs(component.Wilhelm, uid, component.Wilhelm.Params);
             return true;
         }

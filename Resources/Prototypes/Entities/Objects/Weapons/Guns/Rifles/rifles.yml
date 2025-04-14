@@ -1,6 +1,9 @@
 - type: entity
   name: BaseWeaponRifle
-  parent: [BaseItem, BaseGunWieldable]
+  parent:
+  - BaseItem
+  - BaseGunWieldable
+  - BaseBreakableRangedWeapon
   id: BaseWeaponRifle
   description: A rooty tooty point and shooty.
   abstract: true

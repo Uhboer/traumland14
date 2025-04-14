@@ -1,6 +1,8 @@
 - type: entity
   name: BaseWeaponHeavyMachineGun
-  parent: BaseItem
+  parent:
+  - BaseItem
+  - BaseBreakableRangedWeapon
   id: BaseWeaponHeavyMachineGun
   description: Spray and pray
   abstract: true

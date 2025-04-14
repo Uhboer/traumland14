@@ -31,7 +31,7 @@ internal sealed class BuckleSystem : SharedBuckleSystem
         }
     }
 
-     /// <summary>
+    /// <summary>
     /// Is the strap entity already rotated north? Lower the draw depth of the buckled entity.
     /// </summary>
     private void OnBuckledEvent(Entity<BuckleComponent> ent, ref BuckledEvent args)

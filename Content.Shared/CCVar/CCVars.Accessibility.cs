@@ -19,6 +19,12 @@ public sealed partial class CCVars
     public static readonly CVarDef<bool> ReducedMotion =
         CVarDef.Create("finster_accessibility.reduced_motion", false, CVar.REPLICATED | CVar.SERVER);
 
+    public static readonly CVarDef<bool> SpeechBubbles =
+        CVarDef.Create("finster_accessibility.speech_bubbles", false, CVar.REPLICATED | CVar.SERVER);
+
+    public static readonly CVarDef<bool> PopupMessages =
+        CVarDef.Create("finster_accessibility.popup_messages", false, CVar.REPLICATED | CVar.SERVER);
+
     public static readonly CVarDef<bool> ChatEnableColorName =
         CVarDef.Create("finster_accessibility.enable_color_name",
             true,

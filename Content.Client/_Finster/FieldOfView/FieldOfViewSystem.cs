@@ -20,17 +20,21 @@ public sealed class FieldOfViewSystem : EntitySystem
     [Dependency] private readonly ZStackSystem _zStack = default!;
     [Dependency] private readonly SharedMapSystem _map = default!;
 
+    private EntityQuery<FieldOfViewComponent> _fovQuery;
     private EntityQuery<TransformComponent> _xformQuery;
     private EntityQuery<MobMoverComponent> _mobMoverQuery;
     private EntityQuery<SpriteComponent> _spriteQuery;
+    private EntityQuery<MapComponent> _mapQuery;
 
     private List<EntityUid> _hiddenList = new();
 
     public override void Initialize()
     {
+        _fovQuery = GetEntityQuery<FieldOfViewComponent>();
         _xformQuery = GetEntityQuery<TransformComponent>();
         _mobMoverQuery = GetEntityQuery<MobMoverComponent>();
         _spriteQuery = GetEntityQuery<SpriteComponent>();
+        _mapQuery = GetEntityQuery<MapComponent>();
 
         SubscribeLocalEvent<FieldOfViewComponent, LocalPlayerAttachedEvent>(OnAttached);
         SubscribeLocalEvent<FieldOfViewComponent, LocalPlayerDetachedEvent>(OnDetached);
@@ -58,7 +62,7 @@ public sealed class FieldOfViewSystem : EntitySystem
     {
         foreach (var uid in _hiddenList)
         {
-            if (!TryComp<SpriteComponent>(uid, out var spriteComp))
+            if (!_spriteQuery.TryComp(uid, out var spriteComp))
                 continue;
 
             spriteComp.Visible = true;
@@ -76,7 +80,7 @@ public sealed class FieldOfViewSystem : EntitySystem
 
         var playerUid = _player.LocalEntity.Value;
 
-        if (!TryComp<FieldOfViewComponent>(playerUid, out var fovComp))
+        if (!_fovQuery.TryComp(playerUid, out var fovComp))
             return;
 
         if (!_xformQuery.TryGetComponent(playerUid, out var xform) ||
@@ -93,7 +97,7 @@ public sealed class FieldOfViewSystem : EntitySystem
         {
             foreach (var mapUid in trackerComp.Value.Comp.Maps)
             {
-                if (!TryComp<MapComponent>(mapUid, out var mapComp))
+                if (!_mapQuery.TryComp(mapUid, out var mapComp))
                     continue;
 
                 _lookup.GetEntitiesInRange(mapComp.MapId, mapPos.Position, fovComp.MaxDistance, lookup, LookupFlags.Dynamic | LookupFlags.Sundries);

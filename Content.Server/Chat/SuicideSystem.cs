@@ -43,7 +43,9 @@ public sealed class SuicideSystem : EntitySystem
     public bool Suicide(EntityUid victim)
     {
         // Can't suicide if we're already dead
-        if (!TryComp<MobStateComponent>(victim, out var mobState) || _mobState.IsDead(victim, mobState))
+        if (!TryComp<MobStateComponent>(victim, out var mobState) ||
+            _mobState.IsDead(victim, mobState) ||
+            _mobState.IsAlive(victim, mobState) && !_mobState.IsCritical(victim, mobState))
             return false;
 
         var suicideGhostEvent = new SuicideGhostEvent(victim);

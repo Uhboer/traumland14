@@ -1,6 +1,8 @@
 - type: entity
   name: Sword
-  parent: BaseItem
+  parent:
+  - BaseItem
+  - BaseBreakableMeleeWeapon
   id: BaseSword
   description: A sharp sword.
   abstract: true

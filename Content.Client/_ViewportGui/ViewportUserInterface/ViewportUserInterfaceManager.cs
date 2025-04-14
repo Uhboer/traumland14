@@ -69,7 +69,7 @@ public interface IViewportUserInterfaceManager
     void ReloadScreen(HUDRoot root);
     void UnloadScreen();
     HUDBoundsCheckArgs? TryFindHUDControl(HUDControl? root = null);
-    Vector2i? ConvertGlobalToLocal(ScreenCoordinates mousePos);
+    Vector2i? ConvertGlobalToLocal(Vector2 screenPosition);
 
     /// <summary>
     /// Play UI click sound for buttons, like <seealso cref="IUserInterfaceManager"/>
@@ -392,7 +392,7 @@ public sealed class ViewportUserInterfaceManager : IViewportUserInterfaceManager
             return null;
 
         var mouseScreenPos = _inputManager.MouseScreenPosition;
-        var localMousePos = ConvertGlobalToLocal(mouseScreenPos);
+        var localMousePos = ConvertGlobalToLocal(mouseScreenPos.Position);
         if (localMousePos is null)
             return null;
 
@@ -409,7 +409,7 @@ public sealed class ViewportUserInterfaceManager : IViewportUserInterfaceManager
             return null;
 
         var mouseScreenPos = _inputManager.MouseScreenPosition;
-        var localMousePos = ConvertGlobalToLocal(mouseScreenPos);
+        var localMousePos = ConvertGlobalToLocal(mouseScreenPos.Position);
         if (localMousePos is null)
             return null;
 
@@ -419,7 +419,7 @@ public sealed class ViewportUserInterfaceManager : IViewportUserInterfaceManager
         return boundsArgs;
     }
 
-    public Vector2i? ConvertGlobalToLocal(ScreenCoordinates mousePos)
+    public Vector2i? ConvertGlobalToLocal(Vector2 screenPosition)
     {
         var drawBounds = GetDrawingBounds();
         if (drawBounds is null)
@@ -430,8 +430,8 @@ public sealed class ViewportUserInterfaceManager : IViewportUserInterfaceManager
         var scaleX = drawBounds.Value.DrawBox.Width / DrawingInfo.Value.ContentSize.X;
         var scaleY = drawBounds.Value.DrawBox.Height / DrawingInfo.Value.ContentSize.Y;
 
-        var localMousePosX = mousePos.X - drawBounds.Value.DrawBox.Left;
-        var localMousePosY = mousePos.Y - drawBounds.Value.DrawBox.Bottom;
+        var localMousePosX = screenPosition.X - drawBounds.Value.DrawBox.Left;
+        var localMousePosY = screenPosition.Y - drawBounds.Value.DrawBox.Bottom;
 
         var vpMouseX = localMousePosX / scaleX;
         var vpMouseY = localMousePosY / scaleY;

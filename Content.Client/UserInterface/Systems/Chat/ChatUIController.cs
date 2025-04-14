@@ -41,6 +41,8 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Replays;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
+using Content.Client._ViewportGui.ViewportUserInterface.UI;
+using Content.Client._ViewportGui.ViewportUserInterface;
 
 namespace Content.Client.UserInterface.Systems.Chat;
 
@@ -58,6 +60,7 @@ public sealed class ChatUIController : UIController
     [Dependency] private readonly IStateManager _state = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly IReplayRecordingManager _replayRecording = default!;
+    [Dependency] private readonly IViewportUserInterfaceManager _vpUIManager = default!;
 
     [UISystemDependency] private readonly ExamineSystem? _examine = default;
     [UISystemDependency] private readonly GhostSystem? _ghost = default;
@@ -72,6 +75,8 @@ public sealed class ChatUIController : UIController
     private const string ChatNamePalette = "ChatNames";
     private string[] _chatNameColors = default!;
     private bool _chatNameColorsEnabled;
+
+    private bool _speechBubblesEnabled;
 
     private ISawmill _sawmill = default!;
 
@@ -124,7 +129,7 @@ public sealed class ChatUIController : UIController
     /// </summary>
     private const int SpeechBubbleCap = 4;
 
-    private LayoutContainer _speechBubbleRoot = default!;
+    private HUDRoot? _speechBubbleRoot;
 
     /// <summary>
     ///     Speech bubbles that are currently visible on screen.
@@ -191,8 +196,11 @@ public sealed class ChatUIController : UIController
         SubscribeNetworkEvent<DamageForceSayEvent>(OnDamageForceSay);
         _config.OnValueChanged(CCVars.ChatEnableColorName, (value) => { _chatNameColorsEnabled = value; });
         _chatNameColorsEnabled = _config.GetCVar(CCVars.ChatEnableColorName);
+        _config.OnValueChanged(CCVars.SpeechBubbles, (value) => { _speechBubblesEnabled = value; });
+        _speechBubblesEnabled = _config.GetCVar(CCVars.SpeechBubbles);
 
-        _speechBubbleRoot = new LayoutContainer();
+        _vpUIManager.OnScreenLoad += OnHudScreenLoad;
+        _vpUIManager.OnScreenUnload += OnHudScreenUnload;
 
         UpdateChannelPermissions();
 
@@ -247,12 +255,26 @@ public sealed class ChatUIController : UIController
 
     }
 
+    private void OnHudScreenLoad(HUDRoot hud)
+    {
+        var hudGameplay = hud as HUDGameplayState;
+        if (hudGameplay is null)
+            return;
+
+        _speechBubbleRoot = hud;
+    }
+
+    private void OnHudScreenUnload(HUDRoot hud)
+    {
+        _speechBubbleRoot = null;
+    }
+
     public void OnScreenLoad()
     {
         SetMainChat(true);
 
-        var viewportContainer = UIManager.ActiveScreen!.FindControl<LayoutContainer>("ViewportContainer");
-        SetSpeechBubbleRoot(viewportContainer);
+        //var viewportContainer = UIManager.ActiveScreen!.FindControl<LayoutContainer>("ViewportContainer");
+        //SetSpeechBubbleRoot(viewportContainer);
 
         SetChatWindowOpacity(_config.GetCVar(CCVars.ChatWindowOpacity));
     }
@@ -420,13 +442,15 @@ public sealed class ChatUIController : UIController
         UpdateChannelPermissions();
     }
 
+    /*
     public void SetSpeechBubbleRoot(LayoutContainer root)
     {
-        _speechBubbleRoot.Orphan();
+        _speechBubbleRoot?.Orphan();
         root.AddChild(_speechBubbleRoot);
         LayoutContainer.SetAnchorPreset(_speechBubbleRoot, LayoutContainer.LayoutPreset.Wide);
         _speechBubbleRoot.SetPositionLast();
     }
+    */
 
     private void OnAttachedChanged(EntityUid uid)
     {
@@ -435,6 +459,9 @@ public sealed class ChatUIController : UIController
 
     private void AddSpeechBubble(ChatMessage msg, SpeechBubble.SpeechType speechType)
     {
+        if (!_speechBubblesEnabled)
+            return;
+
         var ent = EntityManager.GetEntity(msg.SenderEntity);
 
         if (!EntityManager.EntityExists(ent))
@@ -468,7 +495,7 @@ public sealed class ChatUIController : UIController
         }
 
         existing.Add(bubble);
-        _speechBubbleRoot.AddChild(bubble);
+        _speechBubbleRoot?.AddChild(bubble);
 
         if (existing.Count > SpeechBubbleCap)
         {

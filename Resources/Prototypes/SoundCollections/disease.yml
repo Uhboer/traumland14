@@ -21,6 +21,16 @@
   - /Audio/Voice/Human/female_cough_2.ogg
 
 - type: soundCollection
+  id: MaleHuh
+  files:
+  - /Audio/Voice/Human/male_huh.ogg
+
+- type: soundCollection
+  id: FemaleHuh
+  files:
+  - /Audio/Voice/Human/female_huh.ogg
+
+- type: soundCollection
   id: CatMeows
   files:
   - /Audio/Animals/cat_meow.ogg

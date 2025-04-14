@@ -1,6 +1,8 @@
 - type: entity
   name: spear
-  parent: BaseItem
+  parent:
+  - BaseItem
+  - BaseBreakableMeleeWeapon
   id: Spear
   description: Definition of a Classic. Keeping murder affordable since 200,000 BCE.
   components:

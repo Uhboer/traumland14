@@ -9,6 +9,8 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Player;
+using Content.Shared.Mobs.Components;
+using Content.Shared.Mobs.Systems;
 
 namespace Content.Server.Ghost
 {
@@ -43,20 +45,26 @@ namespace Content.Server.Ghost
             if (player.Status != SessionStatus.InGame || player.AttachedEntity == null)
                 return;
 
-            var protoMan = IoCManager.Resolve<IPrototypeManager>();
-            var random = IoCManager.Resolve<IRobustRandom>();
-            var audioSystem = EntitySystem.Get<SharedAudioSystem>();
+            var mobStateSys = _entities.System<MobStateSystem>();
 
-            if (protoMan.TryIndex<SoundCollectionPrototype>("SuicideTrying", out var proto))
+            // Can't become ghost when you are alive
+            if (_entities.TryGetComponent<MobStateComponent>(player.AttachedEntity, out var mobState) &&
+                mobStateSys.IsAlive(player.AttachedEntity.Value, mobState) && !mobStateSys.IsCritical(player.AttachedEntity.Value, mobState))
             {
-                var sound = new SoundPathSpecifier(proto.PickFiles[random.Next(proto.PickFiles.Count)]);
-                var filter = Filter.Empty();
-                filter.AddPlayer(player);
-                audioSystem.PlayEntity(sound, filter, (EntityUid) player.AttachedEntity, false, AudioParams.Default.WithVolume(-0.5f));
+                var protoMan = IoCManager.Resolve<IPrototypeManager>();
+                var random = IoCManager.Resolve<IRobustRandom>();
+                var audioSystem = EntitySystem.Get<SharedAudioSystem>();
+
+                if (protoMan.TryIndex<SoundCollectionPrototype>("SuicideTrying", out var proto))
+                {
+                    var sound = new SoundPathSpecifier(proto.PickFiles[random.Next(proto.PickFiles.Count)]);
+                    var filter = Filter.Empty();
+                    filter.AddPlayer(player);
+                    audioSystem.PlayEntity(sound, filter, (EntityUid) player.AttachedEntity, false, AudioParams.Default.WithVolume(-0.5f));
+                }
                 return;
             }
 
-            /*
             var minds = _entities.System<SharedMindSystem>();
             if (!minds.TryGetMind(player, out var mindId, out var mind))
             {
@@ -68,7 +76,6 @@ namespace Content.Server.Ghost
             {
                 shell.WriteLine(Loc.GetString("ghost-command-denied"));
             }
-            */
         }
     }
 }

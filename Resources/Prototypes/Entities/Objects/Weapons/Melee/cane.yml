@@ -1,5 +1,7 @@
 - type: entity
-  parent: BaseItem
+  parent:
+  - BaseItem
+  - BaseBreakableMeleeWeapon
   id: Cane
   name: cane
   description: A wooden cane.

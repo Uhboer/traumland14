@@ -29,6 +29,7 @@ public sealed class JumpingSystem : EntitySystem
 
     private EntityQuery<PhysicsComponent> _physicsQuery;
     private EntityQuery<JumpingComponent> _jumpingQuery;
+    private EntityQuery<StandingStateComponent> _standingQuery;
 
     public override void Initialize()
     {
@@ -42,6 +43,7 @@ public sealed class JumpingSystem : EntitySystem
 
         _physicsQuery = GetEntityQuery<PhysicsComponent>();
         _jumpingQuery = GetEntityQuery<JumpingComponent>();
+        _standingQuery = GetEntityQuery<StandingStateComponent>();
     }
 
     public bool HandleJumpButton(ICommonSession? session, EntityCoordinates coords, EntityUid uid)
@@ -59,6 +61,9 @@ public sealed class JumpingSystem : EntitySystem
             return;
 
         if (!_physicsQuery.TryComp(uid, out var phys) || !args.OtherFixture.Hard)
+            return;
+        if (_standingQuery.TryComp(args.OtherEntity, out var standing) &&
+            standing.CurrentState < StandingState.Standing)
             return;
 
         if (phys.BodyStatus == BodyStatus.InAir)

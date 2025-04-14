@@ -1,6 +1,8 @@
 - type: entity
   name: BaseWeaponLightMachineGun
-  parent: BaseItem
+  parent:
+  - BaseItem
+  - BaseBreakableRangedWeapon
   id: BaseWeaponLightMachineGun
   description: A rooty tooty point and shooty.
   abstract: true

@@ -20,6 +20,20 @@
     - coughs
 
 - type: emote
+  id: Huh
+  name: chat-emote-name-huh
+  category: Vocal
+  chatMessages: [ "chat-emote-msg-huh" ]
+  whitelist:
+    components:
+    - Vocal
+  blacklist:
+    components:
+    - BorgChassis
+  chatTriggers:
+    - huh
+
+- type: emote
   id: CatMeow
   name: chat-emote-name-catmeow
   category: Vocal

@@ -1,6 +1,8 @@
 - type: entity
   name: sledgehammer
-  parent: BaseItem
+  parent:
+  - BaseItem
+  - BaseBreakableMeleeWeapon
   id: Sledgehammer
   description: The perfect tool for wanton carnage.
   components:

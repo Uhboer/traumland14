@@ -12,6 +12,8 @@
       collection: MaleSneezes
     Cough:
       collection: MaleCoughs
+    Huh:
+      collection: MaleHuh
     CatMeow:
       collection: CatMeows
     CatHisses:
@@ -48,6 +50,8 @@
       collection: FemaleSneezes
     Cough:
       collection: FemaleCoughs
+    Huh:
+      collection: FemaleHuh
     CatMeow:
       collection: CatMeows
     CatHisses:

@@ -1,4 +1,5 @@
-﻿using Content.Server._White.Notice;
+﻿/*
+using Content.Server._White.Notice;
 using Content.Server.Chat.Managers;
 using Content.Server.IdentityManagement;
 using Content.Shared.Chat;
@@ -139,3 +140,4 @@ public sealed class CombatLogsSystem : EntitySystem
             PopupType.SmallCaution);
     }
 }
+*/

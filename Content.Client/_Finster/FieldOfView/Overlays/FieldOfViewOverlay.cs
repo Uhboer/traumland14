@@ -33,11 +33,17 @@ public sealed class FieldOfViewOverlay : Overlay
 
     private readonly FieldOfViewSystem _fovSystem;
 
+    private EntityQuery<FieldOfViewComponent> _fovQuery;
+    private EntityQuery<EyeComponent> _eyeQuery;
+
     public FieldOfViewOverlay()
     {
         IoCManager.InjectDependencies(this);
 
         _fovSystem = _entManager.System<FieldOfViewSystem>();
+
+        _fovQuery = _entManager.GetEntityQuery<FieldOfViewComponent>();
+        _eyeQuery = _entManager.GetEntityQuery<EyeComponent>();
 
         ZIndex = DamageOverlay.DrawingDepth - 1;
     }
@@ -45,7 +51,9 @@ public sealed class FieldOfViewOverlay : Overlay
     protected override bool BeforeDraw(in OverlayDrawArgs args)
     {
         if (_player.LocalEntity is not null &&
-            _entManager.TryGetComponent<FieldOfViewComponent>(_player.LocalEntity.Value, out var fovComp))
+            _fovQuery.TryComp(_player.LocalEntity.Value, out var fovComp) &&
+            _eyeQuery.TryComp(_player.LocalEntity.Value, out var eyeComp) &&
+            args.MapId == eyeComp.Eye.Position.MapId)
             return true;
 
         return false;

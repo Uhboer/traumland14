@@ -1,0 +1,19 @@
+- type: entity
+  # Just fades out with no movement animation
+  id: EffectSound
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: TimedDespawn
+    lifetime: 2
+  - type: Sprite
+    sprite: _Finster/Effects/sounds.rsi
+    layers:
+    - state: sound
+      shader: unshaded
+    noRot: true
+    state: sound
+    drawdepth: Effects
+  - type: EffectVisuals
+  - type: Tag
+    tags:
+    - HideContextMenu

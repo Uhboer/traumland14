@@ -37,7 +37,7 @@ public sealed partial class MobStateComponent : Component
     ///     Whether this mob will be allowed to talk while in the Critical MobState.
     /// </summary>
     [DataField]
-    public bool AllowTalkingWhileCrit = true;
+    public bool AllowTalkingWhileCrit = false;
 
     /// <summary>
     ///     Whether this mob will be allowed to talk while in the SoftCritical MobState.

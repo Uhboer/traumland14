@@ -47,6 +47,8 @@ namespace Content.Client.Popups
 
         private bool isLogging;
 
+        private bool worldPopupsEnabled;
+
         public override void Initialize()
         {
             SubscribeNetworkEvent<PopupCursorEvent>(OnPopupCursorEvent);
@@ -67,6 +69,9 @@ namespace Content.Client.Popups
 
             isLogging = _configManager.GetCVar(CCVars.LogChatActions);
             _configManager.OnValueChanged(CCVars.LogChatActions, (log) => { isLogging = log; });
+
+            worldPopupsEnabled = _configManager.GetCVar(CCVars.PopupMessages);
+            _configManager.OnValueChanged(CCVars.PopupMessages, (val) => { worldPopupsEnabled = val; });
         }
 
         public override void Shutdown()
@@ -81,22 +86,27 @@ namespace Content.Client.Popups
             if (message == null)
                 return;
 
-            if (recordReplay && _replayRecording.IsRecording)
+            // Should we show popups on viewport.
+            if (worldPopupsEnabled)
             {
-                if (entity != null)
-                    _replayRecording.RecordClientMessage(new PopupEntityEvent(message, type, GetNetEntity(entity.Value)));
-                else
-                    _replayRecording.RecordClientMessage(new PopupCoordinatesEvent(message, type, GetNetCoordinates(coordinates)));
+                if (recordReplay && _replayRecording.IsRecording)
+                {
+                    if (entity != null)
+                        _replayRecording.RecordClientMessage(new PopupEntityEvent(message, type, GetNetEntity(entity.Value)));
+                    else
+                        _replayRecording.RecordClientMessage(new PopupCoordinatesEvent(message, type, GetNetCoordinates(coordinates)));
+                }
+
+                var label = new WorldPopupLabel(coordinates)
+                {
+                    Text = message,
+                    Type = type,
+                };
+
+                _aliveWorldLabels.Add(label);
             }
 
-            var label = new WorldPopupLabel(coordinates)
-            {
-                Text = message,
-                Type = type,
-            };
-
-            _aliveWorldLabels.Add(label);
-
+            // Should we log popups into chat.
             if (isLogging)
             {
                 // TODO: Looks dirty, but it should combined into single system or something like
@@ -130,16 +140,26 @@ namespace Content.Client.Popups
             if (message == null)
                 return;
 
-            if (recordReplay && _replayRecording.IsRecording)
-                _replayRecording.RecordClientMessage(new PopupCursorEvent(message, type));
-
-            var label = new CursorPopupLabel(_inputManager.MouseScreenPosition)
+            // Should we show popups on viewport.
+            if (worldPopupsEnabled)
             {
-                Text = message,
-                Type = type,
-            };
+                if (recordReplay && _replayRecording.IsRecording)
+                    _replayRecording.RecordClientMessage(new PopupCursorEvent(message, type));
 
-            _aliveCursorLabels.Add(label);
+                var label = new CursorPopupLabel(_inputManager.MouseScreenPosition)
+                {
+                    Text = message,
+                    Type = type,
+                };
+
+                _aliveCursorLabels.Add(label);
+            }
+
+            // Should we log popups into chat.
+            if (isLogging)
+            {
+                _popupMessage.DoMessage(message, type);
+            }
         }
 
         public override void PopupCursor(string? message, PopupType type = PopupType.Small)
