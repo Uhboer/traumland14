@@ -1,20 +1,29 @@
-FINSTER
+# Finster: The Dream BBQ
 
+Ролевая игра на основе [Space Station 14](https://github.com/space-wizards/space-station-14.git).
+Главная особенность - это упор в глубокий отыгрыш и полную переработку имеющихся механик из оригинальной игры.
 
-         FINSTER
+# Building
 
-        ^
-This is | reference on berserk 97 anime
+В папке `Tools` находятся все необходмые скрипты для работы.
 
-Underground RolePlay expirience in unique lore and content. Mostly based on Space Station 14. Made in abyss.
+Так для сборки игры пишем `sh Tools/sh/buildAllDebug.sh`.
+Для запуска сервера, например, `sh Tools/sh/runQuickServer.sh`.
 
-|| Building ||
-VV          VV
+# Legal
 
-- Git
-- .NET SDK 9.0.101
-- Run `git submodule update --init --recursive`
-Run `Tools/(bat/sh)/buildAllDebug.(bat/sh)` after any changes to the project code
-- Run `Tools/(bat/sh)/runQuickAll.(bat/sh)` to start the client and server
+👉 [LICENSE.txt](./LICENSE.txt)
 
-May be you want update engine, right? Do it by keyboard + terminal, using `git merge; git checkout`
+Исходный контент игры никак не лицензирован **мной**.
+Большая часть контента основывается на [LICENSE-MIT.txt](./LICENSE-MIT.txt) от Space Wizards Federation.
+
+Раз уж эта игра как-то окзалась в ваших руках - то делайте что только вздумается.
+У меня нет желания защищать интелектуальную собственность или какие-то права. Большая часть контента было **"нагло"** позаимственно
+с других проектов.
+
+Ни в кое случае не пытайтесь распространять игру в мейнстриме, ибо к вам могут возникнуть вопросы!
+
+# Contacts
+
+- Мой Discord: docnight
+- Discord сервер проекта: https://discord.gg/Fmzp3kQ3AB
