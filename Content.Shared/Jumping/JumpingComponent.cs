@@ -10,7 +10,7 @@ public sealed partial class JumpingComponent : Component
     public float JumpRange = 5f;
 
     [DataField, AutoNetworkedField]
-    public float JumpSpeed = 3f;
+    public float JumpSpeed = 6f;
 
     /// <summary>
     ///     Modifier for collide damage.
