@@ -54,12 +54,16 @@
 - type: soundCollection
   id: MaleYawn
   files:
-  - /Audio/Voice/Human/male_yawn_1.ogg
+  #- /Audio/Voice/Human/male_yawn_1.ogg
+  - /Audio/Voice/Human/yawn01_man.ogg
+  - /Audio/Voice/Human/yawn02_man.ogg
 
 - type: soundCollection
   id: FemaleYawn
   files:
-  - /Audio/Voice/Human/female_yawn_1.ogg
+  #- /Audio/Voice/Human/female_yawn_1.ogg
+  - /Audio/Voice/Human/yawn01_woman.ogg
+  - /Audio/Voice/Human/yawn02_woman.ogg
 
 - type: soundCollection
   id: Snores
