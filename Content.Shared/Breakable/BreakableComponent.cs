@@ -1,5 +1,6 @@
 using Content.Shared.Damage;
 using Content.Shared.FixedPoint;
+using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
 
 namespace Content.Shared.Breakable;
@@ -9,6 +10,9 @@ public sealed partial class BreakableComponent : Component
 {
     [DataField, AutoNetworkedField, ViewVariables(VVAccess.ReadOnly)]
     public bool IsBroken;
+
+    [DataField, AutoNetworkedField]
+    public SoundSpecifier BreakSound = new SoundPathSpecifier("/Audio/Weapons/broken_metal.ogg");
 
     [DataField, AutoNetworkedField]
     public DamageSpecifier Damage = new()

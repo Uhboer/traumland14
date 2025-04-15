@@ -505,6 +505,7 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
             TryComp<TransformComponent>(target, out targetXform) &&
             // Not in LOS.
             InRange(user, target.Value, component.Range, session);
+            // TODO: Dice
     }
 
     protected virtual void DoLightAttack(EntityUid user, LightAttackEvent ev, EntityUid meleeUid, MeleeWeaponComponent component, ICommonSession? session)

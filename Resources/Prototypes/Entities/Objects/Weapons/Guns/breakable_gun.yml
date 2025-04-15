@@ -1,6 +1,6 @@
 - type: entity
+  parent: BaseBreakableMeleeWeapon
   id: BaseBreakableRangedWeapon
   abstract: true
   components:
   - type: Breakable
-  #- type: Destructible

@@ -1,3 +1,4 @@
+using Content.Shared.CombatMode;
 using Content.Shared.Damage;
 using Content.Shared.Destructible;
 using Content.Shared.Interaction.Events;
@@ -5,6 +6,7 @@ using Content.Shared.NameModifier.EntitySystems;
 using Content.Shared.Popups;
 using Content.Shared.Weapons.Melee.Events;
 using Content.Shared.Weapons.Ranged.Systems;
+using Robust.Shared.Audio.Systems;
 
 namespace Content.Shared.Breakable;
 
@@ -17,6 +19,7 @@ public sealed class BreakableSystem : EntitySystem
     [Dependency] private readonly NameModifierSystem _nameMod = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly DamageableSystem _damageable = default!;
+    [Dependency] private readonly SharedAudioSystem _audio = default!;
 
     private EntityQuery<BreakableComponent> _breakableQuery;
 
@@ -26,11 +29,10 @@ public sealed class BreakableSystem : EntitySystem
         SubscribeLocalEvent<BreakableComponent, BreakageEventArgs>(OnBreak);
         SubscribeLocalEvent<BreakableComponent, RefreshNameModifiersEvent>(OnRefreshNameModifiers);
         SubscribeLocalEvent<BreakableComponent, AttemptShootEvent>(OnShotAttempt);
+        SubscribeLocalEvent<CombatModeComponent, AttackAttemptEvent>(OnAttackAttempt);
 
         SubscribeLocalEvent<BreakableComponent, MeleeHitEvent>(OnHit);
         SubscribeLocalEvent<BreakableComponent, GunShotEvent>(OnGunShoot);
-
-        SubscribeLocalEvent<AttackAttemptEvent>(OnAttackAttempt);
 
         _breakableQuery = GetEntityQuery<BreakableComponent>();
     }
@@ -47,7 +49,7 @@ public sealed class BreakableSystem : EntitySystem
         _damageable.TryChangeDamage(ent, ent.Comp.Damage);
     }
 
-    private void OnAttackAttempt(AttackAttemptEvent ev)
+    private void OnAttackAttempt(EntityUid uid, CombatModeComponent comp, AttackAttemptEvent ev)
     {
         if (!_breakableQuery.TryComp(ev.Weapon, out var breakableComponent))
             return;
@@ -75,6 +77,7 @@ public sealed class BreakableSystem : EntitySystem
     {
         ent.Comp.IsBroken = true;
         Dirty(ent, ent.Comp);
+        _audio.PlayPvs(ent.Comp.BreakSound, ent);
         _nameMod.RefreshNameModifiers(ent.Owner);
         _popup.PopupEntity(
             Loc.GetString("breakable-breaks", ("target", ent.Owner)),
