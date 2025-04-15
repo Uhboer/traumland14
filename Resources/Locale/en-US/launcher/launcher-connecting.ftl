@@ -1,6 +1,6 @@
 ### Connecting dialog when you start up the game
 
-connecting-title = Finster: Deus ex machina
+connecting-title = Finster: Deus Ex Machina
 connecting-exit = Exit
 connecting-retry = Retry
 connecting-reconnect = Reconnect
