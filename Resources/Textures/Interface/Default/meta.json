@@ -50,6 +50,12 @@
         "name": "hand_r_no_letter"
       },
       {
+          "name": "wrist_l"
+      },
+      {
+          "name": "wrist_r"
+      },
+      {
         "name": "head"
       },
       {

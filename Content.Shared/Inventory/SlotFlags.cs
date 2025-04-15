@@ -22,11 +22,13 @@ public enum SlotFlags
     BACK2 = 1 << 9,
     BELT = 1 << 10,
     GLOVES = 1 << 11,
-    IDCARD = 1 << 12,
-    POCKET = 1 << 13,
-    LEGS = 1 << 14,
-    FEET = 1 << 15,
-    SUITSTORAGE = 1 << 16, // LEGACY
+    WRISTRIGHT = 1 << 12,
+    WRISTLEFT = 1 << 13,
+    IDCARD = 1 << 14,
+    POCKET = 1 << 15,
+    LEGS = 1 << 16,
+    FEET = 1 << 17,
+    SUITSTORAGE = 1 << 18, // LEGACY
     All = ~NONE,
 
     WITHOUT_POCKET = All & ~POCKET

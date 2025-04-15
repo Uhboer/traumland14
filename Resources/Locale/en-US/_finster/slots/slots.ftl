@@ -15,9 +15,12 @@ slotbutton-belt = Belt
 slotbutton-suitstorage = Suit Storage
 slotbutton-ears = Ears
 slotbutton-gloves = Gloves
+slotbutton-wristRight = Right Wrist
+slotbutton-wristLeft = Left Wrist
 slotbutton-back = Back
 slotbutton-back2 = Back 2
 
 slotbutton-hand-left = Left Hand
 slotbutton-hand = Hand
+slotbutton-hand-switch = Switch Hands
 slotbutton-hand-right = Right Hand

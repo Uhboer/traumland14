@@ -8,7 +8,7 @@
       stripTime: 3
       uiWindowPos: 0,0
       hudWindowPos: 0,1
-      altHudWindowPos: 5,1
+      altHudWindowPos: 6,1
       hudSlotGroup: Misc
       strippingWindowPos: 0,1
       displayName: Eyes
@@ -23,17 +23,15 @@
       altHudWindowPos: 2,0
       strippingWindowPos: 0,2
       displayName: Back
-    - name: belt
-      slotTexture: belt
-      fullTextureName: template_small
-      slotFlags: BELT
-      #slotGroup: SecondHotbar
-      stripTime: 6
+    - name: wristRight
+      slotTexture: wrist_r
+      slotFlags: WRISTRIGHT
       uiWindowPos: 0,0
       hudWindowPos: 0,5
-      altHudWindowPos: 1,2
+      altHudWindowPos: 3,1
+      hudSlotGroup: Misc
       strippingWindowPos: 0,4
-      displayName: Belt
+      displayName: Wrist
     - name: pocket1
       slotTexture: pocket
       fullTextureName: template_small
@@ -47,18 +45,17 @@
       dependsOn: pants
       displayName: Pocket 1
       stripHidden: true
-    - name: id
-      slotTexture: id
+    - name: belt
+      slotTexture: belt
       fullTextureName: template_small
-      slotFlags: IDCARD
+      slotFlags: BELT
       #slotGroup: SecondHotbar
       stripTime: 6
       uiWindowPos: 0,0
       hudWindowPos: 0,7
       altHudWindowPos: 0,2
       strippingWindowPos: 0,6
-      dependsOn: pants
-      displayName: ID
+      displayName: Belt
     # center
     - name: head
       slotTexture: head
@@ -81,7 +78,7 @@
       slotFlags: NECK
       uiWindowPos: 0,0
       hudWindowPos: 1,2
-      altHudWindowPos: 4,1
+      altHudWindowPos: 5,1
       hudSlotGroup: Misc
       strippingWindowPos: 1,2
       displayName: Neck
@@ -95,25 +92,33 @@
       altHudWindowPos: 1,1
       strippingWindowPos: 1,3
       displayName: Suit
-    - name: jumpsuit
-      slotTexture: uniform
-      slotFlags: INNERCLOTHING
-      stripTime: 6
+    - name: gloves
+      slotTexture: gloves
+      slotFlags: GLOVES
       uiWindowPos: 0,0
       hudWindowPos: 1,5
       altHudWindowPos: 2,1
       hudSlotGroup: Misc
       strippingWindowPos: 1,4
-      displayName: Jumpsuit
-    - name: pants
-      slotTexture: pants
-      slotFlags: LEGS
+      displayName: Gloves
+    - name: jumpsuit
+      slotTexture: uniform
+      slotFlags: INNERCLOTHING
       stripTime: 6
       uiWindowPos: 0,0
       hudWindowPos: 1,6
       altHudWindowPos: 1,1
       hudSlotGroup: Misc
       strippingWindowPos: 1,5
+      displayName: Jumpsuit
+    - name: pants
+      slotTexture: pants
+      slotFlags: LEGS
+      stripTime: 6
+      uiWindowPos: 0,0
+      hudWindowPos: 1,7
+      altHudWindowPos: 1,2
+      strippingWindowPos: 1,6
       displayName: Pants
     # right
     - name: ears
@@ -122,7 +127,7 @@
       stripTime: 3
       uiWindowPos: 0,0
       hudWindowPos: 2,1
-      altHudWindowPos: 6,1
+      altHudWindowPos: 7,1
       hudSlotGroup: Misc
       strippingWindowPos: 2,1
       displayName: Ears
@@ -149,15 +154,15 @@
       altHudWindowPos: 2,2
       strippingWindowPos: 2,2
       displayName: Back 2
-    - name: gloves
-      slotTexture: gloves
-      slotFlags: GLOVES
+    - name: wristLeft
+      slotTexture: wrist_l
+      slotFlags: WRISTLEFT
       uiWindowPos: 0,0
       hudWindowPos: 2,5
-      altHudWindowPos: 3,1
+      altHudWindowPos: 4,1
       hudSlotGroup: Misc
       strippingWindowPos: 2,4
-      displayName: Gloves
+      displayName: Wrist
     - name: pocket2
       slotTexture: pocket
       fullTextureName: template_small

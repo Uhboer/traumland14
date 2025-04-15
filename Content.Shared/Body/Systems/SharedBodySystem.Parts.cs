@@ -1007,8 +1007,10 @@ public partial class SharedBodySystem
     {
         containerNames = partType switch
         {
+            BodyPartType.Arm => new() { "wristRight", "wristLeft" },
             BodyPartType.Hand => new() { "gloves" },
-            BodyPartType.Foot => new() { "shoes", "pants" },
+            BodyPartType.Leg => new() { "pants" },
+            BodyPartType.Foot => new() { "shoes" },
             BodyPartType.Head => new() { "eyes", "ears", "head", "mask" },
             _ => new()
         };
@@ -1019,8 +1021,10 @@ public partial class SharedBodySystem
     {
         partType = slot switch
         {
+            "wristRight" or "wristLeft" => BodyPartType.Arm,
             "gloves" => BodyPartType.Hand,
-            "shoes" or "pants" => BodyPartType.Foot,
+            "pants" => BodyPartType.Leg,
+            "shoes" => BodyPartType.Foot,
             "eyes" or "ears" or "head" or "mask" => BodyPartType.Head,
             _ => null
         };

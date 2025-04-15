@@ -771,8 +771,8 @@
   minSeverity: 0
   maxSeverity: 1
   hudPositionX: -576
-  hudPositionY: 320
-  altHudPositionX: -128
+  hudPositionY: 288
+  altHudPositionX: -192
   altHudPositionY: 480
   isGeneric: false
 
@@ -805,7 +805,7 @@
   minSeverity: 0
   maxSeverity: 1
   hudPositionX: -512
-  hudPositionY: 288
+  hudPositionY: 320
   altHudPositionX: -288
   altHudPositionY: 480
   isGeneric: false
@@ -823,7 +823,7 @@
   minSeverity: 0
   maxSeverity: 1
   hudPositionX: -576
-  hudPositionY: 288
+  hudPositionY: 320
   altHudPositionX: -256
   altHudPositionY: 480
   isGeneric: false
