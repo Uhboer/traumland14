@@ -1,5 +1,5 @@
 - type: alert
-  id: Kick
+  id: KickIntent
   onClick: !type:SetAlternativeIntentAlert { intent: Kick }
   sprite: Alerts/Intents/intent_kick.rsi
   states:
@@ -16,7 +16,7 @@
   isGeneric: false
 
 - type: alert
-  id: Climb
+  id: ClimbIntent
   onClick: !type:SetAlternativeIntentAlert { intent: Climb }
   sprite: Alerts/Intents/intent_climb.rsi
   states:
@@ -33,7 +33,7 @@
   isGeneric: false
 
 - type: alert
-  id: Jump
+  id: JumpIntent
   onClick: !type:SetAlternativeIntentAlert { intent: Jump }
   sprite: Alerts/Intents/intent_jump.rsi
   states:

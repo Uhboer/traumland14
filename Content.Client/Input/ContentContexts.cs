@@ -66,9 +66,10 @@ namespace Content.Client.Input
             human.AddFunction(ContentKeyFunctions.ThrowMode);
             human.AddFunction(ContentKeyFunctions.AltActivateItemInWorld);
             human.AddFunction(ContentKeyFunctions.TryPullObject);
-            human.AddFunction(ContentKeyFunctions.Jump);
+            //human.AddFunction(ContentKeyFunctions.Jump);
             human.AddFunction(ContentKeyFunctions.MovePulledObject);
             human.AddFunction(ContentKeyFunctions.ReleasePulledObject);
+            human.AddFunction(ContentKeyFunctions.MouseMiddle);
             human.AddFunction(ContentKeyFunctions.OpenCraftingMenu);
             //human.AddFunction(ContentKeyFunctions.OpenInventoryMenu);
             human.AddFunction(ContentKeyFunctions.SmartEquipBackpack);

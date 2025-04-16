@@ -35,9 +35,11 @@ public sealed class JumpingSystem : EntitySystem
     {
         base.Initialize();
 
+        /*
         CommandBinds.Builder
                 .Bind(ContentKeyFunctions.Jump, new PointerInputCmdHandler(HandleJumpButton, outsidePrediction: false))
                 .Register<JumpingSystem>();
+        */
         SubscribeLocalEvent<JumpingComponent, LandEvent>(OnLand);
         SubscribeLocalEvent<JumpingComponent, StartCollideEvent>(OnStartCollide);
 
@@ -46,6 +48,7 @@ public sealed class JumpingSystem : EntitySystem
         _standingQuery = GetEntityQuery<StandingStateComponent>();
     }
 
+    /*
     public bool HandleJumpButton(ICommonSession? session, EntityCoordinates coords, EntityUid uid)
     {
         if (session == null || session.AttachedEntity == null ||
@@ -54,6 +57,7 @@ public sealed class JumpingSystem : EntitySystem
 
         return TryJump(session.AttachedEntity.Value, coords.Position, jumpComp);
     }
+    */
 
     private void OnStartCollide(EntityUid uid, JumpingComponent component, ref StartCollideEvent args)
     {

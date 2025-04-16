@@ -144,6 +144,7 @@
   - type: CombatMode
   - type: MouseRotator
     onlyOnPressed: true
+  - type: MiddleClickIntent
   - type: Intent
   - type: MeleeWeapon
     hidden: true
