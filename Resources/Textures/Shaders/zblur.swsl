@@ -1,0 +1,31 @@
+uniform sampler2D SCREEN_TEXTURE;
+uniform highp float BLUR_AMOUNT;
+
+const highp float blurStrength = 0.5;
+
+void fragment() {
+    highp vec4 color = zTexture(UV);
+    highp vec3 col = texture(SCREEN_TEXTURE, UV).xyz * BLUR_AMOUNT * blurStrength;
+
+    // Gaussian blur weights
+    highp float weights[5];
+    weights[0] = 0.227027;
+    weights[1] = 0.1945946;
+    weights[2] = 0.1216216;
+    weights[3] = 0.054054;
+    weights[4] = 0.016216;
+
+    // Horizontal blur
+    for (int i = 1; i <= 4; i++) {
+        col += texture(SCREEN_TEXTURE, UV + vec2(float(i) * SCREEN_PIXEL_SIZE.x, 0.0)).xyz * weights[i];
+        col += texture(SCREEN_TEXTURE, UV - vec2(float(i) * SCREEN_PIXEL_SIZE.x, 0.0)).xyz * weights[i];
+    }
+
+    // Vertical blur
+    for (int i = 1; i <= 4; i++) {
+        col += texture(SCREEN_TEXTURE, UV + vec2(0.0, float(i) * SCREEN_PIXEL_SIZE.y)).xyz * weights[i];
+        col += texture(SCREEN_TEXTURE, UV - vec2(0.0, float(i) * SCREEN_PIXEL_SIZE.y)).xyz * weights[i];
+    }
+
+    COLOR = vec4(vec3(col), color.a);
+}

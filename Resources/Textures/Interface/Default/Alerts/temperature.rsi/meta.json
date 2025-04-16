@@ -17,7 +17,7 @@
     {
       "name": "cold2",
       "directions": 1,
-      "delays": [[0.3, 0.3]]
+      "delays": [[1.0]]
     },
     {
       "name": "cold3",
@@ -32,7 +32,7 @@
     {
       "name": "hot2",
       "directions": 1,
-      "delays": [[0.3, 0.3]]
+      "delays": [[1.0]]
     },
     {
       "name": "hot3",

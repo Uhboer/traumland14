@@ -134,7 +134,14 @@
   kind: source
   path: "/Textures/Shaders/nightvision.swsl"
 
-- type: shader  
+- type: shader
   id: Hologram
   kind: source
   path: "/Textures/Shaders/hologram.swsl"
+
+  # Other
+
+- type: shader
+  id: ZBlur
+  kind: source
+  path: "/Textures/Shaders/zblur.swsl"

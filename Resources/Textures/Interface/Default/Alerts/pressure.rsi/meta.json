@@ -7,23 +7,23 @@
     {
       "name": "highpressure1",
       "directions": 1,
-      "delays": [[0.5, 0.5, 0.5, 0.5]]
+      "delays": [[1.0]]
     },
     {
       "name": "highpressure2",
       "directions": 1,
-      "delays": [[0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25]]
+      "delays": [[0.3, 0.3]]
     },
     { "name": "good", "delays": [[1.0]] },
     {
       "name": "lowpressure1",
       "directions": 1,
-      "delays": [[0.5, 0.5, 0.5, 0.5]]
+      "delays": [[1.0]]
     },
     {
       "name": "lowpressure2",
       "directions": 1,
-      "delays": [[0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25]]
+      "delays": [[0.3, 0.3]]
     }
   ]
 }
