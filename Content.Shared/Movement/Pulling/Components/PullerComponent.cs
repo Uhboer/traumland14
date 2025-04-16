@@ -53,7 +53,7 @@ public sealed partial class PullerComponent : Component
     public Dictionary<GrabStage, short> PullingAlertSeverity = new()
     {
         { GrabStage.No, 0 },
-        { GrabStage.Soft, 1 },
+        //{ GrabStage.Soft, 1 },
         { GrabStage.Hard, 2 },
         { GrabStage.Suffocate, 3 },
     };
@@ -74,7 +74,7 @@ public sealed partial class PullerComponent : Component
     public Dictionary<GrabStage, float> EscapeChances = new()
     {
         { GrabStage.No, 1f },
-        { GrabStage.Soft, 0.7f },
+        //{ GrabStage.Soft, 0.7f },
         { GrabStage.Hard, 0.4f },
         { GrabStage.Suffocate, 0.1f },
     };

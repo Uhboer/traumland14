@@ -215,7 +215,7 @@ public sealed class PullingSystem : EntitySystem
         }
         else
         {
-            if (component.GrabStage <= GrabStage.Soft)
+            if (component.GrabStage < GrabStage.Hard)
             {
                 TryLowerGrabStage(component.Pulling.Value, uid);
                 args.Cancel();  // VirtualItem is NOT being deleted
@@ -394,7 +394,7 @@ public sealed class PullingSystem : EntitySystem
         {
             if (_intent.CanAttack(uid) &&
                 !HasComp<GrabThrownComponent>(args.BlockingEntity) &&
-                component.GrabStage > GrabStage.Soft)
+                component.GrabStage >= GrabStage.Hard)
             {
                 var direction = args.Direction;
                 var vecBetween = (Transform(args.BlockingEntity).Coordinates.ToMapPos(EntityManager, _xformSys) - Transform(uid).WorldPosition);
@@ -509,9 +509,9 @@ public sealed class PullingSystem : EntitySystem
                 case GrabStage.No:
                     args.ModifySpeed(walkMod, sprintMod);
                     break;
-                case GrabStage.Soft:
-                    args.ModifySpeed(walkMod * 0.9f, sprintMod * 0.9f);
-                    break;
+                //case GrabStage.Soft:
+                //    args.ModifySpeed(walkMod * 0.9f, sprintMod * 0.9f);
+                //    break;
                 case GrabStage.Hard:
                     args.ModifySpeed(walkMod * 0.7f, sprintMod * 0.7f);
                     break;
@@ -530,9 +530,9 @@ public sealed class PullingSystem : EntitySystem
             case GrabStage.No:
                 args.ModifySpeed(component.WalkSpeedModifier, component.SprintSpeedModifier);
                 break;
-            case GrabStage.Soft:
-                args.ModifySpeed(component.WalkSpeedModifier * 0.9f, component.SprintSpeedModifier * 0.9f);
-                break;
+            //case GrabStage.Soft:
+            //    args.ModifySpeed(component.WalkSpeedModifier * 0.9f, component.SprintSpeedModifier * 0.9f);
+            //    break;
             case GrabStage.Hard:
                 args.ModifySpeed(component.WalkSpeedModifier * 0.7f, component.SprintSpeedModifier * 0.7f);
                 break;
@@ -1042,6 +1042,9 @@ public sealed class PullingSystem : EntitySystem
             GrubStageDirection.Decrease => -1,
             _ => throw new ArgumentOutOfRangeException(),
         };
+        // Because Soft is disabled
+        if (puller.Comp.GrabStage == GrabStage.No)
+            nextStageAddition++;
 
         var newStage = puller.Comp.GrabStage + nextStageAddition;
 
@@ -1072,7 +1075,7 @@ public sealed class PullingSystem : EntitySystem
         var popupType = stage switch
         {
             GrabStage.No => PopupType.Small,
-            GrabStage.Soft => PopupType.Small,
+            //GrabStage.Soft => PopupType.Small,
             GrabStage.Hard => PopupType.MediumCaution,
             GrabStage.Suffocate => PopupType.LargeCaution,
             _ => throw new ArgumentOutOfRangeException()
@@ -1237,7 +1240,7 @@ public sealed class PullingSystem : EntitySystem
 public enum GrabStage
 {
     No = 0,
-    Soft = 1,
+    //Soft = 1,
     Hard = 2,
     Suffocate = 3,
 }
