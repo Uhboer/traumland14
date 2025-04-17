@@ -6,7 +6,7 @@
   - type: Sprite
     state: icon
   - type: Clothing
-    slots: [legs]
+    slots: [innerclothing]
     equipSound:
       path: /Audio/Items/jumpsuit_equip.ogg
   - type: EmitSoundOnPickup # Not sure why this wasn't set to the base; as all clothes should have clothing sounds.
@@ -40,7 +40,7 @@
   id: UnsensoredClothingUniformSkirtBase
   components:
   - type: Clothing
-    slots: [legs]
+    slots: [innerclothing]
     femaleMask: UniformTop
   - type: Tag # Needed for species with nonhuman legs/can only wear skirts
     tags:
@@ -67,7 +67,7 @@
   id: ClothingUniformSkirtBase
   components:
   - type: Clothing
-    slots: [legs]
+    slots: [innerclothing]
     femaleMask: UniformTop
   - type: Tag # Needed for species with nonhuman legs/can only wear skirts
               # And for moths to be able to eat this.
