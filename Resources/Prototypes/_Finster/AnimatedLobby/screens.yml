@@ -1,3 +1,7 @@
+#- type: animatedLobbyScreen
+#  id: BB14
+#  path: /Textures/LobbyScreens/BB_14.rsi
+
 - type: animatedLobbyScreen
-  id: BB14
-  path: /Textures/LobbyScreens/BB_14.rsi
+  id: BB1
+  path: /Textures/LobbyScreens/BB_1.rsi

@@ -2,6 +2,7 @@ using Content.KayMisaZlevels.Client;
 using Content.KayMisaZlevels.Shared.Components;
 using Content.Shared._Finster.FieldOfView;
 using Content.Shared.Movement.Components;
+using Content.Shared.Standing;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Client.Player;
@@ -11,7 +12,7 @@ using Robust.Shared.Player;
 
 namespace Content.Client._Finster.FieldOfView;
 
-public sealed class FieldOfViewSystem : EntitySystem
+public sealed class ClientFieldOfViewSystem : EntitySystem
 {
     [Dependency] private readonly IOverlayManager _overlay = default!;
     [Dependency] private readonly IPlayerManager _player = default!;
@@ -30,6 +31,8 @@ public sealed class FieldOfViewSystem : EntitySystem
 
     public override void Initialize()
     {
+        base.Initialize();
+
         _fovQuery = GetEntityQuery<FieldOfViewComponent>();
         _xformQuery = GetEntityQuery<TransformComponent>();
         _mobMoverQuery = GetEntityQuery<MobMoverComponent>();
@@ -80,10 +83,8 @@ public sealed class FieldOfViewSystem : EntitySystem
 
         var playerUid = _player.LocalEntity.Value;
 
-        if (!_fovQuery.TryComp(playerUid, out var fovComp))
-            return;
-
-        if (!_xformQuery.TryGetComponent(playerUid, out var xform) ||
+        if (!_fovQuery.TryComp(playerUid, out var fovComp) ||
+            !_xformQuery.TryComp(playerUid, out var xform) ||
             xform.MapUid == null)
             return;
 
@@ -133,13 +134,20 @@ public sealed class FieldOfViewSystem : EntitySystem
                 fovComp.GetRotation(fovComp.Direction),
                 simple4DirMode: fovComp.Simple4DirMode);
 
-            if (!result && !_hiddenList.Contains(ent))
-                _hiddenList.Add(ent);
-            else if (result && _hiddenList.Contains(ent))
+            if (fovComp.Enabled)
             {
-                _hiddenList.Remove(ent);
+                if (!result && !_hiddenList.Contains(ent))
+                    _hiddenList.Add(ent);
+                else if (result && _hiddenList.Contains(ent))
+                    _hiddenList.Remove(ent);
+                sprite.Visible = result;
             }
-            sprite.Visible = result;
+            else
+            {
+                if (_hiddenList.Contains(ent))
+                    _hiddenList.Remove(ent);
+                sprite.Visible = true;
+            }
         }
     }
 

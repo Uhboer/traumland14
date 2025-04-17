@@ -31,7 +31,7 @@ public sealed class FieldOfViewOverlay : Overlay
     [Dependency] private readonly IEyeManager _eyeManager = default!;
     [Dependency] private readonly IMapManager _mapManager = default!;
 
-    private readonly FieldOfViewSystem _fovSystem;
+    //private readonly ClientFieldOfViewSystem _fovSystem;
 
     private EntityQuery<FieldOfViewComponent> _fovQuery;
     private EntityQuery<EyeComponent> _eyeQuery;
@@ -40,7 +40,7 @@ public sealed class FieldOfViewOverlay : Overlay
     {
         IoCManager.InjectDependencies(this);
 
-        _fovSystem = _entManager.System<FieldOfViewSystem>();
+        //_fovSystem = _entManager.System<ClientFieldOfViewSystem>();
 
         _fovQuery = _entManager.GetEntityQuery<FieldOfViewComponent>();
         _eyeQuery = _entManager.GetEntityQuery<EyeComponent>();
@@ -54,7 +54,7 @@ public sealed class FieldOfViewOverlay : Overlay
             _fovQuery.TryComp(_player.LocalEntity.Value, out var fovComp) &&
             _eyeQuery.TryComp(_player.LocalEntity.Value, out var eyeComp) &&
             args.MapId == eyeComp.Eye.Position.MapId)
-            return true;
+            return fovComp.Enabled;
 
         return false;
     }
