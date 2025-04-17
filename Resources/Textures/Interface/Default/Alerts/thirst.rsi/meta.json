@@ -6,26 +6,17 @@
   "states": [
     {
       "name": "thirsty",
-      "directions": 1,
-      "delays": [
-        [0.15, 0.15, 0.15, 0.15, 0.15, 0.15, 0.15, 0.15, 0.15, 0.15, 0.15, 0.15]
-      ]
+      "directions": 1
     },
     {
       "name": "parched",
-      "directions": 1,
-      "delays": [
-        [0.15, 0.15, 0.15, 0.15, 0.15, 0.15, 0.15, 0.15, 0.15, 0.15, 0.15, 0.15]
-      ]
+      "directions": 1
     },
     {
       "name": "okay",
-      "directions": 1,
-      "delays": [
-        [0.15, 0.15, 0.15, 0.15, 0.15, 0.15, 0.15, 0.15, 0.15, 0.15, 0.15, 0.15]
-      ]
+      "directions": 1
     },
-    { "name": "dead", "directions": 1, "delays": [[0.25, 0.25, 0.25, 0.25]] },
-    { "name": "overhydrated", "directions": 1, "delays": [[1.0]] }
+    { "name": "dead", "directions": 1 },
+    { "name": "overhydrated", "directions": 1 }
   ]
 }

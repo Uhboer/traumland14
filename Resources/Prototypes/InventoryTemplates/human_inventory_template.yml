@@ -103,7 +103,7 @@
       displayName: Gloves
     - name: jumpsuit
       slotTexture: uniform
-      slotFlags: INNERCLOTHING
+      slotFlags: TORSO
       stripTime: 6
       uiWindowPos: 0,0
       hudWindowPos: 1,6
@@ -113,7 +113,7 @@
       displayName: Jumpsuit
     - name: pants
       slotTexture: pants
-      slotFlags: LEGS
+      slotFlags: INNERCLOTHING
       stripTime: 6
       uiWindowPos: 0,0
       hudWindowPos: 1,7

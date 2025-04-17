@@ -38,7 +38,7 @@ public sealed class ClientClothingSystem : ClothingSystem
         {"mask", "MASK"},
         {"outerClothing", "OUTERCLOTHING"},
         {Jumpsuit, "INNERCLOTHING"},
-        {"pants", "LEGS"},
+        {"pants", "INNERCLOTHING"},
         {"neck", "NECK"},
         {"back", "BACKPACK"},
         {"back2", "BACKPACK"},

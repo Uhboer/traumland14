@@ -6,7 +6,7 @@
   - type: Sprite
     state: icon
   - type: Clothing
-    slots: [legs]
+    slots: [innerclothing]
     equipSound:
       path: /Audio/Items/jumpsuit_equip.ogg
   - type: EmitSoundOnPickup # Not sure why this wasn't set to the base; as all clothes should have clothing sounds.

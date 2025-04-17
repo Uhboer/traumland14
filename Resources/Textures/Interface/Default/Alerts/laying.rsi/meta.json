@@ -8,10 +8,12 @@
   },
   "states": [
     {
-      "name": "laying0"
+      "name": "laying0",
+      "delays": [[0.8, 0.05, 0.05, 0.05, 0.05, 0.05]]
     },
     {
-      "name": "laying1"
+      "name": "laying1",
+      "delays": [[0.8, 0.05, 0.05, 0.05, 0.05, 0.05]]
     }
   ]
 }

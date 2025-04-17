@@ -6,26 +6,17 @@
   "states": [
     {
       "name": "okay",
-      "directions": 1,
-      "delays": [
-        [0.15, 0.15, 0.15, 0.15, 0.15, 0.15, 0.15, 0.15, 0.15, 0.15, 0.15, 0.15]
-      ]
+      "directions": 1
     },
-    { "name": "dead", "directions": 1, "delays": [[0.25, 0.25, 0.25, 0.25]] },
+    { "name": "dead", "directions": 1 },
     {
       "name": "peckish",
-      "directions": 1,
-      "delays": [
-        [0.15, 0.15, 0.15, 0.15, 0.15, 0.15, 0.15, 0.15, 0.15, 0.15, 0.15, 0.15]
-      ]
+      "directions": 1
     },
     {
       "name": "starving",
-      "directions": 1,
-      "delays": [
-        [0.15, 0.15, 0.15, 0.15, 0.15, 0.15, 0.15, 0.15, 0.15, 0.15, 0.15, 0.15]
-      ]
+      "directions": 1
     },
-    { "name": "overfed", "directions": 1, "delays": [[1.0]] }
+    { "name": "overfed", "directions": 1 }
   ]
 }
