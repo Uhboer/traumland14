@@ -1,0 +1,12 @@
+# Technicaly it's stations. But ingame it can be any planet maps.
+# Need for apply job roles and another events.
+
+# Inspired by "Blame!"
+- type: entity
+  id: GigastructureStation
+  parent:
+    - BaseStation
+    - BaseStationJobsSpawning
+  categories: [ HideSpawnMenu ]
+  components:
+    - type: Transform
