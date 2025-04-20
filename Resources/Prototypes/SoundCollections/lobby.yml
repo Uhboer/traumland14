@@ -2,7 +2,7 @@
   id: LobbyMusic
   files:
     # Finster period (nov 2024 - feb 2025)
-    #- /Audio/Lobby/DreamWeb-Septimus.ogg
+    - /Audio/Lobby/DreamWeb-Septimus.ogg
     #- /Audio/Lobby/aphex_twin_19.ogg
     #- /Audio/Lobby/fallen_kingdom.ogg
     #- /Audio/Lobby/stray-bullet.ogg
@@ -15,4 +15,4 @@
     #- /Audio/Lobby/GMGEO7.ogg
     # Finster: Deus ex machina (april 2025 - now)
     #- /Audio/Lobby/emphasis.ogg
-    - /Audio/Lobby/resident-evil.ogg
+    #- /Audio/Lobby/resident-evil.ogg
