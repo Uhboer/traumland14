@@ -328,6 +328,10 @@
       - state: equipped-INNERCLOTHING
         color: "#ff8300"
       - state: prisoner-equipped-INNERCLOTHING
+      pants:
+      - state: equipped-INNERCLOTHING
+        color: "#ff8300"
+      - state: prisoner-equipped-INNERCLOTHING
   - type: SuitSensor
     controlsLocked: true
     randomMode: false
@@ -779,6 +783,10 @@
       - state: equipped-INNERCLOTHING-jumpskirt
       - state: equipped-INNERCLOTHING-shirt
         color: "#134fc1"
+      pants:
+      - state: equipped-INNERCLOTHING-jumpskirt
+      - state: equipped-INNERCLOTHING-shirt
+        color: "#134fc1"
 
 - type: entity
   parent: ClothingUniformSkirtBase
@@ -809,6 +817,10 @@
       - state: equipped-INNERCLOTHING-jumpskirt
       - state: equipped-INNERCLOTHING-shirt
         color: "#9c0dff"
+      pants:
+      - state: equipped-INNERCLOTHING-jumpskirt
+      - state: equipped-INNERCLOTHING-shirt
+        color: "#9c0dff"
 
 - type: entity
   parent: ClothingUniformSkirtBase
@@ -836,6 +848,10 @@
     sprite: Clothing/Uniforms/Jumpsuit/casual.rsi
     clothingVisuals:
       jumpsuit:
+      - state: equipped-INNERCLOTHING-jumpskirt
+      - state: equipped-INNERCLOTHING-shirt
+        color: "#b30000"
+      pants:
       - state: equipped-INNERCLOTHING-jumpskirt
       - state: equipped-INNERCLOTHING-shirt
         color: "#b30000"

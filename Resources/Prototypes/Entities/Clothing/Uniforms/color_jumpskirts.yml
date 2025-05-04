@@ -25,6 +25,9 @@
       jumpsuit:
       - state: equipped-INNERCLOTHING
       - state: trinkets-equipped-INNERCLOTHING
+      pants:
+      - state: equipped-INNERCLOTHING
+      - state: trinkets-equipped-INNERCLOTHING
 
 # Grey Jumpskirt
 - type: entity
@@ -53,6 +56,10 @@
     sprite: Clothing/Uniforms/Jumpskirt/color.rsi
     clothingVisuals:
       jumpsuit:
+      - state: equipped-INNERCLOTHING
+        color: "#b3b3b3"
+      - state: trinkets-equipped-INNERCLOTHING
+      pants:
       - state: equipped-INNERCLOTHING
         color: "#b3b3b3"
       - state: trinkets-equipped-INNERCLOTHING
@@ -87,6 +94,10 @@
       - state: equipped-INNERCLOTHING
         color: "#3f3f3f"
       - state: trinkets-equipped-INNERCLOTHING
+      pants:
+      - state: equipped-INNERCLOTHING
+        color: "#3f3f3f"
+      - state: trinkets-equipped-INNERCLOTHING
 
 # Blue Jumpskirt
 - type: entity
@@ -115,6 +126,10 @@
     sprite: Clothing/Uniforms/Jumpskirt/color.rsi
     clothingVisuals:
       jumpsuit:
+      - state: equipped-INNERCLOTHING
+        color: "#52aecc"
+      - state: trinkets-equipped-INNERCLOTHING
+      pants:
       - state: equipped-INNERCLOTHING
         color: "#52aecc"
       - state: trinkets-equipped-INNERCLOTHING
@@ -149,6 +164,10 @@
       - state: equipped-INNERCLOTHING
         color: "#3285ba"
       - state: trinkets-equipped-INNERCLOTHING
+      pants:
+      - state: equipped-INNERCLOTHING
+        color: "#3285ba"
+      - state: trinkets-equipped-INNERCLOTHING
 
 # Teal Jumpskirt
 - type: entity
@@ -177,6 +196,10 @@
     sprite: Clothing/Uniforms/Jumpskirt/color.rsi
     clothingVisuals:
       jumpsuit:
+      - state: equipped-INNERCLOTHING
+        color: "#77f3b7"
+      - state: trinkets-equipped-INNERCLOTHING
+      pants:
       - state: equipped-INNERCLOTHING
         color: "#77f3b7"
       - state: trinkets-equipped-INNERCLOTHING
@@ -211,6 +234,10 @@
       - state: equipped-INNERCLOTHING
         color: "#9ed63a"
       - state: trinkets-equipped-INNERCLOTHING
+      pants:
+      - state: equipped-INNERCLOTHING
+        color: "#9ed63a"
+      - state: trinkets-equipped-INNERCLOTHING
 
  # Dark Green Jumpskirt
 - type: entity
@@ -239,6 +266,10 @@
     sprite: Clothing/Uniforms/Jumpskirt/color.rsi
     clothingVisuals:
       jumpsuit:
+      - state: equipped-INNERCLOTHING
+        color: "#79CC26"
+      - state: trinkets-equipped-INNERCLOTHING
+      pants:
       - state: equipped-INNERCLOTHING
         color: "#79CC26"
       - state: trinkets-equipped-INNERCLOTHING
@@ -273,6 +304,10 @@
       - state: equipped-INNERCLOTHING
         color: "#ff8c19"
       - state: trinkets-equipped-INNERCLOTHING
+      pants:
+      - state: equipped-INNERCLOTHING
+        color: "#ff8c19"
+      - state: trinkets-equipped-INNERCLOTHING
 
 # Pink Jumpskirt
 - type: entity
@@ -301,6 +336,10 @@
     sprite: Clothing/Uniforms/Jumpskirt/color.rsi
     clothingVisuals:
       jumpsuit:
+      - state: equipped-INNERCLOTHING
+        color: "#ffa69b"
+      - state: trinkets-equipped-INNERCLOTHING
+      pants:
       - state: equipped-INNERCLOTHING
         color: "#ffa69b"
       - state: trinkets-equipped-INNERCLOTHING
@@ -335,6 +374,10 @@
       - state: equipped-INNERCLOTHING
         color: "#eb0c07"
       - state: trinkets-equipped-INNERCLOTHING
+      pants:
+      - state: equipped-INNERCLOTHING
+        color: "#eb0c07"
+      - state: trinkets-equipped-INNERCLOTHING
 
 # Yellow Jumpskirt
 - type: entity
@@ -363,6 +406,10 @@
     sprite: Clothing/Uniforms/Jumpskirt/color.rsi
     clothingVisuals:
       jumpsuit:
+      - state: equipped-INNERCLOTHING
+        color: "#ffe14d"
+      - state: trinkets-equipped-INNERCLOTHING
+      pants:
       - state: equipped-INNERCLOTHING
         color: "#ffe14d"
       - state: trinkets-equipped-INNERCLOTHING
@@ -397,6 +444,10 @@
       - state: equipped-INNERCLOTHING
         color: "#9f70cc"
       - state: trinkets-equipped-INNERCLOTHING
+      pants:
+      - state: equipped-INNERCLOTHING
+        color: "#9f70cc"
+      - state: trinkets-equipped-INNERCLOTHING
 
 # Light Brown Jumpskirt
 - type: entity
@@ -425,6 +476,10 @@
     sprite: Clothing/Uniforms/Jumpskirt/color.rsi
     clothingVisuals:
       jumpsuit:
+      - state: equipped-INNERCLOTHING
+        color: "#c59431"
+      - state: trinkets-equipped-INNERCLOTHING
+      pants:
       - state: equipped-INNERCLOTHING
         color: "#c59431"
       - state: trinkets-equipped-INNERCLOTHING
@@ -459,6 +514,10 @@
       - state: equipped-INNERCLOTHING
         color: "#a17229"
       - state: trinkets-equipped-INNERCLOTHING
+      pants:
+      - state: equipped-INNERCLOTHING
+        color: "#a17229"
+      - state: trinkets-equipped-INNERCLOTHING
 
 # Maroon Jumpskirt
 - type: entity
@@ -487,6 +546,10 @@
     sprite: Clothing/Uniforms/Jumpskirt/color.rsi
     clothingVisuals:
       jumpsuit:
+      - state: equipped-INNERCLOTHING
+        color: "#cc295f"
+      - state: trinkets-equipped-INNERCLOTHING
+      pants:
       - state: equipped-INNERCLOTHING
         color: "#cc295f"
       - state: trinkets-equipped-INNERCLOTHING

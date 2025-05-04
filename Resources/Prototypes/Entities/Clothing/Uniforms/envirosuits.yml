@@ -270,6 +270,17 @@
         color: "#404040"
       - state: soles-equipped-INNERCLOTHING
         color: "#bababa"
+      pants:
+      - state: equipped-INNERCLOTHING
+        color: "#ff8300"
+      - state: plaintop-equipped-INNERCLOTHING
+        color: "#ff8300"
+      - state: accentprisoner-equipped-INNERCLOTHING
+        color: "#404040"
+      - state: loweraccent-equipped-INNERCLOTHING
+        color: "#404040"
+      - state: soles-equipped-INNERCLOTHING
+        color: "#bababa"
   - type: SuitSensor
     controlsLocked: true
     randomMode: false
@@ -394,6 +405,25 @@
         color: "#2e2e2e"
       - state: soles-equipped-INNERCLOTHING
         color: "#7a7a7a"
+      pants:
+      - state: equipped-INNERCLOTHING
+        color: "#8f3132"
+      - state: accent2-equipped-INNERCLOTHING
+        color: "#2e2e2e"
+      - state: accenthighlight-equipped-INNERCLOTHING
+        color: "#313e5a"
+      - state: clip-equipped-INNERCLOTHING
+        color: "#730000"
+      - state: clip_right-equipped-INNERCLOTHING
+        color: "#313e5a"
+      - state: pants-equipped-INNERCLOTHING
+        color: "#2e2e2e"
+      - state: loweraccent-equipped-INNERCLOTHING
+        color: "#732829"
+      - state: shoesdark-equipped-INNERCLOTHING
+        color: "#2e2e2e"
+      - state: soles-equipped-INNERCLOTHING
+        color: "#7a7a7a"
 
 - type: entity
   parent: ClothingUniformEnvirosuitCustomBase
@@ -452,6 +482,29 @@
   - type: Clothing
     clothingVisuals:
       jumpsuit:
+      - state: equipped-INNERCLOTHING
+        color: "#b9c1d9"
+      - state: accentalt_noback-equipped-INNERCLOTHING
+        color: "#2e2e2e"
+      - state: accent3_chestonly-equipped-INNERCLOTHING
+        color: "#36476b"
+      - state: accenthighlight-equipped-INNERCLOTHING
+        color: "#313e5a"
+      - state: clip-equipped-INNERCLOTHING
+        color: "#860000"
+      - state: clip_right-equipped-INNERCLOTHING
+        color: "#313e5a"
+      - state: pants-equipped-INNERCLOTHING
+        color: "#232938"
+      - state: backaccent-equipped-INNERCLOTHING
+        color: "#36476b"
+      - state: loweraccent-equipped-INNERCLOTHING
+        color: "#36476b"
+      - state: shoesdark-equipped-INNERCLOTHING
+        color: "#2e2e2e"
+      - state: soles-equipped-INNERCLOTHING
+        color: "#7a7a7a"
+      pants:
       - state: equipped-INNERCLOTHING
         color: "#b9c1d9"
       - state: accentalt_noback-equipped-INNERCLOTHING
@@ -538,6 +591,33 @@
   - type: Clothing
     clothingVisuals:
       jumpsuit:
+      - state: equipped-INNERCLOTHING
+        color: "#7e7e7e"
+      - state: plaintop-equipped-INNERCLOTHING
+        color: "#7e7e7e"
+      - state: accentalt-equipped-INNERCLOTHING
+        color: "#333333"
+      - state: accenthighlight-equipped-INNERCLOTHING
+        color: "#313e5a"
+      - state: tie-equipped-INNERCLOTHING
+        color: "#a61d1d"
+      - state: clip-equipped-INNERCLOTHING
+        color: "#860000"
+      - state: clip_right-equipped-INNERCLOTHING
+        color: "#313e5a"
+      - state: cuffs-equipped-INNERCLOTHING
+        color: "#a11a1a"
+      - state: cuffs_upper-equipped-INNERCLOTHING
+        color: "#c92323"
+      - state: pants-equipped-INNERCLOTHING
+        color: "#333333"
+      - state: loweraccent-equipped-INNERCLOTHING
+        color: "#a61d1d"
+      - state: shoesdark-equipped-INNERCLOTHING
+        color: "#333333"
+      - state: soles-equipped-INNERCLOTHING
+        color: "#7a7a7a"
+      pants:
       - state: equipped-INNERCLOTHING
         color: "#7e7e7e"
       - state: plaintop-equipped-INNERCLOTHING
@@ -716,6 +796,19 @@
         color: "#c2911e"
       - state: soles-equipped-INNERCLOTHING
         color: "#c2911e"
+      pants:
+      - state: equipped-INNERCLOTHING
+        color: "#4a281f"
+      - state: accent2-equipped-INNERCLOTHING
+        color: "#c2911e"
+      - state: clip-equipped-INNERCLOTHING
+        color: "#c2911e"
+      - state: clip_right-equipped-INNERCLOTHING
+        color: "#c2911e"
+      - state: loweraccent2-equipped-INNERCLOTHING
+        color: "#c2911e"
+      - state: soles-equipped-INNERCLOTHING
+        color: "#c2911e"
 
 - type: entity
   parent: ClothingUniformEnvirosuitCustomBase
@@ -794,6 +887,27 @@
         color: "#dcdcdc"
       - state: soles-equipped-INNERCLOTHING
         color: "#dcdcdc"
+      pants:
+      - state: equipped-INNERCLOTHING
+        color: "#394dc6"
+      - state: accentalt_noback-equipped-INNERCLOTHING
+        color: "#d82927"
+      - state: accent2_chestonly-equipped-INNERCLOTHING
+        color: "#dcdcdc"
+      - state: clip-equipped-INNERCLOTHING
+        color: "#dcdcdc"
+      - state: clip_right-equipped-INNERCLOTHING
+        color: "#c2c2c2"
+      - state: belt-equipped-INNERCLOTHING
+        color: "#cfcfcf"
+      - state: beltbuckle_small-equipped-INNERCLOTHING
+        color: "#f0990c"
+      - state: backaccent-equipped-INNERCLOTHING
+        color: "#dcdcdc"
+      - state: loweraccent2-equipped-INNERCLOTHING
+        color: "#dcdcdc"
+      - state: soles-equipped-INNERCLOTHING
+        color: "#dcdcdc"
   - type: ClothingAddFaction
     faction: Mailman
 
@@ -842,6 +956,17 @@
         color: "#db2525"
       - state: soles-equipped-INNERCLOTHING
         color: "#bababa"
+      pants:
+      - state: equipped-INNERCLOTHING
+        color: "#3c335b"
+      - state: accent2-equipped-INNERCLOTHING
+        color: "#f3f5f4"
+      - state: loweraccent-equipped-INNERCLOTHING
+        color: "#f3f5f4"
+      - state: pin-equipped-INNERCLOTHING
+        color: "#db2525"
+      - state: soles-equipped-INNERCLOTHING
+        color: "#bababa"
 
 - type: entity
   parent: ClothingUniformEnvirosuitCustomBase
@@ -870,6 +995,15 @@
   - type: Clothing
     clothingVisuals:
       jumpsuit:
+      - state: equipped-INNERCLOTHING
+        color: "#112334"
+      - state: accent2-equipped-INNERCLOTHING
+        color: "#79121b"
+      - state: loweraccent2-equipped-INNERCLOTHING
+        color: "#79121b"
+      - state: soles-equipped-INNERCLOTHING
+        color: "#bababa"
+      pants:
       - state: equipped-INNERCLOTHING
         color: "#112334"
       - state: accent2-equipped-INNERCLOTHING
@@ -912,6 +1046,17 @@
   - type: Clothing
     clothingVisuals:
       jumpsuit:
+      - state: equipped-INNERCLOTHING
+        color: "#dab13b"
+      - state: accent-equipped-INNERCLOTHING
+        color: "#a349a4"
+      - state: loweraccent2-equipped-INNERCLOTHING
+        color: "#a349a4"
+      - state: corneraccent-equipped-INNERCLOTHING
+        color: "#a349a4"
+      - state: soles-equipped-INNERCLOTHING
+        color: "#a349a4"
+      pants:
       - state: equipped-INNERCLOTHING
         color: "#dab13b"
       - state: accent-equipped-INNERCLOTHING
@@ -990,6 +1135,23 @@
         color: "#997d30"
       - state: soles-equipped-INNERCLOTHING
         color: "#d4af48"
+      pants:
+      - state: equipped-INNERCLOTHING
+        color: "#46566d"
+      - state: pants-equipped-INNERCLOTHING
+        color: "#7d2322"
+      - state: belt-equipped-INNERCLOTHING
+        color: "#51321a"
+      - state: beltbuckle-equipped-INNERCLOTHING
+        color: "#dcbb60"
+      - state: accentalt-equipped-INNERCLOTHING
+        color: "#d4af48"
+      - state: loweraccent-equipped-INNERCLOTHING
+        color: "#d4af48"
+      - state: buttons-equipped-INNERCLOTHING
+        color: "#997d30"
+      - state: soles-equipped-INNERCLOTHING
+        color: "#d4af48"
 
 - type: entity
   parent: ClothingUniformEnvirosuitCustomBase
@@ -1026,6 +1188,15 @@
         color: "#a349a4"
       - state: soles-equipped-INNERCLOTHING
         color: "#bababa"
+      pants:
+      - state: equipped-INNERCLOTHING
+        color: "#d3b986"
+      - state: accent-equipped-INNERCLOTHING
+        color: "#a349a4"
+      - state: loweraccent-equipped-INNERCLOTHING
+        color: "#a349a4"
+      - state: soles-equipped-INNERCLOTHING
+        color: "#bababa"
 
 - type: entity
   parent: ClothingUniformEnvirosuitCustomBase
@@ -1054,6 +1225,15 @@
   - type: Clothing
     clothingVisuals:
       jumpsuit:
+      - state: equipped-INNERCLOTHING
+        color: "#ffffff"
+      - state: accent-equipped-INNERCLOTHING
+        color: "#3b3b3b"
+      - state: loweraccent-equipped-INNERCLOTHING
+        color: "#3b3b3b"
+      - state: soles-equipped-INNERCLOTHING
+        color: "#bababa"
+      pants:
       - state: equipped-INNERCLOTHING
         color: "#ffffff"
       - state: accent-equipped-INNERCLOTHING
@@ -1160,6 +1340,35 @@
         color: "#828282"
       - state: soles-equipped-INNERCLOTHING
         color: "#ffc000"
+      pants:
+      - state: equipped-INNERCLOTHING
+        color: "#bb934b"
+      - state: accentalt-equipped-INNERCLOTHING
+        color: "#ffc000"
+      - state: accent3_chestonly-equipped-INNERCLOTHING
+        color: "#d08200"
+      - state: clip-equipped-INNERCLOTHING
+        color: "#c0c0c0"
+      - state: clip_right-equipped-INNERCLOTHING
+        color: "#a7a7a7"
+      - state: cuffs-equipped-INNERCLOTHING
+        color: "#d08200"
+      - state: cuffs_upper-equipped-INNERCLOTHING
+        color: "#6e6e6e"
+      - state: pants-equipped-INNERCLOTHING
+        color: "#8a8a8a"
+      - state: belt-equipped-INNERCLOTHING
+        color: "#6f6f6f"
+      - state: beltbuckle-equipped-INNERCLOTHING
+        color: "#bfbfbf"
+      - state: buttons-equipped-INNERCLOTHING
+        color: "#535353"
+      - state: loweraccent-equipped-INNERCLOTHING
+        color: "#ffc000"
+      - state: shoesdark-equipped-INNERCLOTHING
+        color: "#828282"
+      - state: soles-equipped-INNERCLOTHING
+        color: "#ffc000"
 
 - type: entity
   parent: ClothingUniformEnvirosuitCustomBase
@@ -1194,6 +1403,17 @@
   - type: Clothing
     clothingVisuals:
       jumpsuit:
+      - state: equipped-INNERCLOTHING
+        color: "#eeeeee"
+      - state: accent3-equipped-INNERCLOTHING
+        color: "#a81818"
+      - state: pants-equipped-INNERCLOTHING
+        color: "#a81818"
+      - state: loweraccent2-equipped-INNERCLOTHING
+        color: "#eeeeee"
+      - state: soles-equipped-INNERCLOTHING
+        color: "#eeeeee"
+      pants:
       - state: equipped-INNERCLOTHING
         color: "#eeeeee"
       - state: accent3-equipped-INNERCLOTHING
@@ -1272,6 +1492,23 @@
         color: "#315266"
       - state: soles-equipped-INNERCLOTHING
         color: "#bababa"
+      pants:
+      - state: equipped-INNERCLOTHING
+        color: "#ffffff"
+      - state: plaintop-equipped-INNERCLOTHING
+        color: "#ffffff"
+      - state: pants-equipped-INNERCLOTHING
+        color: "#313131"
+      - state: belt-equipped-INNERCLOTHING
+        color: "#4d4d4d"
+      - state: accent-equipped-INNERCLOTHING
+        color: "#315266"
+      - state: loweraccent-equipped-INNERCLOTHING
+        color: "#315266"
+      - state: tie-equipped-INNERCLOTHING
+        color: "#315266"
+      - state: soles-equipped-INNERCLOTHING
+        color: "#bababa"
 
 - type: entity
   parent: ClothingUniformEnvirosuitCustomBase
@@ -1312,6 +1549,19 @@
   - type: Clothing
     clothingVisuals:
       jumpsuit:
+      - state: equipped-INNERCLOTHING
+        color: "#292929"
+      - state: plaintop-equipped-INNERCLOTHING
+        color: "#292929"
+      - state: accent-equipped-INNERCLOTHING
+        color: "#f4a1b7"
+      - state: heart-equipped-INNERCLOTHING
+        color: "#f4a1b7"
+      - state: loweraccent-equipped-INNERCLOTHING
+        color: "#f4a1b7"
+      - state: soles-equipped-INNERCLOTHING
+        color: "#f4a1b7"
+      pants:
       - state: equipped-INNERCLOTHING
         color: "#292929"
       - state: plaintop-equipped-INNERCLOTHING
@@ -1365,6 +1615,19 @@
   - type: Clothing
     clothingVisuals:
       jumpsuit:
+      - state: equipped-INNERCLOTHING
+        color: "#f4a1b7"
+      - state: plaintop-equipped-INNERCLOTHING
+        color: "#f4a1b7"
+      - state: accent-equipped-INNERCLOTHING
+        color: "#292929"
+      - state: heart-equipped-INNERCLOTHING
+        color: "#292929"
+      - state: loweraccent-equipped-INNERCLOTHING
+        color: "#292929"
+      - state: soles-equipped-INNERCLOTHING
+        color: "#292929"
+      pants:
       - state: equipped-INNERCLOTHING
         color: "#f4a1b7"
       - state: plaintop-equipped-INNERCLOTHING
@@ -1433,6 +1696,23 @@
         color: "#ffb0c0"
       - state: soles-equipped-INNERCLOTHING
         color: "#5dd2ff"
+      pants:
+      - state: equipped-INNERCLOTHING
+        color: "#ffffff"
+      - state: plaintop-equipped-INNERCLOTHING
+        color: "#ffffff"
+      - state: accentalt-equipped-INNERCLOTHING
+        color: "#5dd2ff"
+      - state: heart-equipped-INNERCLOTHING
+        color: "#ffb0c0"
+      - state: cuffs-equipped-INNERCLOTHING
+        color: "#ffb0c0"
+      - state: loweraccent2_top-equipped-INNERCLOTHING
+        color: "#5dd2ff"
+      - state: loweraccent2_bottom-equipped-INNERCLOTHING
+        color: "#ffb0c0"
+      - state: soles-equipped-INNERCLOTHING
+        color: "#5dd2ff"
 
 - type: entity
   parent: ClothingUniformEnvirosuitCustomBase
@@ -1485,6 +1765,25 @@
   - type: Clothing
     clothingVisuals:
       jumpsuit:
+      - state: equipped-INNERCLOTHING
+        color: "#d76b00"
+      - state: accent3-equipped-INNERCLOTHING
+        color: "#363636"
+      - state: accenthighlight-equipped-INNERCLOTHING
+        color: "#313e5a"
+      - state: clip-equipped-INNERCLOTHING
+        color: "#860000"
+      - state: clip_right-equipped-INNERCLOTHING
+        color: "#313e5a"
+      - state: pants-equipped-INNERCLOTHING
+        color: "#363636"
+      - state: loweraccent-equipped-INNERCLOTHING
+        color: "#d76b00"
+      - state: shoesdark-equipped-INNERCLOTHING
+        color: "#363636"
+      - state: soles-equipped-INNERCLOTHING
+        color: "#bababa"
+      pants:
       - state: equipped-INNERCLOTHING
         color: "#d76b00"
       - state: accent3-equipped-INNERCLOTHING
@@ -1591,6 +1890,31 @@
         color: "#3b3b3b"
       - state: soles-equipped-INNERCLOTHING
         color: "#bfcddb"
+      pants:
+      - state: equipped-INNERCLOTHING
+        color: "#486782"
+      - state: accentalt-equipped-INNERCLOTHING
+        color: "#333333"
+      - state: accent2_chestonly-equipped-INNERCLOTHING
+        color: "#3b3b3b"
+      - state: accenthighlight-equipped-INNERCLOTHING
+        color: "#2f74b8"
+      - state: buttons-equipped-INNERCLOTHING
+        color: "#b0bdca"
+      - state: clip-equipped-INNERCLOTHING
+        color: "#860000"
+      - state: clip_right-equipped-INNERCLOTHING
+        color: "#313e5a"
+      - state: cuffs-equipped-INNERCLOTHING
+        color: "#bfcddb"
+      - state: pants-equipped-INNERCLOTHING
+        color: "#3b3b3b"
+      - state: loweraccent-equipped-INNERCLOTHING
+        color: "#9ca7b3"
+      - state: shoesdark-equipped-INNERCLOTHING
+        color: "#3b3b3b"
+      - state: soles-equipped-INNERCLOTHING
+        color: "#bfcddb"
 
 - type: entity
   parent: ClothingUniformEnvirosuitCustomBase
@@ -1643,6 +1967,27 @@
   - type: Clothing
     clothingVisuals:
       jumpsuit:
+      - state: equipped-INNERCLOTHING
+        color: "#292929"
+      - state: accent3_chestonly-equipped-INNERCLOTHING
+        color: "#266199"
+      - state: accent2-equipped-INNERCLOTHING
+        color: "#ffce5b"
+      - state: buttons-equipped-INNERCLOTHING
+        color: "#f3f5f4"
+      - state: cuffs-equipped-INNERCLOTHING
+        color: "#ffce5b"
+      - state: cuffs_upper-equipped-INNERCLOTHING
+        color: "#0057a8"
+      - state: belt-equipped-INNERCLOTHING
+        color: "#87511b"
+      - state: beltbuckle-equipped-INNERCLOTHING
+        color: "#969696"
+      - state: loweraccent-equipped-INNERCLOTHING
+        color: "#266199"
+      - state: soles-equipped-INNERCLOTHING
+        color: "#ffce5b"
+      pants:
       - state: equipped-INNERCLOTHING
         color: "#292929"
       - state: accent3_chestonly-equipped-INNERCLOTHING
@@ -1749,6 +2094,29 @@
         color: "#ffce5b"
       - state: soles-equipped-INNERCLOTHING
         color: "#634737"
+      pants:
+      - state: equipped-INNERCLOTHING
+        color: "#ebebeb"
+      - state: plaintop-equipped-INNERCLOTHING
+        color: "#ebebeb"
+      - state: tie-equipped-INNERCLOTHING
+        color: "#333333"
+      - state: tieclip-equipped-INNERCLOTHING
+        color: "#e6b952"
+      - state: accentalt-equipped-INNERCLOTHING
+        color: "#ffce5b"
+      - state: cuffs-equipped-INNERCLOTHING
+        color: "#634737"
+      - state: pants-equipped-INNERCLOTHING
+        color: "#292929"
+      - state: belt-equipped-INNERCLOTHING
+        color: "#634737"
+      - state: beltbuckle-equipped-INNERCLOTHING
+        color: "#ffce5b"
+      - state: loweraccent-equipped-INNERCLOTHING
+        color: "#ffce5b"
+      - state: soles-equipped-INNERCLOTHING
+        color: "#634737"
 
 
 # The Tortured Enviroslacks Department (Skubman's Version)
@@ -1814,6 +2182,23 @@
   - type: Clothing
     clothingVisuals:
       jumpsuit:
+      - state: equipped-INNERCLOTHING
+        color: "#3f3f3f"
+      - state: plaintop-equipped-INNERCLOTHING
+        color: "#3f3f3f"
+      - state: tie-equipped-INNERCLOTHING
+        color: "#a349a4"
+      - state: accentalt-equipped-INNERCLOTHING
+        color: "#a349a4"
+      - state: pants-equipped-INNERCLOTHING
+        color: "#f2f2f2"
+      - state: belt-equipped-INNERCLOTHING
+        color: "#737373"
+      - state: loweraccent-equipped-INNERCLOTHING
+        color: "#a349a4"
+      - state: soles-equipped-INNERCLOTHING
+        color: "#bababa"
+      pants:
       - state: equipped-INNERCLOTHING
         color: "#3f3f3f"
       - state: plaintop-equipped-INNERCLOTHING
@@ -1898,6 +2283,23 @@
         color: "#99211f"
       - state: soles-equipped-INNERCLOTHING
         color: "#bababa"
+      pants:
+      - state: equipped-INNERCLOTHING
+        color: "#ffffff"
+      - state: plaintop-equipped-INNERCLOTHING
+        color: "#ffffff"
+      - state: tie-equipped-INNERCLOTHING
+        color: "#99211f"
+      - state: accentalt-equipped-INNERCLOTHING
+        color: "#99211f"
+      - state: pants-equipped-INNERCLOTHING
+        color: "#292929"
+      - state: belt-equipped-INNERCLOTHING
+        color: "#737373"
+      - state: loweraccent-equipped-INNERCLOTHING
+        color: "#99211f"
+      - state: soles-equipped-INNERCLOTHING
+        color: "#bababa"
 
 - type: entity
   parent: ClothingUniformEnvirosuitCustomBase
@@ -1950,6 +2352,23 @@
   - type: Clothing
     clothingVisuals:
       jumpsuit:
+      - state: equipped-INNERCLOTHING
+        color: "#ffffff"
+      - state: plaintop-equipped-INNERCLOTHING
+        color: "#ffffff"
+      - state: tie-equipped-INNERCLOTHING
+        color: "#c2680f"
+      - state: accentalt-equipped-INNERCLOTHING
+        color: "#c2680f"
+      - state: pants-equipped-INNERCLOTHING
+        color: "#292929"
+      - state: belt-equipped-INNERCLOTHING
+        color: "#737373"
+      - state: loweraccent-equipped-INNERCLOTHING
+        color: "#c2680f"
+      - state: soles-equipped-INNERCLOTHING
+        color: "#bababa"
+      pants:
       - state: equipped-INNERCLOTHING
         color: "#ffffff"
       - state: plaintop-equipped-INNERCLOTHING
@@ -2034,6 +2453,23 @@
         color: "#5b991f"
       - state: soles-equipped-INNERCLOTHING
         color: "#bababa"
+      pants:
+      - state: equipped-INNERCLOTHING
+        color: "#ffffff"
+      - state: plaintop-equipped-INNERCLOTHING
+        color: "#ffffff"
+      - state: tie-equipped-INNERCLOTHING
+        color: "#5b991f"
+      - state: accentalt-equipped-INNERCLOTHING
+        color: "#5b991f"
+      - state: pants-equipped-INNERCLOTHING
+        color: "#292929"
+      - state: belt-equipped-INNERCLOTHING
+        color: "#737373"
+      - state: loweraccent-equipped-INNERCLOTHING
+        color: "#5b991f"
+      - state: soles-equipped-INNERCLOTHING
+        color: "#bababa"
 
 - type: entity
   parent: ClothingUniformEnvirosuitCustomBase
@@ -2086,6 +2522,23 @@
   - type: Clothing
     clothingVisuals:
       jumpsuit:
+      - state: equipped-INNERCLOTHING
+        color: "#ffffff"
+      - state: plaintop-equipped-INNERCLOTHING
+        color: "#ffffff"
+      - state: tie-equipped-INNERCLOTHING
+        color: "#2b5c99"
+      - state: accentalt-equipped-INNERCLOTHING
+        color: "#2b5c99"
+      - state: pants-equipped-INNERCLOTHING
+        color: "#292929"
+      - state: belt-equipped-INNERCLOTHING
+        color: "#737373"
+      - state: loweraccent-equipped-INNERCLOTHING
+        color: "#2b5c99"
+      - state: soles-equipped-INNERCLOTHING
+        color: "#bababa"
+      pants:
       - state: equipped-INNERCLOTHING
         color: "#ffffff"
       - state: plaintop-equipped-INNERCLOTHING
@@ -2178,6 +2631,25 @@
         color: "#a349a4"
       - state: soles-equipped-INNERCLOTHING
         color: "#bababa"
+      pants:
+      - state: equipped-INNERCLOTHING
+        color: "#ffffff"
+      - state: plaintop-equipped-INNERCLOTHING
+        color: "#ffffff"
+      - state: tie-equipped-INNERCLOTHING
+        color: "#a349a4"
+      - state: accentalt-equipped-INNERCLOTHING
+        color: "#a349a4"
+      - state: pants-equipped-INNERCLOTHING
+        color: "#583f20"
+      - state: belt-equipped-INNERCLOTHING
+        color: "#363636"
+      - state: beltbuckle_small-equipped-INNERCLOTHING
+        color: "#3e3e3e"
+      - state: loweraccent-equipped-INNERCLOTHING
+        color: "#a349a4"
+      - state: soles-equipped-INNERCLOTHING
+        color: "#bababa"
 
 - type: entity
   parent: ClothingUniformEnvirosuitCustomBase
@@ -2230,6 +2702,23 @@
   - type: Clothing
     clothingVisuals:
       jumpsuit:
+      - state: equipped-INNERCLOTHING
+        color: "#ffffff"
+      - state: plaintop-equipped-INNERCLOTHING
+        color: "#ffffff"
+      - state: tie-equipped-INNERCLOTHING
+        color: "#363636"
+      - state: accentalt-equipped-INNERCLOTHING
+        color: "#363636"
+      - state: pants-equipped-INNERCLOTHING
+        color: "#292929"
+      - state: belt-equipped-INNERCLOTHING
+        color: "#737373"
+      - state: loweraccent-equipped-INNERCLOTHING
+        color: "#d6d6d6"
+      - state: soles-equipped-INNERCLOTHING
+        color: "#bababa"
+      pants:
       - state: equipped-INNERCLOTHING
         color: "#ffffff"
       - state: plaintop-equipped-INNERCLOTHING
@@ -2315,6 +2804,23 @@
         color: "#424242"
       - state: soles-equipped-INNERCLOTHING
         color: "#bababa"
+      pants:
+      - state: equipped-INNERCLOTHING
+        color: "#3b3b3b"
+      - state: plaintop-equipped-INNERCLOTHING
+        color: "#3b3b3b"
+      - state: tie-equipped-INNERCLOTHING
+        color: "#d6d6d6"
+      - state: accentalt-equipped-INNERCLOTHING
+        color: "#d6d6d6"
+      - state: pants-equipped-INNERCLOTHING
+        color: "#f2f2f2"
+      - state: belt-equipped-INNERCLOTHING
+        color: "#737373"
+      - state: loweraccent-equipped-INNERCLOTHING
+        color: "#424242"
+      - state: soles-equipped-INNERCLOTHING
+        color: "#bababa"
 
 - type: entity
   parent: ClothingUniformEnvirosuitCustomBase
@@ -2383,6 +2889,23 @@
         color: "#5ba0cf"
       - state: soles-equipped-INNERCLOTHING
         color: "#bababa"
+      pants:
+      - state: equipped-INNERCLOTHING
+        color: "#ffffff"
+      - state: plaintop-equipped-INNERCLOTHING
+        color: "#ffffff"
+      - state: tie-equipped-INNERCLOTHING
+        color: "#5ba0cf"
+      - state: accentalt-equipped-INNERCLOTHING
+        color: "#5ba0cf"
+      - state: pants-equipped-INNERCLOTHING
+        color: "#292929"
+      - state: belt-equipped-INNERCLOTHING
+        color: "#737373"
+      - state: loweraccent-equipped-INNERCLOTHING
+        color: "#5ba0cf"
+      - state: soles-equipped-INNERCLOTHING
+        color: "#bababa"
 
 # Color envirosuits
 - type: entity
@@ -2418,6 +2941,17 @@
   - type: Clothing
     clothingVisuals:
       jumpsuit:
+      - state: equipped-INNERCLOTHING
+        color: "#ffffff"
+      - state: accent-equipped-INNERCLOTHING
+        color: "#a349a4"
+      - state: loweraccent-equipped-INNERCLOTHING
+        color: "#a349a4"
+      - state: corneraccent-equipped-INNERCLOTHING
+        color: "#a349a4"
+      - state: soles-equipped-INNERCLOTHING
+        color: "#bababa"
+      pants:
       - state: equipped-INNERCLOTHING
         color: "#ffffff"
       - state: accent-equipped-INNERCLOTHING
@@ -2472,6 +3006,17 @@
         color: "#a349a4"
       - state: soles-equipped-INNERCLOTHING
         color: "#bababa"
+      pants:
+      - state: equipped-INNERCLOTHING
+        color: "#b3b3b3"
+      - state: accent-equipped-INNERCLOTHING
+        color: "#a349a4"
+      - state: loweraccent-equipped-INNERCLOTHING
+        color: "#a349a4"
+      - state: corneraccent-equipped-INNERCLOTHING
+        color: "#a349a4"
+      - state: soles-equipped-INNERCLOTHING
+        color: "#bababa"
 
 - type: entity
   parent: ClothingUniformEnvirosuitCustomBase
@@ -2506,6 +3051,17 @@
   - type: Clothing
     clothingVisuals:
       jumpsuit:
+      - state: equipped-INNERCLOTHING
+        color: "#3f3f3f"
+      - state: accent-equipped-INNERCLOTHING
+        color: "#a349a4"
+      - state: loweraccent-equipped-INNERCLOTHING
+        color: "#a349a4"
+      - state: corneraccent-equipped-INNERCLOTHING
+        color: "#a349a4"
+      - state: soles-equipped-INNERCLOTHING
+        color: "#bababa"
+      pants:
       - state: equipped-INNERCLOTHING
         color: "#3f3f3f"
       - state: accent-equipped-INNERCLOTHING
@@ -2560,6 +3116,17 @@
         color: "#a349a4"
       - state: soles-equipped-INNERCLOTHING
         color: "#bababa"
+      pants:
+      - state: equipped-INNERCLOTHING
+        color: "#d1423f"
+      - state: accent-equipped-INNERCLOTHING
+        color: "#a349a4"
+      - state: loweraccent-equipped-INNERCLOTHING
+        color: "#a349a4"
+      - state: corneraccent-equipped-INNERCLOTHING
+        color: "#a349a4"
+      - state: soles-equipped-INNERCLOTHING
+        color: "#bababa"
 
 - type: entity
   parent: ClothingUniformEnvirosuitCustomBase
@@ -2594,6 +3161,17 @@
   - type: Clothing
     clothingVisuals:
       jumpsuit:
+      - state: equipped-INNERCLOTHING
+        color: "#9ed63a"
+      - state: accent-equipped-INNERCLOTHING
+        color: "#a349a4"
+      - state: loweraccent-equipped-INNERCLOTHING
+        color: "#a349a4"
+      - state: corneraccent-equipped-INNERCLOTHING
+        color: "#a349a4"
+      - state: soles-equipped-INNERCLOTHING
+        color: "#bababa"
+      pants:
       - state: equipped-INNERCLOTHING
         color: "#9ed63a"
       - state: accent-equipped-INNERCLOTHING
@@ -2648,6 +3226,17 @@
         color: "#a349a4"
       - state: soles-equipped-INNERCLOTHING
         color: "#bababa"
+      pants:
+      - state: equipped-INNERCLOTHING
+        color: "#79CC26"
+      - state: accent-equipped-INNERCLOTHING
+        color: "#a349a4"
+      - state: loweraccent-equipped-INNERCLOTHING
+        color: "#a349a4"
+      - state: corneraccent-equipped-INNERCLOTHING
+        color: "#a349a4"
+      - state: soles-equipped-INNERCLOTHING
+        color: "#bababa"
 
 - type: entity
   parent: ClothingUniformEnvirosuitCustomBase
@@ -2682,6 +3271,17 @@
   - type: Clothing
     clothingVisuals:
       jumpsuit:
+      - state: equipped-INNERCLOTHING
+        color: "#52aecc"
+      - state: accent-equipped-INNERCLOTHING
+        color: "#a349a4"
+      - state: loweraccent-equipped-INNERCLOTHING
+        color: "#a349a4"
+      - state: corneraccent-equipped-INNERCLOTHING
+        color: "#a349a4"
+      - state: soles-equipped-INNERCLOTHING
+        color: "#bababa"
+      pants:
       - state: equipped-INNERCLOTHING
         color: "#52aecc"
       - state: accent-equipped-INNERCLOTHING
@@ -2736,6 +3336,17 @@
         color: "#a349a4"
       - state: soles-equipped-INNERCLOTHING
         color: "#bababa"
+      pants:
+      - state: equipped-INNERCLOTHING
+        color: "#3285ba"
+      - state: accent-equipped-INNERCLOTHING
+        color: "#a349a4"
+      - state: loweraccent-equipped-INNERCLOTHING
+        color: "#a349a4"
+      - state: corneraccent-equipped-INNERCLOTHING
+        color: "#a349a4"
+      - state: soles-equipped-INNERCLOTHING
+        color: "#bababa"
 
 - type: entity
   parent: ClothingUniformEnvirosuitCustomBase
@@ -2770,6 +3381,17 @@
   - type: Clothing
     clothingVisuals:
       jumpsuit:
+      - state: equipped-INNERCLOTHING
+        color: "#77f3b7"
+      - state: accent-equipped-INNERCLOTHING
+        color: "#a349a4"
+      - state: loweraccent-equipped-INNERCLOTHING
+        color: "#a349a4"
+      - state: corneraccent-equipped-INNERCLOTHING
+        color: "#a349a4"
+      - state: soles-equipped-INNERCLOTHING
+        color: "#bababa"
+      pants:
       - state: equipped-INNERCLOTHING
         color: "#77f3b7"
       - state: accent-equipped-INNERCLOTHING

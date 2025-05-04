@@ -61,6 +61,9 @@
       jumpsuit:
       - state: equipped-INNERCLOTHING
         color: "#EAE8E8"
+      pants:
+      - state: equipped-INNERCLOTHING
+        color: "#EAE8E8"
       belt:
       - state: equipped-BELT
         color: "#EAE8E8"
@@ -90,6 +93,9 @@
       - state: equipped-HELMET
         color: "#9C0DE1"
       jumpsuit:
+      - state: equipped-INNERCLOTHING
+        color: "#9C0DE1"
+      pants:
       - state: equipped-INNERCLOTHING
         color: "#9C0DE1"
       belt:
@@ -123,6 +129,9 @@
       jumpsuit:
       - state: equipped-INNERCLOTHING
         color: "#940000"
+      pants:
+      - state: equipped-INNERCLOTHING
+        color: "#940000"
       belt:
       - state: equipped-BELT
         color: "#940000"
@@ -152,6 +161,9 @@
       - state: equipped-HELMET
         color: "#0089EF"
       jumpsuit:
+      - state: equipped-INNERCLOTHING
+        color: "#0089EF"
+      pants:
       - state: equipped-INNERCLOTHING
         color: "#0089EF"
       belt:
@@ -185,6 +197,9 @@
       jumpsuit:
       - state: equipped-INNERCLOTHING
         color: "#3285ba"
+      pants:
+      - state: equipped-INNERCLOTHING
+        color: "#3285ba"
       belt:
       - state: equipped-BELT
         color: "#3285ba"
@@ -214,6 +229,9 @@
       - state: equipped-HELMET
         color: "#58abcc"
       jumpsuit:
+      - state: equipped-INNERCLOTHING
+        color: "#58abcc"
+      pants:
       - state: equipped-INNERCLOTHING
         color: "#58abcc"
       belt:
@@ -247,6 +265,9 @@
       jumpsuit:
       - state: equipped-INNERCLOTHING
         color: "#3CB57C"
+      pants:
+      - state: equipped-INNERCLOTHING
+        color: "#3CB57C"
       belt:
       - state: equipped-BELT
         color: "#3CB57C"
@@ -276,6 +297,9 @@
       - state: equipped-HELMET
         color: "#723A02"
       jumpsuit:
+      - state: equipped-INNERCLOTHING
+        color: "#723A02"
+      pants:
       - state: equipped-INNERCLOTHING
         color: "#723A02"
       belt:
@@ -309,6 +333,9 @@
       jumpsuit:
       - state: equipped-INNERCLOTHING
         color: "#c59431"
+      pants:
+      - state: equipped-INNERCLOTHING
+        color: "#c59431"
       belt:
       - state: equipped-BELT
         color: "#c59431"
@@ -338,6 +365,9 @@
       - state: equipped-HELMET
         color: "#999999"
       jumpsuit:
+      - state: equipped-INNERCLOTHING
+        color: "#999999"
+      pants:
       - state: equipped-INNERCLOTHING
         color: "#999999"
       belt:
@@ -371,6 +401,9 @@
       jumpsuit:
       - state: equipped-INNERCLOTHING
         color: "#5ABF2F"
+      pants:
+      - state: equipped-INNERCLOTHING
+        color: "#5ABF2F"
       belt:
       - state: equipped-BELT
         color: "#5ABF2F"
@@ -400,6 +433,9 @@
       - state: equipped-HELMET
         color: "#79CC26"
       jumpsuit:
+      - state: equipped-INNERCLOTHING
+        color: "#79CC26"
+      pants:
       - state: equipped-INNERCLOTHING
         color: "#79CC26"
       belt:
@@ -435,6 +471,9 @@
       jumpsuit:
       - state: equipped-INNERCLOTHING
         color: "#F7C430"
+      pants:
+      - state: equipped-INNERCLOTHING
+        color: "#F7C430"
       belt:
       - state: equipped-BELT
         color: "#F7C430"
@@ -464,6 +503,9 @@
       - state: equipped-HELMET
         color: "#EF8100"
       jumpsuit:
+      - state: equipped-INNERCLOTHING
+        color: "#EF8100"
+      pants:
       - state: equipped-INNERCLOTHING
         color: "#EF8100"
       belt:
@@ -497,6 +539,9 @@
       jumpsuit:
       - state: equipped-INNERCLOTHING
         color: "#535353"
+      pants:
+      - state: equipped-INNERCLOTHING
+        color: "#535353"
       belt:
       - state: equipped-BELT
         color: "#535353"
@@ -526,6 +571,9 @@
       - state: equipped-HELMET
         color: "#ffa69b"
       jumpsuit:
+      - state: equipped-INNERCLOTHING
+        color: "#ffa69b"
+      pants:
       - state: equipped-INNERCLOTHING
         color: "#ffa69b"
       belt:
@@ -559,6 +607,9 @@
       jumpsuit:
       - state: equipped-INNERCLOTHING
         color: "#ffe14d"
+      pants:
+      - state: equipped-INNERCLOTHING
+        color: "#ffe14d"
       belt:
       - state: equipped-BELT
         color: "#ffe14d"
@@ -588,6 +639,9 @@
       - state: equipped-HELMET
         color: "#cc295f"
       jumpsuit:
+      - state: equipped-INNERCLOTHING
+        color: "#cc295f"
+      pants:
       - state: equipped-INNERCLOTHING
         color: "#cc295f"
       belt:
@@ -623,6 +677,9 @@
       jumpsuit:
       - state: equipped-INNERCLOTHING
         color: "#d0d0d0"
+      pants:
+      - state: equipped-INNERCLOTHING
+        color: "#d0d0d0"
       belt:
       - state: equipped-BELT
         color: "#d0d0d0"
@@ -654,6 +711,9 @@
       - state: equipped-HELMET
         color: "#EAE8E8"
       jumpsuit:
+      - state: equipped-INNERCLOTHING
+        color: "#EAE8E8"
+      pants:
       - state: equipped-INNERCLOTHING
         color: "#EAE8E8"
       belt:
@@ -691,6 +751,9 @@
       jumpsuit:
       - state: equipped-INNERCLOTHING
         color: "#004787"
+      pants:
+      - state: equipped-INNERCLOTHING
+        color: "#004787"
       belt:
       - state: equipped-BELT
         color: "#004787"
@@ -724,6 +787,9 @@
       jumpsuit:
       - state: equipped-INNERCLOTHING
         color: "#29722e"
+      pants:
+      - state: equipped-INNERCLOTHING
+        color: "#29722e"
       belt:
       - state: equipped-BELT
         color: "#29722e"
@@ -755,6 +821,9 @@
       - state: equipped-HELMET
         color: "#535353"
       jumpsuit:
+      - state: equipped-INNERCLOTHING
+        color: "#535353"
+      pants:
       - state: equipped-INNERCLOTHING
         color: "#535353"
       belt:

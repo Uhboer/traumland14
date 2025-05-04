@@ -106,6 +106,12 @@ public sealed class FieldOfViewOverlay : Overlay
                 // Возвращаем обратно в мировые координаты
                 playerRotation = (targetDirection.ToAngle() + gridRotation).Reduced();
             }
+            else
+            {
+                var rsiDirection = SpriteComponent.Layer.GetDirection(Robust.Shared.Graphics.RSI.RsiDirectionType.Dir4, playerRotation);
+                var targetDirection = rsiDirection.Convert();
+                playerRotation = targetDirection.ToAngle();
+            }
         }
 
         var blockedViewDir = fieldOfView.GetRotation(fieldOfView.Direction);

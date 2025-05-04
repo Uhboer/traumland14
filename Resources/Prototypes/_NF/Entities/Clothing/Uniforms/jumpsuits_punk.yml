@@ -28,6 +28,13 @@
         map: [ "jumpsuit_bottom" ]
       - state: mask_null
         map: [ "jumpsuit_decor" ]
+      pants:
+      - state: base_torso_armless
+        map: [ "jumpsuit_top" ]
+      - state: base_leg_standard
+        map: [ "jumpsuit_bottom" ]
+      - state: mask_null
+        map: [ "jumpsuit_decor" ]
   - type: RandomSprite
     available:
       - jumpsuit_top:
@@ -118,6 +125,13 @@
     sprite: _NF/Clothing/Uniforms/punk_procedural.rsi
     clothingVisuals:
       jumpsuit:
+      - state: base_torso_armless
+        map: [ "jumpsuit_top" ]
+      - state: base_leg_short
+        map: [ "jumpsuit_bottom" ]
+      - state: mask_null
+        map: [ "jumpsuit_decor" ]
+      pants:
       - state: base_torso_armless
         map: [ "jumpsuit_top" ]
       - state: base_leg_short

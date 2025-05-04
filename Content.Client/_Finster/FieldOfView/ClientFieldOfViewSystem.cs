@@ -197,6 +197,12 @@ public sealed class ClientFieldOfViewSystem : EntitySystem
                 // Возвращаем обратно в мировые координаты
                 viewerAngle = (targetDirection.ToAngle() + gridRotation).Reduced();
             }
+            else
+            {
+                var rsiDirection = SpriteComponent.Layer.GetDirection(Robust.Shared.Graphics.RSI.RsiDirectionType.Dir4, viewerAngle);
+                var targetDirection = rsiDirection.Convert();
+                viewerAngle = targetDirection.ToAngle();
+            }
         }
 
         var angleToTarget = Math.Atan2(direction.Y, direction.X); // Угол до цели

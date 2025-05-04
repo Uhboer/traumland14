@@ -245,6 +245,15 @@
         color: "#FF0000"
       - state: soles-equipped-INNERCLOTHING
         color: "#bababa" # Recommended default soles color
+      pants:
+      - state: equipped-INNERCLOTHING
+        color: "#FFFFFF"
+      - state: accent-equipped-INNERCLOTHING
+        color: "#FF0000"
+      - state: loweraccent-equipped-INNERCLOTHING
+        color: "#FF0000"
+      - state: soles-equipped-INNERCLOTHING
+        color: "#bababa" # Recommended default soles color
 
 - type: entity
   abstract: true

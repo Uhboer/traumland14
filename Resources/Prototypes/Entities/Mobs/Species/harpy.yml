@@ -115,6 +115,11 @@
           32:
             sprite: Mobs/Species/Harpy/displacement.rsi
             state: jumpsuit
+      pants:
+        sizeMaps:
+          32:
+            sprite: Mobs/Species/Harpy/displacement.rsi
+            state: jumpsuit
   - type: HarpyVisuals
   - type: UltraVision
   - type: Tag
@@ -155,6 +160,11 @@
     templateId: digitigrade
     displacements:
       jumpsuit:
+        sizeMaps:
+          32:
+            sprite: Mobs/Species/Harpy/displacement.rsi
+            state: jumpsuit
+      pants:
         sizeMaps:
           32:
             sprite: Mobs/Species/Harpy/displacement.rsi

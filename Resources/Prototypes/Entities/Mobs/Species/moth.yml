@@ -130,6 +130,11 @@
           32:
             sprite: Mobs/Species/Human/displacement.rsi
             state: jumpsuit-female
+      pants:
+        sizeMaps:
+          32:
+            sprite: Mobs/Species/Human/displacement.rsi
+            state: jumpsuit-female
 
 - type: entity
   parent: BaseSpeciesDummy
@@ -141,6 +146,11 @@
   - type: Inventory
     femaleDisplacements:
       jumpsuit:
+        sizeMaps:
+          32:
+            sprite: Mobs/Species/Human/displacement.rsi
+            state: jumpsuit-female
+      pants:
         sizeMaps:
           32:
             sprite: Mobs/Species/Human/displacement.rsi

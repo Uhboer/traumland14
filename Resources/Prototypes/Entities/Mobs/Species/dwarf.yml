@@ -73,6 +73,11 @@
           32:
             sprite: Mobs/Species/Human/displacement.rsi
             state: jumpsuit-female
+      pants:
+        sizeMaps:
+          32:
+            sprite: Mobs/Species/Human/displacement.rsi
+            state: jumpsuit-female
   - type: Stamina
     critThreshold: 115
     decay: 3.3 # 3 base decay multiplied by 1.15 = 3.3
@@ -88,6 +93,11 @@
   - type: Inventory
     femaleDisplacements:
       jumpsuit:
+        sizeMaps:
+          32:
+            sprite: Mobs/Species/Human/displacement.rsi
+            state: jumpsuit-female
+      pants:
         sizeMaps:
           32:
             sprite: Mobs/Species/Human/displacement.rsi
