@@ -2,5 +2,6 @@
   id: LobbyMusic
   files:
     #- /Audio/Lobby/evacuation.ogg
-    - /Audio/Lobby/Crane-White-Lighting.ogg
+    #- /Audio/Lobby/Crane-White-Lighting.ogg
     #- /Audio/Lobby/Aindulmedir-Celestial_Studies.ogg
+    - /Audio/Lobby/gta-vc.ogg
