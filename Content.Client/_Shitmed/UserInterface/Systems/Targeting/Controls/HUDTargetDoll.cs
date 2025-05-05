@@ -172,7 +172,7 @@ public class HUDTargetDoll : HUDTextureRect, IHUDDescription
     {
         var handle = args.ScreenHandle;
 
-        if (!VisibleInTree)
+        if (!Visible)
             return;
 
         // Background

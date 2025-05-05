@@ -140,7 +140,7 @@ public class HUDSlotControl : HUDButton, IEntityControl
     {
         var handle = args.ScreenHandle;
 
-        if (_buttonTexture is null || !VisibleInTree)
+        if (_buttonTexture is null || !Visible)
         {
             base.Draw(args);
             return;
