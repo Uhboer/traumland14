@@ -259,7 +259,7 @@
         color: "#404040"
   - type: Clothing
     clothingVisuals:
-      jumpsuit:
+      uniform2:
       - state: equipped-INNERCLOTHING
         color: "#ff8300"
       - state: plaintop-equipped-INNERCLOTHING
@@ -270,7 +270,7 @@
         color: "#404040"
       - state: soles-equipped-INNERCLOTHING
         color: "#bababa"
-      pants:
+      uniform:
       - state: equipped-INNERCLOTHING
         color: "#ff8300"
       - state: plaintop-equipped-INNERCLOTHING
@@ -386,7 +386,7 @@
         color: "#2e2e2e"
   - type: Clothing
     clothingVisuals:
-      jumpsuit:
+      uniform2:
       - state: equipped-INNERCLOTHING
         color: "#8f3132"
       - state: accent2-equipped-INNERCLOTHING
@@ -405,7 +405,7 @@
         color: "#2e2e2e"
       - state: soles-equipped-INNERCLOTHING
         color: "#7a7a7a"
-      pants:
+      uniform:
       - state: equipped-INNERCLOTHING
         color: "#8f3132"
       - state: accent2-equipped-INNERCLOTHING
@@ -481,7 +481,7 @@
         color: "#232938"
   - type: Clothing
     clothingVisuals:
-      jumpsuit:
+      uniform2:
       - state: equipped-INNERCLOTHING
         color: "#b9c1d9"
       - state: accentalt_noback-equipped-INNERCLOTHING
@@ -504,7 +504,7 @@
         color: "#2e2e2e"
       - state: soles-equipped-INNERCLOTHING
         color: "#7a7a7a"
-      pants:
+      uniform:
       - state: equipped-INNERCLOTHING
         color: "#b9c1d9"
       - state: accentalt_noback-equipped-INNERCLOTHING
@@ -590,7 +590,7 @@
         color: "#333333"
   - type: Clothing
     clothingVisuals:
-      jumpsuit:
+      uniform2:
       - state: equipped-INNERCLOTHING
         color: "#7e7e7e"
       - state: plaintop-equipped-INNERCLOTHING
@@ -617,7 +617,7 @@
         color: "#333333"
       - state: soles-equipped-INNERCLOTHING
         color: "#7a7a7a"
-      pants:
+      uniform:
       - state: equipped-INNERCLOTHING
         color: "#7e7e7e"
       - state: plaintop-equipped-INNERCLOTHING
@@ -783,7 +783,7 @@
         color: "#c2911e"
   - type: Clothing
     clothingVisuals:
-      jumpsuit:
+      uniform2:
       - state: equipped-INNERCLOTHING
         color: "#4a281f"
       - state: accent2-equipped-INNERCLOTHING
@@ -796,7 +796,7 @@
         color: "#c2911e"
       - state: soles-equipped-INNERCLOTHING
         color: "#c2911e"
-      pants:
+      uniform:
       - state: equipped-INNERCLOTHING
         color: "#4a281f"
       - state: accent2-equipped-INNERCLOTHING
@@ -866,7 +866,7 @@
         color: "#f0990c"
   - type: Clothing
     clothingVisuals:
-      jumpsuit:
+      uniform2:
       - state: equipped-INNERCLOTHING
         color: "#394dc6"
       - state: accentalt_noback-equipped-INNERCLOTHING
@@ -887,7 +887,7 @@
         color: "#dcdcdc"
       - state: soles-equipped-INNERCLOTHING
         color: "#dcdcdc"
-      pants:
+      uniform:
       - state: equipped-INNERCLOTHING
         color: "#394dc6"
       - state: accentalt_noback-equipped-INNERCLOTHING
@@ -945,7 +945,7 @@
         color: "#db2525"
   - type: Clothing
     clothingVisuals:
-      jumpsuit:
+      uniform2:
       - state: equipped-INNERCLOTHING
         color: "#3c335b"
       - state: accent2-equipped-INNERCLOTHING
@@ -956,7 +956,7 @@
         color: "#db2525"
       - state: soles-equipped-INNERCLOTHING
         color: "#bababa"
-      pants:
+      uniform:
       - state: equipped-INNERCLOTHING
         color: "#3c335b"
       - state: accent2-equipped-INNERCLOTHING
@@ -994,7 +994,7 @@
         color: "#79121b"
   - type: Clothing
     clothingVisuals:
-      jumpsuit:
+      uniform2:
       - state: equipped-INNERCLOTHING
         color: "#112334"
       - state: accent2-equipped-INNERCLOTHING
@@ -1003,7 +1003,7 @@
         color: "#79121b"
       - state: soles-equipped-INNERCLOTHING
         color: "#bababa"
-      pants:
+      uniform:
       - state: equipped-INNERCLOTHING
         color: "#112334"
       - state: accent2-equipped-INNERCLOTHING
@@ -1045,7 +1045,7 @@
         color: "#a349a4"
   - type: Clothing
     clothingVisuals:
-      jumpsuit:
+      uniform2:
       - state: equipped-INNERCLOTHING
         color: "#dab13b"
       - state: accent-equipped-INNERCLOTHING
@@ -1056,7 +1056,7 @@
         color: "#a349a4"
       - state: soles-equipped-INNERCLOTHING
         color: "#a349a4"
-      pants:
+      uniform:
       - state: equipped-INNERCLOTHING
         color: "#dab13b"
       - state: accent-equipped-INNERCLOTHING
@@ -1118,7 +1118,7 @@
         color: "#997d30"
   - type: Clothing
     clothingVisuals:
-      jumpsuit:
+      uniform2:
       - state: equipped-INNERCLOTHING
         color: "#46566d"
       - state: pants-equipped-INNERCLOTHING
@@ -1135,7 +1135,7 @@
         color: "#997d30"
       - state: soles-equipped-INNERCLOTHING
         color: "#d4af48"
-      pants:
+      uniform:
       - state: equipped-INNERCLOTHING
         color: "#46566d"
       - state: pants-equipped-INNERCLOTHING
@@ -1179,7 +1179,7 @@
         color: "#a349a4"
   - type: Clothing
     clothingVisuals:
-      jumpsuit:
+      uniform2:
       - state: equipped-INNERCLOTHING
         color: "#d3b986"
       - state: accent-equipped-INNERCLOTHING
@@ -1188,7 +1188,7 @@
         color: "#a349a4"
       - state: soles-equipped-INNERCLOTHING
         color: "#bababa"
-      pants:
+      uniform:
       - state: equipped-INNERCLOTHING
         color: "#d3b986"
       - state: accent-equipped-INNERCLOTHING
@@ -1224,7 +1224,7 @@
         color: "#3b3b3b"
   - type: Clothing
     clothingVisuals:
-      jumpsuit:
+      uniform2:
       - state: equipped-INNERCLOTHING
         color: "#ffffff"
       - state: accent-equipped-INNERCLOTHING
@@ -1233,7 +1233,7 @@
         color: "#3b3b3b"
       - state: soles-equipped-INNERCLOTHING
         color: "#bababa"
-      pants:
+      uniform:
       - state: equipped-INNERCLOTHING
         color: "#ffffff"
       - state: accent-equipped-INNERCLOTHING
@@ -1311,7 +1311,7 @@
         color: "#535353"
   - type: Clothing
     clothingVisuals:
-      jumpsuit:
+      uniform2:
       - state: equipped-INNERCLOTHING
         color: "#bb934b"
       - state: accentalt-equipped-INNERCLOTHING
@@ -1340,7 +1340,7 @@
         color: "#828282"
       - state: soles-equipped-INNERCLOTHING
         color: "#ffc000"
-      pants:
+      uniform:
       - state: equipped-INNERCLOTHING
         color: "#bb934b"
       - state: accentalt-equipped-INNERCLOTHING
@@ -1402,7 +1402,7 @@
         color: "#a81818"
   - type: Clothing
     clothingVisuals:
-      jumpsuit:
+      uniform2:
       - state: equipped-INNERCLOTHING
         color: "#eeeeee"
       - state: accent3-equipped-INNERCLOTHING
@@ -1413,7 +1413,7 @@
         color: "#eeeeee"
       - state: soles-equipped-INNERCLOTHING
         color: "#eeeeee"
-      pants:
+      uniform:
       - state: equipped-INNERCLOTHING
         color: "#eeeeee"
       - state: accent3-equipped-INNERCLOTHING
@@ -1475,7 +1475,7 @@
         color: "#315266"
   - type: Clothing
     clothingVisuals:
-      jumpsuit:
+      uniform2:
       - state: equipped-INNERCLOTHING
         color: "#ffffff"
       - state: plaintop-equipped-INNERCLOTHING
@@ -1492,7 +1492,7 @@
         color: "#315266"
       - state: soles-equipped-INNERCLOTHING
         color: "#bababa"
-      pants:
+      uniform:
       - state: equipped-INNERCLOTHING
         color: "#ffffff"
       - state: plaintop-equipped-INNERCLOTHING
@@ -1548,7 +1548,7 @@
         color: "#f4a1b7"
   - type: Clothing
     clothingVisuals:
-      jumpsuit:
+      uniform2:
       - state: equipped-INNERCLOTHING
         color: "#292929"
       - state: plaintop-equipped-INNERCLOTHING
@@ -1561,7 +1561,7 @@
         color: "#f4a1b7"
       - state: soles-equipped-INNERCLOTHING
         color: "#f4a1b7"
-      pants:
+      uniform:
       - state: equipped-INNERCLOTHING
         color: "#292929"
       - state: plaintop-equipped-INNERCLOTHING
@@ -1614,7 +1614,7 @@
         color: "#292929"
   - type: Clothing
     clothingVisuals:
-      jumpsuit:
+      uniform2:
       - state: equipped-INNERCLOTHING
         color: "#f4a1b7"
       - state: plaintop-equipped-INNERCLOTHING
@@ -1627,7 +1627,7 @@
         color: "#292929"
       - state: soles-equipped-INNERCLOTHING
         color: "#292929"
-      pants:
+      uniform:
       - state: equipped-INNERCLOTHING
         color: "#f4a1b7"
       - state: plaintop-equipped-INNERCLOTHING
@@ -1679,7 +1679,7 @@
         color: "#ffb0c0"
   - type: Clothing
     clothingVisuals:
-      jumpsuit:
+      uniform2:
       - state: equipped-INNERCLOTHING
         color: "#ffffff"
       - state: plaintop-equipped-INNERCLOTHING
@@ -1696,7 +1696,7 @@
         color: "#ffb0c0"
       - state: soles-equipped-INNERCLOTHING
         color: "#5dd2ff"
-      pants:
+      uniform:
       - state: equipped-INNERCLOTHING
         color: "#ffffff"
       - state: plaintop-equipped-INNERCLOTHING
@@ -1764,7 +1764,7 @@
         color: "#363636"
   - type: Clothing
     clothingVisuals:
-      jumpsuit:
+      uniform2:
       - state: equipped-INNERCLOTHING
         color: "#d76b00"
       - state: accent3-equipped-INNERCLOTHING
@@ -1783,7 +1783,7 @@
         color: "#363636"
       - state: soles-equipped-INNERCLOTHING
         color: "#bababa"
-      pants:
+      uniform:
       - state: equipped-INNERCLOTHING
         color: "#d76b00"
       - state: accent3-equipped-INNERCLOTHING
@@ -1865,7 +1865,7 @@
         color: "#3b3b3b"
   - type: Clothing
     clothingVisuals:
-      jumpsuit:
+      uniform2:
       - state: equipped-INNERCLOTHING
         color: "#486782"
       - state: accentalt-equipped-INNERCLOTHING
@@ -1890,7 +1890,7 @@
         color: "#3b3b3b"
       - state: soles-equipped-INNERCLOTHING
         color: "#bfcddb"
-      pants:
+      uniform:
       - state: equipped-INNERCLOTHING
         color: "#486782"
       - state: accentalt-equipped-INNERCLOTHING
@@ -1966,7 +1966,7 @@
         color: "#969696"
   - type: Clothing
     clothingVisuals:
-      jumpsuit:
+      uniform2:
       - state: equipped-INNERCLOTHING
         color: "#292929"
       - state: accent3_chestonly-equipped-INNERCLOTHING
@@ -1987,7 +1987,7 @@
         color: "#266199"
       - state: soles-equipped-INNERCLOTHING
         color: "#ffce5b"
-      pants:
+      uniform:
       - state: equipped-INNERCLOTHING
         color: "#292929"
       - state: accent3_chestonly-equipped-INNERCLOTHING
@@ -2071,7 +2071,7 @@
         color: "#ffce5b"
   - type: Clothing
     clothingVisuals:
-      jumpsuit:
+      uniform2:
       - state: equipped-INNERCLOTHING
         color: "#ebebeb"
       - state: plaintop-equipped-INNERCLOTHING
@@ -2094,7 +2094,7 @@
         color: "#ffce5b"
       - state: soles-equipped-INNERCLOTHING
         color: "#634737"
-      pants:
+      uniform:
       - state: equipped-INNERCLOTHING
         color: "#ebebeb"
       - state: plaintop-equipped-INNERCLOTHING
@@ -2181,7 +2181,7 @@
         color: "#737373"
   - type: Clothing
     clothingVisuals:
-      jumpsuit:
+      uniform2:
       - state: equipped-INNERCLOTHING
         color: "#3f3f3f"
       - state: plaintop-equipped-INNERCLOTHING
@@ -2198,7 +2198,7 @@
         color: "#a349a4"
       - state: soles-equipped-INNERCLOTHING
         color: "#bababa"
-      pants:
+      uniform:
       - state: equipped-INNERCLOTHING
         color: "#3f3f3f"
       - state: plaintop-equipped-INNERCLOTHING
@@ -2266,7 +2266,7 @@
         color: "#737373"
   - type: Clothing
     clothingVisuals:
-      jumpsuit:
+      uniform2:
       - state: equipped-INNERCLOTHING
         color: "#ffffff"
       - state: plaintop-equipped-INNERCLOTHING
@@ -2283,7 +2283,7 @@
         color: "#99211f"
       - state: soles-equipped-INNERCLOTHING
         color: "#bababa"
-      pants:
+      uniform:
       - state: equipped-INNERCLOTHING
         color: "#ffffff"
       - state: plaintop-equipped-INNERCLOTHING
@@ -2351,7 +2351,7 @@
         color: "#737373"
   - type: Clothing
     clothingVisuals:
-      jumpsuit:
+      uniform2:
       - state: equipped-INNERCLOTHING
         color: "#ffffff"
       - state: plaintop-equipped-INNERCLOTHING
@@ -2368,7 +2368,7 @@
         color: "#c2680f"
       - state: soles-equipped-INNERCLOTHING
         color: "#bababa"
-      pants:
+      uniform:
       - state: equipped-INNERCLOTHING
         color: "#ffffff"
       - state: plaintop-equipped-INNERCLOTHING
@@ -2436,7 +2436,7 @@
         color: "#737373"
   - type: Clothing
     clothingVisuals:
-      jumpsuit:
+      uniform2:
       - state: equipped-INNERCLOTHING
         color: "#ffffff"
       - state: plaintop-equipped-INNERCLOTHING
@@ -2453,7 +2453,7 @@
         color: "#5b991f"
       - state: soles-equipped-INNERCLOTHING
         color: "#bababa"
-      pants:
+      uniform:
       - state: equipped-INNERCLOTHING
         color: "#ffffff"
       - state: plaintop-equipped-INNERCLOTHING
@@ -2521,7 +2521,7 @@
         color: "#737373"
   - type: Clothing
     clothingVisuals:
-      jumpsuit:
+      uniform2:
       - state: equipped-INNERCLOTHING
         color: "#ffffff"
       - state: plaintop-equipped-INNERCLOTHING
@@ -2538,7 +2538,7 @@
         color: "#2b5c99"
       - state: soles-equipped-INNERCLOTHING
         color: "#bababa"
-      pants:
+      uniform:
       - state: equipped-INNERCLOTHING
         color: "#ffffff"
       - state: plaintop-equipped-INNERCLOTHING
@@ -2612,7 +2612,7 @@
         color: "#3e3e3e"
   - type: Clothing
     clothingVisuals:
-      jumpsuit:
+      uniform2:
       - state: equipped-INNERCLOTHING
         color: "#ffffff"
       - state: plaintop-equipped-INNERCLOTHING
@@ -2631,7 +2631,7 @@
         color: "#a349a4"
       - state: soles-equipped-INNERCLOTHING
         color: "#bababa"
-      pants:
+      uniform:
       - state: equipped-INNERCLOTHING
         color: "#ffffff"
       - state: plaintop-equipped-INNERCLOTHING
@@ -2701,7 +2701,7 @@
         color: "#737373"
   - type: Clothing
     clothingVisuals:
-      jumpsuit:
+      uniform2:
       - state: equipped-INNERCLOTHING
         color: "#ffffff"
       - state: plaintop-equipped-INNERCLOTHING
@@ -2718,7 +2718,7 @@
         color: "#d6d6d6"
       - state: soles-equipped-INNERCLOTHING
         color: "#bababa"
-      pants:
+      uniform:
       - state: equipped-INNERCLOTHING
         color: "#ffffff"
       - state: plaintop-equipped-INNERCLOTHING
@@ -2787,7 +2787,7 @@
         color: "#737373"
   - type: Clothing
     clothingVisuals:
-      jumpsuit:
+      uniform2:
       - state: equipped-INNERCLOTHING
         color: "#3b3b3b"
       - state: plaintop-equipped-INNERCLOTHING
@@ -2804,7 +2804,7 @@
         color: "#424242"
       - state: soles-equipped-INNERCLOTHING
         color: "#bababa"
-      pants:
+      uniform:
       - state: equipped-INNERCLOTHING
         color: "#3b3b3b"
       - state: plaintop-equipped-INNERCLOTHING
@@ -2872,7 +2872,7 @@
         color: "#737373"
   - type: Clothing
     clothingVisuals:
-      jumpsuit:
+      uniform2:
       - state: equipped-INNERCLOTHING
         color: "#ffffff"
       - state: plaintop-equipped-INNERCLOTHING
@@ -2889,7 +2889,7 @@
         color: "#5ba0cf"
       - state: soles-equipped-INNERCLOTHING
         color: "#bababa"
-      pants:
+      uniform:
       - state: equipped-INNERCLOTHING
         color: "#ffffff"
       - state: plaintop-equipped-INNERCLOTHING
@@ -2940,7 +2940,7 @@
         color: "#a349a4"
   - type: Clothing
     clothingVisuals:
-      jumpsuit:
+      uniform2:
       - state: equipped-INNERCLOTHING
         color: "#ffffff"
       - state: accent-equipped-INNERCLOTHING
@@ -2951,7 +2951,7 @@
         color: "#a349a4"
       - state: soles-equipped-INNERCLOTHING
         color: "#bababa"
-      pants:
+      uniform:
       - state: equipped-INNERCLOTHING
         color: "#ffffff"
       - state: accent-equipped-INNERCLOTHING
@@ -2995,7 +2995,7 @@
         color: "#a349a4"
   - type: Clothing
     clothingVisuals:
-      jumpsuit:
+      uniform2:
       - state: equipped-INNERCLOTHING
         color: "#b3b3b3"
       - state: accent-equipped-INNERCLOTHING
@@ -3006,7 +3006,7 @@
         color: "#a349a4"
       - state: soles-equipped-INNERCLOTHING
         color: "#bababa"
-      pants:
+      uniform:
       - state: equipped-INNERCLOTHING
         color: "#b3b3b3"
       - state: accent-equipped-INNERCLOTHING
@@ -3050,7 +3050,7 @@
         color: "#a349a4"
   - type: Clothing
     clothingVisuals:
-      jumpsuit:
+      uniform2:
       - state: equipped-INNERCLOTHING
         color: "#3f3f3f"
       - state: accent-equipped-INNERCLOTHING
@@ -3061,7 +3061,7 @@
         color: "#a349a4"
       - state: soles-equipped-INNERCLOTHING
         color: "#bababa"
-      pants:
+      uniform:
       - state: equipped-INNERCLOTHING
         color: "#3f3f3f"
       - state: accent-equipped-INNERCLOTHING
@@ -3105,7 +3105,7 @@
         color: "#a349a4"
   - type: Clothing
     clothingVisuals:
-      jumpsuit:
+      uniform2:
       - state: equipped-INNERCLOTHING
         color: "#d1423f"
       - state: accent-equipped-INNERCLOTHING
@@ -3116,7 +3116,7 @@
         color: "#a349a4"
       - state: soles-equipped-INNERCLOTHING
         color: "#bababa"
-      pants:
+      uniform:
       - state: equipped-INNERCLOTHING
         color: "#d1423f"
       - state: accent-equipped-INNERCLOTHING
@@ -3160,7 +3160,7 @@
         color: "#a349a4"
   - type: Clothing
     clothingVisuals:
-      jumpsuit:
+      uniform2:
       - state: equipped-INNERCLOTHING
         color: "#9ed63a"
       - state: accent-equipped-INNERCLOTHING
@@ -3171,7 +3171,7 @@
         color: "#a349a4"
       - state: soles-equipped-INNERCLOTHING
         color: "#bababa"
-      pants:
+      uniform:
       - state: equipped-INNERCLOTHING
         color: "#9ed63a"
       - state: accent-equipped-INNERCLOTHING
@@ -3215,7 +3215,7 @@
         color: "#a349a4"
   - type: Clothing
     clothingVisuals:
-      jumpsuit:
+      uniform2:
       - state: equipped-INNERCLOTHING
         color: "#79CC26"
       - state: accent-equipped-INNERCLOTHING
@@ -3226,7 +3226,7 @@
         color: "#a349a4"
       - state: soles-equipped-INNERCLOTHING
         color: "#bababa"
-      pants:
+      uniform:
       - state: equipped-INNERCLOTHING
         color: "#79CC26"
       - state: accent-equipped-INNERCLOTHING
@@ -3270,7 +3270,7 @@
         color: "#a349a4"
   - type: Clothing
     clothingVisuals:
-      jumpsuit:
+      uniform2:
       - state: equipped-INNERCLOTHING
         color: "#52aecc"
       - state: accent-equipped-INNERCLOTHING
@@ -3281,7 +3281,7 @@
         color: "#a349a4"
       - state: soles-equipped-INNERCLOTHING
         color: "#bababa"
-      pants:
+      uniform:
       - state: equipped-INNERCLOTHING
         color: "#52aecc"
       - state: accent-equipped-INNERCLOTHING
@@ -3325,7 +3325,7 @@
         color: "#a349a4"
   - type: Clothing
     clothingVisuals:
-      jumpsuit:
+      uniform2:
       - state: equipped-INNERCLOTHING
         color: "#3285ba"
       - state: accent-equipped-INNERCLOTHING
@@ -3336,7 +3336,7 @@
         color: "#a349a4"
       - state: soles-equipped-INNERCLOTHING
         color: "#bababa"
-      pants:
+      uniform:
       - state: equipped-INNERCLOTHING
         color: "#3285ba"
       - state: accent-equipped-INNERCLOTHING
@@ -3380,7 +3380,7 @@
         color: "#a349a4"
   - type: Clothing
     clothingVisuals:
-      jumpsuit:
+      uniform2:
       - state: equipped-INNERCLOTHING
         color: "#77f3b7"
       - state: accent-equipped-INNERCLOTHING
@@ -3391,7 +3391,7 @@
         color: "#a349a4"
       - state: soles-equipped-INNERCLOTHING
         color: "#bababa"
-      pants:
+      uniform:
       - state: equipped-INNERCLOTHING
         color: "#77f3b7"
       - state: accent-equipped-INNERCLOTHING

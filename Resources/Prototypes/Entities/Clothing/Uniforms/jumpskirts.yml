@@ -324,11 +324,11 @@
   - type: Clothing
     sprite: Clothing/Uniforms/Jumpskirt/color.rsi
     clothingVisuals:
-      jumpsuit:
+      uniform2:
       - state: equipped-INNERCLOTHING
         color: "#ff8300"
       - state: prisoner-equipped-INNERCLOTHING
-      pants:
+      uniform:
       - state: equipped-INNERCLOTHING
         color: "#ff8300"
       - state: prisoner-equipped-INNERCLOTHING
@@ -779,11 +779,11 @@
   - type: Clothing
     sprite: Clothing/Uniforms/Jumpsuit/casual.rsi
     clothingVisuals:
-      jumpsuit:
+      uniform2:
       - state: equipped-INNERCLOTHING-jumpskirt
       - state: equipped-INNERCLOTHING-shirt
         color: "#134fc1"
-      pants:
+      uniform:
       - state: equipped-INNERCLOTHING-jumpskirt
       - state: equipped-INNERCLOTHING-shirt
         color: "#134fc1"
@@ -813,11 +813,11 @@
   - type: Clothing
     sprite: Clothing/Uniforms/Jumpsuit/casual.rsi
     clothingVisuals:
-      jumpsuit:
+      uniform2:
       - state: equipped-INNERCLOTHING-jumpskirt
       - state: equipped-INNERCLOTHING-shirt
         color: "#9c0dff"
-      pants:
+      uniform:
       - state: equipped-INNERCLOTHING-jumpskirt
       - state: equipped-INNERCLOTHING-shirt
         color: "#9c0dff"
@@ -847,11 +847,11 @@
   - type: Clothing
     sprite: Clothing/Uniforms/Jumpsuit/casual.rsi
     clothingVisuals:
-      jumpsuit:
+      uniform2:
       - state: equipped-INNERCLOTHING-jumpskirt
       - state: equipped-INNERCLOTHING-shirt
         color: "#b30000"
-      pants:
+      uniform:
       - state: equipped-INNERCLOTHING-jumpskirt
       - state: equipped-INNERCLOTHING-shirt
         color: "#b30000"

@@ -68,12 +68,12 @@
     boozeStrengthMultiplier: 0.5
   - type: Inventory
     femaleDisplacements:
-      jumpsuit:
+      uniform2:
         sizeMaps:
           32:
             sprite: Mobs/Species/Human/displacement.rsi
             state: jumpsuit-female
-      pants:
+      uniform:
         sizeMaps:
           32:
             sprite: Mobs/Species/Human/displacement.rsi
@@ -92,12 +92,12 @@
   components:
   - type: Inventory
     femaleDisplacements:
-      jumpsuit:
+      uniform2:
         sizeMaps:
           32:
             sprite: Mobs/Species/Human/displacement.rsi
             state: jumpsuit-female
-      pants:
+      uniform:
         sizeMaps:
           32:
             sprite: Mobs/Species/Human/displacement.rsi

@@ -21,7 +21,7 @@
   - type: Clothing
     sprite: Clothing/Uniforms/procedural.rsi
     clothingVisuals:
-      jumpsuit:
+      uniform2:
       - state: base_torso_standard
         map: [ "torso" ]
       - state: base_leg_standard
@@ -30,7 +30,7 @@
         map: [ "decor" ]
       - state: mask_null
         map: [ "overlay" ]
-      pants:
+      uniform:
       - state: base_torso_standard
         map: [ "torso" ]
       - state: base_leg_standard

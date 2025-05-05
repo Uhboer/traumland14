@@ -42,12 +42,12 @@
           - MobLayer
   - type: Inventory
     femaleDisplacements:
-      jumpsuit:
+      uniform2:
         sizeMaps:
           32:
             sprite: Mobs/Species/Human/displacement.rsi
             state: jumpsuit-female
-      pants:
+      uniform:
         sizeMaps:
           32:
             sprite: Mobs/Species/Human/displacement.rsi
@@ -63,12 +63,12 @@
     species: Gingerbread
   - type: Inventory
     femaleDisplacements:
-      jumpsuit:
+      uniform2:
         sizeMaps:
           32:
             sprite: Mobs/Species/Human/displacement.rsi
             state: jumpsuit-female
-      pants:
+      uniform:
         sizeMaps:
           32:
             sprite: Mobs/Species/Human/displacement.rsi

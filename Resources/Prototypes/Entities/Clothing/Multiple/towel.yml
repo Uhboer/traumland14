@@ -58,10 +58,10 @@
       head:
       - state: equipped-HELMET
         color: "#EAE8E8"
-      jumpsuit:
+      uniform2:
       - state: equipped-INNERCLOTHING
         color: "#EAE8E8"
-      pants:
+      uniform:
       - state: equipped-INNERCLOTHING
         color: "#EAE8E8"
       belt:
@@ -92,10 +92,10 @@
       head:
       - state: equipped-HELMET
         color: "#9C0DE1"
-      jumpsuit:
+      uniform2:
       - state: equipped-INNERCLOTHING
         color: "#9C0DE1"
-      pants:
+      uniform:
       - state: equipped-INNERCLOTHING
         color: "#9C0DE1"
       belt:
@@ -126,10 +126,10 @@
       head:
       - state: equipped-HELMET
         color: "#940000"
-      jumpsuit:
+      uniform2:
       - state: equipped-INNERCLOTHING
         color: "#940000"
-      pants:
+      uniform:
       - state: equipped-INNERCLOTHING
         color: "#940000"
       belt:
@@ -160,10 +160,10 @@
       head:
       - state: equipped-HELMET
         color: "#0089EF"
-      jumpsuit:
+      uniform2:
       - state: equipped-INNERCLOTHING
         color: "#0089EF"
-      pants:
+      uniform:
       - state: equipped-INNERCLOTHING
         color: "#0089EF"
       belt:
@@ -194,10 +194,10 @@
       head:
       - state: equipped-HELMET
         color: "#3285ba"
-      jumpsuit:
+      uniform2:
       - state: equipped-INNERCLOTHING
         color: "#3285ba"
-      pants:
+      uniform:
       - state: equipped-INNERCLOTHING
         color: "#3285ba"
       belt:
@@ -228,10 +228,10 @@
       head:
       - state: equipped-HELMET
         color: "#58abcc"
-      jumpsuit:
+      uniform2:
       - state: equipped-INNERCLOTHING
         color: "#58abcc"
-      pants:
+      uniform:
       - state: equipped-INNERCLOTHING
         color: "#58abcc"
       belt:
@@ -262,10 +262,10 @@
       head:
       - state: equipped-HELMET
         color: "#3CB57C"
-      jumpsuit:
+      uniform2:
       - state: equipped-INNERCLOTHING
         color: "#3CB57C"
-      pants:
+      uniform:
       - state: equipped-INNERCLOTHING
         color: "#3CB57C"
       belt:
@@ -296,10 +296,10 @@
       head:
       - state: equipped-HELMET
         color: "#723A02"
-      jumpsuit:
+      uniform2:
       - state: equipped-INNERCLOTHING
         color: "#723A02"
-      pants:
+      uniform:
       - state: equipped-INNERCLOTHING
         color: "#723A02"
       belt:
@@ -330,10 +330,10 @@
       head:
       - state: equipped-HELMET
         color: "#c59431"
-      jumpsuit:
+      uniform2:
       - state: equipped-INNERCLOTHING
         color: "#c59431"
-      pants:
+      uniform:
       - state: equipped-INNERCLOTHING
         color: "#c59431"
       belt:
@@ -364,10 +364,10 @@
       head:
       - state: equipped-HELMET
         color: "#999999"
-      jumpsuit:
+      uniform2:
       - state: equipped-INNERCLOTHING
         color: "#999999"
-      pants:
+      uniform:
       - state: equipped-INNERCLOTHING
         color: "#999999"
       belt:
@@ -398,10 +398,10 @@
       head:
       - state: equipped-HELMET
         color: "#5ABF2F"
-      jumpsuit:
+      uniform2:
       - state: equipped-INNERCLOTHING
         color: "#5ABF2F"
-      pants:
+      uniform:
       - state: equipped-INNERCLOTHING
         color: "#5ABF2F"
       belt:
@@ -432,10 +432,10 @@
       head:
       - state: equipped-HELMET
         color: "#79CC26"
-      jumpsuit:
+      uniform2:
       - state: equipped-INNERCLOTHING
         color: "#79CC26"
-      pants:
+      uniform:
       - state: equipped-INNERCLOTHING
         color: "#79CC26"
       belt:
@@ -468,10 +468,10 @@
       head:
       - state: equipped-HELMET
         color: "#F7C430"
-      jumpsuit:
+      uniform2:
       - state: equipped-INNERCLOTHING
         color: "#F7C430"
-      pants:
+      uniform:
       - state: equipped-INNERCLOTHING
         color: "#F7C430"
       belt:
@@ -502,10 +502,10 @@
       head:
       - state: equipped-HELMET
         color: "#EF8100"
-      jumpsuit:
+      uniform2:
       - state: equipped-INNERCLOTHING
         color: "#EF8100"
-      pants:
+      uniform:
       - state: equipped-INNERCLOTHING
         color: "#EF8100"
       belt:
@@ -536,10 +536,10 @@
       head:
       - state: equipped-HELMET
         color: "#535353"
-      jumpsuit:
+      uniform2:
       - state: equipped-INNERCLOTHING
         color: "#535353"
-      pants:
+      uniform:
       - state: equipped-INNERCLOTHING
         color: "#535353"
       belt:
@@ -570,10 +570,10 @@
       head:
       - state: equipped-HELMET
         color: "#ffa69b"
-      jumpsuit:
+      uniform2:
       - state: equipped-INNERCLOTHING
         color: "#ffa69b"
-      pants:
+      uniform:
       - state: equipped-INNERCLOTHING
         color: "#ffa69b"
       belt:
@@ -604,10 +604,10 @@
       head:
       - state: equipped-HELMET
         color: "#ffe14d"
-      jumpsuit:
+      uniform2:
       - state: equipped-INNERCLOTHING
         color: "#ffe14d"
-      pants:
+      uniform:
       - state: equipped-INNERCLOTHING
         color: "#ffe14d"
       belt:
@@ -638,10 +638,10 @@
       head:
       - state: equipped-HELMET
         color: "#cc295f"
-      jumpsuit:
+      uniform2:
       - state: equipped-INNERCLOTHING
         color: "#cc295f"
-      pants:
+      uniform:
       - state: equipped-INNERCLOTHING
         color: "#cc295f"
       belt:
@@ -674,10 +674,10 @@
       head:
       - state: equipped-HELMET
         color: "#d0d0d0"
-      jumpsuit:
+      uniform2:
       - state: equipped-INNERCLOTHING
         color: "#d0d0d0"
-      pants:
+      uniform:
       - state: equipped-INNERCLOTHING
         color: "#d0d0d0"
       belt:
@@ -710,10 +710,10 @@
       head:
       - state: equipped-HELMET
         color: "#EAE8E8"
-      jumpsuit:
+      uniform2:
       - state: equipped-INNERCLOTHING
         color: "#EAE8E8"
-      pants:
+      uniform:
       - state: equipped-INNERCLOTHING
         color: "#EAE8E8"
       belt:
@@ -748,10 +748,10 @@
       head:
       - state: equipped-HELMET
         color: "#004787"
-      jumpsuit:
+      uniform2:
       - state: equipped-INNERCLOTHING
         color: "#004787"
-      pants:
+      uniform:
       - state: equipped-INNERCLOTHING
         color: "#004787"
       belt:
@@ -784,10 +784,10 @@
       head:
       - state: equipped-HELMET
         color: "#29722e"
-      jumpsuit:
+      uniform2:
       - state: equipped-INNERCLOTHING
         color: "#29722e"
-      pants:
+      uniform:
       - state: equipped-INNERCLOTHING
         color: "#29722e"
       belt:
@@ -820,10 +820,10 @@
       head:
       - state: equipped-HELMET
         color: "#535353"
-      jumpsuit:
+      uniform2:
       - state: equipped-INNERCLOTHING
         color: "#535353"
-      pants:
+      uniform:
       - state: equipped-INNERCLOTHING
         color: "#535353"
       belt:
