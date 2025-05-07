@@ -173,7 +173,7 @@
       hudWindowPos: 2,6
       altHudWindowPos: 4,2
       strippingWindowPos: 2,5
-      dependsOn: pants
+      dependsOn: uniform
       displayName: Pocket 2
       stripHidden: true
     - name: shoes
