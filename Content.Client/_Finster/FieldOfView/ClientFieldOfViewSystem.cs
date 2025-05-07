@@ -163,9 +163,9 @@ public sealed class ClientFieldOfViewSystem : EntitySystem
             TransformComponent? targetTransform = null,
             EyeComponent? eyeComp = null)
     {
-        if (!Resolve(viewer, ref viewerTransform) ||
-            !Resolve(target, ref targetTransform) ||
-            !Resolve(viewer, ref eyeComp))
+        if (!Resolve(viewer, ref viewerTransform, false) ||
+            !Resolve(target, ref targetTransform, false) ||
+            !Resolve(viewer, ref eyeComp, false))
             return false;
 
         // Вычисляем направление от наблюдателя к цели

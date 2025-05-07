@@ -15,19 +15,30 @@
   id: VesselGeneral
   sound:
     params:
-      volume: -10
+      volume: -8
     collection: MusicVesselGeneral
   #fadeIn: true
   interruptable: true
   rules: OnGrid
   priority: 1
 
+- type: ingameMusic
+  id: VesselMaintenance
+  sound:
+    params:
+      volume: -8
+    collection: MusicVesselMaintenance
+  fadeIn: true
+  interruptable: true
+  rules: InMaintenanceArea
+  priority: 2
+
 # General music, like as fallback
 - type: ingameMusic
   id: General
   sound:
     params:
-      volume: -12
+      volume: -10
     collection: MusicGeneral
   rules: AlwaysTrue
   interruptable: true
@@ -43,7 +54,12 @@
 - type: soundCollection
   id: MusicVesselGeneral
   files:
-    - /Audio/Music/briL.ogg
+    - /Audio/Music/shipambience.ogg
+
+- type: soundCollection
+  id: MusicVesselMaintenance
+  files:
+    - /Audio/Music/maintenance.ogg
 
 - type: soundCollection
   id: MusicCombat
@@ -65,5 +81,14 @@
   rules:
     - !type:CombatModeRule
       state: false
+    - !type:OutOfArea
     - !type:GridInRangeRule
       range: 3
+
+- type: rules
+  id: InMaintenanceArea
+  rules:
+    - !type:CombatModeRule
+      state: false
+    - !type:InArea
+      id: AreaMusicMaintenance
