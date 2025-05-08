@@ -1,19 +1,19 @@
 using Robust.Shared.GameStates;
 
-namespace Content.Shared.MiddleClick;
+namespace Content.Shared.SpecialIntent;
 
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
-public sealed partial class MiddleClickIntentComponent : Component
+public sealed partial class SpecialIntentComponent : Component
 {
     /// <summary>
     ///     Click type, raised by MMB.
     ///     If it is generic - it should use actions based on normal intents or systems.
     /// </summary>
     [DataField, AutoNetworkedField]
-    public MiddleClickType ClickType = MiddleClickType.Generic;
+    public SpecialIntentType IntentType = SpecialIntentType.Generic;
 }
 
-public enum MiddleClickType : byte
+public enum SpecialIntentType : byte
 {
     /// <summary>
     ///     Do not do any middle click. Do another action based on hands and generic intents.
