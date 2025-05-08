@@ -28,7 +28,7 @@ public class HUDTargetDoll : HUDTextureRect, IHUDDescription
         Name = "TargetDoll";
         Description = "hud-desc-targetdoll";
         Size = (32, 64);
-        Position = (0, 32);
+        Position = (0, 0);
         _controller = controller;
 
         # region Body
