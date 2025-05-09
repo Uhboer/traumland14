@@ -1,8 +1,10 @@
 using Content.Server._White.Notice;
 using Content.Server.NPC.HTN;
+using Content.Shared._Finster.Rulebook;
 using Content.Shared.Alert;
 using Content.Shared.CombatMode;
 using Content.Shared.Popups;
+using Content.Shared.Weapons.Melee.Events;
 using JetBrains.Annotations;
 using Robust.Shared.Configuration;
 using Robust.Shared.Console;
@@ -13,10 +15,9 @@ namespace Content.Server.CombatMode;
 
 public sealed class CombatModeSystem : SharedCombatModeSystem
 {
-    [Dependency] private readonly IConsoleHost _consoleHost = default!;
-    [Dependency] private readonly INetConfigurationManager _netConfigManager = default!;
     [Dependency] private readonly AlertsSystem _alerts = default!;
     [Dependency] private readonly NoticeSystem _notice = default!;
+    [Dependency] private readonly DiceSystem _dice = default!;
 
     private readonly ProtoId<AlertPrototype> _defenseModeAlert = "DefenseMode";
     private readonly ProtoId<AlertPrototype> _combatIntentAlert = "CombatIntent";
@@ -37,6 +38,9 @@ public sealed class CombatModeSystem : SharedCombatModeSystem
         base.Initialize();
 
         SubscribeLocalEvent<CombatModeComponent, ComponentStartup>(OnInit);
+        SubscribeLocalEvent<CombatModeComponent, AttemptDodgeMeleeAttack>(OnDodgeAttempt);
+        SubscribeLocalEvent<CombatModeComponent, AttemptParryMeleeAttack>(OnParryAttempt);
+
         SubscribeNetworkEvent<ToggleCombatModeEvent>(OnToggleCombatMode);
 
     }
@@ -45,6 +49,72 @@ public sealed class CombatModeSystem : SharedCombatModeSystem
     {
         RefreshAlert(uid, component);
         RefreshIntentsAlerts(uid, component);
+    }
+
+    private void OnDodgeAttempt(EntityUid uid, CombatModeComponent component, ref AttemptDodgeMeleeAttack args)
+    {
+        // If target is not prepared for combat - ignore dodging
+        if (!component.IsInCombatMode ||
+            component.DefenseStyle != DefenseMode.Dodge)
+            return;
+
+        int targetModifier = 0;
+        int attackerModifier = 0;
+
+        // Apply dexterity modifier for target
+        if (TryComp<AttributesComponent>(args.Target, out var targetAttributes) &&
+            _dice.TryGetAttributePoints(args.Target, Attributes.Dexterity, out var targetDexPoints, targetAttributes))
+            targetModifier += AttributesComponent.GetModifier(targetDexPoints);
+
+        // Apply dexterity modifier for attacker
+        if (TryComp<AttributesComponent>(args.Attacker, out var attackerAttributes) &&
+            _dice.TryGetAttributePoints(args.Attacker, Attributes.Reflex, out var attackerRefPoints, attackerAttributes))
+            attackerModifier += AttributesComponent.GetModifier(attackerRefPoints);
+
+        // Roll
+        args.Handled = !_dice.RollAttack(out var _, out var _, attackerModifier, targetModifier);
+    }
+
+    private void OnParryAttempt(EntityUid uid, CombatModeComponent component, ref AttemptParryMeleeAttack args)
+    {
+        // If target is not prepared for combat - ignore dodging
+        if (!component.IsInCombatMode ||
+            component.DefenseStyle != DefenseMode.Parry)
+            return;
+
+        // Can't parry bare hands
+        if (args.Weapon == args.Attacker)
+            return;
+
+        // TODO: Weapon group checking, because we can't fight with soda can.
+
+        int targetModifier = 0;
+        int attackerModifier = 0;
+
+        // TODO: Aimed, fury, strong... I mean, need implement combat intents into the game lol.
+        // It is not difficult
+        // TODO 2: Also, add VV variables for Attirubtes's stats for apply from View Variables
+        // TODO 3: StatusEffects should affect on modifiers and attributes, instead of using attributes effect
+        // TODO 4: Modifiers based on TargetBodyPart:
+        // - Torso: modifier is 0
+        // - Hands, Legs, Head: Modifier is -3
+        // - Mouth, Eyes, Neck: Modifier is -6
+        // TODO 5: Add loging into chat, based on CombatLogSystem
+        // TODO 6: Make parryable component or add another variable
+        // Shields should not require the active hand
+
+        // Apply reflex modifier for target
+        if (TryComp<AttributesComponent>(args.Target, out var targetAttributes) &&
+            _dice.TryGetAttributePoints(args.Target, Attributes.Reflex, out var targetRefPoints, targetAttributes))
+            targetModifier += AttributesComponent.GetModifier(targetRefPoints);
+
+        // Apply reflex modifier for attacker
+        if (TryComp<AttributesComponent>(args.Attacker, out var attackerAttributes) &&
+            _dice.TryGetAttributePoints(args.Attacker, Attributes.Reflex, out var attackerRefPoints, attackerAttributes))
+            attackerModifier += AttributesComponent.GetModifier(attackerRefPoints);
+
+        // Roll
+        args.Handled = !_dice.RollAttack(out var _, out var _, attackerModifier, targetModifier);
     }
 
     public override void OnShutdown(EntityUid uid, CombatModeComponent component, ComponentShutdown args)
