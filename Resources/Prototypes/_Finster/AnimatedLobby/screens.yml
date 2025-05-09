@@ -6,6 +6,6 @@
 #  id: BB1
 #  path: /Textures/LobbyScreens/BB_1.rsi
 
-- type: animatedLobbyScreen
-  id: BB2
-  path: /Textures/LobbyScreens/BB_2.rsi
+#- type: animatedLobbyScreen
+#  id: BB2
+#  path: /Textures/LobbyScreens/BB_2.rsi
