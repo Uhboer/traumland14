@@ -1,0 +1,149 @@
+- type: entity
+  parent: BaseWall
+  id: WallReinforcedModern
+  name: modern reinforced wall
+  components:
+  - type: IsRoof
+    tile: Lattice
+  - type: Sprite
+    sprite: Structures/Walls/Orbital/reinf_modern.rsi
+  - type: Icon
+    sprite: Structures/Walls/Orbital/reinf_modern.rsi
+    state: rgeneric
+  - type: Construction
+    graph: Girder
+    node: reinforcedWallModern
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: StructuralMetallicStrong
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 900
+      behaviors:
+      - !type:PlaySoundBehavior #Nyano
+        sound:
+          collection: MetalBreak
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalSlam
+    - trigger:
+        !type:DamageTrigger
+        damage: 700
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalSlam
+      - !type:ChangeConstructionNodeBehavior
+        node: girder
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+  - type: IconSmooth
+    key: walls
+    base: reinf_over
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.ReinforcedWallVisuals.DeconstructionStage:
+        ReinforcedWallVisualLayers.Deconstruction:
+          -1: { visible: false }
+          0: { state: reinf_construct-0, visible: true}
+          1: { state: reinf_construct-1, visible: true}
+          2: { state: reinf_construct-2, visible: true}
+          3: { state: reinf_construct-3, visible: true}
+          4: { state: reinf_construct-4, visible: true}
+          5: { state: reinf_construct-5, visible: true}
+  - type: ReinforcedWallReplacementMarker
+  - type: StaticPrice
+    price: 250
+  - type: RadiationBlocker
+    resistance: 8
+
+- type: entity
+  parent: WallReinforcedModern
+  id: WallReinforcedModernGrey
+  name: modern reinforced wall
+  suffix: grey
+  components:
+  - type: Sprite
+    sprite: Structures/Walls/Orbital/reinf_modern_grey.rsi
+  - type: Icon
+    sprite: Structures/Walls/Orbital/reinf_modern_grey.rsi
+    state: rgeneric
+  - type: Construction
+    graph: Girder
+    node: reinforcedWallModernGrey
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: StructuralMetallicStrong
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 800
+      behaviors:
+      - !type:PlaySoundBehavior #Nyano
+        sound:
+          collection: MetalBreak
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalSlam
+    - trigger:
+        !type:DamageTrigger
+        damage: 600
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalSlam
+      - !type:ChangeConstructionNodeBehavior
+        node: girder
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+
+- type: entity
+  parent: WallReinforcedModern
+  id: WallReinforcedModernWhite
+  name: modern reinforced wall
+  suffix: white
+  components:
+  - type: Sprite
+    sprite: Structures/Walls/Orbital/reinf_modern_white.rsi
+  - type: Icon
+    sprite: Structures/Walls/Orbital/reinf_modern_white.rsi
+    state: rgeneric
+  - type: Construction
+    graph: Girder
+    node: reinforcedWallModernWhite
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: StructuralMetallicStrong
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 750
+      behaviors:
+      - !type:PlaySoundBehavior #Nyano
+        sound:
+          collection: MetalBreak
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalSlam
+    - trigger:
+        !type:DamageTrigger
+        damage: 550
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalSlam
+      - !type:ChangeConstructionNodeBehavior
+        node: girder
+      - !type:DoActsBehavior
+        acts: ["Destruction"]

@@ -1,0 +1,41 @@
+- type: entity
+  id: ReinforcedGirderModern
+  parent: ReinforcedGirder
+  name: modern reinforced girder
+  components:
+    - type: Sprite
+      sprite: Structures/Walls/Orbital/reinf_modern.rsi
+      state: reinforced_wall_girder
+    - type: Construction
+      graph: Girder
+      node: reinforcedGirderModern
+    - type: Destructible
+      thresholds:
+        - trigger:
+            !type:DamageTrigger
+            damage: 300
+          behaviors:
+            - !type:DoActsBehavior
+              acts: [ "Destruction" ]
+            - !type:PlaySoundBehavior
+              sound:
+                collection: MetalBreak
+        - trigger:
+            !type:DamageTrigger
+            damage: 150
+          behaviors:
+            - !type:SpawnEntitiesBehavior
+              spawn:
+                SheetSteel1:
+                  min: 1
+                  max: 1
+                SheetPlasteel1:
+                  min: 1
+                  max: 1
+            - !type:DoActsBehavior
+              acts: [ "Destruction" ]
+            - !type:PlaySoundBehavior
+              sound:
+                collection: MetalBreak
+    - type: StaticPrice
+      price: 99

@@ -162,6 +162,12 @@
       id: AreaMusicMaintenance
 
 - type: rules
+  id: InEngineeringArea
+  rules:
+    - !type:InArea
+      id: AreaMusicEngineering
+
+- type: rules
   id: InMedicalArea
   rules:
     - !type:InArea

@@ -259,28 +259,6 @@
       minimumEntitiesSpawned: 1
       maximumEntitiesSpawned: 1
 
-
-# Insects
-- type: entity
-  parent: N14TimedSpawnerMolerat
-  id: N14TimedSpawnerBloatfly
-  name: Bloatfly Timed Spawner
-  components:
-    - type: Sprite
-      layers:
-        - state: blue
-        - sprite: _Nuclear14/Mobs/Insects/bloatfly.rsi
-          state: bloatfly
-        - state: timed
-    - type: Timer
-    - type: TimedSpawner
-      prototypes:
-        - N14MobBloatfly
-      chance: 0.75
-      intervalSeconds: 2400
-      minimumEntitiesSpawned: 1
-      maximumEntitiesSpawned: 4
-
 - type: entity
   parent: N14TimedSpawnerMolerat
   id: N14TimedSpawnerCazador

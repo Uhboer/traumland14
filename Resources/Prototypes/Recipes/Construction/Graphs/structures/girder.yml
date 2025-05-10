@@ -307,6 +307,67 @@
             - tool: Screwing
               doAfter: 1
 
+    - node: reinforcedGirderModern # Orbital
+      entity: ReinforcedGirderModern
+      edges:
+        - to: reinforcedWallModern
+          completed:
+            - !type:SnapToGrid
+              southRotation: true
+          conditions:
+            - !type:EntityAnchored { }
+          steps:
+            - material: Plasteel
+              amount: 2
+              doAfter: 1
+            - tool: Welding
+              doAfter: 10
+
+        - to: reinforcedWallModernGrey
+          completed:
+            - !type:SnapToGrid
+              southRotation: true
+          conditions:
+            - !type:EntityAnchored { }
+          steps:
+            - material: Steel
+              amount: 2
+              doAfter: 1
+            - tool: Welding
+              doAfter: 6
+
+        - to: reinforcedWallModernWhite
+          completed:
+            - !type:SnapToGrid
+              southRotation: true
+          conditions:
+            - !type:EntityAnchored { }
+          steps:
+            - material: Silver
+              amount: 2
+              doAfter: 1
+            - tool: Welding
+              doAfter: 6
+
+        - to: reinforcedGirder
+          completed:
+            - !type:SnapToGrid
+              southRotation: true
+            - !type:SpawnPrototype
+              prototype: SheetPlasteel1
+              amount: 2
+          conditions:
+            - !type:EntityAnchored { }
+          steps:
+            - tool: Welding
+              doAfter: 4
+            - tool: Cutting
+              doAfter: 1
+            - tool: Screwing
+              doAfter: 1
+            - tool: Prying
+              doAfter: 1
+
     - node: reinforcedGirder
       entity: ReinforcedGirder
       edges:
@@ -317,6 +378,19 @@
           conditions:
             - !type:EntityAnchored { }
           steps:
+            - material: Plasteel
+              amount: 2
+              doAfter: 1
+
+        - to: reinforcedGirderModern
+          completed:
+            - !type:SnapToGrid
+              southRotation: true
+          conditions:
+            - !type:EntityAnchored { }
+          steps:
+            - tool: Welding
+              doAfter: 4
             - material: Plasteel
               amount: 2
               doAfter: 1
@@ -559,3 +633,159 @@
           steps:
             - tool: Welding
               doAfter: 5
+
+    - node: reinforcedWallModern # Orbital
+      entity: WallReinforcedModern
+      edges:
+        - to: reinforcedGirderModern
+          completed:
+            - !type:SpawnPrototype
+              prototype: SheetPlasteel1
+              amount: 2
+          steps:
+            - tool: Cutting
+              doAfter: 1
+              completed:
+                - !type:VisualizerDataInt
+                  key: "enum.ReinforcedWallVisuals.DeconstructionStage"
+                  data: 5
+            - tool: Screwing
+              doAfter: 1
+            - tool: Welding
+              doAfter: 5
+              completed:
+                - !type:VisualizerDataInt
+                  key: "enum.ReinforcedWallVisuals.DeconstructionStage"
+                  data: 4
+            - tool: Prying
+              doAfter: 1
+            - tool: Anchoring
+              doAfter: 1
+              completed:
+                - !type:VisualizerDataInt
+                  key: "enum.ReinforcedWallVisuals.DeconstructionStage"
+                  data: 3
+            - tool: Welding
+              doAfter: 10
+              completed:
+                - !type:VisualizerDataInt
+                  key: "enum.ReinforcedWallVisuals.DeconstructionStage"
+                  data: 2
+            - tool: Prying
+              doAfter: 1
+              completed:
+                - !type:VisualizerDataInt
+                  key: "enum.ReinforcedWallVisuals.DeconstructionStage"
+                  data: 1
+            - tool: Screwing
+              doAfter: 1
+              completed:
+                - !type:VisualizerDataInt
+                  key: "enum.ReinforcedWallVisuals.DeconstructionStage"
+                  data: 0
+            - tool: Cutting
+              doAfter: 1
+
+    - node: reinforcedWallModernGrey # Orbital
+      entity: WallReinforcedModernGrey
+      edges:
+        - to: reinforcedGirderModern
+          completed:
+            - !type:SpawnPrototype
+              prototype: SheetSteel1
+              amount: 2
+          steps:
+            - tool: Cutting
+              doAfter: 1
+              completed:
+                - !type:VisualizerDataInt
+                  key: "enum.ReinforcedWallVisuals.DeconstructionStage"
+                  data: 5
+            - tool: Screwing
+              doAfter: 1
+            - tool: Welding
+              doAfter: 3
+              completed:
+                - !type:VisualizerDataInt
+                  key: "enum.ReinforcedWallVisuals.DeconstructionStage"
+                  data: 4
+            - tool: Prying
+              doAfter: 1
+            - tool: Anchoring
+              doAfter: 1
+              completed:
+                - !type:VisualizerDataInt
+                  key: "enum.ReinforcedWallVisuals.DeconstructionStage"
+                  data: 3
+            - tool: Welding
+              doAfter: 6
+              completed:
+                - !type:VisualizerDataInt
+                  key: "enum.ReinforcedWallVisuals.DeconstructionStage"
+                  data: 2
+            - tool: Prying
+              doAfter: 1
+              completed:
+                - !type:VisualizerDataInt
+                  key: "enum.ReinforcedWallVisuals.DeconstructionStage"
+                  data: 1
+            - tool: Screwing
+              doAfter: 1
+              completed:
+                - !type:VisualizerDataInt
+                  key: "enum.ReinforcedWallVisuals.DeconstructionStage"
+                  data: 0
+            - tool: Cutting
+              doAfter: 1
+
+    - node: reinforcedWallModernWhite # Orbital
+      entity: WallReinforcedModernWhite
+      edges:
+        - to: reinforcedGirderModern
+          completed:
+            - !type:SpawnPrototype
+              prototype: IngotSilver1
+              amount: 2
+          steps:
+            - tool: Cutting
+              doAfter: 1
+              completed:
+                - !type:VisualizerDataInt
+                  key: "enum.ReinforcedWallVisuals.DeconstructionStage"
+                  data: 5
+            - tool: Screwing
+              doAfter: 1
+            - tool: Welding
+              doAfter: 3
+              completed:
+                - !type:VisualizerDataInt
+                  key: "enum.ReinforcedWallVisuals.DeconstructionStage"
+                  data: 4
+            - tool: Prying
+              doAfter: 1
+            - tool: Anchoring
+              doAfter: 1
+              completed:
+                - !type:VisualizerDataInt
+                  key: "enum.ReinforcedWallVisuals.DeconstructionStage"
+                  data: 3
+            - tool: Welding
+              doAfter: 6
+              completed:
+                - !type:VisualizerDataInt
+                  key: "enum.ReinforcedWallVisuals.DeconstructionStage"
+                  data: 2
+            - tool: Prying
+              doAfter: 1
+              completed:
+                - !type:VisualizerDataInt
+                  key: "enum.ReinforcedWallVisuals.DeconstructionStage"
+                  data: 1
+            - tool: Screwing
+              doAfter: 1
+              completed:
+                - !type:VisualizerDataInt
+                  key: "enum.ReinforcedWallVisuals.DeconstructionStage"
+                  data: 0
+            - tool: Cutting
+              doAfter: 1

@@ -1,0 +1,53 @@
+- type: construction
+  name: modern reinforced wall
+  id: ReinforcedWallModern
+  graph: Girder
+  startNode: start
+  targetNode: reinforcedWallModern
+  category: construction-category-structures
+  description: The greatest material barrier against danger.
+  icon:
+    sprite: Structures/Walls/Orbital/reinf_modern.rsi
+    state: rgeneric
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  name: modern reinforced wall
+  id: ReinforcedWallModernGrey
+  graph: Girder
+  startNode: start
+  targetNode: reinforcedWallModernGrey
+  category: construction-category-structures
+  description: The greatest material barrier against danger.
+  icon:
+    sprite: Structures/Walls/Orbital/reinf_modern_grey.rsi
+    state: rgeneric
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  name: modern reinforced wall
+  id: ReinforcedWallModernWhite
+  graph: Girder
+  startNode: start
+  targetNode: reinforcedWallModernWhite
+  category: construction-category-structures
+  description: The greatest material barrier against danger.
+  icon:
+    sprite: Structures/Walls/Orbital/reinf_modern_white.rsi
+    state: rgeneric
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked

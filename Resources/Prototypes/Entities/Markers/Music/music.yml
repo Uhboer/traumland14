@@ -27,6 +27,17 @@
       shader: unshaded
 
 - type: entity
+  id: AreaMusicEngineering
+  parent: AreaMarkerBase
+  components:
+  - type: SetTileArea
+    color: "#ee952e"
+  - type: Sprite
+    layers:
+    - state: green
+      shader: unshaded
+
+- type: entity
   id: AreaMusicMedical
   parent: AreaMarkerBase
   components:

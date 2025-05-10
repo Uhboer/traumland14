@@ -331,22 +331,6 @@
     prototypes:
       - N14MobDeathclawMetal
 
-#MARK: Insects
-- type: entity
-  name: Bloatfly Spawner
-  id: N14SpawnMobBloatfly
-  parent: MarkerBase
-  components:
-  - type: Sprite
-    layers:
-      - state: green
-      - sprite: _Nuclear14/Mobs/Insects/bloatfly.rsi
-        state: bloatfly
-      - state: ai
-  - type: ConditionalSpawner
-    prototypes:
-      - N14MobBloatfly
-
 - type: entity
   name: Giant Ant Spawner
   id: N14SpawnMobGiantAnt
