@@ -16,15 +16,9 @@ public sealed class AreaOverlay : Overlay
 
     public override OverlaySpace Space => OverlaySpace.WorldSpaceBelowEntities;
 
-    private readonly EntityQuery<MapGridComponent> _gridQuery;
-    private readonly EntityQuery<TransformComponent> _xformQuery;
-    private readonly EntityQuery<AreaComponent> _areaQuery;
-
     public AreaOverlay()
     {
-        _gridQuery = _entityManager.GetEntityQuery<MapGridComponent>();
-        _xformQuery = _entityManager.GetEntityQuery<TransformComponent>();
-        _areaQuery = _entityManager.GetEntityQuery<AreaComponent>();
+        IoCManager.InjectDependencies(this);
     }
 
     protected override void Draw(in OverlayDrawArgs args)
@@ -37,25 +31,31 @@ public sealed class AreaOverlay : Overlay
         if (playerUid is null)
             return;
 
-        if (!_xformQuery.TryComp(playerUid.Value, out var xform) || xform is null)
+        if (!_entityManager.TryGetComponent<TransformComponent>(playerUid.Value, out var xform) || xform is null)
             return;
 
         var grid = xformSystem.GetGrid(playerUid.Value);
         if (grid is null ||
-            !_gridQuery.TryComp(grid, out var gridComp))
+            !_entityManager.TryGetComponent<MapGridComponent>(grid, out var gridComp))
             return;
 
-        if (!_areaQuery.TryComp(grid.Value, out var areaZones))
+        if (!_entityManager.TryGetComponent<AreaComponent>(grid.Value, out var areaZones))
             return;
 
-        foreach (var (zoneId, zoneData) in areaZones.Data)
+        // Get grid's transform to handle rotation/offset
+        var gridXform = xformSystem.GetWorldMatrix(grid.Value);
+        handle.SetTransform(gridXform);
+
+        foreach (var (_, zoneData) in areaZones.Data)
         {
             foreach (var tile in zoneData.Tiles)
             {
-                var worldPos = gridComp.GridTileToWorldPos(tile);
-                var aabb = new Box2(worldPos, worldPos + gridComp.TileSizeVector);
-
-                handle.DrawRect(aabb, zoneData.Color);
+                // Render in grid-local coordinates
+                var position = gridComp.GridTileToLocal(tile);
+                var box = new Box2(
+                        position.Position - (gridComp.TileSizeVector / 2),
+                        (position.Position + gridComp.TileSizeVector) - (gridComp.TileSizeVector / 2));
+                handle.DrawRect(box, zoneData.Color.WithAlpha(0.5f));
             }
         }
     }

@@ -1,3 +1,4 @@
+using Content.Client.Area;
 using Content.Client.Markers;
 using Content.Client.Popups;
 using Content.Client.SubFloor;
@@ -19,6 +20,20 @@ internal sealed class ShowMarkersCommand : LocalizedCommands
     public override void Execute(IConsoleShell shell, string argStr, string[] args)
     {
         _entitySystemManager.GetEntitySystem<MarkerSystem>().MarkersVisible ^= true;
+    }
+}
+
+internal sealed class ShowAreasCommand : LocalizedCommands
+{
+    [Dependency] private readonly IEntitySystemManager _entitySystemManager = default!;
+
+    public override string Command => "showareas";
+
+    public override string Help => LocalizationManager.GetString($"cmd-{Command}-help", ("command", Command));
+
+    public override void Execute(IConsoleShell shell, string argStr, string[] args)
+    {
+        _entitySystemManager.GetEntitySystem<ClientAreaSystem>().AreasVisible ^= true;
     }
 }
 

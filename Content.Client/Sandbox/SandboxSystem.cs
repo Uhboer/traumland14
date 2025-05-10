@@ -151,6 +151,11 @@ namespace Content.Client.Sandbox
             _consoleHost.ExecuteCommand("showmarkers");
         }
 
+        public void ShowAreas()
+        {
+            _consoleHost.ExecuteCommand("showareas");
+        }
+
         public void ShowBb()
         {
             _consoleHost.ExecuteCommand("physics shapes");

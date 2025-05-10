@@ -1,4 +1,5 @@
 ﻿using Content.Client.Administration.Managers;
+using Content.Client.Area;
 using Content.Client.Gameplay;
 using Content.Client.Markers;
 using Content.Client.Sandbox;
@@ -39,6 +40,7 @@ public sealed class SandboxUIController : UIController, IOnStateChanged<Gameplay
 
     [UISystemDependency] private readonly DebugPhysicsSystem _debugPhysics = default!;
     [UISystemDependency] private readonly MarkerSystem _marker = default!;
+    [UISystemDependency] private readonly ClientAreaSystem _area = default!;
     [UISystemDependency] private readonly SandboxSystem _sandbox = default!;
     [UISystemDependency] private readonly SubFloorHideSystem _subfloorHide = default!;
 
@@ -117,6 +119,7 @@ public sealed class SandboxUIController : UIController, IOnStateChanged<Gameplay
         _window.ToggleShadowsButton.Pressed = !_light.DrawShadows;
         _window.ToggleSubfloorButton.Pressed = _subfloorHide.ShowAll;
         _window.ShowMarkersButton.Pressed = _marker.MarkersVisible;
+        _window.ShowAreasButton.Pressed = _area.AreasVisible;
         _window.ShowBbButton.Pressed = (_debugPhysics.Flags & PhysicsDebugFlags.Shapes) != 0x0;
 
         _window.AiOverlayButton.OnPressed += args =>
@@ -146,6 +149,7 @@ public sealed class SandboxUIController : UIController, IOnStateChanged<Gameplay
         _window.SuicideButton.OnPressed += _ => _sandbox.Suicide();
         _window.ToggleSubfloorButton.OnPressed += _ => _sandbox.ToggleSubFloor();
         _window.ShowMarkersButton.OnPressed += _ => _sandbox.ShowMarkers();
+        _window.ShowAreasButton.OnPressed += _ => _sandbox.ShowAreas();
         _window.ShowBbButton.OnPressed += _ => _sandbox.ShowBb();
         _window.MachineLinkingButton.OnPressed += _ => _sandbox.MachineLinking();
     }

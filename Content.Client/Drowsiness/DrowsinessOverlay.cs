@@ -26,14 +26,10 @@ public sealed class DrowsinessOverlay : Overlay
     private const float Intensity = 0.2f; // for adjusting the visual scale
     private float _visualScale = 0; // between 0 and 1
 
-    private EntityQuery<EyeComponent> _eyeQuery;
-
     public DrowsinessOverlay()
     {
         IoCManager.InjectDependencies(this);
         _drowsinessShader = _prototypeManager.Index<ShaderPrototype>("Drowsiness").InstanceUnique();
-
-        _eyeQuery = _entityManager.GetEntityQuery<EyeComponent>();
     }
 
     protected override void FrameUpdate(FrameEventArgs args)
@@ -59,7 +55,7 @@ public sealed class DrowsinessOverlay : Overlay
 
     protected override bool BeforeDraw(in OverlayDrawArgs args)
     {
-        if (!_eyeQuery.TryComp(_playerManager.LocalEntity, out EyeComponent? eyeComp))
+        if (!_entityManager.TryGetComponent<EyeComponent>(_playerManager.LocalEntity, out EyeComponent? eyeComp))
             return false;
 
         if (args.Viewport.Eye is null ||

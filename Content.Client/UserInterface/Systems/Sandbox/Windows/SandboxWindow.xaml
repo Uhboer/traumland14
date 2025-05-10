@@ -17,6 +17,7 @@
         <Button Name="ToggleSubfloorButton" Access="Public" Text="{Loc sandbox-window-toggle-subfloor-button}" ToggleMode="True"/>
         <Button Name="SuicideButton" Access="Public" Text="{Loc sandbox-window-toggle-suicide-button}" ToggleMode="True"/>
         <Button Name="ShowMarkersButton" Access="Public" Text="{Loc sandbox-window-show-spawns-button}" ToggleMode="True"/>
+        <Button Name="ShowAreasButton" Access="Public" Text="{Loc sandbox-window-show-areas-button}" ToggleMode="True"/>
         <Button Name="ShowBbButton" Access="Public" Text="{Loc sandbox-window-show-bb-button}" ToggleMode="True"/>
         <Button Name="MachineLinkingButton" Access="Public" Text="{Loc sandbox-window-link-machines-button}" ToggleMode="True"/>
     </BoxContainer>

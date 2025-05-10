@@ -12,6 +12,7 @@ sandbox-window-toggle-shadows-button = Toggle Shadows
 sandbox-window-toggle-subfloor-button = Toggle Subfloor
 sandbox-window-toggle-suicide-button = Suicide
 sandbox-window-show-spawns-button = Shows Spawns
+sandbox-window-show-areas-button = Shows Areas
 sandbox-window-show-bb-button = Show BB
 sandbox-window-show-npc-button = Show NPC
 sandbox-window-link-machines-button = Link machines

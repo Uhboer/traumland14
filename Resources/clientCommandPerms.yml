@@ -67,6 +67,7 @@
     - showsubfloor
     - showsubfloorforever
     - showmarkers
+    - showareas
     - nodevis
     - nodevisfilter
     - detachent

@@ -1,6 +1,23 @@
 - type: entity
+  id: AreaMarkerBase
+  abstract: true
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Transform
+    anchored: true
+  - type: Clickable
+  - type: InteractionOutline
+  - type: Sprite
+    drawdepth: Overdoors
+    sprite: Markers/cross.rsi
+# If serialization was cool this would work.
+#    layers:
+#      - state: blue
+
+- type: entity
   id: AreaMusicMaintenance
-  parent: MarkerBase
+  parent: AreaMarkerBase
   components:
   - type: SetTileArea
     color: "#F2C65E"
@@ -10,8 +27,30 @@
       shader: unshaded
 
 - type: entity
+  id: AreaMusicMedical
+  parent: AreaMarkerBase
+  components:
+  - type: SetTileArea
+    color: "#5eb7f2"
+  - type: Sprite
+    layers:
+    - state: green
+      shader: unshaded
+
+- type: entity
+  id: AreaMusicMedical2
+  parent: AreaMarkerBase
+  components:
+  - type: SetTileArea
+    color: "#3288c2"
+  - type: Sprite
+    layers:
+    - state: green
+      shader: unshaded
+
+- type: entity
   id: AreaRemove
-  parent: MarkerBase
+  parent: AreaMarkerBase
   components:
   - type: RemoveTileArea
   - type: Sprite

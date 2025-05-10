@@ -3,6 +3,7 @@ using Content.Client.Gameplay;
 using Content.Client.RandomRules;
 using Content.Shared.Audio;
 using Content.Shared.CCVar;
+using Content.Shared.GameTicking;
 using Content.Shared.Random;
 using Robust.Client.GameObjects;
 using Robust.Client.Player;
@@ -15,6 +16,7 @@ using Robust.Shared.Configuration;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
+using Robust.Shared.Timing;
 using Robust.Shared.Utility;
 
 namespace Content.Client.Audio;
@@ -26,6 +28,7 @@ public sealed class IngameMusicSystem : EntitySystem
     [Dependency] private readonly IPrototypeManager _proto = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly IStateManager _state = default!;
+    [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly RulesSystem _rules = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly ContentAudioSystem _contentAudio = default!;
@@ -36,6 +39,8 @@ public sealed class IngameMusicSystem : EntitySystem
     private EntityUid? _currentMusicStream;
     private IngameMusicPrototype? _currentMusic;
     private bool _interruptable;
+
+    private bool _enabled;
 
     private readonly Dictionary<string, List<ResPath>> _musicTracks = new();
     private ISawmill _sawmill = default!;
@@ -50,6 +55,8 @@ public sealed class IngameMusicSystem : EntitySystem
         SetupMusicTracks();
         SubscribeLocalEvent<PrototypesReloadedEventArgs>(OnProtoReload);
         _state.OnStateChanged += OnStateChange;
+
+        SubscribeNetworkEvent<RoundEndMessageEvent>(OnRoundEndMessage);
     }
 
     public override void Shutdown()
@@ -75,15 +82,23 @@ public sealed class IngameMusicSystem : EntitySystem
             SetupMusicTracks();
     }
 
+    private void OnRoundEndMessage(RoundEndMessageEvent ev)
+    {
+        StopCurrentMusic();
+        _enabled = false;
+    }
+
     private void OnStateChange(StateChangedEventArgs args)
     {
         if (args.NewState is GameplayState)
         {
             UpdateMusic();
+            _enabled = true;
         }
         else
         {
             StopCurrentMusic();
+            _enabled = false;
         }
     }
 
@@ -126,7 +141,10 @@ public sealed class IngameMusicSystem : EntitySystem
     {
         base.Update(frameTime);
 
-        if (_state.CurrentState is not GameplayState)
+        if (!_timing.IsFirstTimePredicted)
+            return;
+
+        if (_state.CurrentState is not GameplayState || !_enabled)
             return;
 
         UpdateMusic();
@@ -148,8 +166,9 @@ public sealed class IngameMusicSystem : EntitySystem
             if (player == null || _currentMusic == null ||
                 !_rules.IsTrue(player.Value, _proto.Index<RulesPrototype>(_currentMusic.Rules)))
             {
-                FadeOutCurrentMusic();
+                _contentAudio.FadeOut(_currentMusicStream, duration: MusicFadeTime);
                 _currentMusic = null;
+                _interruptable = false;
                 isDone = true;
             }
         }
@@ -170,7 +189,7 @@ public sealed class IngameMusicSystem : EntitySystem
 
     private void PlayMusic(IngameMusicPrototype musicProto)
     {
-        FadeOutCurrentMusic();
+        _currentMusicStream = null;
 
         _currentMusic = musicProto;
         _interruptable = musicProto.Interruptable;
@@ -228,15 +247,6 @@ public sealed class IngameMusicSystem : EntitySystem
         }
 
         return null;
-    }
-
-    private void FadeOutCurrentMusic()
-    {
-        if (_currentMusicStream != null)
-        {
-            _contentAudio.FadeOut(_currentMusicStream, duration: MusicFadeTime);
-            _currentMusicStream = null;
-        }
     }
 
     private void StopCurrentMusic()

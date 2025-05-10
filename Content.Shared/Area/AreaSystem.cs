@@ -10,17 +10,17 @@ public sealed class AreaSystem : EntitySystem
 
     public override void Initialize()
     {
-        SubscribeLocalEvent<SetTileAreaComponent, ComponentStartup>(OnTileAreaStartup);
-        SubscribeLocalEvent<RemoveTileAreaComponent, ComponentStartup>(OnRemoveTileAreaStartup);
+        SubscribeLocalEvent<SetTileAreaComponent, MapInitEvent>(OnTileAreaStartup);
+        SubscribeLocalEvent<RemoveTileAreaComponent, MapInitEvent>(OnRemoveTileAreaStartup);
     }
 
-    private void OnTileAreaStartup(EntityUid uid, SetTileAreaComponent component, ComponentStartup args)
+    private void OnTileAreaStartup(EntityUid uid, SetTileAreaComponent component, MapInitEvent args)
     {
-        if (!TryComp<TransformComponent>(uid, out var xform) || xform.GridUid == null ||
-            !TryComp<AreaComponent>(xform.GridUid.Value, out var areaZones))
+        if (!TryComp<TransformComponent>(uid, out var xform) || xform.GridUid == null)
             return;
 
         var gridUid = xform.GridUid.Value;
+        var areaZones = EnsureComp<AreaComponent>(gridUid);
 
         if (!TryComp<MapGridComponent>(gridUid, out var grid))
             return;
@@ -45,7 +45,7 @@ public sealed class AreaSystem : EntitySystem
         Del(uid);
     }
 
-    private void OnRemoveTileAreaStartup(EntityUid uid, RemoveTileAreaComponent marker, ComponentStartup args)
+    private void OnRemoveTileAreaStartup(EntityUid uid, RemoveTileAreaComponent marker, MapInitEvent args)
     {
         if (!TryComp<TransformComponent>(uid, out var xform) || xform.GridUid == null ||
             !TryComp<AreaComponent>(xform.GridUid.Value, out var areaZones))

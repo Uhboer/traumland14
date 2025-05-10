@@ -1,15 +1,26 @@
+#- type: ingameMusic
+#  id: CombatMode
+#  sound:
+#    params:
+#      volume: -6
+#    collection: MusicCombat
+#  fadeIn: true
+#  interruptable: true
+#  rules: InCombatMode
+#  minCooldownTime: 0
+#  maxCooldownTime: 0
+#  priority: 10
+
 - type: ingameMusic
-  id: CombatMode
+  id: InSpace
   sound:
     params:
-      volume: -6
-    collection: MusicCombat
-  fadeIn: true
+      volume: -8
+    collection: MusicInSpace
+  #fadeIn: true
   interruptable: true
-  rules: InCombatMode
-  minCooldownTime: 0
-  maxCooldownTime: 0
-  priority: 10
+  rules: InSpaceMusic
+  priority: 1
 
 - type: ingameMusic
   id: VesselGeneral
@@ -33,6 +44,39 @@
   rules: InMaintenanceArea
   priority: 2
 
+- type: ingameMusic
+  id: VesselMedical
+  sound:
+    params:
+      volume: -8
+    collection: MusicVesselMedical
+  fadeIn: true
+  interruptable: true
+  rules: InMedicalArea
+  priority: 2
+
+- type: ingameMusic
+  id: VesselMedical2
+  sound:
+    params:
+      volume: -8
+    collection: MusicVesselMedical2
+  fadeIn: true
+  interruptable: true
+  rules: InMedicalArea2
+  priority: 2
+
+- type: ingameMusic
+  id: VesselEngineering
+  sound:
+    params:
+      volume: -8
+    collection: MusicVesselEngineering
+  fadeIn: true
+  interruptable: true
+  rules: InEngineeringArea
+  priority: 2
+
 # General music, like as fallback
 - type: ingameMusic
   id: General
@@ -52,6 +96,11 @@
     - /Audio/_Finster/Ambience/empty.ogg
 
 - type: soundCollection
+  id: MusicInSpace
+  files:
+    - /Audio/_Finster/Ambience/loop_noden.ogg
+
+- type: soundCollection
   id: MusicVesselGeneral
   files:
     - /Audio/Music/shipambience.ogg
@@ -59,28 +108,49 @@
 - type: soundCollection
   id: MusicVesselMaintenance
   files:
-    - /Audio/Music/maintenance.ogg
+    - /Audio/Music/justice.ogg
 
 - type: soundCollection
-  id: MusicCombat
+  id: MusicVesselMedical
   files:
-    - /Audio/Music/Combat/Mega_Drive-Terror_Eyes.ogg
+    - /Audio/Music/labs.ogg
+
+- type: soundCollection
+  id: MusicVesselMedical2
+  files:
+    - /Audio/Music/labs2.ogg
+
+- type: soundCollection
+  id: MusicVesselEngineering
+  files:
+    - /Audio/Music/briL.ogg
+
+#- type: soundCollection
+#  id: MusicCombat
+#  files:
+#    - /Audio/Music/Combat/Mega_Drive-Terror_Eyes.ogg
 
 ### RULES
 
+#- type: rules
+#  id: InCombatMode
+#  rules:
+#    - !type:NearbyMusicSourceRule
+#      state: false
+#    - !type:CombatModeRule
+#      state: true
+
 - type: rules
-  id: InCombatMode
+  id: InSpaceMusic
   rules:
-    - !type:NearbyMusicSourceRule
-      state: false
-    - !type:CombatModeRule
-      state: true
+    - !type:InSpaceRule
+    - !type:GridInRangeRule
+      inverted: true
+      range: 3
 
 - type: rules
   id: OnGrid
   rules:
-    - !type:CombatModeRule
-      state: false
     - !type:OutOfArea
     - !type:GridInRangeRule
       range: 3
@@ -88,7 +158,18 @@
 - type: rules
   id: InMaintenanceArea
   rules:
-    - !type:CombatModeRule
-      state: false
     - !type:InArea
       id: AreaMusicMaintenance
+
+- type: rules
+  id: InMedicalArea
+  rules:
+    - !type:InArea
+      id: AreaMusicMedical
+
+- type: rules
+  id: InMedicalArea2
+  rules:
+    - !type:InArea
+      id: AreaMusicMedical2
+
