@@ -11,16 +11,16 @@
 #  maxCooldownTime: 0
 #  priority: 10
 
-- type: ingameMusic
-  id: InSpace
-  sound:
-    params:
-      volume: -8
-    collection: MusicInSpace
+#- type: ingameMusic
+#  id: InSpace
+#  sound:
+#    params:
+#      volume: -8
+#    collection: MusicInSpace
   #fadeIn: true
-  interruptable: true
-  rules: InSpaceMusic
-  priority: 1
+#  interruptable: true
+#  rules: InSpaceMusic
+#  priority: 1
 
 - type: ingameMusic
   id: VesselGeneral
@@ -95,10 +95,10 @@
   files:
     - /Audio/_Finster/Ambience/empty.ogg
 
-- type: soundCollection
-  id: MusicInSpace
-  files:
-    - /Audio/_Finster/Ambience/loop_noden.ogg
+#- type: soundCollection
+#  id: MusicInSpace
+#  files:
+#    - /Audio/_Finster/Ambience/loop_noden.ogg
 
 - type: soundCollection
   id: MusicVesselGeneral
@@ -140,13 +140,13 @@
 #    - !type:CombatModeRule
 #      state: true
 
-- type: rules
-  id: InSpaceMusic
-  rules:
-    - !type:InSpaceRule
-    - !type:GridInRangeRule
-      inverted: true
-      range: 3
+#- type: rules
+#  id: InSpaceMusic
+#  rules:
+#    - !type:InSpaceRule
+#    - !type:GridInRangeRule
+#      inverted: true
+#      range: 3
 
 - type: rules
   id: OnGrid

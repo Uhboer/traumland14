@@ -57,6 +57,7 @@ namespace Content.Shared.Movement.Systems
         [Dependency] private readonly SharedMapSystem _mapSystem = default!;
         [Dependency] private readonly SharedGravitySystem _gravity = default!;
         [Dependency] private readonly ZPhysicsSystem _zPhysics = default!;
+        [Dependency] private readonly SharedZStackSystem _zstack = default!;
         [Dependency] protected readonly SharedPhysicsSystem Physics = default!;
         [Dependency] private readonly SharedTransformSystem _transform = default!;
         [Dependency] private readonly TagSystem _tags = default!;
@@ -212,8 +213,16 @@ namespace Content.Shared.Movement.Systems
             if (weightless)
             {
                 // Check if is there any tile under entity
-                if (_zPhysics.TryGetTileWithEntity(uid, ZDirection.Down, out var ztile, out var _, out var _, xform: xform, recursive: false))
-                    touching = true;
+                if (_zstack.TryGetZStack(uid, out _))
+                {
+                    if (_zPhysics.TryGetTileWithEntity(uid, ZDirection.Down, out var ztile, out var _, out var _, xform: xform, recursive: false))
+                        touching = true;
+                }
+                else
+                {
+                    if (xform.GridUid != null)
+                        touching = true;
+                }
 
                 if (!touching)
                 {
