@@ -52,6 +52,7 @@ using Content.Shared.Coordinates;
 using Content.Shared.Weapons.Melee;
 using Robust.Shared.Configuration;
 using Content.Shared.CCVar;
+using Robust.Shared.Map.Components;
 
 namespace Content.Shared.Movement.Pulling.Systems;
 
@@ -263,6 +264,18 @@ public sealed class PullingSystem : EntitySystem
                 var pullerCoords = _xformSys.GetMapCoordinates(puller).Position;
 
                 var angle = (pulledCoords - pullerCoords).ToWorldAngle().GetCardinalDir().ToAngle();
+
+                // If on grid
+                if (pullerXForm.GridUid is not null &&
+                    TryComp<MapGridComponent>(pullerXForm.GridUid, out var grid))
+                {
+                    var gridRotation = _xformSys.GetWorldRotation(grid.Owner);
+                    var localAngle = (angle - gridRotation).Reduced().FlipPositive();
+                    var snappedAngle = localAngle.GetCardinalDir().ToAngle();
+
+                    angle = (snappedAngle + gridRotation).Reduced();
+                }
+
                 _rotateTo.TryFaceAngle(puller, angle);
                 continue;
             }

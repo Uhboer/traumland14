@@ -8,7 +8,7 @@ public sealed partial class CCVars
     ///     When true, Jetpacks can be enabled anywhere, even in gravity.
     /// </summary>
     public static readonly CVarDef<bool> JetpackEnableAnywhere =
-        CVarDef.Create("finster_jetpack.enable_anywhere", false, CVar.REPLICATED);
+        CVarDef.Create("finster_jetpack.enable_anywhere", true, CVar.REPLICATED);
 
     /// <summary>
     ///     When true, jetpacks can be enabled on grids that have zero gravity.

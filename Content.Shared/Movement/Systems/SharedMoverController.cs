@@ -218,11 +218,11 @@ namespace Content.Shared.Movement.Systems
                     if (_zPhysics.TryGetTileWithEntity(uid, ZDirection.Down, out var ztile, out var _, out var _, xform: xform, recursive: false))
                         touching = true;
                 }
-                else
+                /*else
                 {
                     if (xform.GridUid != null)
                         touching = true;
-                }
+                }*/
 
                 if (!touching)
                 {
