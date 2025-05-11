@@ -46,6 +46,18 @@
               amount: 2
               doAfter: 3
 
+        - to: windowModernEmpty # Orbital
+          steps:
+            - material: Steel
+              amount: 2
+              doAfter: 3
+
+        - to: windowModernWhiteEmpty # Orbital
+          steps:
+            - material: Silver
+              amount: 2
+              doAfter: 3
+
         - to: shuttleWindow #Nyano
           steps:
             - material: Plasteel
@@ -70,6 +82,116 @@
               amount: 2
             - !type:DeleteEntity {}
           steps:
+            - tool: Screwing
+              doAfter: 1
+            - tool: Anchoring
+              doAfter: 2
+
+    - node: windowModernEmpty # Orbital
+      entity: WindowModernEmpty
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: SheetSteel1
+              amount: 2
+            - !type:DeleteEntity {}
+          steps:
+            - tool: Screwing
+              doAfter: 1
+            - tool: Anchoring
+              doAfter: 2
+
+        - to: windowModern
+          steps:
+            - material: ReinforcedGlass
+              amount: 2
+              doAfter: 2
+
+    - node: windowModernWhiteEmpty # Orbital
+      entity: WindowModernWhiteEmpty
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: IngotSilver1
+              amount: 2
+            - !type:DeleteEntity {}
+          steps:
+            - tool: Screwing
+              doAfter: 1
+            - tool: Anchoring
+              doAfter: 2
+
+        - to: windowModernWhite
+          steps:
+            - material: ReinforcedGlass
+              amount: 2
+              doAfter: 2
+
+    - node: windowModernBreaked # Orbital
+      entity: WindowModernBreaked
+      edges:
+        - to: windowModernEmpty
+          completed:
+            - !type:SpawnPrototype
+              prototype: ShardGlass
+              amount: 1
+          steps:
+            - tool: Prying
+              doAfter: 1
+
+    - node: windowModernWhiteBreaked # Orbital
+      entity: WindowModernWhiteBreaked
+      edges:
+        - to: windowModernWhiteEmpty
+          completed:
+            - !type:SpawnPrototype
+              prototype: ShardGlass
+              amount: 1
+          steps:
+            - tool: Prying
+              doAfter: 1
+
+    - node: windowModern # Orbital
+      entity: WindowModern
+      edges:
+        - to: windowModernEmpty
+          completed:
+            - !type:SpawnPrototype
+              prototype: SheetRGlass1
+              amount: 2
+          steps:
+            - tool: Welding
+              doAfter: 5
+            - tool: Screwing
+              doAfter: 1
+            - tool: Prying
+              doAfter: 2
+            - tool: Welding
+              doAfter: 5
+            - tool: Screwing
+              doAfter: 1
+            - tool: Anchoring
+              doAfter: 2
+
+    - node: windowModernWhite # Orbital
+      entity: WindowModernWhite
+      edges:
+        - to: windowModernWhiteEmpty
+          completed:
+            - !type:SpawnPrototype
+              prototype: SheetRGlass1
+              amount: 2
+          steps:
+            - tool: Welding
+              doAfter: 5
+            - tool: Screwing
+              doAfter: 1
+            - tool: Prying
+              doAfter: 2
+            - tool: Welding
+              doAfter: 5
             - tool: Screwing
               doAfter: 1
             - tool: Anchoring

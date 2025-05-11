@@ -83,7 +83,7 @@ public sealed class CombatModeSystem : SharedCombatModeSystem
             return;
 
         // Can't parry bare hands
-        if (args.Weapon == args.Attacker)
+        if (args.Weapon == args.Target)
             return;
 
         // TODO: Weapon group checking, because we can't fight with soda can.

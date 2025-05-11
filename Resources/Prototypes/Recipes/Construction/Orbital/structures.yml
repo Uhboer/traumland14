@@ -51,3 +51,83 @@
   canBuildInImpassable: false
   conditions:
     - !type:TileNotBlocked
+
+
+### Windows
+
+
+- type: construction
+  name: modern window
+  id: WindowModern
+  graph: Window
+  startNode: start
+  targetNode: windowModern
+  category: construction-category-structures
+  description: Don't smudge up the glass down there.
+  canBuildInImpassable: true
+  conditions:
+    - !type:EmptyOrWindowValidInTile
+    - !type:NoWindowsInTile
+  icon:
+    sprite: Structures/Windows/Orbital/window.rsi
+    state: full
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+
+- type: construction
+  name: modern window frame
+  id: WindowModernEmpty
+  graph: Window
+  startNode: start
+  targetNode: windowModernEmpty
+  category: construction-category-structures
+  description: A frame for the window.
+  canBuildInImpassable: true
+  conditions:
+    - !type:EmptyOrWindowValidInTile
+    - !type:NoWindowsInTile
+  icon:
+    sprite: Structures/Windows/Orbital/window.rsi
+    state: empty
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+
+- type: construction
+  name: modern window
+  id: WindowModernWhite
+  graph: Window
+  startNode: start
+  targetNode: windowModernWhite
+  category: construction-category-structures
+  description: Don't smudge up the glass down there.
+  canBuildInImpassable: true
+  conditions:
+    - !type:EmptyOrWindowValidInTile
+    - !type:NoWindowsInTile
+  icon:
+    sprite: Structures/Windows/Orbital/window_white.rsi
+    state: full
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+
+- type: construction
+  name: modern window frame
+  id: WindowModernWhiteEmpty
+  graph: Window
+  startNode: start
+  targetNode: windowModernWhiteEmpty
+  category: construction-category-structures
+  description: A frame for the window.
+  canBuildInImpassable: true
+  conditions:
+    - !type:EmptyOrWindowValidInTile
+    - !type:NoWindowsInTile
+  icon:
+    sprite: Structures/Windows/Orbital/window_white.rsi
+    state: empty
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
