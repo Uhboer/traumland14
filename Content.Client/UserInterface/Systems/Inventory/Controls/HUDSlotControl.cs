@@ -27,7 +27,7 @@ public class HUDSlotControl : HUDButton, IEntityControl
     public const string SlotButtonPrefix = "SlotButton_";
     public const string HoverNamePrefix = "slotbutton-";
 
-    public HUDTextureRect BlockedRect { get; }
+    public HUDAnimatedTextureRect BlockedRect { get; }
     public HUDAnimatedTextureRect HighlightRect { get; }
 
     public EntityUid? Entity;
@@ -68,7 +68,9 @@ public class HUDSlotControl : HUDButton, IEntityControl
         set
         {
             _blockedTexturePath = value;
-            BlockedRect.Texture = _uiManager.CurrentTheme.ResolveTextureOrNull(value)?.Texture;
+            if (value is null)
+                return;
+            BlockedRect.SetFromSpriteSpecifier(_vpUIManager.GetThemeRsi(value, "blocked"));
         }
     }
 
@@ -120,7 +122,7 @@ public class HUDSlotControl : HUDButton, IEntityControl
         Size = (DefaultButtonSize, DefaultButtonSize);
         CanEmitSound = false;
 
-        AddChild(BlockedRect = new HUDTextureRect
+        AddChild(BlockedRect = new HUDAnimatedTextureRect
         {
             Visible = false,
             Size = (DefaultButtonSize, DefaultButtonSize)
@@ -133,7 +135,7 @@ public class HUDSlotControl : HUDButton, IEntityControl
         });
 
         HighlightTexturePath = "Slots/highlight.rsi";
-        BlockedTexturePath = "blocked";
+        BlockedTexturePath = "Slots/blocked.rsi";
 
         OnKeyBindDown += OnButtonPressed;
         OnKeyBindUp += OnButtonUnpressed;
