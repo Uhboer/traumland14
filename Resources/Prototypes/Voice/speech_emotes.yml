@@ -200,6 +200,22 @@
   chatMessages: ["chat-emote-msg-gasp"]
 
 - type: emote
+  id: Inhale
+  name: chat-emote-name-inhale
+  whitelist:
+    components:
+    - Respirator
+  chatMessages: ["chat-emote-msg-inhale"]
+
+- type: emote
+  id: Exhale
+  name: chat-emote-name-exhale
+  whitelist:
+    components:
+    - Respirator
+  chatMessages: ["chat-emote-msg-exhale"]
+
+- type: emote
   id: DefaultDeathgasp
   name: chat-emote-name-deathgasp
   icon: Interface/Emotes/deathgasp.png

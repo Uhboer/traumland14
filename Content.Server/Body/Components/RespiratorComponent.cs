@@ -64,6 +64,18 @@ namespace Content.Server.Body.Components
         public ProtoId<EmotePrototype> GaspEmote = "Gasp";
 
         /// <summary>
+        ///     The emote when gasps
+        /// </summary>
+        [DataField]
+        public ProtoId<EmotePrototype> InhaleEmote = "Inhale";
+
+        /// <summary>
+        ///     The emote when gasps
+        /// </summary>
+        [DataField]
+        public ProtoId<EmotePrototype> ExhaleEmote = "Exhale";
+
+        /// <summary>
         ///     How many cycles in a row has the mob been under-saturated?
         /// </summary>
         [ViewVariables]

@@ -128,6 +128,7 @@ public sealed class RespiratorSystem : EntitySystem
             if (respirator.Status == RespiratorStatus.Exhaling &&
                 respirator.HoldingStage == RespiratorHoldingStage.Inhaling)
             {
+                _chat.TryEmoteWithChat(uid, respirator.InhaleEmote, ignoreActionBlocker: true);
                 respirator.Status = RespiratorStatus.Holding;
 
                 var ev = new HoldBreathEvent(uid);
@@ -135,6 +136,7 @@ public sealed class RespiratorSystem : EntitySystem
             }
             else if (respirator.HoldingStage == RespiratorHoldingStage.Exhaling)
             {
+                _chat.TryEmoteWithChat(uid, respirator.ExhaleEmote, ignoreActionBlocker: true);
                 respirator.Status = RespiratorStatus.Exhaling;
                 respirator.HoldingStage = RespiratorHoldingStage.None;
 

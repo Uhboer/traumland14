@@ -204,6 +204,10 @@
       collection: MaleGasp
     DefaultDeathgasp:
       collection: MaleDeathGasp
+    Inhale:
+      collection: InhaleMale
+    Exhale:
+      collection: ExhaleMale
 
 - type: emoteSounds
   id: FemaleSlime
@@ -246,6 +250,10 @@
       collection: FemaleGasp
     DefaultDeathgasp:
       collection: FemaleDeathGasp
+    Inhale:
+      collection: InhaleFemale
+    Exhale:
+      collection: ExhaleFemale
 
 - type: emoteSounds
   id: MaleShadowkin
@@ -292,6 +300,10 @@
       collection: MaleGasp
     DefaultDeathgasp:
       collection: DeathGasp
+    Inhale:
+      collection: InhaleMale
+    Exhale:
+      collection: ExhaleMale
 
 - type: emoteSounds
   id: FemaleShadowkin
@@ -338,6 +350,10 @@
       collection: FemaleGasp
     DefaultDeathgasp:
       collection: FemaleDeathGasp
+    Inhale:
+      collection: InhaleFemale
+    Exhale:
+      collection: ExhaleFemale
 
 - type: emoteSounds
   id: UnisexVox
@@ -414,6 +430,10 @@
       collection: MaleGasp
     DefaultDeathgasp:
       collection: DeathGasp
+    Inhale:
+      collection: InhaleMale
+    Exhale:
+      collection: ExhaleMale
 
 - type: emoteSounds
   id: UnisexArachnid
@@ -460,6 +480,10 @@
       collection: MaleGasp
     DefaultDeathgasp:
       collection: DeathGasp
+    Inhale:
+      collection: InhaleMale
+    Exhale:
+      collection: ExhaleMale
 
 - type: emoteSounds
   id: UnisexDwarf
@@ -501,6 +525,10 @@
       collection: MaleGasp
     DefaultDeathgasp:
       collection: MaleDeathGasp
+    Inhale:
+      collection: InhaleMale
+    Exhale:
+      collection: ExhaleMale
 
 - type: emoteSounds
   id: FemaleDwarf
@@ -542,6 +570,10 @@
       collection: FemaleGasp
     DefaultDeathgasp:
       collection: FemaleDeathGasp
+    Inhale:
+      collection: InhaleFemale
+    Exhale:
+      collection: ExhaleFemale
 
 - type: emoteSounds
   id: UnisexMoth
@@ -588,6 +620,10 @@
       collection: MaleGasp
     DefaultDeathgasp:
       collection: DeathGasp
+    Inhale:
+      collection: InhaleMale
+    Exhale:
+      collection: ExhaleMale
 
 - type: emoteSounds
   id: UnisexIPC

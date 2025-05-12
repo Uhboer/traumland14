@@ -1,13 +1,15 @@
 - type: soundCollection
   id: MaleLaugh
   files:
-    #- /Audio/Voice/Human/manlaugh1.ogg
-    #- /Audio/Voice/Human/manlaugh2.ogg
-    - /Audio/Voice/Human/01laugh2.ogg
-    - /Audio/Voice/Human/01laugh3.ogg
-    - /Audio/Voice/Human/01laugh6.ogg
-    - /Audio/Voice/Human/01laugh7.ogg
-    - /Audio/Voice/Human/01laugh8.ogg
+    - /Audio/Voice/Human/leg_laugh1.ogg
+    - /Audio/Voice/Human/leg_laugh2.ogg
+    - /Audio/Voice/Human/leg_laugh3.ogg
+    - /Audio/Voice/Human/leg_laugh4.ogg
+    - /Audio/Voice/Human/leg_laugh5.ogg
+    - /Audio/Voice/Human/leg_laugh6.ogg
+    - /Audio/Voice/Human/leg_laugh7.ogg
+    - /Audio/Voice/Human/leg_laugh8.ogg
+    - /Audio/Voice/Human/leg_laugh9.ogg
 
 - type: soundCollection
   id: FemaleLaugh
