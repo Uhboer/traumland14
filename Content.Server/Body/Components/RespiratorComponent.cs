@@ -69,11 +69,24 @@ namespace Content.Server.Body.Components
 
         [ViewVariables]
         public RespiratorStatus Status = RespiratorStatus.Inhaling;
+
+        [ViewVariables]
+        public RespiratorHoldingStage HoldingStage = RespiratorHoldingStage.None;
     }
+}
+
+public enum RespiratorHoldingStage
+{
+    None,
+    // Use a same names, because need make inhale.
+    // Then, if there is no any air in lungs - exhale.
+    Inhaling,
+    Exhaling,
 }
 
 public enum RespiratorStatus
 {
     Inhaling,
+    Holding,
     Exhaling
 }

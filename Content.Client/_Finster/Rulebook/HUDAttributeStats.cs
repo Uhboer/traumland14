@@ -68,7 +68,7 @@ public class HUDAttributeStats : HUDTextureRect, IHUDDescription
         Name = "AttributeStats";
         Description = "hud-desc-attribute-stats";
         Size = (32, 96);
-        Position = (0, 96);
+        Position = (0, 128);
         Texture = _vpUIManager.GetThemeTexture("Stats/back.png");
     }
 

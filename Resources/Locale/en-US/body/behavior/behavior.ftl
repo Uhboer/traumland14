@@ -1,2 +1,2 @@
-lung-behavior-gasp = Gasp
+lung-behavior-gasp = { $name } gasps
 silicon-behavior-buzz = Bzzzzt...

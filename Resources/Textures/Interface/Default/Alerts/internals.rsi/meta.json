@@ -8,13 +8,20 @@
   },
   "states": [
     {
-      "name": "internal0"
+      "name": "internal0",
+      "delays": [[0.045, 0.045, 0.045, 0.045]]
     },
     {
-      "name": "internal1"
+      "name": "internal1",
+      "delays": [[0.045, 0.045]]
     },
     {
-      "name": "internal2"
+      "name": "internal2",
+      "delays": [[0.045, 0.045, 0.045, 0.045, 0.045]]
+    },
+    {
+      "name": "internal3",
+      "delays": [[0.045, 0.045, 0.045, 0.045]]
     }
   ]
 }

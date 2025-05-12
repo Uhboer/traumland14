@@ -40,7 +40,7 @@ public class HUDAlertsPanel : HUDTextureRect
 
         GenericContainer = new HUDGenericAlertsControl();
         // TODO: Should be configurated
-        GenericContainer.Position = (0, 64);
+        GenericContainer.Position = (0, 96);
         AddChild(GenericContainer);
     }
 

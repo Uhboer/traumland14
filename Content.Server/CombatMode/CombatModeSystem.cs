@@ -83,6 +83,8 @@ public sealed class CombatModeSystem : SharedCombatModeSystem
             return;
 
         // Can't parry bare hands
+        // TODO: FUCK, this condition works wrong. But i think we should implement ParryableComponent and
+        // another field 'ignoreActiveHand' for checking - if it is a attacking weapon or shield
         if (args.Weapon == args.Target)
             return;
 

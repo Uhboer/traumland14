@@ -39,7 +39,20 @@ public sealed class InternalsSystem : EntitySystem
         SubscribeLocalEvent<InternalsComponent, GetVerbsEvent<InteractionVerb>>(OnGetInteractionVerbs);
         SubscribeLocalEvent<InternalsComponent, InternalsDoAfterEvent>(OnDoAfter);
 
+        SubscribeLocalEvent<InternalsComponent, HoldBreathEvent>(OnHoldBreath);
+        SubscribeLocalEvent<InternalsComponent, UnholdBreathEvent>(OnUnholdBreath);
+
         SubscribeLocalEvent<InternalsComponent, StartingGearEquippedEvent>(OnStartingGear);
+    }
+
+    private void OnHoldBreath(Entity<InternalsComponent> ent, ref HoldBreathEvent args)
+    {
+        _alerts.ShowAlert(ent, ent.Comp.InternalsAlert, GetSeverity(ent.Comp, isHoldingAir: true));
+    }
+
+    private void OnUnholdBreath(Entity<InternalsComponent> ent, ref UnholdBreathEvent args)
+    {
+        _alerts.ShowAlert(ent, ent.Comp.InternalsAlert, GetSeverity(ent.Comp));
     }
 
     private void OnStartingGear(EntityUid uid, InternalsComponent component, ref StartingGearEquippedEvent args)
@@ -97,6 +110,8 @@ public sealed class InternalsSystem : EntitySystem
         if (!Resolve(uid, ref internals, logMissing: false))
             return;
 
+        var isUser = uid == user;
+
         // Toggle off if they're on
         if (AreInternalsWorking(internals))
         {
@@ -113,7 +128,10 @@ public sealed class InternalsSystem : EntitySystem
         // If they're not on then check if we have a mask to use
         if (internals.BreathTools.Count == 0)
         {
-            _popupSystem.PopupEntity(Loc.GetString("internals-no-breath-tool"), uid, user);
+            if (!isUser)
+                _popupSystem.PopupEntity(Loc.GetString("internals-no-breath-tool"), uid, user);
+            else
+                ToggleHoldingBreathing(user, internals);
             return;
         }
 
@@ -121,7 +139,10 @@ public sealed class InternalsSystem : EntitySystem
 
         if (tank is null)
         {
-            _popupSystem.PopupEntity(Loc.GetString("internals-no-tank"), uid, user);
+            if (!isUser)
+                _popupSystem.PopupEntity(Loc.GetString("internals-no-tank"), uid, user);
+            else
+                ToggleHoldingBreathing(user, internals);
             return;
         }
 
@@ -131,7 +152,31 @@ public sealed class InternalsSystem : EntitySystem
             return;
         }
 
+        UnholdInhaledAir(uid, internals);
         _gasTank.ConnectToInternals(tank.Value);
+    }
+
+    private void ToggleHoldingBreathing(EntityUid uid, InternalsComponent? internals = null)
+    {
+        if (!Resolve(uid, ref internals, logMissing: false))
+            return;
+
+        if (_respirator.TryHoldAir(uid))
+            _alerts.ShowAlert(uid, internals.InternalsAlert, GetSeverity(internals, isHoldingAir: true));
+        else if (_respirator.TryUnholdAir(uid))
+            _alerts.ShowAlert(uid, internals.InternalsAlert, GetSeverity(internals));
+    }
+
+    private void UnholdInhaledAir(EntityUid uid, InternalsComponent? internals = null)
+    {
+        if (!Resolve(uid, ref internals, logMissing: false))
+            return;
+
+        if (_respirator.IsHoldingAir(uid))
+        {
+            _respirator.TryUnholdAir(uid);
+            _alerts.ShowAlert(uid, internals.InternalsAlert, GetSeverity(internals));
+        }
     }
 
     private void StartToggleInternalsDoAfter(EntityUid user, Entity<InternalsComponent> targetEnt)
@@ -160,12 +205,12 @@ public sealed class InternalsSystem : EntitySystem
 
     private void OnInternalsStartup(Entity<InternalsComponent> ent, ref ComponentStartup args)
     {
-        //_alerts.ShowAlert(ent, ent.Comp.InternalsAlert, GetSeverity(ent));
+        _alerts.ShowAlert(ent, ent.Comp.InternalsAlert, GetSeverity(ent));
     }
 
     private void OnInternalsShutdown(Entity<InternalsComponent> ent, ref ComponentShutdown args)
     {
-        //_alerts.ClearAlert(ent, ent.Comp.InternalsAlert);
+        _alerts.ClearAlert(ent, ent.Comp.InternalsAlert);
     }
 
     private void OnInhaleLocation(Entity<InternalsComponent> ent, ref InhaleLocationEvent args)
@@ -175,9 +220,10 @@ public sealed class InternalsSystem : EntitySystem
             var gasTank = Comp<GasTankComponent>(ent.Comp.GasTankEntity!.Value);
             args.Gas = _gasTank.RemoveAirVolume((ent.Comp.GasTankEntity.Value, gasTank), Atmospherics.BreathVolume);
             // TODO: Should listen to gas tank updates instead I guess?
-            //_alerts.ShowAlert(ent, ent.Comp.InternalsAlert, GetSeverity(ent));
+            _alerts.ShowAlert(ent, ent.Comp.InternalsAlert, GetSeverity(ent));
         }
     }
+
     public void DisconnectBreathTool(Entity<InternalsComponent> ent, EntityUid toolEntity)
     {
         ent.Comp.BreathTools.Remove(toolEntity);
@@ -188,7 +234,7 @@ public sealed class InternalsSystem : EntitySystem
         if (ent.Comp.BreathTools.Count == 0)
             DisconnectTank(ent);
 
-        //_alerts.ShowAlert(ent, ent.Comp.InternalsAlert, GetSeverity(ent));
+        _alerts.ShowAlert(ent, ent.Comp.InternalsAlert, GetSeverity(ent));
     }
 
     public void ConnectBreathTool(Entity<InternalsComponent> ent, EntityUid toolEntity)
@@ -196,9 +242,7 @@ public sealed class InternalsSystem : EntitySystem
         if (!ent.Comp.BreathTools.Add(toolEntity))
             return;
 
-        // FINSTER EDIT - Remove unnecessary alert (TODO: Should i back it?)
-        //_alerts.ShowAlert(ent, ent.Comp.InternalsAlert, GetSeverity(ent));
-        // FINSTER EDIT END
+        _alerts.ShowAlert(ent, ent.Comp.InternalsAlert, GetSeverity(ent));
 
         var ev = new BreathToolConnectedEvent(ent.Owner, toolEntity);
         RaiseLocalEvent(ent.Owner, ev);
@@ -213,7 +257,7 @@ public sealed class InternalsSystem : EntitySystem
             _gasTank.DisconnectFromInternals((component.GasTankEntity.Value, tank));
 
         component.GasTankEntity = null;
-        //_alerts.ShowAlert(component.Owner, component.InternalsAlert, GetSeverity(component));
+        _alerts.ShowAlert(component.Owner, component.InternalsAlert, GetSeverity(component));
     }
 
     public bool TryConnectTank(Entity<InternalsComponent> ent, EntityUid tankEntity)
@@ -225,7 +269,7 @@ public sealed class InternalsSystem : EntitySystem
             _gasTank.DisconnectFromInternals((ent.Comp.GasTankEntity.Value, tank));
 
         ent.Comp.GasTankEntity = tankEntity;
-        //_alerts.ShowAlert(ent, ent.Comp.InternalsAlert, GetSeverity(ent));
+        _alerts.ShowAlert(ent, ent.Comp.InternalsAlert, GetSeverity(ent));
         return true;
     }
 
@@ -242,8 +286,11 @@ public sealed class InternalsSystem : EntitySystem
             && HasComp<GasTankComponent>(component.GasTankEntity);
     }
 
-    private short GetSeverity(InternalsComponent component)
+    private short GetSeverity(InternalsComponent component, bool isHoldingAir = false)
     {
+        if (isHoldingAir || _respirator.IsHoldingAir(component.Owner))
+            return 3;
+
         if (component.BreathTools.Count == 0 || !AreInternalsWorking(component))
             return 2;
 

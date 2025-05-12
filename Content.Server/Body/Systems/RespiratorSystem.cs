@@ -60,12 +60,12 @@ public sealed class RespiratorSystem : EntitySystem
 
     private void OnStartup(Entity<LungComponent> ent, ref ComponentStartup args)
     {
-        _alertsSystem.ShowAlert(ent, ent.Comp.AlertOkay);
+        //_alertsSystem.ShowAlert(ent, ent.Comp.AlertOkay);
     }
 
     private void OnShutdown(Entity<LungComponent> ent, ref ComponentShutdown args)
     {
-        _alertsSystem.ClearAlertCategory(ent, ent.Comp.AlertCategory);
+        //_alertsSystem.ClearAlertCategory(ent, ent.Comp.AlertCategory);
     }
 
     private void OnMapInit(Entity<RespiratorComponent> ent, ref MapInitEvent args)
@@ -113,6 +113,11 @@ public sealed class RespiratorSystem : EntitySystem
                         Inhale(uid, body);
                         respirator.Status = RespiratorStatus.Exhaling;
                         break;
+                    case RespiratorStatus.Holding:
+                        var totalMoles = Hold(uid, body);
+                        if (totalMoles <= Atmospherics.HoldingMinPossibleTotalMoles)
+                            respirator.HoldingStage = RespiratorHoldingStage.Exhaling;
+                        break;
                     case RespiratorStatus.Exhaling:
                         Exhale(uid, body);
                         respirator.Status = RespiratorStatus.Inhaling;
@@ -120,12 +125,32 @@ public sealed class RespiratorSystem : EntitySystem
                 }
             }
 
+            // Check if entity should hold the air, or release and return to normal breathing.
+            if (respirator.Status == RespiratorStatus.Exhaling &&
+                respirator.HoldingStage == RespiratorHoldingStage.Inhaling)
+            {
+                respirator.Status = RespiratorStatus.Holding;
+
+                var ev = new HoldBreathEvent(uid);
+                RaiseLocalEvent(uid, ref ev);
+            }
+            else if (respirator.HoldingStage == RespiratorHoldingStage.Exhaling)
+            {
+                respirator.Status = RespiratorStatus.Exhaling;
+                respirator.HoldingStage = RespiratorHoldingStage.None;
+
+                var ev = new UnholdBreathEvent(uid);
+                RaiseLocalEvent(uid, ref ev);
+            }
+
+            // Try deal suffocation damage
             if (respirator.Saturation < respirator.SuffocationThreshold || !CanBreathe(uid))
             {
+                // TODO: Check if entity holding the air. If holding - we can't speak or emote
                 if (_gameTiming.CurTime >= respirator.LastGaspPopupTime + respirator.GaspPopupCooldown)
                 {
                     respirator.LastGaspPopupTime = _gameTiming.CurTime;
-                    _popupSystem.PopupEntity(Loc.GetString("lung-behavior-gasp"), uid);
+                    _popupSystem.PopupEntity(Loc.GetString("lung-behavior-gasp", ("name", Name(uid))), uid);
                 }
 
                 TakeSuffocationDamage((uid, respirator));
@@ -168,6 +193,33 @@ public sealed class RespiratorSystem : EntitySystem
         }
     }
 
+    public float Hold(EntityUid uid, BodyComponent? body = null, RespiratorComponent? resp = null)
+    {
+        if (!Resolve(uid, ref body, logMissing: false) ||
+            !Resolve(uid, ref resp, logMissing: false))
+            return 0.0f;
+
+        var organs = _bodySystem.GetBodyOrganComponents<LungComponent>(uid, body);
+        var totalMoles = 0.0f;
+
+        foreach (var (lung, _) in organs)
+        {
+            var actualGas = lung.Air.RemoveVolume(Atmospherics.BreathHoldingVolume);
+            actualGas.Clear(); // TODO: Should be proced by organs
+
+            totalMoles += lung.Air.TotalMoles;
+            if (totalMoles <= Atmospherics.HoldingMinPossibleTotalMoles)
+                continue;
+
+            _lungSystem.GasToReagent(lung.Owner, lung);
+            // TODO: Also, idk how to set the multi factor for breathing from lungs.
+            // So, we should "emulate" the satturation.
+            UpdateSaturation(uid, resp.MaxSaturation, resp);
+        }
+
+        return totalMoles;
+    }
+
     public void Exhale(EntityUid uid, BodyComponent? body = null)
     {
         if (!Resolve(uid, ref body, logMissing: false))
@@ -200,6 +252,47 @@ public sealed class RespiratorSystem : EntitySystem
         }
 
         _atmosSys.Merge(ev.Gas, outGas);
+    }
+
+    /// <summary>
+    /// Hold the air.
+    /// </summary>
+    public bool TryHoldAir(EntityUid uid, RespiratorComponent? resp = null)
+    {
+        if (!Resolve(uid, ref resp, logMissing: false))
+            return false;
+
+        if (resp.HoldingStage != RespiratorHoldingStage.None)
+            return false;
+
+        resp.HoldingStage = RespiratorHoldingStage.Inhaling;
+        return true;
+    }
+
+    /// <summary>
+    /// Release air from lungs and become to normal breathing.
+    /// </summary>
+    public bool TryUnholdAir(EntityUid uid, RespiratorComponent? resp = null)
+    {
+        if (!Resolve(uid, ref resp, logMissing: false))
+            return false;
+
+        if (resp.HoldingStage != RespiratorHoldingStage.Inhaling)
+            return false;
+
+        resp.HoldingStage = RespiratorHoldingStage.Exhaling;
+        return true;
+    }
+
+    /// <summary>
+    /// Check if entity holding the air.
+    /// </summary>
+    public bool IsHoldingAir(EntityUid uid, RespiratorComponent? resp = null)
+    {
+        if (!Resolve(uid, ref resp, logMissing: false))
+            return false;
+
+        return resp.Status == RespiratorStatus.Holding;
     }
 
     /// <summary>
@@ -319,7 +412,7 @@ public sealed class RespiratorSystem : EntitySystem
             var organs = _bodySystem.GetBodyOrganComponents<LungComponent>(ent);
             foreach (var (comp, _) in organs)
             {
-                _alertsSystem.ShowAlert(ent, comp.Alert);
+                //_alertsSystem.ShowAlert(ent, comp.Alert);
             }
             RaiseLocalEvent(ent, new MoodEffectEvent("Suffocating"));
         }
@@ -336,8 +429,8 @@ public sealed class RespiratorSystem : EntitySystem
         var organs = _bodySystem.GetBodyOrganComponents<LungComponent>(ent);
         foreach (var (comp, _) in organs)
         {
-            //_alertsSystem.ClearAlert(ent, comp.Alert);
-            _alertsSystem.ShowAlert(ent, comp.AlertOkay);
+            //_alertsSystem.ClearAlert(ent, comp.Alert); // FROM SS14
+            //_alertsSystem.ShowAlert(ent, comp.AlertOkay); // FROM FINSTER
         }
 
         _damageableSys.TryChangeDamage(ent, ent.Comp.DamageRecovery);
@@ -383,3 +476,9 @@ public record struct InhaleLocationEvent(GasMixture? Gas);
 
 [ByRefEvent]
 public record struct ExhaleLocationEvent(GasMixture? Gas);
+
+[ByRefEvent]
+public record struct HoldBreathEvent(EntityUid User);
+
+[ByRefEvent]
+public record struct UnholdBreathEvent(EntityUid User);

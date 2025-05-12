@@ -57,6 +57,10 @@ namespace Content.Shared.Atmos
         // Liters in a normal breath
         public const float BreathVolume = 0.5f;
 
+        public const float BreathHoldingVolume = 0.5f;
+
+        public const float HoldingMinPossibleTotalMoles = 0.01f;
+
         // Amount of air to take from a tile
         public const float BreathPercentage = BreathVolume / CellVolume;
 

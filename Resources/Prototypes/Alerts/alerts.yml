@@ -210,7 +210,7 @@
   name: alerts-too-cold-name
   description: alerts-too-cold-desc
   hudPositionX: 0
-  hudPositionY: 320
+  hudPositionY: 352
   isGeneric: false
 
 - type: alert
@@ -222,7 +222,7 @@
   name: alerts-normal-temperature-name
   description: alerts-normal-temperature-desc
   hudPositionX: 0
-  hudPositionY: 320
+  hudPositionY: 352
   isGeneric: false
 
 - type: alert
@@ -237,7 +237,7 @@
   name: alerts-too-hot-name
   description: alerts-too-hot-desc
   hudPositionX: 0
-  hudPositionY: 320
+  hudPositionY: 352
   isGeneric: false
 
 #- type: alert
@@ -301,7 +301,7 @@
   name: alerts-crit-name
   description: alerts-crit-desc
   hudPositionX: 0
-  hudPositionY: 192
+  hudPositionY: 224
   isGeneric: false
 
 - type: alert
@@ -313,7 +313,7 @@
   name: alerts-dead-name
   description: alerts-dead-desc
   hudPositionX: 0
-  hudPositionY: 192
+  hudPositionY: 224
   isGeneric: false
 
 - type: alert
@@ -332,7 +332,7 @@
   minSeverity: 0
   maxSeverity: 4
   hudPositionX: 0
-  hudPositionY: 192
+  hudPositionY: 224
   isGeneric: false
 
 - type: alert
@@ -350,7 +350,7 @@
   minSeverity: 0
   maxSeverity: 4
   hudPositionX: 0
-  hudPositionY: 192
+  hudPositionY: 224
   isGeneric: false
 
 - type: alert
@@ -362,7 +362,7 @@
   name: alerts-crit-name
   description: alerts-crit-desc
   hudPositionX: 0
-  hudPositionY: 192
+  hudPositionY: 224
   isGeneric: false
 
 - type: alert
@@ -374,7 +374,7 @@
   name: alerts-dead-name
   description: alerts-dead-desc
   hudPositionX: 0
-  hudPositionY: 192
+  hudPositionY: 224
   isGeneric: false
 
 - type: alert
@@ -419,12 +419,13 @@
   - internal0
   - internal1
   - internal2
+  - internal3
   name: alerts-internals-name
   description: alerts-internals-desc
   minSeverity: 0
-  maxSeverity: 2
+  maxSeverity: 3
   hudPositionX: 0
-  hudPositionY: 96
+  hudPositionY: 64
   isGeneric: false
 
 - type: alert
@@ -589,7 +590,7 @@
   name: alerts-surrend-name
   description: alerts-surrend-desc
   hudPositionX: 0
-  hudPositionY: 288
+  hudPositionY: 320
   isGeneric: false
 
 - type: alert
@@ -789,7 +790,7 @@
   minSeverity: 0
   maxSeverity: 1
   hudPositionX: 0
-  hudPositionY: 224
+  hudPositionY: 256
   isGeneric: false
 
 - type: alert
@@ -911,7 +912,7 @@
   name: alerts-mood-insane-name
   description: alerts-mood-insane-desc
   hudPositionX: 0
-  hudPositionY: 256
+  hudPositionY: 288
   isGeneric: false
 
 - type: alert
@@ -924,7 +925,7 @@
   name: alerts-mood-horrible-name
   description: alerts-mood-horrible-desc
   hudPositionX: 0
-  hudPositionY: 256
+  hudPositionY: 288
   isGeneric: false
 
 - type: alert
@@ -937,7 +938,7 @@
   name: alerts-mood-terrible-name
   description: alerts-mood-terrible-desc
   hudPositionX: 0
-  hudPositionY: 256
+  hudPositionY: 288
   isGeneric: false
 
 - type: alert
@@ -950,7 +951,7 @@
   name: alerts-mood-bad-name
   description: alerts-mood-bad-desc
   hudPositionX: 0
-  hudPositionY: 256
+  hudPositionY: 288
   isGeneric: false
 
 - type: alert
@@ -963,7 +964,7 @@
   name: alerts-mood-meh-name
   description: alerts-mood-meh-desc
   hudPositionX: 0
-  hudPositionY: 256
+  hudPositionY: 288
   isGeneric: false
 
 - type: alert
@@ -976,7 +977,7 @@
   name: alerts-mood-neutral-name
   description: alerts-mood-neutral-desc
   hudPositionX: 0
-  hudPositionY: 256
+  hudPositionY: 288
   isGeneric: false
 
 - type: alert
@@ -989,7 +990,7 @@
   name: alerts-mood-good-name
   description: alerts-mood-good-desc
   hudPositionX: 0
-  hudPositionY: 256
+  hudPositionY: 288
   isGeneric: false
 
 - type: alert
@@ -1002,7 +1003,7 @@
   name: alerts-mood-great-name
   description: alerts-mood-great-desc
   hudPositionX: 0
-  hudPositionY: 256
+  hudPositionY: 288
   isGeneric: false
 
 - type: alert
@@ -1015,7 +1016,7 @@
   name: alerts-mood-exceptional-name
   description: alerts-mood-exceptional-desc
   hudPositionX: 0
-  hudPositionY: 256
+  hudPositionY: 288
   isGeneric: false
 
 - type: alert
@@ -1028,7 +1029,7 @@
   name: alerts-mood-perfect-name
   description: alerts-mood-perfect-desc
   hudPositionX: 0
-  hudPositionY: 256
+  hudPositionY: 288
   isGeneric: false
 
 - type: alert
@@ -1041,7 +1042,7 @@
   name: alerts-mood-dead-name
   description: alerts-mood-dead-desc
   hudPositionX: 0
-  hudPositionY: 256
+  hudPositionY: 288
   isGeneric: false
 
 - type: alert
