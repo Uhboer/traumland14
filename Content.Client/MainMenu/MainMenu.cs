@@ -48,7 +48,7 @@ namespace Content.Client.MainMenu
             _mainMenuControl.DirectConnectButton.OnPressed += DirectConnectButtonPressed;
             _mainMenuControl.GoToLobbyButton.OnPressed += GoToLobbyButtonPressed;
             _mainMenuControl.AddressBox.OnTextEntered += AddressBoxEntered;
-            _mainMenuControl.ChangelogButton.OnPressed += ChangelogButtonPressed;
+            //_mainMenuControl.ChangelogButton.OnPressed += ChangelogButtonPressed;
 
             _client.RunLevelChanged += RunLevelChanged;
         }

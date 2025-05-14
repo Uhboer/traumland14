@@ -1,6 +1,6 @@
 ### Connecting dialog when you start up the game
 
-connecting-title = Zaibatsu
+connecting-title = Disphoria
 connecting-exit = Exit
 connecting-retry = Retry
 connecting-reconnect = Reconnect

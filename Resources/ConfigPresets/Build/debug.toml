@@ -1,4 +1,7 @@
-﻿[finster_events]
+﻿[game]
+hostname = "Disphoria (DEBUG)"
+
+[finster_events]
 # Annoying
 enabled = false
 

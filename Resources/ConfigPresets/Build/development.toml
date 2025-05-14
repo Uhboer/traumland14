@@ -1,4 +1,7 @@
-﻿[finster_game]
+﻿[game]
+hostname = "Disphoria (DEV)"
+
+[finster_game]
 # Straight in-game baby
 lobbyenabled = false
 # Dev map for faster loading & convenience
