@@ -24,7 +24,6 @@ public sealed class ScalingViewport : Control, IViewportControl
 {
     [Dependency] private readonly IClyde _clyde = default!;
     [Dependency] private readonly IEntityManager _entityManager = default!;
-    [Dependency] private readonly IPlayerManager _playerManager = default!;
     [Dependency] private readonly IInputManager _inputManager = default!;
     [Dependency] private readonly IUserInterfaceManager _uiManager = default!;
     [Dependency] private readonly IMapManager _mapManager = default!;
@@ -44,6 +43,7 @@ public sealed class ScalingViewport : Control, IViewportControl
     // Internal viewport creation is deferred.
     private IClydeViewport? _viewport;
     private IEye? _eye;
+    private IEye? _fallbackEye;
     private Vector2i _viewportSize;
     private int _curRenderScale;
     private ScalingViewportStretchMode _stretchMode = ScalingViewportStretchMode.Bilinear;
@@ -177,6 +177,8 @@ public sealed class ScalingViewport : Control, IViewportControl
 
     protected override void Draw(IRenderHandle renderHandle)
     {
+        _fallbackEye = _eye;
+
         var handle = renderHandle.DrawingHandleScreen;
         EnsureViewportCreated();
         DebugTools.AssertNotNull(_viewport);
@@ -223,17 +225,19 @@ public sealed class ScalingViewport : Control, IViewportControl
             var mapComp = _entityManager.GetComponent<MapComponent>(toDraw);
             var pos = new MapCoordinates(_eye.Position.Position, mapComp.MapId);
 
-            ConfigureZEye(viewport, pos, idx, depth, toDraw == mapEntityId);
-
             // Render with appropriate effects
             if (toDraw != mapEntityId)
             {
-                var previousFov = SetEyeFov(viewport.Eye, false);
+                var zeye = ConfigureZEye(viewport, pos, idx, depth, toDraw == mapEntityId);
+                if (zeye is not null)
+                    zeye.DrawFov = false;
+                //var previousFov = SetEyeFov(viewport.Eye, false);
                 viewport.Render();
-                SetEyeFov(viewport.Eye, previousFov);
+                //SetEyeFov(viewport.Eye, previousFov);
             }
             else
             {
+                FallbackDefaultEye();
                 viewport.Render();
                 break; // Exit early after rendering main layer
             }
@@ -246,12 +250,12 @@ public sealed class ScalingViewport : Control, IViewportControl
         RenderFinalOutput(renderHandle, viewport, drawBox, drawBoxGlobal);
     }
 
-    private void ConfigureZEye(IClydeViewport viewport, MapCoordinates pos, int idx, int depth, bool isTop)
+    private IEye? ConfigureZEye(IClydeViewport viewport, MapCoordinates pos, int idx, int depth, bool isTop)
     {
         if (_eye is null)
-            return;
+            return null;
 
-        viewport.Eye = new ZEye()
+        var eye = new ZEye()
         {
             Position = pos,
             DrawFov = _eye.DrawFov,
@@ -262,6 +266,9 @@ public sealed class ScalingViewport : Control, IViewportControl
             Depth = idx,
             Top = isTop
         };
+
+        viewport.Eye = eye;
+        return eye;
     }
 
     private void RenderFinalOutput(IRenderHandle renderHandle, IClydeViewport viewport, UIBox2 drawBox, UIBox2i drawBoxGlobal)
@@ -392,9 +399,7 @@ public sealed class ScalingViewport : Control, IViewportControl
 
     private void FallbackDefaultEye()
     {
-        var player = _playerManager.LocalEntity;
-        if (_entityManager.TryGetComponent<EyeComponent>(player, out var eyeComp))
-            Eye = eyeComp.Eye;
+        Eye = _fallbackEye;
     }
 
     public void Screenshot(CopyPixelsDelegate<Rgba32> callback)

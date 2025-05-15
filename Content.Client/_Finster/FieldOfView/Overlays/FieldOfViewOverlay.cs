@@ -53,9 +53,7 @@ public sealed class FieldOfViewOverlay : Overlay
     protected override bool BeforeDraw(in OverlayDrawArgs args)
     {
         if (_player.LocalEntity is not null &&
-            _fovQuery.TryComp(_player.LocalEntity.Value, out var fovComp) &&
-            _eyeQuery.TryComp(_player.LocalEntity.Value, out var eyeComp) &&
-            args.MapId == eyeComp.Eye.Position.MapId)
+            _fovQuery.TryComp(_player.LocalEntity.Value, out var fovComp))
             return fovComp.Enabled;
 
         return false;
@@ -68,9 +66,14 @@ public sealed class FieldOfViewOverlay : Overlay
 
         var playerEntity = _player.LocalEntity.Value;
 
+        if (!_eyeQuery.TryComp(playerEntity, out var eyeComp))
+            return;
+
+        if (args.Viewport.Eye != eyeComp.Eye)
+            return;
+
         if (!_entManager.TryGetComponent<TransformComponent>(playerEntity, out var playerTransform) ||
-            !_entManager.TryGetComponent<FieldOfViewComponent>(playerEntity, out var fovComp) ||
-            !_entManager.TryGetComponent<EyeComponent>(playerEntity, out var eyeComp))
+            !_entManager.TryGetComponent<FieldOfViewComponent>(playerEntity, out var fovComp))
             return;
 
         var viewport = args.WorldBounds;

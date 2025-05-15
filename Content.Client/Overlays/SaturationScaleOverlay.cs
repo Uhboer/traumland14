@@ -30,7 +30,9 @@ public sealed class SaturationScaleOverlay : Overlay
     protected override bool BeforeDraw(in OverlayDrawArgs args)
     {
         if (_playerManager.LocalEntity is not { Valid: true } player
-            || !_entityManager.HasComponent<SaturationScaleOverlayComponent>(player))
+            || !_entityManager.HasComponent<SaturationScaleOverlayComponent>(player) ||
+            !_entityManager.TryGetComponent<EyeComponent>(player, out var eyeComp) ||
+            args.Viewport != eyeComp.Eye)
             return false;
 
         return base.BeforeDraw(in args);

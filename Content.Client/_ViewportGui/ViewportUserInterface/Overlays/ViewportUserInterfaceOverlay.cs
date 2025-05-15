@@ -131,11 +131,14 @@ public sealed class ViewportUserInterfaceOverlay : Overlay
     protected override void Draw(in OverlayDrawArgs args)
     {
         var handle = args.ScreenHandle;
-        var viewport = (args.ViewportControl as ScalingViewport);
-        var uiScale = (args.ViewportControl as ScalingViewport)?.UIScale ?? 1f;
+        var viewport = args.ViewportControl as ScalingViewport;
 
-        if (viewport is null)
+        if (viewport is null ||
+            _player.LocalEntity is null ||
+            !_entManager.TryGetComponent<EyeComponent>(_player.LocalEntity.Value, out var eyeComp) ||
+            args.Viewport.Eye != eyeComp.Eye)
             return;
+
         if (_viewport is null)
         {
             ResolveViewport(viewport);
