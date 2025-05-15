@@ -60,6 +60,17 @@
       shader: unshaded
 
 - type: entity
+  id: AreaMusicDM
+  parent: AreaMarkerBase
+  components:
+  - type: SetTileArea
+    color: "#ff0000"
+  - type: Sprite
+    layers:
+    - state: green
+      shader: unshaded
+
+- type: entity
   id: AreaRemove
   parent: AreaMarkerBase
   components:

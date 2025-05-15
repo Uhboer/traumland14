@@ -77,6 +77,17 @@
   rules: InEngineeringArea
   priority: 2
 
+- type: ingameMusic
+  id: DeathMatch
+  sound:
+    params:
+      volume: -8
+    collection: MusicDeathMatch
+  fadeIn: true
+  interruptable: true
+  rules: InDMArea
+  priority: 2
+
 # General music, like as fallback
 - type: ingameMusic
   id: General
@@ -99,6 +110,11 @@
 #  id: MusicInSpace
 #  files:
 #    - /Audio/_Finster/Ambience/loop_noden.ogg
+
+- type: soundCollection
+  id: MusicDeathMatch
+  files:
+    - /Audio/Music/bad_journey.ogg
 
 - type: soundCollection
   id: MusicVesselGeneral
@@ -179,3 +195,8 @@
     - !type:InArea
       id: AreaMusicMedical2
 
+- type: rules
+  id: InDMArea
+  rules:
+    - !type:InArea
+      id: AreaMusicDM

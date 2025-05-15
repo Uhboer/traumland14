@@ -24,16 +24,13 @@
 
 - type: soundCollection
   id: FootstepFloor
+  params:
+    volume: -20
   files:
-  - /Audio/_Finster/Effects/Footsteps/doom_3_concrete/step01.ogg
-  - /Audio/_Finster/Effects/Footsteps/doom_3_concrete/step02.ogg
-  - /Audio/_Finster/Effects/Footsteps/doom_3_concrete/step03.ogg
-  - /Audio/_Finster/Effects/Footsteps/doom_3_concrete/step05.ogg
-  - /Audio/_Finster/Effects/Footsteps/doom_3_concrete/step07.ogg
-  - /Audio/_Finster/Effects/Footsteps/doom_3_concrete/step09.ogg
-  - /Audio/_Finster/Effects/Footsteps/doom_3_concrete/step10.ogg
-  - /Audio/_Finster/Effects/Footsteps/doom_3_concrete/step11.ogg
-  - /Audio/_Finster/Effects/Footsteps/doom_3_concrete/step13.ogg
+  - /Audio/Effects/Footsteps/step1.ogg
+  - /Audio/Effects/Footsteps/step2.ogg
+  - /Audio/Effects/Footsteps/step3.ogg
+  - /Audio/Effects/Footsteps/step4.ogg
 
 #- type: soundCollection
 #  id: FootstepFloor

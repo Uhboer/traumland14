@@ -30,7 +30,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-    collection: FootstepTile
+    collection: FootstepFloor
   itemDrop: FloorTileItemSteelCheckerLight
   heatCapacity: 10000
 
@@ -48,7 +48,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-    collection: FootstepTile
+    collection: FootstepFloor
   itemDrop: FloorTileItemSteelCheckerDark
   heatCapacity: 10000
 
@@ -132,7 +132,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-    collection: FootstepTile
+    collection: FootstepFloor
   itemDrop: FloorTileItemSteel
   heatCapacity: 10000
 
@@ -150,7 +150,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-    collection: FootstepTile
+    collection: FootstepFloor
   itemDrop: FloorTileItemSteel
   heatCapacity: 10000
 
@@ -168,7 +168,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-    collection: FootstepTile
+    collection: FootstepFloor
   itemDrop: FloorTileItemSteel
   heatCapacity: 10000
 
@@ -186,7 +186,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-    collection: FootstepTile
+    collection: FootstepFloor
   itemDrop: FloorTileItemSteel
   heatCapacity: 10000
 
@@ -270,8 +270,20 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-    collection: FootstepTile
+    collection: FootstepFloor
   itemDrop: FloorTileItemWhite
+  heatCapacity: 10000
+
+- type: tile
+  id: FloorWhiteDirty
+  name: tiles-dirty-white-floor
+  sprite: /Textures/Tiles/white_dirty.png
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: FloorTileItemDirty
   heatCapacity: 10000
 
 - type: tile
@@ -288,7 +300,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-    collection: FootstepTile
+    collection: FootstepFloor
   itemDrop: FloorTileItemWhite
   heatCapacity: 10000
 
@@ -306,7 +318,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-    collection: FootstepTile
+    collection: FootstepFloor
   itemDrop: FloorTileItemWhite
   heatCapacity: 10000
 
@@ -324,7 +336,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-    collection: FootstepTile
+    collection: FootstepFloor
   itemDrop: FloorTileItemWhite
   heatCapacity: 10000
 
@@ -336,7 +348,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-    collection: FootstepTile
+    collection: FootstepFloor
   itemDrop: FloorTileItemWhite
   heatCapacity: 10000
 
@@ -354,7 +366,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-    collection: FootstepTile
+    collection: FootstepFloor
   itemDrop: FloorTileItemWhite
   heatCapacity: 10000
 
@@ -372,7 +384,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-    collection: FootstepTile
+    collection: FootstepFloor
   itemDrop: FloorTileItemWhite
   heatCapacity: 10000
 
@@ -390,7 +402,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-    collection: FootstepTile
+    collection: FootstepFloor
   itemDrop: FloorTileItemWhite
   heatCapacity: 10000
 
@@ -408,7 +420,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-    collection: FootstepTile
+    collection: FootstepFloor
   itemDrop: FloorTileItemWhite
   heatCapacity: 10000
 
@@ -426,7 +438,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-    collection: FootstepTile
+    collection: FootstepFloor
   itemDrop: FloorTileItemWhite
   heatCapacity: 10000
 
@@ -444,8 +456,20 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-    collection: FootstepTile
+    collection: FootstepFloor
   itemDrop: FloorTileItemDark
+  heatCapacity: 10000
+
+- type: tile
+  id: FloorDarkDirty
+  name: tiles-dirty-dark-floor
+  sprite: /Textures/Tiles/dark_dirty.png
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: FloorTileItemDirty
   heatCapacity: 10000
 
 - type: tile
@@ -462,7 +486,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-    collection: FootstepTile
+    collection: FootstepFloor
   itemDrop: FloorTileItemDark
   heatCapacity: 10000
 
@@ -480,7 +504,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-    collection: FootstepTile
+    collection: FootstepFloor
   itemDrop: FloorTileItemDark
   heatCapacity: 10000
 
@@ -498,7 +522,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-    collection: FootstepTile
+    collection: FootstepFloor
   itemDrop: FloorTileItemDark
   heatCapacity: 10000
 
@@ -510,7 +534,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-    collection: FootstepTile
+    collection: FootstepFloor
   itemDrop: FloorTileItemDark
   heatCapacity: 10000
 
@@ -528,7 +552,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-    collection: FootstepTile
+    collection: FootstepFloor
   itemDrop: FloorTileItemDark
   heatCapacity: 10000
 
@@ -546,7 +570,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-    collection: FootstepTile
+    collection: FootstepFloor
   itemDrop: FloorTileItemDark
   heatCapacity: 10000
 
@@ -564,7 +588,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-    collection: FootstepTile
+    collection: FootstepFloor
   itemDrop: FloorTileItemDark
   heatCapacity: 10000
 
@@ -582,7 +606,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-    collection: FootstepTile
+    collection: FootstepFloor
   itemDrop: FloorTileItemDark
   heatCapacity: 10000
 
@@ -600,7 +624,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-    collection: FootstepTile
+    collection: FootstepFloor
   itemDrop: FloorTileItemDark
   heatCapacity: 10000
 
@@ -641,7 +665,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-    collection: FootstepTile
+    collection: FootstepFloor
   itemDrop: FloorTileItemMono
   heatCapacity: 10000
 
@@ -653,7 +677,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-    collection: FootstepTile
+    collection: FootstepFloor
   itemDrop: FloorTileItemLino
   heatCapacity: 10000
 
@@ -665,7 +689,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-    collection: FootstepPlating
+    collection: FootstepFloor
   itemDrop: FloorTileItemDirty
   heatCapacity: 10000
 
@@ -719,7 +743,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-    collection: FootstepTile
+    collection: FootstepFloor
   itemDrop: FloorTileItemBlue
   heatCapacity: 10000
 
@@ -737,7 +761,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-    collection: FootstepTile
+    collection: FootstepFloor
   itemDrop: FloorTileItemLime
   heatCapacity: 10000
 
@@ -749,7 +773,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-    collection: FootstepTile
+    collection: FootstepFloor
   itemDrop: FloorTileItemMining
   heatCapacity: 10000
 
@@ -761,7 +785,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-    collection: FootstepTile
+    collection: FootstepFloor
   itemDrop: FloorTileItemMiningDark
   heatCapacity: 10000
 
@@ -773,7 +797,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-    collection: FootstepTile
+    collection: FootstepFloor
   itemDrop: FloorTileItemMiningLight
   heatCapacity: 10000
 
@@ -800,7 +824,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-    collection: FootstepTile
+    collection: FootstepFloor
   itemDrop: FloorTileItemShowroom
   heatCapacity: 10000
 
@@ -812,7 +836,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-    collection: FootstepTile
+    collection: FootstepFloor
   itemDrop: FloorTileItemHydro
   heatCapacity: 10000
 
@@ -830,7 +854,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-    collection: FootstepTile
+    collection: FootstepFloor
   itemDrop: FloorTileItemBar
   heatCapacity: 10000
 
@@ -842,7 +866,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-    collection: FootstepTile
+    collection: FootstepFloor
   itemDrop: FloorTileItemClown
   heatCapacity: 10000
 
@@ -854,7 +878,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-    collection: FootstepTile
+    collection: FootstepFloor
   itemDrop: FloorTileItemMime
   heatCapacity: 10000
 
@@ -866,7 +890,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-    collection: FootstepTile
+    collection: FootstepFloor
   itemDrop: FloorTileItemKitchen
   heatCapacity: 10000
 
@@ -878,7 +902,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-    collection: FootstepTile
+    collection: FootstepFloor
   itemDrop: FloorTileItemLaundry
   heatCapacity: 10000
 
@@ -1457,7 +1481,7 @@
   baseTurf: FloorDirt
   isSubfloor: false
   footstepSounds:
-    collection: FootstepTile
+    collection: FootstepFloor
   heatCapacity: 10000
   weather: true
 
