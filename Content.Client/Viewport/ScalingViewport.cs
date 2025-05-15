@@ -215,6 +215,9 @@ public sealed class ScalingViewport : Control, IViewportControl
 
         var depth = drawMaps.Count;
         var idx = stackMaps.Count - depth;
+        var preLastMap = EntityUid.Invalid;
+        if (depth >= 2)
+            preLastMap = drawMaps[depth - 2];
         var firstLayer = true;
 
         foreach (var toDraw in drawMaps)
@@ -228,7 +231,7 @@ public sealed class ScalingViewport : Control, IViewportControl
             // Render with appropriate effects
             if (toDraw != mapEntityId)
             {
-                var zeye = ConfigureZEye(viewport, pos, idx, depth, toDraw == mapEntityId);
+                var zeye = ConfigureZEye(viewport, pos, idx, depth, toDraw == preLastMap);
                 if (zeye is not null)
                     zeye.DrawFov = false;
                 //var previousFov = SetEyeFov(viewport.Eye, false);

@@ -1,5 +1,6 @@
 using System.Numerics;
 using Content.Client.Parallax.Managers;
+using Content.Client.Viewport;
 using Content.KayMisaZlevels.Shared.Components;
 using Content.Shared.CCVar;
 using Content.Shared.Parallax.Biomes;
@@ -21,9 +22,12 @@ public sealed class ZLayerOverlay : Overlay
     [Dependency] private readonly IMapManager _mapManager = default!;
     [Dependency] private readonly IParallaxManager _manager = default!;
 
-    public override OverlaySpace Space => OverlaySpace.WorldSpaceBelowWorld;
+    public override bool RequestScreenTexture => true;
+    public override OverlaySpace Space => OverlaySpace.WorldSpace;
 
     private bool _drawBackgroundLayer = false;
+
+    private ShaderInstance? _blurShader;
 
     public ZLayerOverlay()
     {
@@ -35,6 +39,9 @@ public sealed class ZLayerOverlay : Overlay
         {
             _drawBackgroundLayer = val;
         });
+
+        _blurShader = _prototypeManager.Index<ShaderPrototype>("ZBlur").InstanceUnique();
+        ZIndex = 102;
     }
 
     protected override bool BeforeDraw(in OverlayDrawArgs args)
@@ -50,12 +57,26 @@ public sealed class ZLayerOverlay : Overlay
         if (args.MapId == MapId.Nullspace)
             return;
 
+        if (ScreenTexture == null)
+            return;
+
         if (!_drawBackgroundLayer)
             return;
 
-        var position = args.Viewport.Eye?.Position.Position ?? Vector2.Zero;
         var worldHandle = args.WorldHandle;
-        worldHandle.DrawRect(args.WorldAABB, Color.Black.WithAlpha(0.5f), true);
+
+        worldHandle.DrawRect(args.WorldAABB, Color.Black.WithAlpha(0.5f));
+
+        var zeye = args.Viewport.Eye as ZEye;
+        if (zeye is null || !zeye.Top)
+            return;
+
+        _blurShader?.SetParameter("BLUR_AMOUNT", -1f);
+        _blurShader?.SetParameter("SCREEN_TEXTURE", ScreenTexture);
+
+        worldHandle.UseShader(_blurShader);
+        worldHandle.DrawRect(args.WorldAABB, Color.White);
+        worldHandle.UseShader(null);
     }
 }
 
