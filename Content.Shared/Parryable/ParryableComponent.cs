@@ -9,17 +9,6 @@ namespace Content.Shared._Finster.Rulebook;
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class ParryableComponent : Component
 {
-    /// <summary>
-    /// Should it require active hand.
-    /// By default it's true, because when we using the 1H weapon we should
-    /// parry with that weapon.
-    ///
-    /// Instead, if we have shield in some hand, we can ignore if statement for
-    /// active hand.
-    /// </summary>
-    [DataField, AutoNetworkedField]
-    public bool RequiredActiveHand = true;
-
     public TimeSpan NextParry;
 
     [DataField, AutoNetworkedField]
