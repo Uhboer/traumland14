@@ -19,4 +19,9 @@ public sealed partial class ParryableComponent : Component
     /// </summary>
     [DataField, AutoNetworkedField]
     public bool RequiredActiveHand = true;
+
+    public TimeSpan NextParry;
+
+    [DataField, AutoNetworkedField]
+    public float ParryRate = 1.5f;
 }
