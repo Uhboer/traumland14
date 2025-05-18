@@ -329,3 +329,13 @@
     - id: BloodbathPuddleMessVariationPass
       prob: 0.01
       orGroup: puddleMess
+
+### NEW RULES
+
+- type: entity
+  id: CorporateWars
+  parent: BaseGameRule
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: WarRule
+  - type: KillCalloutRule

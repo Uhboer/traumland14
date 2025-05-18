@@ -8,6 +8,12 @@
   },
   "states": [
     {
+      "name": "team_defender"
+    },
+    {
+      "name": "team_attacker"
+    },
+    {
       "name": "green"
     },
     {

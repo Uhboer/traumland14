@@ -1,0 +1,21 @@
+- type: entity
+  name: team attacker spawn point
+  id: SpawnPointTeamAttacker
+  parent: SpawnPointJobBase
+  components:
+  - type: Sprite
+    sprite: Markers/jobs.rsi
+    state: team_attacker
+  - type: SpawnPoint
+    spawn_type: LateJoin
+
+- type: entity
+  name: team defender spawn point
+  id: SpawnPointTeamDefender
+  parent: SpawnPointJobBase
+  components:
+  - type: Sprite
+    sprite: Markers/jobs.rsi
+    state: team_defender
+  - type: SpawnPoint
+    spawn_type: LateJoin
