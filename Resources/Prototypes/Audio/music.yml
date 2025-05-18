@@ -42,7 +42,7 @@
   fadeIn: true
   interruptable: true
   rules: InMaintenanceArea
-  priority: 2
+  priority: 3
 
 - type: ingameMusic
   id: VesselMedical
@@ -53,7 +53,7 @@
   fadeIn: true
   interruptable: true
   rules: InMedicalArea
-  priority: 2
+  priority: 3
 
 - type: ingameMusic
   id: VesselMedical2
@@ -64,7 +64,7 @@
   fadeIn: true
   interruptable: true
   rules: InMedicalArea2
-  priority: 2
+  priority: 3
 
 - type: ingameMusic
   id: VesselEngineering
@@ -75,7 +75,7 @@
   fadeIn: true
   interruptable: true
   rules: InEngineeringArea
-  priority: 2
+  priority: 3
 
 - type: ingameMusic
   id: DeathMatch
@@ -86,6 +86,17 @@
   fadeIn: true
   interruptable: true
   rules: InDMArea
+  priority: 3
+
+- type: ingameMusic
+  id: DeathMatchOnGrid
+  sound:
+    params:
+      volume: -8
+    collection: MusicDeathMatch
+  fadeIn: true
+  interruptable: true
+  rules: WarGridTheme
   priority: 2
 
 # General music, like as fallback
@@ -200,3 +211,9 @@
   rules:
     - !type:InArea
       id: AreaMusicDM
+
+- type: rules
+  id: WarGridTheme
+  rules:
+    - !type:IsGridMusic
+      musicSoundId: MusicDeathMatch

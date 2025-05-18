@@ -4,6 +4,7 @@ using Content.Shared._Finster.TestHaus;
 using Content.Shared.Access.Components;
 using Content.Shared.Access.Systems;
 using Content.Shared.Area;
+using Content.Shared.Audio;
 using Content.Shared.Audio.Jukebox;
 using Content.Shared.CombatMode;
 using Content.Shared.Instruments;
@@ -80,6 +81,15 @@ public class RulesSystem : EntitySystem
                     }
 
                     break;
+                }
+                case IsGridMusic gridMusic:
+                {
+                    if (!TryComp<TransformComponent>(uid, out var xform) ||
+                        xform.GridUid == null ||
+                        !TryComp<GridMusicComponent>(xform.GridUid, out var gridMusicComp))
+                        return false;
+
+                    return gridMusic.MusicSoundId == gridMusicComp.MusicSoundId;
                 }
                 case OutOfArea outOfArea:
                 {

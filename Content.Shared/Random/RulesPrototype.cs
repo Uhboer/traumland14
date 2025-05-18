@@ -186,3 +186,9 @@ public sealed partial class InArea : RulesRule
     [DataField("id")]
     public string ID = "";
 }
+
+public sealed partial class IsGridMusic : RulesRule
+{
+    [DataField("musicSoundId", required: true)]
+    public string MusicSoundId;
+}
