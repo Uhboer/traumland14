@@ -1,14 +1,11 @@
-# Disphoria
+# Space Station 14: Disphoria
 
-Игра созданная из моего безумиствия, приправленное шизойдностью и ненавистью к внешнему миру.
+Unfinished Space Station 14 fork.
+Main features is total overhaul gameplay, Z levels and more.
 
 # Building
 
-В папке `Tools` находятся все необходмые скрипты для работы.
+Look into `Tools` folder.
 
-Так для сборки игры пишем `sh Tools/sh/buildAllDebug.sh`.
-Для запуска сервера, например, `sh Tools/sh/runQuickServer.sh`.
-
-# Legal
-
-👉 [LICENSE.txt](./LICENSE.txt)
+For building - `sh Tools/sh/buildAllDebug.sh`.
+For running - `sh Tools/sh/runQuickServer.sh`.
