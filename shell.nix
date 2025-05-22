@@ -45,6 +45,7 @@ let
     alsa-lib
     dbus
     at-spi2-core
+    libcef
   ];
 in
 pkgs.mkShell {
@@ -56,7 +57,7 @@ pkgs.mkShell {
     export ROBUST_SOUNDFONT_OVERRIDE=${pkgs.soundfont-fluid}/share/soundfonts/FluidR3_GM2-2.sf2
     export XDG_DATA_DIRS=$GSETTINGS_SCHEMAS_PATH
     export LD_LIBRARY_PATH=${pkgs.lib.makeLibraryPath dependencies}
-    export DOTNET_ROOT=${pkgs.dotnetCorePackages.sdk_8_0_1xx}
+    export DOTNET_ROOT=${pkgs.dotnetCorePackages.sdk_9_0}/share/dotnet
     export PATH="$PATH:/home/$(whoami)/.dotnet/tools"
   '';
 }
