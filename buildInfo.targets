@@ -1,0 +1,25 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Target Name="GenerateBuildInfo" BeforeTargets="BeforeBuild">
+    <!-- Определяем путь к скрипту относительно папки проекта -->
+    <PropertyGroup>
+      <ToolsDir>$(MSBuildThisFileDirectory)Tools</ToolsDir>
+      <BuildInfoScript>$(ToolsDir)/generate_build_info.sh</BuildInfoScript>
+    </PropertyGroup>
+
+    <!-- Проверяем существование скрипта -->
+    <Error Condition="!Exists('$(BuildInfoScript)')"
+          Text="Build info script not found at $(BuildInfoScript)"/>
+
+    <!-- Запускаем скрипт -->
+    <Exec Command="bash '$(BuildInfoScript)'"
+        WorkingDirectory="$(MSBuildThisFileDirectory)"
+        IgnoreExitCode="false"
+        ConsoleToMSBuild="true">
+      <Output TaskParameter="ExitCode" PropertyName="BuildInfoExitCode"/>
+    </Exec>
+
+    <!-- Проверяем результат выполнения -->
+    <Error Condition="'$(BuildInfoExitCode)' != '0'"
+          Text="Failed to generate build info (exit code $(BuildInfoExitCode))"/>
+  </Target>
+</Project>

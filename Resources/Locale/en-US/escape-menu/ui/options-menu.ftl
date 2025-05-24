@@ -173,6 +173,7 @@ ui-options-function-toggle-combat-mode = Toggle combat mode
 ui-options-static-storage-ui = Lock storage window to hotbar
 ui-options-modern-progress-bar = Modern progress bar
 ui-options-show-lookup-hint = Show lookup hint
+ui-options-show-build-info = Show build info
 
 ui-options-function-smart-equip-backpack = Smart-equip to backpack
 ui-options-function-smart-equip-belt = Smart-equip to belt

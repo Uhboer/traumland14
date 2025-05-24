@@ -60,6 +60,7 @@
                 <CheckBox Name="ModernProgressBar" Text="{Loc 'ui-options-modern-progress-bar'}" />
                 <!-- <CheckBox Name="ToggleWalk" Text="{Loc 'ui-options-hotkey-toggle-walk'}" /> -->
                 <CheckBox Name="ShowLookupHint" Text="{Loc 'ui-options-show-lookup-hint'}" />
+                <CheckBox Name="ShowBuildInfo" Text="{Loc 'ui-options-show-build-info'}" />
             </BoxContainer>
         </ScrollContainer>
         <controls:StripeBack HasBottomEdge="False" HasMargins="False">

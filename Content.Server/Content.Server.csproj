@@ -35,4 +35,5 @@
     <Folder Include="Objectives\Interfaces\" />
   </ItemGroup>
   <Import Project="..\RobustToolbox\MSBuild\Robust.Properties.targets" />
+  <Import Project="..\buildInfo.targets" />
 </Project>

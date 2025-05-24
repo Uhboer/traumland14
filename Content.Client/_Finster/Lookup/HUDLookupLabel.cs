@@ -23,7 +23,7 @@ using Robust.Shared.Timing;
 
 namespace Content.Client._Finster.Lookup;
 
-public class HUDLookupLabel : HUDControl
+public class HUDLookupLabel : HUDLabel
 {
     [Dependency] private readonly IEntityManager _entManager = default!;
     [Dependency] private readonly IPlayerManager _player = default!;
@@ -36,36 +36,13 @@ public class HUDLookupLabel : HUDControl
     [Dependency] private readonly IConfigurationManager _cfg = default!;
     [Dependency] private readonly IMapManager _mapManager = default!;
 
-    private string _fontPath = "/Fonts/Bedstead/Bedstead.otf";
-    private Font _font;
-    private string _text = string.Empty;
-
-    /// <summary>
-    /// Text's font scale.
-    /// </summary>
-    public int Scale { get; set; } = 8;
-
     public int TextPositionX { get; set; } = 240;
     public LookupAlignment Alignment { get; set; } = LookupAlignment.Top;
-
-    /// <summary>
-    /// Return current font path or set a new font with the path.
-    /// </summary>
-    public string FontPath
-    {
-        get => _fontPath;
-        set
-        {
-            _fontPath = value;
-            _font = new VectorFont(_cache.GetResource<FontResource>(_fontPath), Scale);
-        }
-    }
 
     public HUDLookupLabel()
     {
         IoCManager.InjectDependencies(this);
 
-        _font = new VectorFont(_cache.GetResource<FontResource>(_fontPath), Scale);
         _cfg.OnValueChanged(CCVars.ShowLookupHint, (toggle) =>
         {
             Visible = toggle;
@@ -79,13 +56,10 @@ public class HUDLookupLabel : HUDControl
 
     public override void Draw(in ViewportUIDrawArgs args)
     {
-        base.Draw(args);
-
         var handle = args.ScreenHandle;
         var bounds = args.ContentSize;
 
-        // TODO: Make it more modularity
-        _text = string.Empty;
+        Text = string.Empty;
 
         // First - try to find focused HUD controls, instead find tiles or entity in the world
         EntityUid? hoveredEnt = null;
@@ -96,7 +70,7 @@ public class HUDLookupLabel : HUDControl
             hoveredEnt = FindInWorld();
 
         // Normalaize text
-        _text = _text.ToUpper();
+        Text = Text.ToUpper();
 
         // TODO: Players name color
         var textColor = Color.Gainsboro.WithAlpha(0.25f);
@@ -113,6 +87,7 @@ public class HUDLookupLabel : HUDControl
                     textColor = Color.Gainsboro.WithAlpha(0.5f);
             }
         }
+        Color = textColor;
 
         // Im lazy. I don't it would be too difficult to change it.
         var targetX = TextPositionX;
@@ -120,12 +95,10 @@ public class HUDLookupLabel : HUDControl
         if (Alignment == LookupAlignment.Bottom)
             targetY = 480 - Scale - (Scale / 2);
 
-        var dimensions = handle.GetDimensions(_font, _text, 1f);
-        handle.DrawString(_font,
-            new Vector2(targetX, targetY) - new Vector2(dimensions.X / 2, 0),
-            _text,
-            1f,
-            textColor);
+        var dimensions = handle.GetDimensions(Font!, Text, 1f);
+        TextPosition = new Vector2(targetX, targetY) - new Vector2(dimensions.X / 2, 0);
+
+        base.Draw(args);
     }
 
     private void FindInHUD(HUDBoundsCheckArgs? args)
@@ -142,7 +115,7 @@ public class HUDLookupLabel : HUDControl
             case HUDAlertControl alertControl:
                 if (alertControl.Name is not null)
                 {
-                    _text = Loc.GetString(alertControl.Name);
+                    Text = Loc.GetString(alertControl.Name);
                     return;
                 }
                 break;
@@ -150,21 +123,21 @@ public class HUDLookupLabel : HUDControl
                 if (slotControl.Entity is not null &&
                     _entManager.TryGetComponent<MetaDataComponent>(slotControl.Entity, out var metaData))
                 {
-                    _text = Loc.GetString(metaData.EntityName);
+                    Text = Loc.GetString(metaData.EntityName);
                     return;
                 }
 
-                _text = Loc.GetString(slotControl.HoverName);
+                Text = Loc.GetString(slotControl.HoverName);
                 return;
                 break;
             case IHUDDescription descControl:
-                _text = descControl.Description;
+                Text = descControl.Description;
                 return;
         }
 
         // TODO: Maybe need make something like "FocusName"?
         if (control.Name is not null)
-            _text = control.Name;
+            Text = control.Name;
     }
 
     private EntityUid? FindInWorld()
@@ -216,13 +189,13 @@ public class HUDLookupLabel : HUDControl
             _entManager.TryGetComponent<MetaDataComponent>(entityToClick, out var metaComp))
         {
             //if (_examine.CanExamine(_player.LocalEntity.Value, entityToClick.Value))
-            _text = metaComp.EntityName;
+            Text = metaComp.EntityName;
         }
         else if (tile is not null)
         {
             var tileDef = (ContentTileDefinition) _tileDefManager[tile.Value.Tile.TypeId];
             if (tileDef.ID != ContentTileDefinition.SpaceID)
-                _text = $"{Loc.GetString(tileDef.Name)}";
+                Text = $"{Loc.GetString(tileDef.Name)}";
         }
 
         return entityToClick;

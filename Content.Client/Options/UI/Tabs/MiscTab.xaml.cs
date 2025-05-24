@@ -102,6 +102,7 @@ namespace Content.Client.Options.UI.Tabs
             StaticStorageUI.OnToggled += OnCheckBoxToggled;
             ModernProgressBar.OnToggled += OnCheckBoxToggled;
             ShowLookupHint.OnToggled += OnCheckBoxToggled;
+            ShowBuildInfo.OnToggled += OnCheckBoxToggled;
 
             //HudThemeOption.SelectId(_hudThemeIdToIndex.GetValueOrDefault(_cfg.GetCVar(CVars.InterfaceTheme), 0));
             var curHudType = _cfg.GetCVar(CCVars.HudType);
@@ -124,6 +125,7 @@ namespace Content.Client.Options.UI.Tabs
             StaticStorageUI.Pressed = _cfg.GetCVar(CCVars.StaticStorageUI);
             ModernProgressBar.Pressed = _cfg.GetCVar(CCVars.ModernProgressBar);
             ShowLookupHint.Pressed = _cfg.GetCVar(CCVars.ShowLookupHint);
+            ShowBuildInfo.Pressed = _cfg.GetCVar(CCVars.ShowBuildInfo);
 
 
             ApplyButton.OnPressed += OnApplyButtonPressed;
@@ -178,6 +180,7 @@ namespace Content.Client.Options.UI.Tabs
             _cfg.SetCVar(CCVars.StaticStorageUI, StaticStorageUI.Pressed);
             _cfg.SetCVar(CCVars.ModernProgressBar, ModernProgressBar.Pressed);
             _cfg.SetCVar(CCVars.ShowLookupHint, ShowLookupHint.Pressed);
+            _cfg.SetCVar(CCVars.ShowBuildInfo, ShowBuildInfo.Pressed);
             _cfg.SetCVar(CCVars.ChatStackLastLines, ChatStackOption.SelectedId);
 
             /*
@@ -211,6 +214,7 @@ namespace Content.Client.Options.UI.Tabs
             var isStaticStorageUISame = StaticStorageUI.Pressed == _cfg.GetCVar(CCVars.StaticStorageUI);
             var isModernProgressBarSame = ModernProgressBar.Pressed == _cfg.GetCVar(CCVars.ModernProgressBar);
             var isShowLookupHintSame = ShowLookupHint.Pressed == _cfg.GetCVar(CCVars.ShowLookupHint);
+            var isShowBuildInfoSame = ShowBuildInfo.Pressed == _cfg.GetCVar(CCVars.ShowBuildInfo);
             var isChatStackTheSame = ChatStackOption.SelectedId == _cfg.GetCVar(CCVars.ChatStackLastLines);
 
             ApplyButton.Disabled = //isHudThemeSame &&
@@ -231,6 +235,7 @@ namespace Content.Client.Options.UI.Tabs
                                    isStaticStorageUISame &&
                                    isModernProgressBarSame &&
                                    isShowLookupHintSame &&
+                                   isShowBuildInfoSame &&
                                    isChatStackTheSame;
         }
 

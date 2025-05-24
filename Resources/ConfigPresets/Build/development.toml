@@ -1,5 +1,5 @@
 ﻿[game]
-hostname = "Disphoria (DEV)"
+hostname = "Finster (DEV)"
 
 [finster_game]
 # Straight in-game baby
@@ -33,3 +33,6 @@ preload_grids = false
 
 [finster_admin]
 see_own_notes = true
+
+[finster_hud]
+show_build_info_force = true

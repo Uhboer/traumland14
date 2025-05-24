@@ -1,4 +1,5 @@
 using Content.Client._Finster.Lookup;
+using Content.Client._Finster.Misc;
 using Content.Client._Finster.Rulebook;
 using Content.Client._Finster.UserInterface.RichText;
 using Content.Client._Shitmed.UserInterface.Systems.Targeting;
@@ -28,6 +29,9 @@ public class HUDGameplayState : HUDRoot
     public HUDAlertsPanel AlertsPanel { get; set; }
     public HUDTargetDoll TargetingControl { get; set; }
     public HUDAttributeStats AttributeStats { get; set; }
+
+    public HUDBuildInfoLabel BuildInfoLable { get; set; }
+
     public HUDLookupLabel LookupLabel { get; set; }
 
     public HUDGameplayState(HUDGameplayType hudType)
@@ -61,6 +65,9 @@ public class HUDGameplayState : HUDRoot
             AlertsPanel.Position = (
                 EyeManager.PixelsPerMeter * (3 + ViewportUIController.ViewportHeight), 0); // fucking calculus
 
+            BuildInfoLable = new HUDBuildInfoLabel();
+            BuildInfoLable.TextPosition = new Vector2i(EyeManager.PixelsPerMeter * 3, 0);
+
             LookupLabel = new HUDLookupLabel();
             LookupLabel.Alignment = LookupAlignment.Bottom;
             LookupLabel.TextPositionX = 336;
@@ -71,6 +78,7 @@ public class HUDGameplayState : HUDRoot
             InventoryPanel = inventoryPanel;
             AddChild(inventoryPanel);
             AddChild(AlertsPanel);
+            AddChild(BuildInfoLable);
             AddChild(LookupLabel);
             AlertsPanel.AddChild(TargetingControl);
             AlertsPanel.AddChild(AttributeStats);
@@ -97,6 +105,8 @@ public class HUDGameplayState : HUDRoot
             AlertsPanel.Texture = textureAlerts;
             AlertsPanel.Position = (EyeManager.PixelsPerMeter * ViewportUIController.ViewportHeight, 0); // fucking calculus
 
+            BuildInfoLable = new HUDBuildInfoLabel();
+
             LookupLabel = new HUDLookupLabel();
 
             TargetingControl = new HUDTargetDoll(targetingController);
@@ -105,6 +115,7 @@ public class HUDGameplayState : HUDRoot
             InventoryPanel = inventoryPanel;
             AddChild(inventoryPanel);
             AddChild(AlertsPanel);
+            AddChild(BuildInfoLable);
             AddChild(LookupLabel);
             AlertsPanel.AddChild(TargetingControl);
             AlertsPanel.AddChild(AttributeStats);

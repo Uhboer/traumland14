@@ -33,7 +33,13 @@ public sealed partial class CCVars
     public static readonly CVarDef<bool> ShowLookupHint =
         CVarDef.Create("finster_hud.show_lookup_hint", true, CVar.ARCHIVE | CVar.CLIENTONLY);
 
-    # endregion
+    public static readonly CVarDef<bool> ShowBuildInfo =
+        CVarDef.Create("finster_hud.show_build_info", false, CVar.ARCHIVE | CVar.CLIENTONLY);
+
+    public static readonly CVarDef<bool> ShowBuildInfoForce =
+        CVarDef.Create("finster_hud.show_build_info_force", false, CVar.SERVER | CVar.REPLICATED);
+
+    #endregion
 
     /// <summary>
     /// Toggle for non-gameplay-affecting or otherwise status indicative post-process effects, such additive lighting.

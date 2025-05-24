@@ -7,6 +7,7 @@ changelog-yesterday = Yesterday
 changelog-new-changes = new changes
 changelog-version-unknown = Unknown Version
 changelog-version-tag = { $fork }/{ $version }
+changelog-build-info = build { $build } / { $version }
 
 changelog-button = Changelog
 changelog-button-new-entries = Changelog (new!)

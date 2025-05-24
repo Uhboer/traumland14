@@ -1,14 +1,17 @@
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Content.Shared.CCVar;
+using Robust.Shared;
 using Robust.Shared.Configuration;
 using Robust.Shared.ContentPack;
 using Robust.Shared.Serialization.Manager;
 using Robust.Shared.Serialization.Markdown;
 using Robust.Shared.Serialization.Markdown.Mapping;
 using Robust.Shared.Utility;
+using YamlDotNet.RepresentationModel;
 
 namespace Content.Client.Changelog
 {
@@ -27,6 +30,9 @@ namespace Content.Client.Changelog
         public bool NewChangelogEntries { get; private set; }
         public DateTime LastReadTime { get; private set; }
         public DateTime MaxTime { get; private set; }
+
+        public string BuildNumber { get; private set; } = string.Empty;
+        public string BuildCommit { get; private set; } = string.Empty;
 
         public event Action? NewChangelogEntriesChanged;
 
@@ -85,7 +91,7 @@ namespace Content.Client.Changelog
             MaxTime = changelog.Entries.Max(c => c.Time);
 
             var path = new ResPath($"/changelog_last_seen_{_configManager.GetCVar(CCVars.ServerId)}_datetime");
-            if(_resource.UserData.TryReadAllText(path, out var lastReadTimeText))
+            if (_resource.UserData.TryReadAllText(path, out var lastReadTimeText))
             {
                 if (Regex.IsMatch(lastReadTimeText,
                         @"^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$"))
@@ -126,6 +132,74 @@ namespace Content.Client.Changelog
                 changelogs.Sort((a, b) => a.Order.CompareTo(b.Order));
                 return changelogs;
             });
+        }
+
+        /// <summary>
+        ///     Tries to return a human-readable version number from the build.json file
+        /// </summary>
+        public string GetClientVersion()
+        {
+            if (BuildNumber == string.Empty)
+            {
+                var buildInfo = GetBuildInfo();
+                if (buildInfo is null)
+                {
+                    BuildNumber = "fent";
+                }
+                else
+                {
+                    var days = new int[] { 0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 303, 334, 365 };
+                    BuildNumber = (365 * (buildInfo.Value.Year - 2020) - 31 + days[buildInfo.Value.Month] + buildInfo.Value.Day).ToString();
+                    BuildCommit = buildInfo.Value.Commit;
+                }
+            }
+
+            if (string.IsNullOrEmpty(BuildNumber) || string.IsNullOrEmpty(BuildCommit))
+                return Loc.GetString("changelog-version-unknown");
+
+            return Loc.GetString("changelog-build-info",
+                ("build", BuildNumber),
+                ("version", BuildCommit));
+        }
+
+        public BuildInfo? GetBuildInfo()
+        {
+            // Parses /manifest.yml for game-specific settings that cannot be exclusively set up by content code.
+            if (!_resource.TryContentFileRead("/buildInfo.yml", out var stream))
+                return null;
+
+            var yamlStream = new YamlStream();
+            using (stream)
+            {
+                using var streamReader = new StreamReader(stream, EncodingHelpers.UTF8);
+                yamlStream.Load(streamReader);
+            }
+
+            if (yamlStream.Documents.Count == 0)
+                return null;
+
+            if (yamlStream.Documents.Count != 1 || yamlStream.Documents[0].RootNode is not YamlMappingNode mapping)
+            {
+                return null;
+            }
+
+            int year = 2020;
+            if (mapping.TryGetNode("year", out var yearNode))
+                year = yearNode.AsInt();
+
+            int month = 1;
+            if (mapping.TryGetNode("month", out var monthNode))
+                month = monthNode.AsInt();
+
+            int day = 1;
+            if (mapping.TryGetNode("day", out var dayNode))
+                day = dayNode.AsInt();
+
+            string commit = "";
+            if (mapping.TryGetNode("commit", out var commitNode))
+                commit = commitNode.AsString();
+
+            return new BuildInfo(year, month, day, commit);
         }
 
         public void PostInject()
@@ -199,6 +273,22 @@ namespace Content.Client.Changelog
             Remove,
             Fix,
             Tweak,
+        }
+    }
+
+    public struct BuildInfo
+    {
+        public int Year { get; }
+        public int Month { get; }
+        public int Day { get; }
+        public string Commit { get; }
+
+        public BuildInfo(int year, int month, int day, string commit)
+        {
+            Year = year;
+            Month = month;
+            Day = day;
+            Commit = commit;
         }
     }
 }
