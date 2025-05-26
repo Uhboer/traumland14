@@ -1,4 +1,4 @@
 - type: soundCollection
   id: LobbyMusic
   files:
-    - /Audio/Lobby/abandoned_space_station.ogg
+    - /Audio/Lobby/title1.ogg

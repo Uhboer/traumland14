@@ -149,7 +149,8 @@ namespace Content.Client.Changelog
                 else
                 {
                     var days = new int[] { 0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 303, 334, 365 };
-                    BuildNumber = (365 * (buildInfo.Value.Year - 2020) - 31 + days[buildInfo.Value.Month] + buildInfo.Value.Day).ToString();
+                    var projectInitialStartYear = 2025; // 2025 - is the start of Finster.
+                    BuildNumber = (365 * (buildInfo.Value.Year - projectInitialStartYear) - 31 + days[buildInfo.Value.Month] + buildInfo.Value.Day).ToString();
                     BuildCommit = buildInfo.Value.Commit;
                 }
             }

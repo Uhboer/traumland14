@@ -1,7 +1,6 @@
-# Space Station 14: Disphoria
+# Finster: Oblivion Lost
 
-Unfinished Space Station 14 fork.
-Main features is total overhaul gameplay, Z levels and more.
+Another story from deep space, telling about the approaching apocalypse. Eerie and dark.
 
 # Building
 

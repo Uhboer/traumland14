@@ -66,7 +66,7 @@ public class HUDGameplayState : HUDRoot
                 EyeManager.PixelsPerMeter * (3 + ViewportUIController.ViewportHeight), 0); // fucking calculus
 
             BuildInfoLable = new HUDBuildInfoLabel();
-            BuildInfoLable.TextPosition = new Vector2i(EyeManager.PixelsPerMeter * 3, 0);
+            BuildInfoLable.Alignment = HUDBuildInfoAlignment.Center;
 
             LookupLabel = new HUDLookupLabel();
             LookupLabel.Alignment = LookupAlignment.Bottom;
