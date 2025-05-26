@@ -512,5 +512,6 @@ public sealed class StorageContainer : BaseWindow
             return;
 
         _entity.System<StorageSystem>().CloseStorageWindow(StorageEntity.Value);
+        StorageEntity = null;
     }
 }

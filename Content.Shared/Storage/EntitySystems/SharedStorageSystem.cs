@@ -57,7 +57,7 @@ public abstract class SharedStorageSystem : EntitySystem
     [Dependency] private   readonly SharedHandsSystem _sharedHandsSystem = default!;
     [Dependency] private   readonly SharedStackSystem _stack = default!;
     [Dependency] protected readonly SharedTransformSystem TransformSystem = default!;
-    [Dependency] private   readonly SharedUserInterfaceSystem _ui = default!;
+    [Dependency] protected readonly SharedUserInterfaceSystem UI = default!;
     [Dependency] protected readonly UseDelaySystem UseDelay = default!;
     [Dependency] private readonly EntityWhitelistSystem _whitelistSystem = default!;
     [Dependency] private readonly ISharedAdminLogManager _adminLog = default!;
@@ -144,7 +144,7 @@ public abstract class SharedStorageSystem : EntitySystem
 
     private void OnRemove(Entity<StorageComponent> entity, ref ComponentRemove args)
     {
-        _ui.CloseUi(entity.Owner, StorageComponent.StorageUiKey.Key);
+        UI.CloseUi(entity.Owner, StorageComponent.StorageUiKey.Key);
     }
 
     private void OnMapInit(Entity<StorageComponent> entity, ref MapInitEvent args)
@@ -248,7 +248,7 @@ public abstract class SharedStorageSystem : EntitySystem
         // close ui
         foreach (var entity in storageComp.Container.ContainedEntities)
         {
-            _ui.CloseUis(entity, actor);
+            UI.CloseUis(entity, actor);
         }
     }
 
@@ -257,7 +257,7 @@ public abstract class SharedStorageSystem : EntitySystem
         CloseNestedInterfaces(uid, args.Actor, storageComp);
 
         // If UI is closed for everyone
-        if (!_ui.IsUiOpen(uid, args.UiKey))
+        if (!UI.IsUiOpen(uid, args.UiKey))
         {
             UpdateAppearance((uid, storageComp, null));
             Audio.PlayPredicted(storageComp.StorageCloseSound, uid, args.Actor);
@@ -270,7 +270,7 @@ public abstract class SharedStorageSystem : EntitySystem
             return;
 
         // Does this player currently have the storage UI open?
-        var uiOpen = _ui.IsUiOpen(uid, StorageComponent.StorageUiKey.Key, args.User);
+        var uiOpen = UI.IsUiOpen(uid, StorageComponent.StorageUiKey.Key, args.User);
 
         ActivationVerb verb = new()
         {
@@ -278,7 +278,7 @@ public abstract class SharedStorageSystem : EntitySystem
             {
                 if (uiOpen)
                 {
-                    _ui.CloseUi(uid, StorageComponent.StorageUiKey.Key, args.User);
+                    UI.CloseUi(uid, StorageComponent.StorageUiKey.Key, args.User);
                 }
                 else
                 {
@@ -318,14 +318,14 @@ public abstract class SharedStorageSystem : EntitySystem
 
         if (!silent)
         {
-            if (!_ui.IsUiOpen(uid, StorageComponent.StorageUiKey.Key))
+            if (!UI.IsUiOpen(uid, StorageComponent.StorageUiKey.Key))
                 Audio.PlayPredicted(storageComp.StorageOpenSound, uid, entity);
 
             if (useDelay != null)
                 UseDelay.TryResetDelay((uid, useDelay), id: OpenUiUseDelayID);
         }
 
-        _ui.OpenUi(uid, StorageComponent.StorageUiKey.Key, entity);
+        UI.OpenUi(uid, StorageComponent.StorageUiKey.Key, entity);
     }
 
     public virtual void UpdateUI(Entity<StorageComponent?> entity) {}
@@ -383,9 +383,9 @@ public abstract class SharedStorageSystem : EntitySystem
             return;
 
         // Toggle
-        if (_ui.IsUiOpen(uid, StorageComponent.StorageUiKey.Key, args.User))
+        if (UI.IsUiOpen(uid, StorageComponent.StorageUiKey.Key, args.User))
         {
-            _ui.CloseUi(uid, StorageComponent.StorageUiKey.Key, args.User);
+            UI.CloseUi(uid, StorageComponent.StorageUiKey.Key, args.User);
         }
         else
         {
@@ -736,7 +736,7 @@ public abstract class SharedStorageSystem : EntitySystem
         var capacity = storage.Grid.GetArea();
         var used = GetCumulativeItemAreas((uid, storage));
 
-        var isOpen = _ui.IsUiOpen(entity.Owner, StorageComponent.StorageUiKey.Key);
+        var isOpen = UI.IsUiOpen(entity.Owner, StorageComponent.StorageUiKey.Key);
 
         _appearance.SetData(uid, StorageVisuals.StorageUsed, used, appearance);
         _appearance.SetData(uid, StorageVisuals.Capacity, capacity, appearance);
@@ -1354,10 +1354,10 @@ public abstract class SharedStorageSystem : EntitySystem
             return;
 
         // Gets everyone looking at the UI
-        foreach (var actor in _ui.GetActors(uid, StorageComponent.StorageUiKey.Key).ToList())
+        foreach (var actor in UI.GetActors(uid, StorageComponent.StorageUiKey.Key).ToList())
         {
             if (!CanInteract(actor, (uid, component)))
-                _ui.CloseUi(uid, StorageComponent.StorageUiKey.Key, actor);
+                UI.CloseUi(uid, StorageComponent.StorageUiKey.Key, actor);
         }
     }
 
@@ -1395,13 +1395,13 @@ public abstract class SharedStorageSystem : EntitySystem
         if (!ActionBlocker.CanInteract(playerEnt, storageEnt))
             return;
 
-        if (!_ui.IsUiOpen(storageEnt.Value, StorageComponent.StorageUiKey.Key, playerEnt))
+        if (!UI.IsUiOpen(storageEnt.Value, StorageComponent.StorageUiKey.Key, playerEnt))
         {
             OpenStorageUI(storageEnt.Value, playerEnt, silent: false);
         }
         else
         {
-            _ui.CloseUi(storageEnt.Value, StorageComponent.StorageUiKey.Key, playerEnt);
+            UI.CloseUi(storageEnt.Value, StorageComponent.StorageUiKey.Key, playerEnt);
         }
     }
 
@@ -1456,7 +1456,7 @@ public abstract class SharedStorageSystem : EntitySystem
         // TODO STORAGE use BUI events
         // This would automatically validate that the UI is open & that the user can interact.
         // However, we still need to manually validate that items being used are in the users hands or in the storage.
-        if (!_ui.IsUiOpen(storageUid.Value, StorageComponent.StorageUiKey.Key, playerUid))
+        if (!UI.IsUiOpen(storageUid.Value, StorageComponent.StorageUiKey.Key, playerUid))
             return false;
 
         if (!ActionBlocker.CanInteract(playerUid, storageUid))
