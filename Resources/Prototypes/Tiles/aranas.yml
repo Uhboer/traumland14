@@ -1,0 +1,36 @@
+# Snow
+- type: tile
+  id: FloorAshenSand
+  name: tiles-ashen-sand
+  sprite: /Textures/Tiles/Planet/Ash/ashen_sand.png
+  variants: 13
+  placementVariants:
+  - 0.8
+  - 0.0166
+  - 0.0166
+  - 0.0166
+  - 0.0166
+  - 0.0166
+  - 0.0166
+  - 0.0166
+  - 0.0166
+  - 0.0166
+  - 0.0166
+  - 0.0116
+  - 0.0116
+  edgeSpritePriority: 2
+  edgeSprites:
+    South: /Textures/Tiles/Planet/Ash/ashen_sand_double_edge_south.png
+    East: /Textures/Tiles/Planet/Ash/ashen_sand_double_edge_east.png
+    North: /Textures/Tiles/Planet/Ash/ashen_sand_double_edge_north.png
+    West: /Textures/Tiles/Planet/Ash/ashen_sand_double_edge_west.png
+  isSubfloor: true
+  itemDrop: FloorTileItemSnow # Delta V
+  canShovel: true # Delta V
+  footstepSounds:
+    collection: FootstepAsteroid
+  barestepSounds:
+    collection: BarestepGrass
+  heatCapacity: 10000
+  weather: true
+  indestructible: true
