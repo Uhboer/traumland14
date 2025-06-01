@@ -1,0 +1,38 @@
+- type: job
+  id: Master
+  name: job-name-master
+  description: job-description-master
+  playTimeTracker: JobMaster
+  requirements:
+    - !type:CharacterTraitRequirement
+      inverted: true
+      traits:
+        - Foreigner
+        - ForeignerLight
+        - Pacifist
+  weight: 20
+  startingGear: MasterGear
+  icon: "JobIconMaster"
+  requireAdminNotify: true
+  joinNotifyCrew: true
+  supervisors: job-supervisors-master
+  canBeAntag: false
+  accessGroups:
+  - AllAccess
+  special:
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant ]
+  - !type:AddComponentSpecial
+    components:
+      - type: CommandStaff
+
+- type: startingGear
+  id: MasterGear
+  equipment:
+    uniform: ClothingUniformJumpsuitCaptain
+    back: ClothingBackpackCaptainFilled
+    shoes: ClothingShoesBootsLaceup
+    ears: ClothingHeadsetAltCommand
+  innerClothingSkirt: ClothingUniformJumpskirtCaptain
+  satchel: ClothingBackpackSatchelCaptainFilled
+  duffelbag: ClothingBackpackDuffelCaptainFilled

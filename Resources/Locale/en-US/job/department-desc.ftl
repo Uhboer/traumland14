@@ -8,3 +8,5 @@ department-Science-description = Research artifacts and anomalies to invent new 
 department-Silicon-description = Obey your laws and serve the crew.
 department-Specific-description = Jobs that not all stations have.
 department-Dignitary-description = Assist Heads of Staff and Captain, follow your directives.
+
+department-Majesty-description = Manage the crew and keep them working efficiently.

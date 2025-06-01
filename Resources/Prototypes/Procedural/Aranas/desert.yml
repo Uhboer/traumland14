@@ -6,7 +6,7 @@
     - !type:BiomeDecalLayer
       allowedTiles:
         - FloorAsteroidSand
-        - FloorDesert
+        #- FloorDesert
       divisions: 2
       threshold: -0.50
       noise:
@@ -57,7 +57,8 @@
       id: Loot
     - !type:BiomeTileLayer
       threshold: -1.0
-      tile: FloorDesert
+      #tile: FloorDesert
+      tile: FloorAsteroidSand
     - !type:BiomeTileLayer
       threshold: 0.6
       tile: FloorAsteroidSand

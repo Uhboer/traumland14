@@ -1,0 +1,21 @@
+- type: job
+  id: Servant
+  name: job-name-servant
+  description: job-description-servant
+  playTimeTracker: JobServant
+  startingGear: ServantGear
+  icon: "JobIconServant"
+  supervisors: job-supervisors-everyone
+  access:
+  - Maintenance
+
+- type: startingGear
+  id: ServantGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitColorGrey
+    back: ClothingBackpackFilled
+    shoes: ClothingShoesColorBlack
+    ears: ClothingHeadsetGrey
+  innerClothingSkirt: ClothingUniformJumpskirtColorGrey
+  satchel: ClothingBackpackSatchelFilled
+  duffelbag: ClothingBackpackDuffelFilled

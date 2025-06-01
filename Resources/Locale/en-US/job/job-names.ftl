@@ -75,6 +75,7 @@ job-title-universal = Universal
 # Role timers - Make these alphabetical or I cut you
 JobAtmosphericTechnician = Atmospheric Technician
 JobBartender = Bartender
+JobBaron = Erzbaron
 JobBorg = Borg
 JobBotanist = Botanist
 JobBoxer = Boxer
@@ -127,3 +128,12 @@ JobTechnicalAssistant = Technical Assistant
 JobVisitor = Visitor
 JobWarden = Warden
 JobZookeeper = Zookeeper
+
+
+# NEW NEW NEW NEW
+
+# Majesty
+job-name-master = Master
+
+# Generic
+job-name-servant = Servant

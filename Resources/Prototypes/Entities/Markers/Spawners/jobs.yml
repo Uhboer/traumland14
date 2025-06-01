@@ -672,3 +672,36 @@
     layers:
       - state: green
       - state: zookeeper
+
+
+
+# NEW NEW NEW NEW
+
+
+# Majesty
+
+- type: entity
+  id: SpawnPointMaster
+  parent: SpawnPointJobBase
+  name: master
+  components:
+  - type: SpawnPoint
+    job_id: Master
+  - type: Sprite
+    layers:
+      - state: green
+      - state: captain
+
+# Civilian
+
+- type: entity
+  id: SpawnPointServant
+  parent: SpawnPointJobBase
+  name: servant
+  components:
+  - type: SpawnPoint
+    job_id: Servant
+  - type: Sprite
+    layers:
+      - state: green
+      - state: passenger

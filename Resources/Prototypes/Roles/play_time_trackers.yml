@@ -177,3 +177,14 @@
 
 - type: playTimeTracker
   id: JobCBURN
+
+
+# Majesty
+
+- type: playTimeTracker
+  id: JobMaster
+
+# Civilian
+
+- type: playTimeTracker
+  id: JobServant

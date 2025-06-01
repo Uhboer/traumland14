@@ -444,3 +444,28 @@
     sprite: /Textures/Interface/Misc/job_icons.rsi
     state: Visitor
   jobName: job-name-visitor
+
+
+
+# NEW NEW NEW NEW
+
+
+# Majesty
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconMaster
+  icon:
+    sprite: /Textures/Interface/Misc/job_icons.rsi
+    state: Captain
+  jobName: job-name-master
+
+# Civilian
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconServant
+  icon:
+    sprite: /Textures/Interface/Misc/job_icons.rsi
+    state: Passenger
+  jobName: job-name-servant
