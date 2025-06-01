@@ -5,7 +5,7 @@ hostname = "Finster (DEV)"
 # Straight in-game baby
 lobbyenabled = false
 # Dev map for faster loading & convenience
-map = "Dev"
+map = "FinsterDevMap"
 role_timers = false
 
 [finster_gateway]

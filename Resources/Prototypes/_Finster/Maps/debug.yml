@@ -13,13 +13,13 @@
   mapPath: /Maps/Test/dev.yml
   minPlayers: 0
   stations:
-    FinsterDev:
+    NT-Devworld:
       stationProto: FinsterPlanetKingdom
       components:
         - type: StationNameSetup
-          mapNameTemplate: "FinsterDev"
+          mapNameTemplate: "NT-Devworld"
         - type: StationJobs
           overflowJobs:
-            - Scourger
+            - Master
           availableJobs:
-            Scourger: [ -1, -1 ]
+            Master: [ -1, -1 ]
