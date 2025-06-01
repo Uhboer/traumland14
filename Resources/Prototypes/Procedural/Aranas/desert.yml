@@ -1,0 +1,67 @@
+# Snow
+- type: biomeTemplate
+  id: AranasDesert
+  layers:
+    # Sparse vegetation
+    - !type:BiomeDecalLayer
+      allowedTiles:
+        - FloorAsteroidSand
+        - FloorDesert
+      divisions: 2
+      threshold: -0.50
+      noise:
+        seed: 0
+        noiseType: Cellular
+        frequency: 2
+      decals:
+        - Drought1
+        - Drought2
+        - Drought3
+        - Drought4
+        - Drought5
+        - Drought6
+        - Drought7
+        - Drought8
+        - Drought9
+        - Drought10
+        - Drought11
+        - Drought12
+        - Drought13
+        - Drought14
+        - Drought15
+        - Drought31
+        - Drought32
+      color: '#efb34194'
+    # Little bit of basalt
+    - !type:BiomeDecalLayer
+      allowedTiles:
+        - FloorAsteroidSand
+      divisions: 1
+      threshold: 0.25
+      noise:
+        seed: 0
+        noiseType: Cellular
+        frequency: 2
+        fractalType: None
+        cellularDistanceFunction: Euclidean
+        cellularReturnType: Distance2
+      decals:
+        - Basalt1
+        - Basalt2
+        - Basalt3
+        - Basalt5
+        - Basalt6
+        - Basalt7
+        - Basalt8
+    - !type:BiomeDummyLayer
+      id: Loot
+    - !type:BiomeTileLayer
+      threshold: -1.0
+      tile: FloorDesert
+    - !type:BiomeTileLayer
+      threshold: 0.6
+      tile: FloorAsteroidSand
+      noise:
+        seed: 0
+        frequency: 0.02
+        fractalType: None

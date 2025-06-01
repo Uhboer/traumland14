@@ -1,0 +1,23 @@
+- type: entity
+  id: BiomeSpawnerAranasCaves
+  parent: N14BaseBiomeSpawner
+  suffix: AranasCaves
+  components:
+  - type: Sprite
+    layers:
+      - state: waste
+      - state: frame
+  - type: CP14BiomeSpawner
+    biome: AranasCaves
+
+- type: entity
+  id: BiomeSpawnerAranasDesert
+  parent: N14BaseBiomeSpawner
+  suffix: AranasDesert
+  components:
+  - type: Sprite
+    layers:
+      - state: waste
+      - state: frame
+  - type: CP14BiomeSpawner
+    biome: AranasDesert
