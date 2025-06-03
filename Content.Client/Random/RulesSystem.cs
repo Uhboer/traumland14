@@ -99,7 +99,7 @@ public class RulesSystem : EntitySystem
 
                     var areaId = _area.GetAreaForEntity(uid);
                     if (areaId == null)
-                        return true;
+                        continue;
                     else
                         return false;
                 }

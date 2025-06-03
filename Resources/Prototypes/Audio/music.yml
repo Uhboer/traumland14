@@ -88,6 +88,7 @@
   rules: InDMArea
   priority: 3
 
+# Grid themes
 - type: ingameMusic
   id: DeathMatchOnGrid
   sound:
@@ -97,6 +98,17 @@
   fadeIn: true
   interruptable: true
   rules: WarGridTheme
+  priority: 2
+
+- type: ingameMusic
+  id: JunkOnGrid
+  sound:
+    params:
+      volume: -8
+    collection: MusicJunkWorld
+  fadeIn: true
+  interruptable: true
+  rules: JunkGridTheme
   priority: 2
 
 # General music, like as fallback
@@ -126,6 +138,11 @@
   id: MusicDeathMatch
   files:
     - /Audio/Music/bad_journey.ogg
+
+- type: soundCollection
+  id: MusicJunkWorld
+  files:
+    - /Audio/Music/MoozE-Junk.ogg
 
 - type: soundCollection
   id: MusicVesselGeneral
@@ -215,5 +232,13 @@
 - type: rules
   id: WarGridTheme
   rules:
+    - !type:OutOfArea
     - !type:IsGridMusic
       musicSoundId: MusicDeathMatch
+
+- type: rules
+  id: JunkGridTheme
+  rules:
+    - !type:OutOfArea
+    - !type:IsGridMusic
+      musicSoundId: MusicJunkWorld

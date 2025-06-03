@@ -22,7 +22,7 @@
                     <animatedBackground:AnimatedBackgroundControl Access="Public" Name="Background" VerticalExpand="True" HorizontalExpand="True"
                         Stretch="KeepAspectCentered" />
 
-                        <!-- Left Main Menu -->
+                        <!-- Main Menu -->
                         <PanelContainer Name="Center"
                                         HorizontalAlignment="Center"
                                         VerticalAlignment="Top"
