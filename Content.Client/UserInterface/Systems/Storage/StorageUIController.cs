@@ -231,8 +231,7 @@ public sealed class StorageUIController : UIController, IOnSystemChanged<Storage
             _entity.System<ExamineSystem>().DoExamine(control.Entity.Value);
             args.Handle();
         }
-        else if (args.Function == EngineKeyFunctions.UIRightClick ||
-            args.Function == EngineKeyFunctions.UseSecondary)
+        else if (args.Function == ContentKeyFunctions.OpenContextMenu)
         {
             if (control.Entity is null)
                 return;

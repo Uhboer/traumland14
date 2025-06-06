@@ -196,8 +196,7 @@ public sealed class HUDInventoryUIController : UIController, IOnStateEntered<Gam
         {
             _inventorySystem.UIInventoryExamine(slot, _playerUid.Value);
         }
-        else if (args.Function == EngineKeyFunctions.UIRightClick ||
-            args.Function == EngineKeyFunctions.UseSecondary)
+        else if (args.Function == ContentKeyFunctions.OpenContextMenu)
         {
             _inventorySystem.UIInventoryOpenContextMenu(slot, _playerUid.Value);
         }
@@ -228,8 +227,7 @@ public sealed class HUDInventoryUIController : UIController, IOnStateEntered<Gam
         {
             _handsSystem.UIHandClick(_playerHandsComponent, hand.SlotName);
         }
-        else if (args.Function == EngineKeyFunctions.UIRightClick ||
-            args.Function == EngineKeyFunctions.UseSecondary)
+        else if (args.Function == ContentKeyFunctions.OpenContextMenu)
         {
             _handsSystem.UIHandOpenContextMenu(hand.SlotName);
         }
