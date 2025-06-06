@@ -1,4 +1,4 @@
-weight-examine = [color=yellow]Weight: [/color] [color=cyan]{ $weight }[/color] kg
+weight-examine = Weight: [/color] [bold]{ $weight }[/bold] kg
 
 weight-examinable-verb-text = Weight
 

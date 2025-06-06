@@ -1,4 +1,4 @@
-weight-examine = [color=yellow]Вес: [/color] [color=cyan]{ $weight }[/color] кг
+weight-examine = Вес: [bold]{ $weight }[/bold] кг
 
 weight-loss-examinable-verb-text = Разгрузка веса
 weight-loss-examinable-verb-message = Узнать разгрузу веса

@@ -12,11 +12,10 @@ public sealed partial class ESWeightSystem
 
     private void InitializeExamine()
     {
-        //SubscribeLocalEvent<ESWeightComponent, ExaminedEvent>(OnExamined);
-        SubscribeLocalEvent<ESWeightComponent, GetVerbsEvent<ExamineVerb>>(OnGetExamineVerbs);
+        SubscribeLocalEvent<ESWeightComponent, ExaminedEvent>(OnExamined);
+        //SubscribeLocalEvent<ESWeightComponent, GetVerbsEvent<ExamineVerb>>(OnGetExamineVerbs);
     }
 
-    /*
     private void OnExamined(Entity<ESWeightComponent> ent, ref ExaminedEvent args)
     {
         if (!args.IsInDetailsRange)
@@ -26,8 +25,8 @@ public sealed partial class ESWeightSystem
                 "weight-examine",
                 ("weight", FixedPoint2.New(ent.Comp.Total))));
     }
-    */
 
+    /*
     private void OnGetExamineVerbs(EntityUid uid, ESWeightComponent component, GetVerbsEvent<ExamineVerb> args)
     {
         if (component.HideInExamine)
@@ -53,4 +52,5 @@ public sealed partial class ESWeightSystem
 
         args.Verbs.Add(verb);
     }
+    */
 }
