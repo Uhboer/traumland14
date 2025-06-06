@@ -1723,7 +1723,7 @@
 - type: tile
   id: FloorCave
   name: tiles-cave
-  sprite: /Textures/Tiles/cave.png
+  sprite: /Textures/Tiles/Cave/cave.png
   variants: 7
   placementVariants:
   - 1.0
@@ -1733,6 +1733,12 @@
   - 1.0
   - 1.0
   - 1.0
+  edgeSpritePriority: -2
+  edgeSprites:
+    South: /Textures/Tiles/Cave/edge_south.png
+    East: /Textures/Tiles/Cave/edge_east.png
+    North: /Textures/Tiles/Cave/edge_north.png
+    West: /Textures/Tiles/Cave/edge_west.png
   baseTurf: Space
   isSubfloor: true
   footstepSounds:
@@ -1744,7 +1750,7 @@
 - type: tile
   id: FloorCaveDrought
   name: tiles-cave-drought
-  sprite: /Textures/Tiles/cavedrought.png
+  sprite: /Textures/Tiles/Cave/cavedrought.png
   variants: 8
   placementVariants:
   - 1.0
@@ -1755,6 +1761,12 @@
   - 1.0
   - 1.0
   - 1.0
+  edgeSpritePriority: -1
+  edgeSprites:
+    South: /Textures/Tiles/Cave/edge_south.png
+    East: /Textures/Tiles/Cave/edge_east.png
+    North: /Textures/Tiles/Cave/edge_north.png
+    West: /Textures/Tiles/Cave/edge_west.png
   baseTurf: Space
   isSubfloor: true
   footstepSounds:

@@ -542,6 +542,8 @@
           state: rock_north
         - map: [ "enum.EdgeLayer.West" ]
           state: rock_west
+    - type: IsRoof
+      tile: FloorCave
 
 # Ore veins
 - type: entity
